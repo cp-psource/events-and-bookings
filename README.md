@@ -1,105 +1,73 @@
 #  Ereignisse +
 
-** INAKTIVER HINWEIS: Dieses Plugin wird von WPMUDEV nicht unterstützt. Wir haben es hier für diejenigen technischen Typen veröffentlicht, die es für ihre Bedürfnisse teilen und warten möchten. **
+##  Verkaufe Tickets für Dein Webinar oder Dein wiederkehrendes Verkaufsseminar oder baue ein komplettes Event-Management-Netzwerk wie Eventbrite oder Facebook Events auf.
 
-##  Übersetzungen
+ Bewerbe, verwalte und verkaufe Tickets für Deine Veranstaltung.
 
-Übersetzungsdateien finden Sie unter https://github.com/wpmudev/translations
+### Bewerbe und verwalte Deine Veranstaltung
 
-##  Verkaufen Sie Tickets für Ihr Webinar oder Ihr wiederkehrendes Verkaufsseminar oder bauen Sie ein komplettes Event-Management-Netzwerk wie Eventbrite oder Facebook Events auf.
-
-! [ Ereignisseite ] (https://premium.wpmudev.org/wp-content/uploads/2011/11/event-page-583x373.png)
-
- Bewerben, verwalten und verkaufen Sie Tickets für Ihre Veranstaltung.
-
-### Bewerben  und verwalten Sie Ihre Veranstaltung
-
-Erstellen Sie Veranstaltungsseiten mit Reservierungen, Ticketverkäufen, Werbevideos, Veranstaltungsinformationen, Standort und Karte. Mit Events + können Sie auch Ihr nächstes lokales Meetup, Ihre nächste Konferenz oder Online-Veranstaltung verwalten.
-
-
+Erstelle Veranstaltungsseiten mit Reservierungen, Ticketverkäufen, Werbevideos, Veranstaltungsinformationen, Standort und Karte. Mit PS Events kannst Du auch Dein nächstes lokales Meetup, Deine nächste Konferenz oder Online-Veranstaltung verwalten.
 
 ###  Die perfekte Design- Passform
 
-Events + passt sich dem Design Ihres Themas an. Sie müssen nicht mehr mit speziellen Vorlagen oder anderem Müll herumspielen - nur mit dem gewünschten Layout. Verwenden Sie Shortcodes und integrierte Widgets, um Elemente genau dort zu integrieren, wo Sie möchten - Seitenleisten, Seiten, Beiträge - wo immer Sie möchten.
+PS Events passt sich dem Design Deines Themes an. Du musst nicht mehr mit speziellen Vorlagen oder anderem Müll herumspielen - nur mit dem gewünschten Layout. Verwende Shortcodes und integrierte Widgets, um Elemente genau dort zu integrieren, wo Du möchtest - Seitenleisten, Seiten, Beiträge - wo immer Du willst.
 
-! [ event-widget ] (https://premium.wpmudev.org/wp-content/uploads/2011/11/event-widget-583x373.png)
-
- Events + enthält Shortcodes, Add-Ons und Widgets für mehr Kontrolle über Layouts.
-
-
+ PS Events enthält Shortcodes, Add-Ons und Widgets für mehr Kontrolle über Layouts.
 
 ###  Ticketverkauf
 
-Verwenden Sie PayPal direkt nach dem Auspacken oder zusammen mit MarketPress eCommerce, um 15 zusätzliche Zahlungsgateways zu aktivieren.
+Verwende PayPal direkt nach dem Auschecken oder zusammen mit PSeCommerce, um zusätzliche Zahlungsgateways zu aktivieren.
 
-
-
-! [ events-integration ] (https://premium.wpmudev.org/wp-content/uploads/2011/11/events-integration.png)
-
-
-
-2Checkout, Authorize.net AIM, gemeinsame Zahlungen von eWay, eWay Rapid 3.1-Zahlungen, manuelle Zahlungen, Mijireh, Mollie, Paymill, verkettete PayPal-Zahlungen, PayPal Express-Kaufabwicklung, PayPal PayFlow Pro, PIN, Vereinfachen Sie den Handel mit MasterCard, Stripe und WePay.
-
-** Genug Optionen für Sie? **
 
 ###  Ereignis-Countdown
 
-Bauen Sie mit einem Countdown die Vorfreude auf Ihr Online-Ereignis auf und leiten Sie Benutzer nach Ablauf des Timers automatisch zu Ihrem Live-Stream weiter. Wir finden das ziemlich cool. Mit Events + können Sie ganz einfach wiederkehrende Ereignisse festlegen. Stellen Sie es einmal ein und da ist es, genau wie am Schnürchen.
+Baue mit einem Countdown die Vorfreude auf Dein Online-Ereignis auf und leite Benutzer nach Ablauf des Timers automatisch zu Deinem Live-Stream weiter. Wir finden das ziemlich cool. Mit PS Events kannst Du ganz einfach wiederkehrende Ereignisse festlegen. Stelle es einmal ein und da ist es, genau wie am Schnürchen.
 
-! [ e-templates-735x470 ] (https://premium.wpmudev.org/wp-content/uploads/2011/11/e-templates-735x470-583x373.jpg)
-
- Events + beinhaltet die Integration von E-Newslettern für einen besseren E-Mail-Follow-up-Stil.
+ PS Events beinhaltet die Integration von E-Newsletter für einen besseren E-Mail-Follow-up-Stil.
 
 ###  Kalenderfreigabe & Benachrichtigungen
 
-Lassen Sie Gäste mit einem Klick Ereignisse zu iCal oder Google Kalender hinzufügen. Senden Sie automatisch Updates für Gäste, wenn sich die Ereignisinformationen ändern. Integrieren Sie sich in den E-Newsletter und verwenden Sie benutzerdefinierte E-Mail-Vorlagen, um Ihre Marke besser darzustellen - oder um sich einfach an Ihr Party-Thema zu halten.
+Lasse Gäste mit einem Klick Ereignisse zu iCal oder Google Kalender hinzufügen. Sende automatisch Updates für Gäste, wenn sich die Ereignisinformationen ändern. Integriere in den E-Newsletter und verwende benutzerdefinierte E-Mail-Vorlagen, um Deine Marke besser darzustellen - oder um sich einfach an Dein Party-Theme zu halten.
 
 ###  Zeit sparen - Service Sync
 
-Das Teilen Ihrer Veranstaltungen in sozialen Medien sollte einfach sein, daher haben wir es so gemacht. Erstellen Sie ein Ereignis mit Facebook-Ereignissen, und Events + veröffentlicht es automatisch auf Ihrer Website.
+Das Teilen Deinr Veranstaltungen in sozialen Medien sollte einfach sein, daher haben wir es so gemacht. Erstelle ein Ereignis mit Facebook-Ereignissen, und PS Events veröffentlicht es automatisch auf Deiner Webseite.
 
-Sie können sogar Ereignisse aus anderen beliebten Kalendern abrufen, indem Sie sie aus Google Kalender und Meetup.com importieren.   
+Du kannst sogar Ereignisse aus anderen beliebten Kalendern abrufen, indem Du sie aus Google Kalender und Meetup.com importierst.   
 
 ###  Integration des Google Maps Plugins
 
-Richtungen waren noch nie so lustig. Teilen Sie Karten mit Stil und fügen Sie benutzerdefinierte Drop-Pin-Symbole hinzu. Mit der Integration des Google Maps Plugins können Sie Ihrer Veranstaltung eine Karte mit benutzerdefinierten Symbolen und Formatsteuerung hinzufügen, ohne mit Code herumspielen zu müssen.
-
-! [ Events-Map-Integration ] (https://premium.wpmudev.org/wp-content/uploads/2011/11/events-map-integration-583x373.png)
+Richtungen waren noch nie so lustig. Teile Karten mit Stil und füge benutzerdefinierte Drop-Pin-Symbole hinzu. Mit der Integration des Google Maps Plugins kannst Du Deiner Veranstaltung eine Karte mit benutzerdefinierten Symbolen und Formatsteuerung hinzufügen, ohne mit Code herumspielen zu müssen.
 
  Wunderschönes, benutzerdefiniertes und einzigartiges Kartendesign mit Google Maps-Plugin und Snazzy Map-Kompatibilität.
 
-
-
-! [ events-login ] (https://premium.wpmudev.org/wp-content/uploads/2011/11/events-login-583x373.png)
 
  Lassen Sie Benutzer sich mit ihrem sozialen Netzwerk anmelden.
 
 ###  Einfaches RSVP & Social Share
 
-Erstellen Sie Ihre Mailingliste und machen Sie es Benutzern einfach, ihren Platz mit einem einfachen E-Mail-RSVP zu reservieren. Begeistern Sie die Teilnehmer für Ihre Veranstaltung. Verbreiten Sie das Wort mit automatisiertem Social Sharing, wenn Teilnehmer sich melden, damit sie ihren Freunden mitteilen können, was sie verpassen.
+Erstelle Deine Mailingliste und mache es Benutzern einfach, ihren Platz mit einem einfachen E-Mail-RSVP zu reservieren. Begeistere die Teilnehmer für Deine Veranstaltung. Verbreite das Wort mit automatisiertem Social Sharing, wenn Teilnehmer sich melden, damit sie ihren Freunden mitteilen können, was sie verpassen.
 
 ##  Verwendung
 
-** Bitte beachten Sie: ** Um die vollständige Kartenintegration nutzen zu können, müssen Sie unser [ Google Maps ] (https://premium.wpmudev.org/project/wordpress-google-maps-plugin/ "WordPress Google Maps Plugin installieren - WPMU DEV ") Plugin.
+** Bitte beachte: ** Um die vollständige Kartenintegration nutzen zu können, musst Du unser [ Google Maps ] (https://n3rds.work/piestingtal_source/ps-google-maps-plugin/ "WordPress Google Maps Plugin installieren - PSOURCE ") Plugin.
 
 ### Erste  Schritte:
 
-Lesen Sie zunächst den Abschnitt [ Installieren von Plugins ] (https://premium.wpmudev.org/wpmu-manual/installing-regular-plugins-on-wpmu/) in unserem umfassenden [ WordPress- und WordPress Multisite-Handbuch ] (https: // Premium .wpmudev.org / wpmu-manual /) wenn Sie WordPress noch nicht kennen. Melden Sie sich bei Ihrem Admin-Panel für WordPress oder Multisite an und aktivieren Sie das Plugin:
+Melde Dich bei Deinem Admin-Panel für WordPress oder Multisite an und aktiviere das Plugin:
 
-*    Bei regulären WordPress-Installationen - besuchen Sie Plugins und aktivieren Sie das Plugin.
-*    Für WordPress Multisite-Installationen - Aktivieren Sie es Blog für Blog (sagen Sie, wenn Sie es zu einem Premium-Plugin für Pro Sites machen möchten) oder besuchen Sie Netzwerkadministrator -> Plugins und Netzwerk Aktivieren Sie das Plugin.
+*    Bei regulären WordPress-Installationen - besuchen Plugins und aktiviere das Plugin.
+*    Für WordPress Multisite-Installationen - Aktiviere es Blog für Blog (sprich, wenn Du es zu einem Premium-Plugin für PrBloghosting machen möchtest) oder besuche Netzwerkadministrator -> Plugins und Netzwerk Aktiviere das Plugin.
 
-Nach der Installation und Aktivierung wird in Ihrem Administrator ein neuer Menüpunkt angezeigt : _Events_ .
+Nach der Installation und Aktivierung wird in Deinem Administrator ein neuer Menüpunkt angezeigt : _Events_ .
 
-! [ Menü " Ereignisse ] (https://premium.wpmudev.org/wp-content/uploads/2011/11/Events-menu.png)
 
-###  Konfigurieren Sie Ihre Einstellungen
+###  Konfiguriere Deine Einstellungen
 
-Beginnen wir mit der Konfiguration. Gehen Sie zu _Admin> Events_ . Sie sehen den ersten Bildschirm ' ** Erste Schritte ** ', der Sie durch einen 4-stufigen Einrichtungsprozess führt.
+Beginnen wir mit der Konfiguration. Gehe zu _Admin> Events_ . Du siehst den ersten Bildschirm ' ** Erste Schritte ** ', der Dich durch einen 4-stufigen Einrichtungsprozess führt.
 
-! [ Ereignisse - Erste Schritte ] (https://premium.wpmudev.org/wp-content/uploads/2011/11/Events-Get-Started1.png)
 
-Klicken Sie auf die Schaltfläche ' ** Einstellungen konfigurieren ** '. Sie werden zur Einstellungsseite weitergeleitet. Sie können die Einstellungsseite auch über den Menülink  _ ** Ereignisse> Einstellungen ** _  aufrufen.
+Klicke auf die Schaltfläche ' ** Einstellungen konfigurieren ** '. Du wirst zur Einstellungsseite weitergeleitet. Du kannst die Einstellungsseite auch über den Menülink  _ ** Ereignisse> Einstellungen ** _  aufrufen.
 
 #####  Tutorial-Popups
 
