@@ -1,4 +1,4 @@
-#  Ereignisse +
+#  PS Events
 
 ##  Verkaufe Tickets für Dein Webinar oder Dein wiederkehrendes Verkaufsseminar oder baue ein komplettes Event-Management-Netzwerk wie Eventbrite oder Facebook Events auf.
 
