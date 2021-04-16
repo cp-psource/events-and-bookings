@@ -50,7 +50,7 @@ Erstelle Deine Mailingliste und mache es Benutzern einfach, ihren Platz mit eine
 
 ##  Verwendung
 
-** Bitte beachte: ** Um die vollständige Kartenintegration nutzen zu können, musst Du unser [ Google Maps ] (https://n3rds.work/piestingtal_source/ps-google-maps-plugin/ "WordPress Google Maps Plugin installieren - PSOURCE ") Plugin.
+** Bitte beachte: ** Um die vollständige Kartenintegration nutzen zu können, musst Du unser [Google Maps](https://n3rds.work/piestingtal_source/ps-google-maps-plugin/ "WordPress Google Maps Plugin") - PSOURCE Plugin installieren.
 
 ### Erste  Schritte:
 
