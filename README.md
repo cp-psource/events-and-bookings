@@ -42,7 +42,7 @@ Richtungen waren noch nie so lustig. Teile Karten mit Stil und füge benutzerdef
  Wunderschönes, benutzerdefiniertes und einzigartiges Kartendesign mit Google Maps-Plugin und Snazzy Map-Kompatibilität.
 
 
- Lassen Sie Benutzer sich mit ihrem sozialen Netzwerk anmelden.
+ Lasse Benutzer sich mit ihrem sozialen Netzwerk anmelden.
 
 ###  Einfaches RSVP & Social Share
 
@@ -56,8 +56,8 @@ Erstelle Deine Mailingliste und mache es Benutzern einfach, ihren Platz mit eine
 
 Melde Dich bei Deinem Admin-Panel für WordPress oder Multisite an und aktiviere das Plugin:
 
-*    Bei regulären WordPress-Installationen - besuchen Plugins und aktiviere das Plugin.
-*    Für WordPress Multisite-Installationen - Aktiviere es Blog für Blog (sprich, wenn Du es zu einem Premium-Plugin für PrBloghosting machen möchtest) oder besuche Netzwerkadministrator -> Plugins und Netzwerk Aktiviere das Plugin.
+*    Bei regulären WordPress-Installationen - besuche Plugins und aktiviere das Plugin.
+*    Für WordPress Multisite-Installationen - Aktiviere es Blog für Blog (sprich, wenn Du es zu einem Premium-Plugin für PS Bloghosting machen möchtest) oder besuche Netzwerkadministrator -> Plugins und Netzwerk Aktiviere das Plugin.
 
 Nach der Installation und Aktivierung wird in Deinem Administrator ein neuer Menüpunkt angezeigt : _Events_ .
 
@@ -71,27 +71,23 @@ Klicke auf die Schaltfläche ' ** Einstellungen konfigurieren ** '. Du wirst zur
 
 #####  Tutorial-Popups
 
-Wenn Sie die Einstellungen zum ersten Mal durchgehen, werden Sie auch das schrittweise blaue Popup-Feld bemerken, das Sie durch Ihre Ersteinrichtung führt (siehe unten): 
+Wenn Du die Einstellungen zum ersten Mal durchgehst, wirst Du auch das schrittweise blaue Popup-Feld bemerken, das Dich durch Ihre Ersteinrichtung führt (siehe unten): 
 
-! [ Ereignisse - Tutorial-Popup ] (https://premium.wpmudev.org/wp-content/uploads/2011/11/Events-Tutorial-popup.png)
 
-1 \. Der Link _Dismiss_ wird diese Nachrichten endgültig schließen . 2 \. Sie können auf die Schaltfläche _Next_ klicken , um mit dem Lernprogramm fortzufahren. Wenn Sie diese Tutorial-Popups nach dem Schließen wieder sehen möchten , können Sie zu _Events> Get Started_ gehen, das Dropdown-Menü _Help_ in der oberen rechten Ecke der Seite öffnen und die Registerkarte _Tutorial_ auswählen . Klicken Sie dann auf den Link Tutorial neu starten .
+1 \. Der Link _Dismiss_ wird diese Nachrichten endgültig schließen . 2 \. Du kannst auf die Schaltfläche _Weiter_ klicken , um mit dem Lernprogramm fortzufahren. Wenn Du diese Tutorial-Popups nach dem Schließen wieder sehen möchtest , kannst Du zu _Events> Loslegen_ gehen, das Dropdown-Menü _Hilfe_ in der oberen rechten Ecke der Seite öffnen und die Registerkarte _Tutorial_ auswählen . Klicke dann auf den Link Tutorial neu starten .
 
 #####  Tooltips
 
-Events + bietet viele hilfreiche Tipps über blaue Informationstools mit einem weißen ' ** i ** ' im Inneren. Wenn Sie mit der Maus darüber fahren oder darauf klicken, wird ein Dialogblock mit hilfreichen Tipps zum Ausfüllen der einzelnen Felder angezeigt (siehe unten):
+PS Events bietet viele hilfreiche Tipps über blaue Informationstools mit einem weißen ' ** i ** ' im Inneren. Wenn Du mit der Maus darüber fährst oder darauf klickst, wird ein Dialogblock mit hilfreichen Tipps zum Ausfüllen der einzelnen Felder angezeigt (siehe unten):
 
-! [ Ereignisse - Tooltips ] (https://premium.wpmudev.org/wp-content/uploads/2011/11/Events-Tooltips.png)
-
- Bewegen Sie die Maus über einen Tooltip, um ein kleines Popup anzuzeigen, oder klicken / berühren Sie das Tooltip-Symbol, um den Tooltip auf der Seite anzuzeigen.
+ Bewege die Maus über einen Tooltip, um ein kleines Popup anzuzeigen, oder klicke/berühre das Tooltip-Symbol, um den Tooltip auf der Seite anzuzeigen.
 
 ###  Plugin-Einstellungen
 
-Hier finden Sie einige der wichtigsten Einstellungen wie den URL-Slug, die Zahlungs- und Anmeldeoptionen. 
+Hier findest Du einige der wichtigsten Einstellungen wie den URL-Slug, die Zahlungs- und Anmeldeoptionen. 
 
-! [ Ereigniseinstellungen ] (https://premium.wpmudev.org/wp-content/uploads/2011/11/Events-Settings.png)
 
- _Stellen Sie hier Ihren Root-Slug ein_ können Sie den URL-Slug für Ihre Ereignislisten angeben. Nehmen wir an, dies ist eine Ereignisseite für WordCamp. Wir geben also in das Slug-Feld 'wordcamp-events' ein. Ihre URL lautet nun:  ** yourdomain.com / wordcamp-events / ** Kreuzen Sie das _Will an, für das  Sie die Zahlung akzeptieren eine Ihrer Veranstaltungen? _  Einstellung, um den Ticketverkauf über PayPal zu ermöglichen. Zusätzliche PayPal-Einstellungen werden dann weiter unten auf der Seite und beim Erstellen von Ereignissen verfügbar. Mit der Einstellung _ Facebook- und Twitter-Anmeldung zulassen ? _ Können Sie eine Verbindung zu Facebook und Twitter herstellen. _ Öffentliche RSVPs anzeigen? _ lässt die Leute sehen, wer noch an Ihrer Veranstaltung teilnimmt. Mit dieser Option können sich Freunde der Teilnehmer anmelden, um die Veranstaltung noch spezieller zu gestalten!
+ _Stelle hier Deinen Root-Slug ein_ kannst Du den URL-Slug für Deine Ereignislisten angeben. Nehmen wir an, dies ist eine Ereignisseite für WordCamp. Wir geben also in das Slug-Feld 'wordcamp-events' ein. Deine URL lautet nun:  ** yourdomain.com/wordcamp-events/ ** Kreuze das _Will an, für das Du die Zahlung akzeptieren eine Ihrer Veranstaltungen? _  Einstellung, um den Ticketverkauf über PayPal zu ermöglichen. Zusätzliche PayPal-Einstellungen werden dann weiter unten auf der Seite und beim Erstellen von Ereignissen verfügbar. Mit der Einstellung _ Facebook- und Twitter-Anmeldung zulassen ? _ Können Sie eine Verbindung zu Facebook und Twitter herstellen. _ Öffentliche RSVPs anzeigen? _ lässt die Leute sehen, wer noch an Ihrer Veranstaltung teilnimmt. Mit dieser Option können sich Freunde der Teilnehmer anmelden, um die Veranstaltung noch spezieller zu gestalten!
 
 ###  Darstellungseinstellungen
 
