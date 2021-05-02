@@ -607,33 +607,33 @@ class Eab_Api {
 			<h3 class="eab-hndle"><?php _e('API Einstellungen', Eab_EventsHub::TEXT_DOMAIN); ?></h3>
 			<div class="eab-inside">
 				<div class="eab-settings-settings_item">
-				    <label for="incsub_event-facebook-app_id" id="incsub_event_label-facebook-app_id"><?php _e('Facebook App ID', Eab_EventsHub::TEXT_DOMAIN); ?></label>
-					<input type="text" id="incsub_event-facebook-app_id" name="event_default[facebook-app_id]" value="<?php echo esc_attr($this->_data->get_option('facebook-app_id')); ?>" />
+				    <label for="psource_event-facebook-app_id" id="psource_event_label-facebook-app_id"><?php _e('Facebook App ID', Eab_EventsHub::TEXT_DOMAIN); ?></label>
+					<input type="text" id="psource_event-facebook-app_id" name="event_default[facebook-app_id]" value="<?php echo esc_attr($this->_data->get_option('facebook-app_id')); ?>" />
 					<span><?php echo $tips->add_tip(sprintf(__('Gib hier Deine App-ID ein. Wenn Du noch keine Facebook-App hast, musst Du eine <a target="_blank" href="%s">hier</a> erstellen', Eab_EventsHub::TEXT_DOMAIN), 'https://developers.facebook.com/apps')); ?></span>
 				</div>
 
 				<div class="eab-settings-settings_item">
-				    <label for="incsub_event-facebook-no_init" id="incsub_event_label-facebook-no_init"><?php _e('Meine Seiten laden bereits Skripte von Facebook', Eab_EventsHub::TEXT_DOMAIN); ?></label>
+				    <label for="psource_event-facebook-no_init" id="psource_event_label-facebook-no_init"><?php _e('Meine Seiten laden bereits Skripte von Facebook', Eab_EventsHub::TEXT_DOMAIN); ?></label>
 				    <input type="hidden" name="event_default[facebook-no_init]" value="" />
-					<input type="checkbox" id="incsub_event-facebook-no_init" name="event_default[facebook-no_init]" <?php print ($this->_data->get_option('facebook-no_init') ? "checked='checked'" : ''); ?> value="1" />
+					<input type="checkbox" id="psource_event-facebook-no_init" name="event_default[facebook-no_init]" <?php print ($this->_data->get_option('facebook-no_init') ? "checked='checked'" : ''); ?> value="1" />
 					<span><?php echo $tips->add_tip(__('Aktiviere dieses Kontrollkästchen, wenn Du bereits Facebook-Skripte auf Deiner WordPress-Site verwendest. (Wenn Du nicht sicher bist, was dies bedeutet, lasse das Kontrollkästchen deaktiviert.).', Eab_EventsHub::TEXT_DOMAIN)); ?></span>
 				</div>
 
 				<div class="eab-settings-settings_item">
-				    <label for="incsub_event-twitter-app_id" id="incsub_event_label-twitter-app_id"><?php _e('Twitter Consumer Key', Eab_EventsHub::TEXT_DOMAIN); ?></label>
-					<input type="text" id="incsub_event-twitter-app_id" name="event_default[twitter-app_id]" value="<?php echo esc_attr($this->_data->get_option('twitter-app_id')); ?>" />
+				    <label for="psource_event-twitter-app_id" id="psource_event_label-twitter-app_id"><?php _e('Twitter Consumer Key', Eab_EventsHub::TEXT_DOMAIN); ?></label>
+					<input type="text" id="psource_event-twitter-app_id" name="event_default[twitter-app_id]" value="<?php echo esc_attr($this->_data->get_option('twitter-app_id')); ?>" />
 					<span><?php echo $tips->add_tip(sprintf(__('Gib hier Deine Twitter App ID-Nummer ein. Wenn Du noch keine Twitter-App hast, musst Du eine <a target="_blank" href="%s">hier</a> erstellen.<br />Denke beim Einrichten Deiner App daran, auch die <b>Rückruf-URL</b> auf den entsprechenden Wert einzustellen (<code>%s</code>)', Eab_EventsHub::TEXT_DOMAIN), 'https://dev.twitter.com/apps/new', home_url())); ?></span>
 				</div>
 
 				<div class="eab-settings-settings_item">
-				    <label for="incsub_event-twitter-app_secret" id="incsub_event_label-twitter-app_secret"><?php _e('Twitter Consumer Secret', Eab_EventsHub::TEXT_DOMAIN); ?></label>
-					<input type="password" id="incsub_event-twitter-app_secret" name="event_default[twitter-app_secret]" value="<?php echo esc_attr($this->_data->get_option('twitter-app_secret')); ?>" />
+				    <label for="psource_event-twitter-app_secret" id="psource_event_label-twitter-app_secret"><?php _e('Twitter Consumer Secret', Eab_EventsHub::TEXT_DOMAIN); ?></label>
+					<input type="password" id="psource_event-twitter-app_secret" name="event_default[twitter-app_secret]" value="<?php echo esc_attr($this->_data->get_option('twitter-app_secret')); ?>" />
 					<span><?php echo $tips->add_tip(__('Gib hier Dein Twitter App-Geheimnis ein.', Eab_EventsHub::TEXT_DOMAIN)); ?></span>
 				</div>
 				
 				<div class="eab-settings-settings_item">
-				    <label for="incsub_event-google-client_id" id="incsub_event_label-google-client_id"><?php _e('Google Client ID', Eab_EventsHub::TEXT_DOMAIN); ?></label>
-					<input type="text" id="incsub_event-google-client_id" name="event_default[google-client_id]" value="<?php echo esc_attr($this->_data->get_option('google-client_id')); ?>" />
+				    <label for="psource_event-google-client_id" id="psource_event_label-google-client_id"><?php _e('Google Client ID', Eab_EventsHub::TEXT_DOMAIN); ?></label>
+					<input type="text" id="psource_event-google-client_id" name="event_default[google-client_id]" value="<?php echo esc_attr($this->_data->get_option('google-client_id')); ?>" />
 					<span><?php echo $tips->add_tip(sprintf(__('Gib hier Deine Google App Client-ID ein. Wenn Du noch keine Google App hast, musst Du eine <a target="_blank" href="%s">hier</a> erstellen', Eab_EventsHub::TEXT_DOMAIN), 'https://console.developers.google.com/')); ?></span>
 					<span>
 						<small><?php _e('Wenn Du dieses Feld leer lässt, wird Google Auth auf die alte OpenID zurückgesetzt.', Eab_EventsHub::TEXT_DOMAIN); ?></small>

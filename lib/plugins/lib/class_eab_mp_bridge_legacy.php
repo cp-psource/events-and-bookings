@@ -28,7 +28,7 @@ class Eab_MP_Bridge_Legacy {
 
 		// Regular Events+ product selection
 		add_filter('eab-event_meta-event_price', array($this, 'show_event_product_selection'), 10, 2);
-		add_action('incsub_event_save_payments_meta', array($this, 'save_event_product_selection'));
+		add_action('psource_event_save_payments_meta', array($this, 'save_event_product_selection'));
 		// Resync top-level/singular price on related Product update
 		add_action('wp_insert_post', array($this, 'resync_psecommerce_product_price'), 10, 2);
 
@@ -268,7 +268,7 @@ class Eab_MP_Bridge_Legacy {
 		if (!$event_id) return false;
 
 		$price = $this->_get_quick_product_price($product_id);
-		update_post_meta($event_id, 'incsub_event_fee', $price);
+		update_post_meta($event_id, 'psource_event_fee', $price);
 	}
 
 	/**
@@ -332,7 +332,7 @@ class Eab_MP_Bridge_Legacy {
 				);
 				$user_bookings[$event_id] = $wpdb->insert_id;
 				// --todo: Add to BP activity stream
-				do_action( 'incsub_event_booking_yes', $event_id, $user_id );
+				do_action( 'psource_event_booking_yes', $event_id, $user_id );
 				// End booking extras
 			}
 			$booking_id = $user_bookings[$event_id];
@@ -398,7 +398,7 @@ class Eab_MP_Bridge_Legacy {
 			// Set up cross-linking
 			update_post_meta($event_id, 'eab_product_id', $product_id);
 			update_post_meta($product_id, 'eab_event_id', $event_id);
-			update_post_meta($event_id, 'incsub_event_fee', $price);
+			update_post_meta($event_id, 'psource_event_fee', $price);
 		} else if ($old_product_id) {
 			// Break cross-linking
 			update_post_meta($event_id, 'eab_product_id', $product_id);

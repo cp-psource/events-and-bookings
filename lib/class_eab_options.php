@@ -2,7 +2,7 @@
 
 class Eab_Options {
 	
-	const OPTIONS_KEY = 'incsub_event_default';
+	const OPTIONS_KEY = 'psource_event_default';
 	
 	private static $_instance;
 	private $_data = array();

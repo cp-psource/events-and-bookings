@@ -59,16 +59,16 @@ class Eab_LastMonthArchivedCollection extends Eab_TimedCollection {
 		$args = array_merge(
 			$args,
 			array(
-			 	'post_type' => 'incsub_event',
+			 	'post_type' => 'psource_event',
 				'suppress_filters' => false, 
 				'posts_per_page' => EAB_OLD_EVENTS_EXPIRY_LIMIT,
 				'meta_query' => array(
 					array(
-		    			'key' => 'incsub_event_status',
+		    			'key' => 'psource_event_status',
 		    			'value' => Eab_EventModel::STATUS_ARCHIVED,
 					),
 					array(
-		    			'key' => 'incsub_event_end',
+		    			'key' => 'psource_event_end',
 		    			'value' => date("Y-m-01 00:00:01", $time),
 		    			'compare' => '<',
 		    			'type' => 'DATETIME'

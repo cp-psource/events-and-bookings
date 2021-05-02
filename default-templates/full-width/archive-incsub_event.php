@@ -8,7 +8,7 @@ get_header( 'event' );
                 <h2><?php _e('Events', Eab_EventsHub::TEXT_DOMAIN); ?></h2>
                 <hr/>
                 <?php if ( !have_posts() ) : ?>
-                    <p><?php $event_ptype = get_post_type_object( 'incsub_event' ); echo $event_ptype->labels->not_found; ?></p>
+                    <p><?php $event_ptype = get_post_type_object( 'psource_event' ); echo $event_ptype->labels->not_found; ?></p>
                 <?php else: ?>
                     <div class="psourceevents-list">
 

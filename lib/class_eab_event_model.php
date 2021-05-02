@@ -297,7 +297,7 @@ abstract class WpmuDev_DatedVenuePremiumModel extends WpmuDev_DatedVenuePremiumI
 
 class Eab_EventModel extends WpmuDev_DatedVenuePremiumModel {
 
-	const POST_TYPE = 'incsub_event';
+	const POST_TYPE = 'psource_event';
 
 	const STATUS_OPEN = 'open';
 	const STATUS_CLOSED = 'closed';
@@ -459,7 +459,7 @@ class Eab_EventModel extends WpmuDev_DatedVenuePremiumModel {
 
 	public function has_no_start_time ($key=0) {
 		if (empty($this->_no_start_dates) && !is_array($this->_no_start_dates)) {
-			$raw = get_post_meta($this->get_id(), 'incsub_event_no_start');
+			$raw = get_post_meta($this->get_id(), 'psource_event_no_start');
 			$raw = is_array($raw) ? $raw : array();
 			$this->_no_start_dates = $raw;
 		}
@@ -468,7 +468,7 @@ class Eab_EventModel extends WpmuDev_DatedVenuePremiumModel {
 
 	public function has_no_end_time ($key=0) {
 		if (empty($this->_no_end_dates) && !is_array($this->_no_end_dates)) {
-			$raw = get_post_meta($this->get_id(), 'incsub_event_no_end');
+			$raw = get_post_meta($this->get_id(), 'psource_event_no_end');
 			$raw = is_array($raw) ? $raw : array();
 			$this->_no_end_dates = $raw;
 		}
@@ -481,7 +481,7 @@ class Eab_EventModel extends WpmuDev_DatedVenuePremiumModel {
 	 */
 	public function get_start_dates () {
 		if ($this->_start_dates) return $this->_start_dates;
-		$this->_start_dates = get_post_meta($this->get_id(), 'incsub_event_start');
+		$this->_start_dates = get_post_meta($this->get_id(), 'psource_event_start');
 		return $this->_start_dates;
 	}
 
@@ -491,7 +491,7 @@ class Eab_EventModel extends WpmuDev_DatedVenuePremiumModel {
 	 */
 	public function get_end_dates () {
 		if ($this->_end_dates) return $this->_end_dates;
-		$this->_end_dates = get_post_meta($this->get_id(), 'incsub_event_end');
+		$this->_end_dates = get_post_meta($this->get_id(), 'psource_event_end');
 		return $this->_end_dates;
 	}
 
@@ -632,13 +632,13 @@ class Eab_EventModel extends WpmuDev_DatedVenuePremiumModel {
 					do_action('eab-events-recurrent_event_child-assigned_taxonomies', $post_id, $event_cats);
 				}
 
-				update_post_meta($post_id, 'incsub_event_start', date("Y-m-d H:i:s", $instance));
-				update_post_meta($post_id, 'incsub_event_end', date("Y-m-d H:i:s", $instance + $duration ));
-				update_post_meta($post_id, 'incsub_event_venue', $venue);
-				update_post_meta($post_id, 'incsub_event_status', self::STATUS_OPEN);
+				update_post_meta($post_id, 'psource_event_start', date("Y-m-d H:i:s", $instance));
+				update_post_meta($post_id, 'psource_event_end', date("Y-m-d H:i:s", $instance + $duration ));
+				update_post_meta($post_id, 'psource_event_venue', $venue);
+				update_post_meta($post_id, 'psource_event_status', self::STATUS_OPEN);
 				if ($this->is_premium()) {
-					update_post_meta($post_id, 'incsub_event_paid', 1);
-					update_post_meta($post_id, 'incsub_event_fee', $this->get_price());
+					update_post_meta($post_id, 'psource_event_paid', 1);
+					update_post_meta($post_id, 'psource_event_fee', $this->get_price());
 				}
 				if (!empty($featured_image_id)) {
 					update_post_meta($post_id, '_thumbnail_id', $featured_image_id);
@@ -848,7 +848,7 @@ class Eab_EventModel extends WpmuDev_DatedVenuePremiumModel {
 	 */
 	public function get_venue () {
 		if ($this->_venue) return $this->_venue;
-		$this->_venue = get_post_meta($this->get_id(), 'incsub_event_venue', true);
+		$this->_venue = get_post_meta($this->get_id(), 'psource_event_venue', true);
 		return $this->_venue;
 	}
 
@@ -861,7 +861,7 @@ class Eab_EventModel extends WpmuDev_DatedVenuePremiumModel {
 	 */
 	public function get_price () {
 		if ($this->_price) return apply_filters('eab-payment-event_price', $this->_price, $this->get_id());
-		$this->_price = get_post_meta($this->get_id(), 'incsub_event_fee', true);
+		$this->_price = get_post_meta($this->get_id(), 'psource_event_fee', true);
 		return apply_filters('eab-payment-event_price', $this->_price, $this->get_id());
 	}
 
@@ -911,7 +911,7 @@ class Eab_EventModel extends WpmuDev_DatedVenuePremiumModel {
 	 */
 	public function get_status () {
 		if ($this->_status) return $this->_status;
-		$this->_status = get_post_meta($this->get_id(), 'incsub_event_status', true);
+		$this->_status = get_post_meta($this->get_id(), 'psource_event_status', true);
 		return $this->_status;
 	}
 
@@ -922,7 +922,7 @@ class Eab_EventModel extends WpmuDev_DatedVenuePremiumModel {
 	 */
 	public function set_status ($status) {
 		$this->_status = $status;
-		update_post_meta($this->get_id(), 'incsub_event_status', $status);
+		update_post_meta($this->get_id(), 'psource_event_status', $status);
 		return $this->_status;
 	}
 

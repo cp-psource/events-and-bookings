@@ -19,8 +19,8 @@ class Eab_Admin {
 		add_action('admin_enqueue_scripts', array($this, 'admin_enqueue_scripts') );
 		add_action('admin_print_styles', array($this, 'admin_print_styles') );
 
-		add_action('manage_incsub_event_posts_custom_column', array($this, 'manage_posts_custom_column'));
-		add_filter('manage_incsub_event_posts_columns', array($this, 'manage_posts_columns'), 99);
+		add_action('manage_psource_event_posts_custom_column', array($this, 'manage_posts_custom_column'));
+		add_filter('manage_psource_event_posts_columns', array($this, 'manage_posts_columns'), 99);
 	}
 
 	private function includes() {
@@ -37,7 +37,7 @@ class Eab_Admin {
 		if (get_option('eab_activation_redirect', false)) {
 			delete_option('eab_activation_redirect');
 			if (!(is_multisite() && is_super_admin()) || !is_network_admin()) {
-				wp_redirect('edit.php?post_type=incsub_event&page=eab_welcome');
+				wp_redirect('edit.php?post_type=psource_event&page=eab_welcome');
 			}
 		}
 
@@ -120,11 +120,11 @@ class Eab_Admin {
 
 	private function _check_admin_page_id () {
 		$_page_ids = array (
-			'incsub_event_page_eab_welcome',
-			'edit-incsub_event',
-			'incsub_event',
-			'incsub_event_page_eab_shortcodes',
-			'incsub_event_page_eab_settings',
+			'psource_event_page_eab_welcome',
+			'edit-psource_event',
+			'psource_event',
+			'psource_event_page_eab_shortcodes',
+			'psource_event_page_eab_settings',
 		);
 		$screen = get_current_screen();
 		if (!in_array($screen->id, $_page_ids)) return false;
@@ -139,7 +139,7 @@ class Eab_Admin {
 	function admin_menus() {
 		global $submenu;
 
-		$root_key = 'edit.php?post_type=incsub_event';
+		$root_key = 'edit.php?post_type=psource_event';
 
 		if (get_option('eab_setup', false) == false) {
 

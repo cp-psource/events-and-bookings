@@ -34,15 +34,15 @@ class Eab_Admin_Get_Started_Menu {
 						<ol>
 							<li>
 								<?php _e('Bevor Du ein Ereignis erstellst, musst Du einige Grundeinstellungen konfigurieren, z. B. Deinen Root-Slug und die Zahlungsoptionen.', eab_domain() ); ?>
-								<a href="<?php echo esc_url('edit.php?post_type=incsub_event&page=eab_settings&eab_step=1'); ?>" class="eab-goto-step button" id="eab-goto-step-0" ><?php _e('Konfiguriere Deine Einstellungen', eab_domain() ); ?></a>
+								<a href="<?php echo esc_url('edit.php?post_type=psource_event&page=eab_settings&eab_step=1'); ?>" class="eab-goto-step button" id="eab-goto-step-0" ><?php _e('Konfiguriere Deine Einstellungen', eab_domain() ); ?></a>
 							</li>
 							<li>
 								<?php _e('Jetzt kannst Du Dein erstes Ereignis erstellen.', eab_domain() ); ?>
-								<a href="<?php echo esc_url('post-new.php?post_type=incsub_event&eab_step=2'); ?>" class="eab-goto-step button"><?php _e('Ereignis hinzufügen', eab_domain() ); ?></a>
+								<a href="<?php echo esc_url('post-new.php?post_type=psource_event&eab_step=2'); ?>" class="eab-goto-step button"><?php _e('Ereignis hinzufügen', eab_domain() ); ?></a>
 							</li>
 							<li>
 								<?php _e('Du kannst vorhandenen Ereignisse jederzeit anzeigen und bearbeiten.', eab_domain() ); ?>
-								<a href="<?php echo esc_url('edit.php?post_type=incsub_event&eab_step=3'); ?>" class="eab-goto-step button"><?php _e('Ereignisse bearbeiten', eab_domain() ); ?></a>
+								<a href="<?php echo esc_url('edit.php?post_type=psource_event&eab_step=3'); ?>" class="eab-goto-step button"><?php _e('Ereignisse bearbeiten', eab_domain() ); ?></a>
 							</li>
 							<li>
 								<?php _e('Das Archiv zeigt eine Liste der bevorstehenden Ereignisse auf Deiner Seite an.', eab_domain() ); ?>

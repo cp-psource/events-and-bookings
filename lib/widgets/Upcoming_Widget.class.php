@@ -21,7 +21,7 @@ class Eab_Upcoming_Widget extends Eab_Widget {
         $control_ops = array(
         	'title' => __('Bevorstehend', $this->translation_domain),
         );
-		parent::__construct('incsub_event_upcoming', __('PSE-Kommende Veranstaltungen', $this->translation_domain), $widget_ops, $control_ops);
+		parent::__construct('psource_event_upcoming', __('PSE-Kommende Veranstaltungen', $this->translation_domain), $widget_ops, $control_ops);
     }
     
     function widget ($args, $instance) {

@@ -73,17 +73,17 @@ class Eab_Fbe_Importer_FacebookEventsImporter extends Eab_ScheduledImporter {
 		$meta = array();
 
 		$meta['eab_fbe_event'] = $source['id'];
-		$meta['incsub_event_status'] = Eab_EventModel::STATUS_OPEN; // Open by default
+		$meta['psource_event_status'] = Eab_EventModel::STATUS_OPEN; // Open by default
 
 		// Metadata - timestamps
 		$start = isset($source['start_time']) ? strtotime($source['start_time']) : false;
 		$end = isset($source['end_time']) ? strtotime($source['end_time']) : false;
-		if ($start) $meta['incsub_event_start'] = date('Y-m-d H:i:s', $start);
-		if ($end) $meta['incsub_event_end'] = date('Y-m-d H:i:s', $end);
+		if ($start) $meta['psource_event_start'] = date('Y-m-d H:i:s', $start);
+		if ($end) $meta['psource_event_end'] = date('Y-m-d H:i:s', $end);
 
 		// Metadata - location
 		$venue = isset($source['location']) ? $source['location'] : false;
-		if ($venue) $meta['incsub_event_venue'] = $venue;
+		if ($venue) $meta['psource_event_venue'] = $venue;
 
 		return $meta;
 	}
@@ -204,18 +204,18 @@ class Eab_Calendars_FacebookEventsImporter {
                         <table cellpadding="5" cellspacing="5" width="100%">
                                 <tr>
                                         <td valign="top" width="400">
-                                                <label style="width: 100%" for="incsub_event-fbe_importer-client_id" id="incsub_event_label-fbe_importer-client_id"><?php _e('App ID', Eab_EventsHub::TEXT_DOMAIN); ?> <?php echo $tips->add_tip(__('Gib hier Deine App-ID ein.', Eab_EventsHub::TEXT_DOMAIN)); ?></label>
+                                                <label style="width: 100%" for="psource_event-fbe_importer-client_id" id="psource_event_label-fbe_importer-client_id"><?php _e('App ID', Eab_EventsHub::TEXT_DOMAIN); ?> <?php echo $tips->add_tip(__('Gib hier Deine App-ID ein.', Eab_EventsHub::TEXT_DOMAIN)); ?></label>
                                         </td>
                                         <td valign="top">
-                                                <input type="text" size="85" id="incsub_event-fbe_importer-client_id" name="fbe_importer[client_id]" value="<?php print $api_key; ?>" />
+                                                <input type="text" size="85" id="psource_event-fbe_importer-client_id" name="fbe_importer[client_id]" value="<?php print $api_key; ?>" />
                                         </td>
                                 </tr>
                                 <tr>
                                         <td valign="top">
-                                                <label style="width: 100%" for="incsub_event-fbe_importer-client_id" id="incsub_event_label-fbe_importer-client_id"><?php _e('App secret', Eab_EventsHub::TEXT_DOMAIN); ?> <?php echo $tips->add_tip(__('Gib hier Deine App-Geheimnummer ein.', Eab_EventsHub::TEXT_DOMAIN)); ?></label>
+                                                <label style="width: 100%" for="psource_event-fbe_importer-client_id" id="psource_event_label-fbe_importer-client_id"><?php _e('App secret', Eab_EventsHub::TEXT_DOMAIN); ?> <?php echo $tips->add_tip(__('Gib hier Deine App-Geheimnummer ein.', Eab_EventsHub::TEXT_DOMAIN)); ?></label>
                                         </td>
                                         <td valign="top">
-                                                <input type="text" size="85" id="incsub_event-fbe_importer-client_id" name="fbe_importer[client_secret]" value="<?php print $api_secret; ?>" />
+                                                <input type="text" size="85" id="psource_event-fbe_importer-client_id" name="fbe_importer[client_secret]" value="<?php print $api_secret; ?>" />
                                         </td>
                                 </tr>
                         </table>
@@ -233,7 +233,7 @@ class Eab_Calendars_FacebookEventsImporter {
 		<?php if ($is_authenticated) { ?>
 		<div class="eab-settings-settings_item">
 			<label><?php _e('Importiere Ereignisse für diese Facebook-Benutzer-ID:', Eab_EventsHub::TEXT_DOMAIN); ?></label>
-			<input type="text" id="incsub_event-fbe_importer-fb_user" name="fbe_importer[fb_user]" value="<?php esc_attr_e($sync_user); ?>" />
+			<input type="text" id="psource_event-fbe_importer-fb_user" name="fbe_importer[fb_user]" value="<?php esc_attr_e($sync_user); ?>" />
 			<small><em><?php _e('Ändere dieses Feld nur, wenn Du sicher bist, was Du tust', Eab_EventsHub::TEXT_DOMAIN); ?></em></small>
 		</div>
 		<div class="eab-settings-settings_item">

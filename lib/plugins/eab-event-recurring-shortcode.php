@@ -77,7 +77,7 @@ class Eab_Events_RecurringShortCode {
 	
 	function get_recurring_content($post, $content=false) {
 		$event = ($post instanceof Eab_EventModel) ? $post : new Eab_EventModel($post);
-		if ('incsub_event' != $event->get_type()) return $content;
+		if ('psource_event' != $event->get_type()) return $content;
 		
 		$start_day = date_i18n('m', $event->get_start_timestamp());
 	

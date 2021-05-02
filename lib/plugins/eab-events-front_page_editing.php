@@ -271,28 +271,28 @@ class Eab_Events_FrontPageEditing {
 			'message' => __('Beim Speichern dieses Ereignisses ist ein Fehler aufgetreten', Eab_EventsHub::TEXT_DOMAIN),
 		)));
 
-		update_post_meta($post_id, 'incsub_event_start', $start);
-		update_post_meta( $post_id, 'incsub_event_no_start', $has_no_start_time );
-		update_post_meta($post_id, 'incsub_event_end', $end);
-		update_post_meta( $post_id, 'incsub_event_no_end', $has_no_end_time );
-		update_post_meta($post_id, 'incsub_event_status', strip_tags($data['status']));
+		update_post_meta($post_id, 'psource_event_start', $start);
+		update_post_meta( $post_id, 'psource_event_no_start', $has_no_start_time );
+		update_post_meta($post_id, 'psource_event_end', $end);
+		update_post_meta( $post_id, 'psource_event_no_end', $has_no_end_time );
+		update_post_meta($post_id, 'psource_event_status', strip_tags($data['status']));
 		
 		//specify if the event has start and end time or not.
-		//if ( $data['has_start'] == 0 ) update_post_meta($post_id, 'incsub_event_no_start',1);			
-		//if ( $data['has_end'] == 0 ) update_post_meta($post_id, 'incsub_event_no_end',1);
+		//if ( $data['has_start'] == 0 ) update_post_meta($post_id, 'psource_event_no_start',1);			
+		//if ( $data['has_end'] == 0 ) update_post_meta($post_id, 'psource_event_no_end',1);
 
 		$venue_map = get_post_meta($post_id, 'agm_map_created', true);
 		if (!$venue_map && $data['venue'] && class_exists('AgmMapModel')) {
 			$model = new AgmMapModel;
 			$model->autocreate_map($post_id, false, false, $data['venue']);
 		}
-		update_post_meta($post_id, 'incsub_event_venue', strip_tags($data['venue']));
+		update_post_meta($post_id, 'psource_event_venue', strip_tags($data['venue']));
 
 
 		$is_paid = (int)$data['is_premium'];
 		$fee = $is_paid ? strip_tags($data['fee']) : '';
-		update_post_meta($post_id, 'incsub_event_paid', ($is_paid ? '1' : ''));
-		update_post_meta($post_id, 'incsub_event_fee', $fee);
+		update_post_meta($post_id, 'psource_event_paid', ($is_paid ? '1' : ''));
+		update_post_meta($post_id, 'psource_event_fee', $fee);
 		do_action('eab-events-fpe-save_meta', $post_id, $data);
     
 		$selected_terms = ( isset( $data['category'] ) && is_array( $data['category'] ) ) ? array_map( 'intval' , $data['category'] ) : array();

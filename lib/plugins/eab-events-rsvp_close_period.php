@@ -42,7 +42,7 @@ class Eab_Events_RSVPClosePeriod {
 	add_action( 'eab-events-fpe-save_meta', array( $this, 'save_fpe_close_period_meta' ), 10, 2 );
 
 	//Prevent the attendion in the hook rather than just use the form
-	add_action( 'incsub_event_booking', array( $this, 'validate_rsvp_attending_submission' ), 10, 3 );
+	add_action( 'psource_event_booking', array( $this, 'validate_rsvp_attending_submission' ), 10, 3 );
     }
 
     function add_close_period_meta_box( $box ) {
@@ -170,7 +170,7 @@ class Eab_Events_RSVPClosePeriod {
 	global $wpdb;
 	$event_id = (int) $event_id;
 
-	$start = $wpdb->get_var( "SELECT meta_value FROM $wpdb->postmeta WHERE meta_key = 'incsub_event_start' AND post_id = $event_id" );
+	$start = $wpdb->get_var( "SELECT meta_value FROM $wpdb->postmeta WHERE meta_key = 'psource_event_start' AND post_id = $event_id" );
 
 	return strtotime($start);
     }

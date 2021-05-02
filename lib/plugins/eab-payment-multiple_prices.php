@@ -25,7 +25,7 @@ class Eab_Payment_MultiplePrices {
 		
 		add_filter('eab-event_meta-event_price', array($this, 'get_event_price_metabox'), 10, 2); // Event meta
 		add_filter('eab-event_meta-event_meta_box-after', array($this, 'get_event_price_metabox_template'), 10, 2); // Event meta template
-		add_action('incsub_event_save_payments_meta', array($this, 'save_event_meta_tiers'));
+		add_action('psource_event_save_payments_meta', array($this, 'save_event_meta_tiers'));
 	}
 
 // ----- Metabox editing -----
@@ -89,10 +89,10 @@ EOJs;
 		$fee = (float)$fee ? (float)$fee : '';
 		$key = "fee-" . uniqid();
 		return '<div class="eab-payment-multiple_prices-tier">' .
-			'<input type="text" size="8" name="incsub_event_price_tier[' . $key . '][label]" value="' . esc_attr($label) . '" placeholder="Tier name" />' .
+			'<input type="text" size="8" name="psource_event_price_tier[' . $key . '][label]" value="' . esc_attr($label) . '" placeholder="Tier name" />' .
 			'&nbsp;' .
 			$this->_data->get_option("currency") .
-			'<input type="text" size="4" name="incsub_event_price_tier[' . $key . '][fee]" value="' . esc_attr($fee) . '" placeholder="0.00" />' .
+			'<input type="text" size="4" name="psource_event_price_tier[' . $key . '][fee]" value="' . esc_attr($fee) . '" placeholder="0.00" />' .
 			' <a href="#remove-tier" class="eab-payment-multiple_prices-remove_tier">' . __('Entferne', Eab_EventsHub::TEXT_DOMAIN) . '</a>' .
 		'</div>';
 	}
@@ -111,15 +111,15 @@ EOJs;
 	}
 
 	function save_event_meta_tiers ($post_id) {
-		if (empty($_POST['incsub_event_price_tier'])) return false;
+		if (empty($_POST['psource_event_price_tier'])) return false;
 		$tiers = array();
-		foreach ($_POST['incsub_event_price_tier'] as $tier) {
+		foreach ($_POST['psource_event_price_tier'] as $tier) {
 			$tiers[] = array(
 				'label' => wp_strip_all_tags(stripslashes($tier['label'])),
 				'fee' => (float)$tier['fee'],
 			);
 		}
-		update_post_meta($post_id, 'incsub_event_fee', $tiers);
+		update_post_meta($post_id, 'psource_event_fee', $tiers);
 	}
 
 // ----- Front-end display

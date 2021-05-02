@@ -31,7 +31,7 @@ class Eab_Events_Alert_RSVP_Event_Modify {
 		if (!current_user_can('edit_posts')) return false;
 		if ( wp_is_post_revision( $post_id ) ) return;
 		
-		if( 'incsub_event' == get_post_type( $post_id ) ) {
+		if( 'psource_event' == get_post_type( $post_id ) ) {
 			
 			global $wpdb;
 			

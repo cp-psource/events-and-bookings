@@ -51,7 +51,7 @@ class Eab_Addon_LimitCapacity {
 		add_action( 'eab-mp-variation-thrash', array( $this, 'thrash_mp_inventory' ), 10, 2 );
 
 		//Prevent the attendion in the hook rather than just use the form
-		add_action( 'incsub_event_booking', array( $this, 'validate_attending_submission' ), 10, 3 );
+		add_action( 'psource_event_booking', array( $this, 'validate_attending_submission' ), 10, 3 );
 	}
 
 	public function add_mp_inventory( $product_id, $key, $instance_event_id, $parent_event_id, $unset_first ) {

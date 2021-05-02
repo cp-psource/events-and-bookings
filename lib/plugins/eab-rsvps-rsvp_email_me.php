@@ -55,7 +55,7 @@ class Eab_Events_RsvpEmailMe {
 		add_action('wp_ajax_eab_rsvp_email_me-preview_email', array($this, 'ajax_preview_email'));
 
 		if ($this->_data->get_option('eab_rsvps-email_me-positive_rsvp')) {
-			add_action('incsub_event_booking_yes', array($this, 'dispatch_positive_rsvp_update'), 10, 2);
+			add_action('psource_event_booking_yes', array($this, 'dispatch_positive_rsvp_update'), 10, 2);
 		}
 		if ($this->_data->get_option('eab_rsvps-email_me-paid_rsvp')) {
 			add_action('eab-ipn-event_paid', array($this, 'dispatch_paid_rsvp_update'), 10, 3);

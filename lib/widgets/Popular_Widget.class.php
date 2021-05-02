@@ -18,7 +18,7 @@ class Eab_Popular_Widget extends Eab_Widget {
         $control_ops = array(
         	'title' => __('PSE-Populäre Events', $this->translation_domain)
         );
-		parent::__construct('incsub_event_popular', __('Most Popular Events', $this->translation_domain), $widget_ops, $control_ops);
+		parent::__construct('psource_event_popular', __('Die beliebtesten Veranstaltungen', $this->translation_domain), $widget_ops, $control_ops);
     }
     
     function widget ($args, $instance) {
@@ -33,7 +33,7 @@ class Eab_Popular_Widget extends Eab_Widget {
 			$options['title'] = strip_tags( $instance['title'] );
 		}
 		
-		$title = apply_filters('widget_title', empty( $options['title'] ) ? __('Most Popular', $this->translation_domain) : $options['title'], $instance, $this->id_base);
+		$title = apply_filters('widget_title', empty( $options['title'] ) ? __('Am beliebtesten', $this->translation_domain) : $options['title'], $instance, $this->id_base);
 		
 		$_events = Eab_CollectionFactory::get_popular_events(array(
 			'posts_per_page' => $options['limit'],

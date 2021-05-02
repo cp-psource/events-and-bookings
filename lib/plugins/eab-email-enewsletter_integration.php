@@ -27,9 +27,9 @@ class Eab_Email_eNewsletterIntegration {
 		add_action('eab-event_meta-after_save_meta', array($this, 'save_meta'));
 
 		// Keep RSVP groups up to date
-		add_action('incsub_event_booking_yes', array($this, 'process_booking_yes'), 10, 2);
-		add_action('incsub_event_booking_maybe', array($this, 'process_booking_maybe'), 10, 2);
-		add_action('incsub_event_booking_no', array($this, 'process_booking_no'), 10, 2);
+		add_action('psource_event_booking_yes', array($this, 'process_booking_yes'), 10, 2);
+		add_action('psource_event_booking_maybe', array($this, 'process_booking_maybe'), 10, 2);
+		add_action('psource_event_booking_no', array($this, 'process_booking_no'), 10, 2);
 	}
 
 	function process_booking_yes ($event_id, $user_id) {
@@ -56,7 +56,7 @@ class Eab_Email_eNewsletterIntegration {
 	
 	function add_meta_box () {
 		if (!$this->_model->has_newsletter()) return false;
-		add_meta_box('eab-email-newsletter', __('PS-eNewsletter', Eab_EventsHub::TEXT_DOMAIN), array($this, 'create_meta_box'), 'incsub_event', 'side', 'low');	
+		add_meta_box('eab-email-newsletter', __('PS-eNewsletter', Eab_EventsHub::TEXT_DOMAIN), array($this, 'create_meta_box'), 'psource_event', 'side', 'low');	
 	}
 	
 	function create_meta_box () {

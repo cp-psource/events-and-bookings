@@ -33,9 +33,9 @@ class Eab_BuddyPress_AutoUpdateActivity {
 		add_action('eab-event_meta-after_save_meta', array($this, 'dispatch_creation_activity_update'));
 		add_action('eab-events-fpe-save_meta', array($this, 'dispatch_creation_activity_update'));
 		
-		add_action('incsub_event_booking_yes', array($this, 'dispatch_positive_rsvp_activity_update'), 10, 2);
-		add_action('incsub_event_booking_maybe', array($this, 'dispatch_maybe_rsvp_activity_update'), 10, 2);
-		add_action('incsub_event_booking_no', array($this, 'dispatch_negative_rsvp_activity_update'), 10, 2);
+		add_action('psource_event_booking_yes', array($this, 'dispatch_positive_rsvp_activity_update'), 10, 2);
+		add_action('psource_event_booking_maybe', array($this, 'dispatch_maybe_rsvp_activity_update'), 10, 2);
+		add_action('psource_event_booking_no', array($this, 'dispatch_negative_rsvp_activity_update'), 10, 2);
 	}
 
 	function dispatch_creation_activity_update ($post_id) {

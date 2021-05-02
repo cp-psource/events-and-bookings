@@ -91,10 +91,10 @@ class Eab_Events_EventControlledRedirect {
 				FROM $wpdb->posts wposts, $wpdb->postmeta estart, $wpdb->postmeta eend, $wpdb->postmeta estatus, $wpdb->postmeta esource 
 				WHERE ". $add_query . "
 				AND wposts.ID=estart.post_id AND wposts.ID=eend.post_id AND wposts.ID=estatus.post_id 
-				AND estart.meta_key='incsub_event_start' AND estart.meta_value < $local_now
-				AND eend.meta_key='incsub_event_end' AND eend.meta_value > $local_now
-				AND estatus.meta_key='incsub_event_status' AND estatus.meta_value <> 'closed'
-				AND wposts.post_type='incsub_event' AND wposts.post_status='publish'";
+				AND estart.meta_key='psource_event_start' AND estart.meta_value < $local_now
+				AND eend.meta_key='psource_event_end' AND eend.meta_value > $local_now
+				AND estatus.meta_key='psource_event_status' AND estatus.meta_value <> 'closed'
+				AND wposts.post_type='psource_event' AND wposts.post_status='publish'";
 	}
 
 	/**
@@ -149,15 +149,15 @@ class Eab_Events_EventControlledRedirect {
 	 *
 	 */	
 	function _save_meta ($post_id, $REQUEST) {
-		if (isset($REQUEST['incsub_event_redirect_source']) ) {
-			if ( trim( $REQUEST['incsub_event_redirect_source'] ) != '' )
-				update_post_meta($post_id, 'eab_events_redirect_source', trim($REQUEST['incsub_event_redirect_source']));
+		if (isset($REQUEST['psource_event_redirect_source']) ) {
+			if ( trim( $REQUEST['psource_event_redirect_source'] ) != '' )
+				update_post_meta($post_id, 'eab_events_redirect_source', trim($REQUEST['psource_event_redirect_source']));
 			else
 				delete_post_meta($post_id, 'eab_events_redirect_source');
 		}
-		if (isset($REQUEST['incsub_event_redirect_target']) ) {
-			if ( trim( $REQUEST['incsub_event_redirect_target'] ) != '' )
-				update_post_meta($post_id, 'eab_events_redirect_target', trim($REQUEST['incsub_event_redirect_target']));
+		if (isset($REQUEST['psource_event_redirect_target']) ) {
+			if ( trim( $REQUEST['psource_event_redirect_target'] ) != '' )
+				update_post_meta($post_id, 'eab_events_redirect_target', trim($REQUEST['psource_event_redirect_target']));
 			else
 				delete_post_meta($post_id, 'eab_events_redirect_target');
 		}
@@ -177,14 +177,14 @@ class Eab_Events_EventControlledRedirect {
 		$target = get_post_meta( $post->ID, 'eab_events_redirect_target', true );
 	
 		$content .= '<div class="eab_meta_box">';
-		$content .= '<input type="hidden" name="incsub_event_redirect_meta" value="1" />';
+		$content .= '<input type="hidden" name="psource_event_redirect_meta" value="1" />';
 		$content .= '<div class="misc-eab-section">';
 		$content .= '<div class="eab_meta_column_box">'.__('Ereignisgesteuerte Umleitung', Eab_EventsHub::TEXT_DOMAIN).'</div>';
-		$content .= '<label for="incsub_event_redirect_source" id="incsub_event_redirect_source_label">'.__('ID der Quellseite ', Eab_EventsHub::TEXT_DOMAIN).':</label>&nbsp;';
-		$content .= '<input type="text" name="incsub_event_redirect_source" id="incsub_event_redirect_source" class="incsub_event" value="'.$source.'" size="5" /> ';
+		$content .= '<label for="psource_event_redirect_source" id="psource_event_redirect_source_label">'.__('ID der Quellseite ', Eab_EventsHub::TEXT_DOMAIN).':</label>&nbsp;';
+		$content .= '<input type="text" name="psource_event_redirect_source" id="psource_event_redirect_source" class="psource_event" value="'.$source.'" size="5" /> ';
 		$content .= '<div class="clear"></div>';
-		$content .= '<label for="incsub_event_redirect_target" id="incsub_event_redirect_targer_label">'.__('URL des Ziels ', Eab_EventsHub::TEXT_DOMAIN).':</label>&nbsp;';
-		$content .= '<input type="text" name="incsub_event_redirect_target" id="incsub_event_redirect_target" class="incsub_event" value="'.$target.'" /> ';
+		$content .= '<label for="psource_event_redirect_target" id="psource_event_redirect_targer_label">'.__('URL des Ziels ', Eab_EventsHub::TEXT_DOMAIN).':</label>&nbsp;';
+		$content .= '<input type="text" name="psource_event_redirect_target" id="psource_event_redirect_target" class="psource_event" value="'.$target.'" /> ';
 		$content .= '<div class="clear"></div>';
 		$content .= '</div>';
 		$content .= '</div>';
@@ -218,13 +218,13 @@ class Eab_Events_EventControlledRedirect {
 				<h3 class="eab-hndle"><?php _e('Ereignisgesteuerte Umleitungseinstellungen', Eab_EventsHub::TEXT_DOMAIN); ?></h3>
 				<div class="eab-inside">
 					<div class="eab-settings-settings_item">
-					    <label for="incsub_event-global_redirect_source" ><?php _e('Globale Quellenseiten-ID', Eab_EventsHub::TEXT_DOMAIN); ?></label>
+					    <label for="psource_event-global_redirect_source" ><?php _e('Globale Quellenseiten-ID', Eab_EventsHub::TEXT_DOMAIN); ?></label>
 						<input type="text" size="10" name="event_default[global_redirect_source]" value="<?php print $this->_data->get_option('global_redirect_source'); ?>" />
 						<span><?php echo $tips->add_tip(__('Wenn Du hier eine ID eingibst, verwenden alle Ereignisse, für die KEINE ID-Einstellung für die Quellseite vorhanden ist, diese Einstellung.', Eab_EventsHub::TEXT_DOMAIN)); ?></span>
 					</div>
 					    
 					<div class="eab-settings-settings_item">
-					    <label for="incsub_event-global_redirect_target" ><?php _e('Globale Ziel-URL', Eab_EventsHub::TEXT_DOMAIN); ?></label>
+					    <label for="psource_event-global_redirect_target" ><?php _e('Globale Ziel-URL', Eab_EventsHub::TEXT_DOMAIN); ?></label>
 						<input type="text" size="40" name="event_default[global_redirect_target]" value="<?php print $this->_data->get_option('global_redirect_target'); ?>" />
 						<span><?php echo $tips->add_tip(__('Wenn Du hier eine URL eingibst, verwenden alle Ereignisse, die KEINE Ziel-URL-Einstellung haben, diese Einstellung.', Eab_EventsHub::TEXT_DOMAIN)); ?></span>
 					</div>

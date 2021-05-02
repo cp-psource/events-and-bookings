@@ -20,7 +20,7 @@ class Eab_Admin_Settings_Menu {
 	}
 
 	public function load() {
-		if (isset($_POST['_wpnonce']) && wp_verify_nonce($_POST['_wpnonce'], 'incsub_event-update-options')) {
+		if (isset($_POST['_wpnonce']) && wp_verify_nonce($_POST['_wpnonce'], 'psource_event-update-options')) {
 			$this->save_options();
 		}
 
@@ -28,7 +28,7 @@ class Eab_Admin_Settings_Menu {
 
 	function render() {
 
-		$updated = isset($_GET['incsub_event_settings_saved']) && $_GET['incsub_event_settings_saved'] == 1;
+		$updated = isset($_GET['psource_event_settings_saved']) && $_GET['psource_event_settings_saved'] == 1;
 
 
 		if ( ! class_exists( 'WpmuDev_HelpTooltips' ) )
@@ -44,9 +44,9 @@ class Eab_Admin_Settings_Menu {
 
 		$hide = ! empty( $tabbable ) ? 'hide' : '';
 
-		$archive_tpl = file_exists(get_stylesheet_directory().'/archive-incsub_event.php')
-			? get_stylesheet_directory() . '/archive-incsub_event.php'
-			: get_template_directory() . '/archive-incsub_event.php'
+		$archive_tpl = file_exists(get_stylesheet_directory().'/archive-psource_event.php')
+			? get_stylesheet_directory() . '/archive-psource_event.php'
+			: get_template_directory() . '/archive-psource_event.php'
 		;
 
 		$archive_tpl_present = apply_filters(
@@ -54,9 +54,9 @@ class Eab_Admin_Settings_Menu {
 			file_exists($archive_tpl)
 		);
 
-		$single_tpl = file_exists(get_stylesheet_directory().'/single-incsub_event.php')
-			? get_stylesheet_directory() . '/single-incsub_event.php'
-			: get_template_directory() . '/single-incsub_event.php'
+		$single_tpl = file_exists(get_stylesheet_directory().'/single-psource_event.php')
+			? get_stylesheet_directory() . '/single-psource_event.php'
+			: get_template_directory() . '/single-psource_event.php'
 		;
 
 		$single_tpl_present = apply_filters(
@@ -112,7 +112,7 @@ class Eab_Admin_Settings_Menu {
 		// Added by Ashok
 		// Removed old redirect
 		// Added new redirect, based on selected tab in Events Settings
-		wp_redirect( add_query_arg( 'incsub_event_settings_saved', 1, $event_default['event_settings_url'] ) );
+		wp_redirect( add_query_arg( 'psource_event_settings_saved', 1, $event_default['event_settings_url'] ) );
 		exit();
 	}
 }

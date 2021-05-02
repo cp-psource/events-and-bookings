@@ -96,7 +96,7 @@ class Eab_AdminHelp {
 	
 	private function _add_list_page () {
 		$this->_help->add_page(
-			'edit-incsub_event', 
+			'edit-psource_event', 
 			array(
 				array(
 					'id' => 'eab_intro',
@@ -130,7 +130,7 @@ class Eab_AdminHelp {
 			: __('Dein Standort wird automatisch auf einer Google Map zugeordnet. Du kannst auch selbst eine Karte erstellen und diese mithilfe des Globussymbols über dem Feld mit Ihrem Ereignis verknüpfen', Eab_EventsHub::TEXT_DOMAIN)
 		; 
 		$this->_help->add_page(
-			'incsub_event', 
+			'psource_event', 
 			array(
 				array(
 					'id' => 'eab_intro',
@@ -174,7 +174,7 @@ class Eab_AdminHelp {
 
 	private function _add_settings_page () {
 		$this->_help->add_page(
-			'incsub_event_page_eab_settings', 
+			'psource_event_page_eab_settings', 
 			array(
 				array(
 					'id' => 'eab_intro',
@@ -242,7 +242,7 @@ class Eab_AdminHelp {
 	
 	private function _add_welcome_page () {
 		$this->_help->add_page(
-			'incsub_event_page_eab_welcome', 
+			'psource_event_page_eab_welcome', 
 			array(
 				array(
 					'id' => 'eab_intro',

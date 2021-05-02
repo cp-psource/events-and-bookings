@@ -30,8 +30,8 @@ class Eab_Events_SocialRsvps {
 
 		add_action('eab-javascript-public_data', array($this, 'update_oauth_scope'));
 		
-		add_action('incsub_event_booking_yes', array($this, 'post_facebook_update'), 10, 2);
-		add_action('incsub_event_booking_yes', array($this, 'post_twitter_update'), 10, 2);
+		add_action('psource_event_booking_yes', array($this, 'post_facebook_update'), 10, 2);
+		add_action('psource_event_booking_yes', array($this, 'post_twitter_update'), 10, 2);
 	}
 	
 	function show_nags () {

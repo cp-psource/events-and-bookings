@@ -420,25 +420,25 @@ class Eab_CalendarTable_WeeklyEventArchiveCalendar {
 				<h3 class="eab-hndle"><?php _e('Wöchentlicher Ereigniskalender Einstellungen', Eab_EventsHub::TEXT_DOMAIN); ?></h3>
 				<div class="eab-inside">
 					<div class="eab-settings-settings_item">
-					    <label for="incsub_event-weekly_calendar_start" ><?php _e('Kalenderstartstunde', Eab_EventsHub::TEXT_DOMAIN); ?></label>
+					    <label for="psource_event-weekly_calendar_start" ><?php _e('Kalenderstartstunde', Eab_EventsHub::TEXT_DOMAIN); ?></label>
 						<input type="text" size="10" name="event_default[weekly_calendar_start]" value="<?php print $this->_data->get_option('weekly_calendar_start'); ?>" />
 						<span><?php echo $tips->add_tip(__('Gib die Stunde des Tages ein. Der Kalender beginnt im 24-Stunden-Format ohne morgens/abends und Minuten, z.B: 13. Standard ist 10 (10 Uhr).', Eab_EventsHub::TEXT_DOMAIN)); ?></span>
 					</div>
 					    
 					<div class="eab-settings-settings_item">
-					    <label for="incsub_event-weekly_calendar_end" ><?php _e('Kalenderendstunde', Eab_EventsHub::TEXT_DOMAIN); ?></label>
+					    <label for="psource_event-weekly_calendar_end" ><?php _e('Kalenderendstunde', Eab_EventsHub::TEXT_DOMAIN); ?></label>
 						<input type="text" size="10" name="event_default[weekly_calendar_end]" value="<?php print $this->_data->get_option('weekly_calendar_end'); ?>" />
 						<span><?php echo $tips->add_tip(__('Der Kalender endet im 24-Stunden-Format ohne morgens/abends und Minuten, z.B: 22. Standard ist 24 (12 Uhr).', Eab_EventsHub::TEXT_DOMAIN)); ?></span>
 					</div>
 					
 					<div class="eab-settings-settings_item">
-					    <label for="incsub_event-weekly_calendar_interval" ><?php _e('Kalenderschrittintervall (Minuten)', Eab_EventsHub::TEXT_DOMAIN); ?></label>
+					    <label for="psource_event-weekly_calendar_interval" ><?php _e('Kalenderschrittintervall (Minuten)', Eab_EventsHub::TEXT_DOMAIN); ?></label>
 						<input type="text" size="10" name="event_default[weekly_calendar_interval]" value="<?php print $this->_data->get_option('weekly_calendar_interval'); ?>" />
 						<span><?php echo $tips->add_tip(__('Gib die Anzahl der Minuten ein, die bestimmen, wie viele Zeilen die Kalendertabelle enthalten soll. Die Standardeinstellung ist 120 (2 Stunden). Der minimal zulässige Wert ist 10. Zu kleine Werte können zu einer langen Tabelle führen.', Eab_EventsHub::TEXT_DOMAIN)); ?></span>
 					</div>
 					
 					<div class="eab-settings-settings_item">
-					    <label for="incsub_event-weekly_calendar_display" ><?php _e('Anzeige im Tooltip', Eab_EventsHub::TEXT_DOMAIN); ?></label>
+					    <label for="psource_event-weekly_calendar_display" ><?php _e('Anzeige im Tooltip', Eab_EventsHub::TEXT_DOMAIN); ?></label>
 						<select name="event_default[weekly_calendar_display]">
 						<option value=""><?php _e('Veranstaltungsort, Miniaturansicht, Startdatum und Inhalt', Eab_EventsHub::TEXT_DOMAIN); ?></option>
 						<option value="author" <?php if( $this->_data->get_option('weekly_calendar_display') ) echo "selected='selected'"?>><?php _e('Autorenname, Avatar und Bio', Eab_EventsHub::TEXT_DOMAIN); ?></option>

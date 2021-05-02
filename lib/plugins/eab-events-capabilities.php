@@ -33,7 +33,7 @@ class Eab_Events_Capabilities {
 	private function _add_hooks () {
 		add_action('eab-settings-after_plugin_settings', array($this, 'show_settings'));
 		add_filter('eab-settings-before_save', array($this, 'save_settings'));
-		add_action('admin_head-incsub_event_page_eab_settings', array($this, 'enqueue_dependencies'));
+		add_action('admin_head-psource_event_page_eab_settings', array($this, 'enqueue_dependencies'));
 		
 		add_filter('eab-capabilities-user_can', array($this, 'check_capability_for'), 10, 4);
 		

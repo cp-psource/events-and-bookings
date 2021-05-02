@@ -12,7 +12,7 @@ get_header( );
                     <?php
                     the_post();
                     
-                    $start_day = date_i18n('m', strtotime(get_post_meta($post->ID, 'incsub_event_start', true)));
+                    $start_day = date_i18n('m', strtotime(get_post_meta($post->ID, 'psource_event_start', true)));
                     ?>
                     
                     <div class="psourceevents-header">
@@ -29,7 +29,7 @@ get_header( );
                     
                     if ($event->is_premium() && $event->user_is_coming() && !$event->user_paid()) { ?>
 		    <div id="psourceevents-payment">
-			<?php _e('You haven\'t paid for this event', Eab_EventsHub::TEXT_DOMAIN); ?>
+			<?php _e('Du hast für diese Veranstaltung nicht bezahlt', Eab_EventsHub::TEXT_DOMAIN); ?>
                         <?php echo Eab_Template::get_payment_forms($post); ?>
 		    </div>
                     <?php } ?>
@@ -38,9 +38,9 @@ get_header( );
                     
                     <div class="psourceevents-content">
 			<div id="psourceevents-contentheader">
-                            <h3><?php _e('About this event:', Eab_EventsHub::TEXT_DOMAIN); ?></h3>
+                            <h3><?php _e('Über diese Veranstaltung:', Eab_EventsHub::TEXT_DOMAIN); ?></h3>
                             
-			    <div id="psourceevents-user"><?php _e('Created by ', Eab_EventsHub::TEXT_DOMAIN); ?><?php the_author_link();?></div>
+			    <div id="psourceevents-user"><?php _e('Erstellt von ', Eab_EventsHub::TEXT_DOMAIN); ?><?php the_author_link();?></div>
 			</div>
                         
                         <hr />

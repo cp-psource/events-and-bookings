@@ -41,7 +41,7 @@ class Eab_Events_RsvpEmail {
 
 		add_action('wp_ajax_eab_rsvp_email-preview_email', array($this, 'ajax_preview_email'));
 
-		add_action('incsub_event_booking_yes', array($this, 'dispatch_positive_rsvp_update'), 10, 2);
+		add_action('psource_event_booking_yes', array($this, 'dispatch_positive_rsvp_update'), 10, 2);
 	}
 
 	function dispatch_positive_rsvp_update ($event_id, $user_id) {

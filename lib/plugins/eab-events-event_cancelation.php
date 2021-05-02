@@ -137,14 +137,14 @@ EOPublicCancellationCss;
 		$event = new Eab_EventModel(get_post($event_id));
 		if ($event->is_recurring() && !$event->is_recurring_child()) {
 			// Recurring root - cancel children too
-			update_post_meta($event_id, 'incsub_event_status', self::STATUS_CANCEL);
+			update_post_meta($event_id, 'psource_event_status', self::STATUS_CANCEL);
 			$events = Eab_CollectionFactory::get_all_recurring_children_events($event);
 			foreach ($events as $event) {
 				$this->_cancel_event($event->get_id());
 			}
 		} else {
 			// Regular event or single instance. All good
-			update_post_meta($event_id, 'incsub_event_status', self::STATUS_CANCEL);
+			update_post_meta($event_id, 'psource_event_status', self::STATUS_CANCEL);
 			$this->_add_event_to_schedule_queue($event_id);
 		}
 	}

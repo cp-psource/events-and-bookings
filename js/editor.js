@@ -34,7 +34,7 @@
          * Supports TinyMCE and regular editor (textarea).
          */
         function insert_map_text(mapMarker) {
-            var $venue = $("#incsub_event_venue");
+            var $venue = $("#psource_event_venue");
             if (!$venue.length) return false;
 
             return $venue.is("input,textarea") ?

@@ -34,8 +34,8 @@ class Eab_BuddyPress_GroupEvents {
 		add_filter('eab-settings-before_save', array($this, 'save_settings'));
 		
 		if ($this->_data->get_option('bp-group_event-auto_join_groups')) {
-			add_action('incsub_event_booking_yes', array($this, 'auto_join_group'), 10, 2);
-			add_action('incsub_event_booking_maybe', array($this, 'auto_join_group'), 10, 2);
+			add_action('psource_event_booking_yes', array($this, 'auto_join_group'), 10, 2);
+			add_action('psource_event_booking_maybe', array($this, 'auto_join_group'), 10, 2);
 		}
 		if ($this->_data->get_option('bp-group_event-private_events')) {
 			add_filter('wpmudev-query', array($this, 'filter_query'));

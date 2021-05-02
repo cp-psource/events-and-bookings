@@ -223,7 +223,7 @@ class Eab_Events_Membership2_Integration {
 			var box = jQuery( '.eab-membership2-box' ),
 				inside = box.find( '.misc-eab-section' ),
 				toggle = box.find( '.eab_meta_column_box' ),
-				has_price = jQuery( '#incsub_event_paid' );
+				has_price = jQuery( '#psource_event_paid' );
 
 			function show_price_details() {
 				if ( '1' === has_price.val() ) {
@@ -364,7 +364,7 @@ class Eab_Events_Membership2_Integration {
 			if ( ! isset( $screen->base ) ) { $screen->base = ''; }
 			if ( ! isset( $screen->post_type ) ) { $screen->post_type = ''; }
 
-			if ( 'post' == $screen->base && 'incsub_event' == $screen->post_type ) {
+			if ( 'post' == $screen->base && 'psource_event' == $screen->post_type ) {
 				// An admin is currently editing the event:
 				// Don't modify the price here!
 				return $new_price;

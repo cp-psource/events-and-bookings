@@ -39,7 +39,7 @@ class Eab_Events_RecurrentRootRedirect {
 	function redirect() {
 		global $post;
 		if (!is_singular()) return false;
-		if (!$post || !is_object($post) || !isset($post->post_type) || 'incsub_event' != $post->post_type) return false;
+		if (!$post || !is_object($post) || !isset($post->post_type) || 'psource_event' != $post->post_type) return false;
 		
 		$event = ($post instanceof Eab_EventModel) ? $post : new Eab_EventModel($post);
 		if (!$event->is_recurring()) return false;
@@ -92,13 +92,13 @@ class Eab_AllUpcomingRecurringChildrenCollection extends Eab_UpcomingCollection 
 			: WpmuDev_RecurringDatedItem::RECURRENCE_STATUS
 		;
 		$args = array (
-			'post_type' => 'incsub_event',
+			'post_type' => 'psource_event',
 			'post_status' => $status,
 			'post_parent' => $this->_event->get_id(),
 			'posts_per_page' => -1,
 			'meta_query' => array(
 				array(
-	    			'key' => 'incsub_event_end',
+	    			'key' => 'psource_event_end',
 	    			'value' => date("Y-m-d H:i:s", $this->get_timestamp()),
 	    			'compare' => '>=',
 	    			'type' => 'DATETIME'

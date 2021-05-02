@@ -133,8 +133,8 @@ class Eab_Events_Nre {
 			$time = current_time('timestamp');
 			$timestamp_1 = $timestamp_2 = false;
 			foreach ($meta as $item) {
-				if ('incsub_event_start' == $item['key']) $timestamp_1 = strtotime($item['value']);
-				if ('incsub_event_end' == $item['key']) $timestamp_2 = strtotime($item['value']);
+				if ('psource_event_start' == $item['key']) $timestamp_1 = strtotime($item['value']);
+				if ('psource_event_end' == $item['key']) $timestamp_2 = strtotime($item['value']);
 			}
 			$in_past = (bool)($time > max($timestamp_1, $timestamp_2));
 			$in_future = (bool)($time < min($timestamp_1, $timestamp_2));

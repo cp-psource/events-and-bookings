@@ -125,10 +125,10 @@ class Eab_Events_NextEventShortcode {
 			FROM $wpdb->posts wposts, $wpdb->postmeta estart, $wpdb->postmeta eend, $wpdb->postmeta estatus
 			WHERE 
 			wposts.ID=estart.post_id AND wposts.ID=eend.post_id AND wposts.ID=estatus.post_id 
-			AND estart.meta_key='incsub_event_start' AND estart.meta_value > DATE_ADD(UTC_TIMESTAMP(),INTERVAL ". ( current_time('timestamp') - time() ). " SECOND)
-			AND eend.meta_key='incsub_event_end' AND eend.meta_value > estart.meta_value
-			AND estatus.meta_key='incsub_event_status' AND estatus.meta_value <> 'closed'
-			AND wposts.post_type='incsub_event' AND wposts.post_status='publish'
+			AND estart.meta_key='psource_event_start' AND estart.meta_value > DATE_ADD(UTC_TIMESTAMP(),INTERVAL ". ( current_time('timestamp') - time() ). " SECOND)
+			AND eend.meta_key='psource_event_end' AND eend.meta_value > estart.meta_value
+			AND estatus.meta_key='psource_event_status' AND estatus.meta_value <> 'closed'
+			AND wposts.post_type='psource_event' AND wposts.post_status='publish'
 			ORDER BY estart.meta_value ASC
 			LIMIT 1
 			");

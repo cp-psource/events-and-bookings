@@ -292,10 +292,10 @@ class Eab_Calendars_MeetupImporter {
 		$meta = array(
 			'_eab_meetup_id' => $event['id'],
 			'_eab_meetup_original' => $event,
-			'incsub_event_status' => Eab_EventModel::STATUS_OPEN, // Open by default
-			'incsub_event_start' => date('Y-m-d H:i:s', $time),
-			'incsub_event_end' => date('Y-m-d 23:59:00', $time),
-			'incsub_event_no_end' => 1,
+			'psource_event_status' => Eab_EventModel::STATUS_OPEN, // Open by default
+			'psource_event_start' => date('Y-m-d H:i:s', $time),
+			'psource_event_end' => date('Y-m-d 23:59:00', $time),
+			'psource_event_no_end' => 1,
 		);
 
 		// Import event
@@ -314,7 +314,7 @@ class Eab_Calendars_MeetupImporter {
 				//if ($map_id) $venue = "[map id='{$map_id}']";
 				if ($map_id) $venue = false;
 			}
-			if (!empty($venue)) update_post_meta($post_id, 'incsub_event_venue', $venue);
+			if (!empty($venue)) update_post_meta($post_id, 'psource_event_venue', $venue);
 		}
 
 		return $post_id;

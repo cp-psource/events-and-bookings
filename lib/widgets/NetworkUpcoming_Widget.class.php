@@ -7,7 +7,7 @@ class Eab_NetworkUpcoming_Widget extends Eab_Widget {
 			'classname' => __CLASS__, 
 			'description' => __('Zeigt eine Liste der bevorstehenden Ereignisse aus Deinem gesamten Netzwerk an', $this->translation_domain),
 		);
-		parent::__construct(__CLASS__, __('Netzwerk bevorstehend', $this->translation_domain), $widget_ops);
+		parent::__construct(__CLASS__, __('PSE-Netzwerk bevorstehend', $this->translation_domain), $widget_ops);
 	}
 	
 	function form ($instance) {

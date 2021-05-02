@@ -24,7 +24,7 @@ class Eab_Events_Colors {
 	private function _add_hooks () {
 		add_action('eab-settings-after_appearance_settings', array($this, 'show_settings'));
 		add_filter('eab-settings-before_save', array($this, 'save_settings'));
-		add_action('admin_head-incsub_event_page_eab_settings', array($this, 'enqueue_dependencies'));
+		add_action('admin_head-psource_event_page_eab_settings', array($this, 'enqueue_dependencies'));
 	
 		add_action('wp_head', array($this, 'inject_color_settings'));
         add_action('wp_footer', array($this, 'inject_footer_script'), 10);

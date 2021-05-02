@@ -2,7 +2,7 @@
 
 class Eab_Taxonomies {
 
-	const POST_TYPE = 'incsub_event';
+	const POST_TYPE = 'psource_event';
 
 	public function register() {
 		$this->register_post_type();

@@ -5,7 +5,7 @@ class Eab_Template {
 	public static function get_archive_content ($post, $content=false) {
 		
 		$event = ($post instanceof Eab_EventModel) ? $post : new Eab_EventModel($post);
-		if ('incsub_event' != $event->get_type()) return $content;
+		if ('psource_event' != $event->get_type()) return $content;
 		
 		$start_day = date_i18n('m', $event->get_start_timestamp());
 
@@ -44,7 +44,7 @@ class Eab_Template {
 		global $current_user;
 		$event = ($post instanceof Eab_EventModel) ? $post : new Eab_EventModel($post);
 		
-		if ('incsub_event' != $event->get_type()) return $content;
+		if ('psource_event' != $event->get_type()) return $content;
 		
 		$start_day = date_i18n('m', $event->get_start_timestamp());
 		    
@@ -96,7 +96,7 @@ class Eab_Template {
 		
 		$new_content .= '<div id="psourceevents-contentheader">';
 		$new_content .= '<h3>' . __('Über diese Veranstaltung:', Eab_EventsHub::TEXT_DOMAIN) . '</h3>';
-		$new_content .= '<div id="psourceevents-user">'. __('Erstellt von', Eab_EventsHub::TEXT_DOMAIN) . self::get_event_author_link($event) . '</div>';
+		$new_content .= '<div id="psourceevents-user">'. __('Erstellt von ', Eab_EventsHub::TEXT_DOMAIN) . self::get_event_author_link($event) . '</div>';
 		$new_content .= '</div>';
 		
 		$new_content .= '<hr/>';
@@ -341,7 +341,7 @@ class Eab_Template {
 				__('Anwesenheit vollständig löschen', Eab_EventsHub::TEXT_DOMAIN) .
 			'</a></div>';
 
-			$list_event_date = date( 'Y-m-d h:i a', strtotime( get_post_meta( $booking->event_id, 'incsub_event_start', true ) ) );
+			$list_event_date = date( 'Y-m-d h:i a', strtotime( get_post_meta( $booking->event_id, 'psource_event_start', true ) ) );
 
 			if ( ! empty( $list_event_date ) && 'recurrent' === get_post_status( $booking->event_id ) ) {
 				$content .= '<span class="eab-event-recurring-date-information">' . $list_event_date . '</span>';

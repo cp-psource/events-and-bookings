@@ -7,7 +7,7 @@ get_header();
         
 <?php
 	the_post();
-	$start_day = date_i18n('m', strtotime(get_post_meta($post->ID, 'incsub_event_start', true)));
+	$start_day = date_i18n('m', strtotime(get_post_meta($post->ID, 'psource_event_start', true)));
 ?>
 	<div id="primary">
 		<div id="content" role="main">

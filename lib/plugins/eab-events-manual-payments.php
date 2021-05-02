@@ -160,19 +160,19 @@ class Eab_Events_ManualPayments {
 				<h3 class="eab-hndle"><?php _e('Manuelle Zahlungseinstellungen', Eab_EventsHub::TEXT_DOMAIN); ?></h3>
 				<div class="eab-inside">
 					<div class="eab-settings-settings_item">
-					    <label for="incsub_event-manual_payment_select" ><?php _e('Wähle den Schaltflächentext aus', Eab_EventsHub::TEXT_DOMAIN); ?></label>
+					    <label for="psource_event-manual_payment_select" ><?php _e('Wähle den Schaltflächentext aus', Eab_EventsHub::TEXT_DOMAIN); ?></label>
 						<input type="text" size="40" name="event_default[manual_payment_select]" value="<?php print $this->_data->get_option('manual_payment_select'); ?>" />
 						<span><?php echo $tips->add_tip(__('Dies ist der Text, der auf der Schaltfläche Manuelle Zahlung auswählen angezeigt wird.', Eab_EventsHub::TEXT_DOMAIN)); ?></span>
 					</div>
 					    
 					<div class="eab-settings-settings_item">
-					    <label for="incsub_event-manual_payment_pay" ><?php _e('Bezahlbutton Text', Eab_EventsHub::TEXT_DOMAIN); ?></label>
+					    <label for="psource_event-manual_payment_pay" ><?php _e('Bezahlbutton Text', Eab_EventsHub::TEXT_DOMAIN); ?></label>
 						<input type="text" size="40" name="event_default[manual_payment_pay]" value="<?php print $this->_data->get_option('manual_payment_pay'); ?>" />
 						<span><?php echo $tips->add_tip( __('Dies ist der Text, der auf der Schaltfläche Bezahlen angezeigt wird. Der Benutzer muss auf diese Schaltfläche klicken, nachdem er die Zahlung getätigt hat.', Eab_EventsHub::TEXT_DOMAIN)); ?></span>
 					</div>
 					
 					<div class="eab-settings-settings_item">
-					    <label for="incsub_event-manual_payment_instructions" ><?php _e('Anleitung', Eab_EventsHub::TEXT_DOMAIN); ?>&nbsp;:</label>
+					    <label for="psource_event-manual_payment_instructions" ><?php _e('Anleitung', Eab_EventsHub::TEXT_DOMAIN); ?>&nbsp;:</label>
 						<span><?php echo $tips->add_tip( __('Schreibe hier das Verfahren, das der Benutzer für eine manuelle Zahlung ausführen muss. Verwende den MANUALPAYMENTBUTTON, um den Pay Button an der gewünschten Stelle einzufügen.', Eab_EventsHub::TEXT_DOMAIN)); ?></span>
 						<?php wp_editor( $this->_data->get_option('manual_payment_instructions'), 'manualpaymentsinstructions', array('textarea_name'=>'event_default[manual_payment_instructions]', 'textarea_rows' => 5) ); ?>
 					</div>

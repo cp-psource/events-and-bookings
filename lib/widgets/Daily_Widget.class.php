@@ -22,7 +22,7 @@ class Eab_Daily_Widget extends Eab_Widget {
 	$control_ops = array(
 	    'title' => __( 'Täglich', $this->translation_domain ),
 	);
-	parent::__construct( 'incsub_event_daily', __( 'PSE-Tägliche Veranstaltungen', $this->translation_domain ), $widget_ops, $control_ops );
+	parent::__construct( 'psource_event_daily', __( 'PSE-Tägliche Veranstaltungen', $this->translation_domain ), $widget_ops, $control_ops );
     }
 
     function widget( $args, $instance ) {
