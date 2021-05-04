@@ -114,7 +114,7 @@ class Eab_Events_RSVPClosePeriod {
     }
 
     function enqueue_public_close_period_dependencies() {
-	wp_enqueue_script( 'eab-buddypress-close_period-public', plugins_url( basename( EAB_PLUGIN_DIR ) . "/js/eab-buddypress-close_period-public.js" ), array( 'jquery' ) );
+	wp_enqueue_script( 'eab-buddypress-rsvp_close_period-public', plugins_url( basename( EAB_PLUGIN_DIR ) . "/js/eab-buddypress-rsvp_close_period-public.js" ), array( 'jquery' ) );
     }
 
     private function _get_rsvp_closed_message( $post_id = false ) {
