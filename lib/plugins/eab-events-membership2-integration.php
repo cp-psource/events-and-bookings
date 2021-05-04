@@ -112,7 +112,7 @@ class Eab_Events_Membership2_Integration {
 	public function show_nag() {
 		printf(
 			'<div class="error"><p>' .
-			__( 'Das %sPS-Mitglieder+2%s Plugin installieren und aktivieren, damit die PS-Mitglieder+ Integration funktioniert', Eab_EventsHub::TEXT_DOMAIN ) .
+			__( 'Das %sPS-Mitgliedschaften%s Plugin installieren und aktivieren, damit die PS-Mitgliedschaften Integration funktioniert', Eab_EventsHub::TEXT_DOMAIN ) .
 			'</p></div>',
 			'<a href="https://n3rds.work/piestingtal-source-project/ps-mitglieder-plugin/">',
 			'</a>'
@@ -186,7 +186,7 @@ class Eab_Events_Membership2_Integration {
 		<div class="eab_meta_box eab-membership2-box <?php echo esc_attr( $close_class ); ?>">
 			<input type="hidden" name="event_membership2_meta" value="1" />
 			<div class="eab_meta_column_box">
-				<?php _e( 'PS-Mitglieder+ Preise', Eab_EventsHub::TEXT_DOMAIN ); ?>
+				<?php _e( 'Mitgliedschaften Preise', Eab_EventsHub::TEXT_DOMAIN ); ?>
 				<div class="handlediv eab-membership2-toggle"></div>
 			</div>
 			<div class="misc-eab-section">
