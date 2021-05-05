@@ -106,11 +106,11 @@ class Eab_Events_RSVPClosePeriod {
     }
 
     function enqueue_fpe_close_period_dependencies() {
-	wp_enqueue_script( 'eab-buddypress-close_period-fpe', plugins_url( basename( EAB_PLUGIN_DIR ) . "/js/eab-buddypress-close_period-fpe.js" ), array( 'jquery' ) );
+	wp_enqueue_script( 'eab-buddypress-rsvp_close_period-fpe', plugins_url( basename( EAB_PLUGIN_DIR ) . "/js/eab-buddypress-rsvp_close_period-fpe.js" ), array( 'jquery' ) );
     }
 
     function enqueue_admin_close_period_dependencies() {
-	wp_enqueue_script( 'eab-buddypress-close_period-admin', plugins_url( basename( EAB_PLUGIN_DIR ) . "/js/eab-buddypress-close_period-admin.js" ), array( 'jquery' ) );
+	wp_enqueue_script( 'eab-buddypress-rsvp_close_period-admin', plugins_url( basename( EAB_PLUGIN_DIR ) . "/js/eab-buddypress-rsvp_close_period-admin.js" ), array( 'jquery' ) );
     }
 
     function enqueue_public_close_period_dependencies() {

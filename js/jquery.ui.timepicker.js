@@ -64,12 +64,12 @@
 
         this.regional = []; // Available regional settings, indexed by language code
         this.regional[''] = { // Default regional settings
-            hourText: 'Hour', // Display text for hours section
+            hourText: 'Stunde', // Display text for hours section
             minuteText: 'Minute', // Display text for minutes link
             amPmText: ['AM', 'PM'], // Display text for AM PM
-            closeButtonText: 'Done', // Text for the confirmation button (ok button)
-            nowButtonText: 'Now', // Text for the now button
-            deselectButtonText: 'Deselect' // Text for the deselect button
+            closeButtonText: 'Erledigt', // Text for the confirmation button (ok button)
+            nowButtonText: 'Jetzt', // Text for the now button
+            deselectButtonText: 'Abwählen' // Text for the deselect button
         };
         this._defaults = { // Global defaults for all the time picker instances
             showOn: 'focus', // 'focus' for popup on focus,

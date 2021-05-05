@@ -5,7 +5,7 @@ Plugin URI: https://n3rds.work/piestingtal_source/ps-events-eventmanagement-fuer
 Description: PS-Events fügt Deiner Webseite oder Deiner Multisite ein mächtiges Events & Bookings System hinzu.
 Author: DerN3rd (WMS N3rds@Work)
 Text Domain: eab
-Version: 1.3.0
+Version: 1.3.1
 Author URI: https://n3rds.work
 */
 
@@ -36,7 +36,7 @@ class Eab_EventsHub {
 	 * @TODO Update version number for new releases
      * @var	string
      */
-    const CURRENT_VERSION 		= '1.3.0';
+    const CURRENT_VERSION 		= '1.3.1';
 
     /**
      * Translation domain
@@ -781,7 +781,7 @@ class Eab_EventsHub {
 			}
 			$content .= '</div>';
 
-			$content .= '<div id="eab-add-more"><input type="button" name="eab-add-more-button" id="eab-add-more-button" class="eab_add_more" value="'.__('Klicke hier, um dem Ereignis ein weiteres Datum hinzuzufügen', self::TEXT_DOMAIN).'"/></div>';
+			$content .= '<div id="eab-add-more"><input type="button" name="eab-add-more-button" id="eab-add-more-button" class="eab_add_more" value="'.__('Klicken um weiteres Datum hinzuzufügen', self::TEXT_DOMAIN).'"/></div>';
 			$i = !empty( $i ) ? $i : 0;
 
 			$content .= '<div id="eab-add-more-bank">';
