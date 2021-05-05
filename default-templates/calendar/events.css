@@ -64,11 +64,12 @@ a.psourceevents-calendar-event:hover {
     position: absolute;
     padding: .4em;
     min-width: 200px;
-    max-width:450px;
+    max-width: 450px;
     background: #464646;
     margin-top: 1em;
     border: 1px solid #262626;
     border-radius: 5px;
+    z-index: 999;
 }
 
 .psourceevents-calendar-event-info img {

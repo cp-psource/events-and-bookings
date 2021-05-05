@@ -54,26 +54,27 @@ a.psourceevents-calendar-event:hover {
     position: absolute;
     padding: .4em;
     min-width: 200px;
-    max-width:450px;
+    max-width: 450px;
     background: #464646;
     margin-top: 1em;
     border: 1px solid #262626;
     border-radius: 5px;
+    z-index: 999;
 }
 
+
+}
 .psourceevents-weekly-calendar-hours-mins {
     font-weight: bold;
     font-size: 0.8em;
     text-align: center;
 }
-
 .psourceevents-calendar-avatar,
 .psourceevents-calendar-thumbnail {
     float: left;
     width: 80px;
     margin: 5px;
 }
-
 .psourceevents-calendar-author,
 .psourceevents-calendar-venue,
 .psourceevents-calendar-start {
@@ -82,7 +83,6 @@ a.psourceevents-calendar-event:hover {
     float: left;
     width: 200px;
 }
-
 .psourceevents-calendar-bio,
 .psourceevents-calendar-content {
     float: left;
