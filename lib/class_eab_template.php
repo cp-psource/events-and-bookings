@@ -123,11 +123,11 @@ class Eab_Template {
 			$content .= '<a href="' . 
 				admin_url('admin-ajax.php?action=eab_list_rsvps&pid=' . $event->get_id()) . 
 				'" id="psourceevents-load-rsvps" class="hide-if-no-js psourceevents-viewrsvps psourceevents-loadrsvps">' .
-					apply_filters( 'eab_show_rsvp_text', __('Sehen wer geantwortet hat', Eab_EventsHub::TEXT_DOMAIN) ) .
+					apply_filters( 'eab_show_rsvp_text', __('Reaktionen anzeigen', Eab_EventsHub::TEXT_DOMAIN) ) .
 			'</a>';
 			$content .= '&nbsp;';
 			$content .= '<a href="#" id="psourceevents-hide-rsvps" class="hide-if-no-js psourceevents-viewrsvps psourceevents-hidersvps">' .
-				apply_filters( 'eab_hide_rsvp_text', __('Verstecke, wer geantwortet hat', Eab_EventsHub::TEXT_DOMAIN) ) .
+				apply_filters( 'eab_hide_rsvp_text', __('Reaktionen ausblenden', Eab_EventsHub::TEXT_DOMAIN) ) .
 			'</a>';
 			$content .= '</div>';
 			$content .= '<div id="psourceevents-rsvps-response"></div>';
