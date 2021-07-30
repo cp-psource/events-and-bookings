@@ -125,9 +125,10 @@ a.psourceevents-calendar-event:hover {
         display: block;
     }
     .psourceevents-list table.eab-monthly_calendar td {
-        display: block;
+        display: inline-block;
         height: auto;
         padding: 5px;
+        width: 100%;
     }
     .psourceevents-list table.eab-monthly_calendar tbody td[colspan],
     .psourceevents-list table.eab-monthly_calendar thead th,
@@ -153,7 +154,7 @@ a.psourceevents-calendar-event:hover {
     }
     .psourceevents-list table.eab-monthly_calendar .psourceevents-calendar-event-info {
         position: static;
-        display: inline!important;
+        /*display: inline!important;*/
         background: none;
         border: none;
         font-weight: normal;
