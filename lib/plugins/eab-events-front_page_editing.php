@@ -110,7 +110,7 @@ class Eab_Events_FrontPageEditing {
 	function my_events_add_event () {
 		global $bp;
 		bp_core_new_subnav_item(array(
-			'name' => __('Meine Ereignisse', Eab_EventsHub::TEXT_DOMAIN),
+			'name' => __('Ereignis erstellen', Eab_EventsHub::TEXT_DOMAIN),
 			'slug' => 'edit-event',
 			'parent_url' => trailingslashit(trailingslashit($bp->displayed_user->domain) . 'my-events'),
 			'parent_slug' => 'my-events',

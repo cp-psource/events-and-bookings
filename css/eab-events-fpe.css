@@ -1,28 +1,36 @@
 #ui-datepicker-div {
-	display: none;
+    display: none;
 }
 
+
 /* ----- Meta boxes setup ----- */
+
 .eab-events-fpe-col_wrapper {
-	overflow: hidden;
-	margin: .4% 0;
+    overflow: hidden;
+    margin: .4% 0;
 }
+
 .eab-events-fpe-meta_box {
-	width: 48%;
-	padding: .4%;
-	border: 1px solid #ddd;
-	float: left;
+    width: 48%;
+    padding: .4%;
+    border: 1px solid #ddd;
+    margin: 5px;
 }
+
 #eab-events-fpe-status_type {
-	float: right;
+    float: right;
 }
-#eab-events-fpe-rsvps, #eab-events-fpe-meta_box-venue {
-	float: none;
-	width: 100%;
+
+#eab-events-fpe-rsvps,
+#eab-events-fpe-meta_box-venue {
+    float: none;
+    width: 100%;
 }
+
 #eab-events-fpe-rsvps {
-	border: none;
+    border: none;
 }
+
 
 /* ----- General meta box elements ----- */
 
@@ -30,46 +38,57 @@
     float: left;
     padding: 5px;
 }
+
 .eab-events-fpe-meta_box label {
-	display: inline-block;
-	width: auto;
+    display: inline-block;
+    width: auto;
 }
+
 #eab-events-fpe-date_time label {
-	width: 6em;
+    width: 6em;
 }
+
 #eab-events-fpe-waiting_indicator {
-	margin-left: 1em;
-	margin-right: 1.5em;
+    margin-left: 1em;
+    margin-right: 1.5em;
 }
 
-.hide_time_option{
-	display: none;
+.hide_time_option {
+    display: none;
 }
 
-.eab_action_button{
-	cursor: pointer;
+.eab_action_button {
+    cursor: pointer;
 }
+
 
 /* ----- Form elements setup ----- */
+
 #eab-events-fpe-event_title {
-	width: 99%;
-	font-size: 2em;
+    width: 99%;
+    font-size: 2em;
 }
+
 
 /* ----- Date/time metabox ----- */
+
 #eab-events-fpe-venue {
-	width: 100%;
-	max-width: 425px;
+    width: 100%;
+    /*max-width: 425px;*/
 }
 
+
 /* ----- Messages ----- */
-.eab-events-fpe-error, #eab-events-fpe-date_time-error {
-	color: #A00;
+
+.eab-events-fpe-error,
+#eab-events-fpe-date_time-error {
+    color: #A00;
 }
+
 .eab-events-fpe-success {
-	color: #060;
+    color: #060;
 }
 
 .eab-events-pae-meta_box {
-	width: 47%;
+    width: 47%;
 }
