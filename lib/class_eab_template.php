@@ -618,7 +618,7 @@ class Eab_Template {
 				? date_i18n(get_option('date_format'), $end) : ''
 			;
 			
-			$content .= $key ? __(' and ', Eab_EventsHub::TEXT_DOMAIN) : '';
+			$content .= $key ? __(' und ', Eab_EventsHub::TEXT_DOMAIN) : '';
 
 			// Differentiate start/end date equality
 			if ($end_date_str) {
