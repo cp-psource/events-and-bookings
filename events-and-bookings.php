@@ -5,7 +5,7 @@ Plugin URI: https://n3rds.work/piestingtal_source/ps-events-eventmanagement-fuer
 Description: PS-Events fügt Deiner Webseite oder Deiner Multisite ein mächtiges Events & Bookings System hinzu.
 Author: DerN3rd (WMS N3rds@Work)
 Text Domain: eab
-Version: 1.3.4
+Version: 1.3.5
 Requires at least: 4.6
 Tested up to: 5.7
 Author URI: https://n3rds.work
@@ -34,7 +34,7 @@ class Eab_EventsHub {
 	 * @TODO Update version number for new releases
      * @var	string
      */
-    const CURRENT_VERSION 		= '1.3.4';
+    const CURRENT_VERSION 		= '1.3.5';
 
     /**
      * Translation domain
