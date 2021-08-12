@@ -192,7 +192,7 @@ class Eab_Admin {
 					$title = @$repeats[$event->get_recurrence()];
 					$start = date_i18n($df, $event->get_recurrence_starts());
 					$end = date_i18n($df, $event->get_recurrence_ends());
-					printf(__("Vom %s, wiederholt jeden %s bis um %s", Eab_EventsHub::TEXT_DOMAIN), $start, $title, $end);
+					printf(__("Vom %s, wiederholt alle %s bis zum %s", Eab_EventsHub::TEXT_DOMAIN), $start, $title, $end);
 				}
 				break;
 			case "venue":
@@ -211,13 +211,13 @@ class Eab_Admin {
 				$status = $statuses ? ' - <span class="post-state">' . join(', ', $statuses) . '</span>' : '';
 
 				$title = (current_user_can($post_type_object->cap->edit_post, $event->get_id()) && 'trash' != $post->post_status)
-					? '<strong>' . '<a class="row-title" href="' . $edit_link .'" title="' . esc_attr(sprintf(__('Edit &#8220;%s&#8221;' ), $event->get_title())) . '">' . $event->get_title() . '</a>&nbsp;' . $status . '</strong>'
+					? '<strong>' . '<a class="row-title" href="' . $edit_link .'" title="' . esc_attr(sprintf(__('Bearbeite &#8220;%s&#8221;' ), $event->get_title())) . '">' . $event->get_title() . '</a>&nbsp;' . $status . '</strong>'
 					: '<strong>' . $event->get_title() . '&nbsp;' . $status . '</strong>'
 				;
 
 				if (current_user_can($post_type_object->cap->edit_post, $event->get_id()) && 'trash' != $post->post_status) {
-					$actions['edit'] = '<a title="' . esc_attr(__('Veranstaltung bearbeiten', Eab_EventsHub::TEXT_DOMAIN)) . '" href="' . $edit_link . '">' . __('Edit') . '</a>';
-					if (!$event->is_recurring()) $actions['inline hide-if-no-js'] = '<a href="#" class="editinline" title="' . esc_attr(__( 'Bearbeite dieses Ereignis inline', Eab_EventsHub::TEXT_DOMAIN)) . '">' . __('Quick&nbsp;Edit') . '</a>';
+					$actions['edit'] = '<a title="' . esc_attr(__('Veranstaltung bearbeiten', Eab_EventsHub::TEXT_DOMAIN)) . '" href="' . $edit_link . '">' . __('Bearbeiten') . '</a>';
+					if (!$event->is_recurring()) $actions['inline hide-if-no-js'] = '<a href="#" class="editinline" title="' . esc_attr(__( 'Bearbeite dieses Ereignis inline', Eab_EventsHub::TEXT_DOMAIN)) . '">' . __('Schnelles&nbsp;Bearbeiten') . '</a>';
 				}
 
 				if (current_user_can($post_type_object->cap->delete_post, $event->get_id())) {
@@ -226,13 +226,13 @@ class Eab_Admin {
 							wp_nonce_url( admin_url( sprintf( $post_type_object->_edit_link . '&amp;action=untrash', $post->ID ) ), 'untrash-post_' . $post->ID ),
 							'Restore this Event from the Trash',
 							esc_attr( sprintf( __( 'Wiederhergestellt &#8220;%s&#8221; aus dem Papierkorb' ), $title ) ),
-							__( 'Restore' )
+							__( 'Wiederherstellen' )
 						);	
 					} else if (EMPTY_TRASH_DAYS) {
-						$actions['trash'] = '<a class="submitdelete" title="' . esc_attr(__('Verschiebe dieses Ereignis in den Papierkorb', Eab_EventsHub::TEXT_DOMAIN)) . '" href="' . get_delete_post_link($event->get_id()) . '">' . __('Trash') . '</a>';
+						$actions['trash'] = '<a class="submitdelete" title="' . esc_attr(__('Verschiebe dieses Ereignis in den Papierkorb', Eab_EventsHub::TEXT_DOMAIN)) . '" href="' . get_delete_post_link($event->get_id()) . '">' . __('Papierkorb') . '</a>';
 					}
 					if ('trash' == $post->post_status || !EMPTY_TRASH_DAYS) {
-						$actions['delete'] = "<a class='submitdelete' title='" . esc_attr(__('Lösche dieses Ereignis dauerhaft', Eab_EventsHub::TEXT_DOMAIN)) . "' href='" . get_delete_post_link($event->get_id(), '', true ) . "'>" . __('Delete Permanently') . "</a>";
+						$actions['delete'] = "<a class='submitdelete' title='" . esc_attr(__('Lösche dieses Ereignis dauerhaft', Eab_EventsHub::TEXT_DOMAIN)) . "' href='" . get_delete_post_link($event->get_id(), '', true ) . "'>" . __('Dauerhaft löschen') . "</a>";
 					}
 				}
 
@@ -244,7 +244,7 @@ class Eab_Admin {
 						else $event_id = $children[0]->get_id();
 					}
 					if ($event_id) {
-						$actions['view'] = '<a href="' . get_permalink($event_id) . '" title="' . esc_attr(sprintf(__('View &#8220;%s&#8221;'), $event->get_title())) . '" rel="permalink">' . __('View') . '</a>';
+						$actions['view'] = '<a href="' . get_permalink($event_id) . '" title="' . esc_attr(sprintf(__('Ansehen &#8220;%s&#8221;'), $event->get_title())) . '" rel="permalink">' . __('Ansehen') . '</a>';
 					}
 				}
 
