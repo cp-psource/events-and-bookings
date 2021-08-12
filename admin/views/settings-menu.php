@@ -20,7 +20,7 @@
 					<div class="eab-settings-settings_item">
 						<label for="psource_event-slug" id="psource_event_label-slug"><?php _e('Stelle hier Root-Slug ein:', eab_domain() ); ?></label>
 						/<input type="text" size="20" id="psource_event-slug" name="event_default[slug]" value="<?php print $this->_data->get_option('slug'); ?>" />
-						<span><?php echo $tips->add_tip(__('Dies ist die URL, unter der sich Ihr Ereignisarchiv befindet. Standardmäßig lautet das Format yoursite.com/events. Du kanst dies jedoch nach Belieben ändern.', eab_domain() )); ?></span>
+						<span><?php echo $tips->add_tip(__('Dies ist die URL, unter der sich Dein Ereignisarchiv befindet. Standardmäßig lautet das Format yoursite.com/events. Du kannst dies jedoch nach Belieben ändern.', eab_domain() )); ?></span>
 					</div>
 					<div class="eab-settings-settings_item">
 						<label for="psource_event-ordering_direction" id="psource_event_label-ordering_direction"><?php _e('Stelle absteigende Reihenfolge nach Startdatum ein:', eab_domain() ); ?></label>
