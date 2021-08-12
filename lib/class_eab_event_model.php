@@ -500,12 +500,12 @@ class Eab_EventModel extends WpmuDev_DatedVenuePremiumModel {
 
 	public function get_supported_recurrence_intervals () {
 		return array (
-			self::RECURRANCE_DAILY => __('Day', Eab_EventsHub::TEXT_DOMAIN),
-			self::RECURRANCE_WEEKLY => __('Week', Eab_EventsHub::TEXT_DOMAIN),
-			self::RECURRANCE_WEEK_COUNT => __('Week Count', Eab_EventsHub::TEXT_DOMAIN),
-			self::RECURRANCE_DOW => __('Day of the Week', Eab_EventsHub::TEXT_DOMAIN),
-			self::RECURRANCE_MONTHLY => __('Month', Eab_EventsHub::TEXT_DOMAIN),
-			self::RECURRANCE_YEARLY => __('Year', Eab_EventsHub::TEXT_DOMAIN),
+			self::RECURRANCE_DAILY => __('Tag', Eab_EventsHub::TEXT_DOMAIN),
+			self::RECURRANCE_WEEKLY => __('Woche', Eab_EventsHub::TEXT_DOMAIN),
+			self::RECURRANCE_WEEK_COUNT => __('Wochenanzahl', Eab_EventsHub::TEXT_DOMAIN),
+			self::RECURRANCE_DOW => __('Wochentag', Eab_EventsHub::TEXT_DOMAIN),
+			self::RECURRANCE_MONTHLY => __('Monat', Eab_EventsHub::TEXT_DOMAIN),
+			self::RECURRANCE_YEARLY => __('Jahr', Eab_EventsHub::TEXT_DOMAIN),
 		);
 	}
 
@@ -574,16 +574,16 @@ class Eab_EventModel extends WpmuDev_DatedVenuePremiumModel {
 
 		$check_start = $start && checkdate((int)date('n', $start), (int)date('j', $start), (int)date('Y', $start));
 		if (!$check_start) do_action('eab-debug-log_error', sprintf(
-			__('Invalid interval start boundary timestamp: [%s]', Eab_EventsHub::TEXT_DOMAIN),
+			__('Ungültiger Zeitstempel der Intervallstartgrenze: [%s]', Eab_EventsHub::TEXT_DOMAIN),
 			$check_start
 		));
 		$check_end = $end && checkdate((int)date('n', $end), (int)date('j', $end), (int)date('Y', $end));
 		if (!$check_end) do_action('eab-debug-log_error', sprintf(
-			__('Invalid interval end boundary timestamp: [%s]', Eab_EventsHub::TEXT_DOMAIN),
+			__('Ungültiger Zeitstempel für die Endgrenze des Intervalls: [%s]', Eab_EventsHub::TEXT_DOMAIN),
 			$check_end
 		));
 		if ($end < $start) do_action('eab-debug-log_error', sprintf(
-			__('Invalid end boundary after start: [%s] - [%s]', Eab_EventsHub::TEXT_DOMAIN),
+			__('Ungültige Endgrenze nach Start: [%s] - [%s]', Eab_EventsHub::TEXT_DOMAIN),
 			$start, $end
 		));
 
@@ -688,7 +688,7 @@ class Eab_EventModel extends WpmuDev_DatedVenuePremiumModel {
 				$unix_timestamp = strtotime($timestamp);
 				$check = $unix_timestamp >= $start && checkdate((int)date('n', $unix_timestamp), (int)date('j', $unix_timestamp), (int)date('Y', $unix_timestamp));
 				if (!$unix_timestamp || !$check) do_action('eab-debug-log_error', sprintf(
-					__('Invalid %s instance timestamp: [%s]', Eab_EventsHub::TEXT_DOMAIN),
+					__('Ungültiger %s-Instanzzeitstempel: [%s]', Eab_EventsHub::TEXT_DOMAIN),
 					$interval,
 					$timestamp
 				));
@@ -700,9 +700,9 @@ class Eab_EventModel extends WpmuDev_DatedVenuePremiumModel {
 			$time_parts['weekday'] = is_array($time_parts['weekday']) ? $time_parts['weekday'] : array();
 			for ($i = 0; $i<=6; $i++) {
 				if (!in_array($i, $time_parts['weekday'])) continue;
-				$sunday = strtotime("this Sonntag", $start) < $start
-					? strtotime("this Sonntag", $start)
-					: strtotime("last Sonntag", $start)
+				$sunday = strtotime("diesen Sonntag", $start) < $start
+					? strtotime("diesen Sonntag", $start)
+					: strtotime("letzten Sonntag", $start)
 				;
 				$to_day = $i * 86400;
 				$begin = $sunday + $to_day;
@@ -712,7 +712,7 @@ class Eab_EventModel extends WpmuDev_DatedVenuePremiumModel {
 					$unix_timestamp = strtotime($timestamp);
 					$check = $unix_timestamp >= $start && checkdate((int)date('n', $unix_timestamp), (int)date('j', $unix_timestamp), (int)date('Y', $unix_timestamp));
 					if (!$unix_timestamp || !$check) do_action('eab-debug-log_error', sprintf(
-						__('Invalid %s instance timestamp: [%s]', Eab_EventsHub::TEXT_DOMAIN),
+						__('Ungültiger %s-Instanzzeitstempel: [%s]', Eab_EventsHub::TEXT_DOMAIN),
 						$interval,
 						$timestamp
 					));
@@ -732,20 +732,20 @@ class Eab_EventModel extends WpmuDev_DatedVenuePremiumModel {
 
 				// PHP 5.3+ - strtotime has "of", we're good.
 				// This is because of https://bugs.php.net/bug.php?id=53778
-				$day = strtotime("{$week_count} {$weekday} of this month {$time_parts['time']}", $first);
+				$day = strtotime("{$week_count} {$weekday} dieses Monats {$time_parts['time']}", $first);
 
 				// "Fifth" test for supporting implementations
 				if ($day && "fifth" === strtolower($week_count)) {
 					// Special case, as not all months have this.
-					$last = strtotime("last {$weekday} of this month {$time_parts['time']}", $first);
-					$fourth = strtotime("fourth {$weekday} of this month {$time_parts['time']}", $first);
+					$last = strtotime("last {$weekday} dieses Monats {$time_parts['time']}", $first);
+					$fourth = strtotime("fourth {$weekday} dieses Monats {$time_parts['time']}", $first);
 					if ($fourth === $last) continue; // This month doesn't have five $weekdays, so keep on going
 					else if ($last > $fourth) $day = $last; // Oooh, but here we have a fifth occurance, go with that
 				}
 
 				if (!$day) {
 					// No "of", meaning we're in pre-PHPv5.3 and the bug kicks in - so, we're left with non-timestamp
-					$day = strtotime("{$week_count} {$weekday} this month {$time_parts['time']}", $first); // Get a bugged timestamp in pre-PHP5.3 compatible way
+					$day = strtotime("{$week_count} {$weekday} diesen Monat {$time_parts['time']}", $first); // Get a bugged timestamp in pre-PHP5.3 compatible way
 					// Now that we have a timestamp possibly affected pre-v5.3 bug, check the other conditions:
 					// (1) are we explicitly told to fix the bug?
 					// (1) is the first day of month actually the day of month we're after, and
@@ -768,7 +768,7 @@ class Eab_EventModel extends WpmuDev_DatedVenuePremiumModel {
 						) {
 							// First up, log this for support purposes
 							do_action('eab-debug-log_error', sprintf(
-								__('Possible DOW precision bug detected, overriding %s with %s for expression [%s %s this month], for %s pivot', Eab_EventsHub::TEXT_DOMAIN),
+								__('Möglicher DOW-Präzisionsfehler erkannt, %s überschreibt mit %s für Ausdruck [%s %s diesen Monat], für %s Pivot', Eab_EventsHub::TEXT_DOMAIN),
 								$day, $this_day_week_before, // timestamps
 								$week_count, $weekday, // expression
 								$first // pivot
@@ -779,7 +779,7 @@ class Eab_EventModel extends WpmuDev_DatedVenuePremiumModel {
 				}
 
 				if (!$day) do_action('eab-debug-log_error', sprintf(
-					__('Invalid %s instance timestamp: [%s %s for %s]', Eab_EventsHub::TEXT_DOMAIN),
+					__('Ungültiger %s-Instanzzeitstempel: [%s %s für %s]', Eab_EventsHub::TEXT_DOMAIN),
 					$interval,
 					$week_count, $weekday, $first
 				));
@@ -812,7 +812,7 @@ class Eab_EventModel extends WpmuDev_DatedVenuePremiumModel {
 					continue;
 
 				if (!$unix_timestamp || !$check) do_action('eab-debug-log_error', sprintf(
-					__('Invalid %s instance timestamp: [%s]', Eab_EventsHub::TEXT_DOMAIN),
+					__('Ungültiger %s-Instanzzeitstempel: [%s]', Eab_EventsHub::TEXT_DOMAIN),
 					$interval,
 					$timestamp
 				));
@@ -828,7 +828,7 @@ class Eab_EventModel extends WpmuDev_DatedVenuePremiumModel {
 				$unix_timestamp = strtotime($timestamp);
 				$check = $unix_timestamp >= $start && checkdate((int)date('n', $unix_timestamp), (int)date('j', $unix_timestamp), (int)date('Y', $unix_timestamp));
 				if (!$unix_timestamp || !$check) do_action('eab-debug-log_error', sprintf(
-					__('Invalid %s instance timestamp: [%s]', Eab_EventsHub::TEXT_DOMAIN),
+					__('Ungültiger %s-Instanzzeitstempel: [%s]', Eab_EventsHub::TEXT_DOMAIN),
 					$interval,
 					$timestamp
 				));

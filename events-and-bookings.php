@@ -931,7 +931,7 @@ class Eab_EventsHub {
 			$content 	.= '<div class="eab_event_recurrence_mode" id="eab_event-repeat_interval-' . Eab_EventModel::RECURRANCE_DOW . '" ' . $style . '>';
 
 			$week_counts = array(
-				'first' 	=> __( 'Erste', self::TEXT_DOMAIN ),
+				'first' 	=> __( 'Ersten', self::TEXT_DOMAIN ),
 				'second' 	=> __( 'Zweite', self::TEXT_DOMAIN ),
 				'third' 	=> __( 'Dritte', self::TEXT_DOMAIN ),
 				'fourth' 	=> __( 'Vierte', self::TEXT_DOMAIN ),
