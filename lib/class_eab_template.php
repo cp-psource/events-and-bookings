@@ -625,7 +625,7 @@ class Eab_Template {
 				// Start and end day stamps differ
 				$start_string = $event->has_no_start_time($key)
 					? sprintf(__('Am <span class="psourceevents-date_format-start"><var class="eab-date_format-date">%s</var></span>', Eab_EventsHub::TEXT_DOMAIN), date_i18n(get_option('date_format'), $start))
-					: sprintf(__('Am <var class="eab-date_format-date">%s</var> <span class="psourceevents-date_format-start">from <var class="eab-date_format-time">%s</var></span>', Eab_EventsHub::TEXT_DOMAIN), date_i18n(get_option('date_format'), $start), date_i18n(get_option('time_format'), $start))
+					: sprintf(__('Am <var class="eab-date_format-date">%s</var> <span class="psourceevents-date_format-start">von <var class="eab-date_format-time">%s</var></span>', Eab_EventsHub::TEXT_DOMAIN), date_i18n(get_option('date_format'), $start), date_i18n(get_option('time_format'), $start))
 				;
 				$end_string = $event->has_no_end_time($key)
 					? sprintf(__('<span class="psourceevents-date_format-end">bis %s</span><br />', Eab_EventsHub::TEXT_DOMAIN), '<span class="psourceevents-date_format-end_date"><var class="eab-date_format-date">' . $end_date_str . '</var></span>')
