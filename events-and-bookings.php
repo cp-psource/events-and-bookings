@@ -738,7 +738,7 @@ class Eab_EventsHub {
 					$no_end 	= $event->has_no_end_time( $key ) ? 'checked="checked"' : '';
 
 					$content .= '<div class="eab-section-block">';
-					$content .= '<div class="eab-section-heading">' . sprintf( __( 'Teil %d', self::TEXT_DOMAIN ), $key+1 ) . '&nbsp' . '<a href="#remove" class="eab-event-remove_time">' . __('Remove', self::TEXT_DOMAIN) . '</a></div>';
+					$content .= '<div class="eab-section-heading">' . sprintf( __( 'Teil %d', self::TEXT_DOMAIN ), $key+1 ) . '&nbsp' . '<a href="#remove" class="eab-event-remove_time">' . __('Entferne', self::TEXT_DOMAIN) . '</a></div>';
 					$content .= '<div class="misc-eab-section eab-start-section"><label for="psource_event_start_'.$key.'">';
 					$content .= sprintf( __('%sBeginnt%s', self::TEXT_DOMAIN ), '<span>', '</span>' ).'</label>';
 					$content .= '<input type="text" name="psource_event_start['.$key.']" id="psource_event_start_'.$key.'" class="psource_event_picker psource_event psource_event_date psource_event_start" value="'.date('Y-m-d', $start).'" size="10" readonly/> ';

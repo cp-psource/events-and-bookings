@@ -198,7 +198,7 @@ $(document).on("eab-api-registration-data", function (e, data, deferred) {
 				<!--<?php _e('E-mail Macro:', Eab_EventsHub::TEXT_DOMAIN); ?> <code><?php echo esc_html(Eab_Rsvps_Arf_Model::get_macro($field['label'])); ?></code>
 				<span class="description"><?php _e('Dies ist der Platzhalter, den Du in Deinen E-Mails verwenden kannst.', Eab_EventsHub::TEXT_DOMAIN); ?></span> -->
 				<input type="hidden" name="eab-arf-additional_fields[]" value="<?php echo rawurlencode(json_encode($field)); ?>" />
-				<a href="#remove" class="eab-arf-additional_fields-remove"><?php echo esc_html('Remove', Eab_EventsHub::TEXT_DOMAIN); ?></a>
+				<a href="#remove" class="eab-arf-additional_fields-remove"><?php echo esc_html('Entferne', Eab_EventsHub::TEXT_DOMAIN); ?></a>
 				<br />
 			</div>
 		<?php } ?>
