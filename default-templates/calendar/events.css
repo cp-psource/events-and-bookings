@@ -4,7 +4,7 @@
 
 .psourceevents-list {
     clear: both;
-    padding: 1em;
+    /*padding: 1em;*/
 }
 
 .psourceevents-list table {
@@ -116,7 +116,7 @@ a.psourceevents-calendar-event:hover {
 
 /* ----- Breakpoints ----- */
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 940px) {
     /* force old browsers, such as legacy droid */
     .psourceevents-list table.eab-monthly_calendar,
     .psourceevents-list table.eab-monthly_calendar tr,
@@ -173,4 +173,61 @@ a.psourceevents-calendar-event:hover {
 }
 
 
-/* end 768px break */
+/* end 940px break */
+
+@media screen and (max-width: 1360px) {
+    /* force old browsers, such as legacy droid */
+    .psourceevents-list table.eab-monthly_calendar,
+    .psourceevents-list table.eab-monthly_calendar tr,
+    .psourceevents-list table.eab-monthly_calendar th,
+    .psourceevents-list table.eab-monthly_calendar td {
+        display: block;
+        zoom: 0.7;
+    }
+    .psourceevents-list table.eab-monthly_calendar td {
+        display: inline-block;
+        height: auto;
+        padding: 5px;
+        width: 100%;
+    }
+    .psourceevents-list table.eab-monthly_calendar tbody td[colspan],
+    .psourceevents-list table.eab-monthly_calendar thead th,
+    .psourceevents-list table.eab-monthly_calendar tfoot th {
+        display: none;
+    }
+    .psourceevents-list table.eab-monthly_calendar thead h4 span,
+    .psourceevents-list table.eab-monthly_calendar tfoot b span {
+        display: none;
+    }
+    .psourceevents-list table.eab-monthly_calendar thead h4 time:after,
+    .psourceevents-list table.eab-monthly_calendar tfoot b time:after {
+        content: attr(datetime);
+    }
+    .psourceevents-list table.eab-monthly_calendar thead td,
+    .psourceevents-list table.eab-monthly_calendar tfoot td {
+        float: left;
+        width: 20%;
+        padding: 0;
+    }
+    .psourceevents-list table.eab-monthly_calendar .psourceevents-calendar-event {
+        font-weight: bold;
+    }
+    .psourceevents-list table.eab-monthly_calendar .psourceevents-calendar-event-info {
+        position: static;
+        /*display: inline!important;*/
+        background: none;
+        border: none;
+        font-weight: normal;
+        font-size: .9em;
+    }
+    .psourceevents-list table.eab-monthly_calendar .psourceevents-calendar-event-info:before {
+        content: ' ';
+        display: block;
+    }
+    .psourceevents-list table.eab-monthly_calendar td .eab-date-full {
+        display: block !important;
+    }
+    .psourceevents-list table.eab-monthly_calendar td .eab-date-ordinal {
+        display: none;
+    }
+}
