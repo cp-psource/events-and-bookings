@@ -11,7 +11,7 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 PS Events fügt Deiner Webseite oder Deiner Multisite ein mächtiges Events & Bookings System hinzu.
 
-== Beschreibung ==
+== Description ==
 
 ===  Verkaufe Tickets für Dein Webinar oder Dein wiederkehrendes Verkaufsseminar ===
 
