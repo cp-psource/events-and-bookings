@@ -101,6 +101,15 @@ Deine Benutzer bezahlen für eine besondere Mitgliedschaft?
 Belohne sie mit Ermäßigungen wenn sie an einer Deiner Veranstaltungen teilnehmen!
 Noch nicht? - Dann empfehlen wir Dir, einen Blick auf unser [PS Mitgliedschaften Plugin](https://n3rds.work/piestingtal_source/ps-mitgliedschaften-plugin/) zu werfen.
 
+== Hilf uns ==
+
+Viele, viele Kaffees konsumieren wir während wir an unseren Plugins und Themes arbeiten.
+Wie wärs? Möchtest Du uns mit einer Kaffee-Spende bei der Arbeit an unseren Plugins unterstützen?
+
+=== Unterstütze uns ===
+
+Mach eine [Spende per Überweisung oder PayPal](https://n3rds.work/spendenaktionen/unterstuetze-unsere-psource-free-werke/) wir Danken Dir!
+
 == ChangeLog ==
 
 = 1.3.6 = DerN3rd =
