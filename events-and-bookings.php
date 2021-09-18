@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: PS-Events
+Plugin Name: PS Events
 Plugin URI: https://n3rds.work/piestingtal_source/ps-events-eventmanagement-fuer-wordpress/
 Description: PS-Events fügt Deiner Webseite oder Deiner Multisite ein mächtiges Events & Bookings System hinzu.
 Author: DerN3rd (WMS N3rds@Work)
@@ -12,7 +12,7 @@ Author URI: https://n3rds.work
 */
 
 
-require 'lib/psource-plugin-update/plugin-update-checker.php';
+require 'psource/psource-plugin-update/plugin-update-checker.php';
 $MyUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
 	'https://n3rds.work//wp-update-server/?action=get_metadata&slug=ps-events', 
 	__FILE__, 
