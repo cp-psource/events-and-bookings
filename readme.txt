@@ -13,18 +13,18 @@ PS Events fügt Deiner Webseite oder Deiner Multisite ein mächtiges Events & Bo
 
 == Description ==
 
-===  Verkaufe Tickets für Dein Webinar oder Dein wiederkehrendes Verkaufsseminar ===
+=  Verkaufe Tickets für Dein Webinar oder Dein wiederkehrendes Verkaufsseminar =
 
 oder baue ein komplettes Event-Management-Netzwerk wie Eventbrite oder Facebook Events auf.
 
 Bewerbe, verwalte und verkaufe Tickets für Deine Veranstaltung.
 
-=== Bewerbe und verwalte Deine Veranstaltung ===
+= Bewerbe und verwalte Deine Veranstaltung =
 
 Erstelle Veranstaltungsseiten mit Reservierungen, Ticketverkäufen, Werbevideos, Veranstaltungsinformationen, Standort und Karte. 
 Mit PS Events kannst Du auch Dein nächstes lokales Meetup, Deine nächste Konferenz oder Online-Veranstaltung verwalten.
 
-===  Die perfekte Design- Passform ===
+=  Die perfekte Design- Passform =
 
 PS Events passt sich dem Design Deines Themes an. 
 Du musst nicht mehr mit speziellen Vorlagen oder anderem Müll herumspielen - nur mit dem gewünschten Layout. 
@@ -32,12 +32,12 @@ Verwende Shortcodes und integrierte Widgets, um Elemente genau dort zu integrier
 
 PS Events enthält Shortcodes, Add-Ons und Widgets für mehr Kontrolle über Layouts.
 
-===  Ticketverkauf ===
+=  Ticketverkauf =
 
 Verwende PayPal direkt nach dem Auschecken oder zusammen mit PSeCommerce, um zusätzliche Zahlungsgateways zu aktivieren.
 
 
-===  Ereignis-Countdown ===
+=  Ereignis-Countdown =
 
 Baue mit einem Countdown die Vorfreude auf Dein Online-Ereignis auf und leite Benutzer nach Ablauf des Timers automatisch zu Deinem Live-Stream weiter. 
 Wir finden das ziemlich cool. 
@@ -46,20 +46,20 @@ Stelle es einmal ein und da ist es, genau wie am Schnürchen.
 
 PS Events beinhaltet die Integration von E-Newsletter für einen besseren E-Mail-Follow-up-Stil.
 
-===  Kalenderfreigabe & Benachrichtigungen ===
+=  Kalenderfreigabe & Benachrichtigungen =
 
 Lasse Gäste mit einem Klick Ereignisse zu iCal oder Google Kalender hinzufügen. 
 Sende automatisch Updates für Gäste, wenn sich die Ereignisinformationen ändern. 
 Integriere in den E-Newsletter und verwende benutzerdefinierte E-Mail-Vorlagen, um Deine Marke besser darzustellen - oder um sich einfach an Dein Party-Theme zu halten.
 
-===  Zeit sparen - Service Sync ===
+=  Zeit sparen - Service Sync =
 
 Das Teilen Deiner Veranstaltungen in sozialen Medien sollte einfach sein, daher haben wir es so gemacht. 
 Erstelle ein Ereignis mit Facebook-Ereignissen, und PS Events veröffentlicht es automatisch auf Deiner Webseite.
 
 Du kannst sogar Ereignisse aus anderen beliebten Kalendern abrufen, indem Du sie aus Google Kalender und Meetup.com importierst.   
 
-===  Integration des Google Maps Plugins ===
+=  Integration des Google Maps Plugins =
 
 Richtungen waren noch nie so lustig. 
 Teile Karten mit Stil und füge benutzerdefinierte Drop-Pin-Symbole hinzu. 
@@ -69,7 +69,7 @@ Wunderschönes, benutzerdefiniertes und einzigartiges Kartendesign mit Google Ma
 
 Lasse Benutzer sich mit ihrem sozialen Netzwerk anmelden.
 
-===  Einfaches RSVP & Social Share ===
+=  Einfaches RSVP & Social Share =
 
 Erstelle Deine Mailingliste und mache es Benutzern einfach, ihren Platz mit einem einfachen E-Mail-RSVP zu reservieren. 
 Begeistere die Teilnehmer für Deine Veranstaltung. Verbreite das Wort mit automatisiertem Social Sharing, wenn Teilnehmer sich melden, damit sie ihren Freunden mitteilen können, was sie verpassen.
@@ -83,19 +83,19 @@ Begeistere die Teilnehmer für Deine Veranstaltung. Verbreite das Wort mit autom
 
 == Mehr PSOURCE ==
 
-=== PS MAPS PLUGIN ===
+= PS MAPS PLUGIN =
 
 Hole mehr aus PS Events indem Du Deinen Veranstaltungen total anpassbare, interkative Google-Karten spendierst.
 So lotst Du Deine Teilnehmer direkt zum Veranstaltungsort!
 Mit unserem [PS Maps Plugin](https://n3rds.work/piestingtal_source/ps-google-maps-plugin/) entfaltet PS Events ganz neues Potential.
 
-=== PSECOMMERCE PLUGIN ===
+= PSECOMMERCE PLUGIN =
 
 Verkaufe Online-Tickets oder verechne Teilnahme-Gebüren und verechne es über die PSeCommerce Gateways.
 Du kannst Deine Events auch als Shop-Produkte anlegen lassen.
 Lerne [PSeCommerce](https://n3rds.work/piestingtal_source/psecommerce-shopsystem/) kennen!
 
-=== PS MITGLIEDSCHAFTEN PLUGIN ===
+= PS MITGLIEDSCHAFTEN PLUGIN =
 
 Deine Benutzer bezahlen für eine besondere Mitgliedschaft? 
 Belohne sie mit Ermäßigungen wenn sie an einer Deiner Veranstaltungen teilnehmen!
@@ -106,7 +106,7 @@ Noch nicht? - Dann empfehlen wir Dir, einen Blick auf unser [PS Mitgliedschaften
 Viele, viele Kaffees konsumieren wir während wir an unseren Plugins und Themes arbeiten.
 Wie wärs? Möchtest Du uns mit einer Kaffee-Spende bei der Arbeit an unseren Plugins unterstützen?
 
-=== Unterstütze uns ===
+= Unterstütze uns =
 
 Mach eine [Spende per Überweisung oder PayPal](https://n3rds.work/spendenaktionen/unterstuetze-unsere-psource-free-werke/) wir Danken Dir!
 
