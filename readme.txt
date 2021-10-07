@@ -101,6 +101,12 @@ Deine Benutzer bezahlen für eine besondere Mitgliedschaft?
 Belohne sie mit Ermäßigungen wenn sie an einer Deiner Veranstaltungen teilnehmen!
 Noch nicht? - Dann empfehlen wir Dir, einen Blick auf unser [PS Mitgliedschaften Plugin](https://n3rds.work/piestingtal_source/ps-mitgliedschaften-plugin/) zu werfen.
 
+= Finde mehr Piestingtal.Source =
+
+Wirf einen Blick in unser [PSOURCE Sortiment](https://n3rds.work/psource_kategorien/psource-plugins/) und hole noch mehr aus Deinem WordPress/ClassicPress!
+
+Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswork-digalize-das-piestingtal/newsletter-management/) über unsere Piestingtal.Source informiert!
+
 == Hilf uns ==
 
 Viele, viele Kaffees konsumieren wir während wir an unseren Plugins und Themes arbeiten.
@@ -110,7 +116,14 @@ Wie wärs? Möchtest Du uns mit einer Kaffee-Spende bei der Arbeit an unseren Pl
 
 Mach eine [Spende per Überweisung oder PayPal](https://n3rds.work/spendenaktionen/unterstuetze-unsere-psource-free-werke/) wir Danken Dir!
 
+Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswork-digalize-das-piestingtal/newsletter-management/) über unsere Piestingtal.Source informiert!
+
+
 == ChangeLog ==
+
+= 1.3.7 = DerN3rd =
+
+* PSource Updater v1.1 integriert
 
 = 1.3.6 = DerN3rd =
 
