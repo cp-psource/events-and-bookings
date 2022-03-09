@@ -25,7 +25,7 @@
 #eab-events-fpe-rsvps,
 #eab-events-fpe-meta_box-venue {
     float: none;
-    width: 100%;
+    /*width: 100%;*/
 }
 
 #eab-events-fpe-rsvps {
@@ -41,7 +41,7 @@
 }
 
 .eab-events-fpe-meta_box label {
-    display: inline-block;
+    display: block;
     width: auto;
 }
 

@@ -376,7 +376,7 @@ class Eab_Events_FrontPageEditing {
 		$ret .= '<a id="eab-events-fpe-back_to_event" href="' . get_permalink($event->get_id()) . '" ' . $style . '>' . __('ZURÜCK ZUM EREIGNIS', Eab_EventsHub::TEXT_DOMAIN) . '</a>';
 		$ret .= '<input type="hidden" id="eab-events-fpe-event_id" value="' . (int)$event->get_id() . '" />';
 		$ret .= '<div>';
-		$ret .= '<label>' . __('Ereignisname', Eab_EventsHub::TEXT_DOMAIN) . '</label>';
+		$ret .= '<label>' . __('Name des Events', Eab_EventsHub::TEXT_DOMAIN) . '</label>';
 		$ret .= '<br /><input type="text" name="" id="eab-events-fpe-event_title" value="' . esc_attr($event->get_title()) . '" />';
 		$ret .= '</div>';
 
@@ -457,7 +457,7 @@ class Eab_Events_FrontPageEditing {
 
 		// Status
 		$ret .= '<div>';
-		$ret .= '<label>' . __('Ereignisstatus', Eab_EventsHub::TEXT_DOMAIN) . '</label>';
+		$ret .= '<label>' . __('Event-Status', Eab_EventsHub::TEXT_DOMAIN) . '</label>';
 		$ret .= '<select name="" id="eab-events-fpe-status">';
 		$ret .= '	<option value="' . Eab_EventModel::STATUS_OPEN . '" '.(($event->is_open())?'selected="selected"':'').' >'.__('Offen', Eab_EventsHub::TEXT_DOMAIN).'</option>';
 		$ret .= '	<option value="' . Eab_EventModel::STATUS_CLOSED . '" '.(($event->is_closed())?'selected="selected"':'').' >'.__('Geschlossen', Eab_EventsHub::TEXT_DOMAIN).'</option>';
