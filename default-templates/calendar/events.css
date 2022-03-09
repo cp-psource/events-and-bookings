@@ -182,7 +182,7 @@ a.psourceevents-calendar-event:hover {
     .psourceevents-list table.eab-monthly_calendar th,
     .psourceevents-list table.eab-monthly_calendar td {
         display: block;
-        zoom: 0.7;
+        /*zoom: 0.7;*/
     }
     .psourceevents-list table.eab-monthly_calendar td {
         display: inline-block;
@@ -218,7 +218,7 @@ a.psourceevents-calendar-event:hover {
         background: none;
         border: none;
         font-weight: normal;
-        font-size: .9em;
+        font-size: 1em;
     }
     .psourceevents-list table.eab-monthly_calendar .psourceevents-calendar-event-info:before {
         content: ' ';

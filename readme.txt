@@ -123,6 +123,11 @@ Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswor
 
 = 1.3.7 = DerN3rd =
 
+* CSS Fix Kalender Mobilansicht (Zoom sollte jetzt 1 sein)
+* CSS Kalender-Text Größenanpassung (1em)
+
+= 1.3.7 = DerN3rd =
+
 * PSource Updater v1.1 integriert
 * PSeCommerce Links korrigiert
 
