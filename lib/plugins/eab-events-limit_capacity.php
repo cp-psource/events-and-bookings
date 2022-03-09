@@ -201,9 +201,9 @@ class Eab_Addon_LimitCapacity {
 			__( 'Ereigniskapazität', Eab_EventsHub::TEXT_DOMAIN ) .
 			'</label></div>';
 
-		$ret .= '<label for="eab_event_capacity">' . __( 'Gib die maximale Teilnehmerzahl für diese Veranstaltung ein', Eab_EventsHub::TEXT_DOMAIN ) . '</label>';
+		$ret .= '<label for="eab_event_capacity">' . __( 'Gib die maximale Teilnehmerzahl für diese Veranstaltung ein:', Eab_EventsHub::TEXT_DOMAIN ) . '</label>';
 		$ret .= ' <input type="text" name="eab-elc_capacity" id="eab_event_capacity" size="3" value="' . $capacity_str . '" /> ';
-		$ret .= '<label for="eab_event_capacity-unlimited">' . __( 'wählen für unbegrenzt', Eab_EventsHub::TEXT_DOMAIN ) . '</label>';
+		$ret .= '<label for="eab_event_capacity-unlimited">' . __( ',oder auswählen für unbegrenzt:', Eab_EventsHub::TEXT_DOMAIN ) . '</label>';
 		$ret .= ' <input type="checkbox" name="eab-elc_capacity" id="eab_event_capacity-unlimited" ' . $unlimited_capacity . ' value="0" /> ';
 
 		$ret .= '</div>';
@@ -219,9 +219,9 @@ class Eab_Addon_LimitCapacity {
 
 		$ret .= '<div class="eab-events-fpe-meta_box">';
 
-		$ret .= __( 'Gib die maximale Teilnehmerzahl für diese Veranstaltung ein', Eab_EventsHub::TEXT_DOMAIN );
+		$ret .= __( 'Gib die maximale Teilnehmerzahl für diese Veranstaltung ein:', Eab_EventsHub::TEXT_DOMAIN );
 		$ret .= ' <input type="text" name="eab-elc_capacity" id="eab_event_capacity" size="3" value="' . $capacity_str . '" /> ';
-		$ret .= __( 'wählen für unbegrenzt', Eab_EventsHub::TEXT_DOMAIN );
+		$ret .= __( ',oder auswählen für unbegrenzt:', Eab_EventsHub::TEXT_DOMAIN );
 		$ret .= ' <input type="checkbox" name="eab-elc_capacity" id="eab_event_capacity-unlimited" ' . $unlimited_capacity . ' value="0" /> ';
 
 		$ret .= '</div>';
