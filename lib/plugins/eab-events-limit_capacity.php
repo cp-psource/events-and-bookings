@@ -309,7 +309,7 @@ class Eab_Addon_LimitCapacity {
 
 			<div class="eab-inside">
 				<div class="eab-settings-settings_item">
-					<label for="eab-limit_capacity-show_remaining"><?php _e( 'Restliche Plätze anzeigen', Eab_EventsHub::TEXT_DOMAIN ); ?>?</label>
+					<label for="eab-limit_capacity-show_remaining"><?php _e( 'Verbleibende Plätze anzeigen', Eab_EventsHub::TEXT_DOMAIN ); ?>?</label>
 					<input type="checkbox" id="eab-limit_capacity-show_remaining" name="event_default[eab-limit_capacity-show_remaining]" value="1" <?php print $checked_remaining; ?> />
 				</div>
 				<div class="eab-settings-settings_item">
