@@ -13,7 +13,7 @@ class Eab_Popular_Widget extends Eab_Widget {
 			'limit' => 5,
 		));
 		$widget_ops = array(
-			'description' => __('Display List of Popular events', $this->translation_domain)
+			'description' => __('Liste beliebter Ereignisse anzeigen', $this->translation_domain)
 		);
         $control_ops = array(
         	'title' => __('PSE-Populäre Events', $this->translation_domain)
