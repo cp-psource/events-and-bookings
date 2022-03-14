@@ -68,7 +68,7 @@
             // Old API
             eab_mbuttons_container.append('' +
                 '<a onclick="return openMapEditor();" title="' + eab_l10nEditor.add_map + '" class="thickbox" id="eab_add_map" href="#TB_inline?width=640&height=594&inlineId=map_container">' +
-                '<img onclick="return false;" alt="' + eab_l10nEditor.add_map + '" src="' + maps_url + '/img/system/globe-button.gif">' +
+                '<img onclick="return false;" alt="' + eab_l10nEditor.add_map + '" src="' + maps_url + '/img/system/globe-button.gif">' + 'PS-Map einfügen' +
                 '</a>'
             );
             $('#map_preview_container')
@@ -78,7 +78,7 @@
             // New API
             eab_mbuttons_container.append('' +
                 '<a class="add_map" title="' + eab_l10nEditor.add_map + '">' +
-                '<img onclick="return false;" alt="' + eab_l10nEditor.add_map + '" src="' + maps_url + '/img/system/globe-button.gif">' +
+                '<img onclick="return false;" alt="' + eab_l10nEditor.add_map + '" src="' + maps_url + '/img/system/globe-button.gif">' + 'PS-Map einfügen' +
                 '</a>'
             );
             $(document)

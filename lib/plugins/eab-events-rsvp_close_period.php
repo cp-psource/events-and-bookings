@@ -59,9 +59,9 @@ class Eab_Events_RSVPClosePeriod {
 		__( 'RSVP-Anmeldefrist für Ereignisse', Eab_EventsHub::TEXT_DOMAIN ) .
 		'</label></div>';
 
-	$ret .= '<label for="eab_event_close_period">' . __( 'Stunden', Eab_EventsHub::TEXT_DOMAIN ) . '</label>';
 	$ret .= ' <input type="text" name="eab_ecp_close_period" id="eab_event_close_period" size="3" value="' . $period_str . '" /> ';
-	$ret .= '<br /><label for="eab_event_close_period-noclose">' . __( 'wenn keine Anmeldefrist vorliegt', Eab_EventsHub::TEXT_DOMAIN ) . '</label>';
+	$ret .= '<label for="eab_event_close_period">' . __( 'Stunden vor Beginn', Eab_EventsHub::TEXT_DOMAIN ) . '</label>';
+	$ret .= '<br /><label for="eab_event_close_period-noclose">' . __( ', oder auswählen wenn keine Anmeldefrist vorliegt:', Eab_EventsHub::TEXT_DOMAIN ) . '</label>';
 	$ret .= ' <input type="checkbox" name="eab_ecp_close_period" id="eab_event_close_period-noclose" ' . $nolimit . ' value="0" /> ';
 
 	$ret .= '</div>';
