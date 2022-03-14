@@ -101,6 +101,11 @@ Deine Benutzer bezahlen für eine besondere Mitgliedschaft?
 Belohne sie mit Ermäßigungen wenn sie an einer Deiner Veranstaltungen teilnehmen!
 Noch nicht? - Dann empfehlen wir Dir, einen Blick auf unser [PS Mitgliedschaften Plugin](https://n3rds.work/piestingtal_source/ps-mitgliedschaften-plugin/) zu werfen.
 
+= PS-ENEWSLETTER PLUGIN =
+
+(Empfohlen für ClassicPress)
+[PSeNewsletter](https://n3rds.work/piestingtal_source/psenewsletter-wordpress-newsletter-ohne-drittanbieter/) informiert Deine Event-Teilnehmer über weitere Event-Details, halte Deine Besucher Up-To-Date.
+
 = Finde mehr Piestingtal.Source =
 
 Wirf einen Blick in unser [PSOURCE Sortiment](https://n3rds.work/psource_kategorien/psource-plugins/) und hole noch mehr aus Deinem WordPress/ClassicPress!
@@ -127,6 +132,8 @@ Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswor
 * CSS Kalender-Text Größenanpassung (1em)
 * Event-Editor Text-Anpassung
 * CSS Anpassungen Editor (Optimierung Datums-Fenster)
+* Viele Text-Verbesserungen
+* Widgets unter "PSE" gruppiert
 
 = 1.3.7 = DerN3rd =
 
