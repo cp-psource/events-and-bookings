@@ -740,7 +740,7 @@ class Eab_EventsHub {
 					$content .= '<div class="eab-section-block">';
 					$content .= '<div class="eab-section-heading">' . sprintf( __( 'Teil %d', self::TEXT_DOMAIN ), $key+1 ) . '&nbsp' . '<a href="#remove" class="eab-event-remove_time">' . __('Entferne', self::TEXT_DOMAIN) . '</a></div>';
 					$content .= '<div class="misc-eab-section eab-start-section"><label for="psource_event_start_'.$key.'">';
-					$content .= sprintf( __('%sBeginnt%s', self::TEXT_DOMAIN ), '<span>', '</span>' ).'</label>';
+					$content .= sprintf( __('%sEvent beginnt%s', self::TEXT_DOMAIN ), '<span>', '</span>' ).'</label>';
 					$content .= '<input type="text" name="psource_event_start['.$key.']" id="psource_event_start_'.$key.'" class="psource_event_picker psource_event psource_event_date psource_event_start" value="'.date('Y-m-d', $start).'" size="10" readonly/> ';
 					$content .= '<input type="text" name="psource_event_start_time['.$key.']" id="psource_event_start_time_'.$key.'" class="psource_event psource_event_time psource_event_time_picker psource_event_start_time" value="'.date('H:i', $start).'" size="3" style="position: relative; z-index:999;" readonly/>';
 					$content .= ' <input type="checkbox" name="psource_event_no_start_time['.$key.']" id="psource_event_no_start_time_'.$key.'" class="psource_event psource_event_time psource_event_no_start_time" value="1" ' . $no_start . ' />';
@@ -761,7 +761,7 @@ class Eab_EventsHub {
 			    $content .= '<div class="eab-section-block">';
 			    $content .= '<div class="eab-section-heading">' . sprintf(__( 'Teil %d', self::TEXT_DOMAIN ), $i+1) . '&nbsp' . '<a href="#remove" class="eab-event-remove_time">' . __('Entfernen', self::TEXT_DOMAIN) . '</a></div>';
 			    $content .= '<div class="misc-eab-section eab-start-section"><label class="eab-inline-label" for="psource_event_start_'.$i.'">';
-			    $content .= sprintf( __( '%sBeginnt%s', self::TEXT_DOMAIN ), '<span>', '</span>' ).'</label>';
+			    $content .= sprintf( __( '%sEvent beginnt%s', self::TEXT_DOMAIN ), '<span>', '</span>' ).'</label>';
 			    $content .= '<input type="text" name="psource_event_start['.$i.']" id="psource_event_start_'.$i.'" class="psource_event_picker psource_event psource_event_date psource_event_start" value="" size="10" readonly/> ';
 			    $content .= '<input type="text" name="psource_event_start_time['.$i.']" id="psource_event_start_time_'.$i.'" class="psource_event psource_event_time psource_event_time_picker psource_event_start_time" value="" size="3" style="position: relative; z-index:999;" readonly/>';
 				$content .= ' <input type="checkbox" name="psource_event_no_start_time['.$i.']" id="psource_event_no_start_time_'.$i.'" class="psource_event psource_event_time psource_event_no_start_time" value="1" />';
@@ -786,7 +786,7 @@ class Eab_EventsHub {
 			$content .= '<div class="eab-section-block">';
 			$content .= '<div class="eab-section-heading">' . sprintf(__('Teilbank', self::TEXT_DOMAIN), $i+1) . '&nbsp' . '<a href="#remove" class="eab-event-remove_time">' . __('Entfernen', self::TEXT_DOMAIN) . '</a></div>';
 			$content .= '<div class="misc-eab-section eab-start-section"><label for="psource_event_start_bank" >';
-			$content .= sprintf( __('%sBeginnt%s', self::TEXT_DOMAIN ), '<span>', '</span>' ).'</label>';
+			$content .= sprintf( __('%sEvent beginnt%s', self::TEXT_DOMAIN ), '<span>', '</span>' ).'</label>';
 			$content .= '<input type="text" name="psource_event_start_b[bank]" id="psource_event_start_bank" class="psource_event_picker_b psource_event psource_event_date psource_event_start_b" value="" size="10" readonly/> ';
 			$content .= '<input type="text" name="psource_event_start_time_b[bank]" id="psource_event_start_time_bank" class="psource_event psource_event_time psource_event_time_picker psource_event_start_time_b" value="" size="3" readonly/>';
 			$content .= ' <input type="checkbox" name="psource_event_no_start_time[bank]" id="psource_event_no_start_time_bank" class="psource_event psource_event_time psource_event_no_start_time" value="1" />';
