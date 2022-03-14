@@ -884,7 +884,7 @@ class Eab_Template {
 			),
 			'integer' => array(
 				'type' => __('integer', Eab_EventsHub::TEXT_DOMAIN),
-				'value' => 'numeric value',
+				'value' => 'Zahlenwert',
 				'example' => sprintf(__('%s="326"', Eab_EventsHub::TEXT_DOMAIN), $argument),
 			),
 			'string' => array(
@@ -893,42 +893,42 @@ class Eab_Template {
 				'example' => sprintf(__('%s="mystring"', Eab_EventsHub::TEXT_DOMAIN), $argument),
 			),
 			'string:date' => array(
-				'type' => __('date', Eab_EventsHub::TEXT_DOMAIN),
-				'value' => __('date format string', Eab_EventsHub::TEXT_DOMAIN),
+				'type' => __('Datum', Eab_EventsHub::TEXT_DOMAIN),
+				'value' => __('Zeichenfolge für das Datumsformat', Eab_EventsHub::TEXT_DOMAIN),
 				'example' => sprintf(__('%s="2011-11-18"', Eab_EventsHub::TEXT_DOMAIN), $argument),
 			),
 			'string:date_format' => array(
-				'type' => __('date format', Eab_EventsHub::TEXT_DOMAIN),
-				'value' => __('format string for dates', Eab_EventsHub::TEXT_DOMAIN),
+				'type' => __('Datumsformat', Eab_EventsHub::TEXT_DOMAIN),
+				'value' => __('Formatstring für Datumsangaben', Eab_EventsHub::TEXT_DOMAIN),
 				'example' => sprintf(__('%s="Y-m-d"', Eab_EventsHub::TEXT_DOMAIN), $argument),
 			),
 			'string:date_strtotime' => array(
 				'type' => sprintf(__('<a href="%s" target="_blank">strtotime</a>-compatible string', Eab_EventsHub::TEXT_DOMAIN), 'http://www.php.net/manual/en/datetime.formats.relative.php'),
-				'value' => __('strtotime-compatible expression', Eab_EventsHub::TEXT_DOMAIN),
+				'value' => __('strtotime-kompatibler Ausdruck', Eab_EventsHub::TEXT_DOMAIN),
 				'example' => sprintf('%s="+1 month"', $argument),
 			),
 			'string:or_integer' => array(
-				'type' => __('string or integer', Eab_EventsHub::TEXT_DOMAIN),
-				'value' => __('"some_text" or "212"', Eab_EventsHub::TEXT_DOMAIN),
+				'type' => __('string oder integer', Eab_EventsHub::TEXT_DOMAIN),
+				'value' => __('"some_text" oder "212"', Eab_EventsHub::TEXT_DOMAIN),
 				'example' => sprintf(__('%s="some_text"', Eab_EventsHub::TEXT_DOMAIN), $argument),
 			),
 			'string:sort' => array(
-				'type' => __('ordering keyword', Eab_EventsHub::TEXT_DOMAIN),
-				'value' => __('"ASC" or "DESC"', Eab_EventsHub::TEXT_DOMAIN),
+				'type' => __('Schlüsselwort bestellen', Eab_EventsHub::TEXT_DOMAIN),
+				'value' => __('"ASC" oder "DESC"', Eab_EventsHub::TEXT_DOMAIN),
 				'example' => sprintf(__('%s="ASC"', Eab_EventsHub::TEXT_DOMAIN), $argument),
 			),
 			'string:id_list' => array(
-				'type' => __('list of comma-separated IDs', Eab_EventsHub::TEXT_DOMAIN),
+				'type' => __('Liste von durch Kommas getrennten IDs', Eab_EventsHub::TEXT_DOMAIN),
 				'value' => __('"52,26,18"', Eab_EventsHub::TEXT_DOMAIN),
 				'example' => sprintf(__('%s="52,26,18"', Eab_EventsHub::TEXT_DOMAIN), $argument),
 			),
 			'string:list' => array(
-				'type' => __('list of comma-separated strings', Eab_EventsHub::TEXT_DOMAIN),
+				'type' => __('Liste von durch Kommas getrennten Zeichenfolgen', Eab_EventsHub::TEXT_DOMAIN),
 				'value' => __('"foo,bar,baz"', Eab_EventsHub::TEXT_DOMAIN),
 				'example' => sprintf(__('%s="foo,bar,baz"', Eab_EventsHub::TEXT_DOMAIN), $argument),
 			),
 			'string:url' => array(
-				'type' => __('valid URL', Eab_EventsHub::TEXT_DOMAIN),
+				'type' => __('gültige URL', Eab_EventsHub::TEXT_DOMAIN),
 				'value' => __('"http://example.com/something"', Eab_EventsHub::TEXT_DOMAIN),
 				'example' => sprintf(__('%s="http://example.com/something"', Eab_EventsHub::TEXT_DOMAIN), $argument),
 			),
@@ -938,7 +938,7 @@ class Eab_Template {
 			? $type_map[$raw_type]
 			: false
 		;
-		$title = sprintf(__("%s, e.g. [%s ... %s]", Eab_EventsHub::TEXT_DOMAIN), $type['value'], $tag, $type['example']);
+		$title = sprintf(__("%s, z.B. [%s ... %s]", Eab_EventsHub::TEXT_DOMAIN), $type['value'], $tag, $type['example']);
 		return array(
 			'type' => $type['type'],
 			'title' => $title,
