@@ -9,7 +9,7 @@ Author: DerN3rd
 */
 
 /*
-Detail: Dieses Add-On veröffentlicht automatisch eine Aktivitätsaktualisierung, wenn eine vordefinierte Aktion in Events + gemäß Deinen Einstellungen ausgeführt wird..
+Detail: Dieses Add-On veröffentlicht automatisch eine Aktivitätsaktualisierung, wenn eine vordefinierte Aktion in PS-Events gemäß Deinen Einstellungen ausgeführt wird.
 */ 
 
 class Eab_BuddyPress_AutoUpdateActivity {

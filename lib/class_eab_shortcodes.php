@@ -163,7 +163,7 @@ class Eab_Shortcodes extends Eab_Codec {
 		$help[] = array(
 			'title' => __('Ereigniskarten-Shortcode', Eab_EventsHub::TEXT_DOMAIN),
 			'tag' => 'eab_events_map',
-			'note' => __('Benötigt Google Maps Plugin.', Eab_EventsHub::TEXT_DOMAIN),
+			'note' => __('Benötigt <a href="https://n3rds.work/piestingtal_source/ps-google-maps-plugin/" target="_blank">PS Google Maps Plugin</a>.', Eab_EventsHub::TEXT_DOMAIN),
 			'arguments' => array(
 				'date' => array('help' => __('Startdatum - Standard jetzt', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'string:date'),
 				'relative_date' => array('help' => __('Ein Datum relativ zum Jetzt oder zum Datum Argument', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'string:date_strtotime'),
