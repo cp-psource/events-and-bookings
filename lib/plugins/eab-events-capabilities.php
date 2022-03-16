@@ -41,9 +41,9 @@ class Eab_Events_Capabilities {
 		if( $eab_protect_media_images == 1 )
 			add_filter( 'posts_where', array( $this, 'eab_protect_media_images' ), 10, 2 );
 	}
-	
+	//php7.5 Fix Originalcode if( $query->query['post_type'] != 'attachment' ) return $where;
 	function eab_protect_media_images( $where, $query ) {
-                if( $query->query['post_type'] != 'attachment' ) return $where;
+                if(isset( $query->query['post_type']) != 'attachment' ) return $where;
 		global $current_user;
                 
 		if( is_user_logged_in() ){

@@ -126,9 +126,13 @@ Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswor
 
 == ChangeLog ==
 
+= 1.3.9 = DerN3rd =
+
+* Fix Undefined index
+
 = 1.3.8 = DerN3rd =
 
-* CSS Fix Kalender Mobilansicht (Zoom sollte jetzt 1 sein)
+* CSS Fix Kalender Mobilansicht (Zoom ist nun 1)
 * CSS Kalender-Text Größenanpassung (1em)
 * Event-Editor Text-Anpassung
 * CSS Anpassungen Editor (Optimierung Datums-Fenster)
