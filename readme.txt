@@ -129,6 +129,7 @@ Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswor
 = 1.3.9 = DerN3rd =
 
 * Fix Undefined index
+* Textanpassungen
 
 = 1.3.8 = DerN3rd =
 

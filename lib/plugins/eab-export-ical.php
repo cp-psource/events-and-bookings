@@ -82,7 +82,7 @@ class Eab_Export_iCal {
 	<h3 class="eab-hndle"><?php _e('iCal Export Einstellungen', Eab_EventsHub::TEXT_DOMAIN); ?></h3>
 	<div class="eab-inside">
 	    <div class="eab-settings-settings_item">
-			<b><?php _e('Exported event times', Eab_EventsHub::TEXT_DOMAIN); ?></b>
+			<b><?php _e('Exportierte Ereigniszeiten', Eab_EventsHub::TEXT_DOMAIN); ?></b>
 			<div style="line-height:1.5em; padding-bottom:.5em;">
 				<label for="eab_export-ical-time-gmt">
 					<input type="radio" id="eab_export-ical-time-gmt" name="event_default[eab_export-ical-time]" value="gmt" <?php echo $checked_time_gmt; ?> />
