@@ -56,7 +56,8 @@ class Eab_Daily_Widget extends Eab_Widget {
 	    $date = date( 'Y-m-d', eab_current_time() );
 	}
 
-	$ddate = create_function( '', 'return "' . $date . '";' );
+	/*$ddate = create_function( '', 'return "' . $date . '";' );*/
+	$ddate = function($date) {return "' . $date . '";};
 
 	add_filter( 'eab-collection-daily_events_date', $ddate );
 	$_events = Eab_CollectionFactory::get_daily_events( eab_current_time(), $query_args );

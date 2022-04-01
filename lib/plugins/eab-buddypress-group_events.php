@@ -517,7 +517,8 @@ class Eab_GroupEvents_Shortcodes extends Eab_Codec {
 		);
 
 		$order_method = $args['order']
-			? create_function('', 'return "' . $args['order'] . '";')
+			/*? create_function('', 'return "' . $args['order'] . '";')*/
+			? function() {return "' . $args[order] . '";}
 			: false
 		;
 		if ($order_method) add_filter('eab-collection-date_ordering_direction', $order_method);
@@ -525,7 +526,8 @@ class Eab_GroupEvents_Shortcodes extends Eab_Codec {
 		// Lookahead - depending on presence, use regular upcoming query, or poll week count
 		if ($args['lookahead']) {
 			$method = $args['weeks']
-				? create_function('', 'return ' . $args['weeks'] . ';')
+				/*? create_function('', 'return ' . $args['weeks'] . ';')*/
+				? function() {return ' . $args[weeks] . ';}
 				: false;
 			;
 			if ($method) add_filter('eab-collection-upcoming_weeks-week_number', $method);

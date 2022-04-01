@@ -491,7 +491,7 @@ class Eab_EventsHub {
 		}
 		if ( $style ) { 
 			/*add_action( 'wp_head', create_function('', "wp_enqueue_style('eab-events', '$style');" ) );*/
-			add_action( 'wp_head', function() {wp_enqueue_style('eab-events', '$style');} );
+			add_action( 'wp_head', function($style) {wp_enqueue_style('eab-events', '$style');} );
 		}
 
 		if ( empty( $path ) || "$type.php" == $file ) {
@@ -574,7 +574,8 @@ class Eab_EventsHub {
 			$style 		= $style_path ? EAB_PLUGIN_URL . "default-templates/{$eab_type}/events.css" : $style;
 		}
 		if ( $style ) { 
-			add_action( 'wp_head', create_function('', "wp_enqueue_style('eab-events', '$style');" ) );
+			/*add_action( 'wp_head', create_function('', "wp_enqueue_style('eab-events', '$style');" ) );*/
+			add_action( 'wp_head', function() {wp_enqueue_style('eab-events', '$style');} );
 		}
 
 		if ( empty( $path ) || "$type.php" == $file ) {

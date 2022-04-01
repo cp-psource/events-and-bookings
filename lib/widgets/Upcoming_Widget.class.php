@@ -48,7 +48,8 @@ class Eab_Upcoming_Widget extends Eab_Widget {
 			));
 		}
 		if ($options['lookahead'] && is_numeric($options['lookahead'])) {
-			$lookahead_func = create_function('', 'return ' . $options['lookahead'] . ';');
+			/*$lookahead_func = create_function('', 'return ' . $options['lookahead'] . ';');*/
+			$lookahead_func = function() {return ' . $options[lookahead] . ';};
 			add_filter('eab-collection-upcoming_weeks-week_number', $lookahead_func);
 		}
 		$_events = Eab_CollectionFactory::get_upcoming_weeks_events(eab_current_time(), $query_args);

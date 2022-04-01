@@ -116,7 +116,8 @@ class Eab_Api {
 		)));
 		if (!$this->_data->get_option('facebook-no_init')) {
 			if (defined('EAB_INTERNAL_FLAG__FB_INIT_ADDED')) return false;
-			add_action('wp_footer', create_function('', "echo '" .
+			/*add_action('wp_footer', create_function('', "echo '" .*/
+			add_action('wp_footer', function() { 'echo'  .
 			sprintf(
 				'<div id="fb-root"></div><script type="text/javascript">
 				window.fbAsyncInit = function() {
@@ -138,7 +139,7 @@ class Eab_Api {
 				</script>',
 				$this->_data->get_option('facebook-app_id')
 			) .
-			"';"));
+			"';";});
 			define('EAB_INTERNAL_FLAG__FB_INIT_ADDED', true);
 		}
     }
@@ -257,7 +258,8 @@ class Eab_Api {
 				$twitter_time = strtotime($headers['date']);
 				$delta = $twitter_time - $test_time;
 				if (abs($delta) > EAB_OAUTH_TIMESTAMP_DELTA_THRESHOLD) {
-					add_action('eab-oauth-twitter-generate_timestamp', create_function('$time', 'return $time + ' . $delta . ';'));
+					/*add_action('eab-oauth-twitter-generate_timestamp', create_function('$time', 'return $time + ' . $delta . ';'));*/
+					add_action('eab-oauth-twitter-generate_timestamp', function($time) {return $time + ' . $delta . ';});
 				}
 			}
 		}
@@ -298,7 +300,7 @@ class Eab_Api {
 				$twitter_time = strtotime($headers['date']);
 				$delta = $twitter_time - $test_time;
 				if (abs($delta) > EAB_OAUTH_TIMESTAMP_DELTA_THRESHOLD) {
-					add_action('eab-oauth-twitter-generate_timestamp', create_function('$time', 'return $time + ' . $delta . ';'));
+					add_action('eab-oauth-twitter-generate_timestamp', function($time) {return $time + ' . $delta . ';});
 				}
 			}
 		}
