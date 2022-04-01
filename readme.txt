@@ -130,6 +130,7 @@ Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswor
 
 * Fix Undefined index
 * Textanpassungen
+* Fix: deprecated create_function
 
 = 1.3.8 = DerN3rd =
 
