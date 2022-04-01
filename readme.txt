@@ -126,6 +126,10 @@ Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswor
 
 == ChangeLog ==
 
+= 1.4.0 = DerN3rd =
+
+* Anpassung Textdomain
+
 = 1.3.9 = DerN3rd =
 
 * Fix Undefined index
