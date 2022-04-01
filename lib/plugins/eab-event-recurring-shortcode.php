@@ -92,7 +92,7 @@ class Eab_Events_RecurringShortCode {
 		$new_content .= '<div class="event ' . Eab_Template::get_status_class($event) . '" itemscope itemtype="http://schema.org/Event">';
 		$new_content .= '<meta itemprop="name" content="' . esc_attr($event->get_title()) . '" />';
 		$new_content .= '<a href="' . $link . '" class="psourceevents-viewevent">' .
-			__('Ereignis anzeigen', Eab_EventsHub::TEXT_DOMAIN) . 
+			__('Ereignis anzeigen', 'eab') . 
 		'</a>';
 		$new_content .= apply_filters('eab-template-archive_after_view_link', '', $event);
 		$new_content .= '<div style="clear: both;"></div>';

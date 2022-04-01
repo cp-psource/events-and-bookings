@@ -18,7 +18,7 @@ else
         function eab_show_php_notice() {
                 ?>
                 <div class="notice notice-error is-dismissible">
-                        <p><?php _e( 'Du benötigst PHP 5.4 oder höher, um die Erweiterung <b>Import: Facebook Events</b> verwenden zu können.', Eab_EventsHub::TEXT_DOMAIN ); ?></p>
+                        <p><?php _e( 'Du benötigst PHP 5.4 oder höher, um die Erweiterung <b>Import: Facebook Events</b> verwenden zu können.', 'eab' ); ?></p>
                 </div>
                 <?php
         }

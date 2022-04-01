@@ -134,12 +134,12 @@ class Eab_Events_EventControlledRedirect {
 			return;
 		if( !$permalink = get_permalink( get_post_meta($post->ID, 'eab_events_redirect_source', true ) ) ) {
 			echo '<div class="error"><p>' .
-				__("Dies ist keine gültige Quell-ID.", Eab_EventsHub::TEXT_DOMAIN) .
+				__("Dies ist keine gültige Quell-ID.", 'eab') .
 			'</p></div>';
 		}
 		else if ( $permalink == get_post_meta($post->ID, 'eab_events_redirect_target', true ) ) {
 			echo '<div class="error"><p>' .
-				__("Ziel und Quelle zeigen auf dieselbe Seite. Dies führt zu einer endlosen Umleitungsschleife.", Eab_EventsHub::TEXT_DOMAIN) .
+				__("Ziel und Quelle zeigen auf dieselbe Seite. Dies führt zu einer endlosen Umleitungsschleife.", 'eab') .
 			'</p></div>';
 		}
 	}
@@ -179,11 +179,11 @@ class Eab_Events_EventControlledRedirect {
 		$content .= '<div class="eab_meta_box">';
 		$content .= '<input type="hidden" name="psource_event_redirect_meta" value="1" />';
 		$content .= '<div class="misc-eab-section">';
-		$content .= '<div class="eab_meta_column_box">'.__('Ereignisgesteuerte Umleitung', Eab_EventsHub::TEXT_DOMAIN).'</div>';
-		$content .= '<label for="psource_event_redirect_source" id="psource_event_redirect_source_label">'.__('ID der Quellseite ', Eab_EventsHub::TEXT_DOMAIN).':</label>&nbsp;';
+		$content .= '<div class="eab_meta_column_box">'.__('Ereignisgesteuerte Umleitung', 'eab').'</div>';
+		$content .= '<label for="psource_event_redirect_source" id="psource_event_redirect_source_label">'.__('ID der Quellseite ', 'eab').':</label>&nbsp;';
 		$content .= '<input type="text" name="psource_event_redirect_source" id="psource_event_redirect_source" class="psource_event" value="'.$source.'" size="5" /> ';
 		$content .= '<div class="clear"></div>';
-		$content .= '<label for="psource_event_redirect_target" id="psource_event_redirect_targer_label">'.__('URL des Ziels ', Eab_EventsHub::TEXT_DOMAIN).':</label>&nbsp;';
+		$content .= '<label for="psource_event_redirect_target" id="psource_event_redirect_targer_label">'.__('URL des Ziels ', 'eab').':</label>&nbsp;';
 		$content .= '<input type="text" name="psource_event_redirect_target" id="psource_event_redirect_target" class="psource_event" value="'.$target.'" /> ';
 		$content .= '<div class="clear"></div>';
 		$content .= '</div>';
@@ -215,18 +215,18 @@ class Eab_Events_EventControlledRedirect {
 		$tips->set_icon_url(EAB_PLUGIN_URL . 'img/information.png' );
 		?>
 		<div id="eab-settings-redirect" class="eab-metabox postbox">
-				<h3 class="eab-hndle"><?php _e('Ereignisgesteuerte Umleitungseinstellungen', Eab_EventsHub::TEXT_DOMAIN); ?></h3>
+				<h3 class="eab-hndle"><?php _e('Ereignisgesteuerte Umleitungseinstellungen', 'eab'); ?></h3>
 				<div class="eab-inside">
 					<div class="eab-settings-settings_item">
-					    <label for="psource_event-global_redirect_source" ><?php _e('Globale Quellenseiten-ID', Eab_EventsHub::TEXT_DOMAIN); ?></label>
+					    <label for="psource_event-global_redirect_source" ><?php _e('Globale Quellenseiten-ID', 'eab'); ?></label>
 						<input type="text" size="10" name="event_default[global_redirect_source]" value="<?php print $this->_data->get_option('global_redirect_source'); ?>" />
-						<span><?php echo $tips->add_tip(__('Wenn Du hier eine ID eingibst, verwenden alle Ereignisse, für die KEINE ID-Einstellung für die Quellseite vorhanden ist, diese Einstellung.', Eab_EventsHub::TEXT_DOMAIN)); ?></span>
+						<span><?php echo $tips->add_tip(__('Wenn Du hier eine ID eingibst, verwenden alle Ereignisse, für die KEINE ID-Einstellung für die Quellseite vorhanden ist, diese Einstellung.', 'eab')); ?></span>
 					</div>
 					    
 					<div class="eab-settings-settings_item">
-					    <label for="psource_event-global_redirect_target" ><?php _e('Globale Ziel-URL', Eab_EventsHub::TEXT_DOMAIN); ?></label>
+					    <label for="psource_event-global_redirect_target" ><?php _e('Globale Ziel-URL', 'eab'); ?></label>
 						<input type="text" size="40" name="event_default[global_redirect_target]" value="<?php print $this->_data->get_option('global_redirect_target'); ?>" />
-						<span><?php echo $tips->add_tip(__('Wenn Du hier eine URL eingibst, verwenden alle Ereignisse, die KEINE Ziel-URL-Einstellung haben, diese Einstellung.', Eab_EventsHub::TEXT_DOMAIN)); ?></span>
+						<span><?php echo $tips->add_tip(__('Wenn Du hier eine URL eingibst, verwenden alle Ereignisse, die KEINE Ziel-URL-Einstellung haben, diese Einstellung.', 'eab')); ?></span>
 					</div>
 					
 					    

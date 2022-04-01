@@ -156,12 +156,12 @@ class Eab_Calendars_MeetupImporter {
 		$user_id = $this->_data->get_option('meetup_importer-user_id');
 		if (empty($user_id)) wp_send_json(array(
 			'status' => 0,
-			'msg' => __('Bitte konfiguriere die API-Informationen und speichere zuerst die Einstellungen', Eab_EventsHub::TEXT_DOMAIN),
+			'msg' => __('Bitte konfiguriere die API-Informationen und speichere zuerst die Einstellungen', 'eab'),
 		));
 		$topics = $this->_meetup->get_topics_for($user_id);
 		if (empty($topics)) wp_send_json(array(
 			'status' => 1,
-			'msg' => __('Keine zu importierenden Themen', Eab_EventsHub::TEXT_DOMAIN),
+			'msg' => __('Keine zu importierenden Themen', 'eab'),
 		));
 		$imported = get_option('eab-meetup_importer-imported_topics', array());
 		$results = array();
@@ -181,7 +181,7 @@ class Eab_Calendars_MeetupImporter {
 			$results[] = "<a href='" . admin_url('/edit-tags.php?action=edit&taxonomy=eab_events_category&tag_ID=' . $result['term_id'] . '&post_type=' . Eab_EventModel::POST_TYPE) . "'>{$term}</a>";
 		}
 		update_option('eab-meetup_importer-imported_topics', $imported);
-		$results[] = sprintf(__('%s Themen erfolgreich als Ereigniskategorien importiert', Eab_EventsHub::TEXT_DOMAIN), count($results));
+		$results[] = sprintf(__('%s Themen erfolgreich als Ereigniskategorien importiert', 'eab'), count($results));
 		wp_send_json(array(
 			'status' => 1,
 			'msg' => join('<br />', $results),
@@ -192,18 +192,18 @@ class Eab_Calendars_MeetupImporter {
 		$user_id = $this->_data->get_option('meetup_importer-user_id');
 		if (empty($user_id)) wp_send_json(array(
 			'status' => 0,
-			'msg' => __('Bitte konfiguriere die API-Informationen und speichere zuerst die Einstellungen', Eab_EventsHub::TEXT_DOMAIN),
+			'msg' => __('Bitte konfiguriere die API-Informationen und speichere zuerst die Einstellungen', 'eab'),
 		));
 		$events = $this->_meetup->get_events_for($user_id);
 		if (empty($events) || empty($events['results'])) wp_send_json(array(
 			'status' => 1,
-			'msg' => __('Es wurden keine Ereignisse importiert', Eab_EventsHub::TEXT_DOMAIN),
+			'msg' => __('Es wurden keine Ereignisse importiert', 'eab'),
 		));
 
 		$imported = $this->_import_events($events);
 		if (empty($imported)) wp_send_json(array(
 			'status' => 0,
-			'msg' => __('Keine Ereignisse importiert.', Eab_EventsHub::TEXT_DOMAIN),
+			'msg' => __('Keine Ereignisse importiert.', 'eab'),
 		));
 
 		$result = array();
@@ -212,7 +212,7 @@ class Eab_Calendars_MeetupImporter {
 			$event = new Eab_EventModel(get_post($event_id));
 			$result[] = '<a href="' . admin_url('post.php?action=edit&post=' . $event->get_id()) . '">' . $event->get_title() . '</a>';
 		}
-		$result[] = sprintf(__('%s Ereignisse erfolgreich importiert', Eab_EventsHub::TEXT_DOMAIN), count($result));
+		$result[] = sprintf(__('%s Ereignisse erfolgreich importiert', 'eab'), count($result));
 		wp_send_json(array(
 			'status' => 1,
 			'msg' => join('<br />', $result),
@@ -227,18 +227,18 @@ class Eab_Calendars_MeetupImporter {
 
 		if (empty($lat) || empty($lng)) wp_send_json(array(
 			'status' => 0,
-			'msg' => __('Ungültiger Standort', Eab_EventsHub::TEXT_DOMAIN),
+			'msg' => __('Ungültiger Standort', 'eab'),
 		));
 		$events = $this->_meetup->get_nearby_events($lat, $lng, 100);
 		if (empty($events) || empty($events['results'])) wp_send_json(array(
 			'status' => 1,
-			'msg' => __('Es wurden keine Ereignisse importiert', Eab_EventsHub::TEXT_DOMAIN),
+			'msg' => __('Es wurden keine Ereignisse importiert', 'eab'),
 		));
 
 		$imported = $this->_import_events($events);
 		if (empty($imported)) wp_send_json(array(
 			'status' => 0,
-			'msg' => __('Keine Ereignisse importiert.', Eab_EventsHub::TEXT_DOMAIN),
+			'msg' => __('Keine Ereignisse importiert.', 'eab'),
 		));
 
 		$result = array();
@@ -247,7 +247,7 @@ class Eab_Calendars_MeetupImporter {
 			$event = new Eab_EventModel(get_post($event_id));
 			$result[] = '<a target="_blank" href="' . admin_url('post.php?action=edit&post=' . $event->get_id()) . '">' . $event->get_title() . '</a>';
 		}
-		$result[] = sprintf(__('%s Ereignisse erfolgreich importiert', Eab_EventsHub::TEXT_DOMAIN), count($result));
+		$result[] = sprintf(__('%s Ereignisse erfolgreich importiert', 'eab'), count($result));
 		wp_send_json(array(
 			'status' => 1,
 			'msg' => join('<br />', $result),
@@ -335,35 +335,35 @@ class Eab_Calendars_MeetupImporter {
 		$member_id = $this->_data->get_option('meetup_importer-user_id');
 ?>
 <div id="eab-settings-meetup_importer" class="eab-metabox postbox">
-	<h3 class="eab-hndle"><?php _e('Meetup.com import Einstellungen', Eab_EventsHub::TEXT_DOMAIN); ?></h3>
+	<h3 class="eab-hndle"><?php _e('Meetup.com import Einstellungen', 'eab'); ?></h3>
 	<div class="eab-inside">
 	    <div class="eab-settings-settings_item">
-			<b><?php _e('API Einstellungen', Eab_EventsHub::TEXT_DOMAIN); ?></b>
+			<b><?php _e('API Einstellungen', 'eab'); ?></b>
 			<div style="line-height:1.5em; padding-bottom:.5em;">
 				<label for="eab-meetup_importer-api_key">
-					<?php _e('API Schlüssel', Eab_EventsHub::TEXT_DOMAIN); ?>
+					<?php _e('API Schlüssel', 'eab'); ?>
 					<input type="text" class="widefat" id="eab-meetup_importer-api_key" name="event_default[meetup_importer-api_key]" value="<?php echo esc_attr($api_key); ?>" />
 				</label>
 				<br />
 				<label for="eab-meetup_importer-user_id">
-					<?php _e('Meetup.com Member ID', Eab_EventsHub::TEXT_DOMAIN); ?>
+					<?php _e('Meetup.com Member ID', 'eab'); ?>
 					<input type="text" class="widefat" id="eab-meetup_importer-user_id" name="event_default[meetup_importer-user_id]" value="<?php echo esc_attr($member_id); ?>" />
 				</label>
 			</div>
 	    </div>
 		<div class="eab-settings-settings_item" id="eab-meetup_importer-actions">
 		<?php if (!empty($api_key) && !empty($member_id)) { ?>
-	    	<button type="button" class="button" id="eab-meetup_importer-import_user_events"><?php echo esc_html(__('Importiere meine Events', Eab_EventsHub::TEXT_DOMAIN)); ?></button>
-	    	<button type="button" class="button" id="eab-meetup_importer-import_location_events"><?php echo esc_html(__('Importiere Ereignisse in der Nähe meines aktuellen Standorts', Eab_EventsHub::TEXT_DOMAIN)); ?></button>
-	    	<button type="button" class="button" id="eab-meetup_importer-import_user_topics"><?php echo esc_html(__('Importiere meine Themen als Ereigniskategorien', Eab_EventsHub::TEXT_DOMAIN)); ?></button>
+	    	<button type="button" class="button" id="eab-meetup_importer-import_user_events"><?php echo esc_html(__('Importiere meine Events', 'eab')); ?></button>
+	    	<button type="button" class="button" id="eab-meetup_importer-import_location_events"><?php echo esc_html(__('Importiere Ereignisse in der Nähe meines aktuellen Standorts', 'eab')); ?></button>
+	    	<button type="button" class="button" id="eab-meetup_importer-import_user_topics"><?php echo esc_html(__('Importiere meine Themen als Ereigniskategorien', 'eab')); ?></button>
                 <?php if( ! is_ssl() ) : ?>
                 <br>
-                <em><?php _e( 'Wichtig: Um Ereignisse in der Nähe Deines aktuellen Standorts zu importieren, benötigst Du SSL', Eab_EventsHub::TEXT_DOMAIN ); ?></em>
+                <em><?php _e( 'Wichtig: Um Ereignisse in der Nähe Deines aktuellen Standorts zu importieren, benötigst Du SSL', 'eab' ); ?></em>
                 <br>
                 <?php endif; ?>
 	    	<div id="eab-meetup_importer-status" style="display:none"></div>
 	    <?php } else { ?>
-			<p class="note"><?php _e('Fülle zunächst die obigen API-Informationen aus und speichere Deine Einstellungen', Eab_EventsHub::TEXT_DOMAIN); ?></p>
+			<p class="note"><?php _e('Fülle zunächst die obigen API-Informationen aus und speichere Deine Einstellungen', 'eab'); ?></p>
 	    <?php } ?>
 	    </div>
 	</div>
@@ -382,19 +382,19 @@ $(function () {
 	// Import my events
 	$("#eab-meetup_importer-import_user_events").on("click", function (e) {
 		e.preventDefault();
-		write_status("<?php echo esc_js(__('Bitte einen Augenblick...', Eab_EventsHub::TEXT_DOMAIN)); ?>");
+		write_status("<?php echo esc_js(__('Bitte einen Augenblick...', 'eab')); ?>");
 		$.post(ajaxurl, {
 			action: 'eab_meetup-import_user_events'
 		}, function (data) {
 			if (data && "msg" in data && data.msg) write_status(data.msg);
-			else write_status("<?php echo esc_js(__('Error', Eab_EventsHub::TEXT_DOMAIN)); ?>");
+			else write_status("<?php echo esc_js(__('Error', 'eab')); ?>");
 		}, 'json');
 		return false;
 	});
 	// Geolocated import
 	$("#eab-meetup_importer-import_location_events").on("click", function (e) {
 		e.preventDefault();
-		write_status("<?php echo esc_js(__('Bitte einen Augenblick...', Eab_EventsHub::TEXT_DOMAIN)); ?>");
+		write_status("<?php echo esc_js(__('Bitte einen Augenblick...', 'eab')); ?>");
                 
 		navigator.geolocation.getCurrentPosition(function (resp) {
 			$.post(ajaxurl, {
@@ -403,7 +403,7 @@ $(function () {
 				lng: resp.coords.longitude
 			}, function (data) {
 				if (data && "msg" in data && data.msg) write_status(data.msg);
-				else write_status("<?php echo esc_js(__('Error', Eab_EventsHub::TEXT_DOMAIN)); ?>");
+				else write_status("<?php echo esc_js(__('Error', 'eab')); ?>");
 			}, 'json')
 		});
 		return false;
@@ -411,12 +411,12 @@ $(function () {
 	// Import my topics
 	$("#eab-meetup_importer-import_user_topics").on("click", function (e) {
 		e.preventDefault();
-		write_status("<?php echo esc_js(__('Bitte einen Augenblick...', Eab_EventsHub::TEXT_DOMAIN)); ?>");
+		write_status("<?php echo esc_js(__('Bitte einen Augenblick...', 'eab')); ?>");
 		$.post(ajaxurl, {
 			action: 'eab_meetup-import_user_topics'
 		}, function (data) {
 			if (data && "msg" in data && data.msg) write_status(data.msg);
-			else write_status("<?php echo esc_js(__('Fehler', Eab_EventsHub::TEXT_DOMAIN)); ?>");
+			else write_status("<?php echo esc_js(__('Fehler', 'eab')); ?>");
 		}, 'json');
 		return false;
 	});

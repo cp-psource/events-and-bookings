@@ -216,7 +216,7 @@ abstract class Eab_CalendarTable extends WpmuDev_CalendarTable {
 	}
 	
 	protected function _get_text_domain () {
-		return Eab_EventsHub::TEXT_DOMAIN;
+		return 'eab';
 	}
 }
 
@@ -256,13 +256,13 @@ class Eab_CalendarTable_UpcomingCalendarWidget extends Eab_CalendarTable {
 	
 	public function get_day_names () {
 		return array(
-			__('Su', Eab_EventsHub::TEXT_DOMAIN),
-			__('Mo', Eab_EventsHub::TEXT_DOMAIN),
-			__('Tu', Eab_EventsHub::TEXT_DOMAIN),
-			__('We', Eab_EventsHub::TEXT_DOMAIN),
-			__('Th', Eab_EventsHub::TEXT_DOMAIN),
-			__('Fr', Eab_EventsHub::TEXT_DOMAIN),
-			__('Sa', Eab_EventsHub::TEXT_DOMAIN),
+			__('Su', 'eab'),
+			__('Mo', 'eab'),
+			__('Tu', 'eab'),
+			__('We', 'eab'),
+			__('Th', 'eab'),
+			__('Fr', 'eab'),
+			__('Sa', 'eab'),
 		);
 	}
 	

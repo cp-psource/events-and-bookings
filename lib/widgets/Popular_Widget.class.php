@@ -81,7 +81,7 @@ class Eab_Popular_Widget extends Eab_Widget {
 		} else {
 			echo $before_widget .
 				$before_title . $title . $after_title .
-				'<p class="eab-widget-no_events">' . __('No popular events.', Eab_EventsHub::TEXT_DOMAIN) . '</p>' .
+				'<p class="eab-widget-no_events">' . __('No popular events.', 'eab') . '</p>' .
 			$after_widget;
 		}
     }

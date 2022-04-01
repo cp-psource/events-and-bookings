@@ -160,7 +160,7 @@ class Eab_Events_EventCountdown {
 		'size'		=> 70,
 		'add'		=> 0,
 		'footer_script' => false,
-		'expired'	=> __('Geschlossen', Eab_EventsHub::TEXT_DOMAIN)
+		'expired'	=> __('Geschlossen', 'eab')
 		), $atts ) );
 		
 		$this->add_countdown = true;

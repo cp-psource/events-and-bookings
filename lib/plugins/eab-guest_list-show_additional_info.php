@@ -133,72 +133,72 @@ class Eab_GuestList_ShowAdditionalInfo {
 		$show_in_export = $this->_data->get_option('guest_lists-sai-show_in_export') ? 'checked="checked"' : '';
 ?>
 <div id="eab-settings-guest_lists" class="eab-metabox postbox">
-	<h3 class="eab-hndle"><?php _e('Optionen für Gästelisten', Eab_EventsHub::TEXT_DOMAIN); ?></h3>
+	<h3 class="eab-hndle"><?php _e('Optionen für Gästelisten', 'eab'); ?></h3>
 	<div class="eab-inside">
 		<div class="eab-settings-settings_item" style="line-height:1.8em">
-			<label><?php _e('Gastavatare', Eab_EventsHub::TEXT_DOMAIN); ?></label>
+			<label><?php _e('Gastavatare', 'eab'); ?></label>
 			<br />
 			<input type="radio" id="eab_event-guest_lists-sai-no_avatar" name="event_default[guest_lists-sai-avatar_size]" value="" <?php print $no_avatar; ?> />
-	    	<label for="eab_event-guest_lists-sai-no_avatar"><?php _e('Zeige keine Avatare', Eab_EventsHub::TEXT_DOMAIN); ?></label>
-			<span><?php echo $tips->add_tip(__('Benutzeravatare in RSVP-Listen ausblenden', Eab_EventsHub::TEXT_DOMAIN)); ?></span>
+	    	<label for="eab_event-guest_lists-sai-no_avatar"><?php _e('Zeige keine Avatare', 'eab'); ?></label>
+			<span><?php echo $tips->add_tip(__('Benutzeravatare in RSVP-Listen ausblenden', 'eab')); ?></span>
 			<br />
 			<input type="radio" id="eab_event-guest_lists-sai-small_avatar" name="event_default[guest_lists-sai-avatar_size]" value="small" <?php print $avatar_small; ?> />
-	    	<label for="eab_event-guest_lists-sai-small_avatar"><?php _e('Zeige kleine Avatare', Eab_EventsHub::TEXT_DOMAIN); ?></label>
-			<span><?php echo $tips->add_tip(__('Zeige kleine Avatare in RSVP-Listen', Eab_EventsHub::TEXT_DOMAIN)); ?></span>
+	    	<label for="eab_event-guest_lists-sai-small_avatar"><?php _e('Zeige kleine Avatare', 'eab'); ?></label>
+			<span><?php echo $tips->add_tip(__('Zeige kleine Avatare in RSVP-Listen', 'eab')); ?></span>
 			<br />
 			<input type="radio" id="eab_event-guest_lists-sai-med_avatar" name="event_default[guest_lists-sai-avatar_size]" value="medium" <?php print $avatar_med; ?> />
-	    	<label for="eab_event-guest_lists-sai-med_avatar"><?php _e('Mittlere Avatare anzeigen', Eab_EventsHub::TEXT_DOMAIN); ?></label>
-			<span><?php echo $tips->add_tip(__('Mittlere Avatare in RSVP-Listen anzeigen', Eab_EventsHub::TEXT_DOMAIN)); ?></span>
+	    	<label for="eab_event-guest_lists-sai-med_avatar"><?php _e('Mittlere Avatare anzeigen', 'eab'); ?></label>
+			<span><?php echo $tips->add_tip(__('Mittlere Avatare in RSVP-Listen anzeigen', 'eab')); ?></span>
 			<br />
 			<input type="radio" id="eab_event-guest_lists-sai-large_avatar" name="event_default[guest_lists-sai-avatar_size]" value="large" <?php print $avatar_large; ?> />
-	    	<label for="eab_event-guest_lists-sai-large_avatar"><?php _e('Zeige große Avatare', Eab_EventsHub::TEXT_DOMAIN); ?></label>
-			<span><?php echo $tips->add_tip(__('Zeige große Avatare in RSVP-Listen', Eab_EventsHub::TEXT_DOMAIN)); ?></span>
+	    	<label for="eab_event-guest_lists-sai-large_avatar"><?php _e('Zeige große Avatare', 'eab'); ?></label>
+			<span><?php echo $tips->add_tip(__('Zeige große Avatare in RSVP-Listen', 'eab')); ?></span>
 			<p></p>
 	    </div>
 		<div class="eab-settings-settings_item" style="line-height:1.8em">
-			<label><?php _e('Gastnamen', Eab_EventsHub::TEXT_DOMAIN); ?></label>
+			<label><?php _e('Gastnamen', 'eab'); ?></label>
 			<br />
 			<input type="radio" id="eab_event-guest_lists-sai-show_name-no_name" name="event_default[guest_lists-sai-show_name]" value="" <?php print $no_name; ?> />
-	    	<label for="eab_event-guest_lists-sai-show_name-no_name"><?php _e('Namen nicht anzeigen', Eab_EventsHub::TEXT_DOMAIN); ?></label>
-			<span><?php echo $tips->add_tip(__('Verberge Namen in RSVP-Listen', Eab_EventsHub::TEXT_DOMAIN)); ?></span>
+	    	<label for="eab_event-guest_lists-sai-show_name-no_name"><?php _e('Namen nicht anzeigen', 'eab'); ?></label>
+			<span><?php echo $tips->add_tip(__('Verberge Namen in RSVP-Listen', 'eab')); ?></span>
 	    	<br />
 			<input type="radio" id="eab_event-guest_lists-sai-show_name-display_name" name="event_default[guest_lists-sai-show_name]" value="display_name" <?php print $display_name; ?> />
-	    	<label for="eab_event-guest_lists-sai-show_name-display_name"><?php _e('Anzeigenamen anzeigen', Eab_EventsHub::TEXT_DOMAIN); ?></label>
-			<span><?php echo $tips->add_tip(__('Anzeigen von Benutzernamen in RSVP-Listen', Eab_EventsHub::TEXT_DOMAIN)); ?></span>
+	    	<label for="eab_event-guest_lists-sai-show_name-display_name"><?php _e('Anzeigenamen anzeigen', 'eab'); ?></label>
+			<span><?php echo $tips->add_tip(__('Anzeigen von Benutzernamen in RSVP-Listen', 'eab')); ?></span>
 	    	<br />
 			<input type="radio" id="eab_event-guest_lists-sai-show_name-username" name="event_default[guest_lists-sai-show_name]" value="username" <?php print $username; ?> />
-	    	<label for="eab_event-guest_lists-sai-show_name-username"><?php _e('Benutzername anzeigen', Eab_EventsHub::TEXT_DOMAIN); ?></label>
-			<span><?php echo $tips->add_tip(__('Benutzernamen in RSVP-Listen anzeigen', Eab_EventsHub::TEXT_DOMAIN)); ?></span>
+	    	<label for="eab_event-guest_lists-sai-show_name-username"><?php _e('Benutzername anzeigen', 'eab'); ?></label>
+			<span><?php echo $tips->add_tip(__('Benutzernamen in RSVP-Listen anzeigen', 'eab')); ?></span>
 	    	<br />
 			<input type="radio" id="eab_event-guest_lists-sai-show_name-firstname" name="event_default[guest_lists-sai-show_name]" value="firstname" <?php print $firstname; ?> />
-	    	<label for="eab_event-guest_lists-sai-show_name-firstname"><?php _e('Vorname anzeigen', Eab_EventsHub::TEXT_DOMAIN); ?></label>
-			<span><?php echo $tips->add_tip(__('Benutzer-Vornamen in RSVP-Listen anzeigen', Eab_EventsHub::TEXT_DOMAIN)); ?></span>
+	    	<label for="eab_event-guest_lists-sai-show_name-firstname"><?php _e('Vorname anzeigen', 'eab'); ?></label>
+			<span><?php echo $tips->add_tip(__('Benutzer-Vornamen in RSVP-Listen anzeigen', 'eab')); ?></span>
 	    	<br />
 			<input type="radio" id="eab_event-guest_lists-sai-show_name-lastname" name="event_default[guest_lists-sai-show_name]" value="lastname" <?php print $lastname; ?> />
-	    	<label for="eab_event-guest_lists-sai-show_name-lastname"><?php _e('Familienname anzeigen', Eab_EventsHub::TEXT_DOMAIN); ?></label>
-			<span><?php echo $tips->add_tip(__('Zeigt Familiennamen der Benutzer in den RSVP-Listen an', Eab_EventsHub::TEXT_DOMAIN)); ?></span>
+	    	<label for="eab_event-guest_lists-sai-show_name-lastname"><?php _e('Familienname anzeigen', 'eab'); ?></label>
+			<span><?php echo $tips->add_tip(__('Zeigt Familiennamen der Benutzer in den RSVP-Listen an', 'eab')); ?></span>
 	    	<br />
 			<input type="radio" id="eab_event-guest_lists-sai-show_name-fullname_first" name="event_default[guest_lists-sai-show_name]" value="fullname_first" <?php print $fullname_first; ?> />
-	    	<label for="eab_event-guest_lists-sai-show_name-fullname_first"><?php _e('Vollständigen Namen anzeigen, Vorname zuerst', Eab_EventsHub::TEXT_DOMAIN); ?></label>
-			<span><?php echo $tips->add_tip(__('Zeigt vollständigen Benutzernamen in RSVP-Listen als Vorname Nachname an', Eab_EventsHub::TEXT_DOMAIN)); ?></span>
+	    	<label for="eab_event-guest_lists-sai-show_name-fullname_first"><?php _e('Vollständigen Namen anzeigen, Vorname zuerst', 'eab'); ?></label>
+			<span><?php echo $tips->add_tip(__('Zeigt vollständigen Benutzernamen in RSVP-Listen als Vorname Nachname an', 'eab')); ?></span>
 	    	<br />
 			<input type="radio" id="eab_event-guest_lists-sai-show_name-fullname_last" name="event_default[guest_lists-sai-show_name]" value="fullname_last" <?php print $fullname_last; ?> />
-	    	<label for="eab_event-guest_lists-sai-show_name-fullname_last"><?php _e('Vollständigen Namen anzeigen, Familienname zuerst', Eab_EventsHub::TEXT_DOMAIN); ?></label>
-			<span><?php echo $tips->add_tip(__('Zeigt den vollständigen Benutzernamen in RSVP-Listen als Nachname Vorname an', Eab_EventsHub::TEXT_DOMAIN)); ?></span>
+	    	<label for="eab_event-guest_lists-sai-show_name-fullname_last"><?php _e('Vollständigen Namen anzeigen, Familienname zuerst', 'eab'); ?></label>
+			<span><?php echo $tips->add_tip(__('Zeigt den vollständigen Benutzernamen in RSVP-Listen als Nachname Vorname an', 'eab')); ?></span>
 			<p></p>
 	    </div>
 	    <div class="eab-settings-settings_item" style="line-height:1.8em">
-			<label><?php _e('Zeige hübsche Gästelistennamen in ...', Eab_EventsHub::TEXT_DOMAIN); ?></label>
+			<label><?php _e('Zeige hübsche Gästelistennamen in ...', 'eab'); ?></label>
 			<br />
 			<input type="hidden" name="event_default[guest_lists-sai-show_in_admin]" value="" />
 			<input type="checkbox" id="eab_event-guest_lists-sai-show_in_admin" name="event_default[guest_lists-sai-show_in_admin]" value="1" <?php print $show_in_admin; ?> />
-	    	<label for="eab_event-guest_lists-sai-show_in_admin"><?php _e('Admin-Bereich für Veranstaltungen', Eab_EventsHub::TEXT_DOMAIN); ?></label>
-			<span><?php echo $tips->add_tip(__('Standardmäßig werden hier die Benutzernamen angezeigt', Eab_EventsHub::TEXT_DOMAIN)); ?></span>
+	    	<label for="eab_event-guest_lists-sai-show_in_admin"><?php _e('Admin-Bereich für Veranstaltungen', 'eab'); ?></label>
+			<span><?php echo $tips->add_tip(__('Standardmäßig werden hier die Benutzernamen angezeigt', 'eab')); ?></span>
 			<br />
 			<input type="hidden" name="event_default[guest_lists-sai-show_in_export]" value="" />
 			<input type="checkbox" id="eab_event-guest_lists-sai-show_in_export" name="event_default[guest_lists-sai-show_in_export]" value="1" <?php print $show_in_export; ?> />
-	    	<label for="eab_event-guest_lists-sai-show_in_export"><?php _e('Ereignisse exportieren Dateien', Eab_EventsHub::TEXT_DOMAIN); ?></label>
-			<span><?php echo $tips->add_tip(__('Standardmäßig werden hier die Benutzernamen angezeigt', Eab_EventsHub::TEXT_DOMAIN)); ?></span>
+	    	<label for="eab_event-guest_lists-sai-show_in_export"><?php _e('Ereignisse exportieren Dateien', 'eab'); ?></label>
+			<span><?php echo $tips->add_tip(__('Standardmäßig werden hier die Benutzernamen angezeigt', 'eab')); ?></span>
 			<br />
 	    </div>
 	</div>

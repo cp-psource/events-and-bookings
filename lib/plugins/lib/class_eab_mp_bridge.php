@@ -229,9 +229,9 @@ class Eab_MP_Bridge {
 		else if (empty($query->posts)) $query->posts = array(get_post($linked_product_id));
 
 		if (!$linked_product_id) {
-			$out = $fee . '<br />' . __('... oder wählen bitte einen Artikel aus', Eab_EventsHub::TEXT_DOMAIN);
+			$out = $fee . '<br />' . __('... oder wählen bitte einen Artikel aus', 'eab');
 		} else {
-			$out = __('Wähle einen Preisartikel', Eab_EventsHub::TEXT_DOMAIN);
+			$out = __('Wähle einen Preisartikel', 'eab');
 		}
 
 		$out .= ':<br /><select name="eab_e2mp_product_id"><option value=""></option>';
@@ -594,7 +594,7 @@ class Eab_MP_Bridge {
 		$product_id = get_post_meta($event_id, 'eab_product_id', true);
 		if( !isset( $product_id ) || empty( $product_id ) ) return $form;
 		if (!$this->_is_mp_present()) return $form;
-		return '<p><a href="' . esc_url(mp_cart_link(false, true)) . '">' . __('Klicke hier, um Dein Ticket zu erwerben', Eab_EventsHub::TEXT_DOMAIN) . '</a></p>';
+		return '<p><a href="' . esc_url(mp_cart_link(false, true)) . '">' . __('Klicke hier, um Dein Ticket zu erwerben', 'eab') . '</a></p>';
 	}
 
 	function dispatch_mp_product_if_order_paid ($order) {
@@ -795,7 +795,7 @@ class Eab_MP_Bridge {
 
 		$booking_id 		= $event->get_user_booking_id( $user_id );
 		$booking_meta 		= unserialize( $event->get_booking_paid( $booking_id ) );
-		$error_msg          = __( 'Der Bestellstatus konnte aufgrund eines unerwarteten Fehlers nicht aktualisiert werden. Bitte versuche es erneut.', Eab_EventsHub::TEXT_DOMAIN );
+		$error_msg          = __( 'Der Bestellstatus konnte aufgrund eines unerwarteten Fehlers nicht aktualisiert werden. Bitte versuche es erneut.', 'eab' );
 
 		// If no order id set, then no need to do anything here
 		if ( ! isset( $booking_meta['order_id'] ) ) {

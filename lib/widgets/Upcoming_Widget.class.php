@@ -90,7 +90,7 @@ class Eab_Upcoming_Widget extends Eab_Widget {
 		} else {
 			echo $before_widget .
 				$before_title . $title . $after_title .
-				'<p class="eab-widget-no_events">' . __('Keine bevorstehenden Veranstaltungen.', Eab_EventsHub::TEXT_DOMAIN) . '</p>' .
+				'<p class="eab-widget-no_events">' . __('Keine bevorstehenden Veranstaltungen.', 'eab') . '</p>' .
 			$after_widget;
 		}
     }
@@ -179,7 +179,7 @@ class Eab_Upcoming_Widget extends Eab_Widget {
 				<select id="<?php echo $this->get_field_id('lookahead'); ?>" name="<?php echo $this->get_field_name('lookahead'); ?>">
 					<?php for ($i=1; $i<=52; $i++) { ?>
 						<?php $selected = ($i == $options['lookahead']) ? 'selected="selected"' : ''; ?>
-						<option value="<?php echo $i; ?>" <?php echo $selected;?>><?php printf(__('%d Wochen', Eab_EventsHub::TEXT_DOMAIN), $i);?></option>
+						<option value="<?php echo $i; ?>" <?php echo $selected;?>><?php printf(__('%d Wochen', 'eab'), $i);?></option>
 					<?php } ?>
 				</select>
            </label>

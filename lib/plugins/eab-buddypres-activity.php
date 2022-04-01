@@ -54,14 +54,14 @@ class Eab_BuddyPress_AutoUpdateActivity {
 		$public_announcement = $this->_is_public_announcement($event->get_id());
 		
 		if ('any' == $created) {
-			$update = sprintf(__('%s hat ein Ereignis erstellt', Eab_EventsHub::TEXT_DOMAIN), $user_link);
+			$update = sprintf(__('%s hat ein Ereignis erstellt', 'eab'), $user_link);
 		} else if ('group' == $created && $group_id) {
 			$group = groups_get_group(array('group_id' => $group_id));
 			$group_link = bp_get_group_permalink($group);
 			$group_name = bp_get_group_name($group);
-			$update = sprintf(__('%s hat ein Ereignis in <a href="%s">%s</a> erstellt', Eab_EventsHub::TEXT_DOMAIN), $user_link, $group_link, $group_name);
+			$update = sprintf(__('%s hat ein Ereignis in <a href="%s">%s</a> erstellt', 'eab'), $user_link, $group_link, $group_name);
 		} else if ('pa' == $created && $public_announcement) {
-			$update = sprintf(__('%s hat eine öffentliche Ankündigung erstellt', Eab_EventsHub::TEXT_DOMAIN), $user_link);
+			$update = sprintf(__('%s hat eine öffentliche Ankündigung erstellt', 'eab'), $user_link);
 		}
 
 		if (!$update) return false;
@@ -131,13 +131,13 @@ class Eab_BuddyPress_AutoUpdateActivity {
 
 		switch ($rsvp) {
 			case Eab_EventModel::BOOKING_YES:
-				$update = sprintf(__('%s wird an <a href="%s">%s</a> teilnehmen', Eab_EventsHub::TEXT_DOMAIN), $user_link, get_permalink($event->get_id()), $event->get_title());
+				$update = sprintf(__('%s wird an <a href="%s">%s</a> teilnehmen', 'eab'), $user_link, get_permalink($event->get_id()), $event->get_title());
 				break;
 			case Eab_EventModel::BOOKING_MAYBE:
-				$update = sprintf(__('%s wird möglicherweise an <a href="%s">%s</a> teilnehmen', Eab_EventsHub::TEXT_DOMAIN), $user_link, get_permalink($event->get_id()), $event->get_title());
+				$update = sprintf(__('%s wird möglicherweise an <a href="%s">%s</a> teilnehmen', 'eab'), $user_link, get_permalink($event->get_id()), $event->get_title());
 				break;
 			case Eab_EventModel::BOOKING_NO:
-				$update = sprintf(__('%s muss leider seine Teilnahme an <a href="%s">%s</a> absagen. :(', Eab_EventsHub::TEXT_DOMAIN), $user_link, get_permalink($event->get_id()), $event->get_title());
+				$update = sprintf(__('%s muss leider seine Teilnahme an <a href="%s">%s</a> absagen. :(', 'eab'), $user_link, get_permalink($event->get_id()), $event->get_title());
 				break;
 		}
 		if (!$update) return false;
@@ -191,9 +191,9 @@ class Eab_BuddyPress_AutoUpdateActivity {
 	function show_nags () {
 		$msg = false;
 		if (!defined('BP_VERSION')) {
-			$msg = __("BuddyPress muss installiert und aktiviert sein, damit die Erweiterung für automatische Aktivitätsaktualisierungen funktioniert", Eab_EventsHub::TEXT_DOMAIN);
+			$msg = __("BuddyPress muss installiert und aktiviert sein, damit die Erweiterung für automatische Aktivitätsaktualisierungen funktioniert", 'eab');
 		} else if (!class_exists('BP_Activity_Activity')) {
-			$msg = __("Die BuddyPress-Aktivitätskomponente muss aktiviert sein, damit die Erweiterung für die automatische Aktualisierung von Aktivitäten funktioniert", Eab_EventsHub::TEXT_DOMAIN);
+			$msg = __("Die BuddyPress-Aktivitätskomponente muss aktiviert sein, damit die Erweiterung für die automatische Aktualisierung von Aktivitäten funktioniert", 'eab');
 		}
 		if (!$msg) return false;
 
@@ -221,49 +221,49 @@ class Eab_BuddyPress_AutoUpdateActivity {
 		$user_rsvp_group_post = class_exists('Eab_BuddyPress_GroupEvents') && $this->_data->get_option('bp-activity_autoupdate-user_rsvp_group_post') ? 'checked="checked"' : false;
 ?>
 <div id="eab-settings-activity_autoupdate" class="eab-metabox postbox">
-	<h3 class="eab-hndle"><?php _e('Einstellungen für die automatische Aktivitätsaktualisierung', Eab_EventsHub::TEXT_DOMAIN); ?></h3>
+	<h3 class="eab-hndle"><?php _e('Einstellungen für die automatische Aktivitätsaktualisierung', 'eab'); ?></h3>
 	<div class="eab-inside">
 		<div class="eab-settings-settings_item" style="line-height:1.8em">
-			<label><?php _e('Aktivitäts-Feed automatisch aktualisieren, wenn ein Ereignis erstellt wird:', Eab_EventsHub::TEXT_DOMAIN); ?></label>	
-			<span><?php echo $tips->add_tip(__('Eine Aktivitätsaktualisierung, die jedes Mal veröffentlicht wird, wenn ein Ereignis erstellt wird.', Eab_EventsHub::TEXT_DOMAIN)); ?></span>
+			<label><?php _e('Aktivitäts-Feed automatisch aktualisieren, wenn ein Ereignis erstellt wird:', 'eab'); ?></label>	
+			<span><?php echo $tips->add_tip(__('Eine Aktivitätsaktualisierung, die jedes Mal veröffentlicht wird, wenn ein Ereignis erstellt wird.', 'eab')); ?></span>
 			<br />	
 			<input type="radio" id="eab_event-bp-activity_autoupdate-event_created" name="eab-bp-activity_autoupdate[event_created]" value="any" <?php print $event_created; ?> />
-			<label for="eab_event-bp-activity_autoupdate-event_created"><?php _e('Jedes Ereignis', Eab_EventsHub::TEXT_DOMAIN); ?></label>
+			<label for="eab_event-bp-activity_autoupdate-event_created"><?php _e('Jedes Ereignis', 'eab'); ?></label>
 		<?php if (class_exists('Eab_BuddyPress_GroupEvents')) { ?>
 			<br />	
 			<input type="radio" id="eab_event-bp-activity_autoupdate-group_event_created" name="eab-bp-activity_autoupdate[event_created]" value="group" <?php print $group_event_created; ?> />
-			<label for="eab_event-bp-activity_autoupdate-group_event_created"><?php _e('Gruppenveranstaltung', Eab_EventsHub::TEXT_DOMAIN); ?></label>
+			<label for="eab_event-bp-activity_autoupdate-group_event_created"><?php _e('Gruppenveranstaltung', 'eab'); ?></label>
 		<?php } ?>
 		<?php if (class_exists('Eab_Events_Pae')) { ?>
 			<br />	
 			<input type="radio" id="eab_event-bp-activity_autoupdate-pa_event_created" name="eab-bp-activity_autoupdate[event_created]" value="pa" <?php print $pa_event_created; ?> />
-			<label for="eab_event-bp-activity_autoupdate-pa_event_created"><?php _e('Öffentliche Ankündigungsveranstaltung', Eab_EventsHub::TEXT_DOMAIN); ?></label>
+			<label for="eab_event-bp-activity_autoupdate-pa_event_created"><?php _e('Öffentliche Ankündigungsveranstaltung', 'eab'); ?></label>
 		<?php } ?>
 			<br />
 			<input type="radio" id="eab_event-bp-activity_autoupdate-skip_created" name="eab-bp-activity_autoupdate[event_created]" value="any" <?php print $skip_created; ?> />
-			<label for="eab_event-bp-activity_autoupdate-skip_created"><?php _e('Aktivität nicht aktualisieren', Eab_EventsHub::TEXT_DOMAIN); ?></label>
+			<label for="eab_event-bp-activity_autoupdate-skip_created"><?php _e('Aktivität nicht aktualisieren', 'eab'); ?></label>
 			<br />	
 			<br />	
 			<input type="checkbox" id="eab_event-bp-activity_autoupdate-created_group_post" name="eab-bp-activity_autoupdate[created_group_post]" value="1" <?php print $created_group_post; ?> />
-			<label for="eab_event-bp-activity_autoupdate-created_group_post"><?php _e('Aktualisiert bei der Erstellung von Gruppenereignissen immer die entsprechenden Gruppenfeeds', Eab_EventsHub::TEXT_DOMAIN); ?></label>
+			<label for="eab_event-bp-activity_autoupdate-created_group_post"><?php _e('Aktualisiert bei der Erstellung von Gruppenereignissen immer die entsprechenden Gruppenfeeds', 'eab'); ?></label>
 		</div>
 		<div class="eab-settings-settings_item" style="line-height:1.8em">
-			<label><?php _e('Aktivitäts-Feed beim Benutzer automatisch aktualisieren:', Eab_EventsHub::TEXT_DOMAIN); ?></label>				
-			<span><?php echo $tips->add_tip(__('Ein Aktivitätsupdate, das jedes Mal veröffentlicht wird, wenn ein Benutzer reagiert.', Eab_EventsHub::TEXT_DOMAIN)); ?></span>
+			<label><?php _e('Aktivitäts-Feed beim Benutzer automatisch aktualisieren:', 'eab'); ?></label>				
+			<span><?php echo $tips->add_tip(__('Ein Aktivitätsupdate, das jedes Mal veröffentlicht wird, wenn ein Benutzer reagiert.', 'eab')); ?></span>
 			<br />
 			<input type="checkbox" id="eab_event-bp-activity_autoupdate-user_rsvp_yes" name="eab-bp-activity_autoupdate[user_rsvp_yes]" value="1" <?php print $user_rsvp_yes; ?> />
-			<label for="eab_event-bp-activity_autoupdate-user_rsvp_yes"><?php _e('... kommt', Eab_EventsHub::TEXT_DOMAIN); ?></label>
+			<label for="eab_event-bp-activity_autoupdate-user_rsvp_yes"><?php _e('... kommt', 'eab'); ?></label>
 			<br />
 			<input type="checkbox" id="eab_event-bp-activity_autoupdate-user_rsvp_maybe" name="eab-bp-activity_autoupdate[user_rsvp_maybe]" value="1" <?php print $user_rsvp_maybe; ?> />
-			<label for="eab_event-bp-activity_autoupdate-user_rsvp_maybe"><?php _e('...kommt vielleicht', Eab_EventsHub::TEXT_DOMAIN); ?></label>
+			<label for="eab_event-bp-activity_autoupdate-user_rsvp_maybe"><?php _e('...kommt vielleicht', 'eab'); ?></label>
 			<br />
 			<input type="checkbox" id="eab_event-bp-activity_autoupdate-user_rsvp_no" name="eab-bp-activity_autoupdate[user_rsvp_no]" value="1" <?php print $user_rsvp_no; ?> />
-			<label for="eab_event-bp-activity_autoupdate-user_rsvp_no"><?php _e('... kommt nicht', Eab_EventsHub::TEXT_DOMAIN); ?></label>
+			<label for="eab_event-bp-activity_autoupdate-user_rsvp_no"><?php _e('... kommt nicht', 'eab'); ?></label>
 		<?php if (class_exists('Eab_BuddyPress_GroupEvents')) { ?>
 			<br />
 			<br />
 			<input type="checkbox" id="eab_event-bp-activity_autoupdate-user_rsvp_group_post" name="eab-bp-activity_autoupdate[user_rsvp_group_post]" value="1" <?php print $user_rsvp_group_post; ?> />
-			<label for="eab_event-bp-activity_autoupdate-user_rsvp_group_post"><?php _e('Aktualisiert den Gruppenaktivitäts-Feed', Eab_EventsHub::TEXT_DOMAIN); ?></label>
+			<label for="eab_event-bp-activity_autoupdate-user_rsvp_group_post"><?php _e('Aktualisiert den Gruppenaktivitäts-Feed', 'eab'); ?></label>
 		<?php } ?>
 		</div>
 	</div>

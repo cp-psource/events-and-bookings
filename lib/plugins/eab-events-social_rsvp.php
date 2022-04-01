@@ -37,10 +37,10 @@ class Eab_Events_SocialRsvps {
 	function show_nags () {
 		$msg = false;
 		if (!$this->_data->get_option('accept_api_logins')) {
-			$msg = __("Du musst Facebook-Anmeldungen aktivieren und konfigurieren, damit die Erweiterung für soziale RSVPs ordnungsgemäß funktioniert", Eab_EventsHub::TEXT_DOMAIN);
+			$msg = __("Du musst Facebook-Anmeldungen aktivieren und konfigurieren, damit die Erweiterung für soziale RSVPs ordnungsgemäß funktioniert", 'eab');
 		}
 		if (!$this->_data->get_option('facebook-app_id')) {
-			$msg = __("Du musst Deine Facebook-App so konfigurieren, dass das Add-On für soziale RSVPs ordnungsgemäß funktioniert", Eab_EventsHub::TEXT_DOMAIN);			
+			$msg = __("Du musst Deine Facebook-App so konfigurieren, dass das Add-On für soziale RSVPs ordnungsgemäß funktioniert", 'eab');			
 		}
 		
 		if ($msg) {

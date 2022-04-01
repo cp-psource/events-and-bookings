@@ -16,12 +16,12 @@ class Eab_Events_Capabilities {
 	private function __construct () {
 		$this->_data = Eab_Options::get_instance();
 		$this->_capabilities = array (
-			'edit_events' => __('Ereignisse bearbeiten', Eab_EventsHub::TEXT_DOMAIN),
-			'edit_others_events' => __('Ereignisse anderer bearbeiten', Eab_EventsHub::TEXT_DOMAIN),
-			'publish_events' => __('Ereignisse veröffentlichen', Eab_EventsHub::TEXT_DOMAIN),
-			'edit_published_events' => __('Veröffentlichte Ereignisse bearbeiten', Eab_EventsHub::TEXT_DOMAIN),
-			'delete_events' => __('Ereignisse löschen', Eab_EventsHub::TEXT_DOMAIN),
-			'delete_published_events' => __('Veröffentlichte Ereignisse löschen', Eab_EventsHub::TEXT_DOMAIN),
+			'edit_events' => __('Ereignisse bearbeiten', 'eab'),
+			'edit_others_events' => __('Ereignisse anderer bearbeiten', 'eab'),
+			'publish_events' => __('Ereignisse veröffentlichen', 'eab'),
+			'edit_published_events' => __('Veröffentlichte Ereignisse bearbeiten', 'eab'),
+			'delete_events' => __('Ereignisse löschen', 'eab'),
+			'delete_published_events' => __('Veröffentlichte Ereignisse löschen', 'eab'),
 		);
 	}
 	
@@ -85,11 +85,11 @@ class Eab_Events_Capabilities {
 		$_roles = $wp_roles->get_names();
 ?>
 <div id="eab-settings-capabilities" class="eab-metabox postbox">
-	<h3 class="eab-hndle"><?php _e('Ereignisfunktionen', Eab_EventsHub::TEXT_DOMAIN); ?></h3>
+	<h3 class="eab-hndle"><?php _e('Ereignisfunktionen', 'eab'); ?></h3>
 	<div class="eab-inside">
 		<div class="eab-settings-settings_item">
 			<select id="eab-event-capabilities-switch_hub">
-				<option selected="selected"><?php echo __('Bitte wähle eine Rolle aus', Eab_EventsHub::TEXT_DOMAIN);?>&nbsp;</option>
+				<option selected="selected"><?php echo __('Bitte wähle eine Rolle aus', 'eab');?>&nbsp;</option>
 			<?php foreach ($_roles as $role => $label) { ?>
 				<option value="<?php esc_attr_e($role);?>"><?php echo $label;?>&nbsp;</option>
 			<?php } ?>
@@ -99,12 +99,12 @@ class Eab_Events_Capabilities {
 			echo $this->_create_role_box($role, $label);
 		}
 ?>
-			<p><input type="button" class="button" id="eab-event-capabilities-reset" value="<?php esc_attr_e(__('Auf Standardeinstellung zurücksetzen', Eab_EventsHub::TEXT_DOMAIN));?>"</p>
+			<p><input type="button" class="button" id="eab-event-capabilities-reset" value="<?php esc_attr_e(__('Auf Standardeinstellung zurücksetzen', 'eab'));?>"</p>
 		</div>
 		<p>
 			<?php $eab_protect_media_images = $this->_data->get_option('eab_protect_media_images'); ?>
 			<input <?php echo $eab_protect_media_images == 1 ? 'checked="checked"' : '' ?> type="checkbox" name="eab_protect_media_images" value="1">
-			<?php _e( 'Aktiviere das Kontrollkästchen, wenn Du die Mediendateien nur auf den Autor beschränken möchtest', Eab_EventsHub::TEXT_DOMAIN ); ?>
+			<?php _e( 'Aktiviere das Kontrollkästchen, wenn Du die Mediendateien nur auf den Autor beschränken möchtest', 'eab' ); ?>
 		</p>
 		
 	</div>
@@ -120,7 +120,7 @@ class Eab_Events_Capabilities {
 	
 	private function _create_role_box ($role, $role_label) {
 		$box = '<div class="eab-events-capabilities-per_role" id="eab-events-capabilities-editor-' . esc_attr($role) . '">';
-		$box .= '<h4>' . sprintf(__('Deine <b>%s</b> Benutzer können...', Eab_EventsHub::TEXT_DOMAIN), $role_label) . '</h4>';
+		$box .= '<h4>' . sprintf(__('Deine <b>%s</b> Benutzer können...', 'eab'), $role_label) . '</h4>';
 		foreach ($this->_capabilities as $capability => $cap_label) {
 			$box .= $this->_get_capability_box($role, $capability, $cap_label);
 		}

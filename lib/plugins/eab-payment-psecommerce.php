@@ -82,7 +82,7 @@ class Eab_Payments_PaymentViaProducts {
 		if ($this->_is_mp_present()) return false;
 		echo '<div class="error">' .
 			'<p>' .
-				__( 'Das <a href="https://n3rds.work/piestingtal_source/psecommerce-shopsystem/">PS-eCommerce</a> Plugin muss installiert und aktiviert sein, damit es funktioniert', Eab_EventsHub::TEXT_DOMAIN ) .
+				__( 'Das <a href="https://n3rds.work/piestingtal_source/psecommerce-shopsystem/">PS-eCommerce</a> Plugin muss installiert und aktiviert sein, damit es funktioniert', 'eab' ) .
 			'</p>'.
 		'</div>';
 	}
@@ -105,10 +105,10 @@ class Eab_Payments_PaymentViaProducts {
 		));
 ?>
 <div id="eab-settings-mp_payments" class="eab-metabox postbox">
-	<h3 class="eab-hndle"><?php _e('Zahlung mit PS-eCommerce Artikeln', Eab_EventsHub::TEXT_DOMAIN); ?></h3>
+	<h3 class="eab-hndle"><?php _e('Zahlung mit PS-eCommerce Artikeln', 'eab'); ?></h3>
 	<div class="eab-inside">
 		<div class="eab-settings-settings_item">
-	    	<label for="eab_event-payment-ppvp-category"><?php _e('Beschränke die Produktauswahl auf diese Shopkategorie', Eab_EventsHub::TEXT_DOMAIN); ?>: </label>
+	    	<label for="eab_event-payment-ppvp-category"><?php _e('Beschränke die Produktauswahl auf diese Shopkategorie', 'eab'); ?>: </label>
 	    	<?php if (!empty($categories)) { ?>
 	    	<select name="eab_event-payment-ppvp-category" id="eab_event-payment-ppvp-category">
 	    		<option value=""></option>
@@ -117,9 +117,9 @@ class Eab_Payments_PaymentViaProducts {
 	    	<?php } ?>
 	    	</select>
 	    	<?php } else { ?>
-	    		<em><?php _e('Keine Shopkategorien', Eab_EventsHub::TEXT_DOMAIN); ?></em>
+	    		<em><?php _e('Keine Shopkategorien', 'eab'); ?></em>
 	    	<?php } ?>
-			<span><?php echo $tips->add_tip(__('Verwende diese Einstellung, um den Umfang Deiner Artikel einzuschränken, die als Ereigniszahlungen verwendet werden können.', Eab_EventsHub::TEXT_DOMAIN)); ?></span>
+			<span><?php echo $tips->add_tip(__('Verwende diese Einstellung, um den Umfang Deiner Artikel einzuschränken, die als Ereigniszahlungen verwendet werden können.', 'eab')); ?></span>
 	    </div>
 	</div>
 </div>

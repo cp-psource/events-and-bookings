@@ -162,7 +162,7 @@ class Eab_Events_CountdownforNextEvent {
 			'compact' => false, // Boolean compact flag
 			'title' => false,
 			'footer_script' => false,
-			'expired' => __('Geschlossen', Eab_EventsHub::TEXT_DOMAIN),
+			'expired' => __('Geschlossen', 'eab'),
 			'legacy' => false,
 			'category' => false,
 			'categories' => false,
@@ -313,7 +313,7 @@ EOStandardCompactCSS;
 		'compact' => false, // Boolean compact flag
 		'title'		=> false,
 		'footer_script' => false,
-		'expired'	=> __('Geschlossen', Eab_EventsHub::TEXT_DOMAIN)
+		'expired'	=> __('Geschlossen', 'eab')
 		), $atts ) );
 		
 		$id = str_replace( array(" ","'",'"'), "", $id ); // We cannot let spaces and quotes in id

@@ -30,7 +30,7 @@ class Eab_Events_ExpireMonthOldEvents {
 		if (!class_exists('Eab_Events_ExpirePastEvents')) return false;
 		if (defined('EAB_EXPIRY_CLASS_NAG_RENDERED')) return false;
 		echo '<div class="error"><p>' .
-			__("<b>Konfliktwarnung:</b> Du musst eines der Add-Ons für den Ablauf vergangener Ereignisse deaktivieren.", Eab_EventsHub::TEXT_DOMAIN) .
+			__("<b>Konfliktwarnung:</b> Du musst eines der Add-Ons für den Ablauf vergangener Ereignisse deaktivieren.", 'eab') .
 		'</p></div>';
 		define('EAB_EXPIRY_CLASS_NAG_RENDERED', true);
 	}

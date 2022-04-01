@@ -45,12 +45,12 @@ class Eab_Events_Pae {
 		$ret .= '<div class="eab_meta_box">';
 		$ret .= '<div class="misc-eab-section" >';
 		$ret .= '<div class="eab_meta_column_box top"><label for="eab_event_pae">' .
-			__('Öffentliche Ankündigung', Eab_EventsHub::TEXT_DOMAIN) . 
+			__('Öffentliche Ankündigung', 'eab') . 
 		'</label></div>';
 		
 		$ret .= '<input type="hidden" name="eab-is_pae" value="0" /> ';
 		$ret .= '<input type="checkbox" name="eab-is_pae" id="eab_event_is_pae" value="1" ' . $checked . '" /> ';
-		$ret .= ' <label for="eab_event_is_pae">' . __('Dies ist eine öffentliche Ankündigung', Eab_EventsHub::TEXT_DOMAIN) . '</label>';
+		$ret .= ' <label for="eab_event_is_pae">' . __('Dies ist eine öffentliche Ankündigung', 'eab') . '</label>';
 		
 		$ret .= '</div>';
 		$ret .= '</div>';
@@ -66,7 +66,7 @@ class Eab_Events_Pae {
 				
 		$ret .= '<input type="hidden" name="eab-is_pae" value="0" /> ';
 		$ret .= '<input type="checkbox" name="eab-is_pae" id="eab_event_is_pae" value="1" ' . $checked . '" /> ';
-		$ret .= ' <label for="eab_event_is_pae">' . __('Dies ist eine öffentliche Ankündigung', Eab_EventsHub::TEXT_DOMAIN) . '</label>';
+		$ret .= ' <label for="eab_event_is_pae">' . __('Dies ist eine öffentliche Ankündigung', 'eab') . '</label>';
 		
 		$ret .= '</div>';
 		$ret .=<<<EOPaeFpeJs

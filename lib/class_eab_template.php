@@ -27,7 +27,7 @@ class Eab_Template {
 
 		$new_content .= '<meta itemprop="name" content="' . esc_attr($event->get_title()) . '" />';
 		$new_content .= '<a href="' . $link . '" class="psourceevents-viewevent">' .
-			__('Ereignis anzeigen', Eab_EventsHub::TEXT_DOMAIN) . 
+			__('Ereignis anzeigen', 'eab') . 
 		'</a>';
 		$new_content .= apply_filters('eab-template-archive_after_view_link', '', $event);
 		$new_content .= '<div style="clear: both;"></div>';
@@ -67,16 +67,16 @@ class Eab_Template {
 		}
 		if ( $show_pay_note && ! $paypal_processing ) {
 			$new_content .= '<div id="psourceevents-payment">';
-			$new_content .= __( 'Du hast für diese Veranstaltung nicht bezahlt', Eab_EventsHub::TEXT_DOMAIN ) . ' ';
+			$new_content .= __( 'Du hast für diese Veranstaltung nicht bezahlt', 'eab' ) . ' ';
 			$new_content .= self::get_payment_forms($event);
 			$new_content .= '</div>';
 		} elseif ( $event->is_premium() && $event->user_paid() ) {
                         $new_content .= '<div id="psourceevents-payment">';
-			$new_content .= __( 'Du hast bereits für diese Veranstaltung bezahlt', Eab_EventsHub::TEXT_DOMAIN );
+			$new_content .= __( 'Du hast bereits für diese Veranstaltung bezahlt', 'eab' );
                         $new_content .= '</div>';
 		} elseif ( $paypal_processing ) {
 			$new_content .= '<div id="psourceevents-payment">';
-			$new_content .= __( 'Deine Zahlung wird bearbeitet. Dies kann einige Minuten dauern, bis es hier angezeigt wird.', Eab_EventsHub::TEXT_DOMAIN ) . ' ';
+			$new_content .= __( 'Deine Zahlung wird bearbeitet. Dies kann einige Minuten dauern, bis es hier angezeigt wird.', 'eab' ) . ' ';
 			$new_content .= '</div>';
 		}
 		
@@ -95,8 +95,8 @@ class Eab_Template {
 		$new_content .= '<div class="psourceevents-content">';
 		
 		$new_content .= '<div id="psourceevents-contentheader">';
-		$new_content .= '<h3>' . __('Über diese Veranstaltung:', Eab_EventsHub::TEXT_DOMAIN) . '</h3>';
-		$new_content .= '<div id="psourceevents-user">'. __('Erstellt von ', Eab_EventsHub::TEXT_DOMAIN) . self::get_event_author_link($event) . '</div>';
+		$new_content .= '<h3>' . __('Über diese Veranstaltung:', 'eab') . '</h3>';
+		$new_content .= '<div id="psourceevents-user">'. __('Erstellt von ', 'eab') . self::get_event_author_link($event) . '</div>';
 		$new_content .= '</div>';
 		
 		$new_content .= '<hr/>';
@@ -123,11 +123,11 @@ class Eab_Template {
 			$content .= '<a href="' . 
 				admin_url('admin-ajax.php?action=eab_list_rsvps&pid=' . $event->get_id()) . 
 				'" id="psourceevents-load-rsvps" class="hide-if-no-js psourceevents-viewrsvps psourceevents-loadrsvps">' .
-					apply_filters( 'eab_show_rsvp_text', __('Reaktionen anzeigen', Eab_EventsHub::TEXT_DOMAIN) ) .
+					apply_filters( 'eab_show_rsvp_text', __('Reaktionen anzeigen', 'eab') ) .
 			'</a>';
 			$content .= '&nbsp;';
 			$content .= '<a href="#" id="psourceevents-hide-rsvps" class="hide-if-no-js psourceevents-viewrsvps psourceevents-hidersvps">' .
-				apply_filters( 'eab_hide_rsvp_text', __('Reaktionen ausblenden', Eab_EventsHub::TEXT_DOMAIN) ) .
+				apply_filters( 'eab_hide_rsvp_text', __('Reaktionen ausblenden', 'eab') ) .
 			'</a>';
 			$content .= '</div>';
 			$content .= '<div id="psourceevents-rsvps-response"></div>';
@@ -164,9 +164,9 @@ class Eab_Template {
 		$event = ($post instanceof Eab_EventModel) ? $post : new Eab_EventModel($post);
 		
 		$statuses = array(
-			Eab_EventModel::BOOKING_YES => __('Teilnahme', Eab_EventsHub::TEXT_DOMAIN), 
-			Eab_EventModel::BOOKING_MAYBE => __('Möglich', Eab_EventsHub::TEXT_DOMAIN), 
-			Eab_EventModel::BOOKING_NO => __('Absage', Eab_EventsHub::TEXT_DOMAIN)
+			Eab_EventModel::BOOKING_YES => __('Teilnahme', 'eab'), 
+			Eab_EventModel::BOOKING_MAYBE => __('Möglich', 'eab'), 
+			Eab_EventModel::BOOKING_NO => __('Absage', 'eab')
 		);
 		if (!in_array($status, array_keys($statuses))) return false; // Unknown status
 		$status_name = $statuses[$status];
@@ -206,9 +206,9 @@ class Eab_Template {
 		global $wpdb;
 		
 		$statuses = array(
-			Eab_EventModel::BOOKING_YES => __('Teilnahme', Eab_EventsHub::TEXT_DOMAIN), 
-			Eab_EventModel::BOOKING_MAYBE => __('Möglich', Eab_EventsHub::TEXT_DOMAIN), 
-			Eab_EventModel::BOOKING_NO => __('Absage', Eab_EventsHub::TEXT_DOMAIN)
+			Eab_EventModel::BOOKING_YES => __('Teilnahme', 'eab'), 
+			Eab_EventModel::BOOKING_MAYBE => __('Möglich', 'eab'), 
+			Eab_EventModel::BOOKING_NO => __('Absage', 'eab')
 		);
 		if (!in_array($status, array_keys($statuses))) return false; // Unknown status
 		$status_name = $statuses[$status];
@@ -262,9 +262,9 @@ class Eab_Template {
 		$content .= '<div id="eab-bookings-response"></div>';
         //nur bis hier       
                 $content .= '<fieldset class="eab-add_attendance">';
-		$content .= '<legend>' . __('Benutzer hinzufügen', Eab_EventsHub::TEXT_DOMAIN) . '</legend>';
+		$content .= '<legend>' . __('Benutzer hinzufügen', 'eab') . '</legend>';
 		
-		$content .= '<label>' . __('Benutzer Email', Eab_EventsHub::TEXT_DOMAIN) . '</label>&nbsp;';
+		$content .= '<label>' . __('Benutzer Email', 'eab') . '</label>&nbsp;';
 		$content .= '<input type="hidden" class="eab-attendance-event_id" value="' . (int)$event->get_id() . '" />';
 		$content .= '<input type="email" class="eab-attendance-email" />';
 		$content .= '<select class="eab-attendance-status">';
@@ -272,7 +272,7 @@ class Eab_Template {
 			$content .= '<option value="' . esc_attr($status) . '">' . esc_html($label) . '</option>';
 		}
 		$content .= '</select>';
-		$content .= '<input type="button" class="button" value="' . esc_attr(__('Hinzufügen', Eab_EventsHub::TEXT_DOMAIN)) . '" />';
+		$content .= '<input type="button" class="button" value="' . esc_attr(__('Hinzufügen', 'eab')) . '" />';
 		$content .= '</fieldset>';
 		
 		$content .= '</div>';
@@ -292,7 +292,7 @@ class Eab_Template {
 		//$content = Eab_Template::get_admin_attendance_addition_form($event, $statuses); // Moved to actual bookings areas
 
                 $content = '';
-		$content .= '<h4>'. __($status_name, Eab_EventsHub::TEXT_DOMAIN). '</h4>';
+		$content .= '<h4>'. __($status_name, 'eab'). '</h4>';
 		$content .= '<ul class="eab-guest-list">';
 
 		$all_events = array($event);
@@ -320,13 +320,13 @@ class Eab_Template {
 					$ticket_count = $ticket_count ? $ticket_count : 1;
 					$payment_status = '' .
 						'<span class="eab-guest-payment_info-paid">' . 
-							__('Bezahlt', Eab_EventsHub::TEXT_DOMAIN) . 
+							__('Bezahlt', 'eab') . 
 						'</span>' .
 						'&nbsp;' .
-						sprintf(__('(%s Tickets)', Eab_EventsHub::TEXT_DOMAIN), $ticket_count) .
+						sprintf(__('(%s Tickets)', 'eab'), $ticket_count) .
 					''; 
 				} else {
-					$payment_status = '<span class="eab-guest-payment_info-not_paid">' . __('Nicht bezahlt', Eab_EventsHub::TEXT_DOMAIN) . '</span>';
+					$payment_status = '<span class="eab-guest-payment_info-not_paid">' . __('Nicht bezahlt', 'eab') . '</span>';
 				}
 				// Added by Hakan
 				$payment_status = apply_filters('eab-event-payment_status', $payment_status, $booking->user_id, $event); 
@@ -334,11 +334,11 @@ class Eab_Template {
 			}
 			if (in_array($status, array(Eab_EventModel::BOOKING_YES, Eab_EventModel::BOOKING_MAYBE))) {
 				$content .= '<div class="eab-guest-actions"><a href="#cancel-attendance" class="eab-guest-cancel_attendance" data-eab-user_id="' . $booking->user_id . '" data-eab-event_id="' . $event->get_id() . '">' .
-					__('Teilnahme abbrechen', Eab_EventsHub::TEXT_DOMAIN) .
+					__('Teilnahme abbrechen', 'eab') .
 				'</a></div>';
 			}
 			$content .= '<div class="eab-guest-actions"><a href="#delete-attendance" class="eab-guest-delete_attendance" data-eab-user_id="' . $booking->user_id . '" data-eab-event_id="' . $event->get_id() . '">' .
-				__('Anwesenheit vollständig löschen', Eab_EventsHub::TEXT_DOMAIN) .
+				__('Anwesenheit vollständig löschen', 'eab') .
 			'</a></div>';
 
 			$list_event_date = date( 'Y-m-d h:i a', strtotime( get_post_meta( $booking->event_id, 'psource_event_start', true ) ) );
@@ -377,7 +377,7 @@ class Eab_Template {
 		$content = '';
 		
 		$content .= '<a href="' . self::get_root_url() . '/" class="parent">' .
-			__("Events", Eab_EventsHub::TEXT_DOMAIN) .
+			__("Events", 'eab') .
 		'</a> &gt; ';
 		$content .= '<a href="' . self::get_archive_url($start, false) . '" class="parent">' .
 				date('Y', $start) .
@@ -419,10 +419,10 @@ class Eab_Template {
 			// Add multiple tickets
 			$extra_attributes = '';
 			$extra_attributes = apply_filters('eab-payment-paypal_tickets-extra_attributes', $extra_attributes, $event->get_id(), $booking_id);
-			$content .= '' .// '<a href="#buy-tickets" class="eab-buy_tickets-trigger" style="display:none">' . __('Buy tickets', Eab_EventsHub::TEXT_DOMAIN) . '</a>' . 
+			$content .= '' .// '<a href="#buy-tickets" class="eab-buy_tickets-trigger" style="display:none">' . __('Buy tickets', 'eab') . '</a>' . 
 				sprintf(
-					//'<p class="eab-buy_tickets-target">' . __('I want to buy %s ticket(s)', Eab_EventsHub::TEXT_DOMAIN) . '</p>', 
-					'<p>' . __('Ich möchte %s Ticket(s) kaufen', Eab_EventsHub::TEXT_DOMAIN) . '</p>', 
+					//'<p class="eab-buy_tickets-target">' . __('I want to buy %s ticket(s)', 'eab') . '</p>', 
+					'<p>' . __('Ich möchte %s Ticket(s) kaufen', 'eab') . '</p>', 
 					'<input type="number" size="2" name="quantity" value="1" min="1" ' . $extra_attributes . ' />'
 				)
 			;
@@ -525,19 +525,19 @@ class Eab_Template {
 				$content .= apply_filters('eab-rsvps-button-no',
 					'<input class="' .
 						(($booking_id && $booking_status == 'no') ? 'current psourceevents-no-submit' : 'psourceevents-no-submit ' . $default_class) .
-						'" type="submit" name="action_no" value="' . __('Absage', Eab_EventsHub::TEXT_DOMAIN) .
+						'" type="submit" name="action_no" value="' . __('Absage', 'eab') .
 					'" '.(($booking_id && $booking_status == 'no') ? 'disabled="disabled"' : '').' />',
 					$event->get_id()
 				);
 				$content .= apply_filters('eab-rsvps-button-maybe',
 					'<input class="' . (($booking_id && $booking_status == 'maybe') ? 'current psourceevents-maybe-submit' : 'psourceevents-maybe-submit ' . $default_class) .
-						'" type="submit" name="action_maybe" value="' . __('Möglich', Eab_EventsHub::TEXT_DOMAIN) . 
+						'" type="submit" name="action_maybe" value="' . __('Möglich', 'eab') . 
 					'" '.(($booking_id && $booking_status == 'maybe') ? 'disabled="disabled"' : '').' />',
 					$event->get_id()
 				);
 				$content .= apply_filters('eab-rsvps-button-yes',
 					'<input class="' . (($booking_id && $booking_status == 'yes') ? 'current psourceevents-yes-submit' : 'psourceevents-yes-submit ' . $default_class) .
-						'" type="submit" name="action_yes" value="' . __('Ich nehme teil', Eab_EventsHub::TEXT_DOMAIN) .
+						'" type="submit" name="action_yes" value="' . __('Ich nehme teil', 'eab') .
 					'" '.(($booking_id && $booking_status == 'yes') ? 'disabled="disabled"' : '').'/>',
 					$event->get_id()
 				);
@@ -550,19 +550,19 @@ class Eab_Template {
 				$content .= apply_filters('eab-rsvps-button-no',
 					'<a class="psourceevents-no-submit" href="' .
 						$login_url_n .
-					'" >'.__('Absage', Eab_EventsHub::TEXT_DOMAIN).'</a>',
+					'" >'.__('Absage', 'eab').'</a>',
 					$event->get_id()
 				);
 				$content .= apply_filters('eab-rsvps-button-maybe',
 					'<a class="psourceevents-maybe-submit" href="' .
 						$login_url_m .
-					'" >'.__('Möglich', Eab_EventsHub::TEXT_DOMAIN).'</a>',
+					'" >'.__('Möglich', 'eab').'</a>',
 					$event->get_id()
 				);
 				$content .= apply_filters('eab-rsvps-button-yes',
 					'<a class="psourceevents-yes-submit" href="' .
 						$login_url_y .
-					'" >'.__('Ich nehme teil', Eab_EventsHub::TEXT_DOMAIN).'</a>',
+					'" >'.__('Ich nehme teil', 'eab').'</a>',
 					$event->get_id()
 				);
 			}
@@ -618,37 +618,37 @@ class Eab_Template {
 				? date_i18n(get_option('date_format'), $end) : ''
 			;
 			
-			$content .= $key ? __(' und ', Eab_EventsHub::TEXT_DOMAIN) : '';
+			$content .= $key ? __(' und ', 'eab') : '';
 
 			// Differentiate start/end date equality
 			if ($end_date_str) {
 				// Start and end day stamps differ
 				$start_string = $event->has_no_start_time($key)
-					? sprintf(__('Am <span class="psourceevents-date_format-start"><var class="eab-date_format-date">%s</var></span>', Eab_EventsHub::TEXT_DOMAIN), date_i18n(get_option('date_format'), $start))
-					: sprintf(__('Am <var class="eab-date_format-date">%s</var> <span class="psourceevents-date_format-start">von <var class="eab-date_format-time">%s</var></span>', Eab_EventsHub::TEXT_DOMAIN), date_i18n(get_option('date_format'), $start), date_i18n(get_option('time_format'), $start))
+					? sprintf(__('Am <span class="psourceevents-date_format-start"><var class="eab-date_format-date">%s</var></span>', 'eab'), date_i18n(get_option('date_format'), $start))
+					: sprintf(__('Am <var class="eab-date_format-date">%s</var> <span class="psourceevents-date_format-start">von <var class="eab-date_format-time">%s</var></span>', 'eab'), date_i18n(get_option('date_format'), $start), date_i18n(get_option('time_format'), $start))
 				;
 				$end_string = $event->has_no_end_time($key)
-					? sprintf(__('<span class="psourceevents-date_format-end">bis %s</span><br />', Eab_EventsHub::TEXT_DOMAIN), '<span class="psourceevents-date_format-end_date"><var class="eab-date_format-date">' . $end_date_str . '</var></span>')
-					: sprintf(__('<span class="psourceevents-date_format-end">bis %s</span><br />', Eab_EventsHub::TEXT_DOMAIN), '<span class="psourceevents-date_format-end_date"><var class="eab-date_format-date">' . $end_date_str . '</var></span> <span class="psourceevents-date_format-end_time"><var class="eab-date_format-time">' . date_i18n(get_option('time_format'), $end) . '</var></span>')
+					? sprintf(__('<span class="psourceevents-date_format-end">bis %s</span><br />', 'eab'), '<span class="psourceevents-date_format-end_date"><var class="eab-date_format-date">' . $end_date_str . '</var></span>')
+					: sprintf(__('<span class="psourceevents-date_format-end">bis %s</span><br />', 'eab'), '<span class="psourceevents-date_format-end_date"><var class="eab-date_format-date">' . $end_date_str . '</var></span> <span class="psourceevents-date_format-end_time"><var class="eab-date_format-time">' . date_i18n(get_option('time_format'), $end) . '</var></span>')
 				;
 			} else {
 				// The start and end day stamps do NOT differ
 				if (eab_current_time() > $start) {
 					// In the past
 					$start_string = $event->has_no_start_time($key)
-						? sprintf(__('Findet statt am <span class="psourceevents-date_format-start"><var class="eab-date_format-date">%s</var></span>', Eab_EventsHub::TEXT_DOMAIN), date_i18n(get_option('date_format'), $start))
-						: sprintf(__('Findet statt am <var class="eab-date_format-date">%s</var> <span class="psourceevents-date_format-start">von <var class="eab-date_format-time">%s</var></span>', Eab_EventsHub::TEXT_DOMAIN), date_i18n(get_option('date_format'), $start), date_i18n(get_option('time_format'), $start))
+						? sprintf(__('Findet statt am <span class="psourceevents-date_format-start"><var class="eab-date_format-date">%s</var></span>', 'eab'), date_i18n(get_option('date_format'), $start))
+						: sprintf(__('Findet statt am <var class="eab-date_format-date">%s</var> <span class="psourceevents-date_format-start">von <var class="eab-date_format-time">%s</var></span>', 'eab'), date_i18n(get_option('date_format'), $start), date_i18n(get_option('time_format'), $start))
 					;
 				} else {
 					// Now, or in the future
 					$start_string = $event->has_no_start_time($key)
-						? sprintf(__('Findet statt am <span class="psourceevents-date_format-start"><var class="eab-date_format-date">%s</var></span>', Eab_EventsHub::TEXT_DOMAIN), date_i18n(get_option('date_format'), $start))
-						: sprintf(__('Findet statt am <var class="eab-date_format-date">%s</var> <span class="psourceevents-date_format-start">von <var class="eab-date_format-time">%s</var></span>', Eab_EventsHub::TEXT_DOMAIN), date_i18n(get_option('date_format'), $start), date_i18n(get_option('time_format'), $start))
+						? sprintf(__('Findet statt am <span class="psourceevents-date_format-start"><var class="eab-date_format-date">%s</var></span>', 'eab'), date_i18n(get_option('date_format'), $start))
+						: sprintf(__('Findet statt am <var class="eab-date_format-date">%s</var> <span class="psourceevents-date_format-start">von <var class="eab-date_format-time">%s</var></span>', 'eab'), date_i18n(get_option('date_format'), $start), date_i18n(get_option('time_format'), $start))
 					;
 				}
 				$end_string = $event->has_no_end_time($key)
 					? ''
-					: sprintf(__('<span class="psourceevents-date_format-end">bis %s</span><br />', Eab_EventsHub::TEXT_DOMAIN), '<span class="psourceevents-date_format-end_date"><var class="eab-date_format-date">' . $end_date_str . '</var></span> <span class="psourceevents-date_format-end_time"><var class="eab-date_format-time">' . date_i18n(get_option('time_format'), $end) . '</var></span>')
+					: sprintf(__('<span class="psourceevents-date_format-end">bis %s</span><br />', 'eab'), '<span class="psourceevents-date_format-end_date"><var class="eab-date_format-date">' . $end_date_str . '</var></span> <span class="psourceevents-date_format-end_time"><var class="eab-date_format-time">' . date_i18n(get_option('time_format'), $end) . '</var></span>')
 				;
 			}
 			// Why, thank you `date_i18n` for working so well with properly parsing 'O' argument when offsets are set in UTC values... >.<
@@ -663,7 +663,7 @@ class Eab_Template {
 			$content .= apply_filters('eab-events-event_date_string', "<time itemprop='startDate' datetime='{$time_date_start}'>{$start_string}</time> <time itemprop='endDate' datetime='{$time_date_end}'>{$end_string}</time>", $event->get_id(), $start, $end);
 			/*
 			$content .= apply_filters('eab-events-event_date_string', sprintf(
-				__('On %s <span class="psourceevents-date_format-start">from %s</span> <span class="psourceevents-date_format-end">to %s</span><br />', Eab_EventsHub::TEXT_DOMAIN),
+				__('On %s <span class="psourceevents-date_format-start">from %s</span> <span class="psourceevents-date_format-end">to %s</span><br />', 'eab'),
 				'<span class="psourceevents-date_format-start_date">' . date_i18n(get_option('date_format'), $start) . '</span>',
 				'<span class="psourceevents-date_format-start_time">' . date_i18n(get_option('time_format'), $start) . '</span>',
 				'<span class="psourceevents-date_format-end_date">' . $end_date_str . '</span> <span class="psourceevents-date_format-end_time">' . date_i18n(get_option('time_format'), $end) . '</span>'
@@ -675,9 +675,9 @@ class Eab_Template {
 
 	public static function get_rsvp_status_list () {
 		return array(
-			Eab_EventModel::BOOKING_YES => __('Teilnahme', Eab_EventsHub::TEXT_DOMAIN), 
-			Eab_EventModel::BOOKING_MAYBE => __('Möglich', Eab_EventsHub::TEXT_DOMAIN), 
-			Eab_EventModel::BOOKING_NO => __('Absage', Eab_EventsHub::TEXT_DOMAIN)
+			Eab_EventModel::BOOKING_YES => __('Teilnahme', 'eab'), 
+			Eab_EventModel::BOOKING_MAYBE => __('Möglich', 'eab'), 
+			Eab_EventModel::BOOKING_NO => __('Absage', 'eab')
 		);
 	}
 
@@ -706,9 +706,9 @@ class Eab_Template {
 		$status = $status ? $status : Eab_EventModel::BOOKING_YES;
 
 		$map = apply_filters('eab-rsvps-status_messages-map', array(
-			Eab_EventModel::BOOKING_YES => __("Ausgezeichnet! Wir haben Dich als Teilnehmer markiert und wir sehen uns dort!", Eab_EventsHub::TEXT_DOMAIN),
-			Eab_EventModel::BOOKING_MAYBE => __("Vielen Dank, dass Du uns informiert hast. Hoffentlich schaffst Du es!", Eab_EventsHub::TEXT_DOMAIN),
-			Eab_EventModel::BOOKING_NO => __("Das ist schade, dass du es nicht teilnehmen wirst", Eab_EventsHub::TEXT_DOMAIN),
+			Eab_EventModel::BOOKING_YES => __("Ausgezeichnet! Wir haben Dich als Teilnehmer markiert und wir sehen uns dort!", 'eab'),
+			Eab_EventModel::BOOKING_MAYBE => __("Vielen Dank, dass Du uns informiert hast. Hoffentlich schaffst Du es!", 'eab'),
+			Eab_EventModel::BOOKING_NO => __("Das ist schade, dass du es nicht teilnehmen wirst", 'eab'),
 		));
 		return isset($map[$status])
 			? $map[$status]
@@ -878,59 +878,59 @@ class Eab_Template {
 	private static function _shortcode_arg_type_map_values ($raw_type, $argument, $tag) {
 		$type_map = array(
 			'boolean' => array(
-				'type' => __('boolean', Eab_EventsHub::TEXT_DOMAIN),
-				'value' => __('"yes" oder "no"', Eab_EventsHub::TEXT_DOMAIN),
-				'example' => sprintf(__('%s="yes"', Eab_EventsHub::TEXT_DOMAIN), $argument),
+				'type' => __('boolean', 'eab'),
+				'value' => __('"yes" oder "no"', 'eab'),
+				'example' => sprintf(__('%s="yes"', 'eab'), $argument),
 			),
 			'integer' => array(
-				'type' => __('integer', Eab_EventsHub::TEXT_DOMAIN),
+				'type' => __('integer', 'eab'),
 				'value' => 'Zahlenwert',
-				'example' => sprintf(__('%s="326"', Eab_EventsHub::TEXT_DOMAIN), $argument),
+				'example' => sprintf(__('%s="326"', 'eab'), $argument),
 			),
 			'string' => array(
-				'type' => __('string', Eab_EventsHub::TEXT_DOMAIN),
-				'value' => __('"mystring"', Eab_EventsHub::TEXT_DOMAIN),
-				'example' => sprintf(__('%s="mystring"', Eab_EventsHub::TEXT_DOMAIN), $argument),
+				'type' => __('string', 'eab'),
+				'value' => __('"mystring"', 'eab'),
+				'example' => sprintf(__('%s="mystring"', 'eab'), $argument),
 			),
 			'string:date' => array(
-				'type' => __('Datum', Eab_EventsHub::TEXT_DOMAIN),
-				'value' => __('Zeichenfolge für das Datumsformat', Eab_EventsHub::TEXT_DOMAIN),
-				'example' => sprintf(__('%s="2011-11-18"', Eab_EventsHub::TEXT_DOMAIN), $argument),
+				'type' => __('Datum', 'eab'),
+				'value' => __('Zeichenfolge für das Datumsformat', 'eab'),
+				'example' => sprintf(__('%s="2011-11-18"', 'eab'), $argument),
 			),
 			'string:date_format' => array(
-				'type' => __('Datumsformat', Eab_EventsHub::TEXT_DOMAIN),
-				'value' => __('Formatstring für Datumsangaben', Eab_EventsHub::TEXT_DOMAIN),
-				'example' => sprintf(__('%s="Y-m-d"', Eab_EventsHub::TEXT_DOMAIN), $argument),
+				'type' => __('Datumsformat', 'eab'),
+				'value' => __('Formatstring für Datumsangaben', 'eab'),
+				'example' => sprintf(__('%s="Y-m-d"', 'eab'), $argument),
 			),
 			'string:date_strtotime' => array(
-				'type' => sprintf(__('<a href="%s" target="_blank">strtotime</a>-compatible string', Eab_EventsHub::TEXT_DOMAIN), 'http://www.php.net/manual/en/datetime.formats.relative.php'),
-				'value' => __('strtotime-kompatibler Ausdruck', Eab_EventsHub::TEXT_DOMAIN),
+				'type' => sprintf(__('<a href="%s" target="_blank">strtotime</a>-compatible string', 'eab'), 'http://www.php.net/manual/en/datetime.formats.relative.php'),
+				'value' => __('strtotime-kompatibler Ausdruck', 'eab'),
 				'example' => sprintf('%s="+1 month"', $argument),
 			),
 			'string:or_integer' => array(
-				'type' => __('string oder integer', Eab_EventsHub::TEXT_DOMAIN),
-				'value' => __('"some_text" oder "212"', Eab_EventsHub::TEXT_DOMAIN),
-				'example' => sprintf(__('%s="some_text"', Eab_EventsHub::TEXT_DOMAIN), $argument),
+				'type' => __('string oder integer', 'eab'),
+				'value' => __('"some_text" oder "212"', 'eab'),
+				'example' => sprintf(__('%s="some_text"', 'eab'), $argument),
 			),
 			'string:sort' => array(
-				'type' => __('Schlüsselwort bestellen', Eab_EventsHub::TEXT_DOMAIN),
-				'value' => __('"ASC" oder "DESC"', Eab_EventsHub::TEXT_DOMAIN),
-				'example' => sprintf(__('%s="ASC"', Eab_EventsHub::TEXT_DOMAIN), $argument),
+				'type' => __('Schlüsselwort bestellen', 'eab'),
+				'value' => __('"ASC" oder "DESC"', 'eab'),
+				'example' => sprintf(__('%s="ASC"', 'eab'), $argument),
 			),
 			'string:id_list' => array(
-				'type' => __('Liste von durch Kommas getrennten IDs', Eab_EventsHub::TEXT_DOMAIN),
-				'value' => __('"52,26,18"', Eab_EventsHub::TEXT_DOMAIN),
-				'example' => sprintf(__('%s="52,26,18"', Eab_EventsHub::TEXT_DOMAIN), $argument),
+				'type' => __('Liste von durch Kommas getrennten IDs', 'eab'),
+				'value' => __('"52,26,18"', 'eab'),
+				'example' => sprintf(__('%s="52,26,18"', 'eab'), $argument),
 			),
 			'string:list' => array(
-				'type' => __('Liste von durch Kommas getrennten Zeichenfolgen', Eab_EventsHub::TEXT_DOMAIN),
-				'value' => __('"foo,bar,baz"', Eab_EventsHub::TEXT_DOMAIN),
-				'example' => sprintf(__('%s="foo,bar,baz"', Eab_EventsHub::TEXT_DOMAIN), $argument),
+				'type' => __('Liste von durch Kommas getrennten Zeichenfolgen', 'eab'),
+				'value' => __('"foo,bar,baz"', 'eab'),
+				'example' => sprintf(__('%s="foo,bar,baz"', 'eab'), $argument),
 			),
 			'string:url' => array(
-				'type' => __('gültige URL', Eab_EventsHub::TEXT_DOMAIN),
-				'value' => __('"http://example.com/something"', Eab_EventsHub::TEXT_DOMAIN),
-				'example' => sprintf(__('%s="http://example.com/something"', Eab_EventsHub::TEXT_DOMAIN), $argument),
+				'type' => __('gültige URL', 'eab'),
+				'value' => __('"http://example.com/something"', 'eab'),
+				'example' => sprintf(__('%s="http://example.com/something"', 'eab'), $argument),
 			),
 		);
 
@@ -938,7 +938,7 @@ class Eab_Template {
 			? $type_map[$raw_type]
 			: false
 		;
-		$title = sprintf(__("%s, z.B. [%s ... %s]", Eab_EventsHub::TEXT_DOMAIN), $type['value'], $tag, $type['example']);
+		$title = sprintf(__("%s, z.B. [%s ... %s]", 'eab'), $type['value'], $tag, $type['example']);
 		return array(
 			'type' => $type['type'],
 			'title' => $title,

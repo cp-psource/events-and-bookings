@@ -34,14 +34,14 @@ class Eab_AdminHelp {
 	}
 	
 	private function _set_up_sidebar () {
-		$this->_sidebar = '<h4>' . __('PS-Events', Eab_EventsHub::TEXT_DOMAIN) . '</h4>';
+		$this->_sidebar = '<h4>' . __('PS-Events', 'eab') . '</h4>';
 		if (defined('WPMUDEV_REMOVE_BRANDING') && constant('WPMUDEV_REMOVE_BRANDING')) {
-			$this->_sidebar .= '<p>' . __('PS-Events fügt Deiner Webseite oder Deiner Multisite ein mächtiges Events & Bookings System hinzu..', Eab_EventsHub::TEXT_DOMAIN) . '</p>';
+			$this->_sidebar .= '<p>' . __('PS-Events fügt Deiner Webseite oder Deiner Multisite ein mächtiges Events & Bookings System hinzu..', 'eab') . '</p>';
 		} else {
 				$this->_sidebar .= '<ul>' .
-					'<li><a href="https://n3rds.work/piestingtal-source-project/eventsps-das-eventmanagment-fuer-wordpress/" target="_blank">' . __('Projektseite', Eab_EventsHub::TEXT_DOMAIN) . '</a></li>' .
-					'<li><a href="https://n3rds.work/piestingtal-source-project/eventsps-das-eventmanagment-fuer-wordpress/" target="_blank">' . __('Installations- und Anleitungsseite', Eab_EventsHub::TEXT_DOMAIN) . '</a></li>' .
-					'<li><a href="https://n3rds.work/piestingtal-source-project/eventsps-das-eventmanagment-fuer-wordpress/" target="_blank">' . __('Hilfeforum', Eab_EventsHub::TEXT_DOMAIN) . '</a></li>' .
+					'<li><a href="https://n3rds.work/piestingtal-source-project/eventsps-das-eventmanagment-fuer-wordpress/" target="_blank">' . __('Projektseite', 'eab') . '</a></li>' .
+					'<li><a href="https://n3rds.work/piestingtal-source-project/eventsps-das-eventmanagment-fuer-wordpress/" target="_blank">' . __('Installations- und Anleitungsseite', 'eab') . '</a></li>' .
+					'<li><a href="https://n3rds.work/piestingtal-source-project/eventsps-das-eventmanagment-fuer-wordpress/" target="_blank">' . __('Hilfeforum', 'eab') . '</a></li>' .
 				'</ul>' . 
 			'';
 		}
@@ -54,11 +54,11 @@ class Eab_AdminHelp {
 		foreach ($help as $shortcode) {
 			$out .= '<div><h5>' . $shortcode['title'] . '</h5>';
 			$out .= '<div>';
-			$out .= '		<strong>' . __('Tag:', Eab_EventsHub::TEXT_DOMAIN) . '</strong> <code>[' . $shortcode['tag'] . ']</code>';
+			$out .= '		<strong>' . __('Tag:', 'eab') . '</strong> <code>[' . $shortcode['tag'] . ']</code>';
 			if (!empty($shortcode['note'])) $out .= '<div><em>' . $shortcode['note'] . '</em></div>';
 		    $out .= '	</div>';
 			if (!empty($shortcode['arguments'])) {
-				$out .= ' <div class="eab-shortcode_help-argument"><strong>' . __('Argumente:', Eab_EventsHub::TEXT_DOMAIN) . '</strong>';
+				$out .= ' <div class="eab-shortcode_help-argument"><strong>' . __('Argumente:', 'eab') . '</strong>';
 				foreach ($shortcode['arguments'] as $argument => $data) {
 					if (!empty($shortcode['advanced_arguments'])) {
 						if (in_array($argument, $shortcode['advanced_arguments'])) continue;
@@ -79,7 +79,7 @@ class Eab_AdminHelp {
 			array(
 				array(
 					'id' => 'eab_shortcodes',
-					'title' => __('PS-Events Shortcodes', Eab_EventsHub::TEXT_DOMAIN),
+					'title' => __('PS-Events Shortcodes', 'eab'),
 					'content' => $out,
 				),
 			)
@@ -100,21 +100,21 @@ class Eab_AdminHelp {
 			array(
 				array(
 					'id' => 'eab_intro',
-					'title' => __('Intro', Eab_EventsHub::TEXT_DOMAIN),
+					'title' => __('Intro', 'eab'),
 					'content' => '' .
 						'<p>' .
-							__('Hier kannst Du alle Deine Ereignisse sehen.', Eab_EventsHub::TEXT_DOMAIN) .
+							__('Hier kannst Du alle Deine Ereignisse sehen.', 'eab') .
 						'</p>' .
 					''
 				),
 				array(
 					'id' => 'eab_tutorial',
-					'title' => __('Tutorial', Eab_EventsHub::TEXT_DOMAIN),
+					'title' => __('Tutorial', 'eab'),
 					'content' => '' .
 						'<p>' . 
-							__('Tutorial-Dialoge führen Dich durch die wichtigen Punkte.', Eab_EventsHub::TEXT_DOMAIN) . 
+							__('Tutorial-Dialoge führen Dich durch die wichtigen Punkte.', 'eab') . 
 						'</p>' .
-						'<p><a href="#" class="eab-restart_tutorial" data-eab_tutorial="0">' . __('Starte das Tutorial neu', Eab_EventsHub::TEXT_DOMAIN) . '</a></p>',
+						'<p><a href="#" class="eab-restart_tutorial" data-eab_tutorial="0">' . __('Starte das Tutorial neu', 'eab') . '</a></p>',
 					''
 				),
 			),
@@ -126,44 +126,44 @@ class Eab_AdminHelp {
 	private function _add_edit_page () {
 		// Determine if we have the Maps plugin
 		$agm = class_exists('AgmMapModel') 
-			? __('Wenn das <href="https://n3rds.work/piestingtal-source-project/ps-gmaps/">PS-Gmaps</a> Plugin installiert ist, kannst Du die vollständige Integration von Google Maps in Deinen Veranstaltungen verwenden', Eab_EventsHub::TEXT_DOMAIN) 
-			: __('Dein Standort wird automatisch auf einer Google Map zugeordnet. Du kannst auch selbst eine Karte erstellen und diese mithilfe des Globussymbols über dem Feld mit Ihrem Ereignis verknüpfen', Eab_EventsHub::TEXT_DOMAIN)
+			? __('Wenn das <href="https://n3rds.work/piestingtal-source-project/ps-gmaps/">PS-Gmaps</a> Plugin installiert ist, kannst Du die vollständige Integration von Google Maps in Deinen Veranstaltungen verwenden', 'eab') 
+			: __('Dein Standort wird automatisch auf einer Google Map zugeordnet. Du kannst auch selbst eine Karte erstellen und diese mithilfe des Globussymbols über dem Feld mit Ihrem Ereignis verknüpfen', 'eab')
 		; 
 		$this->_help->add_page(
 			'psource_event', 
 			array(
 				array(
 					'id' => 'eab_intro',
-					'title' => __('Intro', Eab_EventsHub::TEXT_DOMAIN),
+					'title' => __('Intro', 'eab'),
 					'content' => '' .
 						'<p>' .
-							__('Hier erstellst und bearbeitest Du Deine Ereignisse', Eab_EventsHub::TEXT_DOMAIN) .
+							__('Hier erstellst und bearbeitest Du Deine Ereignisse', 'eab') .
 						'</p>' .
 					''
 				),
 				array(
 					'id' => 'eab_details',
-					'title' => __('Veranstaltungsdetails', Eab_EventsHub::TEXT_DOMAIN),
+					'title' => __('Veranstaltungsdetails', 'eab'),
 					'content' => '' .
-						'<h4>' . __('Veranstaltungsort', Eab_EventsHub::TEXT_DOMAIN) . '</h4>' .
+						'<h4>' . __('Veranstaltungsort', 'eab') . '</h4>' .
 						'<p>' . 
-							__('In dieses Feld kannst Du Deine Ereignisadresse eingeben.', Eab_EventsHub::TEXT_DOMAIN) .
+							__('In dieses Feld kannst Du Deine Ereignisadresse eingeben.', 'eab') .
 							" {$agm}" . 
 						'</p>' .
-						'<h4>' . __('Veranstaltungszeiten und -daten', Eab_EventsHub::TEXT_DOMAIN) . '</h4>' .
+						'<h4>' . __('Veranstaltungszeiten und -daten', 'eab') . '</h4>' .
 						'<p>' .
-							__('Du kannst Deiner Veranstaltung mehrere Start- und Endzeiten hinzufügen. Du kannst so viele hinzufügen, wie Du möchtest.', Eab_EventsHub::TEXT_DOMAIN) .
+							__('Du kannst Deiner Veranstaltung mehrere Start- und Endzeiten hinzufügen. Du kannst so viele hinzufügen, wie Du möchtest.', 'eab') .
 						'</p>' .
 					''
 				),
 				array(
 					'id' => 'eab_tutorial',
-					'title' => __('Tutorial', Eab_EventsHub::TEXT_DOMAIN),
+					'title' => __('Tutorial', 'eab'),
 					'content' => '' .
 						'<p>' . 
-							__('Tutorial-Dialoge führen Dich durch die wichtigen Punkte.', Eab_EventsHub::TEXT_DOMAIN) . 
+							__('Tutorial-Dialoge führen Dich durch die wichtigen Punkte.', 'eab') . 
 						'</p>' .
-						'<p><a href="#" class="eab-restart_tutorial" data-eab_tutorial="5">' . __('Starte das Tutorial neu', Eab_EventsHub::TEXT_DOMAIN) . '</a></p>',
+						'<p><a href="#" class="eab-restart_tutorial" data-eab_tutorial="5">' . __('Starte das Tutorial neu', 'eab') . '</a></p>',
 					''
 				),
 			),
@@ -178,42 +178,42 @@ class Eab_AdminHelp {
 			array(
 				array(
 					'id' => 'eab_intro',
-					'title' => __('Intro', Eab_EventsHub::TEXT_DOMAIN),
+					'title' => __('Intro', 'eab'),
 					'content' => '' .
 						'<p>' .
-							__('Hier richtest Du dein Plugin ein.', Eab_EventsHub::TEXT_DOMAIN) .
+							__('Hier richtest Du dein Plugin ein.', 'eab') .
 						'</p>' .
 					''
 				),
 				array(
 					'id' => 'eab_appearance_settings',
-					'title' => __('Darstellungseinstellungen', Eab_EventsHub::TEXT_DOMAIN),
+					'title' => __('Darstellungseinstellungen', 'eab'),
 					'content' => '' .
-						'<p>' . __('Lege fest, wie Deine Veranstaltungen präsentiert werden.', Eab_EventsHub::TEXT_DOMAIN) . '</p>' .
-						'<p>' . __('Wenn Du die Option "Standarddarstellung überschreiben" aktivierst, kannst Du zwischen verschiedenen vordefinierten Vorlagen auswählen, um die Darstellung Deiner Ereignisse zu ändern.', Eab_EventsHub::TEXT_DOMAIN) . '</p>' .
-						'<p>' . __('Um zur Standardausgabe des Plugins zurückzukehren, deaktiviere jederzeit die Option "Standarddarstellung überschreiben"', Eab_EventsHub::TEXT_DOMAIN) . '</p>' .
-						'<p>' . __('Wenn Du die Vorlagen weiter anpassen möchtest, kannst Du einen gewünschten Satz aus dem Plugin-Verzeichnis in Dein aktuelles Themenverzeichnis kopieren und bearbeiten.', Eab_EventsHub::TEXT_DOMAIN) . '</p>' .
-						'<p><em>' . __('<b>Hinweis:</b> Diese Einstellungen sind nicht verfügbar, wenn Du die Vorlagen zur Anpassung in Dein Themenverzeichnis kopierst', Eab_EventsHub::TEXT_DOMAIN) . '</em></p>' .
+						'<p>' . __('Lege fest, wie Deine Veranstaltungen präsentiert werden.', 'eab') . '</p>' .
+						'<p>' . __('Wenn Du die Option "Standarddarstellung überschreiben" aktivierst, kannst Du zwischen verschiedenen vordefinierten Vorlagen auswählen, um die Darstellung Deiner Ereignisse zu ändern.', 'eab') . '</p>' .
+						'<p>' . __('Um zur Standardausgabe des Plugins zurückzukehren, deaktiviere jederzeit die Option "Standarddarstellung überschreiben"', 'eab') . '</p>' .
+						'<p>' . __('Wenn Du die Vorlagen weiter anpassen möchtest, kannst Du einen gewünschten Satz aus dem Plugin-Verzeichnis in Dein aktuelles Themenverzeichnis kopieren und bearbeiten.', 'eab') . '</p>' .
+						'<p><em>' . __('<b>Hinweis:</b> Diese Einstellungen sind nicht verfügbar, wenn Du die Vorlagen zur Anpassung in Dein Themenverzeichnis kopierst', 'eab') . '</em></p>' .
 					'',
 				),
 				array(
 					'id' => 'eab_api_settings',
-					'title' => __('API Einstellungen', Eab_EventsHub::TEXT_DOMAIN),
+					'title' => __('API Einstellungen', 'eab'),
 					'content' => '' .
 						'<p>' .
-							__('Dieser Abschnitt wird verfügbar, wenn Du Anmeldungen mit Twitter und Facebook zulässt, indem Du das entsprechende Kontrollkästchen in den Plugin-Einstellungen aktivierst.', Eab_EventsHub::TEXT_DOMAIN) .
+							__('Dieser Abschnitt wird verfügbar, wenn Du Anmeldungen mit Twitter und Facebook zulässt, indem Du das entsprechende Kontrollkästchen in den Plugin-Einstellungen aktivierst.', 'eab') .
 						'</p>' .
 						
-						'<h4>' . __('Facebook API Einstellungen', Eab_EventsHub::TEXT_DOMAIN) . '</h4>' .
+						'<h4>' . __('Facebook API Einstellungen', 'eab') . '</h4>' .
 						sprintf(__('<p>Bevor wir beginnen, musst Du <a target="_blank" href="http://www.facebook.com/developers/createapp.php">eine Facebook-Anwendung</a> erstellen.</p>' .
 						'<p>Befolgen dazu diese Schritte:</p>' .
 						'<ol>' .
 							'<li><a target="_blank" href="http://www.facebook.com/developers/createapp.php">Erstelle Deine Anwendung</a></li>' .
 							'<li>Danach gehe zur <a target="_blank" href="http://www.facebook.com/developers/apps.php">Facebook-Anwendungslistenseite</a> und wähle Deine neu erstellte Anwendung aus.</li>' .
 							'<li>Kopiere den Wert im <strong>App ID</strong>/<strong>API Key</strong> Feld, und gib ihn in das Feld "Facebook App ID" ein.</li>' .
-						'</ol>', Eab_EventsHub::TEXT_DOMAIN), get_bloginfo('url')) .
+						'</ol>', 'eab'), get_bloginfo('url')) .
 						
-						'<h4>' . __('Twitter API Einstellungen', Eab_EventsHub::TEXT_DOMAIN) . '</h4>' .
+						'<h4>' . __('Twitter API Einstellungen', 'eab') . '</h4>' .
 						__('<p>Zuerst wird eine Twitter-Anwendung benötigt <a target="_blank" href="https://dev.twitter.com/apps/new">Erstelle eine Twitter-Anwendung</a>.</p>' .
 						'<p>Befolgen dazu diese Schritte:</p>' .
 						'<ol>' .
@@ -221,17 +221,17 @@ class Eab_AdminHelp {
 							'<li>Suche nach dem <strong>Callback URL</strong> Feld und gib Deine Callback-URL in dieses Feld ein: <code>%s</code></li>' .
 							'<li>Danach gehe zur <a target="_blank" href="https://dev.twitter.com/apps">Seite mit der Twitter-Anwendungsliste</a> und wähle Deine neu erstellte Anwendung aus.</li>' .
 							'<li>Kopiere die Werte aus den folgenden Feldern: <strong>Consumer Key</strong> und <strong>Consumer Secret </strong> und gib diese in die Plugin-Einstellungen ein.</li>' .
-						'</ol>', Eab_EventsHub::TEXT_DOMAIN) .
+						'</ol>', 'eab') .
 					'',
 				),
 				array(
 					'id' => 'eab_tutorial',
-					'title' => __('Tutorial', Eab_EventsHub::TEXT_DOMAIN),
+					'title' => __('Tutorial', 'eab'),
 					'content' => '' .
 						'<p>' . 
-							__('Tutorial-Dialoge führen Dich durch die wichtigen Punkte.', Eab_EventsHub::TEXT_DOMAIN) . 
+							__('Tutorial-Dialoge führen Dich durch die wichtigen Punkte.', 'eab') . 
 						'</p>' .
-						'<p><a href="#" class="eab-restart_tutorial" data-eab_tutorial="0">' . __('Starte das Tutorial neu', Eab_EventsHub::TEXT_DOMAIN) . '</a></p>',
+						'<p><a href="#" class="eab-restart_tutorial" data-eab_tutorial="0">' . __('Starte das Tutorial neu', 'eab') . '</a></p>',
 					''
 				),
 			),
@@ -246,21 +246,21 @@ class Eab_AdminHelp {
 			array(
 				array(
 					'id' => 'eab_intro',
-					'title' => __('Willkommen', Eab_EventsHub::TEXT_DOMAIN),
+					'title' => __('Willkommen', 'eab'),
 					'content' => '' .
 						'<p>' .
-							__('Willkommen bei Events! Diese Seite führt Dich durch die Einrichtung Deines Plugins und die Veröffentlichung Deiner ersten Ereignisse.', Eab_EventsHub::TEXT_DOMAIN) .
+							__('Willkommen bei Events! Diese Seite führt Dich durch die Einrichtung Deines Plugins und die Veröffentlichung Deiner ersten Ereignisse.', 'eab') .
 						'</p>' .
 					''
 				),
 				array(
 					'id' => 'eab_tutorial',
-					'title' => __('Tutorial', Eab_EventsHub::TEXT_DOMAIN),
+					'title' => __('Tutorial', 'eab'),
 					'content' => '' .
 						'<p>' . 
-							__('Tutorial-Dialoge führen Dich durch die wichtigen Punkte.', Eab_EventsHub::TEXT_DOMAIN) . 
+							__('Tutorial-Dialoge führen Dich durch die wichtigen Punkte.', 'eab') . 
 						'</p>' .
-						'<p><a href="#" class="eab-restart_tutorial" data-eab_tutorial="0">' . __('Starte das Tutorial neu', Eab_EventsHub::TEXT_DOMAIN) . '</a></p>',
+						'<p><a href="#" class="eab-restart_tutorial" data-eab_tutorial="0">' . __('Starte das Tutorial neu', 'eab') . '</a></p>',
 					''
 				),
 			),

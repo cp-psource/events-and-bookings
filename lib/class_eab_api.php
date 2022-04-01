@@ -50,7 +50,7 @@ class Eab_Api {
 	public function enqueue_api_scripts () {
 		if (!$this->_data->get_option('accept_api_logins')) return false;
 		$domain = get_bloginfo('name');
-		$domain = $domain ? $domain : __('WordPress', Eab_EventsHub::TEXT_DOMAIN);
+		$domain = $domain ? $domain : __('WordPress', 'eab');
 
 		$show_facebook	= !$this->_data->get_option('api_login-hide-facebook');
 		$show_twitter 	= !$this->_data->get_option('api_login-hide-twitter');
@@ -66,7 +66,7 @@ class Eab_Api {
 		if (!empty($registration_services)) {
 			if (count($registration_services) > 1) {
 				$supported_ids = sprintf(
-					_x('%s oder %s', 'Unterstützte Registrierungsdienste: Die erste Variable kann ein einzelner Dienst oder eine durch Kommas getrennte Aufzählung sein', Eab_EventsHub::TEXT_DOMAIN),
+					_x('%s oder %s', 'Unterstützte Registrierungsdienste: Die erste Variable kann ein einzelner Dienst oder eine durch Kommas getrennte Aufzählung sein', 'eab'),
 					join(', ', array_slice(
 						$registration_services,
 						0,
@@ -75,31 +75,31 @@ class Eab_Api {
 					end($registration_services)
 				);
 			} else $supported_ids = end($registration_services);
-			$registration_msg = sprintf(_x(' - oder klicke einfach auf Abbrechen, um Dich mit Deiner %s-ID zu registrieren', Eab_EventsHub::TEXT_DOMAIN), $supported_ids);
+			$registration_msg = sprintf(_x(' - oder klicke einfach auf Abbrechen, um Dich mit Deiner %s-ID zu registrieren', 'eab'), $supported_ids);
 		}
 
 		wp_enqueue_script('eab_api_js', EAB_PLUGIN_URL . 'js/eab-api.js', array('jquery'), Eab_EventsHub::CURRENT_VERSION);
 		wp_localize_script('eab_api_js', 'l10nEabApi', apply_filters('eab-javascript-api_vars', array(
-			'facebook' 				=> __('Mit Facebook einloggen', Eab_EventsHub::TEXT_DOMAIN),
-			'twitter' 				=> __('Mit Twitter einloggen', Eab_EventsHub::TEXT_DOMAIN),
-			'google' 				=> __('Mit Google einloggen', Eab_EventsHub::TEXT_DOMAIN),
-			'wordpress' 			=> sprintf(__('Mit %s einloggen', Eab_EventsHub::TEXT_DOMAIN), $domain),
-			'cancel' 				=> __('Abbrechen', Eab_EventsHub::TEXT_DOMAIN),
-			'please_wait' 			=> __('Bitte warten...', Eab_EventsHub::TEXT_DOMAIN),
+			'facebook' 				=> __('Mit Facebook einloggen', 'eab'),
+			'twitter' 				=> __('Mit Twitter einloggen', 'eab'),
+			'google' 				=> __('Mit Google einloggen', 'eab'),
+			'wordpress' 			=> sprintf(__('Mit %s einloggen', 'eab'), $domain),
+			'cancel' 				=> __('Abbrechen', 'eab'),
+			'please_wait' 			=> __('Bitte warten...', 'eab'),
 
-			'wp_register' 			=> __('Registrieren', Eab_EventsHub::TEXT_DOMAIN),
-			'wp_registration_msg' 	=> sprintf(_x('Erstelle einen Benutzernamen, um Dich für %s zu registrieren.', 'Die Variable ist ein zusätzlicher Registrierungsteil', Eab_EventsHub::TEXT_DOMAIN), $registration_msg),
-			'wp_login' 				=> __('Einloggen', Eab_EventsHub::TEXT_DOMAIN),
-			'wp_login_msg' 			=> sprintf(_x('Melde Dich mit Deinen vorhandenen Benutzernamen an, um Dich für %s zu registrieren.', 'Die Variable ist ein zusätzlicher Registrierungsteil', Eab_EventsHub::TEXT_DOMAIN), $registration_msg),
-			'wp_username' 			=> __('Nutzername', Eab_EventsHub::TEXT_DOMAIN),
-			'wp_password' 			=> __('Passwort', Eab_EventsHub::TEXT_DOMAIN),
-			'wp_email' 				=> __('Email', Eab_EventsHub::TEXT_DOMAIN),
-			'wp_toggle_on' 			=> __('Schon ein Mitglied? Hier anmelden', Eab_EventsHub::TEXT_DOMAIN),
-			'wp_toggle_off' 		=> __('Klicke hier, um Dich zu registrieren', Eab_EventsHub::TEXT_DOMAIN),
-			'wp_lost_pw_text' 		=> __('Passwort vergessen', Eab_EventsHub::TEXT_DOMAIN),
+			'wp_register' 			=> __('Registrieren', 'eab'),
+			'wp_registration_msg' 	=> sprintf(_x('Erstelle einen Benutzernamen, um Dich für %s zu registrieren.', 'Die Variable ist ein zusätzlicher Registrierungsteil', 'eab'), $registration_msg),
+			'wp_login' 				=> __('Einloggen', 'eab'),
+			'wp_login_msg' 			=> sprintf(_x('Melde Dich mit Deinen vorhandenen Benutzernamen an, um Dich für %s zu registrieren.', 'Die Variable ist ein zusätzlicher Registrierungsteil', 'eab'), $registration_msg),
+			'wp_username' 			=> __('Nutzername', 'eab'),
+			'wp_password' 			=> __('Passwort', 'eab'),
+			'wp_email' 				=> __('Email', 'eab'),
+			'wp_toggle_on' 			=> __('Schon ein Mitglied? Hier anmelden', 'eab'),
+			'wp_toggle_off' 		=> __('Klicke hier, um Dich zu registrieren', 'eab'),
+			'wp_lost_pw_text' 		=> __('Passwort vergessen', 'eab'),
 			'wp_lost_pw_url' 		=> wp_lostpassword_url(),
-			'wp_submit' 			=> __('Übermitteln', Eab_EventsHub::TEXT_DOMAIN),
-			'wp_cancel' 			=> __('Abbrechen', Eab_EventsHub::TEXT_DOMAIN),
+			'wp_submit' 			=> __('Übermitteln', 'eab'),
+			'wp_cancel' 			=> __('Abbrechen', 'eab'),
 			// Vars
 			'data' 					=> array(
 				'show_facebook' 		=> $show_facebook,
@@ -109,10 +109,10 @@ class Eab_Api {
 				'gg_client_id' 			=> $this->_data->get_option('google-client_id'),
 			),
 			//validation error for worpress popup
-			'wp_missing_username_password' 	=> __( 'Benutzername und Passwort sind erforderlich!', Eab_EventsHub::TEXT_DOMAIN ),
-			'wp_username_pass_invalid' 		=> __( 'Ungültiger Benutzername oder Passwort!', Eab_EventsHub::TEXT_DOMAIN ),
-			'wp_missing_user_email' 		=> __( 'Benutzername und E-Mail sind erforderlich!', Eab_EventsHub::TEXT_DOMAIN ),
-			'wp_signup_error' 				=> __( 'Deine E-Mail/Dein Benutzername ist bereits vergeben oder Deine E-Mail ist ungültig!', Eab_EventsHub::TEXT_DOMAIN ),
+			'wp_missing_username_password' 	=> __( 'Benutzername und Passwort sind erforderlich!', 'eab' ),
+			'wp_username_pass_invalid' 		=> __( 'Ungültiger Benutzername oder Passwort!', 'eab' ),
+			'wp_missing_user_email' 		=> __( 'Benutzername und E-Mail sind erforderlich!', 'eab' ),
+			'wp_signup_error' 				=> __( 'Deine E-Mail/Dein Benutzername ist bereits vergeben oder Deine E-Mail ist ungültig!', 'eab' ),
 		)));
 		if (!$this->_data->get_option('facebook-no_init')) {
 			if (defined('EAB_INTERNAL_FLAG__FB_INIT_ADDED')) return false;
@@ -606,62 +606,62 @@ class Eab_Api {
 		?>
 	 	<!-- API settings -->
 	    <div id="eab-settings-apis" class="eab-metabox postbox">
-			<h3 class="eab-hndle"><?php _e('API Einstellungen', Eab_EventsHub::TEXT_DOMAIN); ?></h3>
+			<h3 class="eab-hndle"><?php _e('API Einstellungen', 'eab'); ?></h3>
 			<div class="eab-inside">
 				<div class="eab-settings-settings_item">
-				    <label for="psource_event-facebook-app_id" id="psource_event_label-facebook-app_id"><?php _e('Facebook App ID', Eab_EventsHub::TEXT_DOMAIN); ?></label>
+				    <label for="psource_event-facebook-app_id" id="psource_event_label-facebook-app_id"><?php _e('Facebook App ID', 'eab'); ?></label>
 					<input type="text" id="psource_event-facebook-app_id" name="event_default[facebook-app_id]" value="<?php echo esc_attr($this->_data->get_option('facebook-app_id')); ?>" />
-					<span><?php echo $tips->add_tip(sprintf(__('Gib hier Deine App-ID ein. Wenn Du noch keine Facebook-App hast, musst Du eine <a target="_blank" href="%s">hier</a> erstellen', Eab_EventsHub::TEXT_DOMAIN), 'https://developers.facebook.com/apps')); ?></span>
+					<span><?php echo $tips->add_tip(sprintf(__('Gib hier Deine App-ID ein. Wenn Du noch keine Facebook-App hast, musst Du eine <a target="_blank" href="%s">hier</a> erstellen', 'eab'), 'https://developers.facebook.com/apps')); ?></span>
 				</div>
 
 				<div class="eab-settings-settings_item">
-				    <label for="psource_event-facebook-no_init" id="psource_event_label-facebook-no_init"><?php _e('Meine Seiten laden bereits Skripte von Facebook', Eab_EventsHub::TEXT_DOMAIN); ?></label>
+				    <label for="psource_event-facebook-no_init" id="psource_event_label-facebook-no_init"><?php _e('Meine Seiten laden bereits Skripte von Facebook', 'eab'); ?></label>
 				    <input type="hidden" name="event_default[facebook-no_init]" value="" />
 					<input type="checkbox" id="psource_event-facebook-no_init" name="event_default[facebook-no_init]" <?php print ($this->_data->get_option('facebook-no_init') ? "checked='checked'" : ''); ?> value="1" />
-					<span><?php echo $tips->add_tip(__('Aktiviere dieses Kontrollkästchen, wenn Du bereits Facebook-Skripte auf Deiner WordPress-Site verwendest. (Wenn Du nicht sicher bist, was dies bedeutet, lasse das Kontrollkästchen deaktiviert.).', Eab_EventsHub::TEXT_DOMAIN)); ?></span>
+					<span><?php echo $tips->add_tip(__('Aktiviere dieses Kontrollkästchen, wenn Du bereits Facebook-Skripte auf Deiner WordPress-Site verwendest. (Wenn Du nicht sicher bist, was dies bedeutet, lasse das Kontrollkästchen deaktiviert.).', 'eab')); ?></span>
 				</div>
 
 				<div class="eab-settings-settings_item">
-				    <label for="psource_event-twitter-app_id" id="psource_event_label-twitter-app_id"><?php _e('Twitter Consumer Key', Eab_EventsHub::TEXT_DOMAIN); ?></label>
+				    <label for="psource_event-twitter-app_id" id="psource_event_label-twitter-app_id"><?php _e('Twitter Consumer Key', 'eab'); ?></label>
 					<input type="text" id="psource_event-twitter-app_id" name="event_default[twitter-app_id]" value="<?php echo esc_attr($this->_data->get_option('twitter-app_id')); ?>" />
-					<span><?php echo $tips->add_tip(sprintf(__('Gib hier Deine Twitter App ID-Nummer ein. Wenn Du noch keine Twitter-App hast, musst Du eine <a target="_blank" href="%s">hier</a> erstellen.<br />Denke beim Einrichten Deiner App daran, auch die <b>Rückruf-URL</b> auf den entsprechenden Wert einzustellen (<code>%s</code>)', Eab_EventsHub::TEXT_DOMAIN), 'https://dev.twitter.com/apps/new', home_url())); ?></span>
+					<span><?php echo $tips->add_tip(sprintf(__('Gib hier Deine Twitter App ID-Nummer ein. Wenn Du noch keine Twitter-App hast, musst Du eine <a target="_blank" href="%s">hier</a> erstellen.<br />Denke beim Einrichten Deiner App daran, auch die <b>Rückruf-URL</b> auf den entsprechenden Wert einzustellen (<code>%s</code>)', 'eab'), 'https://dev.twitter.com/apps/new', home_url())); ?></span>
 				</div>
 
 				<div class="eab-settings-settings_item">
-				    <label for="psource_event-twitter-app_secret" id="psource_event_label-twitter-app_secret"><?php _e('Twitter Consumer Secret', Eab_EventsHub::TEXT_DOMAIN); ?></label>
+				    <label for="psource_event-twitter-app_secret" id="psource_event_label-twitter-app_secret"><?php _e('Twitter Consumer Secret', 'eab'); ?></label>
 					<input type="password" id="psource_event-twitter-app_secret" name="event_default[twitter-app_secret]" value="<?php echo esc_attr($this->_data->get_option('twitter-app_secret')); ?>" />
-					<span><?php echo $tips->add_tip(__('Gib hier Dein Twitter App-Geheimnis ein.', Eab_EventsHub::TEXT_DOMAIN)); ?></span>
+					<span><?php echo $tips->add_tip(__('Gib hier Dein Twitter App-Geheimnis ein.', 'eab')); ?></span>
 				</div>
 				
 				<div class="eab-settings-settings_item">
-				    <label for="psource_event-google-client_id" id="psource_event_label-google-client_id"><?php _e('Google Client ID', Eab_EventsHub::TEXT_DOMAIN); ?></label>
+				    <label for="psource_event-google-client_id" id="psource_event_label-google-client_id"><?php _e('Google Client ID', 'eab'); ?></label>
 					<input type="text" id="psource_event-google-client_id" name="event_default[google-client_id]" value="<?php echo esc_attr($this->_data->get_option('google-client_id')); ?>" />
-					<span><?php echo $tips->add_tip(sprintf(__('Gib hier Deine Google App Client-ID ein. Wenn Du noch keine Google App hast, musst Du eine <a target="_blank" href="%s">hier</a> erstellen', Eab_EventsHub::TEXT_DOMAIN), 'https://console.developers.google.com/')); ?></span>
+					<span><?php echo $tips->add_tip(sprintf(__('Gib hier Deine Google App Client-ID ein. Wenn Du noch keine Google App hast, musst Du eine <a target="_blank" href="%s">hier</a> erstellen', 'eab'), 'https://console.developers.google.com/')); ?></span>
 					<span>
-						<small><?php _e('Wenn Du dieses Feld leer lässt, wird Google Auth auf die alte OpenID zurückgesetzt.', Eab_EventsHub::TEXT_DOMAIN); ?></small>
+						<small><?php _e('Wenn Du dieses Feld leer lässt, wird Google Auth auf die alte OpenID zurückgesetzt.', 'eab'); ?></small>
 					</span>
 				</div>
 
 				<div class="eab-settings-settings_item">
-					<label><?php _e('Anmeldeschaltflächen ausblenden', Eab_EventsHub::TEXT_DOMAIN); ?></label>
+					<label><?php _e('Anmeldeschaltflächen ausblenden', 'eab'); ?></label>
 					<br />
 					<input type="checkbox" name="event_default[api_login-hide-facebook]" id="eab-api_login-hide-facebook" value="1" <?php echo ($this->_data->get_option('api_login-hide-facebook') ? 'checked="checked"' : '') ?> />
-					<label for="eab-api_login-hide-facebook"><?php _e('Facebook-Login-Button ausblenden', Eab_EventsHub::TEXT_DOMAIN); ?></label>
+					<label for="eab-api_login-hide-facebook"><?php _e('Facebook-Login-Button ausblenden', 'eab'); ?></label>
 					<br />
 					<input type="checkbox" name="event_default[api_login-hide-twitter]" id="eab-api_login-hide-twitter" value="1" <?php echo ($this->_data->get_option('api_login-hide-twitter') ? 'checked="checked"' : '') ?> />
-					<label for="eab-api_login-hide-twitter"><?php _e('Twitter-Login-Button ausblenden', Eab_EventsHub::TEXT_DOMAIN); ?></label>
+					<label for="eab-api_login-hide-twitter"><?php _e('Twitter-Login-Button ausblenden', 'eab'); ?></label>
 					<br />
 					<input type="checkbox" name="event_default[api_login-hide-google]" id="eab-api_login-hide-google" value="1" <?php echo ($this->_data->get_option('api_login-hide-google') ? 'checked="checked"' : '') ?> />
-					<label for="eab-api_login-hide-google"><?php _e('Google-Anmeldeschaltfläche ausblenden', Eab_EventsHub::TEXT_DOMAIN); ?></label>
+					<label for="eab-api_login-hide-google"><?php _e('Google-Anmeldeschaltfläche ausblenden', 'eab'); ?></label>
 					<br />
 					<input type="checkbox" name="event_default[api_login-hide-wordpress]" id="eab-api_login-hide-wordpress" value="1" <?php echo ($this->_data->get_option('api_login-hide-wordpress') ? 'checked="checked"' : '') ?> />
-					<label for="eab-api_login-hide-wordpress"><?php _e('WordPress-Anmeldeschaltfläche ausblenden', Eab_EventsHub::TEXT_DOMAIN); ?></label>
+					<label for="eab-api_login-hide-wordpress"><?php _e('WordPress-Anmeldeschaltfläche ausblenden', 'eab'); ?></label>
 
 				</div>
 			</div>
 		<?php if (!$this->_data->get_option('accept_api_logins')) { ?>
                     <div style="padding: 0 12px;">
-			<p><em><?php _e('Um API-Anmeldungen zu konfigurieren und zu akzeptieren, aktiviere das Kontrollkästchen "Facebook- und Twitter-Anmeldung zulassen?". in Plugin-Einstellungen.', Eab_EventsHub::TEXT_DOMAIN); ?></em></p>
+			<p><em><?php _e('Um API-Anmeldungen zu konfigurieren und zu akzeptieren, aktiviere das Kontrollkästchen "Facebook- und Twitter-Anmeldung zulassen?". in Plugin-Einstellungen.', 'eab'); ?></em></p>
                     </div>
 		<?php } ?>
 	    </div>

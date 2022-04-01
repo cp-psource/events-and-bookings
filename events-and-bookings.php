@@ -1632,7 +1632,7 @@ register_activation_hook( __FILE__, 'eab_activate' );
  * Plugin text domain
  */
 function eab_domain() {
-	return Eab_EventsHub::TEXT_DOMAIN;
+	return 'eab';
 }
 
 /**

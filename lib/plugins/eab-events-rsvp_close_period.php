@@ -56,12 +56,12 @@ class Eab_Events_RSVPClosePeriod {
 	$ret .= '<div class="eab_meta_box">';
 	$ret .= '<div class="misc-eab-section" >';
 	$ret .= '<div class="eab_meta_column_box top"><label for="eab_event_close_period">' .
-		__( 'RSVP-Anmeldefrist für Ereignisse', Eab_EventsHub::TEXT_DOMAIN ) .
+		__( 'RSVP-Anmeldefrist für Ereignisse', 'eab' ) .
 		'</label></div>';
 
 	$ret .= ' <input type="text" name="eab_ecp_close_period" id="eab_event_close_period" size="3" value="' . $period_str . '" /> ';
-	$ret .= '<label for="eab_event_close_period">' . __( 'Stunden vor Beginn', Eab_EventsHub::TEXT_DOMAIN ) . '</label>';
-	$ret .= '<br /><label for="eab_event_close_period-noclose">' . __( ', oder auswählen wenn keine Anmeldefrist vorliegt:', Eab_EventsHub::TEXT_DOMAIN ) . '</label>';
+	$ret .= '<label for="eab_event_close_period">' . __( 'Stunden vor Beginn', 'eab' ) . '</label>';
+	$ret .= '<br /><label for="eab_event_close_period-noclose">' . __( ', oder auswählen wenn keine Anmeldefrist vorliegt:', 'eab' ) . '</label>';
 	$ret .= ' <input type="checkbox" name="eab_ecp_close_period" id="eab_event_close_period-noclose" ' . $nolimit . ' value="0" /> ';
 
 	$ret .= '</div>';
@@ -77,9 +77,9 @@ class Eab_Events_RSVPClosePeriod {
 
 	$ret .= '<div class="eab-events-fpe-close_period_meta_box">';
 
-	$ret .= __( 'Gib die RSVP-Anmeldefrist für dieses Ereignis ein (in Stunden):', Eab_EventsHub::TEXT_DOMAIN );
+	$ret .= __( 'Gib die RSVP-Anmeldefrist für dieses Ereignis ein (in Stunden):', 'eab' );
 	$ret .= ' <input type="text" name="eab_ecp_close_period" id="eab_event_close_period" size="3" value="' . $period_str . '" /><br /> ';
-	$ret .= __( ', oder auswählen wenn keine Anmeldefrist vorliegt:', Eab_EventsHub::TEXT_DOMAIN );
+	$ret .= __( ', oder auswählen wenn keine Anmeldefrist vorliegt:', 'eab' );
 	$ret .= ' <input type="checkbox" name="eab_ecp_close_period" id="eab_event_close_period-noclose" ' . $nolimit . ' value="0" /> ';
 
 	$ret .= '</div>';
@@ -118,7 +118,7 @@ class Eab_Events_RSVPClosePeriod {
     }
 
     private function _get_rsvp_closed_message( $post_id = false ) {
-	$message = apply_filters( 'eab-rsvps-event_closed_period-message', __( 'Leider sind für diese Veranstaltung keine RSVP-Buchungen mehr verfügbar.', Eab_EventsHub::TEXT_DOMAIN ), $post_id );
+	$message = apply_filters( 'eab-rsvps-event_closed_period-message', __( 'Leider sind für diese Veranstaltung keine RSVP-Buchungen mehr verfügbar.', 'eab' ), $post_id );
 	if ( $post_id ) {
 	    $login_url_n = apply_filters( 'eab-rsvps-rsvp_login_page-no', wp_login_url( get_permalink( $post_id ) ) . '&eab=n' );
 	    if ( is_user_logged_in() ) {
@@ -126,7 +126,7 @@ class Eab_Events_RSVPClosePeriod {
 		$event = new Eab_EventModel( $post_id );
 		$is_coming = $event->user_is_coming( false, $user_id );
 		$cancel = '<input class="current psourceevents-no-submit" type="submit" name="action_no" value="' .
-			__( 'Abbrechen', Eab_EventsHub::TEXT_DOMAIN ) .
+			__( 'Abbrechen', 'eab' ) .
 			'" ' .
 			( $is_coming ? '' : 'style="display:none"' ) .
 			' />';
@@ -134,7 +134,7 @@ class Eab_Events_RSVPClosePeriod {
 		    $cancel .= '<input type="hidden" name="user_id" value="' . get_current_user_id() . '" />';
 		}
 	    } else {
-		$cancel = '<a class="psourceevents-no-submit" href="' . $login_url_n . '" >' . __( 'Abbrechen', Eab_EventsHub::TEXT_DOMAIN ) . '</a>';
+		$cancel = '<a class="psourceevents-no-submit" href="' . $login_url_n . '" >' . __( 'Abbrechen', 'eab' ) . '</a>';
 	    }
 	    $message .= '<div class="psourceevents-buttons">' .
 		    '<form action="' . get_permalink( $post_id ) . '" method="post" >' .
@@ -159,7 +159,7 @@ class Eab_Events_RSVPClosePeriod {
 		$diff = round( ( $start - $current_time ) / 3600, 2 );
 
 		if ( $diff <= $period ) {
-		    wp_redirect( '?eab_error_msg=' . urlencode( __( 'Leider sind RSVP-Buchungen für diese Veranstaltung jetzt geschlossen.', Eab_EventsHub::TEXT_DOMAIN ) ) );
+		    wp_redirect( '?eab_error_msg=' . urlencode( __( 'Leider sind RSVP-Buchungen für diese Veranstaltung jetzt geschlossen.', 'eab' ) ) );
 		    exit;
 		}
 	    }

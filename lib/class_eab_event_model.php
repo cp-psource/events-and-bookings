@@ -500,12 +500,12 @@ class Eab_EventModel extends WpmuDev_DatedVenuePremiumModel {
 
 	public function get_supported_recurrence_intervals () {
 		return array (
-			self::RECURRANCE_DAILY => __('Tag', Eab_EventsHub::TEXT_DOMAIN),
-			self::RECURRANCE_WEEKLY => __('Woche', Eab_EventsHub::TEXT_DOMAIN),
-			self::RECURRANCE_WEEK_COUNT => __('Wochenanzahl', Eab_EventsHub::TEXT_DOMAIN),
-			self::RECURRANCE_DOW => __('Wochentag', Eab_EventsHub::TEXT_DOMAIN),
-			self::RECURRANCE_MONTHLY => __('Monat', Eab_EventsHub::TEXT_DOMAIN),
-			self::RECURRANCE_YEARLY => __('Jahr', Eab_EventsHub::TEXT_DOMAIN),
+			self::RECURRANCE_DAILY => __('Tag', 'eab'),
+			self::RECURRANCE_WEEKLY => __('Woche', 'eab'),
+			self::RECURRANCE_WEEK_COUNT => __('Wochenanzahl', 'eab'),
+			self::RECURRANCE_DOW => __('Wochentag', 'eab'),
+			self::RECURRANCE_MONTHLY => __('Monat', 'eab'),
+			self::RECURRANCE_YEARLY => __('Jahr', 'eab'),
 		);
 	}
 
@@ -574,16 +574,16 @@ class Eab_EventModel extends WpmuDev_DatedVenuePremiumModel {
 
 		$check_start = $start && checkdate((int)date('n', $start), (int)date('j', $start), (int)date('Y', $start));
 		if (!$check_start) do_action('eab-debug-log_error', sprintf(
-			__('Ungültiger Zeitstempel der Intervallstartgrenze: [%s]', Eab_EventsHub::TEXT_DOMAIN),
+			__('Ungültiger Zeitstempel der Intervallstartgrenze: [%s]', 'eab'),
 			$check_start
 		));
 		$check_end = $end && checkdate((int)date('n', $end), (int)date('j', $end), (int)date('Y', $end));
 		if (!$check_end) do_action('eab-debug-log_error', sprintf(
-			__('Ungültiger Zeitstempel für die Endgrenze des Intervalls: [%s]', Eab_EventsHub::TEXT_DOMAIN),
+			__('Ungültiger Zeitstempel für die Endgrenze des Intervalls: [%s]', 'eab'),
 			$check_end
 		));
 		if ($end < $start) do_action('eab-debug-log_error', sprintf(
-			__('Ungültige Endgrenze nach Start: [%s] - [%s]', Eab_EventsHub::TEXT_DOMAIN),
+			__('Ungültige Endgrenze nach Start: [%s] - [%s]', 'eab'),
 			$start, $end
 		));
 
@@ -688,7 +688,7 @@ class Eab_EventModel extends WpmuDev_DatedVenuePremiumModel {
 				$unix_timestamp = strtotime($timestamp);
 				$check = $unix_timestamp >= $start && checkdate((int)date('n', $unix_timestamp), (int)date('j', $unix_timestamp), (int)date('Y', $unix_timestamp));
 				if (!$unix_timestamp || !$check) do_action('eab-debug-log_error', sprintf(
-					__('Ungültiger %s-Instanzzeitstempel: [%s]', Eab_EventsHub::TEXT_DOMAIN),
+					__('Ungültiger %s-Instanzzeitstempel: [%s]', 'eab'),
 					$interval,
 					$timestamp
 				));
@@ -712,7 +712,7 @@ class Eab_EventModel extends WpmuDev_DatedVenuePremiumModel {
 					$unix_timestamp = strtotime($timestamp);
 					$check = $unix_timestamp >= $start && checkdate((int)date('n', $unix_timestamp), (int)date('j', $unix_timestamp), (int)date('Y', $unix_timestamp));
 					if (!$unix_timestamp || !$check) do_action('eab-debug-log_error', sprintf(
-						__('Ungültiger %s-Instanzzeitstempel: [%s]', Eab_EventsHub::TEXT_DOMAIN),
+						__('Ungültiger %s-Instanzzeitstempel: [%s]', 'eab'),
 						$interval,
 						$timestamp
 					));
@@ -768,7 +768,7 @@ class Eab_EventModel extends WpmuDev_DatedVenuePremiumModel {
 						) {
 							// First up, log this for support purposes
 							do_action('eab-debug-log_error', sprintf(
-								__('Möglicher DOW-Präzisionsfehler erkannt, %s überschreibt mit %s für Ausdruck [%s %s diesen Monat], für %s Pivot', Eab_EventsHub::TEXT_DOMAIN),
+								__('Möglicher DOW-Präzisionsfehler erkannt, %s überschreibt mit %s für Ausdruck [%s %s diesen Monat], für %s Pivot', 'eab'),
 								$day, $this_day_week_before, // timestamps
 								$week_count, $weekday, // expression
 								$first // pivot
@@ -779,7 +779,7 @@ class Eab_EventModel extends WpmuDev_DatedVenuePremiumModel {
 				}
 
 				if (!$day) do_action('eab-debug-log_error', sprintf(
-					__('Ungültiger %s-Instanzzeitstempel: [%s %s für %s]', Eab_EventsHub::TEXT_DOMAIN),
+					__('Ungültiger %s-Instanzzeitstempel: [%s %s für %s]', 'eab'),
 					$interval,
 					$week_count, $weekday, $first
 				));
@@ -812,7 +812,7 @@ class Eab_EventModel extends WpmuDev_DatedVenuePremiumModel {
 					continue;
 
 				if (!$unix_timestamp || !$check) do_action('eab-debug-log_error', sprintf(
-					__('Ungültiger %s-Instanzzeitstempel: [%s]', Eab_EventsHub::TEXT_DOMAIN),
+					__('Ungültiger %s-Instanzzeitstempel: [%s]', 'eab'),
 					$interval,
 					$timestamp
 				));
@@ -828,7 +828,7 @@ class Eab_EventModel extends WpmuDev_DatedVenuePremiumModel {
 				$unix_timestamp = strtotime($timestamp);
 				$check = $unix_timestamp >= $start && checkdate((int)date('n', $unix_timestamp), (int)date('j', $unix_timestamp), (int)date('Y', $unix_timestamp));
 				if (!$unix_timestamp || !$check) do_action('eab-debug-log_error', sprintf(
-					__('Ungültiger %s-Instanzzeitstempel: [%s]', Eab_EventsHub::TEXT_DOMAIN),
+					__('Ungültiger %s-Instanzzeitstempel: [%s]', 'eab'),
 					$interval,
 					$timestamp
 				));

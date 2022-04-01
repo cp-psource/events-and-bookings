@@ -112,7 +112,7 @@ class Eab_CalendarTable_WeeklyEventArchiveCalendar {
 		$c .= '<div id="primary">';
         $c .= '<div id="psourceevents-wrapper">';
         $c .= '<h2>'. sprintf(
-            	__('Ereignisse von %s bis %s', Eab_EventsHub::TEXT_DOMAIN),
+            	__('Ereignisse von %s bis %s', 'eab'),
             	date_i18n($this->date_format, $start_of_calendar ), date_i18n($this->date_format, $start_of_calendar + 6*86400 ) 
 				) .'</h2>';
         $c .= '<div class="psourceevents-list">';
@@ -121,8 +121,8 @@ class Eab_CalendarTable_WeeklyEventArchiveCalendar {
 		$c .= '<div class="event-pagination">';
 		$prev = $time - (7*86400); 
 		$next = $time + (7*86400);
-		$c .= '<a href="'. add_query_arg( "wcalendar", $prev, get_permalink( $post->ID ) ) .'">' . __('Vorherige', Eab_EventsHub::TEXT_DOMAIN) . '</a>';
-		$c .= '<a href="'. add_query_arg( "wcalendar", $next, get_permalink( $post->ID ) ). '">' . __('Nächste', Eab_EventsHub::TEXT_DOMAIN) . '</a>';
+		$c .= '<a href="'. add_query_arg( "wcalendar", $prev, get_permalink( $post->ID ) ) .'">' . __('Vorherige', 'eab') . '</a>';
+		$c .= '<a href="'. add_query_arg( "wcalendar", $next, get_permalink( $post->ID ) ). '">' . __('Nächste', 'eab') . '</a>';
 		$c .= '</div>';
 			
 		$c .= '</div>
@@ -146,7 +146,7 @@ class Eab_CalendarTable_WeeklyEventArchiveCalendar {
 	
 	
 	protected function _get_text_domain () {
-		return Eab_EventsHub::TEXT_DOMAIN;
+		return 'eab';
 	}	
 	
 	public function get_timestamp () {
@@ -417,34 +417,34 @@ class Eab_CalendarTable_WeeklyEventArchiveCalendar {
 		$tips->set_icon_url(EAB_PLUGIN_URL . 'img/information.png' );
 		?>
 		<div id="eab-settings-weekly_calendar" class="eab-metabox postbox">
-				<h3 class="eab-hndle"><?php _e('Wöchentlicher Ereigniskalender Einstellungen', Eab_EventsHub::TEXT_DOMAIN); ?></h3>
+				<h3 class="eab-hndle"><?php _e('Wöchentlicher Ereigniskalender Einstellungen', 'eab'); ?></h3>
 				<div class="eab-inside">
 					<div class="eab-settings-settings_item">
-					    <label for="psource_event-weekly_calendar_start" ><?php _e('Kalenderstartstunde', Eab_EventsHub::TEXT_DOMAIN); ?></label>
+					    <label for="psource_event-weekly_calendar_start" ><?php _e('Kalenderstartstunde', 'eab'); ?></label>
 						<input type="text" size="10" name="event_default[weekly_calendar_start]" value="<?php print $this->_data->get_option('weekly_calendar_start'); ?>" />
-						<span><?php echo $tips->add_tip(__('Gib die Stunde des Tages ein. Der Kalender beginnt im 24-Stunden-Format ohne morgens/abends und Minuten, z.B: 13. Standard ist 10 (10 Uhr).', Eab_EventsHub::TEXT_DOMAIN)); ?></span>
+						<span><?php echo $tips->add_tip(__('Gib die Stunde des Tages ein. Der Kalender beginnt im 24-Stunden-Format ohne morgens/abends und Minuten, z.B: 13. Standard ist 10 (10 Uhr).', 'eab')); ?></span>
 					</div>
 					    
 					<div class="eab-settings-settings_item">
-					    <label for="psource_event-weekly_calendar_end" ><?php _e('Kalenderendstunde', Eab_EventsHub::TEXT_DOMAIN); ?></label>
+					    <label for="psource_event-weekly_calendar_end" ><?php _e('Kalenderendstunde', 'eab'); ?></label>
 						<input type="text" size="10" name="event_default[weekly_calendar_end]" value="<?php print $this->_data->get_option('weekly_calendar_end'); ?>" />
-						<span><?php echo $tips->add_tip(__('Der Kalender endet im 24-Stunden-Format ohne morgens/abends und Minuten, z.B: 22. Standard ist 24 (12 Uhr).', Eab_EventsHub::TEXT_DOMAIN)); ?></span>
+						<span><?php echo $tips->add_tip(__('Der Kalender endet im 24-Stunden-Format ohne morgens/abends und Minuten, z.B: 22. Standard ist 24 (12 Uhr).', 'eab')); ?></span>
 					</div>
 					
 					<div class="eab-settings-settings_item">
-					    <label for="psource_event-weekly_calendar_interval" ><?php _e('Kalenderschrittintervall (Minuten)', Eab_EventsHub::TEXT_DOMAIN); ?></label>
+					    <label for="psource_event-weekly_calendar_interval" ><?php _e('Kalenderschrittintervall (Minuten)', 'eab'); ?></label>
 						<input type="text" size="10" name="event_default[weekly_calendar_interval]" value="<?php print $this->_data->get_option('weekly_calendar_interval'); ?>" />
-						<span><?php echo $tips->add_tip(__('Gib die Anzahl der Minuten ein, die bestimmen, wie viele Zeilen die Kalendertabelle enthalten soll. Die Standardeinstellung ist 120 (2 Stunden). Der minimal zulässige Wert ist 10. Zu kleine Werte können zu einer langen Tabelle führen.', Eab_EventsHub::TEXT_DOMAIN)); ?></span>
+						<span><?php echo $tips->add_tip(__('Gib die Anzahl der Minuten ein, die bestimmen, wie viele Zeilen die Kalendertabelle enthalten soll. Die Standardeinstellung ist 120 (2 Stunden). Der minimal zulässige Wert ist 10. Zu kleine Werte können zu einer langen Tabelle führen.', 'eab')); ?></span>
 					</div>
 					
 					<div class="eab-settings-settings_item">
-					    <label for="psource_event-weekly_calendar_display" ><?php _e('Anzeige im Tooltip', Eab_EventsHub::TEXT_DOMAIN); ?></label>
+					    <label for="psource_event-weekly_calendar_display" ><?php _e('Anzeige im Tooltip', 'eab'); ?></label>
 						<select name="event_default[weekly_calendar_display]">
-						<option value=""><?php _e('Veranstaltungsort, Miniaturansicht, Startdatum und Inhalt', Eab_EventsHub::TEXT_DOMAIN); ?></option>
-						<option value="author" <?php if( $this->_data->get_option('weekly_calendar_display') ) echo "selected='selected'"?>><?php _e('Autorenname, Avatar und Bio', Eab_EventsHub::TEXT_DOMAIN); ?></option>
+						<option value=""><?php _e('Veranstaltungsort, Miniaturansicht, Startdatum und Inhalt', 'eab'); ?></option>
+						<option value="author" <?php if( $this->_data->get_option('weekly_calendar_display') ) echo "selected='selected'"?>><?php _e('Autorenname, Avatar und Bio', 'eab'); ?></option>
 						
 						</select>
-						<span><?php echo $tips->add_tip(__('Wähle aus, welche Elemente in der QuickInfo angezeigt werden sollen, d. H. Wenn der Besucher die Maus über das Ereignis bewegt.', Eab_EventsHub::TEXT_DOMAIN)); ?></span>
+						<span><?php echo $tips->add_tip(__('Wähle aus, welche Elemente in der QuickInfo angezeigt werden sollen, d. H. Wenn der Besucher die Maus über das Ereignis bewegt.', 'eab')); ?></span>
 					</div>
 					    
 				</div>

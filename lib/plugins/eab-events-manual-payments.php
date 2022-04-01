@@ -114,7 +114,7 @@ class Eab_Events_ManualPayments {
 								if (data && data.error) {alert(data.error);}
 								else {
 									$("#manual_payment_pay_'.$event_id.'").css("opacity","0.2");
-									alert("'.__('Vielen Dank für die Zahlung!',Eab_EventsHub::TEXT_DOMAIN).'");
+									alert("'.__('Vielen Dank für die Zahlung!','eab').'");
 								}
 							});
 							return false;
@@ -130,7 +130,7 @@ class Eab_Events_ManualPayments {
 	function show_nags() {
 		if ( strpos($this->_data->get_option('manual_payment_instructions'), "MANUALPAYMENTBUTTON") === false) {
 			echo '<div class="error"><p>' .
-				__("Du hast kein Schlüsselwort MANUALPAYMENTBUTTON im Feld Anweisungen. Dies bedeutet, dass es keine Schaltfläche gibt und der Benutzer Dich nicht darüber informieren kann, dass er eine Zahlung geleistet hat, was wiederum bedeutet, dass die manuelle Zahlung praktisch unbrauchbar ist.", Eab_EventsHub::TEXT_DOMAIN) .
+				__("Du hast kein Schlüsselwort MANUALPAYMENTBUTTON im Feld Anweisungen. Dies bedeutet, dass es keine Schaltfläche gibt und der Benutzer Dich nicht darüber informieren kann, dass er eine Zahlung geleistet hat, was wiederum bedeutet, dass die manuelle Zahlung praktisch unbrauchbar ist.", 'eab') .
 			'</p></div>';
 		}
 	}
@@ -157,23 +157,23 @@ class Eab_Events_ManualPayments {
 		$tips->set_icon_url( EAB_PLUGIN_URL . 'img/information.png' );
 		?>
 		<div id="eab-settings-manual_payments" class="eab-metabox postbox">
-				<h3 class="eab-hndle"><?php _e('Manuelle Zahlungseinstellungen', Eab_EventsHub::TEXT_DOMAIN); ?></h3>
+				<h3 class="eab-hndle"><?php _e('Manuelle Zahlungseinstellungen', 'eab'); ?></h3>
 				<div class="eab-inside">
 					<div class="eab-settings-settings_item">
-					    <label for="psource_event-manual_payment_select" ><?php _e('Wähle den Schaltflächentext aus', Eab_EventsHub::TEXT_DOMAIN); ?></label>
+					    <label for="psource_event-manual_payment_select" ><?php _e('Wähle den Schaltflächentext aus', 'eab'); ?></label>
 						<input type="text" size="40" name="event_default[manual_payment_select]" value="<?php print $this->_data->get_option('manual_payment_select'); ?>" />
-						<span><?php echo $tips->add_tip(__('Dies ist der Text, der auf der Schaltfläche Manuelle Zahlung auswählen angezeigt wird.', Eab_EventsHub::TEXT_DOMAIN)); ?></span>
+						<span><?php echo $tips->add_tip(__('Dies ist der Text, der auf der Schaltfläche Manuelle Zahlung auswählen angezeigt wird.', 'eab')); ?></span>
 					</div>
 					    
 					<div class="eab-settings-settings_item">
-					    <label for="psource_event-manual_payment_pay" ><?php _e('Bezahlbutton Text', Eab_EventsHub::TEXT_DOMAIN); ?></label>
+					    <label for="psource_event-manual_payment_pay" ><?php _e('Bezahlbutton Text', 'eab'); ?></label>
 						<input type="text" size="40" name="event_default[manual_payment_pay]" value="<?php print $this->_data->get_option('manual_payment_pay'); ?>" />
-						<span><?php echo $tips->add_tip( __('Dies ist der Text, der auf der Schaltfläche Bezahlen angezeigt wird. Der Benutzer muss auf diese Schaltfläche klicken, nachdem er die Zahlung getätigt hat.', Eab_EventsHub::TEXT_DOMAIN)); ?></span>
+						<span><?php echo $tips->add_tip( __('Dies ist der Text, der auf der Schaltfläche Bezahlen angezeigt wird. Der Benutzer muss auf diese Schaltfläche klicken, nachdem er die Zahlung getätigt hat.', 'eab')); ?></span>
 					</div>
 					
 					<div class="eab-settings-settings_item">
-					    <label for="psource_event-manual_payment_instructions" ><?php _e('Anleitung', Eab_EventsHub::TEXT_DOMAIN); ?>&nbsp;:</label>
-						<span><?php echo $tips->add_tip( __('Schreibe hier das Verfahren, das der Benutzer für eine manuelle Zahlung ausführen muss. Verwende den MANUALPAYMENTBUTTON, um den Pay Button an der gewünschten Stelle einzufügen.', Eab_EventsHub::TEXT_DOMAIN)); ?></span>
+					    <label for="psource_event-manual_payment_instructions" ><?php _e('Anleitung', 'eab'); ?>&nbsp;:</label>
+						<span><?php echo $tips->add_tip( __('Schreibe hier das Verfahren, das der Benutzer für eine manuelle Zahlung ausführen muss. Verwende den MANUALPAYMENTBUTTON, um den Pay Button an der gewünschten Stelle einzufügen.', 'eab')); ?></span>
 						<?php wp_editor( $this->_data->get_option('manual_payment_instructions'), 'manualpaymentsinstructions', array('textarea_name'=>'event_default[manual_payment_instructions]', 'textarea_rows' => 5) ); ?>
 					</div>
 					    
@@ -221,7 +221,7 @@ class Eab_Events_ManualPayments {
 		$user_id = $_POST["user_id"];
 		$event_id = $_POST["event_id"];
 		if ( !$user_id OR !$event_id )
-			die( json_encode( array( "error" => __( "Benutzer-ID oder Ereignis-ID fehlt", Eab_EventsHub::TEXT_DOMAIN ) ) ) );
+			die( json_encode( array( "error" => __( "Benutzer-ID oder Ereignis-ID fehlt", 'eab' ) ) ) );
 		$payments = maybe_unserialize( stripslashes( Eab_EventModel::get_booking_meta( $event_id, "manual_payment" ) ) );
 		if ( is_array( $payments ) ) {
 			$post  		= get_post( $event_id );
@@ -239,7 +239,7 @@ class Eab_Events_ManualPayments {
 				}
 			}
 		}
-		die( json_encode( array( "error" => __( "Datensatz konnte nicht gefunden werden", Eab_EventsHub::TEXT_DOMAIN ) ) ) );
+		die( json_encode( array( "error" => __( "Datensatz konnte nicht gefunden werden", 'eab' ) ) ) );
 	}
 	
 	/**
@@ -253,12 +253,12 @@ class Eab_Events_ManualPayments {
 				if ( $payment["id"] == $user_id AND $payment["stat"] == 'pending' ) {
 					$content .= '<div class="eab-guest-actions" id="div_approve_payment_'.$user_id.'">
 					<a id="approve_payment_'.$user_id.'" href="javascript:void(0)" class="eab-guest-manual_payment" >' .
-					__('Zahlung genehmigen', Eab_EventsHub::TEXT_DOMAIN) .
+					__('Zahlung genehmigen', 'eab') .
 					'</a></div>';
 					$content .= '<script type="text/javascript">';
 					$content .= 'jQuery(document).ready(function($){
 									$("#approve_payment_'.$user_id.'").click(function() {
-										if (confirm("'. __( "Bist Du sicher, diese Zahlung zu genehmigen?", Eab_EventsHub::TEXT_DOMAIN ) .'")){
+										if (confirm("'. __( "Bist Du sicher, diese Zahlung zu genehmigen?", 'eab' ) .'")){
 											$.post(ajaxurl, {
 												"action": "eab_approve_manual_payment",
 												"user_id":'.$user_id.',
@@ -266,7 +266,7 @@ class Eab_Events_ManualPayments {
 											}, function (data) {
 												if (data && data.error) {alert(data.error);}
 												else {
-													$("#div_approve_payment_'.$user_id.'").parent(".eab-guest").find(".eab-guest-payment_info").html("'.__( 'Bezahlt', Eab_EventsHub::TEXT_DOMAIN ).'");
+													$("#div_approve_payment_'.$user_id.'").parent(".eab-guest").find(".eab-guest-payment_info").html("'.__( 'Bezahlt', 'eab' ).'");
 													$("#div_approve_payment_'.$user_id.'").remove();
 												}
 											},

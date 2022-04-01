@@ -17,7 +17,7 @@ get_header( 'event' );
 	<div id="primary">
         <div id="psourceevents-wrapper">
             <h2><?php echo sprintf(
-            	__('Veranstaltungen im %s', Eab_EventsHub::TEXT_DOMAIN),
+            	__('Veranstaltungen im %s', 'eab'),
             	date_i18n("F Y", $time)
 			); ?></h2>
             <div class="psourceevents-list">

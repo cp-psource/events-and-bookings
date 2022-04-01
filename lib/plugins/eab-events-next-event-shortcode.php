@@ -59,7 +59,7 @@ class Eab_Events_NextEventShortcode {
 			'format'=> 'H:i T l',
 			'class'	=> '',
 			'add' => 0,
-			'expired'	=> __('Geschlossen', Eab_EventsHub::TEXT_DOMAIN),
+			'expired'	=> __('Geschlossen', 'eab'),
 			'legacy' => false,
 			'category' => false,
 			'categories' => false,
@@ -112,7 +112,7 @@ class Eab_Events_NextEventShortcode {
 		'format'=> 'H:i T l',
 		'class'	=> '',
 		'add'	=> 0,
-		'expired'	=> __('Geschlossen', Eab_EventsHub::TEXT_DOMAIN)
+		'expired'	=> __('Geschlossen', 'eab')
 		), $atts ) );
 		
 		if ( $class )

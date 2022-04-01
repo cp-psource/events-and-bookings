@@ -79,33 +79,33 @@ class Eab_Export_iCal {
 		$checked_dload = $this->_data->get_option('eab_export-ical-download_links') ? 'checked="checked"' : '';
 ?>
 <div id="eab-settings-ical_export" class="eab-metabox postbox">
-	<h3 class="eab-hndle"><?php _e('iCal Export Einstellungen', Eab_EventsHub::TEXT_DOMAIN); ?></h3>
+	<h3 class="eab-hndle"><?php _e('iCal Export Einstellungen', 'eab'); ?></h3>
 	<div class="eab-inside">
 	    <div class="eab-settings-settings_item">
-			<b><?php _e('Exportierte Ereigniszeiten', Eab_EventsHub::TEXT_DOMAIN); ?></b>
+			<b><?php _e('Exportierte Ereigniszeiten', 'eab'); ?></b>
 			<div style="line-height:1.5em; padding-bottom:.5em;">
 				<label for="eab_export-ical-time-gmt">
 					<input type="radio" id="eab_export-ical-time-gmt" name="event_default[eab_export-ical-time]" value="gmt" <?php echo $checked_time_gmt; ?> />
-					<?php _e('Greenwich Mittlere Zeit (GMT)', Eab_EventsHub::TEXT_DOMAIN); ?>
+					<?php _e('Greenwich Mittlere Zeit (GMT)', 'eab'); ?>
 				</label>
 				<br />
 				<label for="eab_export-ical-time-entered">
 					<input type="radio" id="eab_export-ical-time-entered" name="event_default[eab_export-ical-time]" value="local" <?php echo $checked_time_entered; ?> />
-					<?php _e('Ortszeit (wie eingegeben)', Eab_EventsHub::TEXT_DOMAIN); ?>
+					<?php _e('Ortszeit (wie eingegeben)', 'eab'); ?>
 				</label>
 				<br />
 				<label for="eab_export-ical-time-tz_local">
 					<input type="radio" id="eab_export-ical-time-tz_local" name="event_default[eab_export-ical-time]" value="tz_local" <?php echo $checked_time_tz_local; ?> />
-					<?php _e('Ortszeit (wie eingegeben) mit Zeitzoneninformationen', Eab_EventsHub::TEXT_DOMAIN); ?>
+					<?php _e('Ortszeit (wie eingegeben) mit Zeitzoneninformationen', 'eab'); ?>
 				</label>
 			</div>
 	    </div>
 		<div class="eab-settings-settings_item">
-	    	<label for="eab_export-ical-auto_show_links"><?php _e('Füge automatisch Exportlinks zu Ereignissen und Archiven hinzu', Eab_EventsHub::TEXT_DOMAIN); ?>?</label>
+	    	<label for="eab_export-ical-auto_show_links"><?php _e('Füge automatisch Exportlinks zu Ereignissen und Archiven hinzu', 'eab'); ?>?</label>
 			<input type="checkbox" id="eab_export-ical-auto_show_links" name="event_default[eab_export-ical-auto_show_links]" value="1" <?php print $checked_auto; ?> />
 		</div>
 		<div class="eab-settings-settings_item">
-			<label for="eab_export-ical-download_links"><?php _e('Automatisch hinzugefügte Links sind Download-Links', Eab_EventsHub::TEXT_DOMAIN); ?>?</label>
+			<label for="eab_export-ical-download_links"><?php _e('Automatisch hinzugefügte Links sind Download-Links', 'eab'); ?>?</label>
 			<input type="checkbox" id="eab_export-ical-download_links" name="event_default[eab_export-ical-download_links]" value="1" <?php print $checked_dload; ?> />
 	    </div>
 	</div>
@@ -122,7 +122,7 @@ class Eab_Export_iCal {
 		return "{$content} <a class='export_to_ical' href='" . 
 			get_permalink($event->get_id()) . 
 			'?eab_format=ical' . $download .
-		"'><span class='eab_export'>" . __('iCal Sync', Eab_EventsHub::TEXT_DOMAIN) . '</span></a>';
+		"'><span class='eab_export'>" . __('iCal Sync', 'eab') . '</span></a>';
 	}
 
 	function intercept_page_load () {
@@ -168,7 +168,7 @@ class Eab_Exporter_Ical extends Eab_Exporter {
 	}
 
 	public function export_event () {
-		if (!$this->_event_id) die(__('Kein Ereignis zum Exportieren', Eab_EventsHub::TEXT_DOMAIN));
+		if (!$this->_event_id) die(__('Kein Ereignis zum Exportieren', 'eab'));
 		$ret = $this->_get_header();
 		$ret .= $this->_get_event_as_ical(new Eab_EventModel(get_post($this->_event_id)), apply_filters('eab-export-ical-recurring_instances', true));
 		$ret .= "END:VCALENDAR";
@@ -190,7 +190,7 @@ class Eab_Exporter_Ical extends Eab_Exporter {
 	}
 
 	public function export_attendees () {$event = new Eab_EventModel(get_post($this->_event_id));
-		die(__('Not supported', Eab_EventsHub::TEXT_DOMAIN));
+		die(__('Not supported', 'eab'));
 	}
 
 	private function _get_header () {

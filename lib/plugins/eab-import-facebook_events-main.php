@@ -179,12 +179,12 @@ class Eab_Calendars_FacebookEventsImporter {
 		}
 
 		$runs = array(
-			'3600' => __('Stunde', Eab_EventsHub::TEXT_DOMAIN),
-			'7200' => __('Zwei Stunden', Eab_EventsHub::TEXT_DOMAIN),
-			'10800' => __('Drei Stunden', Eab_EventsHub::TEXT_DOMAIN),
-			'21600' => __('Sechs Stunden', Eab_EventsHub::TEXT_DOMAIN),
-			'43200' => __('Zwölf Stunde', Eab_EventsHub::TEXT_DOMAIN),
-			'86400' => __('Tag', Eab_EventsHub::TEXT_DOMAIN),
+			'3600' => __('Stunde', 'eab'),
+			'7200' => __('Zwei Stunden', 'eab'),
+			'10800' => __('Drei Stunden', 'eab'),
+			'21600' => __('Sechs Stunden', 'eab'),
+			'43200' => __('Zwölf Stunde', 'eab'),
+			'86400' => __('Tag', 'eab'),
 		);
 		$run_each = $this->_data->get_option('fbe_importer-run_each');
 		$run_each = $run_each ? $run_each : 3600;
@@ -198,13 +198,13 @@ class Eab_Calendars_FacebookEventsImporter {
 		);
 		?>
 		<div id="eab-settings-fbe_importer" class="eab-metabox postbox">
-			<h3 class="eab-hndle"><?php _e('Facebook Events Import Einstellungen', Eab_EventsHub::TEXT_DOMAIN); ?></h3>
+			<h3 class="eab-hndle"><?php _e('Facebook Events Import Einstellungen', 'eab'); ?></h3>
 				<div class="eab-inside">
 					<div class="eab-settings-settings_item" style="line-height:1.8em">
                         <table cellpadding="5" cellspacing="5" width="100%">
                                 <tr>
                                         <td valign="top" width="400">
-                                                <label style="width: 100%" for="psource_event-fbe_importer-client_id" id="psource_event_label-fbe_importer-client_id"><?php _e('App ID', Eab_EventsHub::TEXT_DOMAIN); ?> <?php echo $tips->add_tip(__('Gib hier Deine App-ID ein.', Eab_EventsHub::TEXT_DOMAIN)); ?></label>
+                                                <label style="width: 100%" for="psource_event-fbe_importer-client_id" id="psource_event_label-fbe_importer-client_id"><?php _e('App ID', 'eab'); ?> <?php echo $tips->add_tip(__('Gib hier Deine App-ID ein.', 'eab')); ?></label>
                                         </td>
                                         <td valign="top">
                                                 <input type="text" size="85" id="psource_event-fbe_importer-client_id" name="fbe_importer[client_id]" value="<?php print $api_key; ?>" />
@@ -212,7 +212,7 @@ class Eab_Calendars_FacebookEventsImporter {
                                 </tr>
                                 <tr>
                                         <td valign="top">
-                                                <label style="width: 100%" for="psource_event-fbe_importer-client_id" id="psource_event_label-fbe_importer-client_id"><?php _e('App secret', Eab_EventsHub::TEXT_DOMAIN); ?> <?php echo $tips->add_tip(__('Gib hier Deine App-Geheimnummer ein.', Eab_EventsHub::TEXT_DOMAIN)); ?></label>
+                                                <label style="width: 100%" for="psource_event-fbe_importer-client_id" id="psource_event_label-fbe_importer-client_id"><?php _e('App secret', 'eab'); ?> <?php echo $tips->add_tip(__('Gib hier Deine App-Geheimnummer ein.', 'eab')); ?></label>
                                         </td>
                                         <td valign="top">
                                                 <input type="text" size="85" id="psource_event-fbe_importer-client_id" name="fbe_importer[client_secret]" value="<?php print $api_secret; ?>" />
@@ -221,23 +221,23 @@ class Eab_Calendars_FacebookEventsImporter {
                         </table>
 					<div class="fbe_importer-auth_actions">
 				<?php if ($is_authenticated && $api_key && $api_secret) { ?>
-					<a href="#reset" class="button" id="fbe_import-reset"><?php _e('Reset', Eab_EventsHub::TEXT_DOMAIN); ?></a>
-					<span><?php echo $tips->add_tip(__('Denke daran, auch die App-Berechtigungen zu widerrufen <a href="http://www.facebook.com/settings?tab=applications" target="_blank">hier</a>.', Eab_EventsHub::TEXT_DOMAIN)); ?></span>
+					<a href="#reset" class="button" id="fbe_import-reset"><?php _e('Reset', 'eab'); ?></a>
+					<span><?php echo $tips->add_tip(__('Denke daran, auch die App-Berechtigungen zu widerrufen <a href="http://www.facebook.com/settings?tab=applications" target="_blank">hier</a>.', 'eab')); ?></span>
 				<?php } else if ($api_key && $api_secret) { ?>
-					<a href="#authenticate" class="button" id="fbe_import-authenticate"><?php _e('Authentifizieren', Eab_EventsHub::TEXT_DOMAIN); ?></a>
+					<a href="#authenticate" class="button" id="fbe_import-authenticate"><?php _e('Authentifizieren', 'eab'); ?></a>
 				<?php } else { ?>
-					<p><em><?php _e('Gib Deine API-Informationen ein und speichere zuerst die Einstellungen.', Eab_EventsHub::TEXT_DOMAIN); ?></em></p>
+					<p><em><?php _e('Gib Deine API-Informationen ein und speichere zuerst die Einstellungen.', 'eab'); ?></em></p>
 				<?php } ?>
 			</div>
 		</div>
 		<?php if ($is_authenticated) { ?>
 		<div class="eab-settings-settings_item">
-			<label><?php _e('Importiere Ereignisse für diese Facebook-Benutzer-ID:', Eab_EventsHub::TEXT_DOMAIN); ?></label>
+			<label><?php _e('Importiere Ereignisse für diese Facebook-Benutzer-ID:', 'eab'); ?></label>
 			<input type="text" id="psource_event-fbe_importer-fb_user" name="fbe_importer[fb_user]" value="<?php esc_attr_e($sync_user); ?>" />
-			<small><em><?php _e('Ändere dieses Feld nur, wenn Du sicher bist, was Du tust', Eab_EventsHub::TEXT_DOMAIN); ?></em></small>
+			<small><em><?php _e('Ändere dieses Feld nur, wenn Du sicher bist, was Du tust', 'eab'); ?></em></small>
 		</div>
 		<div class="eab-settings-settings_item">
-			<label><?php _e('Führe den Importer aus:', Eab_EventsHub::TEXT_DOMAIN); ?></label>
+			<label><?php _e('Führe den Importer aus:', 'eab'); ?></label>
 			<select name="fbe_importer[run_each]">
 			<?php foreach ($runs as $interval => $ilabel) { ?>
 				<option value="<?php echo (int)$interval; ?>" <?php echo selected($interval, $run_each); ?>><?php echo $ilabel; ?></option>
@@ -245,17 +245,17 @@ class Eab_Calendars_FacebookEventsImporter {
 			</select>
 		</div>
 		<div class="eab-settings-settings_item">
-			<label><?php _e('Weise diesem Benutzer importierte Ereignisse zu:', Eab_EventsHub::TEXT_DOMAIN); ?></label>
+			<label><?php _e('Weise diesem Benutzer importierte Ereignisse zu:', 'eab'); ?></label>
 			<select name="fbe_importer[calendar_author]">
 			<?php foreach ($possible_authors as $aid => $alabel) { ?>
 				<option value="<?php echo $aid; ?>" <?php echo selected($aid, $calendar_author); ?>><?php echo $alabel; ?>&nbsp;</option>
 			<?php } ?>
 			</select>
-			<span><?php echo $tips->add_tip(__('Wähle den Benutzer aus, der als importierter Ereignis-Host angezeigt werden soll.', Eab_EventsHub::TEXT_DOMAIN)); ?></span>
+			<span><?php echo $tips->add_tip(__('Wähle den Benutzer aus, der als importierter Ereignis-Host angezeigt werden soll.', 'eab')); ?></span>
 		</div>
 		<?php if ($fb_user) { ?>
 		<div class="eab-settings-settings_item">
-			<input type="submit" value="<?php esc_attr_e(__('Einstellungen speichern', Eab_EventsHub::TEXT_DOMAIN)); ?>" />
+			<input type="submit" value="<?php esc_attr_e(__('Einstellungen speichern', 'eab')); ?>" />
 		</div>
 		<?php } // end if fb user?>
 		<?php } // end if authenticated ?>

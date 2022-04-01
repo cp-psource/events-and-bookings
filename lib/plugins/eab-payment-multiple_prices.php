@@ -93,12 +93,12 @@ EOJs;
 			'&nbsp;' .
 			$this->_data->get_option("currency") .
 			'<input type="text" size="4" name="psource_event_price_tier[' . $key . '][fee]" value="' . esc_attr($fee) . '" placeholder="0.00" />' .
-			' <a href="#remove-tier" class="eab-payment-multiple_prices-remove_tier">' . __('Entferne', Eab_EventsHub::TEXT_DOMAIN) . '</a>' .
+			' <a href="#remove-tier" class="eab-payment-multiple_prices-remove_tier">' . __('Entferne', 'eab') . '</a>' .
 		'</div>';
 	}
 
 	private function _get_blank_tiers_meta_markup ($event) {
-		return '<br /><input type="button" id="eab-payment-multiple_prices-add_tier" value="' . esc_attr(__('Preisstufe hinzufügen', Eab_EventsHub::TEXT_DOMAIN)) . '" />';
+		return '<br /><input type="button" id="eab-payment-multiple_prices-add_tier" value="' . esc_attr(__('Preisstufe hinzufügen', 'eab')) . '" />';
 	}
 
 	function get_event_price_metabox_template ($markup) {
@@ -158,17 +158,17 @@ EOJs;
 		$content .= '<input type="hidden" name="notify_url" value="' . 
 			admin_url('admin-ajax.php?action=eab_paypal_ipn&blog_id=' . $blog_id . '&booking_id=' . $booking_id) .
 		'" />';
-		$content .= '<br />' . __('Bitte wähle die Preisstufe', Eab_EventsHub::TEXT_DOMAIN) . ' ' . $selection;
+		$content .= '<br />' . __('Bitte wähle die Preisstufe', 'eab') . ' ' . $selection;
 		$content .= '<input type="hidden" name="return" value="' . get_permalink($event->get_id()) . '" />';
 		$content .= '<input type="hidden" name="currency_code" value="' . $this->_data->get_option('currency') . '">';
 		$content .= '<input type="hidden" name="cmd" value="_xclick" />';
 		
 		// Add multiple tickets
 		$extra_attributes = apply_filters('eab-payment-paypal_tickets-extra_attributes', $extra_attributes, $event->get_id(), $booking_id);
-		$content .= '' .// '<a href="#buy-tickets" class="eab-buy_tickets-trigger" style="display:none">' . __('Buy tickets', Eab_EventsHub::TEXT_DOMAIN) . '</a>' . 
+		$content .= '' .// '<a href="#buy-tickets" class="eab-buy_tickets-trigger" style="display:none">' . __('Buy tickets', 'eab') . '</a>' . 
 			sprintf(
-				//'<p class="eab-buy_tickets-target">' . __('I want to buy %s ticket(s)', Eab_EventsHub::TEXT_DOMAIN) . '</p>', 
-				'<p>' . __('Ich möchte %s Tickets kaufen.', Eab_EventsHub::TEXT_DOMAIN) . '</p>', 
+				//'<p class="eab-buy_tickets-target">' . __('I want to buy %s ticket(s)', 'eab') . '</p>', 
+				'<p>' . __('Ich möchte %s Tickets kaufen.', 'eab') . '</p>', 
 				'<input type="number" size="2" name="quantity" value="1" min="1" ' . $extra_attributes . ' />'
 			)
 		;

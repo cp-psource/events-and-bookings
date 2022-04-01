@@ -35,10 +35,10 @@ class Eab_Events_RsvpEmailNonPaid {
 	function add_action_button ($content, $event) {
 		if (!$event->is_premium()) return $content;
 		$content .= '<button type="button" class="eab_event-eab_rsvps-non_paid-send_email" data-event_id="' . (int)$event->get_id() . '">' .
-			__('Sende eine Erinnerungs-E-Mail an alle nicht bezahlten Besucher', Eab_EventsHub::TEXT_DOMAIN) .
+			__('Sende eine Erinnerungs-E-Mail an alle nicht bezahlten Besucher', 'eab') .
 		'</button><div class="eab_event-eab_rsvps-non_paid-result"></div>';
-		$error = esc_js(__('Etwas ist schief gelaufen', Eab_EventsHub::TEXT_DOMAIN));
-		$success = esc_js(__('Anzahl der gesendeten Nachrichten:', Eab_EventsHub::TEXT_DOMAIN));
+		$error = esc_js(__('Etwas ist schief gelaufen', 'eab'));
+		$success = esc_js(__('Anzahl der gesendeten Nachrichten:', 'eab'));
 		$content .=<<<EOJS
 <script>
 (function ($) {
@@ -169,30 +169,30 @@ function send_email_non_paid_members_callback() {
 		$events = Eab_CollectionFactory::get_upcoming_events(eab_current_time(), array('posts_per_page' => 10));
 		?>
 <div id="eab-settings-eab_rsvps_non_paid" class="eab-metabox postbox">
-	<h3 class="eab-hndle"><?php _e('Erinnerung E-Mail-Einstellungen für nicht bezahlte Mitglieder', Eab_EventsHub::TEXT_DOMAIN); ?></h3>
+	<h3 class="eab-hndle"><?php _e('Erinnerung E-Mail-Einstellungen für nicht bezahlte Mitglieder', 'eab'); ?></h3>
 	<div class="eab-inside">
 		 <div class="eab-settings-settings_item">
-			<label for="eab_event-eab_rsvps-non_paid-from" id="eab_event-eab_rsvps-non_paid-from"><?php _e('Email von:', Eab_EventsHub::TEXT_DOMAIN); ?></label>
+			<label for="eab_event-eab_rsvps-non_paid-from" id="eab_event-eab_rsvps-non_paid-from"><?php _e('Email von:', 'eab'); ?></label>
 			<input type="text" size="20" id="eab_event-eab_rsvps-non_paid-from" name="eab_rsvps_non_paid[email-from]" value="<?php echo esc_attr($from); ?>" />
-			<span><?php echo $tips->add_tip(__('Dies ist die Absenderadresse für die Erinnerungs-E-Mails für nicht bezahlte Mitglieder', Eab_EventsHub::TEXT_DOMAIN)); ?></span>
+			<span><?php echo $tips->add_tip(__('Dies ist die Absenderadresse für die Erinnerungs-E-Mails für nicht bezahlte Mitglieder', 'eab')); ?></span>
 	    </div>
 	    <div class="eab-settings-settings_item">
-	    	<label for="eab_event-eab_rsvps-non_paid-subject"><?php _e('E-Mail Betreff', Eab_EventsHub::TEXT_DOMAIN); ?></label>
-			<span><?php echo $tips->add_tip(sprintf(__('Dies ist der E-Mail-Betreff. Du kannst diese Makros verwenden: <code>%s</code>', Eab_EventsHub::TEXT_DOMAIN), $macros)); ?></span>
+	    	<label for="eab_event-eab_rsvps-non_paid-subject"><?php _e('E-Mail Betreff', 'eab'); ?></label>
+			<span><?php echo $tips->add_tip(sprintf(__('Dies ist der E-Mail-Betreff. Du kannst diese Makros verwenden: <code>%s</code>', 'eab'), $macros)); ?></span>
 			<input type="text" class="widefat" id="eab_event-eab_rsvps-non_paid-subject" name="eab_rsvps_non_paid[email-subject]" value="<?php echo esc_attr($subject); ?>" />
 	    </div>
 	    <div class="eab-settings-settings_item">
-	    	<label for="eab_event-eab_rsvps-non_paid-body"><?php _e('Nachrichtentext', Eab_EventsHub::TEXT_DOMAIN); ?></label>
-			<span><?php echo $tips->add_tip(sprintf(__('Dies ist der E-Mail-Text. Du kannst diese Makros verwenden: <code>%s</code>', Eab_EventsHub::TEXT_DOMAIN), $macros)); ?></span>
+	    	<label for="eab_event-eab_rsvps-non_paid-body"><?php _e('Nachrichtentext', 'eab'); ?></label>
+			<span><?php echo $tips->add_tip(sprintf(__('Dies ist der E-Mail-Text. Du kannst diese Makros verwenden: <code>%s</code>', 'eab'), $macros)); ?></span>
 			<?php wp_editor($body, 'eab_rsvps-email_non_paid-body', array(
 				'name' => 'eab_rsvps-email_non_paid-body',
 			)); ?>
 	    </div>
-	    <div class="eab-settings-settings_item"><small><?php printf(__('Du kannst diese Makros in Ihrem Betreff und Nachrichtentext verwenden: <code>%s</code>', Eab_EventsHub::TEXT_DOMAIN), $macros) ?></small></div>
+	    <div class="eab-settings-settings_item"><small><?php printf(__('Du kannst diese Makros in Ihrem Betreff und Nachrichtentext verwenden: <code>%s</code>', 'eab'), $macros) ?></small></div>
 	<?php if ($events) { ?>
 	    <div class="eab-settings-settings_item">
-	    	<input type="button" class="button" id="eab_event-eab_rsvps-non_paid-preview" value="<?php esc_attr_e(__('Vorschau', Eab_EventsHub::TEXT_DOMAIN)); ?>" />
-	    	<?php _e('Verwenden dieser Ereignisdaten:', Eab_EventsHub::TEXT_DOMAIN); ?>
+	    	<input type="button" class="button" id="eab_event-eab_rsvps-non_paid-preview" value="<?php esc_attr_e(__('Vorschau', 'eab')); ?>" />
+	    	<?php _e('Verwenden dieser Ereignisdaten:', 'eab'); ?>
 	    	<select id="eab_event-eab_rsvps-non_paid-events">
 	    	<?php foreach ($events as $event) { ?>
 	    		<option value="<?php echo esc_attr($event->get_id()); ?>"><?php echo $event->get_title(); ?></option>
@@ -215,7 +215,7 @@ $(function () {
 			? tinyMCE.activeEditor.getContent()
 			: $("eab_rsvps-email_non_paid-body").val()
 		);
-		$container.html('<?php echo esc_js(__("Bitte warten... ", Eab_EventsHub::TEXT_DOMAIN)); ?>');
+		$container.html('<?php echo esc_js(__("Bitte warten... ", 'eab')); ?>');
 		$.post(ajaxurl, {
 			"action": "eab_rsvp_email_non_paid-preview_email",
 			"subject": $subject.val(),

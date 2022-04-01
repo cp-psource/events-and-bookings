@@ -208,17 +208,17 @@ class Eab_AddonHandler {
 			$tbody .= "<br />";
 			$tbody .= ( $is_active
 				?
-				'<a href="#deactivate" class="eab_deactivate_plugin" eab:plugin_id="' . esc_attr( $plugin ) . '">' . __( 'Deaktivieren', Eab_EventsHub::TEXT_DOMAIN ) . '</a>'
+				'<a href="#deactivate" class="eab_deactivate_plugin" eab:plugin_id="' . esc_attr( $plugin ) . '">' . __( 'Deaktivieren', 'eab' ) . '</a>'
 				:
-				'<a href="#activate" class="eab_activate_plugin" eab:plugin_id="' . esc_attr( $plugin ) . '">' . __( 'Aktivieren', Eab_EventsHub::TEXT_DOMAIN ) . '</a>'
+				'<a href="#activate" class="eab_activate_plugin" eab:plugin_id="' . esc_attr( $plugin ) . '">' . __( 'Aktivieren', 'eab' ) . '</a>'
 			);
 			$tbody .= "</td>";
 			$tbody .= '<td>' .
 				$plugin_data['Description'] .
 				'<br />' .
-				sprintf(__('Version %s', Eab_EventsHub::TEXT_DOMAIN), $plugin_data['Version']) .
+				sprintf(__('Version %s', 'eab'), $plugin_data['Version']) .
 				'&nbsp;|&nbsp;' .
-				sprintf(__('von %s', Eab_EventsHub::TEXT_DOMAIN), '<a href="' . $plugin_data['Plugin URI'] . '">' . $plugin_data['Author'] . '</a>');
+				sprintf(__('von %s', 'eab'), '<a href="' . $plugin_data['Plugin URI'] . '">' . $plugin_data['Author'] . '</a>');
 			if ( $plugin_data['Detail'] ) {
 				$tbody .= '&nbsp;' . $tips->add_tip( $plugin_data['Detail'] );
 			}
@@ -234,7 +234,7 @@ class Eab_AddonHandler {
 			$links = array();
 			if ( !empty( $sections ) ) foreach ( $sections as $sect ) {
 				$type = !empty($sect) ? "data-type='{$sect}'" : 'class="selected"';
-				$name = !empty($sect) ? $sect : __('Alle', Eab_EventsHub::TEXT_DOMAIN);
+				$name = !empty($sect) ? $sect : __('Alle', 'eab');
 				$links[] = "<a href='#filter' {$type}>{$name}</a>";
 			}
 			$thead .= '<tr>';
@@ -242,32 +242,32 @@ class Eab_AddonHandler {
 
 			if (!empty($links)) {
 				$thead .= '<div class="section type">' .
-					'<b>' . __('Filter', Eab_EventsHub::TEXT_DOMAIN) . ':</b> ' .
+					'<b>' . __('Filter', 'eab') . ':</b> ' .
 					join(' | ', $links) .
 				'</div>';
 			}
 
 			$thead .= '<div class="section show">' .
-				'<b>' . __('Zeige', Eab_EventsHub::TEXT_DOMAIN) . ':</b> ' .
+				'<b>' . __('Zeige', 'eab') . ':</b> ' .
 				join(' | ', array(
-					'<a href="#show-all" class="selected">' . __('Alle', Eab_EventsHub::TEXT_DOMAIN) . '</a>',
-					'<a href="#show-active" data-type="active">' . __('Aktive', Eab_EventsHub::TEXT_DOMAIN) . '</a>',
-					'<a href="#show-inactive" data-type="inactive">' . __('Inaktive', Eab_EventsHub::TEXT_DOMAIN) . '</a>',
+					'<a href="#show-all" class="selected">' . __('Alle', 'eab') . '</a>',
+					'<a href="#show-active" data-type="active">' . __('Aktive', 'eab') . '</a>',
+					'<a href="#show-inactive" data-type="inactive">' . __('Inaktive', 'eab') . '</a>',
 				)) .
 			'</div>';
 
 			$thead .= '<div class="section check">' .
-				'<b>' . __('Prüfen', Eab_EventsHub::TEXT_DOMAIN) . ':</b> ' .
+				'<b>' . __('Prüfen', 'eab') . ':</b> ' .
 				join(' | ', array(
-					'<a href="#check-none">' . __('Nein', Eab_EventsHub::TEXT_DOMAIN) . '</a>',
-					'<a href="#check-active" data-type="active">' . __('Aktive', Eab_EventsHub::TEXT_DOMAIN) . '</a>',
-					//'<a href="#check-inactive" data-type="inactive">' . __('Inactive', Eab_EventsHub::TEXT_DOMAIN) . '</a>',
-					//'<a href="#check-all" data-type="all">' . __('All', Eab_EventsHub::TEXT_DOMAIN) . '</a>',
+					'<a href="#check-none">' . __('Nein', 'eab') . '</a>',
+					'<a href="#check-active" data-type="active">' . __('Aktive', 'eab') . '</a>',
+					//'<a href="#check-inactive" data-type="inactive">' . __('Inactive', 'eab') . '</a>',
+					//'<a href="#check-all" data-type="all">' . __('All', 'eab') . '</a>',
 				)) .
 				'<div class="actions">' .
-					'<button type="button" class="eab-activate_selected" data-nag="' . esc_attr(__('Du bist dabei, mehrere Add-Ons zu aktivieren. Bist Du sicher, dass Du dies tun möchtest?', Eab_EventsHub::TEXT_DOMAIN)) . '">' . __('Aktiviere ausgewählte', Eab_EventsHub::TEXT_DOMAIN) . '</button>' .
+					'<button type="button" class="eab-activate_selected" data-nag="' . esc_attr(__('Du bist dabei, mehrere Add-Ons zu aktivieren. Bist Du sicher, dass Du dies tun möchtest?', 'eab')) . '">' . __('Aktiviere ausgewählte', 'eab') . '</button>' .
 					'&nbsp;' .
-					'<button type="button" class="eab-deactivate_selected" data-nag="' . esc_attr(__('Du bist dabei, mehrere Add-Ons zu deaktivieren. Bist Du sicher, dass Du dies tun möchtest?', Eab_EventsHub::TEXT_DOMAIN)) . '">' . __('Deaktiviere ausgewählte', Eab_EventsHub::TEXT_DOMAIN) . '</button>' .
+					'<button type="button" class="eab-deactivate_selected" data-nag="' . esc_attr(__('Du bist dabei, mehrere Add-Ons zu deaktivieren. Bist Du sicher, dass Du dies tun möchtest?', 'eab')) . '">' . __('Deaktiviere ausgewählte', 'eab') . '</button>' .
 				'</div>';
 			'</div>';
 
@@ -276,8 +276,8 @@ class Eab_AddonHandler {
 		}
 
 		$thead .= '<tr>';
-		$thead .= '<th></th><th width="30%">' . __('Name', Eab_EventsHub::TEXT_DOMAIN) . '</th>';
-		$thead .= '<th>' . __('Beschreibung', Eab_EventsHub::TEXT_DOMAIN) . '</th>';
+		$thead .= '<th></th><th width="30%">' . __('Name', 'eab') . '</th>';
+		$thead .= '<th>' . __('Beschreibung', 'eab') . '</th>';
 		$thead .= '</tr>';
 
 		echo $thead . $tbody;
@@ -434,11 +434,11 @@ EOWdcpPluginJs;
 
 	private static function _display_addon_status () {
 		$msg = array(
-			'unknown' => __('Bei der Add-On-Manipulation ist möglicherweise ein Fehler aufgetreten. Überprüfe Deinen Add-On-Status', Eab_EventsHub::TEXT_DOMAIN),
-			'success' => __('Erweiterung erfolgreich (de)aktiviert', Eab_EventsHub::TEXT_DOMAIN),
+			'unknown' => __('Bei der Add-On-Manipulation ist möglicherweise ein Fehler aufgetreten. Überprüfe Deinen Add-On-Status', 'eab'),
+			'success' => __('Erweiterung erfolgreich (de)aktiviert', 'eab'),
 			'error' => array(
 				'class' => 'error',
-				'message' => __('Beim (De-)Aktivieren des Add-Ons stimmte etwas nicht.', Eab_EventsHub::TEXT_DOMAIN),
+				'message' => __('Beim (De-)Aktivieren des Add-Ons stimmte etwas nicht.', 'eab'),
 			),
 		);
 		$status = !empty($_GET['addon']) && in_array($_GET['addon'], array_keys($msg))
@@ -453,11 +453,11 @@ EOWdcpPluginJs;
 
 	private static function _display_addon_bulk_status () {
 		$msg = array(
-			'unknown' => __('Bei der Add-On-Manipulation ist möglicherweise ein Fehler aufgetreten. Überprüfe Deinen Add-On-Status', Eab_EventsHub::TEXT_DOMAIN),
-			'success' => __('Ausgewählte Add-Ons wurden erfolgreich (de)aktiviert', Eab_EventsHub::TEXT_DOMAIN),
+			'unknown' => __('Bei der Add-On-Manipulation ist möglicherweise ein Fehler aufgetreten. Überprüfe Deinen Add-On-Status', 'eab'),
+			'success' => __('Ausgewählte Add-Ons wurden erfolgreich (de)aktiviert', 'eab'),
 			'error' => array(
 				'class' => 'error',
-				'message' => __('Es ging etwas schief, als zumindest einige der ausgewählten Add-Ons (de)aktiviert wurden.', Eab_EventsHub::TEXT_DOMAIN),
+				'message' => __('Es ging etwas schief, als zumindest einige der ausgewählten Add-Ons (de)aktiviert wurden.', 'eab'),
 			),
 		);
 		$status = !empty($_GET['addons']) && in_array($_GET['addons'], array_keys($msg))

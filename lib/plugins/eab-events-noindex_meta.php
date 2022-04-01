@@ -43,23 +43,23 @@ class Eab_Events_Nre {
 
 	function show_settings () {
 		$_temporal = array(
-			self::FUTURE_ONLY => __('Nur Zukunft', Eab_EventsHub::TEXT_DOMAIN),
-			self::PAST_ONLY => __('Nur Vergangenheit', Eab_EventsHub::TEXT_DOMAIN),
-			self::ALL_INSTANCES => __('Alle wiederkehrenden Instanzen', Eab_EventsHub::TEXT_DOMAIN),
+			self::FUTURE_ONLY => __('Nur Zukunft', 'eab'),
+			self::PAST_ONLY => __('Nur Vergangenheit', 'eab'),
+			self::ALL_INSTANCES => __('Alle wiederkehrenden Instanzen', 'eab'),
 		);
 		$_temporal_archives = array(
-			self::FUTURE_ONLY => __('Nur Zukunft', Eab_EventsHub::TEXT_DOMAIN),
-			self::PAST_ONLY => __('Nur Vergangenheit', Eab_EventsHub::TEXT_DOMAIN),
-			self::ALL_INSTANCES => __('Alle Veranstaltungsarchive', Eab_EventsHub::TEXT_DOMAIN),
+			self::FUTURE_ONLY => __('Nur Zukunft', 'eab'),
+			self::PAST_ONLY => __('Nur Vergangenheit', 'eab'),
+			self::ALL_INSTANCES => __('Alle Veranstaltungsarchive', 'eab'),
 		);
 		$nofollow = (int)$this->_options['nofollow_too'] ? 'checked="checked"' : '';
 		$archives = (int)$this->_options['noindex_archives'] ? 'checked="checked"' : '';
 ?>
 <div id="eab-settings-nre" class="eab-metabox postbox">
-	<h3 class="eab-hndle"><?php _e('Noindex-Meta für Ereignisse', Eab_EventsHub::TEXT_DOMAIN); ?></h3>
+	<h3 class="eab-hndle"><?php _e('Noindex-Meta für Ereignisse', 'eab'); ?></h3>
 	<div class="eab-inside">
 		<div class="eab-settings-settings_item" style="line-height:1.8em">
-			<label for="eab-events-nre-noindex_scope"><?php _e('Fügt wiederkehrenden Ereignisinstanzen <code>noindex</code> hinzu', Eab_EventsHub::TEXT_DOMAIN); ?>:</label><br />
+			<label for="eab-events-nre-noindex_scope"><?php _e('Fügt wiederkehrenden Ereignisinstanzen <code>noindex</code> hinzu', 'eab'); ?>:</label><br />
 			<?php 
 			foreach ($_temporal as $key => $label) { 
 				$selected = ($key == $this->_options['noindex_scope']) ? 'checked="checked"' : '';
@@ -69,7 +69,7 @@ class Eab_Events_Nre {
 			?>
 		</div>
 		<div class="eab-settings-settings_item" style="line-height:1.8em">
-			<label for="eab-events-nre-noindex_archives"><?php _e('Fügt <code>noindex</code> zu meinen Ereignisarchiven hinzu', Eab_EventsHub::TEXT_DOMAIN); ?>:</label><br />
+			<label for="eab-events-nre-noindex_archives"><?php _e('Fügt <code>noindex</code> zu meinen Ereignisarchiven hinzu', 'eab'); ?>:</label><br />
 			<?php 
 			foreach ($_temporal_archives as $key => $label) { 
 				$selected = ($key == $this->_options['noindex_archives']) ? 'checked="checked"' : '';
@@ -82,7 +82,7 @@ class Eab_Events_Nre {
 			<label for="eab-events-nre-nofollow_too">
 				<input type="hidden" name="eab-events-nre[nofollow_too]" value="" />
 				<input type="checkbox" id="eab-events-nre-nofollow_too" name="eab-events-nre[nofollow_too]" value="1" <?php echo $nofollow; ?> />
-				<?php _e('Fügt auch <code>nofollow</code> hinzu.', Eab_EventsHub::TEXT_DOMAIN); ?>
+				<?php _e('Fügt auch <code>nofollow</code> hinzu.', 'eab'); ?>
 			</label>
 		</div>
 	</div>

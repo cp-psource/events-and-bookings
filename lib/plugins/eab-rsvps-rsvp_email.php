@@ -111,35 +111,35 @@ class Eab_Events_RsvpEmail {
 		$events = Eab_CollectionFactory::get_upcoming_events(eab_current_time(), array('posts_per_page' => 10));
 		?>
 <div id="eab-settings-eab_rsvps_email" class="eab-metabox postbox">
-	<h3 class="eab-hndle"><?php _e('RSVP Email Einstellungen', Eab_EventsHub::TEXT_DOMAIN); ?></h3>
+	<h3 class="eab-hndle"><?php _e('RSVP Email Einstellungen', 'eab'); ?></h3>
 	<div class="eab-inside">
 		<div class="eab-settings-settings_item">
-	    	<label for="eab_event-eab_rsvps-from-name"><?php _e('Vom E-Mail-Namen', Eab_EventsHub::TEXT_DOMAIN); ?></label>
-			<span><?php echo $tips->add_tip(__('Dies ist der Name, von dem die RSVP-E-Mail gesendet wird', Eab_EventsHub::TEXT_DOMAIN)); ?></span>
+	    	<label for="eab_event-eab_rsvps-from-name"><?php _e('Vom E-Mail-Namen', 'eab'); ?></label>
+			<span><?php echo $tips->add_tip(__('Dies ist der Name, von dem die RSVP-E-Mail gesendet wird', 'eab')); ?></span>
 			<input type="text" id="eab_event-eab_rsvps-from-name" name="eab_rsvps[email-from-name]" value="<?php esc_attr_e($from_name); ?>" />
 	    </div>
 		<div class="eab-settings-settings_item">
-	    	<label for="eab_event-eab_rsvps-from"><?php _e('Von der Email Adresse', Eab_EventsHub::TEXT_DOMAIN); ?></label>
-			<span><?php echo $tips->add_tip(__('Dies ist die Adresse, von der aus die RSVP-E-Mail gesendet wird', Eab_EventsHub::TEXT_DOMAIN)); ?></span>
+	    	<label for="eab_event-eab_rsvps-from"><?php _e('Von der Email Adresse', 'eab'); ?></label>
+			<span><?php echo $tips->add_tip(__('Dies ist die Adresse, von der aus die RSVP-E-Mail gesendet wird', 'eab')); ?></span>
 			<input type="text" id="eab_event-eab_rsvps-from" name="eab_rsvps[email-from]" value="<?php esc_attr_e($from); ?>" />
 	    </div>
 	    <div class="eab-settings-settings_item">
-	    	<label for="eab_event-eab_rsvps-subject"><?php _e('E-Mail Betreff', Eab_EventsHub::TEXT_DOMAIN); ?></label>
-			<span><?php echo $tips->add_tip(sprintf(__('Dies ist der E-Mail-Betreff. Du kannst diese Makros verwenden: <code>%s</code>', Eab_EventsHub::TEXT_DOMAIN), $macros)); ?></span>
+	    	<label for="eab_event-eab_rsvps-subject"><?php _e('E-Mail Betreff', 'eab'); ?></label>
+			<span><?php echo $tips->add_tip(sprintf(__('Dies ist der E-Mail-Betreff. Du kannst diese Makros verwenden: <code>%s</code>', 'eab'), $macros)); ?></span>
 			<input type="text" class="widefat" id="eab_event-eab_rsvps-subject" name="eab_rsvps[email-subject]" value="<?php esc_attr_e($subject); ?>" />
 	    </div>
 	    <div class="eab-settings-settings_item">
-	    	<label for="eab_event-eab_rsvps-body"><?php _e('Nachrichtentext', Eab_EventsHub::TEXT_DOMAIN); ?></label>
-			<span><?php echo $tips->add_tip(sprintf(__('Dies ist der E-Mail-Text. Du kannst diese Makros verwenden: <code>%s</code>', Eab_EventsHub::TEXT_DOMAIN), $macros)); ?></span>
+	    	<label for="eab_event-eab_rsvps-body"><?php _e('Nachrichtentext', 'eab'); ?></label>
+			<span><?php echo $tips->add_tip(sprintf(__('Dies ist der E-Mail-Text. Du kannst diese Makros verwenden: <code>%s</code>', 'eab'), $macros)); ?></span>
 			<?php wp_editor($body, 'eab_rsvps-email-body', array(
 				'name' => 'eab_rsvps-email-body',
 			)); ?>
 	    </div>
-	    <div class="eab-settings-settings_item"><small><?php printf(__('Du kannst diese Makros in Betreff und Nachrichtentext verwenden: <code>%s</code>', Eab_EventsHub::TEXT_DOMAIN), $macros) ?></small></div>
+	    <div class="eab-settings-settings_item"><small><?php printf(__('Du kannst diese Makros in Betreff und Nachrichtentext verwenden: <code>%s</code>', 'eab'), $macros) ?></small></div>
 	<?php if ($events) { ?>
 	    <div class="eab-settings-settings_item">
-	    	<input type="button" class="button" id="eab_event-eab_rsvps-preview" value="<?php esc_attr_e(__('Vorschau', Eab_EventsHub::TEXT_DOMAIN)); ?>" />
-	    	<?php _e('Verwenden dieser Ereignisdaten:', Eab_EventsHub::TEXT_DOMAIN); ?>
+	    	<input type="button" class="button" id="eab_event-eab_rsvps-preview" value="<?php esc_attr_e(__('Vorschau', 'eab')); ?>" />
+	    	<?php _e('Verwenden dieser Ereignisdaten:', 'eab'); ?>
 	    	<select id="eab_event-eab_rsvps-events">
 	    	<?php foreach ($events as $event) { ?>
 	    		<option value="<?php esc_attr_e($event->get_id()); ?>"><?php echo $event->get_title(); ?></option>
@@ -162,7 +162,7 @@ $(function () {
 			? tinyMCE.activeEditor.getContent()
 			: $("#eab_rsvps-email-body").val()
 		);
-		$container.html('<?php echo esc_js(__("Einen Augenblick... ", Eab_EventsHub::TEXT_DOMAIN)); ?>');
+		$container.html('<?php echo esc_js(__("Einen Augenblick... ", 'eab')); ?>');
 		$.post(ajaxurl, {
 			"action": "eab_rsvp_email-preview_email",
 			"subject": $subject.val(),
