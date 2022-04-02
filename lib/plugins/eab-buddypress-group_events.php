@@ -197,7 +197,7 @@ class Eab_BuddyPress_GroupEvents {
 		;
 		$group_params = array('per_page' => $group_count , 'type' => 'alphabetical', 'show_hidden' => EAB_SHOW_HIDDEN_GROUP );
 		if ($this->_data->get_option('bp-group_event-user_groups_only')) {
-			if (!(is_super_admin() && $this->_data->get_option('bp-group_event-user_groups_only-unless_superadmin'))) $group_params['user_id'] = $current_user->id;
+			if (!(is_super_admin() && $this->_data->get_option('bp-group_event-user_groups_only-unless_superadmin'))) $group_params['user_id'] = $current_user->ID;
 		}
 		$groups = groups_get_groups($group_params);
 		$groups = @$groups['groups'] ? $groups['groups'] : array();
@@ -234,7 +234,7 @@ class Eab_BuddyPress_GroupEvents {
 		;
 		$group_params = array('per_page' => $group_count , 'type' => 'alphabetical', 'show_hidden' => EAB_SHOW_HIDDEN_GROUP);
 		if ($this->_data->get_option('bp-group_event-user_groups_only')) {
-			if (!(is_super_admin() && $this->_data->get_option('bp-group_event-user_groups_only-unless_superadmin'))) $group_params['user_id'] = $current_user->id;
+			if (!(is_super_admin() && $this->_data->get_option('bp-group_event-user_groups_only-unless_superadmin'))) $group_params['user_id'] = $current_user->ID;
 		}
 		$groups = groups_get_groups($group_params);
 		$groups = @$groups['groups'] ? $groups['groups'] : array();
@@ -292,7 +292,7 @@ class Eab_BuddyPress_GroupEvents {
 
 		// Don't show groups tab for non-members if Events are private to groups
 		if ($this->_data->get_option('bp-group_event-private_events')) {
-			if (!groups_is_user_member($current_user->id, $bp->groups->current_group->id)) return false; 
+			if (!groups_is_user_member($current_user->ID, $bp->groups->current_group->id)) return false; 
 		}
 		
 		$name = __('Gruppenereignisse', 'eab');

@@ -247,7 +247,7 @@ class Eab_Events_FrontPageEditing {
 		$post['post_content'] = current_user_can('unfiltered_html') ? $data['content'] : wp_filter_post_kses($data['content']);
 		$post['post_status'] = current_user_can($post_type->cap->publish_posts) ? 'publish' : 'pending';
 		$post['post_type'] = Eab_EventModel::POST_TYPE;
-		$post['post_author'] = $current_user->id;
+		$post['post_author'] = $current_user->ID;
 
 		$data['featured'] = !empty($data['featured'])
 			? (is_numeric($data['featured']) ? (int)$data['featured'] : false)

@@ -129,6 +129,7 @@ Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswor
 = 1.4.0 = DerN3rd =
 
 * Anpassung Textdomain
+* $current_user->id => $current_user->ID
 
 = 1.3.9 = DerN3rd =
 

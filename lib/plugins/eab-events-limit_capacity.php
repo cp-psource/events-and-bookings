@@ -155,10 +155,10 @@ class Eab_Addon_LimitCapacity {
 			return $content;
 		}
 
-		return ( in_array( $current_user->id, $users ) ) ? $content : $this->_get_overbooked_message( $post_id );
+		return ( in_array( $current_user->ID, $users ) ) ? $content : $this->_get_overbooked_message( $post_id );
 		/*
 		if ($capacity > $total) return $content;
-		return (in_array($current_user->id, $users)) ? $content : $this->_get_overbooked_message();
+		return (in_array($current_user->ID, $users)) ? $content : $this->_get_overbooked_message();
 		 */
 	}
 
