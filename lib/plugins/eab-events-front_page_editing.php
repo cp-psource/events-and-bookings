@@ -626,7 +626,7 @@ class Eab_Events_FrontPageEditing {
 	}
 
 	private function _enqueue_dependencies () {
-		wp_enqueue_style('eab-events-fpe', plugins_url(basename(EAB_PLUGIN_DIR) . "/css/eab-events-fpe.css"));
+		wp_enqueue_style('eab-events-fpe', plugins_url(basename(EAB_PLUGIN_DIR) . "/css/eab-events-fpe.min.css"));
 		wp_enqueue_style('eab_jquery_ui');
 
 		wp_enqueue_script('jquery');

@@ -213,23 +213,28 @@ class Eab_Addon_LimitCapacity {
 	}
 
 	function add_fpe_meta_box( $box, $event ) {
-		$capacity           = (int) get_post_meta( $event->get_id(), 'eab_capacity', true );
+		$capacity           =  (int) get_post_meta( $event->get_id(), 'eab_capacity', true );
 		$capacity_str       = $capacity ? $capacity : "";
 		$unlimited_capacity = $capacity ? '' : 'checked="checked"';
 
-		if(isset($ret)){
-			$ret .= '<div class="eab-events-fpe-meta_box">';
-			}
+		
+		$ret .= '<div class="eab-events-fpe-meta_box">';
+			
 
 		$ret .= __( 'Gib die maximale Teilnehmerzahl für diese Veranstaltung ein:', 'eab' );
 		$ret .= ' <input type="text" name="eab-elc_capacity" id="eab_event_capacity" size="3" value="' . $capacity_str . '" /> ';
 		$ret .= __( ', oder auswählen für unbegrenzt:', 'eab' );
 		$ret .= ' <input type="checkbox" name="eab-elc_capacity" id="eab_event_capacity-unlimited" ' . $unlimited_capacity . ' value="0" /> ';
-
+		
+		
 		$ret .= '</div>';
+		
+		
 
 		return $box . $ret;
 	}
+
+
 
 	private function _save_meta( $post_id, $request ) {
 		if ( ! isset( $request['eab-elc_capacity'] ) ) {
