@@ -217,8 +217,9 @@ class Eab_Addon_LimitCapacity {
 		$capacity_str       = $capacity ? $capacity : "";
 		$unlimited_capacity = $capacity ? '' : 'checked="checked"';
 
-		
-		$ret .= '<div class="eab-events-fpe-meta_box">';
+		if(isset($ret)){
+			$ret .= '<div class="eab-events-fpe-meta_box">';
+		}
 			
 
 		$ret .= __( 'Gib die maximale Teilnehmerzahl für diese Veranstaltung ein:', 'eab' );
