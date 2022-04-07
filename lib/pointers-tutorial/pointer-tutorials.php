@@ -131,7 +131,7 @@ if ( !class_exists( 'Pointer_Tutorial' ) ) {
 				return false;
 			
 			$this->tutorial_key = sanitize_key( $tutorial_key );
-			$this->tutorial_name = empty($tutorial_name) ? __('Tutorial', $this->textdomain) : trim($tutorial_name);
+			$this->tutorial_name = empty($tutorial_name) ? __('Tutorial', 'eab') : trim($tutorial_name);
 			$this->redirect_first_load = $redirect_first_load;
 			$this->force_completion = $force_completion;
 		}
@@ -180,7 +180,7 @@ if ( !class_exists( 'Pointer_Tutorial' ) ) {
 		 *	@param string $domain the textdomain for i18n
 		 */
 		public function set_textdomain( $domain ) {
-			$this->textdomain = trim( $domain );
+			'eab' = trim( $domain );
 		}
 		
 		/*
@@ -414,7 +414,7 @@ if ( !class_exists( 'Pointer_Tutorial' ) ) {
 				//get next link thats on a different page
 				$next_link = '';
 				$next_pointer = '';
-				$next_name = __('Next &raquo;', $this->textdomain);
+				$next_name = __('Nächster Tipp &raquo;', 'eab');
 				$last_step = false;
 				if ( $count >= count($this->page_pointers) && isset($this->registered_pointers[$pointer_id+1]) ) {
 					$next_url = $this->registered_pointers[$pointer_id+1]['url'];
@@ -426,14 +426,14 @@ if ( !class_exists( 'Pointer_Tutorial' ) ) {
 					$next_pointer = "$('$next_pointer').pointer( options$next_pointer_id ).pointer('open').focus();";
 					$next_title = $this->page_pointers[$pointer_id+1]['title'];
 				} else {
-					$next_name = __('Dismiss', $this->textdomain);
-					$next_title = sprintf(__('Dismiss %s', $this->textdomain), $this->tutorial_name);
+					$next_name = __('Verwerfen', 'eab');
+					$next_title = sprintf(__('Verwerfen %s', 'eab'), $this->tutorial_name);
 					$last_step = true;
 				}
 				
 				$prev_link = '';
 				$prev_pointer = '';
-				$prev_name = __('&laquo; Previous', $this->textdomain);
+				$prev_name = __('&laquo; Vorherige', 'eab');
 				if ( $count == 1 && isset($this->registered_pointers[$pointer_id-1]) ) { //if first step for the page and theres a previous page
 					$prev_url = $this->registered_pointers[$pointer_id-1]['url'];
 					$prev_link = ", function() { window.location = '$prev_url'; }";
@@ -445,8 +445,8 @@ if ( !class_exists( 'Pointer_Tutorial' ) ) {
 					$prev_title = $this->page_pointers[$pointer_id-1]['title'];
 				}
 				
-				$close_name = __('Dismiss', $this->textdomain);
-				$close_title = sprintf(__('Dismiss %s', $this->textdomain), $this->tutorial_name);
+				$close_name = __('Verwerfen', 'eab');
+				$close_title = sprintf(__('Verwerfen %s', 'eab'), $this->tutorial_name);
 				?>
 				/*step <?php echo $pointer_id; ?> pointer<?php if ($pointer_id == $current_step) { ?> (Current)<?php } ?>*/
 				var options<?php echo $pointer_id; ?> = <?php echo json_encode( $args ); ?>;
@@ -485,7 +485,7 @@ if ( !class_exists( 'Pointer_Tutorial' ) ) {
 							'<a class="dismiss" href="#" title="<?php echo esc_attr($close_title); ?>"><?php echo $close_name; ?></a> ' +
 							<?php } ?>
 							<?php if (!$this->hide_step) { ?>
-							'<span class="tut-step"><?php printf( __('%s: Step %d of %d', $this->textdomain), $this->tutorial_name, $pointer_id+1, count($this->registered_pointers) ); ?></span>' +
+							'<span class="tut-step"><?php printf( __('%s: Step %d of %d', 'eab'), $this->tutorial_name, $pointer_id+1, count($this->registered_pointers) ); ?></span>' +
 							<?php } ?>
 							'<a class="next button" href="#" title="<?php echo esc_attr($next_title); ?>"><?php echo $next_name; ?></a>' +
 							'</div>'
