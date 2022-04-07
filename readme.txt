@@ -130,6 +130,7 @@ Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswor
 
 * Anpassung Textdomain
 * $current_user->id => $current_user->ID
+* Text-Fixes
 
 = 1.3.9 = DerN3rd =
 
