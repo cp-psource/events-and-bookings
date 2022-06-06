@@ -34,7 +34,7 @@ get_header();
 			</div>
 			<div id="psourceevents-content" class="psourceevents-box">
 				<div class="psourceevents-boxheader">
-					<h3>About this event :</h3>
+					<h3>Über dieses Ereignis:</h3>
 				</div>
 					<div class="psourceevents-boxinner">
 					<?php 
@@ -53,7 +53,7 @@ get_header();
 			<?php if ($event->has_venue_map()) { ?>
 			<div id="psourceevents-googlemap" class="psourceevents-box">
 				<div class="psourceevents-boxheader">
-					<h3>Google Map</h3>
+					<h3>Veranstaltungs-Map</h3>
 				</div>
 					<div class="psourceevents-boxinner">
 					<?php echo $event->get_venue_location(Eab_EventModel::VENUE_AS_MAP, array('width' => '99%')); ?>
@@ -62,7 +62,7 @@ get_header();
 			<?php } ?>
 			<div id="psourceevents-host" class="psourceevents-box">
 				<div class="psourceevents-boxheader">
-				<h3>Your host : <?php the_author_meta('display_name'); ?></h3>
+				<h3>Dein Gastgeber : <?php the_author_meta('display_name'); ?></h3>
 				</div>
 					<div class="psourceevents-boxinner">
 					<p>
