@@ -41,13 +41,15 @@ class Eab_Payments_PaymentViaProducts {
 	 * and overall event changes
 	 */
 	public function dispatch_ordering_actions () {
-		if ($this->_is_old_mp()) {
+		/*if ($this->_is_old_mp()) {
 			if (!class_exists('Eab_MP_Bridge_Legacy')) require_once( 'lib/class_eab_mp_bridge_legacy.php');
 			Eab_MP_Bridge_Legacy::serve();
 		} else {
 			if (!class_exists('Eab_MP_Bridge')) require_once('lib/class_eab_mp_bridge.php');
 			Eab_MP_Bridge::serve();
-		}
+		}*/
+		if (!class_exists('Eab_MP_Bridge')) require_once('lib/class_eab_mp_bridge.php');
+			Eab_MP_Bridge::serve();
 	}
 
 	/**
@@ -71,12 +73,12 @@ class Eab_Payments_PaymentViaProducts {
 		return class_exists('PSeCommerce');
 	}
 
-	private function _is_old_mp () {
+	/*private function _is_old_mp () {
 		if (!$this->_is_mp_present()) return false;
 		if (!defined('MP_VERSION')) return false;
 
-		return version_compare(MP_VERSION, '3.1', '<');
-	}
+		return version_compare(MP_VERSION, '1.5', '<');
+	}*/
 
 	function show_mp_presence_nag () {
 		if ($this->_is_mp_present()) return false;
@@ -96,7 +98,7 @@ class Eab_Payments_PaymentViaProducts {
 
 
 	function show_settings () {
-		$tips = new WpmuDev_HelpTooltips();
+		$tips = new PSource_HelpTooltips();
 		$tips->set_icon_url(EAB_PLUGIN_URL . 'img/information.png' );
 		
 		$category_id = $this->_data->get_option('payment-ppvp-category');

@@ -1013,7 +1013,7 @@ class Eab_EventsHub {
 
 		// ... Until
 		$content .= '<br />';
-		$content .= '<label for="eab_event-repeat_end">' . __( 'Bis um', self::TEXT_DOMAIN );
+		$content .= '<label for="eab_event-repeat_end">' . __( 'Bis zum', self::TEXT_DOMAIN );
 		$content .= ' <input type="text" name="eab_repeat[repeat_end]" class="psource_event_picker" id="eab_event-repeat_end" value="' . $ends . '" readonly />';
 		$content .= '</label>';
 

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * New MP (3.0+) implementation
+ * New MP (1.5+) implementation
  */
 class Eab_MP_Bridge {
 
@@ -120,12 +120,12 @@ class Eab_MP_Bridge {
 		return class_exists('PSeCommerce');
 	}
 
-	private function _is_old_mp () {
+	/*private function _is_old_mp () {
 		if (!$this->_is_mp_present()) return false;
 		if (!defined('MP_VERSION')) return false;
 
-		return version_compare(MP_VERSION, '3.0', '>=');
-	}
+		return version_compare(MP_VERSION, '1.5', '>=');
+	}*/
 
 	/**
 	 * Returns properly formatted product price for Event on the front end.

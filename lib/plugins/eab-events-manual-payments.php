@@ -151,9 +151,9 @@ class Eab_Events_ManualPayments {
 	 *
 	 */	
 	function show_settings() {
-		if ( !class_exists( 'WpmuDev_HelpTooltips' ) ) 
+		if ( !class_exists( 'PSource_HelpTooltips' ) ) 
 			require_once dirname(__FILE__) . '/lib/class_wd_help_tooltips.php';
-		$tips = new WpmuDev_HelpTooltips();
+		$tips = new PSource_HelpTooltips();
 		$tips->set_icon_url( EAB_PLUGIN_URL . 'img/information.png' );
 		?>
 		<div id="eab-settings-manual_payments" class="eab-metabox postbox">

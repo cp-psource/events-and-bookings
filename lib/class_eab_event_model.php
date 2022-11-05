@@ -1,6 +1,6 @@
 <?php
 
-abstract class WpmuDev_DatedItem {
+abstract class PSource_DatedItem {
 
 	/**
 	 * Packs event start dates as an array of (string)MySQL dates.
@@ -75,7 +75,7 @@ abstract class WpmuDev_DatedItem {
 }
 
 
-abstract class WpmuDev_RecurringDatedItem extends WpmuDev_DatedItem {
+abstract class PSource_RecurringDatedItem extends PSource_DatedItem {
 
 	const RECURRANCE_DAILY = 'daily';
 	const RECURRANCE_WEEKLY = 'weekly';
@@ -118,7 +118,7 @@ abstract class WpmuDev_RecurringDatedItem extends WpmuDev_DatedItem {
 }
 
 
-abstract class WpmuDev_DatedVenueItem extends WpmuDev_RecurringDatedItem {
+abstract class PSource_DatedVenueItem extends PSource_RecurringDatedItem {
 
 	const VENUE_AS_ADDRESS = 'address';
 	const VENUE_AS_MAP = 'map';
@@ -258,7 +258,7 @@ abstract class WpmuDev_DatedVenueItem extends WpmuDev_RecurringDatedItem {
 
 
 
-abstract class WpmuDev_DatedVenuePremiumItem extends WpmuDev_DatedVenueItem {
+abstract class PSource_DatedVenuePremiumItem extends PSource_DatedVenueItem {
 
 	/**
 	 * Does the event require payment?
@@ -278,7 +278,7 @@ abstract class WpmuDev_DatedVenuePremiumItem extends WpmuDev_DatedVenueItem {
 }
 
 
-abstract class WpmuDev_DatedVenuePremiumModel extends WpmuDev_DatedVenuePremiumItem {
+abstract class PSource_DatedVenuePremiumModel extends PSource_DatedVenuePremiumItem {
 
 	const POST_STATUS_TRASH = 'trash';
 
@@ -295,7 +295,7 @@ abstract class WpmuDev_DatedVenuePremiumModel extends WpmuDev_DatedVenuePremiumI
 
 
 
-class Eab_EventModel extends WpmuDev_DatedVenuePremiumModel {
+class Eab_EventModel extends PSource_DatedVenuePremiumModel {
 
 	const POST_TYPE = 'psource_event';
 

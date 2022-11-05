@@ -141,7 +141,7 @@ class Eab_Events_Colors {
 
 		$use_widget = $this->_data->get_option('eab-colors-use_widget') ? 'checked="checked"' : '';
 		$use_expanded_widget = $this->_data->get_option('eab-colors-use_expanded_widget') ? 'checked="checked"' : '';
-		$tips = new WpmuDev_HelpTooltips();
+		$tips = new PSource_HelpTooltips();
 		$tips->set_icon_url(EAB_PLUGIN_URL . 'img/information.png');
 ?>
 <div id="eab-settings-colors" class="eab-metabox postbox">

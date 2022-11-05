@@ -7,7 +7,7 @@ get_header( );
 	<div id="primary">
 		<div id="content" role="main">
             <div class="event <?php echo Eab_Template::get_status_class($post); ?>" id="psourceevents-wrapper">
-		<div id="wpmudevents-single">
+		<div id="psourceents-single">
                 
                     <?php
                     the_post();

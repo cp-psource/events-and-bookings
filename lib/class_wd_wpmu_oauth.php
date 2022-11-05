@@ -1,6 +1,6 @@
 <?php
 
-abstract class WpmuDev_Wp_Oauth {
+abstract class PSource_Wp_Oauth {
 
 	const SCOPE_LOGIN = 'login';
 	const SCOPE_VERIFICATION = 'verification';
@@ -69,7 +69,7 @@ abstract class WpmuDev_Wp_Oauth {
 	 * Should be overriden in the implementing class.
 	 * @var string
 	 */
-	protected $_action = 'wpmudev_wp_oauth';
+	protected $_action = 'psource_wp_oauth';
 
 
 /* ----- Implementation-specific Interface ----- */
@@ -208,7 +208,7 @@ abstract class WpmuDev_Wp_Oauth {
 /**
  * Stored data oAuth abstraction.
  */
-abstract class WpmuDev_Wp_StoredOauth extends WpmuDev_Wp_Oauth {
+abstract class PSource_Wp_StoredOauth extends PSource_Wp_Oauth {
 
 	abstract public function get_data ($key);
 
@@ -229,7 +229,7 @@ abstract class WpmuDev_Wp_StoredOauth extends WpmuDev_Wp_Oauth {
 /**
  * Plugin-wide gCalendar oAuth implementation.
  */
-abstract class Eab_Gcal_Plugin_Oauth extends WpmuDev_Wp_StoredOauth {
+abstract class Eab_Gcal_Plugin_Oauth extends PSource_Wp_StoredOauth {
 
 	/**
 	 * https://developers.google.com/accounts/docs/OAuth2Login
@@ -422,7 +422,7 @@ abstract class Eab_Gcal_Plugin_Oauth_RW extends Eab_Gcal_Plugin_Oauth {
 /**
  * Plugin-wide FB oAuth implementation.
  */
-abstract class Eab_FB_Plugin_Oauth extends WpmuDev_Wp_StoredOauth {
+abstract class Eab_FB_Plugin_Oauth extends PSource_Wp_StoredOauth {
 
 	/**
 	 * http://developers.facebook.com/docs/howtos/login/client-side-without-js-sdk/
@@ -604,7 +604,7 @@ abstract class Eab_FB_Plugin_Oauth_RW extends Eab_FB_Plugin_Oauth {
 /**
  * Abstract gCalendar helper class.
  */
-abstract class WpmuDev_Gcal_Helper {
+abstract class PSource_Gcal_Helper {
 
 	/**
 	 * Google oAuth token.

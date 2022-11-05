@@ -8,7 +8,7 @@
 /**
  * Calendar table hub class.
  */
-abstract class WpmuDev_CalendarTable {
+abstract class PSource_CalendarTable {
 	
 	protected $_events = array();
 	protected $_current_timestamp;
@@ -188,7 +188,7 @@ abstract class WpmuDev_CalendarTable {
 /**
  * Abstract event hub class.
  */
-abstract class Eab_CalendarTable extends WpmuDev_CalendarTable {
+abstract class Eab_CalendarTable extends PSource_CalendarTable {
 	
 	protected function _get_item_data ($post) {
 		if (isset($post->blog_id)) { // Originates from network

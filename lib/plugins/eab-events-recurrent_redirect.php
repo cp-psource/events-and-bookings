@@ -88,8 +88,8 @@ class Eab_AllUpcomingRecurringChildrenCollection extends Eab_UpcomingCollection 
 	
 	public function build_query_args ($args) {
 		$status = $this->_event->is_trashed() 
-			? WpmuDev_RecurringDatedItem::RECURRENCE_TRASH_STATUS
-			: WpmuDev_RecurringDatedItem::RECURRENCE_STATUS
+			? PSource_RecurringDatedItem::RECURRENCE_TRASH_STATUS
+			: PSource_RecurringDatedItem::RECURRENCE_STATUS
 		;
 		$args = array (
 			'post_type' => 'psource_event',

@@ -15,8 +15,8 @@ class Eab_AdminHelp {
 	);
 	
 	private function __construct () {
-		if (!class_exists('WpmuDev_ContextualHelp')) require_once 'class_wd_contextual_help.php';
-		$this->_help = new WpmuDev_ContextualHelp();
+		if (!class_exists('PSource_ContextualHelp')) require_once 'class_wd_contextual_help.php';
+		$this->_help = new PSource_ContextualHelp();
 		$this->_set_up_sidebar();
 	}
 	
@@ -35,13 +35,13 @@ class Eab_AdminHelp {
 	
 	private function _set_up_sidebar () {
 		$this->_sidebar = '<h4>' . __('PS-Events', 'eab') . '</h4>';
-		if (defined('WPMUDEV_REMOVE_BRANDING') && constant('WPMUDEV_REMOVE_BRANDING')) {
+		if (defined('PSOURCE_REMOVE_BRANDING') && constant('PSOURCE_REMOVE_BRANDING')) {
 			$this->_sidebar .= '<p>' . __('PS-Events fügt Deiner Webseite oder Deiner Multisite ein mächtiges Events & Bookings System hinzu..', 'eab') . '</p>';
 		} else {
 				$this->_sidebar .= '<ul>' .
-					'<li><a href="https://n3rds.work/piestingtal-source-project/eventsps-das-eventmanagment-fuer-wordpress/" target="_blank">' . __('Projektseite', 'eab') . '</a></li>' .
-					'<li><a href="https://n3rds.work/piestingtal-source-project/eventsps-das-eventmanagment-fuer-wordpress/" target="_blank">' . __('Installations- und Anleitungsseite', 'eab') . '</a></li>' .
-					'<li><a href="https://n3rds.work/piestingtal-source-project/eventsps-das-eventmanagment-fuer-wordpress/" target="_blank">' . __('Hilfeforum', 'eab') . '</a></li>' .
+					'<li><a href="https://n3rds.work/piestingtal_source/ps-events-eventmanagement-fuer-wordpress/ target="_blank">' . __('Projektseite', 'eab') . '</a></li>' .
+					'<li><a href="https://n3rds.work/docs/ps-events-plugin-handbuch/" target="_blank">' . __('Installations- und Anleitungsseite', 'eab') . '</a></li>' .
+					'<li><a href="https://n3rds.work/forums/forum/psource-support-foren/ps-forum-supportforum/https://n3rds.work/piestingtal-source-project/eventsps-das-eventmanagment-fuer-wordpress/" target="_blank">' . __('Hilfeforum', 'eab') . '</a></li>' .
 				'</ul>' . 
 			'';
 		}

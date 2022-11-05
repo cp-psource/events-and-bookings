@@ -38,7 +38,7 @@ class Eab_BuddyPress_GroupEvents {
 			add_action('psource_event_booking_maybe', array($this, 'auto_join_group'), 10, 2);
 		}
 		if ($this->_data->get_option('bp-group_event-private_events')) {
-			add_filter('wpmudev-query', array($this, 'filter_query'));
+			add_filter('psource-query', array($this, 'filter_query'));
 		}
 
 		add_action('bp_init', array($this, 'add_tab'));
@@ -138,7 +138,7 @@ class Eab_BuddyPress_GroupEvents {
 	}
 	
 	function show_settings () {
-		$tips = new WpmuDev_HelpTooltips();
+		$tips = new PSource_HelpTooltips();
 		$tips->set_icon_url(EAB_PLUGIN_URL . 'img/information.png');
 		$checked = $this->_data->get_option('bp-group_event-auto_join_groups') ? 'checked="checked"' : '';
 		$private = $this->_data->get_option('bp-group_event-private_events') ? 'checked="checked"' : '';

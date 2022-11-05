@@ -2,7 +2,7 @@
 /*
 Plugin Name: Wiederkehrendes Ereignis im Kalender-Shortcode
 Description: Benutze [eab_calendar_recurring id="xx"] um alle Instanzen eines wiederkehrenden Ereignisses anzuzeigen
-Plugin URI: http://premium.wpmudev.org/project/events-and-booking
+Plugin URI: https://n3rds.work/piestingtal_source/ps-events-eventmanagement-fuer-wordpress/
 Version: 1.1
 Author: DerN3rd
 AddonType: Events

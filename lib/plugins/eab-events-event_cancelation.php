@@ -257,7 +257,7 @@ EOPublicCancellationCss;
 	}
 
 	function show_settings () {
-		$tips = new WpmuDev_HelpTooltips();
+		$tips = new PSource_HelpTooltips();
 		$tips->set_icon_url(EAB_PLUGIN_URL . 'img/information.png');
 		
 		$from = $this->_data->get_option('eab_cancelations-email-from');

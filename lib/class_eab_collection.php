@@ -3,7 +3,7 @@
 /**
  * Abstract collection root class.
  */
-abstract class WpmuDev_Collection {
+abstract class PSource_Collection {
 
 	/**
 	 * Holds a WP_Query instance.
@@ -24,7 +24,7 @@ abstract class WpmuDev_Collection {
 	 * Returns a WP_Query instance.
 	 */
 	public function to_query () {
-		return apply_filters('wpmudev-query', $this->_query);
+		return apply_filters('psource-query', $this->_query);
 	}
 
 	abstract public function build_query_args ($args);
@@ -34,7 +34,7 @@ abstract class WpmuDev_Collection {
 /**
  * Abstract Event collection root class.
  */
-abstract class Eab_Collection extends WpmuDev_Collection {
+abstract class Eab_Collection extends PSource_Collection {
 
 	/**
 	 * Converts WP_Query result set into an array of Eab_EventModel objects.
@@ -544,10 +544,10 @@ class Eab_ExpiredCollection extends Eab_Collection {
 class Eab_AllRecurringChildrenCollection extends Eab_Collection {
 
 	public function build_query_args ($arg) {
-		if (!$arg instanceof WpmuDev_DatedVenuePremiumModel) return $arg;
+		if (!$arg instanceof PSource_DatedVenuePremiumModel) return $arg;
 		$status = $arg->is_trashed()
-			? WpmuDev_RecurringDatedItem::RECURRENCE_TRASH_STATUS
-			: WpmuDev_RecurringDatedItem::RECURRENCE_STATUS
+			? PSource_RecurringDatedItem::RECURRENCE_TRASH_STATUS
+			: PSource_RecurringDatedItem::RECURRENCE_STATUS
 		;
 		$args = array (
 			'post_type' => 'psource_event',

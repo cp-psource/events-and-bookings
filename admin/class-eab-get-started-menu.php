@@ -53,15 +53,15 @@ class Eab_Admin_Get_Started_Menu {
 				</div>
 			</div>
 
-			<?php if (!defined('WPMUDEV_REMOVE_BRANDING') || !constant('WPMUDEV_REMOVE_BRANDING')) { ?>
+			<?php if (!defined('PSOURCE_REMOVE_BRANDING') || !constant('PSOURCE_REMOVE_BRANDING')) { ?>
 				<div class="eab-metaboxcol metabox-holder eab-metaboxcol-one eab-metaboxcol-center">
 					<div id="eab-helpbox" class="eab-metabox postbox">
 						<h3 class="eab-hndle"><?php _e('Brauchst Du Hilfe?', eab_domain() ); ?></h3>
 						<div class="eab-inside">
 							<ol>
-								<li><a href="https://n3rds.work/piestingtal-source-project/eventsps-das-eventmanagment-fuer-wordpress/"><?php _e('Projektseite auf Webmasterservice N3rds@Work', eab_domain() ); ?></a></li>
-								<li><a href="https://n3rds.work/piestingtal-source-project/eventsps-das-eventmanagment-fuer-wordpress/"><?php _e('Stelle eine Frage zu diesem Plugin in unseren Support-Foren', eab_domain() ); ?></a></li>
-								<li><a href="https://n3rds.work/piestingtal-source-project/eventsps-das-eventmanagment-fuer-wordpress/"><?php _e('Bald: Ein Video von PS-Events in Action', eab_domain() ); ?></a></li>
+								<li><a href="https://n3rds.work/piestingtal_source/ps-events-eventmanagement-fuer-wordpress/"><?php _e('Projektseite auf Webmasterservice N3rds@Work', eab_domain() ); ?></a></li>
+								<li><a href="https://n3rds.work/forums/forum/psource-support-foren/ps-forum-supportforum/"><?php _e('Stelle eine Frage zu diesem Plugin in unseren Support-Foren', eab_domain() ); ?></a></li>
+								<li><a href="https://github.com/piestingtal-source/ps-events"><?php _e('GitHub Repo', eab_domain() ); ?></a></li>
 							</ol>
 						</div>
 					</div>

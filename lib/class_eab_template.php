@@ -49,7 +49,7 @@ class Eab_Template {
 		$start_day = date_i18n('m', $event->get_start_timestamp());
 		    
 		$new_content  = '';
-		$new_content .= '<div class="event ' . self::get_status_class($event) . '" id="psourceevents-wrapper" itemscope itemtype="http://schema.org/Event"><div id="wpmudevents-single">';
+		$new_content .= '<div class="event ' . self::get_status_class($event) . '" id="psourceevents-wrapper" itemscope itemtype="http://schema.org/Event"><div id="psourceents-single">';
 		$new_content .= '<meta itemprop="name" content="' . esc_attr($event->get_title()) . '" />';
 		
 		$new_content .= self::get_error_notice();

@@ -13,7 +13,7 @@ get_header();
 		<div id="content" role="main">
 			
 <div class="event <?php echo Eab_Template::get_status_class($post); ?>" id="psourceevents-wrapper">
-	<div id="wpmudevents-single">
+	<div id="psourceents-single">
 		<div class="psourceevents-header">
 			<h2><?php echo $event->get_title(); ?></h2><br />
 			<div class="psourceevents-contentmeta" style="clear:both">

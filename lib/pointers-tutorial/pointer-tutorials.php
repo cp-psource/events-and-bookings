@@ -46,11 +46,11 @@ It is best to call this in the admin_init action hook. Here is an example:
 		$tutorial->add_icon( plugins_url( 'includes/images/my-logo-white.png' , __FILE__ ) );
 		
 		//start registering steps. Note the 'content' argument is very important, and should be escaped with esc_js() as it will go in JSON
-		$tutorial->add_step(admin_url('index.php'), 'index.php', '#wpmudev_widget', __('Step Number One', 'mytextdomain'), array(
+		$tutorial->add_step(admin_url('index.php'), 'index.php', '#psource_widget', __('Step Number One', 'mytextdomain'), array(
 				'content'  => '<p>' . esc_js( __('On each category page, plugins and themes are listed in an easy to read grid format.', 'mytextdomain') ) . '</p>',
 				'position' => array( 'edge' => 'bottom', 'align' => 'left' ),
 			));
-		$tutorial->add_step(admin_url('index.php'), 'index.php', '#toplevel_page_wpmudev', __('Step Number Two', 'mytextdomain'), array(
+		$tutorial->add_step(admin_url('index.php'), 'index.php', '#toplevel_page_psource', __('Step Number Two', 'mytextdomain'), array(
 				'content'  => '<p>' . esc_js( __('On each category page, plugins and themes are listed in an easy to read grid format.', 'mytextdomain') ) . '</p>',
 				'position' => array( 'edge' => 'top', 'align' => 'right' ),
 			));
@@ -60,15 +60,15 @@ It is best to call this in the admin_init action hook. Here is an example:
 			));
 		
 		//second page steps
-		$tutorial->add_step(admin_url('admin.php?page=my-plugin'), 'toplevel_page_wpmudev', '.nav-tab-wrapper', __('Step Number Four', 'mytextdomain'), array(
+		$tutorial->add_step(admin_url('admin.php?page=my-plugin'), 'toplevel_page_psource', '.nav-tab-wrapper', __('Step Number Four', 'mytextdomain'), array(
 				'content'  => '<p>' . esc_js( __('On each category page, plugins and themes are listed in an easy to read grid format.', 'mytextdomain') ) . '</p>',
 				'position' => array( 'edge' => 'top', 'align' => 'center' ),
 			));
-		$tutorial->add_step(admin_url('admin.php?page=my-plugin'), 'toplevel_page_wpmudev', '.wdv-grid-wrap .themepost:not(.installed):first', __('Step Number Five', 'mytextdomain'), array(
+		$tutorial->add_step(admin_url('admin.php?page=my-plugin'), 'toplevel_page_psource', '.wdv-grid-wrap .themepost:not(.installed):first', __('Step Number Five', 'mytextdomain'), array(
 				'content'  => '<p>' . esc_js( __('On each category page, plugins and themes are listed in an easy to read grid format.', 'mytextdomain') ) . '</p>',
 				'position' => array( 'edge' => 'left', 'align' => 'center' ),
 			));
-		$tutorial->add_step(admin_url('admin.php?page=my-plugin'), 'toplevel_page_wpmudev', '.wdv-grid-wrap .themepost:not(.installed):first .themescreens .metainfo a', __('Step Number Six', 'mytextdomain'), array(
+		$tutorial->add_step(admin_url('admin.php?page=my-plugin'), 'toplevel_page_psource', '.wdv-grid-wrap .themepost:not(.installed):first .themescreens .metainfo a', __('Step Number Six', 'mytextdomain'), array(
 				'content'  => '<p>' . esc_js( __('On each category page, plugins and themes are listed in an easy to read grid format.', 'mytextdomain') ) . '</p>',
 				'position' => array( 'edge' => 'top', 'align' => 'left' ),
 			));
@@ -179,9 +179,9 @@ if ( !class_exists( 'Pointer_Tutorial' ) ) {
 		 * 
 		 *	@param string $domain the textdomain for i18n
 		 */
-		public function set_textdomain( $domain ) {
+		/*public function set_textdomain( $domain ) {
 			'eab' = trim( $domain );
-		}
+		}*/
 		
 		/*
 		 * function add_style
@@ -203,7 +203,7 @@ if ( !class_exists( 'Pointer_Tutorial' ) ) {
 		 *	@param string $url Url to the icon image file. Should be 32x32 normally
 		 */
 		public function add_icon( $url ) {
-			$this->add_style( '.wpmudev_dashboard-pointer .wp-pointer-content h3:before { background-image: url("' . $url . '"); }' );
+			$this->add_style( '.psource_dashboard-pointer .wp-pointer-content h3:before { background-image: url("' . $url . '"); }' );
 		}
 		
 		/*

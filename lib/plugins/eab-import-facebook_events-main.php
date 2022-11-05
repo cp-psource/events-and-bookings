@@ -1,6 +1,6 @@
 <?php
 
-if (!class_exists('WpmuDev_Wp_Oauth')) require_once(EAB_PLUGIN_DIR . 'lib/class_wd_wpmu_oauth.php');
+if (!class_exists('PSource_Wp_Oauth')) require_once(EAB_PLUGIN_DIR . 'lib/class_wd_wpmu_oauth.php');
 if (!class_exists('Eab_Importer')) require_once(EAB_PLUGIN_DIR . 'lib/class_eab_importer.php');
 if( ! class_exists( 'Facebook\Facebook' ) ) require_once dirname( __FILE__ ) . '/lib/Facebook/autoload.php';
 
@@ -161,7 +161,7 @@ class Eab_Calendars_FacebookEventsImporter {
 	}
 
 	function show_settings () {
-		$tips = new WpmuDev_HelpTooltips();
+		$tips = new PSource_HelpTooltips();
 		$tips->set_icon_url(EAB_PLUGIN_URL . 'img/information.png' );
 
 		$api_key = $this->_data->get_option('fbe_importer-client_id');

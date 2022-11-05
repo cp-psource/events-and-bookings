@@ -31,10 +31,10 @@ class Eab_Admin_Settings_Menu {
 		$updated = isset($_GET['psource_event_settings_saved']) && $_GET['psource_event_settings_saved'] == 1;
 
 
-		if ( ! class_exists( 'WpmuDev_HelpTooltips' ) )
+		if ( ! class_exists( 'PSource_HelpTooltips' ) )
 			require_once eab_plugin_dir() . 'lib/class_wd_help_tooltips.php';
 
-		$tips = new WpmuDev_HelpTooltips();
+		$tips = new PSource_HelpTooltips();
 		$tips->set_icon_url( eab_plugin_url() . 'img/information.png' );
 
 		if ( ! ( defined('EAB_PREVENT_SETTINGS_SECTIONS') && EAB_PREVENT_SETTINGS_SECTIONS ) )

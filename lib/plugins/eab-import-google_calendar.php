@@ -8,7 +8,7 @@ Author: DerN3rd
 AddonType: Integration
 */
 
-if (!class_exists('WpmuDev_Wp_Oauth')) require_once(EAB_PLUGIN_DIR . 'lib/class_wd_wpmu_oauth.php');
+if (!class_exists('PSource_Wp_Oauth')) require_once(EAB_PLUGIN_DIR . 'lib/class_wd_wpmu_oauth.php');
 if (!class_exists('Eab_Importer')) require_once(EAB_PLUGIN_DIR . 'lib/class_eab_importer.php');
 
 
@@ -28,7 +28,7 @@ class Eab_Gcal_Oauth_GoogleImporter extends Eab_Gcal_Plugin_Oauth_RO {
 /**
  * Concrete gCalendar helper implementation.
  */
-class Eab_Gcal_Calendar_GoogleImporter extends WpmuDev_Gcal_Helper {
+class Eab_Gcal_Calendar_GoogleImporter extends PSource_Gcal_Helper {
 
 	public function initialize () {
 		$oauth = new Eab_Gcal_Oauth_GoogleImporter;
@@ -178,7 +178,7 @@ class Eab_Calendars_GoogleImporter {
 	}
 
 	function show_settings () {
-		$tips = new WpmuDev_HelpTooltips();
+		$tips = new PSource_HelpTooltips();
 		$tips->set_icon_url(EAB_PLUGIN_URL . 'img/information.png' );
 
 		$api_key = $this->_data->get_option('gcal_importer-client_id');

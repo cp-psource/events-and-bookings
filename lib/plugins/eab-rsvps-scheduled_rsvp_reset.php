@@ -72,7 +72,7 @@ class Eab_Rsvps_RsvpAutoReset {
 	}
 
 	function show_settings () {
-		$tips = new WpmuDev_HelpTooltips();
+		$tips = new PSource_HelpTooltips();
 		$tips->set_icon_url(EAB_PLUGIN_URL . 'img/information.png' );
 		$runs = array(
 			'3600' => __('Stunde', 'eab'),

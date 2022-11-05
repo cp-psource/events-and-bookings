@@ -8,8 +8,8 @@ Author: DerN3rd
 AddonType: Integration
 */
 
-if (!class_exists('WpmuDev_Wp_Meetup')) {
-	class WpmuDev_Wp_Meetup {
+if (!class_exists('PSource_Wp_Meetup')) {
+	class PSource_Wp_Meetup {
 
 		private $_key;
 
@@ -97,14 +97,14 @@ if (!class_exists('WpmuDev_Wp_Meetup')) {
 		private function _route ($what) {
 			if (preg_match('/\//', $what)) return $what;
 			$what = strtoupper('endpoint_' . preg_replace('/[^a-z_0-9]/i', '', $what));
-			$const = constant("WpmuDev_Wp_Meetup::{$what}");
+			$const = constant("PSource_Wp_Meetup::{$what}");
 			
 			return $const;
 		}
 	}
 }
 
-class Eab_Wp_Meetup extends WpmuDev_Wp_Meetup {
+class Eab_Wp_Meetup extends PSource_Wp_Meetup {
 	
 	private $_data;
 
@@ -328,7 +328,7 @@ class Eab_Calendars_MeetupImporter {
 	}
 
 	function show_settings () {
-		$tips = new WpmuDev_HelpTooltips();
+		$tips = new PSource_HelpTooltips();
 		$tips->set_icon_url(EAB_PLUGIN_URL . 'img/information.png' );
 
 		$api_key = $this->_data->get_option('meetup_importer-api_key');

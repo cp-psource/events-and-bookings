@@ -60,7 +60,7 @@ class Eab_Events_FrontPageEditing {
 	function show_settings () {
 		$pages = get_pages();
 		$integrate_with_my_events = $this->_options['integrate_with_my_events'] ? 'checked="checked"' : '';
-		$tips = new WpmuDev_HelpTooltips();
+		$tips = new PSource_HelpTooltips();
 		$tips->set_icon_url(EAB_PLUGIN_URL . 'img/information.png');
 ?>
 <div id="eab-settings-fpe" class="eab-metabox postbox">
