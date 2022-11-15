@@ -1,6 +1,7 @@
 #ui-datepicker-div {
 	display: none;
 	z-index: 999 !important;
+	left: 25px !important;
 }
 
 /* ----- Meta boxes setup ----- */
@@ -24,6 +25,7 @@ div#eab-events-fpe-meta_info{
 .eab-events-fpe-meta_box {
 	display: flex;
 	flex-direction: row;
+	flex-wrap:wrap;
 	align-items: center;
 	gap: 15px;
 	padding: .4%;
@@ -78,7 +80,7 @@ div#eab-events-fpe-meta_box-categories {
 
 /* ----- Date/time metabox ----- */
 #eab-events-fpe-venue {
-	width: 99%;
+	min-width: 330px;
 }
 
 /* ----- Messages ----- */
