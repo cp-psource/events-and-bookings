@@ -462,10 +462,10 @@ class Eab_Events_FrontPageEditing {
 
 		// Status
 		$ret .= '<div>';
-		$ret .= '<label>' . __('<h3>Event-Status</h3>', 'eab') . '</label>';
+		$ret .= '<label>' . __('<h3>Event-Status:</h3>', 'eab') . '</label>';
 		$ret .= '<select name="" id="eab-events-fpe-status">';
-		$ret .= '	<option value="' . Eab_EventModel::STATUS_OPEN . '" '.(($event->is_open())?'selected="selected"':'').' >'.__('Offen', 'eab').'</option>';
-		$ret .= '	<option value="' . Eab_EventModel::STATUS_CLOSED . '" '.(($event->is_closed())?'selected="selected"':'').' >'.__('Geschlossen', 'eab').'</option>';
+		$ret .= '	<option value="' . Eab_EventModel::STATUS_OPEN . '" '.(($event->is_open())?'selected="selected"':'').' >'.__('Findet statt', 'eab').'</option>';
+		$ret .= '	<option value="' . Eab_EventModel::STATUS_CLOSED . '" '.(($event->is_closed())?'selected="selected"':'').' >'.__('Abgesagt', 'eab').'</option>';
 		$ret .= '	<option value="' . Eab_EventModel::STATUS_EXPIRED . '" '.(($event->is_expired())?'selected="selected"':'').' >'.__('Abgelaufen', 'eab').'</option>';
 		$ret .= '	<option value="' . Eab_EventModel::STATUS_ARCHIVED . '" '.(($event->is_archived())?'selected="selected"':'').' >'.__('Archiviert', 'eab').'</option>';
 		$ret .= apply_filters('eab-events-fpe-event_meta-extra_event_status', '', $event);

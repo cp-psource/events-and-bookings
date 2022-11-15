@@ -209,7 +209,7 @@ class Eab_BuddyPress_GroupEvents {
 			__('Gruppenveranstaltung', 'eab') . 
 		'</label></div>';
 		
-		$ret .= __('Dies ist eine Gruppenveranstaltung für', 'eab');
+		$ret .= __('<h3>Dies ist eine Gruppenveranstaltung für:</h3>', 'eab');
 		$ret .= ' <select name="eab_event-bp-group_event" id="eab_event-bp-group_event">';
 		$ret .= '<option value="">' . __('Keine Gruppenveranstaltung', 'eab') . '&nbsp;</option>';
 		foreach ($groups as $group) {
