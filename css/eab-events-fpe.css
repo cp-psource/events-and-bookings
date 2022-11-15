@@ -15,7 +15,6 @@ div#eab-events-fpe-meta_info{
 	}
 }
 
-
 .eab-events-fpe-col_wrapper {
 	overflow: hidden;
 	margin: .4% 0;
@@ -52,11 +51,12 @@ div#eab-events-fpe-meta_box-categories {
 /* ----- General meta box elements ----- */
 .eab-events-fpe-meta_box label {
 	width: 100%;
-
 }
+
 #eab-events-fpe-date_time label {
 	width: 6em;
 }
+
 #eab-events-fpe-waiting_indicator {
 	margin-left: 1em;
 	margin-right: 1.5em;
@@ -73,7 +73,7 @@ div#eab-events-fpe-meta_box-categories {
 /* ----- Form elements setup ----- */
 #eab-events-fpe-event_title {
 	width: 99%;
-	font-size: 2em;
+	font-size: 1.2em;
 }
 
 /* ----- Date/time metabox ----- */
@@ -90,5 +90,5 @@ div#eab-events-fpe-meta_box-categories {
 }
 
 .eab-events-pae-meta_box {
-	width: 47%;
+	/*width: 47%;*/
 }

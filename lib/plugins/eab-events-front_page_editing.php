@@ -3,7 +3,7 @@
 Plugin Name: Frontpage Editor
 Description: Ermöglicht das Einbetten der Bearbeitung von Titelseiten für Ereignisse mithilfe eines Shortcodes in die öffentlichen Seiten Deiner Website.
 Plugin URI: https://n3rds.work/piestingtal-source-project/eventsps-das-eventmanagment-fuer-wordpress/
-Version: 1.1
+Version: 1.2
 Author: DerN3rd
 AddonType: Integration
 */
@@ -381,7 +381,7 @@ class Eab_Events_FrontPageEditing {
 		$ret .= '<a id="eab-events-fpe-back_to_event" href="' . get_permalink($event->get_id()) . '" ' . $style . '>' . __('ZURÜCK ZUM EREIGNIS', 'eab') . '</a>';
 		$ret .= '<input type="hidden" id="eab-events-fpe-event_id" value="' . (int)$event->get_id() . '" />';
 		$ret .= '<div>';
-		$ret .= '<label>' . __('Name des Events', 'eab') . '</label>';
+		$ret .= '<label>' . __('<h2>Titel der Veranstaltung:</h2>', 'eab') . '</label>';
 		$ret .= '<br /><input type="text" name="" id="eab-events-fpe-event_title" value="' . esc_attr($event->get_title()) . '" />';
 		$ret .= '</div>';
 
@@ -415,14 +415,14 @@ class Eab_Events_FrontPageEditing {
 		?>
 		<div class="eab-events-fpe-meta_box_item eab_event_date eab_start_date">
 			<fieldset>
-				<legend><?php _e('Beginnt am', 'eab') ?></legend>
+				<legend><?php _e('<h3>Das Event beginnt:</h3>', 'eab') ?></legend>
 				<div class="eab-events-fpe-meta_box_sub_item">
-					<label class="date-title"><?php _e('Tag', 'eab'); ?></label>
+					<label class="date-title"><?php _e('Tag:', 'eab'); ?></label>
 					<input type="text" name="" id="eab-events-fpe-start_date" value="<?php echo date('Y-m-d', $start); ?>" size="10" />
 				</div>
 				<div class="eab-events-fpe-meta_box_sub_item">
 					<div class="eab-events-fpe_wrap_time_start <?php echo $has_no_start_time ? 'hide_time_option' : '' ?>"  >
-						<label class="date-title"><?php _e('Uhrzeit', 'eab'); ?></label>					
+						<label class="date-title"><?php _e('Uhrzeit:', 'eab'); ?></label>					
 						<input type="text" name="" id="eab-events-fpe-start_time" value="<?php echo date('H:i', $start); ?>" size="10" />					
 					</div>
 					<div id="eab-events-fpe-time__start">
@@ -435,14 +435,14 @@ class Eab_Events_FrontPageEditing {
 
 		<div class="eab-events-fpe-meta_box_item eab_event_date eab_end_date">
 			<fieldset>
-				<legend><?php _e('Event endet', 'eab') ?></legend>
+				<legend><?php _e('<h3>Das Event endet:</h3>', 'eab') ?></legend>
 				<div class="eab-events-fpe-meta_box_sub_item">
-					<label class="date-title"><?php _e('Tag', 'eab'); ?></label>
+					<label class="date-title"><?php _e('Tag:', 'eab'); ?></label>
 					<input type="text" name="" id="eab-events-fpe-end_date" value="<?php echo date('Y-m-d', $end); ?>" size="10" />
 				</div>
 				<div class="eab-events-fpe-meta_box_sub_item">
 					<div class="eab-events-fpe_wrap_time_end <?php echo $has_no_end_time ? 'hide_time_option' : '' ?>">
-						<label class="date-title"><?php _e('Uhrzeit', 'eab'); ?></label>					
+						<label class="date-title"><?php _e('Uhrzeit:', 'eab'); ?></label>					
 						<input type="text" name="" id="eab-events-fpe-end_time" value="<?php echo date('H:i', $end); ?>" size="10" />
 					</div>
 					<div id="eab-events-fpe-time__end">
@@ -462,7 +462,7 @@ class Eab_Events_FrontPageEditing {
 
 		// Status
 		$ret .= '<div>';
-		$ret .= '<label>' . __('Event-Status', 'eab') . '</label>';
+		$ret .= '<label>' . __('<h3>Event-Status</h3>', 'eab') . '</label>';
 		$ret .= '<select name="" id="eab-events-fpe-status">';
 		$ret .= '	<option value="' . Eab_EventModel::STATUS_OPEN . '" '.(($event->is_open())?'selected="selected"':'').' >'.__('Offen', 'eab').'</option>';
 		$ret .= '	<option value="' . Eab_EventModel::STATUS_CLOSED . '" '.(($event->is_closed())?'selected="selected"':'').' >'.__('Geschlossen', 'eab').'</option>';
@@ -476,13 +476,13 @@ class Eab_Events_FrontPageEditing {
 		// Type
 		if ($this->_data->get_option('accept_payments')) {
 			$ret .= '<div>';
-			$ret .= '<label>' . __('Ist das eine bezahlte Veranstaltung?', 'eab') . '</label>';
+			$ret .= '<label>' . __('<h3>Ist dies eine kostenpflichtige Veranstaltung?</h3>', 'eab') . '</label>';
 			$ret .= '<select name="" id="eab-events-fpe-is_premium">';
 			$ret .= '	<option value="1" ' . ($event->is_premium() ? 'selected="selected"' : '') . '>'.__('Ja', 'eab').'</option>';
 			$ret .= '	<option value="0" ' . ($event->is_premium() ? '' : 'selected="selected"') . '>'.__('Nein', 'eab').'</option>';
 			$ret .= '</select>';
 			$ret .= '<div id="eab-events-fpe-event_fee-wrapper">';
-			$ret .= '<label for="eab-events-fpe-event_fee">' . __('Gebühr', 'eab') . '</label>';
+			$ret .= '<label for="eab-events-fpe-event_fee">' . __('Teilnahme-Gebühr:', 'eab') . '</label>';
 			$ret .= ' <input type="text" name="" id="eab-events-fpe-event_fee" size="6" value="' . esc_attr($event->get_price()) . '" />';
 			$ret .= '</div>'; // eab-events-fpe-event_fee-wrapper
 			$ret .= '</div>';
@@ -498,7 +498,7 @@ class Eab_Events_FrontPageEditing {
 		$ret .= '<div class="eab-events-fpe-meta_box" id="eab-events-fpe-meta_box-venue">';
 		// Venue
 		$ret .= '<div>';
-		$ret .= '<label>' . __('Veranstaltungsort', 'eab') . '</label>';
+		$ret .= '<label>' . __('<h3>Veranstaltungsort:</h3>', 'eab') . '</label>';
 		$ret .= '<br /><input type="text" name="" id="eab-events-fpe-venue" value="' . esc_attr($event->get_venue_location()) . '" />';
 		$ret .= '</div>';
 		// End venue
@@ -515,7 +515,7 @@ class Eab_Events_FrontPageEditing {
 		$ret .= '<div class="eab-events-fpe-meta_box" id="eab-events-fpe-meta_box-categories">';
 		// Categories
 		$ret .= '<div>';
-		$ret .= '<label>' . __('Ereigniskategorie', 'eab') . '</label>';
+		$ret .= '<label>' . __('<h3>Ereigniskategorie:</h3>', 'eab') . '</label>';
 		if ( ! empty( $all_cats ) ) {
 			$ret .= '<div>';
 			foreach ( $all_cats as $cat ) {
@@ -543,20 +543,20 @@ class Eab_Events_FrontPageEditing {
 		if (current_user_can('upload_files')) {
 			/* Added by Ashok */
 			$ret .= '<div class="eab-events-fpe-col_wrapper">';
-				$ret .= '<label>' . __('Veranstaltungsbild', 'eab') . '</label>' .
+				$ret .= '<label>' . __('<h3>Veranstaltungsbild</h3>', 'eab') . '</label>' .
 					'<br />' .
 					'<a href="#featured_image" class="eab-fpe-upload">' .
 					'<input type="hidden" id="eab-fpe-attach_id" name="" value="' . $featured_image_id . '" />' .
 					'<input type="hidden" name="featured" value="' . esc_attr($featured_image_id) . '" />' .
 					'<img src="' . esc_url($featured_image) . '" id="eab-fpe-preview-upload" ' . (empty($featured_image) ? 'style="display:none"' : '') . ' />' .
 					'<br />' .
-					'<span class="Button">' . __('Veranstaltungsbild hochladen', 'eab') . '</span>' .
+					'<span class="button">' . __('<b>Veranstaltungsbild hochladen</b>', 'eab') . '</span>' .
 				'</a>';
 			$ret .= '</div>';
 			/* End of adding by Ashok */
 		} else if (!empty($featured_image_id) && !empty($featured_image)) {
 			$ret .= '<div class="eab-events-fpe-col_wrapper">';
-			$ret .= '<label>' . __('Veranstaltungsbild', 'eab') . '</label>' .
+			$ret .= '<label>' . __('<h3>Veranstaltungsbild</h3>', 'eab') . '</label>' .
 				'<img src="' . esc_url($featured_image) . '" id="eab-fpe-preview-upload" />' .
 				'<input type="hidden" id="eab-fpe-attach_id" name="featured" value="' . esc_attr($featured_image_id) . '" />' .
 			'</div>';

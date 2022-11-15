@@ -262,7 +262,7 @@ class Eab_Template {
 		$content .= '<div id="eab-bookings-response"></div>';
         //nur bis hier       
                 $content .= '<fieldset class="eab-add_attendance">';
-		$content .= '<legend>' . __('Benutzer hinzufügen', 'eab') . '</legend>';
+		$content .= '<legend>' . __('<h3>Benutzer hinzufügen</h3>', 'eab') . '</legend>';
 		
 		$content .= '<label>' . __('Benutzer Email', 'eab') . '</label>&nbsp;';
 		$content .= '<input type="hidden" class="eab-attendance-event_id" value="' . (int)$event->get_id() . '" />';
