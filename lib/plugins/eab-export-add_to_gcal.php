@@ -80,7 +80,7 @@ class Eab_Export_GCalButton {
                  */
                 return "{$content} <a class='export_to_gcal' href='" .
 			esc_url('http://www.google.com/calendar/event?' . join('&', $data)) .
-		"'><span class='eab_export'>" . __('Sync Google Kalender', 'eab') . '</span></a>';
+		"'><span class='eab_export'>" . __('Google Kalender Export', 'eab') . '</span></a>';
 	}
 }
 

@@ -122,7 +122,7 @@ class Eab_Export_iCal {
 		return "{$content} <a class='export_to_ical' href='" . 
 			get_permalink($event->get_id()) . 
 			'?eab_format=ical' . $download .
-		"'><span class='eab_export'>" . __('iCal Sync', 'eab') . '</span></a>';
+		"'><span class='eab_export'>" . __('Apple Kalender Export', 'eab') . '</span></a>';
 	}
 
 	function intercept_page_load () {

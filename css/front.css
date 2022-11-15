@@ -556,6 +556,7 @@ a.export_to_gcal:after {
 
 .psourceevents-additional_details {
     margin-bottom: 20px;
+    float: right;
 }
 
 #eab-wordpress_login-mode_toggle a {
