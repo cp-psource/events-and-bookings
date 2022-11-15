@@ -297,7 +297,7 @@ class Eab_Emi_Model {
 
 		$group_name_suffix = array();
 		if (in_array(Eab_EventModel::BOOKING_YES, $bookings)) $group_name_suffix[] = __('Ja', 'eab');
-		if (in_array(Eab_EventModel::BOOKING_MAYBE, $bookings)) $group_name_suffix[] = __('Möglich', 'eab');
+		if (in_array(Eab_EventModel::BOOKING_MAYBE, $bookings)) $group_name_suffix[] = __('Interresiert', 'eab');
 		if (in_array(Eab_EventModel::BOOKING_NO, $bookings)) $group_name_suffix[] = __('Nein', 'eab');
 		$group_name = !empty($group_name_suffix)
 			? sprintf("%s (%s)", $event->get_title(), join(', ', $group_name_suffix))

@@ -165,7 +165,7 @@ class Eab_Template {
 		
 		$statuses = array(
 			Eab_EventModel::BOOKING_YES => __('Teilnahme', 'eab'), 
-			Eab_EventModel::BOOKING_MAYBE => __('Möglich', 'eab'), 
+			Eab_EventModel::BOOKING_MAYBE => __('Interresiert', 'eab'), 
 			Eab_EventModel::BOOKING_NO => __('Absage', 'eab')
 		);
 		if (!in_array($status, array_keys($statuses))) return false; // Unknown status
@@ -531,7 +531,7 @@ class Eab_Template {
 				);
 				$content .= apply_filters('eab-rsvps-button-maybe',
 					'<input class="' . (($booking_id && $booking_status == 'maybe') ? 'current psourceevents-maybe-submit' : 'psourceevents-maybe-submit ' . $default_class) .
-						'" type="submit" name="action_maybe" value="' . __('Möglich', 'eab') . 
+						'" type="submit" name="action_maybe" value="' . __('Interresiert', 'eab') . 
 					'" '.(($booking_id && $booking_status == 'maybe') ? 'disabled="disabled"' : '').' />',
 					$event->get_id()
 				);
@@ -556,7 +556,7 @@ class Eab_Template {
 				$content .= apply_filters('eab-rsvps-button-maybe',
 					'<a class="psourceevents-maybe-submit" href="' .
 						$login_url_m .
-					'" >'.__('Möglich', 'eab').'</a>',
+					'" >'.__('Interresiert', 'eab').'</a>',
 					$event->get_id()
 				);
 				$content .= apply_filters('eab-rsvps-button-yes',
@@ -618,7 +618,7 @@ class Eab_Template {
 				? date_i18n(get_option('date_format'), $end) : ''
 			;
 			
-			$content .= $key ? __(' und ', 'eab') : '';
+			$content .= $key ? __('') : '';
 
 			// Differentiate start/end date equality
 			if ($end_date_str) {
@@ -676,7 +676,7 @@ class Eab_Template {
 	public static function get_rsvp_status_list () {
 		return array(
 			Eab_EventModel::BOOKING_YES => __('Teilnahme', 'eab'), 
-			Eab_EventModel::BOOKING_MAYBE => __('Möglich', 'eab'), 
+			Eab_EventModel::BOOKING_MAYBE => __('Interresiert', 'eab'), 
 			Eab_EventModel::BOOKING_NO => __('Absage', 'eab')
 		);
 	}

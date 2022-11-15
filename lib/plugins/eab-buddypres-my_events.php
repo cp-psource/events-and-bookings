@@ -72,7 +72,7 @@ class Eab_BuddyPress_MyEvents {
 			'screen_function' => array($this, 'bind_bp_attending_page'),
 		));
 		bp_core_new_subnav_item(array(
-			'name' => __('Möglich', 'eab'),
+			'name' => __('Interresiert', 'eab'),
 			'slug' => 'mabe',
 			'parent_url' => $bp->displayed_user->domain . 'my-events' . '/',
 			'parent_slug' => 'my-events',

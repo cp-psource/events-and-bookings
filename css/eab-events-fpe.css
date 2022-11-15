@@ -1,20 +1,37 @@
 #ui-datepicker-div {
 	display: none;
+	z-index: 999 !important;
 }
 
 /* ----- Meta boxes setup ----- */
+
+div#eab-events-fpe-meta_info {
+    display: flex;
+	flex-direction: column;
+}
+div#eab-events-fpe-meta_info{
+	@media (max-width: 800px) {
+	 	 flex: 100%;
+	}
+}
+
+
 .eab-events-fpe-col_wrapper {
 	overflow: hidden;
 	margin: .4% 0;
+	flex: 50%;
 }
 .eab-events-fpe-meta_box {
-	width: 47%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 15px;
 	padding: .4%;
-	/*border: 1px solid #ddd;*/
-	float: left;
+	border: 1px solid #ddd;
+	
 }
 #eab-events-fpe-status_type {
-	float: right;
+	/*float: right;*/
 }
 #eab-events-fpe-rsvps, #eab-events-fpe-meta_box-venue {
 	float: none;

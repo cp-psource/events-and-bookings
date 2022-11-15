@@ -126,6 +126,12 @@ Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswor
 
 == ChangeLog ==
 
+= 1.4.1 = DerN3rd =
+
+* Frontendeditor CSS Anpassung
+* Textanpassungen
+
+
 = 1.4.0 = DerN3rd =
 
 * Anpassung Textdomain

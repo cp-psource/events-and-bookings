@@ -550,7 +550,7 @@ class Eab_Events_FrontPageEditing {
 					'<input type="hidden" name="featured" value="' . esc_attr($featured_image_id) . '" />' .
 					'<img src="' . esc_url($featured_image) . '" id="eab-fpe-preview-upload" ' . (empty($featured_image) ? 'style="display:none"' : '') . ' />' .
 					'<br />' .
-					'<span>' . __('Ändere das Veranstaltungsbild', 'eab') . '</span>' .
+					'<span class="Button">' . __('Veranstaltungsbild hochladen', 'eab') . '</span>' .
 				'</a>';
 			$ret .= '</div>';
 			/* End of adding by Ashok */
