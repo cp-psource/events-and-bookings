@@ -21,6 +21,7 @@ div#eab-events-fpe-meta_info{
 	margin: .4% 0;
 	flex: 50%;
 }
+
 .eab-events-fpe-meta_box {
 	display: flex;
 	flex-direction: row;
@@ -30,21 +31,28 @@ div#eab-events-fpe-meta_info{
 	border: 1px solid #ddd;
 	
 }
+
+div#eab-events-fpe-meta_box-categories {
+    display: flex;
+}
+
 #eab-events-fpe-status_type {
 	/*float: right;*/
 }
+
 #eab-events-fpe-rsvps, #eab-events-fpe-meta_box-venue {
 	float: none;
 	width: auto;
 }
+
 #eab-events-fpe-rsvps {
 	border: none;
 }
 
 /* ----- General meta box elements ----- */
 .eab-events-fpe-meta_box label {
-	display: inline-block;
-	width: 10em;
+	width: 100%;
+
 }
 #eab-events-fpe-date_time label {
 	width: 6em;
