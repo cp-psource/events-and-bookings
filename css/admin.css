@@ -384,6 +384,7 @@ input.psource_event_date,
 input.psource_event_time {
     font-size: 10px;
     padding: 3px;
+    z-index: 1!important;
 }
 
 .eab-start-section {
