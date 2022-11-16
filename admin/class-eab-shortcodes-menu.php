@@ -32,7 +32,7 @@ class Eab_Admin_Shortcodes_Menu {
 			$out .= '<div class="eab-metabox postbox"><h3 class="eab-hndle">' . $shortcode['title'] . '</h3>';
 			$out .= '<div class="eab-inside">';
 			$out .= '	<div class="eab-settings-settings_item">';
-			$out .= '		<strong>' . __('Tag:', eab_domain() ) . '</strong> <code>[' . $shortcode['tag'] . ']</code>';
+			$out .= '		<strong>' . __('Datum:', eab_domain() ) . '</strong> <code>[' . $shortcode['tag'] . ']</code>';
 			if (!empty($shortcode['note'])) $out .= '<div class="eab-note">' . $shortcode['note'] . '</div>';
 			$out .= '	</div>';
 			if (!empty($shortcode['arguments'])) {

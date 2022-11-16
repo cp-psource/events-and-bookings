@@ -54,7 +54,7 @@ class Eab_AdminHelp {
 		foreach ($help as $shortcode) {
 			$out .= '<div><h5>' . $shortcode['title'] . '</h5>';
 			$out .= '<div>';
-			$out .= '		<strong>' . __('Tag:', 'eab') . '</strong> <code>[' . $shortcode['tag'] . ']</code>';
+			$out .= '		<strong>' . __('Datum:', 'eab') . '</strong> <code>[' . $shortcode['tag'] . ']</code>';
 			if (!empty($shortcode['note'])) $out .= '<div><em>' . $shortcode['note'] . '</em></div>';
 		    $out .= '	</div>';
 			if (!empty($shortcode['arguments'])) {

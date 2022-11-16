@@ -71,7 +71,7 @@ class Eab_CalendarTable_WeeklyEventArchiveCalendar {
 		}
  
 		if ($shortcode_found) 
-			wp_enqueue_style('eab-events-weekly-calendar', EAB_PLUGIN_URL . "css/weekly-event-calendar.css" );
+			wp_enqueue_style('eab-events-weekly-calendar', EAB_PLUGIN_URL . "css/weekly-event-calendar.min.css" );
  
 		return $posts;
 	}	

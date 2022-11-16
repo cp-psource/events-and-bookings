@@ -173,7 +173,7 @@ class Eab_Events_FrontPageEditing {
 		$wp_admin_bar->add_menu(array(
 			'parent' => 'eab-events-fpe-admin_bar',
 			'id' => 'eab-events-fpe-admin_bar-add_event',
-			'title' => __('Ereignis hinzufügen', 'eab'),
+			'title' => __('Veranstaltung hinzufügen', 'eab'),
 			'href' => $this->_get_front_editor_link(),
 		));
 		if (is_singular() && $post && isset($post->post_type) && $post->post_type == Eab_EventModel::POST_TYPE) {
@@ -181,7 +181,7 @@ class Eab_Events_FrontPageEditing {
 			$wp_admin_bar->add_menu(array(
 				'parent' => 'eab-events-fpe-admin_bar',
 				'id' => 'eab-events-fpe-admin_bar-edit_event',
-				'title' => __('Bearbeite dieses Ereignis', 'eab'),
+				'title' => __('Bearbeite diese Veranstaltung', 'eab'),
 				'href' => $this->_get_front_editor_link($post->ID),
 			));
 		}
@@ -378,7 +378,7 @@ class Eab_Events_FrontPageEditing {
 		$style = $event->get_id() ? '' : 'style="display:none"';
                 $ret = '';
 		$ret .= '<div id="eab-events-fpe">';
-		$ret .= '<a id="eab-events-fpe-back_to_event" href="' . get_permalink($event->get_id()) . '" ' . $style . '>' . __('ZURÜCK ZUM EREIGNIS', 'eab') . '</a>';
+		$ret .= '<a id="eab-events-fpe-back_to_event" href="' . get_permalink($event->get_id()) . '" ' . $style . '>' . __('ZURÜCK ZUR VERANSTALTUNG', 'eab') . '</a>';
 		$ret .= '<input type="hidden" id="eab-events-fpe-event_id" value="' . (int)$event->get_id() . '" />';
 		$ret .= '<div>';
 		$ret .= '<label>' . __('<h2>Titel der Veranstaltung:</h2>', 'eab') . '</label>';
@@ -417,7 +417,7 @@ class Eab_Events_FrontPageEditing {
 			<fieldset>
 				<legend><?php _e('<h3>Das Event beginnt:</h3>', 'eab') ?></legend>
 				<div class="eab-events-fpe-meta_box_sub_item">
-					<label class="date-title"><?php _e('Tag:', 'eab'); ?></label>
+					<label class="date-title"><?php _e('Datum:', 'eab'); ?></label>
 					<input type="text" name="" id="eab-events-fpe-start_date" value="<?php echo date('Y-m-d', $start); ?>" size="10" />
 				</div>
 				<div class="eab-events-fpe-meta_box_sub_item">
@@ -437,7 +437,7 @@ class Eab_Events_FrontPageEditing {
 			<fieldset>
 				<legend><?php _e('<h3>Das Event endet:</h3>', 'eab') ?></legend>
 				<div class="eab-events-fpe-meta_box_sub_item">
-					<label class="date-title"><?php _e('Tag:', 'eab'); ?></label>
+					<label class="date-title"><?php _e('Datum:', 'eab'); ?></label>
 					<input type="text" name="" id="eab-events-fpe-end_date" value="<?php echo date('Y-m-d', $end); ?>" size="10" />
 				</div>
 				<div class="eab-events-fpe-meta_box_sub_item">

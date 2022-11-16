@@ -54,14 +54,14 @@ class Eab_BuddyPress_AutoUpdateActivity {
 		$public_announcement = $this->_is_public_announcement($event->get_id());
 		
 		if ('any' == $created) {
-			$update = sprintf(__('%s hat ein Ereignis erstellt', 'eab'), $user_link);
+			$update = sprintf(__('%s hat eine Veranstaltung erstellt', 'eab'), $user_link);
 		} else if ('group' == $created && $group_id) {
 			$group = groups_get_group(array('group_id' => $group_id));
 			$group_link = bp_get_group_permalink($group);
 			$group_name = bp_get_group_name($group);
-			$update = sprintf(__('%s hat ein Ereignis in <a href="%s">%s</a> erstellt', 'eab'), $user_link, $group_link, $group_name);
+			$update = sprintf(__('%s hat eine Veranstaltung in <a href="%s">%s</a> erstellt', 'eab'), $user_link, $group_link, $group_name);
 		} else if ('pa' == $created && $public_announcement) {
-			$update = sprintf(__('%s hat eine öffentliche Ankündigung erstellt', 'eab'), $user_link);
+			$update = sprintf(__('%s hat eine öffentliche Veranstaltung erstellt', 'eab'), $user_link);
 		}
 
 		if (!$update) return false;
@@ -255,7 +255,7 @@ class Eab_BuddyPress_AutoUpdateActivity {
 			<label for="eab_event-bp-activity_autoupdate-user_rsvp_yes"><?php _e('... kommt', 'eab'); ?></label>
 			<br />
 			<input type="checkbox" id="eab_event-bp-activity_autoupdate-user_rsvp_maybe" name="eab-bp-activity_autoupdate[user_rsvp_maybe]" value="1" <?php print $user_rsvp_maybe; ?> />
-			<label for="eab_event-bp-activity_autoupdate-user_rsvp_maybe"><?php _e('...kommt vielleicht', 'eab'); ?></label>
+			<label for="eab_event-bp-activity_autoupdate-user_rsvp_maybe"><?php _e('... hat Interesse', 'eab'); ?></label>
 			<br />
 			<input type="checkbox" id="eab_event-bp-activity_autoupdate-user_rsvp_no" name="eab-bp-activity_autoupdate[user_rsvp_no]" value="1" <?php print $user_rsvp_no; ?> />
 			<label for="eab_event-bp-activity_autoupdate-user_rsvp_no"><?php _e('... kommt nicht', 'eab'); ?></label>
