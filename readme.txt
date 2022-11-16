@@ -130,6 +130,7 @@ Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswor
 
 * Frontendeditor CSS Anpassung
 * Textanpassungen
+* Minify CSS hinzugefügt
 
 
 = 1.4.0 = DerN3rd =

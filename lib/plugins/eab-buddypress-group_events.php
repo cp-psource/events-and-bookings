@@ -150,7 +150,7 @@ class Eab_BuddyPress_GroupEvents {
 	<h3 class="eab-hndle"><?php _e('Einstellungen für Gruppenereignisse', 'eab'); ?></h3>
 	<div class="eab-inside">
 		<div class="eab-settings-settings_item">
-	    	<label for="eab_event-bp-group_event-auto_join_groups"><?php _e('Automatisch der Gruppe beitreten, indem Du Dich bei Ereignissen meldest', 'eab'); ?>?</label>
+	    	<label for="eab_event-bp-group_event-auto_join_groups"><?php _e('Automatisch der Gruppe beitreten bei Veranstaltungs-Anmeldungen', 'eab'); ?>?</label>
 			<input type="checkbox" id="eab_event-bp-group_event-auto_join_groups" name="event_default[bp-group_event-auto_join_groups]" value="1" <?php print $checked; ?> />
 			<span><?php echo $tips->add_tip(__('Wenn sich Deine Benutzer positiv zu Einem Gruppenereignis melden, werden sie auch automatisch der Gruppe beitreten, zu der das Ereignis gehört.', 'eab')); ?></span>
 	    </div>
@@ -269,7 +269,7 @@ class Eab_BuddyPress_GroupEvents {
 				//echo $member->user_email;
 				$subject = __( 'Informationen zu einem Gruppenereignis', 'eab' );
 				$subject = apply_filters( 'eab_bp_grp_events_member_mail_subject', $subject, $member, $post_id );
-				$message = __( 'Hallo ' . $member->display_name . ',<br><br>Eine Veranstaltung wurde erstellt. Ich hoffe, Du wirst an dieser Veranstaltung teilnehmen. Überprüfe die Veranstaltung hier: ' . get_permalink( $post_id ), 'eab' );
+				$message = __( 'Hallo ' . $member->display_name . ',<br><br>Eine Veranstaltung wurde erstellt. Ich hoffe, Du wirst an dieser Veranstaltung teilnehmen. Details zur Veranstaltung findest Du hier: ' . get_permalink( $post_id ), 'eab' );
 				$message = apply_filters( 'eab_bp_grp_events_member_mail_message', $message, $member, $post_id );
 				wp_mail( $member->user_email, $subject, $message );
 			}
@@ -315,7 +315,7 @@ class Eab_BuddyPress_GroupEvents {
 	
 	function enqueue_dependencies () {
 		// @TODO: refactor to separate style.
-		wp_enqueue_style('eab-bp-group_events', plugins_url(basename(EAB_PLUGIN_DIR) . "/default-templates/calendar/events.css"));
+		wp_enqueue_style('eab-bp-group_events', plugins_url(basename(EAB_PLUGIN_DIR) . "/default-templates/calendar/events.min.css"));
 	}
 	
 	function enqueue_fpe_dependencies () {

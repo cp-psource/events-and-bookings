@@ -45,7 +45,7 @@ class Eab_Admin {
 		wp_register_script('eab_jquery_timepicker', EAB_PLUGIN_URL . 'js/jquery.ui.timepicker.js', array('jquery'), Eab_EventsHub::CURRENT_VERSION);
 		wp_register_script('eab_admin_js', EAB_PLUGIN_URL . 'js/eab-admin.js', array('jquery'), Eab_EventsHub::CURRENT_VERSION);
 		wp_register_style('eab_jquery_timepicker', EAB_PLUGIN_URL . 'css/jquery.ui.timepicker.css', null, Eab_EventsHub::CURRENT_VERSION);
-		wp_register_style('eab_admin', EAB_PLUGIN_URL . 'css/admin.css', null, Eab_EventsHub::CURRENT_VERSION);
+		wp_register_style('eab_admin', EAB_PLUGIN_URL . 'css/admin.min.css', null, Eab_EventsHub::CURRENT_VERSION);
 
 		if (defined('AGM_PLUGIN_URL')) {
 			add_action('admin_print_scripts-post.php', array($this, 'js_editor_button'));
