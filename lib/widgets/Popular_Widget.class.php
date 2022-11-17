@@ -16,7 +16,7 @@ class Eab_Popular_Widget extends Eab_Widget {
 			'description' => __('Liste beliebter Ereignisse anzeigen', $this->translation_domain)
 		);
         $control_ops = array(
-        	'title' => __('PSE-Populäre Events', $this->translation_domain)
+        	'title' => __('Populäre Events', $this->translation_domain)
         );
 		parent::__construct('psource_event_popular', __('Die beliebtesten Veranstaltungen', $this->translation_domain), $widget_ops, $control_ops);
     }
@@ -81,7 +81,7 @@ class Eab_Popular_Widget extends Eab_Widget {
 		} else {
 			echo $before_widget .
 				$before_title . $title . $after_title .
-				'<p class="eab-widget-no_events">' . __('No popular events.', 'eab') . '</p>' .
+				'<p class="eab-widget-no_events">' . __('Keine beliebten Veranstaltungen.', 'eab') . '</p>' .
 			$after_widget;
 		}
     }
@@ -110,7 +110,7 @@ class Eab_Popular_Widget extends Eab_Widget {
 	
 	?>
 	<div style="text-align:left">
-        <label for="<?php echo $this->get_field_id('title'); ?>" style="line-height:35px;display:block;"><?php _e('Title', $this->translation_domain); ?>:<br />
+        <label for="<?php echo $this->get_field_id('title'); ?>" style="line-height:35px;display:block;"><?php _e('Titel', $this->translation_domain); ?>:<br />
 		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" value="<?php echo $options['title']; ?>" type="text" style="width:95%;" />
             </label>
             <label for="<?php echo $this->get_field_id('excerpt'); ?>" style="display:block;">
@@ -119,10 +119,10 @@ class Eab_Popular_Widget extends Eab_Widget {
 					name="<?php echo $this->get_field_name('excerpt'); ?>" 
 					value="1" <?php echo ($options['excerpt'] ? 'checked="checked"' : ''); ?> 
 				/>
-            	<?php _e('Show excerpt', $this->translation_domain); ?>
+            	<?php _e('Auszug anzeigen', $this->translation_domain); ?>
             </label>
             <label for="<?php echo $this->get_field_id('excerpt_words_limit'); ?>" style="display:block; margin-left:1.8em">
-            	<?php _e('Limit my excerpt to this many words <small>(<code>0</code> for no limit)</small>:', $this->translation_domain); ?>
+            	<?php _e('Beschränke den Auszug auf so viele Wörter <small>(<code>0</code> für kein Limit)</small>:', $this->translation_domain); ?>
 				<input type="text" 
 					size="2"
 					id="<?php echo $this->get_field_id('excerpt_words_limit'); ?>" 
@@ -136,7 +136,7 @@ class Eab_Popular_Widget extends Eab_Widget {
 					name="<?php echo $this->get_field_name('thumbnail'); ?>" 
 					value="1" <?php echo ($options['thumbnail'] ? 'checked="checked"' : ''); ?> 
 				/>
-            	<?php _e('Show thumbnail', $this->translation_domain); ?>
+            	<?php _e('Miniaturansicht anzeigen', $this->translation_domain); ?>
             </label>
             <label for="<?php echo $this->get_field_id('limit'); ?>" style="line-height:35px;display:block;">
             	<?php _e('Limit', $this->translation_domain); ?>:
