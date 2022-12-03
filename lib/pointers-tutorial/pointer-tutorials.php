@@ -426,8 +426,8 @@ if ( !class_exists( 'Pointer_Tutorial' ) ) {
 					$next_pointer = "$('$next_pointer').pointer( options$next_pointer_id ).pointer('open').focus();";
 					$next_title = $this->page_pointers[$pointer_id+1]['title'];
 				} else {
-					$next_name = __('Verwerfen', 'eab');
-					$next_title = sprintf(__('Verwerfen %s', 'eab'), $this->tutorial_name);
+					$next_name = __('Verstanden', 'eab');
+					$next_title = sprintf(__('Verstanden %s', 'eab'), $this->tutorial_name);
 					$last_step = true;
 				}
 				
@@ -445,8 +445,8 @@ if ( !class_exists( 'Pointer_Tutorial' ) ) {
 					$prev_title = $this->page_pointers[$pointer_id-1]['title'];
 				}
 				
-				$close_name = __('Verwerfen', 'eab');
-				$close_title = sprintf(__('Verwerfen %s', 'eab'), $this->tutorial_name);
+				$close_name = __('Verstanden', 'eab');
+				$close_title = sprintf(__('Verstanden %s', 'eab'), $this->tutorial_name);
 				?>
 				/*step <?php echo $pointer_id; ?> pointer<?php if ($pointer_id == $current_step) { ?> (Current)<?php } ?>*/
 				var options<?php echo $pointer_id; ?> = <?php echo json_encode( $args ); ?>;
