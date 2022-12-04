@@ -30,33 +30,6 @@ class Eab_AdminTutorial {
 		$tutorial->set_capability = 'manage_options';
 		$tutorial->hide_step = true;
 
-		/*
-		$tutorial->add_step(admin_url('edit.php?post_type=psource_event&page=eab_settings'), 'psource_event_page_eab_settings', '#psource_event-slug', __('Event Slug', 'eab'), array(
-		    'content'  => '<p>' . esc_js( __('Change the root slug for events', 'eab') ) . '</p>',
-		    'position' => array( 'edge' => 'left', 'align' => 'center' ),
-		));
-
-		$tutorial->add_step(admin_url('edit.php?post_type=psource_event&page=eab_settings'), 'psource_event_page_eab_settings', '#psource_event-accept_payments', __('Accept Payments?', 'eab'), array(
-		    'content'  => '<p>' . esc_js( __('Check this to accept payments for your events', 'eab') ) . '</p>',
-		    'position' => array( 'edge' => 'left', 'align' => 'center' ),
-		));
-
-		$tutorial->add_step(admin_url('edit.php?post_type=psource_event&page=eab_settings'), 'psource_event_page_eab_settings', '#psource_event-display_attendees', __('Display RSVP\'s?', 'eab'), array(
-		    'content'  => '<p>' . esc_js( __('Check this to display RSVP\'s in the event details', 'eab') ) . '</p>',
-		    'position' => array( 'edge' => 'left', 'align' => 'center' ),
-		));
-
-		$tutorial->add_step(admin_url('edit.php?post_type=psource_event&page=eab_settings'), 'psource_event_page_eab_settings', '#psource_event-currency', __('Currency', 'eab'), array(
-		    'content'  => '<p>' . esc_js(__('Which currency will you be accepting payment in? See ', 'eab')) . '<a href="https://cms.paypal.com/us/cgi-bin/?cmd=_render-content&content_ID=developer/e_howto_api_nvp_currency_codes" target="_blank">Accepted PayPal Currency Codes</a></p>',
-		    'position' => array( 'edge' => 'left', 'align' => 'center' ),
-		));
-
-		$tutorial->add_step(admin_url('edit.php?post_type=psource_event&page=eab_settings'), 'psource_event_page_eab_settings', '#psource_event-paypal_email', __('PayPal E-Mail', 'eab'), array(
-		    'content'  => '<p>' . esc_js(__('PayPal e-mail address payments should be made to', 'eab')) . '</p>',
-		    'position' => array( 'edge' => 'left', 'align' => 'center' ),
-		));
-		*/
-
 		$tutorial->add_step(admin_url('post-new.php?post_type=psource_event'), 'post-new.php', '#title', __('Ereignistitel', 'eab'), array(
 		    'content'  => '<p>' . __("Was ist los", 'eab') . '</p>',
 		    'position' => array( 'edge' => 'top', 'align' => 'center' ), 'post_type' => 'psource_event',
