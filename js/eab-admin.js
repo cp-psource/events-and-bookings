@@ -21,7 +21,7 @@ jQuery(function($) {
 
     jQuery('[href*="preview=true"]').hide(); // Preview won't work
     jQuery("#eab-add-more").show();
-    jQuery("#eab-add-more-button").on("click",function() {
+    jQuery("#eab-add-more-button").on("click", function() {
         row_id = jQuery('.eab-start-section').length - 1;
         jQuery("#eab-add-more-rows").append(jQuery("#eab-add-more-bank").html().replace(/_bank/gi, '_' + row_id).replace(/bank/gi, row_id + 1).replace(/_b/gi, ''));
 
@@ -319,12 +319,12 @@ jQuery(function($) {
             });
 
             // Init recurrence toggle
-            $("#eab-eab-start_recurrence-button").click(toggle_recurrence_settings);
+            $("#eab-eab-start_recurrence-button").on("click", toggle_recurrence_settings);
             // Init recurrence mode toggle
             $("#eab_event-repeat_every").change(toggle_recurrence_mode);
             toggle_recurrence_mode();
             // Init recurrence instances toggle
-            $("#eab_event-edit_recurring_instances").click(toggle_recurrence_instances);
+            $("#eab_event-edit_recurring_instances").on("click", toggle_recurrence_instances);
             // Initialize slug box
             if ($("#eab_event-repeat_every").is(":visible")) $("#edit-slug-box").hide();
 
@@ -465,12 +465,12 @@ jQuery(function($) {
             if (hash) {
                 var obj = root.find('h3[data-box_id="' + hash + '"]');
                 if (obj.length) {
-                    obj.click();
+                    obj.on("click");
                 } else {
-                    root.find("h3:first").click();
+                    root.find("h3:first").on("click");
                 }
             } else {
-                root.find("h3:first").click();
+                root.find("h3:first").on("click");
             }
             set_event_url();
 

@@ -246,7 +246,7 @@
         $("#fpe-editor-root").show();
 
         // Toggle RSVPs
-        $("#eab-events-fpe-toggle_rsvps").click(toggle_rsvps);
+        $("#eab-events-fpe-toggle_rsvps").on("click", toggle_rsvps);
 
         // Init date pickers
         $("#eab-events-fpe-start_date, #eab-events-fpe-end_date").datepicker({
@@ -311,7 +311,7 @@
         });
 
         // Init save request processing
-        $("#eab-events-fpe-ok").click(send_save_request);
+        $("#eab-events-fpe-ok").on("click", send_save_request);
 
         var link = $("#eab-events-fpe-back_to_event").is(":visible") && $("#eab-events-fpe-back_to_event").attr("href");
         if (link) {

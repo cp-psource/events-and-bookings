@@ -61,7 +61,7 @@
             "post_id": post_id
         }, function(data) {
             $("body").append('<div id="eab-rsvps-rsvp_with_email-form">' + data + '</div>');
-            $("#eab-rsvps-rsvp_with_email-form").find("." + selector).click();
+            $("#eab-rsvps-rsvp_with_email-form").find("." + selector).on("click");
         });
     }
 
@@ -70,7 +70,7 @@
             "a.psourceevents-yes-submit, " +
             "a.psourceevents-maybe-submit, " +
             "a.psourceevents-no-submit"
-        ).click(create_interface);
+        ).on("click", create_interface);
     });
 
 })(jQuery);

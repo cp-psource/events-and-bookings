@@ -26,7 +26,7 @@
             if ("function" === typeof closeMapEditor) return closeMapEditor();
 
             var $cls = $(".wpmui-wnd-close:visible");
-            if ($cls.length) $cls.click();
+            if ($cls.length) $cls.on("click");
         }
 
         /**

@@ -230,7 +230,7 @@ $(function () {
                 }
             }
             
-            $( 'input[name="submit_settings"]' ).click();
+            $( 'input[name="submit_settings"]' ).on("click");
 		//$fields.val('');
 	});
 });

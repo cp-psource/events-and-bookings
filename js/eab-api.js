@@ -21,7 +21,7 @@
             "post_id": post_id
         }, function(data) {
             $("body").append('<div id="eab-wordpress_form">' + data + '</div>');
-            $("#eab-wordpress_form").find("." + $me.attr("class")).click();
+            $("#eab-wordpress_form").find("." + $me.attr("class")).on("click");
         });
     }
 
@@ -155,7 +155,7 @@
             return false;
         });
         //$("#eab-wordpress_login-command-ok").on('click', dispatch_login_register);
-        $("#eab-wordpress_login-command-ok").click(dispatch_login_register);
+        $("#eab-wordpress_login-command-ok").on("click", dispatch_login_register);
         //$("#eab-wordpress_login-command-cancel, #eab-wordpress_login-background").on('click', function () {
         $("#eab-wordpress_login-command-cancel, #eab-wordpress_login-background").on("click",function() {
             $wrapper.remove();
@@ -206,7 +206,7 @@
                                 try { status = parseInt(data.status, 10); } catch (e) { status = 0; }
                                 if (!status) { // ... handle error
                                     $root.remove();
-                                    $me.click();
+                                    $me.on("click");
                                     return false;
                                 }
                                 // Get form if all went well
@@ -215,7 +215,7 @@
                                     "post_id": post_id
                                 }, function(data) {
                                     $("body").append('<div id="eab-facebook_form">' + data + '</div>');
-                                    $("#eab-facebook_form").find("." + $me.removeClass("active").attr("class")).click();
+                                    $("#eab-facebook_form").find("." + $me.removeClass("active").attr("class")).on("click");
                                 });
                             });
                         }
@@ -252,7 +252,7 @@
                                             try { status = parseInt(data.status, 10); } catch (e) { status = 0; }
                                             if (!status) { // ... handle error
                                                 $root.remove();
-                                                $me.click();
+                                                $me.on("click");
                                                 return false;
                                             }
                                             // Get form if all went well
@@ -261,7 +261,7 @@
                                                 "post_id": post_id
                                             }, function(data) {
                                                 $("body").append('<div id="eab-twitter_form">' + data + '</div>');
-                                                $("#eab-twitter_form").find("." + $me.removeClass("active").attr("class")).click();
+                                                $("#eab-twitter_form").find("." + $me.removeClass("active").attr("class")).on("click");
                                             });
                                         });
                                     }
@@ -299,7 +299,7 @@
                                         try { status = parseInt(data.status, 10); } catch (e) { status = 0; }
                                         if (!status) { // ... handle error
                                             $root.remove();
-                                            $me.click();
+                                            $me.on("click");
                                             return false;
                                         }
                                         // Get form if all went well
@@ -308,7 +308,7 @@
                                             "post_id": post_id
                                         }, function(data) {
                                             $("body").append('<div id="eab-google_form">' + data + '</div>');
-                                            $("#eab-google_form").find("." + $me.removeClass("active").attr("class")).click();
+                                            $("#eab-google_form").find("." + $me.removeClass("active").attr("class")).on("click");
                                         });
                                     });
                                 }
