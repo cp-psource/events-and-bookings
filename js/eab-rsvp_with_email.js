@@ -25,7 +25,7 @@
 
         $(document).trigger("eab-api-email_rsvp-form_rendered");
 
-        $("#eab-rsvps-rsvp_with_email-trigger").click(function() {
+        $("#eab-rsvps-rsvp_with_email-trigger").on("click",function() {
             do_submit($me.removeClass("active").attr("class"), post_id);
         });
     }

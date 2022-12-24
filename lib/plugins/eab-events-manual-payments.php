@@ -84,7 +84,7 @@ class Eab_Events_ManualPayments {
 		$content .= '<a class="psourceevents-yes-submit" style="float:none !important" href="javascript:void(0)" id="manual_payment_select_'.$event_id.'">'. $this->_data->get_option('manual_payment_select') . '</a>';
 		$content .= '<script type="text/javascript">';
 		$content .= 'jQuery(document).ready(function($){
-						$("#manual_payment_select_'.$event_id.'").click(function() {
+						$("#manual_payment_select_'.$event_id.'").on("click",function() {
 							$("#manual_payment_instructions_'.$event_id.'").toggle("slow");
 						});
 					});';
@@ -104,7 +104,7 @@ class Eab_Events_ManualPayments {
 		$content .= '</div>';
 		$content .= '<script type="text/javascript">';
 		$content .= 'jQuery(document).ready(function($){
-						$("#manual_payment_pay_'.$event_id.'").click(function() {
+						$("#manual_payment_pay_'.$event_id.'").on("click",function() {
 							$.post("'.admin_url('admin-ajax.php').'", {
 								"action": "eab_manual_payment",
 								"user_id":'.$current_user->ID.',
@@ -257,7 +257,7 @@ class Eab_Events_ManualPayments {
 					'</a></div>';
 					$content .= '<script type="text/javascript">';
 					$content .= 'jQuery(document).ready(function($){
-									$("#approve_payment_'.$user_id.'").click(function() {
+									$("#approve_payment_'.$user_id.'").on("click",function() {
 										if (confirm("'. __( "Bist Du sicher, diese Zahlung zu genehmigen?", 'eab' ) .'")){
 											$.post(ajaxurl, {
 												"action": "eab_approve_manual_payment",

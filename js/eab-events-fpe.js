@@ -320,7 +320,7 @@
             }).show();
         } else $("#eab-events-fpe-cancel").hide();
         /* Added by Ashok */
-        $('.eab-fpe-upload').click(function() {
+        $('.eab-fpe-upload').on("click",function() {
             var _old_send = window.send_to_editor;
             tb_show('&nbsp;', l10nFpe.base_url + '/wp-admin/media-upload.php?type=image&TB_iframe=true&post_id=0', false);
             window.send_to_editor = function(html) {

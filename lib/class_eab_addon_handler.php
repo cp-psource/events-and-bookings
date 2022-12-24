@@ -300,7 +300,7 @@ $(function () {
 		}
 	}
 
-	$(".eab_activate_plugin").click(function () {
+	$(".eab_activate_plugin").on("click",function () {
 		var me = $(this);
 		var plugin_id = me.attr("eab:plugin_id");
 		$.post(ajaxurl, {"action": "eab_activate_plugin", "plugin": plugin_id}, function (data) {
@@ -315,7 +315,7 @@ $(function () {
 		}, 'json');
 		return false;
 	});
-	$(".eab_deactivate_plugin").click(function () {
+	$(".eab_deactivate_plugin").on("click",function () {
 		var me = $(this);
 		var plugin_id = me.attr("eab:plugin_id");
 		$.post(ajaxurl, {"action": "eab_deactivate_plugin", "plugin": plugin_id}, function (data) {
@@ -330,7 +330,7 @@ $(function () {
 		}, 'json');
 		return false;
 	});
-	$("#eab_addons_hub .filters .section.type a").click(function (e) {
+	$("#eab_addons_hub .filters .section.type a").on("click",function (e) {
 		e.preventDefault();
 		var type = $(this).attr("data-type"),
 			selector = '#eab_addons_hub tbody tr[data-type*="' + type + '"]'
@@ -351,7 +351,7 @@ $(function () {
 
 		return false;
 	});
-	$("#eab_addons_hub .filters .section.show a").click(function (e) {
+	$("#eab_addons_hub .filters .section.show a").on("click",function (e) {
 		e.preventDefault();
 		var type = $(this).attr("data-type");
 
@@ -369,7 +369,7 @@ $(function () {
 
 		return false;
 	});
-	$("#eab_addons_hub .filters .section.check a").click(function (e) {
+	$("#eab_addons_hub .filters .section.check a").on("click",function (e) {
 		e.preventDefault();
 		var type = $(this).attr("data-type");
 
@@ -380,7 +380,7 @@ $(function () {
 
 		return false;
 	});
-	$("#eab_addons_hub .filters .section.check .actions button").click(function (e) {
+	$("#eab_addons_hub .filters .section.check .actions button").on("click",function (e) {
 		e.preventDefault();
 
 		var selection = $("#eab_addons_hub tbody tr :checkbox:checked"),

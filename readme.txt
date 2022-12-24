@@ -126,6 +126,10 @@ Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswor
 
 == ChangeLog ==
 
+= 1.4.2 = DerN3rd =
+
+* CSS Fix Responsive RSVP Buttons
+
 = 1.4.1 = DerN3rd =
 
 * Frontendeditor CSS Anpassung

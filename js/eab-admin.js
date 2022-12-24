@@ -21,7 +21,7 @@ jQuery(function($) {
 
     jQuery('[href*="preview=true"]').hide(); // Preview won't work
     jQuery("#eab-add-more").show();
-    jQuery("#eab-add-more-button").click(function() {
+    jQuery("#eab-add-more-button").on("click",function() {
         row_id = jQuery('.eab-start-section').length - 1;
         jQuery("#eab-add-more-rows").append(jQuery("#eab-add-more-bank").html().replace(/_bank/gi, '_' + row_id).replace(/bank/gi, row_id + 1).replace(/_b/gi, ''));
 
@@ -77,7 +77,7 @@ jQuery(function($) {
         }
     });
 
-    jQuery('a.eab-info').click(function() {
+    jQuery('a.eab-info').on("click",function() {
         jQuery(jQuery(this).attr('href')).toggle();
         return false;
     });
@@ -307,7 +307,7 @@ jQuery(function($) {
             toggle_appearance_settings();
 
             // Tutorial restart
-            $(".eab-restart_tutorial").click(function() {
+            $(".eab-restart_tutorial").on("click",function() {
                 var $me = $(this);
                 $.post(ajaxurl, {
                     "action": "eab_restart_tutorial",

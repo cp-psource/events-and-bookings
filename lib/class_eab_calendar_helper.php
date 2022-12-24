@@ -256,11 +256,11 @@ class Eab_CalendarTable_UpcomingCalendarWidget extends Eab_CalendarTable {
 	
 	public function get_day_names () {
 		return array(
-			__('Su', 'eab'),
+			__('So', 'eab'),
 			__('Mo', 'eab'),
-			__('Tu', 'eab'),
-			__('We', 'eab'),
-			__('Th', 'eab'),
+			__('Di', 'eab'),
+			__('Mi', 'eab'),
+			__('Do', 'eab'),
 			__('Fr', 'eab'),
 			__('Sa', 'eab'),
 		);
@@ -504,7 +504,7 @@ EabEctEacJs;
 		$event = ($post instanceof Eab_EventModel) ? $post : new Eab_EventModel($post);
 		
 		if (!empty($this->_thumbnail['with_thumbnail'])) {
-			$thumbnail = $event->get_featured_image();
+			$thumbnail = $event->get_featured_image('medium_large');
 			if (empty($thumbnail) && !empty($this->_thumbnail['default_thumbnail'])) {
 				$thumbnail = '<img src="' . esc_url($this->_thumbnail['default_thumbnail']) . '" />';
 			}

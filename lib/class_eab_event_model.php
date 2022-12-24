@@ -442,7 +442,7 @@ class Eab_EventModel extends PSource_DatedVenuePremiumModel {
 	}
 
 	public function get_featured_image ($size=false) {
-		$size = $size ? $size : 'thumbnail';
+		$size = $size ? $size : 'medium-large';
 		return get_the_post_thumbnail($this->get_id(), $size);
 	}
 

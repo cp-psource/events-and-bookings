@@ -217,7 +217,7 @@ $(function () {
 	var $fields = $('#eab-settings-colors input[type="color"]');
         
 	if ($fields.length && $fields.wpColorPicker) $fields.wpColorPicker();
-	$("#eab-colors-reset_to_defaults").click(function (e) {
+	$("#eab-colors-reset_to_defaults").on("click",function (e) {
             e.preventDefault();
             for( var i = 0; i < $fields.length; i++ ) {
                 var labelAttr = $( $fields[i] ).closest( 'label' ).attr( 'for' );

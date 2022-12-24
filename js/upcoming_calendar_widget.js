@@ -4,7 +4,7 @@
         $(document).on('eab-cuw-render_complete', function() {
             $("table.eab-upcoming_calendar_widget").each(function() {
                 var $tbl = $(this);
-                $tbl.find("tbody a:not(.eab-upcoming_calendar_widget-navigation-link)").click(function() {
+                $tbl.find("tbody a:not(.eab-upcoming_calendar_widget-navigation-link)").on("click",function() {
                     var $a = $(this);
                     var $el = $a.parents('td').find(".wdpmudevevents-upcoming_calendar_widget-info_wrapper");
                     if (!$el.length) return false;

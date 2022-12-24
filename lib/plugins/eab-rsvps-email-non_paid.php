@@ -44,7 +44,7 @@ class Eab_Events_RsvpEmailNonPaid {
 (function ($) {
 
 $(function () {
-	$(".eab_event-eab_rsvps-non_paid-send_email").click(function () {
+	$(".eab_event-eab_rsvps-non_paid-send_email").on("click",function () {
 		var me = $(this),
 			event_id = me.attr("data-event_id"),
 			result = me.parent().find(".eab_event-eab_rsvps-non_paid-result")
