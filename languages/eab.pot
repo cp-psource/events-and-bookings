@@ -106,7 +106,7 @@ msgstr ""
 
 #: lib/pointers-tutorial/pointer-tutorials.php:488
 #, php-format
-msgid "%s: Step %d of %d"
+msgid "%s: Schritt %d von %d"
 msgstr ""
 
 #: lib/class_eab_template.php:898

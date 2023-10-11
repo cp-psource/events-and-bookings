@@ -1,10 +1,9 @@
 <?php
 /*
 Pointer Tutorials Module
-By Aaron Edwards (WMS N@W)
-http://uglyrobot.com/
+By DerN3rd (WMS N@W)
 
-Copyright 2011-2012 WMS N@W (http://psource.com)
+Copyright 2012-2023 WMS N@W (http://psource.com)
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License (Version 2 - GPLv2) as published by
@@ -485,7 +484,7 @@ if ( !class_exists( 'Pointer_Tutorial' ) ) {
 							'<a class="dismiss" href="#" title="<?php echo esc_attr($close_title); ?>"><?php echo $close_name; ?></a> ' +
 							<?php } ?>
 							<?php if (!$this->hide_step) { ?>
-							'<span class="tut-step"><?php printf( __('%s: Step %d of %d', 'eab'), $this->tutorial_name, $pointer_id+1, count($this->registered_pointers) ); ?></span>' +
+							'<span class="tut-step"><?php printf( __('%s: Schritt %d von %d', 'eab'), $this->tutorial_name, $pointer_id+1, count($this->registered_pointers) ); ?></span>' +
 							<?php } ?>
 							'<a class="next button" href="#" title="<?php echo esc_attr($next_title); ?>"><?php echo $next_name; ?></a>' +
 							'</div>'
