@@ -217,6 +217,7 @@ class Eab_Addon_LimitCapacity {
 		$capacity_str       = $capacity ? $capacity : "";
 		$unlimited_capacity = $capacity ? '' : 'checked="checked"';
 
+		$ret = ''; // Define $ret variable.
 		if(isset($ret)){
 			$ret .= '<div class="eab-events-fpe-meta_box">';
 		}

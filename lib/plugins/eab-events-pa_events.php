@@ -62,12 +62,11 @@ class Eab_Events_Pae {
 		$is_pae = (int)get_post_meta($event->get_id(), 'eab_public_announcement', true);
 		$checked = $is_pae ? 'checked="checked"' : '';
 		
-		$ret .= '<div class="eab-events-pae-meta_box">';
-				
+		$ret = ''; // Define $ret variable.
+		$ret .= '<div class="eab-events-pae-meta_box">';		
 		$ret .= '<input type="hidden" name="eab-is_pae" value="0" /> ';
 		$ret .= '<input type="checkbox" name="eab-is_pae" id="eab_event_is_pae" value="1" ' . $checked . '" /> ';
 		$ret .= ' <label for="eab_event_is_pae">' . __('Dies ist eine öffentliche Ankündigung', 'eab') . '</label>';
-		
 		$ret .= '</div>';
 		$ret .=<<<EOPaeFpeJs
 <script type="text/javascript">
