@@ -1,6 +1,8 @@
 <?php
 
 class Eab_Admin_Settings_Menu {
+	private $_data; // Deklaration der Eigenschaften
+    private $_api;
 
 	public function __construct( $parent ) {
 		$id = add_submenu_page(
@@ -14,9 +16,9 @@ class Eab_Admin_Settings_Menu {
 
 		add_action( 'load-' . $id, array( $this, 'load' ) );
 
-		$eab 			= events_and_bookings();
-		$this->_data 	= $eab->_data;
-		$this->_api 	= $eab->_api;
+		$eab 		 = events_and_bookings();
+		$this->_data = $eab->_data;
+		$this->_api  = $eab->_api;
 	}
 
 	public function load() {

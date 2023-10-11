@@ -2,6 +2,8 @@
 
 
 class Eab_Admin_Get_Started_Menu {
+	private $_data; // Deklaration der Eigenschaften
+    private $_api;
 	public function __construct( $parent ) {
 		$id = add_submenu_page(
 			$parent,
