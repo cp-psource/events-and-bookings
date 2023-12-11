@@ -129,6 +129,7 @@ Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswor
 = 1.4.2 = DerN3rd =
 
 * CSS Fix Responsive RSVP Buttons
+* Fix Property Null Gästeliste
 
 = 1.4.1 = DerN3rd =
 
@@ -136,7 +137,6 @@ Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswor
 * Textanpassungen
 * Minify CSS hinzugefügt
 * Psource Updater 1.2
-
 
 = 1.4.0 = DerN3rd =
 

@@ -36,7 +36,11 @@ class Eab_GuestList_ShowAdditionalInfo {
 
     function add_styles() {
         global $post;
-        if (Eab_EventModel::POST_TYPE != $post->post_type) return false;
+    
+        // Überprüfen, ob $post nicht null ist und ob es eine post_type-Eigenschaft hat
+        if ($post instanceof WP_Post && property_exists($post, 'post_type') && Eab_EventModel::POST_TYPE != $post->post_type) {
+            return false;
+        }
     }
 
     function process_username($username, $user_id, $user_data) {
