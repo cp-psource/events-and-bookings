@@ -84,8 +84,8 @@ class Eab_Events_ManualPayments {
 		$content .= '<a class="psourceevents-yes-submit" style="float:none !important" href="javascript:void(0)" id="manual_payment_select_'.$event_id.'">'. $this->_data->get_option('manual_payment_select') . '</a>';
 		$content .= '<script type="text/javascript">';
 		$content .= 'jQuery(document).ready(function($){
-						$("#manual_payment_select_'.$event_id.'").on("click",function() {
-							$("#manual_payment_instructions_'.$event_id.'").toggle("slow");
+						$("#manual_payment_select_'.$event_id.'").on("click", function() {
+							$("#manual_payment_instructions_'.$event_id.'").slideToggle("slow");
 						});
 					});';
 		$content .= '</script>';
