@@ -132,6 +132,7 @@ Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswor
 * Fix Property Null Gästeliste
 * Fix Deprecated .toggle()
 * Fix Deprecated .submit()
+* Fix Deprecated .mouseover()
 
 = 1.4.1 = DerN3rd =
 
