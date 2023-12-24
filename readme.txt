@@ -142,6 +142,7 @@ Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswor
 * Fix Deprecated .keypress()
 * Fix Deprecated .keydown()
 * Fix Deprecated .trim()
+* Fix Deprecated jQuery.parseJSON()
 
 = 1.4.1 = DerN3rd =
 

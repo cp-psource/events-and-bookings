@@ -46,7 +46,7 @@ class Eab_Events_Colors {
         $colors_json = json_encode( $colors );
         ?>
         <script type="text/javascript">
-            var eab_colors_object = jQuery.parseJSON( '<?php echo $colors_json; ?>' );
+            var eab_colors_object = JSON.parse( '<?php echo $colors_json; ?>' );
             var eab_widget_colors_update = function($){
                 $.each(eab_colors_object, function( key, value ) {
                     $( "td.eab-has_events" ).has( "a."+key ).addClass( key );
