@@ -484,7 +484,7 @@ class Eab_CalendarTable_EventArchiveCalendar extends Eab_CalendarTable {
 $(function () {
 // Info popups
 $(".psourceevents-calendar-event")
-	.mouseenter(function () {
+	.on("mouseenter", function () {
 		$(this).find(".psourceevents-calendar-event-info").show();
 	})
 	.on("mouseleave", function () {

@@ -131,7 +131,7 @@ class Eab_CalendarTable_WeeklyEventArchiveCalendar {
 	$c .= '<script type="text/javascript">
 			(function ($) {
 				$(function () {
-					$(".psourceevents-calendar-event").mouseenter(function () {
+					$(".psourceevents-calendar-event").on("mouseenter", function () {
 						$(this).find(".psourceevents-calendar-event-info").show();
 					})
 					.on("mouseleave", function () {

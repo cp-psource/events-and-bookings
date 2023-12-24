@@ -1453,7 +1453,7 @@
     $.fn.timepicker = function(options) {
         /* Initialise the time picker. */
         if (!$.timepicker.initialized) {
-            $(document).mousedown($.timepicker._checkExternalClick);
+            $(document).on("mousedown", $.timepicker._checkExternalClick);
             $.timepicker.initialized = true;
         }
 
