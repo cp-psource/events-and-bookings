@@ -141,6 +141,7 @@ Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswor
 * Fix Deprecated .keyup()
 * Fix Deprecated .keypress()
 * Fix Deprecated .keydown()
+* Fix Deprecated .trim()
 
 = 1.4.1 = DerN3rd =
 

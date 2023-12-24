@@ -154,7 +154,7 @@ $(document).on("eab-api-email_rsvp-form_rendered", function() {
 $(document).on("eab-api-registration-data", function (e, data, deferred) {
 	$.each(eab_rarf_fields, function (idx, field) {
 		var $field = $("#eab-rarf-" + field.id),
-			value = $field.is(":checkbox") ? $field.is(":checked") : $.trim($field.val())
+			value = $field.is(":checkbox") ? $field.is(":checked") : $field.val().trim())
 		;
 		if (!value && field.required) {
 			$('#eab-wordpress-signup-status').text(l10nEabApi.required_field_missing);
