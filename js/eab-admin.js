@@ -130,7 +130,7 @@ jQuery(function($) {
     });
 
 
-    jQuery('form#post').submit(function() {
+    jQuery('form#post').on( "submit", function() {
         _c = 0;
         if (jQuery("#eab_event-repeat_start").is(":visible")) return true;
         if (_eab_validate_when(_c)) {
