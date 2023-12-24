@@ -144,6 +144,7 @@ Halte Dich mit unserem [Newsletter](https://n3rds.work/webmasterservice-n3rdswor
 * Fix Deprecated .trim()
 * Fix Deprecated jQuery.parseJSON()
 * Fix Deprecated .now()
+* Fix Deprecated jQuery.isArray()
 
 = 1.4.1 = DerN3rd =
 
