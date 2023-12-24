@@ -9,7 +9,7 @@ jQuery(function() {
         jQuery(this).hide();
          if (jQuery("#psourceevents-rsvps-response").text() == "") {
             jQuery("#psourceevents-rsvps-response").text("Wird geladen...");
-            jQuery("#psourceevents-rsvps-response").load(jQuery("#psourceevents-load-rsvps").attr("href"));
+            jQuery("#psourceevents-rsvps-response").on("load", jQuery("#psourceevents-load-rsvps").attr("href"));
         }
         return false;
     });
@@ -20,7 +20,7 @@ jQuery(function() {
         jQuery(this).hide();
          if (jQuery("#psourceevents-rsvps-response").text() == "") {
             jQuery("#psourceevents-rsvps-response").text("Wird geladen...");
-            jQuery("#psourceevents-rsvps-response").load(jQuery("#psourceevents-load-rsvps").attr("href"));
+            jQuery("#psourceevents-rsvps-response").on("load", jQuery("#psourceevents-load-rsvps").attr("href"));
         }
         return false;
     });
