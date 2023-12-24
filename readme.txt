@@ -4,7 +4,7 @@ Donate link: https://n3rds.work/spendenaktionen/unterstuetze-unsere-psource-free
 Tags: multisite, events, kalender, buddypress
 Requires at least: 4.9
 Tested up to: 5.6
-Stable tag: 1.4.1
+Stable tag: 1.4.2
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -74,12 +74,11 @@ Lasse Benutzer sich mit ihrem sozialen Netzwerk anmelden.
 Erstelle Deine Mailingliste und mache es Benutzern einfach, ihren Platz mit einem einfachen E-Mail-RSVP zu reservieren. 
 Begeistere die Teilnehmer für Deine Veranstaltung. Verbreite das Wort mit automatisiertem Social Sharing, wenn Teilnehmer sich melden, damit sie ihren Freunden mitteilen können, was sie verpassen.
 
-[POWERED BY PSOURCE](https://n3rds.work/psource_kategorien/psource-plugins/)
 
 [Projektseite](https://n3rds.work/piestingtal_source/ps-events-eventmanagement-fuer-wordpress/)
-[Handbuch](https://n3rds.work/docs/ps-events-plugin-handbuch/)
-[Supportforum](https://n3rds.work/forums/forum/psource-support-foren/ps-forum-supportforum/)
 [GitHub](https://github.com/piestingtal-source/ps-events)
+
+[POWERED BY PSOURCE](https://n3rds.work/psource_kategorien/psource-plugins/)
 
 == Mehr PSOURCE ==
 
