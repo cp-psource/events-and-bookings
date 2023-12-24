@@ -480,7 +480,7 @@ $(".psource-help-trigger")
 		open_tooltip($(this));
 		
 	})
-	.mouseout(close_tooltip)
+	.on("mouseout", close_tooltip)
 ;
 	
 	
