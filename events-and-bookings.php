@@ -1,14 +1,14 @@
 <?php
 /*
 Plugin Name: PS Events
-Plugin URI: https://n3rds.work/piestingtal_source/ps-events-eventmanagement-fuer-wordpress/
+Plugin URI: https://cp-psource.github.io/ps-events/
 Description: PS-Events fügt Deiner Webseite oder Deiner Multisite ein mächtiges Events & Bookings System hinzu.
 Author: DerN3rd (WMS N3rds@Work)
 Text Domain: eab
 Version: 1.4.2
 Requires at least: 4.6
 Tested up to: 5.7
-Author URI: https://n3rds.work
+Author URI: https://github.com/cp-psource
 */
 
 require 'psource/psource-plugin-update/plugin-update-checker.php';
@@ -29,7 +29,7 @@ $myUpdateChecker->setBranch('master');
  * Allow your readers to register for events you organize
  *
  * @since 1.0.0
- * @author DerN3rd <dev@n3rds.work>
+ * @author DerN3rd 
  */
 class Eab_EventsHub {
 

@@ -1,10 +1,6 @@
 # Events+
 
-**INACTIVE NOTICE: This plugin is unsupported by WPMUDEV, we've published it here for those technical types who might want to fork and maintain it for their needs.**
-
-## Translations
-
-Translation files can be found at https://github.com/wpmudev/translations
+**PS Events fügt Deiner Webseite oder Deiner Multisite ein mächtiges Events & Bookings System hinzu**
 
 ## Sell tickets to your webinar or recurring sales seminar, or build an entire event management network like Eventbrite or Facebook Events.
 
