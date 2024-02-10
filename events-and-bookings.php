@@ -10,13 +10,18 @@ Requires at least: 4.6
 Tested up to: 5.7
 Author URI: https://n3rds.work
 */
-require 'psource/psource-plugin-update/psource-plugin-updater.php';
-use Psource\PluginUpdateChecker\v5\PucFactory;
-$MyUpdateChecker = PucFactory::buildUpdateChecker(
-	'https://n3rds.work//wp-update-server/?action=get_metadata&slug=ps-events', 
-	__FILE__, 
-	'ps-events' 
+
+require 'psource/psource-plugin-update/plugin-update-checker.php';
+use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+
+$myUpdateChecker = PucFactory::buildUpdateChecker(
+	'https://github.com/cp-psource/ps-events',
+	__FILE__,
+	'ps-events'
 );
+
+//Set the branch that contains the stable release.
+$myUpdateChecker->setBranch('master');
 
 /**
  * Eab_EventsHub object
