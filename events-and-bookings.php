@@ -5,7 +5,7 @@ Plugin URI: https://cp-psource.github.io/ps-events/
 Description: PS-Events fügt Deiner Webseite oder Deiner Multisite ein mächtiges Events & Bookings System hinzu.
 Author: DerN3rd (WMS N3rds@Work)
 Text Domain: eab
-Version: 1.4.2
+Version: 1.4.3
 Requires at least: 4.6
 Tested up to: 5.7
 Author URI: https://github.com/cp-psource
@@ -38,7 +38,7 @@ class Eab_EventsHub {
 	 * @TODO Update version number for new releases
      * @var	string
      */
-    const CURRENT_VERSION 		= '1.4.2';
+    const CURRENT_VERSION 		= '1.4.3';
 
     /**
      * Translation domain

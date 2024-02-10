@@ -3,7 +3,7 @@ Contributors: DerN3rd (WMS N@W)
 Tags: multisite, events, kalender, buddypress
 Requires at least: 4.9
 Tested up to: 5.6
-Stable tag: 1.4.2
+Stable tag: 1.4.3
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -81,7 +81,12 @@ Begeistere die Teilnehmer für Deine Veranstaltung. Verbreite das Wort mit autom
 
 == ChangeLog ==
 
-= 1.4.2 = DerN3rd =
+= 1.4.3 =
+
+* Updater 1.3
+* Entwicklertools hinzugefügt
+
+= 1.4.2 =
 
 * CSS Fix Responsive RSVP Buttons
 * Fix Property Null Gästeliste
@@ -103,27 +108,27 @@ Begeistere die Teilnehmer für Deine Veranstaltung. Verbreite das Wort mit autom
 * Fix Deprecated jQuery.isFunction()
 
 
-= 1.4.1 = DerN3rd =
+= 1.4.1 =
 
 * Frontendeditor CSS Anpassung
 * Textanpassungen
 * Minify CSS hinzugefügt
 * Psource Updater 1.2
 
-= 1.4.0 = DerN3rd =
+= 1.4.0 =
 
 * Anpassung Textdomain
 * $current_user->id => $current_user->ID
 * Text-Fixes
 * PO File hinzugefügt
 
-= 1.3.9 = DerN3rd =
+= 1.3.9 =
 
 * Fix Undefined index
 * Textanpassungen
 * Fix: deprecated create_function
 
-= 1.3.8 = DerN3rd =
+= 1.3.8 =
 
 * CSS Fix Kalender Mobilansicht (Zoom ist nun 1)
 * CSS Kalender-Text Größenanpassung (1em)
@@ -132,12 +137,12 @@ Begeistere die Teilnehmer für Deine Veranstaltung. Verbreite das Wort mit autom
 * Viele Text-Verbesserungen
 * Widgets unter "PSE" gruppiert
 
-= 1.3.7 = DerN3rd =
+= 1.3.7 =
 
 * PSource Updater v1.1 integriert
 * PSeCommerce Links korrigiert
 
-= 1.3.6 = DerN3rd =
+= 1.3.6 =
 
 * Overhauled von PSOURCE
 * Release WMS N@W Netzwerksuche
