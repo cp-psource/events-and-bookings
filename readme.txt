@@ -81,6 +81,10 @@ Begeistere die Teilnehmer für Deine Veranstaltung. Verbreite das Wort mit autom
 
 == ChangeLog ==
 
+= 1.4.4 =
+
+* Datepicker CSS Optimiert
+
 = 1.4.3 =
 
 * Updater 1.3

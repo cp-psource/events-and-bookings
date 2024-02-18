@@ -2,6 +2,7 @@
 	display: none;
 	z-index: 999 !important;
 	left: 25px !important;
+	width: auto;
 }
 
 /* ----- Meta boxes setup ----- */
