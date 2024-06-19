@@ -39,9 +39,9 @@ class Eab_AdminHelp {
 			$this->_sidebar .= '<p>' . __('PS-Events fügt Deiner Webseite oder Deiner Multisite ein mächtiges Events & Bookings System hinzu..', 'eab') . '</p>';
 		} else {
 				$this->_sidebar .= '<ul>' .
-					'<li><a href="https://n3rds.work/piestingtal_source/ps-events-eventmanagement-fuer-wordpress/ target="_blank">' . __('Projektseite', 'eab') . '</a></li>' .
-					'<li><a href="https://n3rds.work/docs/ps-events-plugin-handbuch/" target="_blank">' . __('Installations- und Anleitungsseite', 'eab') . '</a></li>' .
-					'<li><a href="https://n3rds.work/forums/forum/psource-support-foren/ps-forum-supportforum/https://cp-psource.github.io/ps-events/" target="_blank">' . __('Hilfeforum', 'eab') . '</a></li>' .
+					'<li><a href="https://cp-psource.github.io/ps-events/ target="_blank">' . __('Projektseite', 'eab') . '</a></li>' .
+					'<li><a href="https://github.com/cp-psource/ps-events/wiki/PS-Events-Handbuch" target="_blank">' . __('Installations- und Anleitungsseite', 'eab') . '</a></li>' .
+					'<li><a href="https://github.com/cp-psource/ps-events/discussions" target="_blank">' . __('Hilfeforum', 'eab') . '</a></li>' .
 				'</ul>' . 
 			'';
 		}
@@ -126,7 +126,7 @@ class Eab_AdminHelp {
 	private function _add_edit_page () {
 		// Determine if we have the Maps plugin
 		$agm = class_exists('AgmMapModel') 
-			? __('Wenn das <href="https://n3rds.work/piestingtal-source-project/ps-gmaps/">PS-Gmaps</a> Plugin installiert ist, kannst Du die vollständige Integration von Google Maps in Deinen Veranstaltungen verwenden', 'eab') 
+			? __('Wenn das <href="https://n3rds.work/piestingtal-source-project/ps-gmaps/">PS Google Maps</a> Plugin installiert ist, kannst Du die vollständige Integration von Google Maps in Deinen Veranstaltungen verwenden', 'eab') 
 			: __('Dein Standort wird automatisch auf einer Google Map zugeordnet. Du kannst auch selbst eine Karte erstellen und diese mithilfe des Globussymbols über dem Feld mit Ihrem Ereignis verknüpfen', 'eab')
 		; 
 		$this->_help->add_page(

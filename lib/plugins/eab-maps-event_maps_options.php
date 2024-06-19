@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Optionen für Ereignismaps
-Description: Maps verwendet standardmäßig die globalen Einstellungen für das PS-Gmaps-Plugin. Verwende diese Erweiterung, um ereignisspezifische Einstellungen anzuwenden.
+Description: Maps verwendet standardmäßig die globalen Einstellungen für das PS Google Maps-Plugin. Verwende diese Erweiterung, um ereignisspezifische Einstellungen anzuwenden.
 Plugin URI: https://cp-psource.github.io/ps-events/
 Version: 1.1
 Author: DerN3rd
@@ -36,7 +36,7 @@ class Eab_Maps_EventMapsOptions {
 	function show_nags () {
 		if (!class_exists('AgmMapModel')) {
 			echo '<div class="error"><p>' .
-				sprintf(__("Du benötigst das <a href='%s'>PS-Gmaps</a> Plugin installiert and aktiviert um diese Erweiterung aktivieren zu können", 'eab'), 'https://n3rds.work/piestingtal-source-project/ps-gmaps/') .
+				sprintf(__("Du benötigst das <a href='%s'>PS Google Maps</a> Plugin installiert and aktiviert um diese Erweiterung aktivieren zu können", 'eab'), 'https://cp-psource.github.io/ps-maps/') .
 			'</p></div>';
 		}
 	}

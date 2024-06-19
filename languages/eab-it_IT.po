@@ -2345,11 +2345,11 @@ msgstr "Riavviare l'esercitazione"
 #, fuzzy
 msgid ""
 "Wenn das <href=\"https://n3rds.work/piestingtal-source-project/ps-gmaps/"
-"\">PS-Gmaps</a> Plugin installiert ist, kannst Du die vollständige "
+"\">PS Google Maps</a> Plugin installiert ist, kannst Du die vollständige "
 "Integration von Google Maps in Deinen Veranstaltungen verwenden"
 msgstr ""
 "Se è installato il plugin <href=\"https://n3rds.work/piestingtal-source-"
-"project/ps-gmaps/\">PS-Gmaps</a>, è possibile utilizzare l'integrazione "
+"project/ps-gmaps/\">PS Google Maps</a>, è possibile utilizzare l'integrazione "
 "completa di Google Maps nei propri eventi"
 
 #: lib/contextual_help/class_eab_admin_help.php:130
@@ -4456,7 +4456,7 @@ msgstr "Errore"
 #: lib/plugins/eab-maps-event_maps_options.php:39
 #, fuzzy, php-format
 msgid ""
-"Du benötigst das <a href='%s'>PS-Gmaps</a> Plugin installiert and aktiviert "
+"Du benötigst das <a href='%s'>PS Google Maps</a> Plugin installiert and aktiviert "
 "um diese Erweiterung aktivieren zu können"
 msgstr ""
 "Per abilitare questa estensione è necessario che il plugin <a href='%s'>PS-"

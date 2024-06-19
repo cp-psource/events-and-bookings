@@ -2290,7 +2290,7 @@ msgstr "Restart the tutorial"
 #, fuzzy
 msgid ""
 "Wenn das <href=\"https://n3rds.work/piestingtal-source-project/ps-gmaps/"
-"\">PS-Gmaps</a> Plugin installiert ist, kannst Du die vollständige "
+"\">PS Google Maps</a> Plugin installiert ist, kannst Du die vollständige "
 "Integration von Google Maps in Deinen Veranstaltungen verwenden"
 msgstr ""
 "If the <href=\"https://n3rds.work/piestingtal-source-project/ps-gmaps/\">PS-"
@@ -4351,10 +4351,10 @@ msgstr "Error"
 #: lib/plugins/eab-maps-event_maps_options.php:39
 #, fuzzy, php-format
 msgid ""
-"Du benötigst das <a href='%s'>PS-Gmaps</a> Plugin installiert and aktiviert "
+"Du benötigst das <a href='%s'>PS Google Maps</a> Plugin installiert and aktiviert "
 "um diese Erweiterung aktivieren zu können"
 msgstr ""
-"You need the <a href='%s'>PS-Gmaps</a> plugin installed and activated to "
+"You need the <a href='%s'>PS Google Maps</a> plugin installed and activated to "
 "enable this extension"
 
 #: lib/plugins/eab-maps-event_maps_options.php:56

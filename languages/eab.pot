@@ -1920,7 +1920,7 @@ msgstr ""
 #: lib/contextual_help/class_eab_admin_help.php:129
 msgid ""
 "Wenn das <href=\"https://n3rds.work/piestingtal-source-project/ps-gmaps/"
-"\">PS-Gmaps</a> Plugin installiert ist, kannst Du die vollständige "
+"\">PS Google Maps</a> Plugin installiert ist, kannst Du die vollständige "
 "Integration von Google Maps in Deinen Veranstaltungen verwenden"
 msgstr ""
 
@@ -3542,7 +3542,7 @@ msgstr ""
 #: lib/plugins/eab-maps-event_maps_options.php:39
 #, php-format
 msgid ""
-"Du benötigst das <a href='%s'>PS-Gmaps</a> Plugin installiert and aktiviert "
+"Du benötigst das <a href='%s'>PS Google Maps</a> Plugin installiert and aktiviert "
 "um diese Erweiterung aktivieren zu können"
 msgstr ""
 
