@@ -1,7 +1,7 @@
 <?php
 /*
-Plugin Name: PS-Mitglieder+ Integration
-Description: Ermöglicht PS-Events die Integration in unser PS-Mitglieder Plugin, sodass Mitglieder eine alternative Gebühr für bezahlte Events erhalten können. <br /><b>Benötigt <a href="https://n3rds.work/piestingtal-source-project/ps-mitglieder-plugin/">PS-Mitglieder+ Plugin</a>.</b>
+Plugin Name: PS-Mitgliedschaften Integration
+Description: Ermöglicht PS-Events die Integration in unser PS-Mitglieder Plugin, sodass Mitglieder eine alternative Gebühr für bezahlte Events erhalten können. <br /><b>Benötigt <a href="https://n3rds.work/piestingtal-source-project/ps-mitglieder-plugin/">PS-Mitgliedschaften Plugin</a>.</b>
 Plugin URI: https://n3rds.work/piestingtal-source-project/eventsps-das-eventmanagment-fuer-wordpress/
 Author: DerN3rd
 Developer: Philipp Stracker
@@ -114,7 +114,7 @@ class Eab_Events_Membership2_Integration {
 			'<div class="error"><p>' .
 			__( 'Das %sPS-Mitgliedschaften%s Plugin installieren und aktivieren, damit die PS-Mitgliedschaften Integration funktioniert', 'eab' ) .
 			'</p></div>',
-			'<a href="https://n3rds.work/piestingtal-source-project/ps-mitglieder-plugin/">',
+			'<a href="https://cp-psource.github.io/mitgliedschaften-pro/">',
 			'</a>'
 		);
 	}

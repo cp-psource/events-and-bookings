@@ -33,7 +33,7 @@ PS Events enthält Shortcodes, Add-Ons und Widgets für mehr Kontrolle über Lay
 
 =  Ticketverkauf =
 
-Verwende PayPal direkt nach dem Auschecken oder zusammen mit PSeCommerce, um zusätzliche Zahlungsgateways zu aktivieren.
+Verwende PayPal direkt nach dem Auschecken oder zusammen mit MarketPress, um zusätzliche Zahlungsgateways zu aktivieren.
 
 
 =  Ereignis-Countdown =
@@ -144,7 +144,7 @@ Begeistere die Teilnehmer für Deine Veranstaltung. Verbreite das Wort mit autom
 = 1.3.7 =
 
 * PSource Updater v1.1 integriert
-* PSeCommerce Links korrigiert
+* MarketPress Links korrigiert
 
 = 1.3.6 =
 

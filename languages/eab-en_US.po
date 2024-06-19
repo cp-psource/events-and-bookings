@@ -4456,38 +4456,38 @@ msgstr "Please select the price level"
 msgid "Ich möchte %s Tickets kaufen."
 msgstr "I would like to buy %s tickets."
 
-#: lib/plugins/eab-payment-psecommerce.php:69
+#: lib/plugins/eab-payment-marketpress.php:69
 #, fuzzy, php-format
 msgid ""
 "Dieses Produkt wird verwendet als Eintrittszahlung für <a href=\"%s\">%s</a>."
 msgstr "This product is used as an entry payment for <a href=\"%s\">%s</a>."
 
-#: lib/plugins/eab-payment-psecommerce.php:87
+#: lib/plugins/eab-payment-marketpress.php:87
 #, fuzzy
 msgid ""
-"Das <a href=\"https://n3rds.work/piestingtal_source/psecommerce-shopsystem/"
+"Das <a href=\"https://n3rds.work/piestingtal_source/marketpress-shopsystem/"
 "\">PS-eCommerce</a> Plugin muss installiert und aktiviert sein, damit es "
 "funktioniert"
 msgstr ""
-"The <a href=\"https://n3rds.work/piestingtal_source/psecommerce-shopsystem/"
+"The <a href=\"https://n3rds.work/piestingtal_source/marketpress-shopsystem/"
 "\">PS-eCommerce</a> plugin must be installed and activated for it to work"
 
-#: lib/plugins/eab-payment-psecommerce.php:110
+#: lib/plugins/eab-payment-marketpress.php:110
 #, fuzzy
 msgid "Zahlung mit PS-eCommerce Artikeln"
 msgstr "Payment with PS-eCommerce articles"
 
-#: lib/plugins/eab-payment-psecommerce.php:113
+#: lib/plugins/eab-payment-marketpress.php:113
 #, fuzzy
 msgid "Beschränke die Produktauswahl auf diese Shopkategorie"
 msgstr "Restrict the product selection to this store category"
 
-#: lib/plugins/eab-payment-psecommerce.php:122
+#: lib/plugins/eab-payment-marketpress.php:122
 #, fuzzy
 msgid "Keine Shopkategorien"
 msgstr "No store categories"
 
-#: lib/plugins/eab-payment-psecommerce.php:124
+#: lib/plugins/eab-payment-marketpress.php:124
 #, fuzzy
 msgid ""
 "Verwende diese Einstellung, um den Umfang Deiner Artikel einzuschränken, die "

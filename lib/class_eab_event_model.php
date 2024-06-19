@@ -1134,7 +1134,7 @@ class Eab_EventModel extends PSource_DatedVenuePremiumModel {
 		$meta_table = Eab_EventsHub::tablename( Eab_EventsHub::BOOKING_META_TABLE );
 		$query = $wpdb->prepare( "DELETE FROM {$meta_table} WHERE booking_id = %d AND meta_key = 'booking_transaction_key'", $booking_id );		
 
-		// Used for PSeCommerce Integration
+		// Used for MarketPress Integration
 		do_action( 'eab-rsvp_before_cancel_payment', $this, $user_id );
 
 		return $wpdb->query( $query );

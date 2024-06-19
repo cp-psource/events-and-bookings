@@ -46,7 +46,7 @@ class Eab_Addon_LimitCapacity {
 		// Attendance data juggling
 		add_filter( '_eab-capacity-internal-attendance', array( $this, 'get_remaining_capacity' ), 10, 2 );
 
-		// PSeCommerce integration
+		// MarketPress integration
 		add_action( 'eab-mp-variation-meta', array( $this, 'add_mp_inventory' ), 10, 5 );
 		add_action( 'eab-mp-variation-thrash', array( $this, 'thrash_mp_inventory' ), 10, 2 );
 

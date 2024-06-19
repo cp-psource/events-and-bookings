@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Legacy PSeCommerce implementation
+ * Legacy MarketPress implementation
  * For versions that actually work
  */
 class Eab_MP_Bridge_Legacy {
@@ -30,7 +30,7 @@ class Eab_MP_Bridge_Legacy {
 		add_filter('eab-event_meta-event_price', array($this, 'show_event_product_selection'), 10, 2);
 		add_action('psource_event_save_payments_meta', array($this, 'save_event_product_selection'));
 		// Resync top-level/singular price on related Product update
-		add_action('wp_insert_post', array($this, 'resync_psecommerce_product_price'), 10, 2);
+		add_action('wp_insert_post', array($this, 'resync_marketpress_product_price'), 10, 2);
 
 		// Recurring events
 		add_action('eab-events-recurring_instances-deleted', array($this, 'thrash_old_product_variations')); // Thrash old variations
@@ -85,7 +85,7 @@ class Eab_MP_Bridge_Legacy {
 	}
 
 	private function _is_mp_present () {
-		return class_exists('PSeCommerce');
+		return class_exists('MarketPress');
 	}
 
 	/**
@@ -259,7 +259,7 @@ class Eab_MP_Bridge_Legacy {
 	/**
 	 * Resyncs singular/top-level event price on linked Product update.
 	 */
-	function resync_psecommerce_product_price ($post_id, $post=null) {
+	function resync_marketpress_product_price ($post_id, $post=null) {
 		if (defined('DOING_AJAX')) return false;
 		if (!$post || empty($post->post_type)) return false;
 		if ('product' != $post->post_type) return false;

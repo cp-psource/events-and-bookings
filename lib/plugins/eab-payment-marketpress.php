@@ -1,8 +1,8 @@
 <?php
 /*
 Plugin Name: Zahlung per PS-eCommerce Artikel
-Description: Ermöglicht die Integration von PS-Events in die PS-eCommerce Lösung (PSeCommercePS)
-Plugin URI: https://n3rds.work/piestingtal_source/psecommerce-shopsystem/
+Description: Ermöglicht die Integration von PS-Events in die PS-eCommerce Lösung (MarketPressPS)
+Plugin URI: https://n3rds.work/piestingtal_source/marketpress-shopsystem/
 Version: 2.1
 Author: DerN3rd
 AddonType: Integration
@@ -70,7 +70,7 @@ class Eab_Payments_PaymentViaProducts {
 	}
 
 	private function _is_mp_present () {
-		return class_exists('PSeCommerce');
+		return class_exists('MarketPress');
 	}
 
 	/*private function _is_old_mp () {
@@ -84,7 +84,7 @@ class Eab_Payments_PaymentViaProducts {
 		if ($this->_is_mp_present()) return false;
 		echo '<div class="error">' .
 			'<p>' .
-				__( 'Das <a href="https://n3rds.work/piestingtal_source/psecommerce-shopsystem/">PS-eCommerce</a> Plugin muss installiert und aktiviert sein, damit es funktioniert', 'eab' ) .
+				__( 'Das <a href="https://n3rds.work/piestingtal_source/marketpress-shopsystem/">PS-eCommerce</a> Plugin muss installiert und aktiviert sein, damit es funktioniert', 'eab' ) .
 			'</p>'.
 		'</div>';
 	}
