@@ -237,7 +237,7 @@ class Eab_Events_Membership2_Integration {
 				box.toggleClass( 'closed' );
 			}
 
-			has_price.change( show_price_details );
+			has_price'change', show_price_details );
 			toggle.on("click",  toggle_membership_prices );
 			show_price_details();
 		});

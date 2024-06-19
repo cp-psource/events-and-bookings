@@ -49,7 +49,7 @@ class Eab_Email_eNewsletterIntegration {
 	function show_nags () {
 		if (!$this->_model->has_newsletter()) {
 			echo '<div class="error"><p>' .
-				__("Du musst <a href='https://n3rds.work/piestingtal-source-project/ps-enewsletter-plugin'>PSeNewsletter</a> Plugin für die PSeNewsletter Integration in PS Events installiert & aktiviert haben damit die Erweiterung funktioniert", 'eab') .
+				__("Du musst das<a href='https://cp-psource.github.io/ps-newsletter/'>PSeNewsletter</a> Plugin für die PSeNewsletter Integration in PS Events installiert & aktiviert haben damit die Erweiterung funktioniert", 'eab') .
 			'</p></div>';
 		}
 	}

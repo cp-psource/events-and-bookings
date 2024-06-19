@@ -58,7 +58,7 @@ jQuery(function($) {
         jQuery("#eab-settings-paypal").hide();
     }
 
-    jQuery("#psource_event-accept_payments").change(function() {
+    jQuery("#psource_event-accept_payments").on('change', function() {
         if (!jQuery("#psource_event-accept_payments").is(":checked")) {
             jQuery("#eab-settings-paypal").hide();
         } else {
@@ -69,7 +69,7 @@ jQuery(function($) {
     if (jQuery("#psource_event_paid").val() == 0) {
         jQuery(".psource_event-fee_row").hide();
     }
-    jQuery("#psource_event_paid").change(function() {
+    jQuery("#psource_event_paid").on('change', function() {
         if (jQuery("#psource_event_paid").val() == 0) {
             jQuery(".psource_event-fee_row").hide();
         } else {

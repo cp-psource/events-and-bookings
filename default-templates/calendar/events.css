@@ -125,7 +125,7 @@ a.psourceevents-calendar-event:hover {
         display: block;
     }
     .psourceevents-list table.eab-monthly_calendar td {
-        display: inline-block;
+        display: block;
         height: auto;
         padding: 5px;
         width: 100%;
