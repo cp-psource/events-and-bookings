@@ -299,11 +299,11 @@ jQuery(function($) {
 
         $(function() {
             // Init API toggle
-            $("#psource_event-accept_api_logins").change(toggle_api_settings);
+            $("#psource_event-accept_api_logins").on('change', toggle_api_settings);
             toggle_api_settings();
 
             // Init Appearance toggle
-            $("#psource_event-override_appearance_defaults").change(toggle_appearance_settings);
+            $("#psource_event-override_appearance_defaults").on('change', toggle_appearance_settings);
             toggle_appearance_settings();
 
             // Tutorial restart
@@ -321,7 +321,7 @@ jQuery(function($) {
             // Init recurrence toggle
             $("#eab-eab-start_recurrence-button").on("click", toggle_recurrence_settings);
             // Init recurrence mode toggle
-            $("#eab_event-repeat_every").change(toggle_recurrence_mode);
+            $("#eab_event-repeat_every").on('change', toggle_recurrence_mode);
             toggle_recurrence_mode();
             // Init recurrence instances toggle
             $("#eab_event-edit_recurring_instances").on("click", toggle_recurrence_instances);
@@ -359,7 +359,7 @@ jQuery(function($) {
 
             $("body").on("click", ".eab-add_attendance .button", function() {
                 var $root = $(".eab-add_attendance"),
-                    event_id = $root.find(".eab-attendance-event_id").val()
+                    event_id = $root.find(".eab-attendance-event_id").val(),
                 email = $root.find(".eab-attendance-email").val(),
                     status = $root.find(".eab-attendance-status").val();
                 if (!event_id || !email || !status) return false;
