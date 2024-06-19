@@ -2,7 +2,7 @@
 /*
 Plugin Name: Wöchentlicher Veranstaltungskalender
 Description: Erstellt einen wöchentlichen Kalender-Shortcode, der auf jeder Seite verwendet werden kann. Kalenderstart- und -endstunden, Intervallzeit kann ausgewählt werden. 
-Plugin URI: https://n3rds.work/piestingtal-source-project/eventsps-das-eventmanagment-fuer-wordpress/
+Plugin URI: https://cp-psource.github.io/ps-events/
 Version: 0.3
 Author: DerN3rd
 AddonType: Events

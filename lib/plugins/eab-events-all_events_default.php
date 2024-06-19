@@ -2,7 +2,7 @@
 /*
 Plugin Name: Standard für alle Ereignisse
 Description: Wenn keine Jahr- oder Monatsargumente an Deine Archivseitenanforderungen übergeben werden, zeigt diese einfache Erweiterung alle zutreffenden Ereignisse an, anstatt sie in monatlichen Archiven abzuschneiden. 
-Plugin URI: https://n3rds.work/piestingtal-source-project/eventsps-das-eventmanagment-fuer-wordpress/
+Plugin URI: https://cp-psource.github.io/ps-events/
 Version: 1.1
 Author: DerN3rd
 AddonType: Events

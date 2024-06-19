@@ -2,7 +2,7 @@
 /*
 Plugin Name: Benachrichtige RSVPs bei Ereignisänderungen
 Description: Sende eine E-Mail an alle RSVPs, wenn ein Ereignis geändert wird
-Plugin URI: https://n3rds.work/piestingtal-source-project/eventsps-das-eventmanagment-fuer-wordpress/
+Plugin URI: https://cp-psource.github.io/ps-events/
 Version: 1.1
 Author: DerN3rd
 AddonType: Events
@@ -85,16 +85,16 @@ class Eab_Events_Alert_RSVP_Event_Modify {
 	
 	
 	public function show_settings() {
-		$eab_alert = $this->_data->get_option( 'eab_alert' );
+		$eab_alert = $this->_data->get_option('eab_alert');
 		?>
 		<div id="eab-settings-alert" class="eab-metabox postbox">
-			<h3 class="eab-hndle"><?php _e( 'Benachrichtige RSVP-Einstellungen', 'eab' ); ?></h3>
+			<h3 class="eab-hndle"><?php _e('Benachrichtige RSVP-Einstellungen', 'eab'); ?></h3>
 			<div class="eab-inside">
-				<p><?php _e( 'Betreff', 'eab' ) ?></p>
-				<input type="text" name="eab_alert[subject]" style="width: 100%" value="<?php echo $eab_alert['subject'] ?>">
-				<p><?php _e( 'E-Mail-Inhalt', 'eab' ) ?></p>
-				<textarea name="eab_alert[content]" rows="10" style="width: 100%"><?php echo $eab_alert['content'] ?></textarea>
-				<em><?php _e( 'Du kannst diese Makros verwenden: DISPLAY_NAME, EVENT_NAME, START_DATE, START_TIME, END_DATE, END_TIME', 'eab' ) ?></em>
+				<p><?php _e('Betreff', 'eab'); ?></p>
+				<input type="text" name="eab_alert[subject]" style="width: 100%" value="<?php echo isset($eab_alert['subject']) ? esc_attr($eab_alert['subject']) : ''; ?>">
+				<p><?php _e('E-Mail-Inhalt', 'eab'); ?></p>
+				<textarea name="eab_alert[content]" rows="10" style="width: 100%"><?php echo isset($eab_alert['content']) ? esc_textarea($eab_alert['content']) : ''; ?></textarea>
+				<em><?php _e('Du kannst diese Makros verwenden: DISPLAY_NAME, EVENT_NAME, START_DATE, START_TIME, END_DATE, END_TIME', 'eab'); ?></em>
 			</div>
 		</div>
 		<?php

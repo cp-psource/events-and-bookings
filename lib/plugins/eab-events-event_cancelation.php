@@ -2,7 +2,7 @@
 /*
 Plugin Name: Absage der Veranstaltung
 Description: Ermöglicht es Dir, Deine Veranstaltungen schnell abzubrechen und eine Benachrichtigungs-E-Mail an Deine Teilnehmer zu senden.
-Plugin URI: https://n3rds.work/piestingtal-source-project/eventsps-das-eventmanagment-fuer-wordpress/
+Plugin URI: https://cp-psource.github.io/ps-events/
 Version: 1.1
 Author: DerN3rd
 AddonType: Events

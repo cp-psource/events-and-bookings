@@ -2,7 +2,7 @@
 /*
 Plugin Name: Vergangene Ereignisse sofort ablaufen lassen
 Description: Standardmäßig werden Deine vergangenen Ereignisse archiviert. Wenn Du dieses Add-On aktivierst, laufen alle Deine archivierten Ereignisse ab. Diese Aktion hängt vom Cron-Job ab. Du musst also bis zum nächsten Cron-Job-Lauf warten. Der Cron-Job wird von Deinem System in bestimmten Intervallen automatisch ausgeführt. Diese Erweiterung wird vorerst stündlich ausgeführt.
-Plugin URI: https://n3rds.work/piestingtal-source-project/eventsps-das-eventmanagment-fuer-wordpress/
+Plugin URI: https://cp-psource.github.io/ps-events/
 Version: 1.1
 Author: DerN3rd
 AddonType: Events

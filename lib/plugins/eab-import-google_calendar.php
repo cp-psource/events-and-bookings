@@ -2,7 +2,7 @@
 /*
 Plugin Name: Import: Google Calendar
 Description: Synchronisiere Ereignisse aus Deinen Google-Kalendern. Derzeit werden nur Deine regulären Ereignisse importiert (keine wiederkehrenden Ereignisse)..
-Plugin URI: https://n3rds.work/piestingtal-source-project/eventsps-das-eventmanagment-fuer-wordpress/
+Plugin URI: https://cp-psource.github.io/ps-events/
 Version: 1.1
 Author: DerN3rd
 AddonType: Integration

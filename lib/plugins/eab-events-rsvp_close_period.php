@@ -3,7 +3,7 @@
 /*
   Plugin Name: RSVP Anmeldeschluss
   Description: Ermöglicht das Schließen von RSVP-Buchungen x Stunden vor Beginn der Veranstaltung, wodurch neue RSVPs während dieses Zeitraums verhindert werden.
-  Plugin URI: https://n3rds.work/piestingtal-source-project/eventsps-das-eventmanagment-fuer-wordpress/
+  Plugin URI: https://cp-psource.github.io/ps-events/
   Version: 1.1
   Author: DerN3rd
   AddonType: Events

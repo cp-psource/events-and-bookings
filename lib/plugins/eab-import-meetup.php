@@ -2,7 +2,7 @@
 /*
 Plugin Name: Import: Meetup.com
 Description: Ermöglicht das Importieren von Ereignissen von meetup.com sowie das Erlernen der benutzerdefinierten Themen als Ereigniskategorien.
-Plugin URI: https://n3rds.work/piestingtal-source-project/eventsps-das-eventmanagment-fuer-wordpress/
+Plugin URI: https://cp-psource.github.io/ps-events/
 Version: 1.1
 Author: DerN3rd
 AddonType: Integration

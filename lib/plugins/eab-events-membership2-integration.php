@@ -2,7 +2,7 @@
 /*
 Plugin Name: PS-Mitgliedschaften Integration
 Description: Ermöglicht PS-Events die Integration in unser PS-Mitglieder Plugin, sodass Mitglieder eine alternative Gebühr für bezahlte Events erhalten können. <br /><b>Benötigt <a href="https://n3rds.work/piestingtal-source-project/ps-mitglieder-plugin/">PS-Mitgliedschaften Plugin</a>.</b>
-Plugin URI: https://n3rds.work/piestingtal-source-project/eventsps-das-eventmanagment-fuer-wordpress/
+Plugin URI: https://cp-psource.github.io/ps-events/
 Author: DerN3rd
 Developer: Philipp Stracker
 AddonType: Integration

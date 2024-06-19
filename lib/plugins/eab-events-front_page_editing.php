@@ -2,7 +2,7 @@
 /*
 Plugin Name: Frontpage Editor
 Description: Ermöglicht das Einbetten der Bearbeitung von Titelseiten für Ereignisse mithilfe eines Shortcodes in die öffentlichen Seiten Deiner Website.
-Plugin URI: https://n3rds.work/piestingtal-source-project/eventsps-das-eventmanagment-fuer-wordpress/
+Plugin URI: https://cp-psource.github.io/ps-events/
 Version: 1.2
 Author: DerN3rd
 AddonType: Integration

@@ -2,7 +2,7 @@
 /*
 Plugin Name: RSVP-Status automatisch zurückgesetzen
 Description: Setzt den RSVP-Status Ihrer bezahlten Ereignisse nach einer vorkonfigurierten Zeit automatisch zurück, wenn der Benutzer noch nicht bezahlt hat.
-Plugin URI: https://n3rds.work/piestingtal-source-project/eventsps-das-eventmanagment-fuer-wordpress/
+Plugin URI: https://cp-psource.github.io/ps-events/
 Version: 1.1
 Author: DerN3rd
 AddonType: Events, RSVP

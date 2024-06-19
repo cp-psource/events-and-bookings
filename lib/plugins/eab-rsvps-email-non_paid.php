@@ -2,7 +2,7 @@
 /*
 Plugin Name: Sende eine Erinnerungs-E-Mail an nicht bezahlte Besucher
 Description: Ermöglicht das Senden einer Erinnerungs-E-Mail an die, welche an der Veranstaltung teilnehmen wollten, aber noch nicht bezahlt haben.
-Plugin URI: https://n3rds.work/piestingtal-source-project/eventsps-das-eventmanagment-fuer-wordpress/
+Plugin URI: https://cp-psource.github.io/ps-events/
 Version: 1.1
 Author: DerN3rd
 AddonType: Email, RSVP

@@ -2,7 +2,7 @@
 /*
 Plugin Name: Email: PS-eNewsletter Integration
 Description: Ermöglicht das automatische Versenden von Newslettern zu Deinen Veranstaltungen, die mit dem PS-eNewsletter-Plugin erstellt wurden. <br /><b>Benötigt <a href="https://n3rds.work/piestingtal-source-project/ps-enewsletter-plugin/">PS-eNewsletter Plugin</a>.</b>
-Plugin URI: https://n3rds.work/piestingtal-source-project/eventsps-das-eventmanagment-fuer-wordpress/
+Plugin URI: https://cp-psource.github.io/ps-events/
 Version: 1.2
 AddonType: Integration
 Author: DerN3rd

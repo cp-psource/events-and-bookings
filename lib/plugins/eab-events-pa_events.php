@@ -2,7 +2,7 @@
 /*
 Plugin Name: Öffentliche Ankündigungsveranstaltungen
 Description: Ermöglicht das Erstellen von öffentlichen Ankündigungsereignissen, für die keine RSVP-Funktionen verfügbar sind.
-Plugin URI: https://n3rds.work/piestingtal-source-project/eventsps-das-eventmanagment-fuer-wordpress/
+Plugin URI: https://cp-psource.github.io/ps-events/
 Version: 1.2
 Author: DerN3rd
 AddonType: Events

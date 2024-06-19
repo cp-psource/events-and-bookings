@@ -2,7 +2,7 @@
 /*
 Plugin Name: Ereignisgesteuerte Umleitung
 Description: Leitet den Besucher von einer ausgewählten Seite, einem Beitrag oder einem Ereignis der Website (mit seiner ID angegeben) zu einer externen oder internen URL um, wenn das Ereignis gerade fortschreitet.
-Plugin URI: https://n3rds.work/piestingtal-source-project/eventsps-das-eventmanagment-fuer-wordpress/
+Plugin URI: https://cp-psource.github.io/ps-events/
 Version: 0.3
 Author: DerN3rd
 AddonType: Events

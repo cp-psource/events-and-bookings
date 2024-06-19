@@ -3,7 +3,7 @@
 /*
 Plugin Name: Veranstaltungen mit begrenzter Kapazität
 Description: Ermöglicht es Dir, die Anzahl der Teilnehmer für jede Deiner Veranstaltungen zu begrenzen.
-Plugin URI: https://n3rds.work/piestingtal-source-project/eventsps-das-eventmanagment-fuer-wordpress/
+Plugin URI: https://cp-psource.github.io/ps-events/
 Version: 1.3
 Author: DerN3rd
 AddonType: Events

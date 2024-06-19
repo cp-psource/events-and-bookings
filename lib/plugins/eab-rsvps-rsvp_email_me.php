@@ -2,7 +2,7 @@
 /*
 Plugin Name: Benachrichtigung per RSVP senden
 Description: Sende automatisch eine Benachrichtigung an Dich selbst und/oder den Ereignisautor, wenn sich ein Benutzer meldet
-Plugin URI: https://n3rds.work/piestingtal-source-project/eventsps-das-eventmanagment-fuer-wordpress/
+Plugin URI: https://cp-psource.github.io/ps-events/
 Version: 1.1
 Author: DerN3rd
 AddonType: Email, RSVP

@@ -2,7 +2,7 @@
 /*
 Plugin Name: Export: Google Kalendar
 Description: Fügt Deinen Besuchern eine praktische Schaltfläche hinzu, mit der sie Ereignisse in ihren Google-Kalendern planen können.
-Plugin URI: https://n3rds.work/piestingtal-source-project/eventsps-das-eventmanagment-fuer-wordpress/
+Plugin URI: https://cp-psource.github.io/ps-events/
 Version: 0.2
 Author: DerN3rd
 AddonType: Integration

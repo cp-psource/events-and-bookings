@@ -2,7 +2,7 @@
 /*
 Plugin Name: BuddyPress: Meine Veranstaltungen
 Description: Fügt Deinen Benutzerprofilen eine Registerkarte "Ereignisse" hinzu.
-Plugin URI: https://n3rds.work/piestingtal-source-project/eventsps-das-eventmanagment-fuer-wordpress/
+Plugin URI: https://cp-psource.github.io/ps-events/
 Version: 1.1
 AddonType: BuddyPress
 Author: DerN3rd

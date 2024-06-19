@@ -2,7 +2,7 @@
 /*
 Plugin Name: Nächster Ereignis-Shortcode
 Description: Erzeugt einen formatierbaren Shortcode, der die Zeit des nächsten bevorstehenden Ereignisses anzeigt, das noch nicht gestartet wurde 
-Plugin URI: https://n3rds.work/piestingtal-source-project/eventsps-das-eventmanagment-fuer-wordpress/
+Plugin URI: https://cp-psource.github.io/ps-events/
 Version: 0.3
 Author: DerN3rd
 AddonType: Events

@@ -2,7 +2,7 @@
 /*
 Plugin Name: Noindex-Meta für Ereignisse
 Description: Fügt Deinen wiederkehrenden Ereignisinstanzen und nicht aktuellen Archiven ein Noindex-Metaelement hinzu.
-Plugin URI: https://n3rds.work/piestingtal-source-project/eventsps-das-eventmanagment-fuer-wordpress/
+Plugin URI: https://cp-psource.github.io/ps-events/
 Version: 1.1
 Author: DerN3rd
 AddonType: Integration
