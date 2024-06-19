@@ -1,7 +1,7 @@
 <?php
 /*
-Plugin Name: Zahlung per PS-eCommerce Artikel
-Description: Ermöglicht die Integration von PS-Events in die PS-eCommerce Lösung (MarketPressPS)
+Plugin Name: Zahlung per MarketPress Artikel
+Description: Ermöglicht die Integration von PS-Events in die MarketPress Lösung (MarketPressPS)
 Plugin URI: https://n3rds.work/piestingtal_source/marketpress-shopsystem/
 Version: 2.1
 Author: DerN3rd
@@ -84,7 +84,7 @@ class Eab_Payments_PaymentViaProducts {
 		if ($this->_is_mp_present()) return false;
 		echo '<div class="error">' .
 			'<p>' .
-				__( 'Das <a href="https://n3rds.work/piestingtal_source/marketpress-shopsystem/">PS-eCommerce</a> Plugin muss installiert und aktiviert sein, damit es funktioniert', 'eab' ) .
+				__( 'Das <a href="https://n3rds.work/piestingtal_source/marketpress-shopsystem/">MarketPress</a> Plugin muss installiert und aktiviert sein, damit es funktioniert', 'eab' ) .
 			'</p>'.
 		'</div>';
 	}
@@ -107,7 +107,7 @@ class Eab_Payments_PaymentViaProducts {
 		));
 ?>
 <div id="eab-settings-mp_payments" class="eab-metabox postbox">
-	<h3 class="eab-hndle"><?php _e('Zahlung mit PS-eCommerce Artikeln', 'eab'); ?></h3>
+	<h3 class="eab-hndle"><?php _e('Zahlung mit MarketPress Artikeln', 'eab'); ?></h3>
 	<div class="eab-inside">
 		<div class="eab-settings-settings_item">
 	    	<label for="eab_event-payment-ppvp-category"><?php _e('Beschränke die Produktauswahl auf diese Shopkategorie', 'eab'); ?>: </label>

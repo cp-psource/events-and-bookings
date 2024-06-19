@@ -3638,12 +3638,12 @@ msgstr ""
 #: lib/plugins/eab-payment-marketpress.php:87
 msgid ""
 "Das <a href=\"https://n3rds.work/piestingtal_source/marketpress-shopsystem/"
-"\">PS-eCommerce</a> Plugin muss installiert und aktiviert sein, damit es "
+"\">MarketPress</a> Plugin muss installiert und aktiviert sein, damit es "
 "funktioniert"
 msgstr ""
 
 #: lib/plugins/eab-payment-marketpress.php:110
-msgid "Zahlung mit PS-eCommerce Artikeln"
+msgid "Zahlung mit MarketPress Artikeln"
 msgstr ""
 
 #: lib/plugins/eab-payment-marketpress.php:113

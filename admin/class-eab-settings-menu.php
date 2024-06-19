@@ -95,8 +95,8 @@ class Eab_Admin_Settings_Menu {
 		$event_default = $_POST['event_default'];
 
 		$options = array();
-		$options['slug'] 						= trim(trim($event_default['slug'], '/'));
-		$options['pagination']                          = empty( $event_default['pagination'] ) ? 0 : (int)$event_default['pagination'];
+		$options['slug'] 						= trim(trim($event_default['slug'] ?? '', '/'));
+		$options['pagination']                  = empty( $event_default['pagination'] ) ? 0 : (int)$event_default['pagination'];
 		$options['ordering_direction'] 			= !empty( $event_default['ordering_direction'] );
 		$options['accept_payments'] 			= empty( $event_default['accept_payments'] ) ? 0 : $event_default['accept_payments'];
 		$options['accept_api_logins'] 			= empty( $event_default['accept_api_logins'] ) ? 0 : $event_default['accept_api_logins'];
@@ -104,8 +104,7 @@ class Eab_Admin_Settings_Menu {
 		$options['currency'] 					= $event_default['currency'];
 		$options['paypal_email'] 				= $event_default['paypal_email'];
 		$options['paypal_sandbox'] 				= empty( $event_default['paypal_sandbox'] ) ? 0 : $event_default['paypal_sandbox'];
-
-		$options['override_appearance_defaults']	= empty( $event_default['override_appearance_defaults'] ) ? 0 : $event_default['override_appearance_defaults'];
+		$options['override_appearance_defaults']= empty( $event_default['override_appearance_defaults'] ) ? 0 : $event_default['override_appearance_defaults'];
 		$options['archive_template'] 			= empty( $event_default['archive_template'] ) ? '' : $event_default['archive_template'];
 		$options['single_template'] 			= empty( $event_default['single_template'] ) ? '' : $event_default['single_template'];
 

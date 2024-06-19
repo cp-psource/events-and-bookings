@@ -4577,17 +4577,17 @@ msgstr ""
 #, fuzzy
 msgid ""
 "Das <a href=\"https://n3rds.work/piestingtal_source/marketpress-shopsystem/"
-"\">PS-eCommerce</a> Plugin muss installiert und aktiviert sein, damit es "
+"\">MarketPress</a> Plugin muss installiert und aktiviert sein, damit es "
 "funktioniert"
 msgstr ""
 "Il plugin <a href=\"https://n3rds.work/piestingtal_source/marketpress-"
-"shopsystem/\">PS-eCommerce</a> deve essere installato e attivato per "
+"shopsystem/\">MarketPress</a> deve essere installato e attivato per "
 "funzionare"
 
 #: lib/plugins/eab-payment-marketpress.php:110
 #, fuzzy
-msgid "Zahlung mit PS-eCommerce Artikeln"
-msgstr "Pagamento con articoli PS-eCommerce"
+msgid "Zahlung mit MarketPress Artikeln"
+msgstr "Pagamento con articoli MarketPress"
 
 #: lib/plugins/eab-payment-marketpress.php:113
 #, fuzzy
