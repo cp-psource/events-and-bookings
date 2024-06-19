@@ -15,6 +15,10 @@ Detail: Minimale Nutzung: [weekly_event_calendar] <br /> Erweiterte Nutzung: [we
 
 class Eab_CalendarTable_WeeklyEventArchiveCalendar {
 
+	public $start_of_week;
+	public $time_format;
+	public $date_format;
+
 	private $_data;
 	protected $_events = array();
 	protected $_current_timestamp;

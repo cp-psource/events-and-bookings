@@ -10,6 +10,8 @@ AddonType: Events
 
 
 class Eab_Events_Alert_RSVP_Event_Modify {
+
+	public $_data;
 	
 	private function __construct () {
 		$this->_data = Eab_Options::get_instance();

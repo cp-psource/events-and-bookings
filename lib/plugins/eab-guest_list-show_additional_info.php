@@ -10,6 +10,8 @@
 
 class Eab_GuestList_ShowAdditionalInfo {
 
+    public $_data;
+
     public function __construct() {
         $this->_data = Eab_Options::get_instance();
     }

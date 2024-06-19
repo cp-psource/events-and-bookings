@@ -54,6 +54,8 @@ the language is set on a per-blog basis through the "Site language" option in th
 
 class Eab_Events_CountdownforNextEvent {
 
+	public $add_countdown;
+
 	private static $_scripts;
 
 	/**
