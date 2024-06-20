@@ -5,6 +5,7 @@ Plugin URI: https://cp-psource.github.io/ps-events/
 Description: Events gives you a flexible WordPress-based system for organizing parties, dinners, fundraisers - you name it.
 Author: PSOURCE
 Text Domain: eab
+Domain Path: languages
 Version: 1.9.9
 Author URI: https://github.com/cp-psource
 */

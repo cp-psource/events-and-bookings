@@ -1,118 +1,307 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Events +\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-09 20:05+0100\n"
-"PO-Revision-Date: 2015-11-09 20:05+0100\n"
+"POT-Creation-Date: 2024-06-20 17:48+0200\n"
+"PO-Revision-Date: 2024-06-20 16:17+0000\n"
 "Last-Translator: \n"
-"Language-Team: PSOURCE\n"
-"Language: en\n"
+"Language-Team: Deutsch\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
-"_n_noop:1,2;_c;_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_ex:1,2c;"
-"esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Loco https://localise.biz/\n"
 "X-Poedit-Basepath: ..\n"
-"X-Generator: Poedit 1.8.2\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: events-and-bookings.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.min.js\n"
+"X-Poedit-SearchPathExcluded-1: psource/psource-plugin-update/vendor\n"
+"Report-Msgid-Bugs-To: \n"
+"Language: de_DE\n"
+"X-Loco-Version: 2.6.10; wp-6.5.4"
 
-#: admin/class-eab-get-started-menu.php:8
+#: admin/class-eab-admin.php:56
+msgid "View all RSVPs"
+msgstr ""
+
+#: admin/class-eab-admin.php:57
+msgid "Back to getting started"
+msgstr "Zurück zum Einstieg"
+
+#: admin/class-eab-admin.php:69
+#, php-format
+msgid ""
+"You must must update your permalink structure to something other than "
+"default to use Events. <a href=\"%s\">You can do so here.</a>"
+msgstr ""
+
+#: admin/class-eab-admin.php:103
+msgid "Loading maps... please wait"
+msgstr ""
+
+#: admin/class-eab-admin.php:104
+msgid "Insert this map"
+msgstr ""
+
+#: admin/class-eab-admin.php:105
+msgid "Preview/Edit"
+msgstr ""
+
+#: admin/class-eab-admin.php:106
+msgid "Delete"
+msgstr ""
+
+#: admin/class-eab-admin.php:107
+msgid "Add Map"
+msgstr "Karte hinzufügen"
+
+#: admin/class-eab-admin.php:108
+msgid "Existing map"
+msgstr ""
+
+#: admin/class-eab-admin.php:109
+msgid "No existing maps"
+msgstr ""
+
+#: admin/class-eab-admin.php:110
+msgid "Create new map"
+msgstr ""
+
+#: admin/class-eab-admin.php:111
+msgid "Advanced mode"
+msgstr ""
+
+#: admin/class-eab-admin.php:112
+msgid ""
+"Activate Advanced mode to select individual maps to merge into one new map "
+"or to batch delete maps"
+msgstr ""
+"Aktiviere den erweiterten Modus, um einzelne Karten auszuwählen und zu einer "
+"neuen Karte zusammenzuführen oder Karten stapelweise zu löschen."
+
+#: admin/class-eab-admin.php:113
+msgid ""
+"To create a new map from several maps select the maps you want to use and "
+"click Merge locations"
+msgstr ""
+
+#: admin/class-eab-admin.php:114
+msgid "Exit advanced mode"
+msgstr ""
+
+#: admin/class-eab-admin.php:115
+msgid "Merge locations"
+msgstr ""
+
+#: admin/class-eab-admin.php:116
+msgid "Batch delete"
+msgstr ""
+
+#: admin/class-eab-admin.php:117
+msgid ""
+"Create a new map which can be inserted into this post or page. Once you are "
+"done you can manage all maps below"
+msgstr ""
+
+#: admin/class-eab-admin.php:174
+msgid "Attending / Undecided"
+msgstr ""
+
+#: admin/class-eab-admin.php:175 lib/plugins/eab-buddypres-my_events.php:82
+msgid "Not Attending"
+msgstr ""
+
+#: admin/class-eab-admin.php:178 events-and-bookings.php:1097
+msgid "Export"
+msgstr ""
+
+#: admin/class-eab-admin.php:195
+#, php-format
+msgid "From %s, repeats every %s until %s"
+msgstr ""
+
+#: admin/class-eab-admin.php:208
+msgid "Draft"
+msgstr ""
+
+#: admin/class-eab-admin.php:209
+msgid "Private"
+msgstr ""
+
+#: admin/class-eab-admin.php:210
+msgid "Pending"
+msgstr ""
+
+#: admin/class-eab-admin.php:214
+#, php-format
+msgid "Edit &#8220;%s&#8221;"
+msgstr ""
+
+#: admin/class-eab-admin.php:219 lib/class-eab-taxonomies.php:21
+msgid "Edit Event"
+msgstr ""
+
+#: admin/class-eab-admin.php:219
+msgid "Edit"
+msgstr ""
+
+#: admin/class-eab-admin.php:220
+msgid "Edit this Event inline"
+msgstr ""
+
+#: admin/class-eab-admin.php:220
+msgid "Quick&nbsp;Edit"
+msgstr ""
+
+#: admin/class-eab-admin.php:228
+#, php-format
+msgid "Restore &#8220;%s&#8221; from the Trash"
+msgstr ""
+
+#: admin/class-eab-admin.php:229
+msgid "Restore"
+msgstr ""
+
+#: admin/class-eab-admin.php:232
+msgid "Move this Event to the Trash"
+msgstr ""
+
+#: admin/class-eab-admin.php:232
+msgid "Trash"
+msgstr ""
+
+#: admin/class-eab-admin.php:235
+msgid "Delete this Event permanently"
+msgstr ""
+
+#: admin/class-eab-admin.php:235
+msgid "Delete Permanently"
+msgstr ""
+
+#: admin/class-eab-admin.php:247
+#, php-format
+msgid "View &#8220;%s&#8221;"
+msgstr ""
+
+#: admin/class-eab-admin.php:247
+msgid "View"
+msgstr ""
+
+#: admin/class-eab-admin.php:272
+msgid "When"
+msgstr ""
+
+#: admin/class-eab-admin.php:273
+msgid "Where"
+msgstr ""
+
+#: admin/class-eab-admin.php:276
+msgid "RSVPs"
+msgstr ""
+
+#: admin/class-eab-get-started-menu.php:12
 msgid "Get Started"
-msgstr ""
+msgstr "Loslegen"
 
-#: admin/class-eab-get-started-menu.php:9
+#: admin/class-eab-get-started-menu.php:13
 msgid "Get started"
-msgstr ""
+msgstr "Loslegen"
 
-#: admin/class-eab-get-started-menu.php:23
+#: admin/class-eab-get-started-menu.php:27
 msgid "Getting started"
-msgstr ""
+msgstr "Erste Schritte"
 
-#: admin/class-eab-get-started-menu.php:26
+#. Description of the plugin/theme
+#: admin/class-eab-get-started-menu.php:30
 #: lib/contextual_help/class_eab_admin_help.php:39
 msgid ""
 "Events gives you a flexible WordPress-based system for organizing parties, "
 "dinners, fundraisers - you name it."
 msgstr ""
 
-#: admin/class-eab-get-started-menu.php:31
+#: admin/class-eab-get-started-menu.php:35
 msgid "Getting Started"
-msgstr ""
+msgstr "Erste Schritte"
 
-#: admin/class-eab-get-started-menu.php:33
+#: admin/class-eab-get-started-menu.php:37
 msgid ""
 "You're almost ready! Follow these steps and start creating events on your "
 "WordPress site."
 msgstr ""
+"Du bist fast fertig! Folge diesen Schritten und beginne mit der Erstellung "
+"von Events auf Deiner Webseite."
 
-#: admin/class-eab-get-started-menu.php:36
+#: admin/class-eab-get-started-menu.php:40
 msgid ""
 "Before creating an event, you'll need to configure some basic settings, like "
 "your root slug and payment options."
 msgstr ""
+"Bevor Du ein Ereignis erstellst, musst Du einige grundlegende Einstellungen "
+"konfigurieren, beispielsweise Deinen Root-Slug und Deine Zahlungsoptionen."
 
-#: admin/class-eab-get-started-menu.php:37
+#: admin/class-eab-get-started-menu.php:41
 msgid "Configure Your Settings"
-msgstr ""
+msgstr "Konfiguriere Deine Einstellungen"
 
-#: admin/class-eab-get-started-menu.php:40
+#: admin/class-eab-get-started-menu.php:44
 msgid "Now you can create your first event."
 msgstr ""
 
-#: admin/class-eab-get-started-menu.php:41
+#: admin/class-eab-get-started-menu.php:45
 msgid "Add an Event"
-msgstr ""
+msgstr "Ereignis hinzufügen"
 
-#: admin/class-eab-get-started-menu.php:44
+#: admin/class-eab-get-started-menu.php:48
 msgid "You can view and edit your existing events whenever you like."
 msgstr ""
 
-#: admin/class-eab-get-started-menu.php:45
+#: admin/class-eab-get-started-menu.php:49
 #: lib/plugins/eab-events-capabilities.php:19
 msgid "Edit Events"
 msgstr ""
 
-#: admin/class-eab-get-started-menu.php:48
+#: admin/class-eab-get-started-menu.php:52
 msgid "The archive displays a list of upcoming events on your site."
 msgstr ""
 
-#: admin/class-eab-get-started-menu.php:49
+#: admin/class-eab-get-started-menu.php:53
 msgid "Events Archive"
 msgstr ""
 
-#: admin/class-eab-get-started-menu.php:59
+#: admin/class-eab-get-started-menu.php:63
 msgid "Need help?"
 msgstr ""
 
-#: admin/class-eab-get-started-menu.php:62
+#: admin/class-eab-get-started-menu.php:66
 msgid "Check out the Events plugin page on PSOURCE"
 msgstr ""
 
-#: admin/class-eab-get-started-menu.php:63
+#: admin/class-eab-get-started-menu.php:67
 msgid "Post a question about this plugin on our support forums"
 msgstr ""
 
-#: admin/class-eab-get-started-menu.php:64
-msgid "Watch a video of the Events plugin in action"
+#: admin/class-eab-get-started-menu.php:68
+msgid "Bug Report"
 msgstr ""
 
-#: admin/class-eab-settings-menu.php:8
+#: admin/class-eab-settings-menu.php:11
 msgid "Event Settings"
-msgstr ""
+msgstr "Ereigniseinstellungen"
 
-#: admin/class-eab-settings-menu.php:9
+#: admin/class-eab-settings-menu.php:12
 msgid "Settings"
-msgstr ""
+msgstr "Einstellungen"
 
-#: admin/class-eab-settings-menu.php:79
+#: admin/class-eab-settings-menu.php:82
 #, php-format
 msgid "Plugin: %s"
 msgstr ""
 
-#: admin/class-eab-settings-menu.php:82
+#: admin/class-eab-settings-menu.php:85
 #, php-format
 msgid "Theme: %s"
 msgstr ""
@@ -141,21 +330,23 @@ msgstr ""
 
 #: admin/views/settings-menu.php:2
 msgid "Settings saved."
-msgstr ""
+msgstr "Einstellungen gespeichert."
 
 #: admin/views/settings-menu.php:6
 msgid "Events Settings"
-msgstr ""
+msgstr "Ereigniseinstellungen"
 
 #: admin/views/settings-menu.php:9
 msgid ""
 "This is where you manage your general settings for the plugin and how events "
 "are displayed on your site."
 msgstr ""
+"Hier verwaltest Du Deine allgemeinen Einstellungen für das Plugin und wie "
+"Ereignisse auf Deiner Webseite angezeigt werden."
 
 #: admin/views/settings-menu.php:18
 msgid "Plugin settings"
-msgstr ""
+msgstr "Plugin-Einstellungen"
 
 #: admin/views/settings-menu.php:21
 msgid "Set your root slug here:"
@@ -167,118 +358,140 @@ msgid ""
 "format is yoursite.com/events, but you can change this to whatever you want."
 msgstr ""
 
-#: admin/views/settings-menu.php:27
+#: admin/views/settings-menu.php:26
+msgid "Set descending ordering direction by start date:"
+msgstr ""
+
+#: admin/views/settings-menu.php:31
+msgid ""
+"This is the ordering direction how your events archive can be ordering. By "
+"default, the direction is ascending."
+msgstr ""
+
+#: admin/views/settings-menu.php:34
+msgid "Set pagination (events):"
+msgstr ""
+
+#: admin/views/settings-menu.php:36
+msgid ""
+"This is the pagination for events archive. By default - 0, without "
+"pagination."
+msgstr ""
+
+#: admin/views/settings-menu.php:40
 msgid "Will you be accepting payment for any of your events?"
 msgstr ""
 
-#: admin/views/settings-menu.php:29
+#: admin/views/settings-menu.php:42
 msgid ""
 "Leave this box unchecked if you don't intend to collect payment at any time."
 msgstr ""
 
-#: admin/views/settings-menu.php:33
+#: admin/views/settings-menu.php:46
 msgid "Allow Facebook and Twitter Login?"
 msgstr ""
 
-#: admin/views/settings-menu.php:35
+#: admin/views/settings-menu.php:48
 msgid ""
 "Check this box to allow guests to RSVP to an event with their Facebook or "
 "Twitter account. (If this feature is not enabled, guests will need a "
 "WordPress account to RSVP)."
 msgstr ""
 
-#: admin/views/settings-menu.php:39
+#: admin/views/settings-menu.php:52
 msgid "Display public RSVPs?"
 msgstr ""
 
-#: admin/views/settings-menu.php:41
+#: admin/views/settings-menu.php:54
 msgid ""
 "Check this box to display a \"who's attending\" list in the event details."
 msgstr ""
 
-#: admin/views/settings-menu.php:47
+#: admin/views/settings-menu.php:60
 #: lib/contextual_help/class_eab_admin_help.php:190
 msgid "Appearance settings"
-msgstr ""
+msgstr "Darstellungseinstellungen"
 
-#: admin/views/settings-menu.php:50
+#: admin/views/settings-menu.php:63
 msgid "Override default appearance?"
 msgstr ""
 
-#: admin/views/settings-menu.php:52
+#: admin/views/settings-menu.php:65
 msgid ""
 "Check this box if you want to customize the appearance of your events with "
 "overriding templates."
 msgstr ""
 
-#: admin/views/settings-menu.php:57
+#: admin/views/settings-menu.php:70
 msgid "Archive template"
 msgstr ""
 
-#: admin/views/settings-menu.php:65 admin/views/settings-menu.php:81
+#: admin/views/settings-menu.php:78 admin/views/settings-menu.php:94
 msgid "* templates may not work in all themes"
-msgstr ""
+msgstr "* Vorlagen funktionieren möglicherweise nicht in allen Designs"
 
-#: admin/views/settings-menu.php:66
+#: admin/views/settings-menu.php:79
 msgid "Choose how the events archive is displayed on your site."
 msgstr ""
 
-#: admin/views/settings-menu.php:73
+#: admin/views/settings-menu.php:86
 msgid "Single Event template"
 msgstr ""
 
-#: admin/views/settings-menu.php:82
+#: admin/views/settings-menu.php:95
 msgid "Choose how single event listings are displayed on your site."
 msgstr ""
 
-#: admin/views/settings-menu.php:93
+#: admin/views/settings-menu.php:108
 msgid "Payment settings"
-msgstr ""
+msgstr "Zahlungseinstellungen"
 
-#: admin/views/settings-menu.php:96
+#: admin/views/settings-menu.php:111
 msgid "Currency"
 msgstr ""
 
-#: admin/views/settings-menu.php:98
+#: admin/views/settings-menu.php:113
 #, php-format
 msgid ""
-"Nominate the currency in which you will be accepting payment for your "
-"events. For more information see <a href=\"%s\" target=\"_blank\">Accepted "
-"PayPal Currency Codes</a>."
+"Nominate the currency in which you will be accepting payment for your events."
+" For more information see <a href=\"%s\" target=\"_blank\">Accepted PayPal "
+"Currency Codes</a>."
 msgstr ""
 
-#: admin/views/settings-menu.php:102
+#: admin/views/settings-menu.php:117
 msgid "PayPal E-Mail address"
 msgstr ""
 
-#: admin/views/settings-menu.php:104
+#: admin/views/settings-menu.php:119
 msgid ""
 "Add the primary email address of the PayPal account you will use to collect "
 "payment for your events."
 msgstr ""
+"Füge die primäre E-Mail-Adresse des PayPal-Kontos hinzu, das Du zum "
+"Einziehen der Zahlungen für Deine Veranstaltungen verwendest."
 
-#: admin/views/settings-menu.php:108
+#: admin/views/settings-menu.php:123
 msgid "PayPal Sandbox mode?"
 msgstr ""
 
-#: admin/views/settings-menu.php:110
+#: admin/views/settings-menu.php:125
 msgid "Use PayPal Sandbox mode for testing your payments"
 msgstr ""
 
-#: admin/views/settings-menu.php:118
+#: admin/views/settings-menu.php:133
 msgid "Add-ons"
 msgstr ""
 
-#: admin/views/settings-menu.php:128
+#: admin/views/settings-menu.php:143
 msgid "Save Changes"
 msgstr ""
 
-#: admin/views/settings-menu.php:130
+#: admin/views/settings-menu.php:145
 msgid "Go back to Getting started guide"
-msgstr ""
+msgstr "Zurück zur Kurzanleitung"
 
-#: admin/views/settings-menu.php:136 lib/plugins/eab-import-meetup.php:377
-#: lib/plugins/eab-import-meetup.php:389 lib/plugins/eab-import-meetup.php:405
+#: admin/views/settings-menu.php:151 lib/plugins/eab-import-meetup.php:385
+#: lib/plugins/eab-import-meetup.php:397 lib/plugins/eab-import-meetup.php:414
 msgid "Please, hold on..."
 msgstr ""
 
@@ -290,437 +503,272 @@ msgstr ""
 #: default-templates/default/archive-incsub_event.php:8
 #: default-templates/full-width/archive-incsub_event.php:8
 #: lib/class-eab-taxonomies.php:17 lib/class-eab-taxonomies.php:27
-#: lib/class_eab_template.php:350 lib/plugins/eab-buddypres-my_events.php:52
+#: lib/class_eab_template.php:380 lib/plugins/eab-buddypres-my_events.php:52
 #: lib/plugins/eab-events-front_page_editing.php:170
 msgid "Events"
 msgstr ""
 
 #: default-templates/default/archive-incsub_event.php:19
 #: default-templates/full-width/archive-incsub_event.php:19
-#: lib/class_eab_template.php:22
+#: lib/class_eab_template.php:30
 #: lib/plugins/eab-event-recurring-shortcode.php:95
 msgid "View event"
 msgstr ""
 
 #: default-templates/default/single-incsub_event.php:32
-#: lib/class_eab_template.php:55
+#: lib/class_eab_template.php:70
 msgid "You haven't paid for this event"
 msgstr ""
 
 #: default-templates/default/single-incsub_event.php:41
-#: lib/class_eab_template.php:77
+#: lib/class_eab_template.php:98
 msgid "About this event:"
-msgstr ""
+msgstr "Über diese Veranstaltung:"
 
 #: default-templates/default/single-incsub_event.php:43
-#: lib/class_eab_template.php:78
+#: lib/class_eab_template.php:99
 msgid "Created by "
 msgstr ""
 
-#: events-and-bookings.php:228
-msgid "View all RSVPs"
-msgstr ""
-
-#: events-and-bookings.php:229
-msgid "Back to getting started"
-msgstr ""
-
-#: events-and-bookings.php:309
-msgid "Loading maps... please wait"
-msgstr ""
-
-#: events-and-bookings.php:310
-msgid "Insert this map"
-msgstr ""
-
-#: events-and-bookings.php:311
-msgid "Preview/Edit"
-msgstr ""
-
-#: events-and-bookings.php:312
-msgid "Delete"
-msgstr ""
-
-#: events-and-bookings.php:313
-msgid "Add Map"
-msgstr ""
-
-#: events-and-bookings.php:314
-msgid "Existing map"
-msgstr ""
-
-#: events-and-bookings.php:315
-msgid "No existing maps"
-msgstr ""
-
-#: events-and-bookings.php:316
-msgid "Create new map"
-msgstr ""
-
-#: events-and-bookings.php:317
-msgid "Advanced mode"
-msgstr ""
-
-#: events-and-bookings.php:318
-msgid ""
-"Activate Advanced mode to select individual maps to merge into one new map "
-"or to batch delete maps"
-msgstr ""
-
-#: events-and-bookings.php:319
-msgid ""
-"To create a new map from several maps select the maps you want to use and "
-"click Merge locations"
-msgstr ""
-
-#: events-and-bookings.php:320
-msgid "Exit advanced mode"
-msgstr ""
-
-#: events-and-bookings.php:321
-msgid "Merge locations"
-msgstr ""
-
-#: events-and-bookings.php:322
-msgid "Batch delete"
-msgstr ""
-
-#: events-and-bookings.php:323
-msgid ""
-"Create a new map which can be inserted into this post or page. Once you are "
-"done you can manage all maps below"
-msgstr ""
-
-#: events-and-bookings.php:331
-#, php-format
-msgid ""
-"You must must update your permalink structure to something other than "
-"default to use Events. <a href=\"%s\">You can do so here.</a>"
-msgstr ""
-
-#: events-and-bookings.php:339
+#: events-and-bookings.php:341
 msgid ""
 "Excellent, few more steps! We need you to login or register to get you "
 "marked as coming!"
 msgstr ""
+"Ausgezeichnet, noch ein paar Schritte! Du musst Dich anmelden oder "
+"registrieren, damit Du als Teilnehmer markiert wirst!"
 
-#: events-and-bookings.php:343
+#: events-and-bookings.php:345
 msgid ""
 "Please login or register to help us let you know any changes about the event "
 "and record your response!"
 msgstr ""
 
-#: events-and-bookings.php:347
+#: events-and-bookings.php:349
 msgid ""
 "That's too bad you won't be able to make it, if you login or register we "
 "will be able to record your response"
 msgstr ""
 
-#: events-and-bookings.php:553 lib/class_eab_admin_tutorial.php:92
+#: events-and-bookings.php:640 lib/class_eab_admin_tutorial.php:92
 #: lib/contextual_help/class_eab_admin_help.php:146
 msgid "Event Details"
 msgstr ""
 
-#: events-and-bookings.php:554 lib/class_eab_admin_tutorial.php:97
+#: events-and-bookings.php:641 lib/class_eab_admin_tutorial.php:97
 msgid "Event RSVPs"
 msgstr ""
 
-#: events-and-bookings.php:556
+#: events-and-bookings.php:643
 msgid "Are you following the step by step guide?"
 msgstr ""
 
-#: events-and-bookings.php:650 lib/class_eab_admin_tutorial.php:66
+#: events-and-bookings.php:719 lib/class_eab_admin_tutorial.php:66
 #: lib/class_eab_admin_tutorial.php:71
 msgid "Event location"
 msgstr ""
 
-#: events-and-bookings.php:664
-#: lib/contextual_help/class_eab_admin_help.php:153
+#: events-and-bookings.php:733 lib/contextual_help/class_eab_admin_help.php:153
 msgid "Event times and dates"
 msgstr ""
 
-#: events-and-bookings.php:681 events-and-bookings.php:702
+#: events-and-bookings.php:750 events-and-bookings.php:771
 #, php-format
 msgid "Part %d"
 msgstr ""
 
-#: events-and-bookings.php:681 events-and-bookings.php:702
-#: events-and-bookings.php:727 lib/plugins/eab-payment-multiple_prices.php:96
+#: events-and-bookings.php:750 events-and-bookings.php:771
+#: events-and-bookings.php:796 lib/plugins/eab-payment-multiple_prices.php:96
 msgid "Remove"
 msgstr ""
 
-#: events-and-bookings.php:683 events-and-bookings.php:704
-#: events-and-bookings.php:729
-msgid "Start"
-msgstr ""
+#: events-and-bookings.php:752 events-and-bookings.php:773
+#: events-and-bookings.php:798
+#, php-format
+msgid "%sStart%s"
+msgstr "%sStart%s"
 
-#: events-and-bookings.php:687 events-and-bookings.php:708
-#: events-and-bookings.php:733
+#: events-and-bookings.php:756 events-and-bookings.php:777
+#: events-and-bookings.php:802
+#: lib/plugins/eab-events-front_page_editing.php:425
 msgid "No start time"
 msgstr ""
 
-#: events-and-bookings.php:691 events-and-bookings.php:712
-#: events-and-bookings.php:737
-msgid "End"
-msgstr ""
+#: events-and-bookings.php:760 events-and-bookings.php:781
+#: events-and-bookings.php:806
+#, php-format
+msgid "%sEnd%s"
+msgstr "%sEnde%s"
 
-#: events-and-bookings.php:695 events-and-bookings.php:716
-#: events-and-bookings.php:741
+#: events-and-bookings.php:764 events-and-bookings.php:785
+#: events-and-bookings.php:810
+#: lib/plugins/eab-events-front_page_editing.php:445
 msgid "No end time"
 msgstr ""
 
-#: events-and-bookings.php:722
+#: events-and-bookings.php:791
 msgid "Click here to add another date to event"
 msgstr ""
 
-#: events-and-bookings.php:727
+#: events-and-bookings.php:796
 msgid "Part bank"
 msgstr ""
 
-#: events-and-bookings.php:757
+#: events-and-bookings.php:826
 msgid "Edit instances"
 msgstr ""
 
-#: events-and-bookings.php:778
+#: events-and-bookings.php:849
 msgid "This is a recurring event"
 msgstr ""
 
-#: events-and-bookings.php:779
+#: events-and-bookings.php:850
 msgid "This is a regular event"
 msgstr ""
 
-#: events-and-bookings.php:803
+#: events-and-bookings.php:874
 msgid "Start on"
 msgstr ""
 
-#: events-and-bookings.php:809
+#: events-and-bookings.php:880
 msgid "Repeat every"
 msgstr ""
 
-#: events-and-bookings.php:811
+#: events-and-bookings.php:882
 msgid "Select one"
 msgstr ""
 
-#: events-and-bookings.php:830 events-and-bookings.php:839
+#: events-and-bookings.php:901 events-and-bookings.php:910
 msgid "On"
 msgstr ""
 
-#: events-and-bookings.php:831 events-and-bookings.php:840
-#: events-and-bookings.php:860 events-and-bookings.php:900
-#: events-and-bookings.php:932 events-and-bookings.php:940
+#: events-and-bookings.php:902 events-and-bookings.php:911
+#: events-and-bookings.php:933 events-and-bookings.php:975
+#: events-and-bookings.php:1009 events-and-bookings.php:1017
 msgid "At"
 msgstr ""
 
-#: events-and-bookings.php:870
+#: events-and-bookings.php:943
 msgid "First"
 msgstr ""
 
-#: events-and-bookings.php:871
+#: events-and-bookings.php:944
 msgid "Second"
 msgstr ""
 
-#: events-and-bookings.php:872
+#: events-and-bookings.php:945
 msgid "Third"
 msgstr ""
 
-#: events-and-bookings.php:873
+#: events-and-bookings.php:946
 msgid "Fourth"
 msgstr ""
 
-#: events-and-bookings.php:874
+#: events-and-bookings.php:947
 msgid "Fifth"
 msgstr ""
 
-#: events-and-bookings.php:875
+#: events-and-bookings.php:948
 msgid "Last"
 msgstr ""
 
-#: events-and-bookings.php:899
+#: events-and-bookings.php:974
 #, php-format
 msgid "Every %s %s"
 msgstr ""
 
-#: events-and-bookings.php:931
+#: events-and-bookings.php:1008
 #, php-format
 msgid "Every %s weeks, on %s"
 msgstr ""
 
-#: events-and-bookings.php:946
+#: events-and-bookings.php:1023
 msgid "Until"
 msgstr ""
 
-#: events-and-bookings.php:952
+#: events-and-bookings.php:1029
 msgid "Event duration"
 msgstr ""
 
-#: events-and-bookings.php:953
+#: events-and-bookings.php:1030
 msgid "hours"
 msgstr ""
 
-#: events-and-bookings.php:970 lib/class_eab_admin_tutorial.php:82
-#: lib/plugins/eab-events-front_page_editing.php:410
+#: events-and-bookings.php:1047 lib/class_eab_admin_tutorial.php:82
+#: lib/plugins/eab-events-front_page_editing.php:460
 msgid "Event status"
 msgstr ""
 
-#: events-and-bookings.php:973
+#: events-and-bookings.php:1050
 msgid "What is the event status? "
 msgstr ""
 
-#: events-and-bookings.php:975
-#: lib/plugins/eab-events-front_page_editing.php:412
+#: events-and-bookings.php:1052
+#: lib/plugins/eab-events-front_page_editing.php:462
 msgid "Open"
 msgstr ""
 
-#: events-and-bookings.php:976
-#: lib/plugins/eab-events-countdown-for-next-event.php:163
-#: lib/plugins/eab-events-countdown-for-next-event.php:313
-#: lib/plugins/eab-events-event-countdown.php:160
-#: lib/plugins/eab-events-front_page_editing.php:413
+#: events-and-bookings.php:1053
+#: lib/plugins/eab-events-countdown-for-next-event.php:167
+#: lib/plugins/eab-events-countdown-for-next-event.php:317
+#: lib/plugins/eab-events-event-countdown.php:165
+#: lib/plugins/eab-events-front_page_editing.php:463
 #: lib/plugins/eab-events-next-event-shortcode.php:62
 #: lib/plugins/eab-events-next-event-shortcode.php:115
 msgid "Closed"
 msgstr ""
 
-#: events-and-bookings.php:977
-#: lib/plugins/eab-events-front_page_editing.php:414
+#: events-and-bookings.php:1054
+#: lib/plugins/eab-events-front_page_editing.php:464
 msgid "Expired"
 msgstr ""
 
-#: events-and-bookings.php:978
-#: lib/plugins/eab-events-front_page_editing.php:415
+#: events-and-bookings.php:1055
+#: lib/plugins/eab-events-front_page_editing.php:465
 msgid "Archived"
 msgstr ""
 
-#: events-and-bookings.php:997 lib/class_eab_admin_tutorial.php:87
+#: events-and-bookings.php:1074 lib/class_eab_admin_tutorial.php:87
 msgid "Event type"
 msgstr ""
 
-#: events-and-bookings.php:998
+#: events-and-bookings.php:1075
 msgid "Is this a paid event? "
 msgstr ""
 
-#: events-and-bookings.php:1000 lib/class_eab_exporter.php:166
-#: lib/plugins/eab-email-enewsletter_integration.php:267
-#: lib/plugins/eab-events-front_page_editing.php:426
-#: lib/plugins/eab-rsvps-additional_registration_fields.php:154
+#: events-and-bookings.php:1077 lib/class_eab_exporter.php:166
+#: lib/plugins/eab-email-enewsletter_integration.php:299
+#: lib/plugins/eab-events-front_page_editing.php:476
+#: lib/plugins/eab-rsvps-additional_registration_fields.php:192
+#: lib/plugins/eab-rsvps-additional_registration_fields.php:195
+#: lib/plugins/eab-rsvps-additional_registration_fields.php:246
+#: lib/plugins/eab-rsvps-additional_registration_fields.php:248
 msgid "Yes"
 msgstr ""
 
-#: events-and-bookings.php:1001 lib/class_eab_exporter.php:120
-#: lib/class_eab_exporter.php:166 lib/class_eab_template.php:148
-#: lib/class_eab_template.php:190 lib/class_eab_template.php:498
-#: lib/class_eab_template.php:523 lib/class_eab_template.php:646
-#: lib/plugins/eab-email-enewsletter_integration.php:269
-#: lib/plugins/eab-events-front_page_editing.php:427
-#: lib/plugins/eab-rsvps-additional_registration_fields.php:154
+#: events-and-bookings.php:1078 lib/class_eab_exporter.php:120
+#: lib/class_eab_exporter.php:166 lib/class_eab_template.php:169
+#: lib/class_eab_template.php:211 lib/class_eab_template.php:528
+#: lib/class_eab_template.php:553 lib/class_eab_template.php:680
+#: lib/plugins/eab-email-enewsletter_integration.php:301
+#: lib/plugins/eab-events-front_page_editing.php:477
+#: lib/plugins/eab-rsvps-additional_registration_fields.php:192
+#: lib/plugins/eab-rsvps-additional_registration_fields.php:195
+#: lib/plugins/eab-rsvps-additional_registration_fields.php:246
+#: lib/plugins/eab-rsvps-additional_registration_fields.php:248
 msgid "No"
 msgstr ""
 
-#: events-and-bookings.php:1006
-#: lib/plugins/eab-events-front_page_editing.php:430
+#: events-and-bookings.php:1083
+#: lib/plugins/eab-events-front_page_editing.php:480
 msgid "Fee"
 msgstr ""
 
-#: events-and-bookings.php:1021 events-and-bookings.php:1302
-msgid "Export"
-msgstr ""
-
-#: events-and-bookings.php:1055
+#: events-and-bookings.php:1130
 msgid "No bookings"
 msgstr ""
 
-#: events-and-bookings.php:1279
-msgid "When"
-msgstr ""
-
-#: events-and-bookings.php:1280
-msgid "Where"
-msgstr ""
-
-#: events-and-bookings.php:1283
-msgid "RSVPs"
-msgstr ""
-
-#: events-and-bookings.php:1298
-msgid "Attending / Undecided"
-msgstr ""
-
-#: events-and-bookings.php:1299 lib/plugins/eab-buddypres-my_events.php:82
-msgid "Not Attending"
-msgstr ""
-
-#: events-and-bookings.php:1319
-#, php-format
-msgid "From %s, repeats every %s until %s"
-msgstr ""
-
-#: events-and-bookings.php:1332
-msgid "Draft"
-msgstr ""
-
-#: events-and-bookings.php:1333
-msgid "Private"
-msgstr ""
-
-#: events-and-bookings.php:1334
-msgid "Pending"
-msgstr ""
-
-#: events-and-bookings.php:1338
-#, php-format
-msgid "Edit &#8220;%s&#8221;"
-msgstr ""
-
-#: events-and-bookings.php:1343 lib/class-eab-taxonomies.php:21
-msgid "Edit Event"
-msgstr ""
-
-#: events-and-bookings.php:1343
-msgid "Edit"
-msgstr ""
-
-#: events-and-bookings.php:1344
-msgid "Edit this Event inline"
-msgstr ""
-
-#: events-and-bookings.php:1344
-msgid "Quick&nbsp;Edit"
-msgstr ""
-
-#: events-and-bookings.php:1349
-msgid "Restore this Event from the Trash"
-msgstr ""
-
-#: events-and-bookings.php:1349
-msgid "Restore"
-msgstr ""
-
-#: events-and-bookings.php:1351
-msgid "Move this Event to the Trash"
-msgstr ""
-
-#: events-and-bookings.php:1351
-msgid "Trash"
-msgstr ""
-
-#: events-and-bookings.php:1354
-msgid "Delete this Event permanently"
-msgstr ""
-
-#: events-and-bookings.php:1354
-msgid "Delete Permanently"
-msgstr ""
-
-#: events-and-bookings.php:1366
-#, php-format
-msgid "View &#8220;%s&#8221;"
-msgstr ""
-
-#: events-and-bookings.php:1366
-msgid "View"
-msgstr ""
-
-#: events-and-bookings.php:1476
+#: events-and-bookings.php:1459
 msgid "Once every half an hour"
 msgstr ""
 
@@ -732,11 +780,11 @@ msgstr ""
 #: lib/plugins/eab-events-front_page_editing.php:113
 #: lib/plugins/eab-events-front_page_editing.php:176
 msgid "Add Event"
-msgstr ""
+msgstr "Ereignis hinzufügen"
 
 #: lib/class-eab-taxonomies.php:20
 msgid "Add New Event"
-msgstr ""
+msgstr "Neues Ereignis hinzufügen"
 
 #: lib/class-eab-taxonomies.php:22
 msgid "New Event"
@@ -777,104 +825,104 @@ msgid_plural "Recurrent <span class=\"count\">(%s)</span>"
 msgstr[0] ""
 msgstr[1] ""
 
-#: lib/class_eab_addon_handler.php:199
+#: lib/class_eab_addon_handler.php:211
 msgid "Deactivate"
 msgstr ""
 
-#: lib/class_eab_addon_handler.php:201
+#: lib/class_eab_addon_handler.php:213
 msgid "Activate"
-msgstr ""
+msgstr "Aktivieren"
 
-#: lib/class_eab_addon_handler.php:207
+#: lib/class_eab_addon_handler.php:219
 #, php-format
 msgid "Version %s"
 msgstr ""
 
-#: lib/class_eab_addon_handler.php:209
+#: lib/class_eab_addon_handler.php:221
 #, php-format
 msgid "by %s"
 msgstr ""
 
-#: lib/class_eab_addon_handler.php:225 lib/class_eab_addon_handler.php:241
+#: lib/class_eab_addon_handler.php:237 lib/class_eab_addon_handler.php:253
 msgid "All"
 msgstr ""
 
-#: lib/class_eab_addon_handler.php:233
+#: lib/class_eab_addon_handler.php:245
 msgid "Filter"
 msgstr ""
 
-#: lib/class_eab_addon_handler.php:239
+#: lib/class_eab_addon_handler.php:251
 msgid "Show"
 msgstr ""
 
-#: lib/class_eab_addon_handler.php:242 lib/class_eab_addon_handler.php:251
+#: lib/class_eab_addon_handler.php:254 lib/class_eab_addon_handler.php:263
 msgid "Active"
-msgstr ""
+msgstr "Aktiv"
 
-#: lib/class_eab_addon_handler.php:243
+#: lib/class_eab_addon_handler.php:255
 msgid "Inactive"
 msgstr ""
 
-#: lib/class_eab_addon_handler.php:248
+#: lib/class_eab_addon_handler.php:260
 msgid "Check"
 msgstr ""
 
-#: lib/class_eab_addon_handler.php:250
+#: lib/class_eab_addon_handler.php:262
 msgid "None"
 msgstr ""
 
-#: lib/class_eab_addon_handler.php:256
+#: lib/class_eab_addon_handler.php:268
 msgid ""
 "You are about to activate multiple add-ons. Are you sure you want to do this?"
 msgstr ""
 
-#: lib/class_eab_addon_handler.php:256
+#: lib/class_eab_addon_handler.php:268
 msgid "Activate selected"
-msgstr ""
+msgstr "Ausgewählte aktivieren"
 
-#: lib/class_eab_addon_handler.php:258
+#: lib/class_eab_addon_handler.php:270
 msgid ""
 "You are about to deactivate multiple add-ons. Are you sure you want to do "
 "this?"
 msgstr ""
 
-#: lib/class_eab_addon_handler.php:258
+#: lib/class_eab_addon_handler.php:270
 msgid "Deactivate selected"
 msgstr ""
 
-#: lib/class_eab_addon_handler.php:267
+#: lib/class_eab_addon_handler.php:279
 msgid "Name"
 msgstr ""
 
-#: lib/class_eab_addon_handler.php:268
+#: lib/class_eab_addon_handler.php:280
 msgid "Description"
 msgstr ""
 
-#: lib/class_eab_addon_handler.php:425
+#: lib/class_eab_addon_handler.php:437
 msgid ""
 "Something might have gone wrong with add-on manipulation, please check your "
 "add-on status"
 msgstr ""
 
-#: lib/class_eab_addon_handler.php:426
+#: lib/class_eab_addon_handler.php:438
 msgid "Add-on successfully (de)activated"
 msgstr ""
 
-#: lib/class_eab_addon_handler.php:429
+#: lib/class_eab_addon_handler.php:441
 msgid "There was something wrong with (de)activating the add-on."
 msgstr ""
 
-#: lib/class_eab_addon_handler.php:444
+#: lib/class_eab_addon_handler.php:456
 msgid ""
 "Something might have gone wrong with add-ons manipulation, please check your "
 "add-ons respective status"
 msgstr ""
 
-#: lib/class_eab_addon_handler.php:445
+#: lib/class_eab_addon_handler.php:457
 msgid "Selected add-ons successfully (de)activated"
 msgstr ""
 
-#: lib/class_eab_addon_handler.php:448
+#: lib/class_eab_addon_handler.php:460
 msgid ""
 "There was something wrong with (de)activating at least some of the selected "
 "add-ons."
@@ -925,7 +973,7 @@ msgid ""
 msgstr ""
 
 #: lib/class_eab_admin_tutorial.php:102
-#: lib/plugins/eab-events-front_page_editing.php:509
+#: lib/plugins/eab-events-front_page_editing.php:561
 msgid "Publish"
 msgstr ""
 
@@ -933,324 +981,331 @@ msgstr ""
 msgid "Now it's time to publish the event"
 msgstr ""
 
-#: lib/class_eab_api.php:52
+#: lib/class_eab_api.php:55
 msgid "WordPress"
 msgstr ""
 
-#: lib/class_eab_api.php:68
+#: lib/class_eab_api.php:71
 #, php-format
 msgctxt ""
 "Supported registration services: the first variable can be single service or "
 "comma-separated enumeration"
 msgid "%s or %s"
-msgstr ""
+msgstr "%s oder %s"
 
-#: lib/class_eab_api.php:77
+#: lib/class_eab_api.php:80
 #, php-format
 msgctxt "Registration supplemental message part"
 msgid " - or just click cancel to register using your %s ID"
 msgstr ""
+"- oder klicke einfach auf Abbrechen, um sich mit Deiner %s-ID zu registrieren"
 
-#: lib/class_eab_api.php:82
+#: lib/class_eab_api.php:85
 msgid "Login with Facebook"
 msgstr ""
 
-#: lib/class_eab_api.php:83
+#: lib/class_eab_api.php:86
 msgid "Login with Twitter"
 msgstr ""
 
-#: lib/class_eab_api.php:84
+#: lib/class_eab_api.php:87
 msgid "Login with Google"
 msgstr ""
 
-#: lib/class_eab_api.php:85
+#: lib/class_eab_api.php:88
 #, php-format
 msgid "Login with %s"
 msgstr ""
 
-#: lib/class_eab_api.php:86 lib/class_eab_api.php:101
-#: lib/plugins/eab-events-front_page_editing.php:512
+#: lib/class_eab_api.php:89 lib/class_eab_api.php:104
+#: lib/plugins/eab-events-front_page_editing.php:564
 #: lib/plugins/eab-events-limit_capacity.php:273
 #: lib/plugins/eab-events-limit_capacity.php:281
+#: lib/plugins/eab-events-rsvp_close_period.php:129
+#: lib/plugins/eab-events-rsvp_close_period.php:137
 msgid "Cancel"
 msgstr ""
 
-#: lib/class_eab_api.php:87
+#: lib/class_eab_api.php:90
 msgid "Please, wait..."
 msgstr ""
 
-#: lib/class_eab_api.php:89
+#: lib/class_eab_api.php:92
 msgid "Register"
 msgstr ""
 
-#: lib/class_eab_api.php:90
+#: lib/class_eab_api.php:93
 #, php-format
 msgctxt "The variable is registration supplemental part"
 msgid "Create a username in order to register for this event %s"
 msgstr ""
 
-#: lib/class_eab_api.php:91
+#: lib/class_eab_api.php:94
 msgid "Log in"
 msgstr ""
 
-#: lib/class_eab_api.php:92
+#: lib/class_eab_api.php:95
 #, php-format
 msgctxt "The variable is registration supplemental part"
 msgid ""
 "Login with your existing username in order to register for this event %s"
 msgstr ""
 
-#: lib/class_eab_api.php:93
+#: lib/class_eab_api.php:96
 msgid "Username"
 msgstr ""
 
-#: lib/class_eab_api.php:94
+#: lib/class_eab_api.php:97
 msgid "Password"
 msgstr ""
 
-#: lib/class_eab_api.php:95 lib/plugins/eab-rsvps-rsvp_with_email.php:96
+#: lib/class_eab_api.php:98 lib/plugins/eab-rsvps-rsvp_with_email.php:104
 msgid "Email"
 msgstr ""
 
-#: lib/class_eab_api.php:96
+#: lib/class_eab_api.php:99
 msgid "Already a member? Log in here"
 msgstr ""
 
-#: lib/class_eab_api.php:97
+#: lib/class_eab_api.php:100
 msgid "Click here to register"
 msgstr ""
 
-#: lib/class_eab_api.php:98
+#: lib/class_eab_api.php:101
 msgid "Forgot your password"
 msgstr ""
 
-#: lib/class_eab_api.php:100
+#: lib/class_eab_api.php:103
 msgid "Submit"
 msgstr ""
 
-#: lib/class_eab_api.php:111
+#: lib/class_eab_api.php:114
 msgid "Username and password are required!"
 msgstr ""
 
-#: lib/class_eab_api.php:112
+#: lib/class_eab_api.php:115
 msgid "Invalid username or password!"
 msgstr ""
 
-#: lib/class_eab_api.php:113
+#: lib/class_eab_api.php:116
 msgid "Username and email are required!"
 msgstr ""
 
-#: lib/class_eab_api.php:114
+#: lib/class_eab_api.php:117
 msgid "Your email/username is already taken or email is invalid!"
 msgstr ""
+"Deine E-Mail-Adresse/Ihr Benutzername ist bereits vergeben oder die E-Mail-"
+"Adresse ist ungültig!"
 
-#: lib/class_eab_api.php:606 lib/plugins/eab-import-meetup.php:338
+#: lib/class_eab_api.php:609 lib/plugins/eab-import-meetup.php:341
 msgid "API settings"
 msgstr ""
 
-#: lib/class_eab_api.php:609
+#: lib/class_eab_api.php:612
 msgid "Facebook App ID"
 msgstr ""
 
-#: lib/class_eab_api.php:611
+#: lib/class_eab_api.php:614
 #, php-format
 msgid ""
 "Enter your App ID number here. If you don't have a Facebook App yet, you "
-"will need to create one <a href=\"%s\">here</a>"
-msgstr ""
-
-#: lib/class_eab_api.php:615
-msgid "My pages already load scripts from Facebook"
+"will need to create one <a target=\"_blank\" href=\"%s\">here</a>"
 msgstr ""
 
 #: lib/class_eab_api.php:618
+msgid "My pages already load scripts from Facebook"
+msgstr ""
+
+#: lib/class_eab_api.php:621
 msgid ""
 "Check this box if you're already using Facebook scripts on your WordPress "
 "site. (If you're not sure what this means, leave the box unchecked)."
 msgstr ""
 
-#: lib/class_eab_api.php:622
+#: lib/class_eab_api.php:625
 msgid "Twitter Consumer Key"
 msgstr ""
 
-#: lib/class_eab_api.php:624
+#: lib/class_eab_api.php:627
 #, php-format
 msgid ""
 "Enter your Twitter App ID number here. If you don't have a Twitter App yet, "
-"you will need to create one <a href=\"%s\">here</a>.<br />When setting up "
-"your app, please remember to also set the <b>Callback URL</b> to appropriate "
-"value (<code>%s</code>)"
+"you will need to create one <a target=\"_blank\" href=\"%s\">here</a>.<br />"
+"When setting up your app, please remember to also set the <b>Callback URL</b>"
+" to appropriate value (<code>%s</code>)"
 msgstr ""
 
-#: lib/class_eab_api.php:628
+#: lib/class_eab_api.php:631
 msgid "Twitter Consumer Secret"
 msgstr ""
 
-#: lib/class_eab_api.php:630
+#: lib/class_eab_api.php:633
 msgid "Enter your Twitter App secret here."
 msgstr ""
 
-#: lib/class_eab_api.php:634
+#: lib/class_eab_api.php:637
 msgid "Google Client ID"
 msgstr ""
 
-#: lib/class_eab_api.php:636
+#: lib/class_eab_api.php:639
 #, php-format
 msgid ""
 "Enter your Google App Client ID here. If you don't have a Google App yet, "
-"you will need to create one <a href=\"%s\">here</a>"
+"you will need to create one <a target=\"_blank\" href=\"%s\">here</a>"
 msgstr ""
 
-#: lib/class_eab_api.php:638
+#: lib/class_eab_api.php:641
 msgid ""
 "If you leave this field empty, Google Auth will revert to legacy OpenID."
 msgstr ""
 
-#: lib/class_eab_api.php:643
+#: lib/class_eab_api.php:646
 msgid "Hide login buttons"
 msgstr ""
 
-#: lib/class_eab_api.php:646
+#: lib/class_eab_api.php:649
 msgid "Hide Facebook login button"
 msgstr ""
 
-#: lib/class_eab_api.php:649
+#: lib/class_eab_api.php:652
 msgid "Hide Twitter login button"
 msgstr ""
 
-#: lib/class_eab_api.php:652
+#: lib/class_eab_api.php:655
 msgid "Hide Google login button"
 msgstr ""
 
-#: lib/class_eab_api.php:655
+#: lib/class_eab_api.php:658
 msgid "Hide WordPress login button"
 msgstr ""
 
-#: lib/class_eab_api.php:661
+#: lib/class_eab_api.php:664
 msgid ""
 "To configure and accept API logins, please check the box for \"Allow "
 "Facebook and Twitter Login?\" in plugin settings."
 msgstr ""
 
-#: lib/class_eab_calendar_helper.php:141
-#: lib/plugins/eab-events_weekly_calendar.php:339
+#: lib/class_eab_calendar_helper.php:157
+#: lib/plugins/eab-events_weekly_calendar.php:346
 msgid "Sunday"
 msgstr ""
 
-#: lib/class_eab_calendar_helper.php:142
-#: lib/plugins/eab-events_weekly_calendar.php:340
+#: lib/class_eab_calendar_helper.php:158
+#: lib/plugins/eab-events_weekly_calendar.php:347
 msgid "Monday"
 msgstr ""
 
-#: lib/class_eab_calendar_helper.php:143
-#: lib/plugins/eab-events_weekly_calendar.php:341
+#: lib/class_eab_calendar_helper.php:159
+#: lib/plugins/eab-events_weekly_calendar.php:348
 msgid "Tuesday"
 msgstr ""
 
-#: lib/class_eab_calendar_helper.php:144
-#: lib/plugins/eab-events_weekly_calendar.php:342
+#: lib/class_eab_calendar_helper.php:160
+#: lib/plugins/eab-events_weekly_calendar.php:349
 msgid "Wednesday"
 msgstr ""
 
-#: lib/class_eab_calendar_helper.php:145
-#: lib/plugins/eab-events_weekly_calendar.php:343
+#: lib/class_eab_calendar_helper.php:161
+#: lib/plugins/eab-events_weekly_calendar.php:350
 msgid "Thursday"
 msgstr ""
 
-#: lib/class_eab_calendar_helper.php:146
-#: lib/plugins/eab-events_weekly_calendar.php:344
+#: lib/class_eab_calendar_helper.php:162
+#: lib/plugins/eab-events_weekly_calendar.php:351
 msgid "Friday"
 msgstr ""
 
-#: lib/class_eab_calendar_helper.php:147
-#: lib/plugins/eab-events_weekly_calendar.php:345
+#: lib/class_eab_calendar_helper.php:163
+#: lib/plugins/eab-events_weekly_calendar.php:352
 msgid "Saturday"
 msgstr ""
 
-#: lib/class_eab_calendar_helper.php:243
+#: lib/class_eab_calendar_helper.php:259
 msgid "Su"
 msgstr ""
 
-#: lib/class_eab_calendar_helper.php:244
+#: lib/class_eab_calendar_helper.php:260
 msgid "Mo"
 msgstr ""
 
-#: lib/class_eab_calendar_helper.php:245
+#: lib/class_eab_calendar_helper.php:261
 msgid "Tu"
 msgstr ""
 
-#: lib/class_eab_calendar_helper.php:246
+#: lib/class_eab_calendar_helper.php:262
 msgid "We"
 msgstr ""
 
-#: lib/class_eab_calendar_helper.php:247
+#: lib/class_eab_calendar_helper.php:263
 msgid "Th"
 msgstr ""
 
-#: lib/class_eab_calendar_helper.php:248
+#: lib/class_eab_calendar_helper.php:264
 msgid "Fr"
 msgstr ""
 
-#: lib/class_eab_calendar_helper.php:249
+#: lib/class_eab_calendar_helper.php:265
 msgid "Sa"
 msgstr ""
 
-#: lib/class_eab_event_model.php:501
-#: lib/plugins/eab-import-facebook_events.php:180
-#: lib/plugins/eab-import-google_calendar.php:191
+#: lib/class_eab_event_model.php:503
+#: lib/plugins/eab-events-front_page_editing.php:415
+#: lib/plugins/eab-events-front_page_editing.php:435
+#: lib/plugins/eab-import-facebook_events-main.php:187
+#: lib/plugins/eab-import-google_calendar.php:194
 #: lib/plugins/eab-rsvps-scheduled_rsvp_reset.php:83
 msgid "Day"
 msgstr ""
 
-#: lib/class_eab_event_model.php:502
+#: lib/class_eab_event_model.php:504
 msgid "Week"
 msgstr ""
 
-#: lib/class_eab_event_model.php:503
+#: lib/class_eab_event_model.php:505
 msgid "Week Count"
 msgstr ""
 
-#: lib/class_eab_event_model.php:504
+#: lib/class_eab_event_model.php:506
 msgid "Day of the Week"
 msgstr ""
 
-#: lib/class_eab_event_model.php:505
+#: lib/class_eab_event_model.php:507
 msgid "Month"
 msgstr ""
 
-#: lib/class_eab_event_model.php:506
+#: lib/class_eab_event_model.php:508
 msgid "Year"
 msgstr ""
 
-#: lib/class_eab_event_model.php:575
+#: lib/class_eab_event_model.php:577
 #, php-format
 msgid "Invalid interval start boundary timestamp: [%s]"
 msgstr ""
 
-#: lib/class_eab_event_model.php:580
+#: lib/class_eab_event_model.php:582
 #, php-format
 msgid "Invalid interval end boundary timestamp: [%s]"
 msgstr ""
 
-#: lib/class_eab_event_model.php:584
+#: lib/class_eab_event_model.php:586
 #, php-format
 msgid "Invalid end boundary after start: [%s] - [%s]"
 msgstr ""
 
-#: lib/class_eab_event_model.php:680 lib/class_eab_event_model.php:704
-#: lib/class_eab_event_model.php:804 lib/class_eab_event_model.php:820
+#: lib/class_eab_event_model.php:691 lib/class_eab_event_model.php:715
+#: lib/class_eab_event_model.php:815 lib/class_eab_event_model.php:831
 #, php-format
 msgid "Invalid %s instance timestamp: [%s]"
 msgstr ""
 
-#: lib/class_eab_event_model.php:760
+#: lib/class_eab_event_model.php:771
 #, php-format
 msgid ""
 "Possible DOW precision bug detected, overriding %s with %s for expression "
 "[%s %s this month], for %s pivot"
 msgstr ""
 
-#: lib/class_eab_event_model.php:771
+#: lib/class_eab_event_model.php:782
 #, php-format
 msgid "Invalid %s instance timestamp: [%s %s for %s]"
 msgstr ""
@@ -1268,16 +1323,16 @@ msgid "Invalid scope"
 msgstr ""
 
 #: lib/class_eab_exporter.php:118 lib/class_eab_exporter.php:173
-#: lib/class_eab_template.php:146 lib/class_eab_template.php:188
-#: lib/class_eab_template.php:644 lib/plugins/eab-buddypres-my_events.php:68
+#: lib/class_eab_template.php:167 lib/class_eab_template.php:209
+#: lib/class_eab_template.php:678 lib/plugins/eab-buddypres-my_events.php:68
 msgid "Attending"
 msgstr ""
 
-#: lib/class_eab_exporter.php:119 lib/class_eab_template.php:147
-#: lib/class_eab_template.php:189 lib/class_eab_template.php:504
-#: lib/class_eab_template.php:529 lib/class_eab_template.php:645
+#: lib/class_eab_exporter.php:119 lib/class_eab_template.php:168
+#: lib/class_eab_template.php:210 lib/class_eab_template.php:534
+#: lib/class_eab_template.php:559 lib/class_eab_template.php:679
 #: lib/plugins/eab-buddypres-my_events.php:75
-#: lib/plugins/eab-email-enewsletter_integration.php:268
+#: lib/plugins/eab-email-enewsletter_integration.php:300
 msgid "Maybe"
 msgstr ""
 
@@ -1311,465 +1366,499 @@ msgstr ""
 msgid "Payment Status"
 msgstr ""
 
-#: lib/class_eab_shortcodes.php:153
+#: lib/class_eab_shortcodes.php:164
 msgid "Event map shortcode"
 msgstr ""
 
-#: lib/class_eab_shortcodes.php:155
+#: lib/class_eab_shortcodes.php:166
 msgid "Requires Google Maps plugin."
 msgstr ""
 
-#: lib/class_eab_shortcodes.php:157 lib/class_eab_shortcodes.php:231
-#: lib/class_eab_shortcodes.php:342
+#: lib/class_eab_shortcodes.php:168 lib/class_eab_shortcodes.php:246
+#: lib/class_eab_shortcodes.php:312
 #: lib/plugins/eab-buddypress-group_events.php:554
 msgid "Starting date - default to now"
 msgstr ""
 
-#: lib/class_eab_shortcodes.php:158 lib/class_eab_shortcodes.php:232
-#: lib/class_eab_shortcodes.php:343
+#: lib/class_eab_shortcodes.php:169 lib/class_eab_shortcodes.php:247
+#: lib/class_eab_shortcodes.php:313
 msgid "A date relative to now or to date argument"
-msgstr ""
+msgstr "Ein Datum relativ zum aktuellen oder aktuellen Argument"
 
-#: lib/class_eab_shortcodes.php:159 lib/class_eab_shortcodes.php:344
+#: lib/class_eab_shortcodes.php:170 lib/class_eab_shortcodes.php:314
 #: lib/plugins/eab-buddypress-group_events.php:555
 msgid "Don't use default monthly page - use weeks count instead"
 msgstr ""
 
-#: lib/class_eab_shortcodes.php:160 lib/class_eab_shortcodes.php:345
+#: lib/class_eab_shortcodes.php:171 lib/class_eab_shortcodes.php:315
 #: lib/plugins/eab-buddypress-group_events.php:556
 msgid "Look ahead this many weeks"
 msgstr ""
 
-#: lib/class_eab_shortcodes.php:161 lib/class_eab_shortcodes.php:233
-#: lib/class_eab_shortcodes.php:346 lib/class_eab_shortcodes.php:397
+#: lib/class_eab_shortcodes.php:172 lib/class_eab_shortcodes.php:248
+#: lib/class_eab_shortcodes.php:316 lib/class_eab_shortcodes.php:378
 #: lib/plugins/eab-buddypress-group_events.php:557
 msgid "Show events from this category (ID or slug)"
 msgstr ""
 
-#: lib/class_eab_shortcodes.php:162 lib/class_eab_shortcodes.php:234
-#: lib/class_eab_shortcodes.php:347 lib/class_eab_shortcodes.php:398
+#: lib/class_eab_shortcodes.php:173 lib/class_eab_shortcodes.php:249
+#: lib/class_eab_shortcodes.php:317 lib/class_eab_shortcodes.php:379
 msgid "Show events from these categories - accepts comma-separated list of IDs"
 msgstr ""
 
-#: lib/class_eab_shortcodes.php:163 lib/class_eab_shortcodes.php:348
-#: lib/class_eab_shortcodes.php:399
+#: lib/class_eab_shortcodes.php:174 lib/class_eab_shortcodes.php:318
+#: lib/class_eab_shortcodes.php:380
 #: lib/plugins/eab-buddypress-group_events.php:558
 msgid "Show at most this many events"
 msgstr ""
 
-#: lib/class_eab_shortcodes.php:164 lib/class_eab_shortcodes.php:349
-#: lib/class_eab_shortcodes.php:400
+#: lib/class_eab_shortcodes.php:175 lib/class_eab_shortcodes.php:319
+#: lib/class_eab_shortcodes.php:381
 #: lib/plugins/eab-buddypress-group_events.php:559
 msgid "Sort events in this direction"
 msgstr ""
 
-#: lib/class_eab_shortcodes.php:165
+#: lib/class_eab_shortcodes.php:176
 msgid "Allow displaying of maps with multiple markers - defaults to true."
 msgstr ""
 
-#: lib/class_eab_shortcodes.php:166
+#: lib/class_eab_shortcodes.php:177
 msgid "Show only open events - defaults to true."
 msgstr ""
 
-#: lib/class_eab_shortcodes.php:167
+#: lib/class_eab_shortcodes.php:178
 msgid "Show event date in the marker - defaults to true."
 msgstr ""
 
-#: lib/class_eab_shortcodes.php:168
+#: lib/class_eab_shortcodes.php:179
 msgid "Show event excerpt in the marker."
 msgstr ""
 
-#: lib/class_eab_shortcodes.php:169
+#: lib/class_eab_shortcodes.php:180
 msgid "Use event featured image instead of map markers"
 msgstr ""
 
-#: lib/class_eab_shortcodes.php:170 lib/class_eab_shortcodes.php:246
-#: lib/class_eab_shortcodes.php:353 lib/class_eab_shortcodes.php:401
-#: lib/class_eab_shortcodes.php:456
+#: lib/class_eab_shortcodes.php:181 lib/class_eab_shortcodes.php:261
+#: lib/class_eab_shortcodes.php:323 lib/class_eab_shortcodes.php:382
+#: lib/class_eab_shortcodes.php:437
 #: lib/plugins/eab-buddypress-group_events.php:563
 msgid "Subtemplate file, or template class call"
 msgstr ""
 
-#: lib/class_eab_shortcodes.php:171
+#: lib/class_eab_shortcodes.php:182
 msgid "and Google Maps shortcode attributes"
 msgstr ""
 
-#: lib/class_eab_shortcodes.php:227
+#: lib/class_eab_shortcodes.php:242
 msgid "Calendar shortcode"
 msgstr ""
 
-#: lib/class_eab_shortcodes.php:230 lib/class_eab_shortcodes.php:341
-msgid "Query type"
+#: lib/class_eab_shortcodes.php:245
+msgid ""
+"Query type (Required <a href=\"https://premium.wpmudev.org/project/post-"
+"indexer/\" target=\"_blank\">Post Indexer</a> plugin"
 msgstr ""
 
-#: lib/class_eab_shortcodes.php:235
+#: lib/class_eab_shortcodes.php:250
 msgid "Show navigation"
 msgstr ""
 
-#: lib/class_eab_shortcodes.php:236
+#: lib/class_eab_shortcodes.php:251
 msgid "Maintain scroll position when navigating"
 msgstr ""
 
-#: lib/class_eab_shortcodes.php:237
+#: lib/class_eab_shortcodes.php:252
 msgid "Date format used in the navigation title, defaults to \"M Y\""
 msgstr ""
 
-#: lib/class_eab_shortcodes.php:238
+#: lib/class_eab_shortcodes.php:253
 msgid ""
 "Date format used for shorter date representation in the navigation title, "
 "defaults to \"m-Y\""
 msgstr ""
 
-#: lib/class_eab_shortcodes.php:239
+#: lib/class_eab_shortcodes.php:254
 msgid ""
 "Date format used for displaying long date representation, defaults to your "
 "date settings"
 msgstr ""
 
-#: lib/class_eab_shortcodes.php:240
+#: lib/class_eab_shortcodes.php:255
 msgid "Show calendar table footer"
 msgstr ""
 
-#: lib/class_eab_shortcodes.php:241 lib/class_eab_shortcodes.php:352
-#: lib/class_eab_shortcodes.php:396 lib/class_eab_shortcodes.php:455
+#: lib/class_eab_shortcodes.php:256 lib/class_eab_shortcodes.php:322
+#: lib/class_eab_shortcodes.php:377 lib/class_eab_shortcodes.php:436
 #: lib/plugins/eab-buddypres-my_events.php:311
 #: lib/plugins/eab-buddypress-group_events.php:562
 msgid "Apply this CSS class"
 msgstr ""
 
-#: lib/class_eab_shortcodes.php:242
+#: lib/class_eab_shortcodes.php:257 lib/class_eab_shortcodes.php:324
 msgid "Show event thumbnail"
 msgstr ""
 
-#: lib/class_eab_shortcodes.php:243
+#: lib/class_eab_shortcodes.php:258
 msgid ""
 "Use this image URL as thumnail if event does not have an appropriate "
 "featured image set"
 msgstr ""
 
-#: lib/class_eab_shortcodes.php:244
+#: lib/class_eab_shortcodes.php:259
 msgid "Show event excerpt in the quick overview."
 msgstr ""
 
-#: lib/class_eab_shortcodes.php:245
+#: lib/class_eab_shortcodes.php:260
 msgid "Determine the excerpt length (characters count) to be shown."
 msgstr ""
 
-#: lib/class_eab_shortcodes.php:247 lib/class_eab_shortcodes.php:354
-#: lib/class_eab_shortcodes.php:402 lib/class_eab_shortcodes.php:457
+#: lib/class_eab_shortcodes.php:262 lib/class_eab_shortcodes.php:326
+#: lib/class_eab_shortcodes.php:383 lib/class_eab_shortcodes.php:438
 #: lib/plugins/eab-buddypress-group_events.php:564
 msgid "Toggle default styles usage"
 msgstr ""
 
-#: lib/class_eab_shortcodes.php:248 lib/class_eab_shortcodes.php:355
-#: lib/class_eab_shortcodes.php:403 lib/class_eab_shortcodes.php:458
+#: lib/class_eab_shortcodes.php:263 lib/class_eab_shortcodes.php:327
+#: lib/class_eab_shortcodes.php:384 lib/class_eab_shortcodes.php:439
 #: lib/plugins/eab-buddypress-group_events.php:565
 msgid "Toggle default scripts usage"
 msgstr ""
 
-#: lib/class_eab_shortcodes.php:338
+#: lib/class_eab_shortcodes.php:264
+msgid "Show past events on the calendar"
+msgstr ""
+
+#: lib/class_eab_shortcodes.php:308
 msgid "Archive shortcode"
 msgstr ""
 
-#: lib/class_eab_shortcodes.php:350
+#: lib/class_eab_shortcodes.php:311
+msgid ""
+"Query type (Required <a href=\"https://premium.wpmudev.org/project/post-"
+"indexer/\" target=\"_blank\">Post Indexer</a> plugin)"
+msgstr ""
+
+#: lib/class_eab_shortcodes.php:320
 msgid "Allow paging - use with \"limit\" argument"
 msgstr ""
 
-#: lib/class_eab_shortcodes.php:351
+#: lib/class_eab_shortcodes.php:321
 msgid "Start on this page"
 msgstr ""
 
-#: lib/class_eab_shortcodes.php:393
+#: lib/class_eab_shortcodes.php:325
+msgid ""
+"Set thumbnail size ('thumbnail', 'large', 'medium-large', 'medium', 'full' "
+"or '150,150'"
+msgstr ""
+
+#: lib/class_eab_shortcodes.php:328
+msgid "Ending date (YYYY-MM-DD)"
+msgstr ""
+
+#: lib/class_eab_shortcodes.php:329
+msgid "Toggle display current days events only"
+msgstr ""
+
+#: lib/class_eab_shortcodes.php:374
 msgid "Expired events shortcode"
 msgstr ""
 
-#: lib/class_eab_shortcodes.php:450
+#: lib/class_eab_shortcodes.php:431
 msgid "Single event shortcode"
 msgstr ""
 
-#: lib/class_eab_shortcodes.php:453
+#: lib/class_eab_shortcodes.php:434
 msgid "Event ID to show"
 msgstr ""
 
-#: lib/class_eab_shortcodes.php:454
+#: lib/class_eab_shortcodes.php:435
 msgid "Show event by this slug"
 msgstr ""
 
-#: lib/class_eab_template.php:59
+#: lib/class_eab_template.php:75
 msgid "You already paid for this event"
 msgstr ""
 
-#: lib/class_eab_template.php:105
+#: lib/class_eab_template.php:79
+msgid ""
+"Your payment is being processed. This may take a few minutes to show here."
+msgstr ""
+"Deine Zahlung wird verarbeitet. Es kann einige Minuten dauern, bis sie hier "
+"angezeigt wird."
+
+#: lib/class_eab_template.php:126
 msgid "See who has RSVPed"
 msgstr ""
 
-#: lib/class_eab_template.php:109
+#: lib/class_eab_template.php:130
 msgid "Hide who has RSVPed"
 msgstr ""
 
-#: lib/class_eab_template.php:242
+#: lib/class_eab_template.php:265
 msgid "Add user"
-msgstr ""
+msgstr "Benutzer hinzufügen"
 
-#: lib/class_eab_template.php:244
+#: lib/class_eab_template.php:267
 msgid "User email"
 msgstr ""
 
-#: lib/class_eab_template.php:252
-#: lib/plugins/eab-rsvps-additional_registration_fields.php:182
+#: lib/class_eab_template.php:275
+#: lib/plugins/eab-rsvps-additional_registration_fields.php:230
 msgid "Add"
-msgstr ""
+msgstr "Hinzufügen"
 
-#: lib/class_eab_template.php:299
+#: lib/class_eab_template.php:323
 msgid "Paid"
 msgstr ""
 
-#: lib/class_eab_template.php:302
+#: lib/class_eab_template.php:326
 #, php-format
 msgid "(%s tickets)"
-msgstr ""
+msgstr "(%s Tickets)"
 
-#: lib/class_eab_template.php:305
+#: lib/class_eab_template.php:329
 msgid "Not paid"
 msgstr ""
 
-#: lib/class_eab_template.php:313
+#: lib/class_eab_template.php:337
 msgid "Cancel attendance"
 msgstr ""
 
-#: lib/class_eab_template.php:317
+#: lib/class_eab_template.php:341
 msgid "Delete attendance entirely"
 msgstr ""
 
-#: lib/class_eab_template.php:336
+#: lib/class_eab_template.php:366
 #, php-format
 msgid "Visit %s&#8217;s website"
 msgstr ""
 
-#: lib/class_eab_template.php:395
+#: lib/class_eab_template.php:425
 #: lib/plugins/eab-payment-multiple_prices.php:170
 #, php-format
 msgid "I want to buy %s ticket(s)"
 msgstr ""
 
-#: lib/class_eab_template.php:510
+#: lib/class_eab_template.php:540
 msgid "I'm attending"
 msgstr ""
 
-#: lib/class_eab_template.php:535
+#: lib/class_eab_template.php:565
 msgid "I'm Attending"
 msgstr ""
 
-#: lib/class_eab_template.php:587
+#: lib/class_eab_template.php:621
 msgid " and "
-msgstr ""
+msgstr "und"
 
-#: lib/class_eab_template.php:593
+#: lib/class_eab_template.php:627
 #, php-format
 msgid ""
 "On <span class=\"wpmudevevents-date_format-start\"><var class=\"eab-"
 "date_format-date\">%s</var></span>"
 msgstr ""
 
-#: lib/class_eab_template.php:594
+#: lib/class_eab_template.php:628
 #, php-format
 msgid ""
 "On <var class=\"eab-date_format-date\">%s</var> <span class=\"wpmudevevents-"
 "date_format-start\">from <var class=\"eab-date_format-time\">%s</var></span>"
 msgstr ""
 
-#: lib/class_eab_template.php:597 lib/class_eab_template.php:598
-#: lib/class_eab_template.php:617
+#: lib/class_eab_template.php:631 lib/class_eab_template.php:632
+#: lib/class_eab_template.php:651
 #, php-format
 msgid "<span class=\"wpmudevevents-date_format-end\">to %s</span><br />"
-msgstr ""
+msgstr "<span class=\"wpmudevevents-date_format-end\">zu %s</span><br />"
 
-#: lib/class_eab_template.php:605
+#: lib/class_eab_template.php:639
 #, php-format
 msgid ""
-"Took place on <span class=\"wpmudevevents-date_format-start\"><var class="
-"\"eab-date_format-date\">%s</var></span>"
+"Took place on <span class=\"wpmudevevents-date_format-start\"><var "
+"class=\"eab-date_format-date\">%s</var></span>"
 msgstr ""
 
-#: lib/class_eab_template.php:606
+#: lib/class_eab_template.php:640
 #, php-format
 msgid ""
-"Took place on <var class=\"eab-date_format-date\">%s</var> <span class="
-"\"wpmudevevents-date_format-start\">from <var class=\"eab-date_format-time\">"
-"%s</var></span>"
+"Took place on <var class=\"eab-date_format-date\">%s</var> <span "
+"class=\"wpmudevevents-date_format-start\">from <var class=\"eab-date_format-"
+"time\">%s</var></span>"
 msgstr ""
 
-#: lib/class_eab_template.php:611
+#: lib/class_eab_template.php:645
 #, php-format
 msgid ""
-"Takes place on <span class=\"wpmudevevents-date_format-start\"><var class="
-"\"eab-date_format-date\">%s</var></span>"
+"Takes place on <span class=\"wpmudevevents-date_format-start\"><var "
+"class=\"eab-date_format-date\">%s</var></span>"
 msgstr ""
 
-#: lib/class_eab_template.php:612
+#: lib/class_eab_template.php:646
 #, php-format
 msgid ""
-"Takes place on <var class=\"eab-date_format-date\">%s</var> <span class="
-"\"wpmudevevents-date_format-start\">from <var class=\"eab-date_format-time\">"
-"%s</var></span>"
+"Takes place on <var class=\"eab-date_format-date\">%s</var> <span "
+"class=\"wpmudevevents-date_format-start\">from <var class=\"eab-date_format-"
+"time\">%s</var></span>"
 msgstr ""
 
-#: lib/class_eab_template.php:675
+#: lib/class_eab_template.php:709
 msgid "Excellent! We've got you marked as coming and we'll see you there!"
 msgstr ""
 
-#: lib/class_eab_template.php:676
+#: lib/class_eab_template.php:710
 msgid "Thanks for letting us know. Hopefully you'll be able to make it!"
 msgstr ""
 
-#: lib/class_eab_template.php:677
+#: lib/class_eab_template.php:711
 msgid "That's too bad you won't be able to make it"
 msgstr ""
 
-#: lib/class_eab_template.php:847
+#: lib/class_eab_template.php:881
 msgid "boolean"
 msgstr ""
 
-#: lib/class_eab_template.php:848
+#: lib/class_eab_template.php:882
 msgid "\"yes\" or \"no\""
-msgstr ""
+msgstr "\"yes\" oder \"no\""
 
-#: lib/class_eab_template.php:849
+#: lib/class_eab_template.php:883
 #, php-format
 msgid "%s=\"yes\""
-msgstr ""
+msgstr "%s=\"yes\""
 
-#: lib/class_eab_template.php:852
+#: lib/class_eab_template.php:886
 msgid "integer"
 msgstr ""
 
-#: lib/class_eab_template.php:854
+#: lib/class_eab_template.php:888
 #, php-format
 msgid "%s=\"326\""
-msgstr ""
+msgstr "%s=\"326\""
 
-#: lib/class_eab_template.php:857
+#: lib/class_eab_template.php:891
 msgid "string"
 msgstr ""
 
-#: lib/class_eab_template.php:858
+#: lib/class_eab_template.php:892
 msgid "\"mystring\""
-msgstr ""
+msgstr "\"mystring\""
 
-#: lib/class_eab_template.php:859
+#: lib/class_eab_template.php:893
 #, php-format
 msgid "%s=\"mystring\""
-msgstr ""
+msgstr "%s=\"mystring\""
 
-#: lib/class_eab_template.php:862
+#: lib/class_eab_template.php:896
 msgid "date"
 msgstr ""
 
-#: lib/class_eab_template.php:863
+#: lib/class_eab_template.php:897
 msgid "date format string"
 msgstr ""
 
-#: lib/class_eab_template.php:864
+#: lib/class_eab_template.php:898
 #, php-format
 msgid "%s=\"2011-11-18\""
-msgstr ""
+msgstr "%s=\"2011-11-18\""
 
-#: lib/class_eab_template.php:867
+#: lib/class_eab_template.php:901
 msgid "date format"
 msgstr ""
 
-#: lib/class_eab_template.php:868
+#: lib/class_eab_template.php:902
 msgid "format string for dates"
 msgstr ""
 
-#: lib/class_eab_template.php:869
+#: lib/class_eab_template.php:903
 #, php-format
 msgid "%s=\"Y-m-d\""
-msgstr ""
+msgstr "%s=\"Y-m-d\""
 
-#: lib/class_eab_template.php:872
+#: lib/class_eab_template.php:906
 #, php-format
 msgid "<a href=\"%s\" target=\"_blank\">strtotime</a>-compatible string"
-msgstr ""
+msgstr "<a href=\"%s\" target=\"_blank\">strtotime</a>-compatible string"
 
-#: lib/class_eab_template.php:873
+#: lib/class_eab_template.php:907
 msgid "strtotime-compatible expression"
 msgstr ""
 
-#: lib/class_eab_template.php:877
+#: lib/class_eab_template.php:911
 msgid "string or integer"
 msgstr ""
 
-#: lib/class_eab_template.php:878
+#: lib/class_eab_template.php:912
 msgid "\"some_text\" or \"212\""
-msgstr ""
+msgstr "\"some_text\" oder \"212\""
 
-#: lib/class_eab_template.php:879
+#: lib/class_eab_template.php:913
 #, php-format
 msgid "%s=\"some_text\""
-msgstr ""
+msgstr "%s=\"some_text\""
 
-#: lib/class_eab_template.php:882
+#: lib/class_eab_template.php:916
 msgid "ordering keyword"
 msgstr ""
 
-#: lib/class_eab_template.php:883
+#: lib/class_eab_template.php:917
 msgid "\"ASC\" or \"DESC\""
-msgstr ""
+msgstr "\"ASC\" oder \"DESC\""
 
-#: lib/class_eab_template.php:884
+#: lib/class_eab_template.php:918
 #, php-format
 msgid "%s=\"ASC\""
-msgstr ""
+msgstr "%s=\"ASC\""
 
-#: lib/class_eab_template.php:887
+#: lib/class_eab_template.php:921
 msgid "list of comma-separated IDs"
 msgstr ""
 
-#: lib/class_eab_template.php:888
+#: lib/class_eab_template.php:922
 msgid "\"52,26,18\""
-msgstr ""
+msgstr "\"52,26,18\""
 
-#: lib/class_eab_template.php:889
+#: lib/class_eab_template.php:923
 #, php-format
 msgid "%s=\"52,26,18\""
-msgstr ""
+msgstr "%s=\"52,26,18\""
 
-#: lib/class_eab_template.php:892
+#: lib/class_eab_template.php:926
 msgid "list of comma-separated strings"
 msgstr ""
 
-#: lib/class_eab_template.php:893
+#: lib/class_eab_template.php:927
 msgid "\"foo,bar,baz\""
-msgstr ""
+msgstr "\"foo,bar,baz\""
 
-#: lib/class_eab_template.php:894
+#: lib/class_eab_template.php:928
 #, php-format
 msgid "%s=\"foo,bar,baz\""
-msgstr ""
+msgstr "%s=\"foo,bar,baz\""
 
-#: lib/class_eab_template.php:897
+#: lib/class_eab_template.php:931
 msgid "valid URL"
 msgstr ""
 
-#: lib/class_eab_template.php:898
+#: lib/class_eab_template.php:932
 msgid "\"http://example.com/something\""
-msgstr ""
+msgstr "\"http://example.com/something\""
 
-#: lib/class_eab_template.php:899
+#: lib/class_eab_template.php:933
 #, php-format
 msgid "%s=\"http://example.com/something\""
-msgstr ""
+msgstr "%s=\"http://example.com/something\""
 
-#: lib/class_eab_template.php:907
+#: lib/class_eab_template.php:941
 #, php-format
 msgid "%s, e.g. [%s ... %s]"
-msgstr ""
+msgstr "%s, z.B. [%s ... %s]"
 
-#: lib/class_wd_help_tooltips.php:318
+#: lib/class_wd_help_tooltips.php:327
 msgid "Help"
 msgstr ""
 
+#. Plugin Name of the plugin/theme
 #: lib/contextual_help/class_eab_admin_help.php:37
 msgid "Events +"
 msgstr ""
@@ -1804,7 +1893,7 @@ msgstr ""
 #: lib/contextual_help/class_eab_admin_help.php:161
 #: lib/contextual_help/class_eab_admin_help.php:229
 #: lib/contextual_help/class_eab_admin_help.php:258
-#: lib/pointers-tutorial/pointer-tutorials.php:134
+#: lib/pointers-tutorial/pointer-tutorials.php:137
 msgid "Tutorial"
 msgstr ""
 
@@ -1835,6 +1924,9 @@ msgid ""
 "create a map yourself and associate it with your event using the globe icon "
 "above the field"
 msgstr ""
+"Dein Standort wird automatisch auf einer Google-Karte abgebildet. Du kannst "
+"auch selbst eine Karte erstellen und diese mit Deinem Event verknüpfen, "
+"indem Du das Globussymbol über dem Feld verwendest."
 
 #: lib/contextual_help/class_eab_admin_help.php:140
 msgid "This is where you create and edit your Events"
@@ -1886,6 +1978,8 @@ msgid ""
 "<b>Note:</b> these settings will not be available if you copy the templates "
 "to your themes directory for customization"
 msgstr ""
+"<b>Hinweis:</b> Diese Einstellungen sind nicht verfügbar, wenn Du die "
+"Vorlagen zur Anpassung in Dein Themenverzeichnis kopierst."
 
 #: lib/contextual_help/class_eab_admin_help.php:201
 msgid "API Settings"
@@ -1893,8 +1987,8 @@ msgstr ""
 
 #: lib/contextual_help/class_eab_admin_help.php:204
 msgid ""
-"This section becomes available if you allow logins with Twitter and "
-"Facebook, by checking the corresponding box in Plugin settings."
+"This section becomes available if you allow logins with Twitter and Facebook,"
+" by checking the corresponding box in Plugin settings."
 msgstr ""
 
 #: lib/contextual_help/class_eab_admin_help.php:207
@@ -1904,14 +1998,14 @@ msgstr ""
 #: lib/contextual_help/class_eab_admin_help.php:208
 msgid ""
 "<p>Before we begin, you need to <a target=\"_blank\" href=\"http://www."
-"facebook.com/developers/createapp.php\">create a Facebook Application</a>.</"
-"p><p>To do so, follow these steps:</p><ol><li><a target=\"_blank\" href="
-"\"http://www.facebook.com/developers/createapp.php\">Create your "
-"application</a></li><li>After this, go to the <a target=\"_blank\" href="
-"\"http://www.facebook.com/developers/apps.php\">Facebook Application List "
-"page</a> and select your newly created application</li><li>Copy the value "
-"from the <strong>App ID</strong>/<strong>API key</strong> field, and enter "
-"them in the box titled \"Facebook App ID\"</li></ol>"
+"facebook.com/developers/createapp.php\">create a Facebook Application</a>."
+"</p><p>To do so, follow these steps:</p><ol><li><a target=\"_blank\" "
+"href=\"http://www.facebook.com/developers/createapp.php\">Create your "
+"application</a></li><li>After this, go to the <a target=\"_blank\" "
+"href=\"http://www.facebook.com/developers/apps.php\">Facebook Application "
+"List page</a> and select your newly created application</li><li>Copy the "
+"value from the <strong>App ID</strong>/<strong>API key</strong> field, and "
+"enter them in the box titled \"Facebook App ID\"</li></ol>"
 msgstr ""
 
 #: lib/contextual_help/class_eab_admin_help.php:216
@@ -1921,16 +2015,16 @@ msgstr ""
 #: lib/contextual_help/class_eab_admin_help.php:217
 #, php-format
 msgid ""
-"<p>You will also need to <a target=\"_blank\" href=\"https://dev.twitter.com/"
-"apps/new\">create a Twitter Application</a>.</p><p>To do so, follow these "
-"steps:</p><ol><li><a target=\"_blank\" href=\"https://dev.twitter.com/apps/"
-"new\">Create your application</a></li><li>Look for <strong>Callback URL</"
-"strong> field and enter your site URL in this field: <code>%s</code></"
-"li><li>After this, go to the <a target=\"_blank\" href=\"https://dev.twitter."
-"com/apps\">Twitter Application List page</a> and select your newly created "
-"application</li><li>Copy the values from these fields: <strong>Consumer Key</"
-"strong> and <strong>Consumer Secret</strong>, and enter them in plugin "
-"settings.</li></ol>"
+"<p>You will also need to <a target=\"_blank\" href=\"https://dev.twitter."
+"com/apps/new\">create a Twitter Application</a>.</p><p>To do so, follow "
+"these steps:</p><ol><li><a target=\"_blank\" href=\"https://dev.twitter."
+"com/apps/new\">Create your application</a></li><li>Look for <strong>Callback "
+"URL</strong> field and enter your site URL in this field: <code>%s</code>"
+"</li><li>After this, go to the <a target=\"_blank\" href=\"https://dev."
+"twitter.com/apps\">Twitter Application List page</a> and select your newly "
+"created application</li><li>Copy the values from these fields: <strong>"
+"Consumer Key</strong> and <strong>Consumer Secret</strong>, and enter them "
+"in plugin settings.</li></ol>"
 msgstr ""
 
 #: lib/contextual_help/class_eab_admin_help.php:249
@@ -1946,32 +2040,32 @@ msgstr ""
 #: lib/plugins/eab-buddypres-activity.php:57
 #, php-format
 msgid "%s created an event"
-msgstr ""
+msgstr "%s hat ein Ereignis erstellt"
 
 #: lib/plugins/eab-buddypres-activity.php:62
 #, php-format
 msgid "%s created an event in <a href=\"%s\">%s</a>"
-msgstr ""
+msgstr "%s hat ein Ereignis in <a href=\"%s\">%s</a> erstellt."
 
 #: lib/plugins/eab-buddypres-activity.php:64
 #, php-format
 msgid "%s created a public announcement"
-msgstr ""
+msgstr "%s hat eine öffentliche Ankündigung erstellt"
 
 #: lib/plugins/eab-buddypres-activity.php:134
 #, php-format
 msgid "%s will be attending <a href=\"%s\">%s</a>"
-msgstr ""
+msgstr "%s wird teilnehmen <a href=\"%s\">%s</a>"
 
 #: lib/plugins/eab-buddypres-activity.php:137
 #, php-format
 msgid "%s will maybe attend <a href=\"%s\">%s</a>"
-msgstr ""
+msgstr "%s wird vielleicht teilnehmen <a href=\"%s\">%s</a>"
 
 #: lib/plugins/eab-buddypres-activity.php:140
 #, php-format
 msgid "%s won't be attending <a href=\"%s\">%s</a>"
-msgstr ""
+msgstr "%s wird nicht teilnehmen <a href=\"%s\">%s</a>"
 
 #: lib/plugins/eab-buddypres-activity.php:194
 msgid ""
@@ -1987,7 +2081,7 @@ msgstr ""
 
 #: lib/plugins/eab-buddypres-activity.php:224
 msgid "Activity auto-update settings"
-msgstr ""
+msgstr "Einstellungen für die automatische Aktivitätsaktualisierung"
 
 #: lib/plugins/eab-buddypres-activity.php:227
 msgid "Automatically update Activity feed when an Event is created:"
@@ -2028,15 +2122,15 @@ msgstr ""
 
 #: lib/plugins/eab-buddypres-activity.php:255
 msgid "... is coming"
-msgstr ""
+msgstr "... kommt"
 
 #: lib/plugins/eab-buddypres-activity.php:258
 msgid "... is maybe coming"
-msgstr ""
+msgstr "... kommt vielleicht"
 
 #: lib/plugins/eab-buddypres-activity.php:261
 msgid "... is not coming"
-msgstr ""
+msgstr "... kommt nicht"
 
 #: lib/plugins/eab-buddypres-activity.php:266
 msgid "Update group Activity feed"
@@ -2046,6 +2140,8 @@ msgstr ""
 msgid ""
 "You'll need BuddyPress installed and activated for My Events add-on to work"
 msgstr ""
+"Damit das Add-on Meine Events funktioniert, muss BuddyPress installiert und "
+"aktiviert sein."
 
 #: lib/plugins/eab-buddypres-my_events.php:60
 msgid "Organized"
@@ -2113,8 +2209,8 @@ msgstr ""
 
 #: lib/plugins/eab-buddypres-my_events.php:313
 msgid ""
-"Show these sections. Possible values: \"organized\", \"yes\", \"maybe\", \"no"
-"\"."
+"Show these sections. Possible values: \"organized\", \"yes\", \"maybe\", "
+"\"no\"."
 msgstr ""
 
 #: lib/plugins/eab-buddypress-group_events.php:86
@@ -2132,6 +2228,8 @@ msgid ""
 "You'll need to enable BuddyPress Groups component for Groups Events add-on "
 "to work"
 msgstr ""
+"Du musst die BuddyPress-Gruppenkomponente aktivieren, damit das Add-on "
+"Gruppen-Events funktioniert"
 
 #: lib/plugins/eab-buddypress-group_events.php:150
 msgid "Group Events settings"
@@ -2169,7 +2267,7 @@ msgstr ""
 
 #: lib/plugins/eab-buddypress-group_events.php:167
 msgid "... except for Super-admins"
-msgstr ""
+msgstr "... außer für Super-Admins"
 
 #: lib/plugins/eab-buddypress-group_events.php:169
 msgid ""
@@ -2204,12 +2302,12 @@ msgid "Group Events"
 msgstr ""
 
 #: lib/plugins/eab-buddypress-group_events.php:352
-#: lib/plugins/eab-events_weekly_calendar.php:120
+#: lib/plugins/eab-events_weekly_calendar.php:127
 msgid "Prev"
 msgstr ""
 
 #: lib/plugins/eab-buddypress-group_events.php:355
-#: lib/plugins/eab-events_weekly_calendar.php:121
+#: lib/plugins/eab-events_weekly_calendar.php:128
 msgid "Next"
 msgstr ""
 
@@ -2231,7 +2329,7 @@ msgstr ""
 
 #: lib/plugins/eab-email-enewsletter_integration.php:52
 msgid ""
-"You'll need <a href='http://premium.wpmudev.org/project/e-newsletter'>e-"
+"You'll need <a href='https://cp-psource.github.io/e-newsletter/'>e-"
 "Newsletter</a> plugin installed and activated for E-Newsletter integration "
 "add-on to work"
 msgstr ""
@@ -2274,24 +2372,24 @@ msgstr ""
 msgid "Negative (&quot;No&quot;)"
 msgstr ""
 
-#: lib/plugins/eab-email-enewsletter_integration.php:436
+#: lib/plugins/eab-email-enewsletter_integration.php:468
 #, php-format
 msgid "New event: %s"
 msgstr ""
 
-#: lib/plugins/eab-event-alert-rsvp.php:91
+#: lib/plugins/eab-event-alert-rsvp.php:93
 msgid "Alert RSVP Settings"
 msgstr ""
 
-#: lib/plugins/eab-event-alert-rsvp.php:93
+#: lib/plugins/eab-event-alert-rsvp.php:95
 msgid "Subject"
 msgstr ""
 
-#: lib/plugins/eab-event-alert-rsvp.php:95
+#: lib/plugins/eab-event-alert-rsvp.php:97
 msgid "Email Content"
 msgstr ""
 
-#: lib/plugins/eab-event-alert-rsvp.php:97
+#: lib/plugins/eab-event-alert-rsvp.php:99
 msgid ""
 "You can use these macros: DISPLAY_NAME, EVENT_NAME, START_DATE, START_TIME, "
 "END_DATE, END_TIME"
@@ -2317,28 +2415,28 @@ msgstr ""
 msgid "Delete Published Events"
 msgstr ""
 
-#: lib/plugins/eab-events-capabilities.php:86
+#: lib/plugins/eab-events-capabilities.php:88
 msgid "Event Capabilities"
 msgstr ""
 
-#: lib/plugins/eab-events-capabilities.php:90
+#: lib/plugins/eab-events-capabilities.php:92
 msgid "Please, select a role to edit"
 msgstr ""
 
-#: lib/plugins/eab-events-capabilities.php:100
-#: lib/plugins/eab-events-colors.php:186
+#: lib/plugins/eab-events-capabilities.php:102
+#: lib/plugins/eab-events-colors.php:199
 msgid "Reset to defaults"
 msgstr ""
 
-#: lib/plugins/eab-events-capabilities.php:105
+#: lib/plugins/eab-events-capabilities.php:107
 msgid ""
 "Check the box if you want to restrict the media files to the author only"
 msgstr ""
 
-#: lib/plugins/eab-events-capabilities.php:121
+#: lib/plugins/eab-events-capabilities.php:123
 #, php-format
 msgid "Your <b>%s</b> users can..."
-msgstr ""
+msgstr "Deine <b>%s</b> Benutzer können..."
 
 #: lib/plugins/eab-events-colors.php:148
 msgid "Event Colors"
@@ -2349,35 +2447,35 @@ msgstr ""
 msgid "Event category: &quot;%s&quot;"
 msgstr ""
 
-#: lib/plugins/eab-events-colors.php:160
+#: lib/plugins/eab-events-colors.php:167
 msgid "Default"
 msgstr ""
 
-#: lib/plugins/eab-events-colors.php:172
+#: lib/plugins/eab-events-colors.php:185
 msgid "Background"
 msgstr ""
 
-#: lib/plugins/eab-events-colors.php:176
-#: lib/plugins/eab-rsvps-additional_registration_fields.php:142
+#: lib/plugins/eab-events-colors.php:189
+#: lib/plugins/eab-rsvps-additional_registration_fields.php:180
 msgid "Text"
 msgstr ""
 
-#: lib/plugins/eab-events-colors.php:181
+#: lib/plugins/eab-events-colors.php:194
 msgid "Skip"
 msgstr ""
 
-#: lib/plugins/eab-events-colors.php:191
+#: lib/plugins/eab-events-colors.php:204
 msgid "Apply backgrounds to single-category calendar widget"
 msgstr ""
 
-#: lib/plugins/eab-events-colors.php:192
+#: lib/plugins/eab-events-colors.php:205
 msgid ""
 "Selecting this option will propagate foreground and background color to your "
 "Calendar widget events, provided there is only one category selected for "
 "displaying."
 msgstr ""
 
-#: lib/plugins/eab-events-colors.php:197
+#: lib/plugins/eab-events-colors.php:210
 msgid "Apply colors to calendar widget expanded events"
 msgstr ""
 
@@ -2428,7 +2526,7 @@ msgid ""
 msgstr ""
 
 #: lib/plugins/eab-events-event_cancelation.php:294
-#: lib/plugins/eab-rsvps-rsvp_email.php:111
+#: lib/plugins/eab-rsvps-rsvp_email.php:122
 msgid "From email address"
 msgstr ""
 
@@ -2437,61 +2535,61 @@ msgid "This is the address the cancellation email will be sent from"
 msgstr ""
 
 #: lib/plugins/eab-events-event_cancelation.php:299
-#: lib/plugins/eab-rsvps-email-non_paid.php:174
-#: lib/plugins/eab-rsvps-rsvp_email.php:116
-#: lib/plugins/eab-rsvps-rsvp_email_me.php:193
+#: lib/plugins/eab-rsvps-email-non_paid.php:180
+#: lib/plugins/eab-rsvps-rsvp_email.php:127
+#: lib/plugins/eab-rsvps-rsvp_email_me.php:215
 msgid "Email subject"
 msgstr ""
 
 #: lib/plugins/eab-events-event_cancelation.php:300
-#: lib/plugins/eab-rsvps-email-non_paid.php:175
-#: lib/plugins/eab-rsvps-rsvp_email.php:117
-#: lib/plugins/eab-rsvps-rsvp_email_me.php:194
+#: lib/plugins/eab-rsvps-email-non_paid.php:181
+#: lib/plugins/eab-rsvps-rsvp_email.php:128
+#: lib/plugins/eab-rsvps-rsvp_email_me.php:216
 #, php-format
 msgid "This is your email subject. You can use these macros: <code>%s</code>"
 msgstr ""
 
 #: lib/plugins/eab-events-event_cancelation.php:304
-#: lib/plugins/eab-rsvps-email-non_paid.php:179
-#: lib/plugins/eab-rsvps-rsvp_email.php:121
-#: lib/plugins/eab-rsvps-rsvp_email_me.php:198
+#: lib/plugins/eab-rsvps-email-non_paid.php:185
+#: lib/plugins/eab-rsvps-rsvp_email.php:132
+#: lib/plugins/eab-rsvps-rsvp_email_me.php:220
 msgid "Email body"
 msgstr ""
 
 #: lib/plugins/eab-events-event_cancelation.php:305
-#: lib/plugins/eab-rsvps-email-non_paid.php:180
-#: lib/plugins/eab-rsvps-rsvp_email.php:122
-#: lib/plugins/eab-rsvps-rsvp_email_me.php:199
+#: lib/plugins/eab-rsvps-email-non_paid.php:186
+#: lib/plugins/eab-rsvps-rsvp_email.php:133
+#: lib/plugins/eab-rsvps-rsvp_email_me.php:221
 #, php-format
 msgid "This is your email body. You can use these macros: <code>%s</code>"
 msgstr ""
 
 #: lib/plugins/eab-events-event_cancelation.php:310
-#: lib/plugins/eab-rsvps-email-non_paid.php:185
-#: lib/plugins/eab-rsvps-rsvp_email.php:127
-#: lib/plugins/eab-rsvps-rsvp_email_me.php:204
+#: lib/plugins/eab-rsvps-email-non_paid.php:191
+#: lib/plugins/eab-rsvps-rsvp_email.php:138
+#: lib/plugins/eab-rsvps-rsvp_email_me.php:226
 #, php-format
 msgid "You can use these macros in your subject and body: <code>%s</code>"
 msgstr ""
 
 #: lib/plugins/eab-events-event_cancelation.php:313
-#: lib/plugins/eab-rsvps-email-non_paid.php:188
-#: lib/plugins/eab-rsvps-rsvp_email.php:130
-#: lib/plugins/eab-rsvps-rsvp_email_me.php:207
+#: lib/plugins/eab-rsvps-email-non_paid.php:194
+#: lib/plugins/eab-rsvps-rsvp_email.php:141
+#: lib/plugins/eab-rsvps-rsvp_email_me.php:229
 msgid "Preview"
 msgstr ""
 
 #: lib/plugins/eab-events-event_cancelation.php:314
-#: lib/plugins/eab-rsvps-email-non_paid.php:189
-#: lib/plugins/eab-rsvps-rsvp_email.php:131
-#: lib/plugins/eab-rsvps-rsvp_email_me.php:208
+#: lib/plugins/eab-rsvps-email-non_paid.php:195
+#: lib/plugins/eab-rsvps-rsvp_email.php:142
+#: lib/plugins/eab-rsvps-rsvp_email_me.php:230
 msgid "using this event data:"
 msgstr ""
 
 #: lib/plugins/eab-events-event_cancelation.php:338
-#: lib/plugins/eab-rsvps-email-non_paid.php:212
-#: lib/plugins/eab-rsvps-rsvp_email.php:154
-#: lib/plugins/eab-rsvps-rsvp_email_me.php:231
+#: lib/plugins/eab-rsvps-email-non_paid.php:218
+#: lib/plugins/eab-rsvps-rsvp_email.php:165
+#: lib/plugins/eab-rsvps-rsvp_email_me.php:253
 msgid "Please, hold on... "
 msgstr ""
 
@@ -2501,6 +2599,8 @@ msgid ""
 "<b>Conflict warning:</b> You'll need to turn off one of the past events "
 "expiry add-ons."
 msgstr ""
+"<b>Konfliktwarnung:</b> Du musst eines der Add-Ons zum Ablauf vergangener "
+"Ereignisse deaktivieren."
 
 #: lib/plugins/eab-events-front_page_editing.php:67
 msgid "Front-page editing"
@@ -2516,16 +2616,16 @@ msgstr ""
 
 #: lib/plugins/eab-events-front_page_editing.php:82
 msgid ""
-"Don't forget to add this shortcode to your selected page: "
-"<code>[eab_event_editor]</code>"
+"Don't forget to add this shortcode to your selected page: <code>"
+"[eab_event_editor]</code>"
 msgstr ""
 
 #: lib/plugins/eab-events-front_page_editing.php:83
 msgid ""
-"By default, Front-page editor will work with preconfigured stub URL. "
-"However, you can create your own page, add the Front-page editing shortcode "
-"(<code>[eab_event_editor]</code>) to the content and configure your Add/Edit "
-"links here to use this page instead."
+"By default, Front-page editor will work with preconfigured stub URL. However,"
+" you can create your own page, add the Front-page editing shortcode (<code>"
+"[eab_event_editor]</code>) to the content and configure your Add/Edit links "
+"here to use this page instead."
 msgstr ""
 
 #: lib/plugins/eab-events-front_page_editing.php:90
@@ -2544,111 +2644,117 @@ msgstr ""
 
 #: lib/plugins/eab-events-front_page_editing.php:153
 msgid "Add event"
-msgstr ""
+msgstr "Ereignis hinzufügen"
 
 #: lib/plugins/eab-events-front_page_editing.php:184
 msgid "Edit this Event"
 msgstr ""
 
-#: lib/plugins/eab-events-front_page_editing.php:227
+#: lib/plugins/eab-events-front_page_editing.php:229
 msgid "No data received"
 msgstr ""
 
-#: lib/plugins/eab-events-front_page_editing.php:233
+#: lib/plugins/eab-events-front_page_editing.php:235
 msgid "Insufficient privileges"
 msgstr ""
 
-#: lib/plugins/eab-events-front_page_editing.php:266
+#: lib/plugins/eab-events-front_page_editing.php:271
 msgid "There has been an error saving this Event"
 msgstr ""
 
-#: lib/plugins/eab-events-front_page_editing.php:290
+#: lib/plugins/eab-events-front_page_editing.php:302
 msgid "Event saved and published"
 msgstr ""
 
-#: lib/plugins/eab-events-front_page_editing.php:293
+#: lib/plugins/eab-events-front_page_editing.php:305
 msgid "Event saved and waiting for approval"
 msgstr ""
 
-#: lib/plugins/eab-events-front_page_editing.php:363
+#: lib/plugins/eab-events-front_page_editing.php:376
 msgid "Back to Event"
 msgstr ""
 
-#: lib/plugins/eab-events-front_page_editing.php:366
+#: lib/plugins/eab-events-front_page_editing.php:379
 #: lib/widgets/Attendees_Widget.class.php:69
-#: lib/widgets/Popular_Widget.class.php:106
-#: lib/widgets/Upcoming_Widget.class.php:118
+#: lib/widgets/Daily_Widget.class.php:133
+#: lib/widgets/Popular_Widget.class.php:113
+#: lib/widgets/Upcoming_Widget.class.php:127
 msgid "Title"
 msgstr ""
 
-#: lib/plugins/eab-events-front_page_editing.php:388
+#: lib/plugins/eab-events-front_page_editing.php:413
 msgid "Starts on"
 msgstr ""
 
-#: lib/plugins/eab-events-front_page_editing.php:397
+#: lib/plugins/eab-events-front_page_editing.php:420
+#: lib/plugins/eab-events-front_page_editing.php:440
+msgid "Time"
+msgstr ""
+
+#: lib/plugins/eab-events-front_page_editing.php:433
 msgid "Ends on"
 msgstr ""
 
-#: lib/plugins/eab-events-front_page_editing.php:424
+#: lib/plugins/eab-events-front_page_editing.php:474
 msgid "Is this a paid event?"
 msgstr ""
 
-#: lib/plugins/eab-events-front_page_editing.php:446
+#: lib/plugins/eab-events-front_page_editing.php:496
 msgid "Venue"
 msgstr ""
 
-#: lib/plugins/eab-events-front_page_editing.php:463
+#: lib/plugins/eab-events-front_page_editing.php:513
 msgid "Category"
 msgstr ""
 
-#: lib/plugins/eab-events-front_page_editing.php:489
-#: lib/plugins/eab-events-front_page_editing.php:502
+#: lib/plugins/eab-events-front_page_editing.php:541
+#: lib/plugins/eab-events-front_page_editing.php:554
 msgid "Feature Image"
 msgstr ""
 
-#: lib/plugins/eab-events-front_page_editing.php:496
+#: lib/plugins/eab-events-front_page_editing.php:548
 msgid "Change the featured image"
 msgstr ""
 
-#: lib/plugins/eab-events-front_page_editing.php:509
+#: lib/plugins/eab-events-front_page_editing.php:561
 msgid "Update"
 msgstr ""
 
-#: lib/plugins/eab-events-front_page_editing.php:523
+#: lib/plugins/eab-events-front_page_editing.php:575
 msgid "Toggle RSVPs"
 msgstr ""
 
-#: lib/plugins/eab-events-front_page_editing.php:578
+#: lib/plugins/eab-events-front_page_editing.php:630
 msgid "Please set both start and end dates and times"
 msgstr ""
 
-#: lib/plugins/eab-events-front_page_editing.php:579
+#: lib/plugins/eab-events-front_page_editing.php:631
 msgid "Please check your time and date settings"
 msgstr ""
 
-#: lib/plugins/eab-events-front_page_editing.php:580
-#: lib/plugins/eab-import-meetup.php:382 lib/plugins/eab-import-meetup.php:397
-#: lib/plugins/eab-import-meetup.php:410
+#: lib/plugins/eab-events-front_page_editing.php:632
+#: lib/plugins/eab-import-meetup.php:390 lib/plugins/eab-import-meetup.php:406
+#: lib/plugins/eab-import-meetup.php:419
 msgid "Error"
 msgstr ""
 
-#: lib/plugins/eab-events-front_page_editing.php:581
+#: lib/plugins/eab-events-front_page_editing.php:633
 msgid "Save failed"
 msgstr ""
 
-#: lib/plugins/eab-events-front_page_editing.php:582
+#: lib/plugins/eab-events-front_page_editing.php:634
 msgid "All good!"
 msgstr ""
 
 #: lib/plugins/eab-events-limit_capacity.php:152
 #, php-format
 msgid "%d seats left"
-msgstr ""
+msgstr "%d Plätze übrig"
 
 #: lib/plugins/eab-events-limit_capacity.php:175
 #, php-format
 msgid "%s tickets left"
-msgstr ""
+msgstr "%s Tickets übrig"
 
 #: lib/plugins/eab-events-limit_capacity.php:176
 msgid "No tickets left"
@@ -2688,11 +2794,11 @@ msgstr ""
 msgid "Sorry, the event has reached it's max capacity!!"
 msgstr ""
 
-#: lib/plugins/eab-events-manual-payments.php:115
+#: lib/plugins/eab-events-manual-payments.php:117
 msgid "Thank you for the payment!"
 msgstr ""
 
-#: lib/plugins/eab-events-manual-payments.php:131
+#: lib/plugins/eab-events-manual-payments.php:133
 msgid ""
 "You do not have MANUALPAYMENTBUTTON keyword in the Instructions field. This "
 "means there will be no button and user will not be able to inform you that "
@@ -2700,47 +2806,63 @@ msgid ""
 "practically useless."
 msgstr ""
 
-#: lib/plugins/eab-events-manual-payments.php:158
+#: lib/plugins/eab-events-manual-payments.php:160
 msgid "Manual Payment settings"
 msgstr ""
 
-#: lib/plugins/eab-events-manual-payments.php:161
+#: lib/plugins/eab-events-manual-payments.php:163
 msgid "Select button text"
 msgstr ""
 
-#: lib/plugins/eab-events-manual-payments.php:163
+#: lib/plugins/eab-events-manual-payments.php:165
 msgid "This is the text that will appear on Select Manual Payment button."
 msgstr ""
 
-#: lib/plugins/eab-events-manual-payments.php:167
+#: lib/plugins/eab-events-manual-payments.php:169
 msgid "Pay button text"
 msgstr ""
 
-#: lib/plugins/eab-events-manual-payments.php:169
+#: lib/plugins/eab-events-manual-payments.php:171
 msgid ""
 "This is the text that will appear on Pay button. User needs to click this "
 "button after he made the payment."
 msgstr ""
 
-#: lib/plugins/eab-events-manual-payments.php:173
+#: lib/plugins/eab-events-manual-payments.php:175
 msgid "Instructions"
 msgstr ""
 
-#: lib/plugins/eab-events-manual-payments.php:174
+#: lib/plugins/eab-events-manual-payments.php:176
 msgid ""
 "Write the procedure that the user needs to do for a manual payment here. Use "
 "MANUALPAYMENTBUTTON to insert the Pay Button to the desired location."
 msgstr ""
 
-#: lib/plugins/eab-events-manual-payments.php:250
+#: lib/plugins/eab-events-manual-payments.php:224
+msgid "User ID or Event ID is missing"
+msgstr ""
+
+#: lib/plugins/eab-events-manual-payments.php:242
+msgid "Record could not be found"
+msgstr ""
+
+#: lib/plugins/eab-events-manual-payments.php:256
 msgid "Approve Payment"
+msgstr ""
+
+#: lib/plugins/eab-events-manual-payments.php:261
+msgid "Are you sure to approve this payment?"
+msgstr ""
+
+#: lib/plugins/eab-events-manual-payments.php:269
+msgid "paid"
 msgstr ""
 
 #: lib/plugins/eab-events-membership-integration.php:83
 msgid ""
-"You'll need <a href='http://premium.wpmudev.org/project/"
-"membership'>Membership</a> plugin installed and activated for Membership "
-"integration add-on to work"
+"You'll need <a href='http://premium.wpmudev.org/project/membership'>"
+"Membership</a> plugin installed and activated for Membership integration add-"
+"on to work"
 msgstr ""
 
 #: lib/plugins/eab-events-membership-integration.php:172
@@ -2775,7 +2897,7 @@ msgstr ""
 #: lib/plugins/eab-events-membership-integration.php:223
 #, php-format
 msgid "%s price"
-msgstr ""
+msgstr "%s Preis"
 
 #: lib/plugins/eab-events-membership-integration.php:258
 msgid "Membership plugin is not activated."
@@ -2821,14 +2943,15 @@ msgstr ""
 #: lib/plugins/eab-events-noindex_meta.php:62
 msgid "Add <code>noindex</code> to my recurring events instances"
 msgstr ""
+"<code>noindex</code> zu meinen wiederkehrenden Ereignisinstanzen hinzufügen"
 
 #: lib/plugins/eab-events-noindex_meta.php:72
 msgid "Add <code>noindex</code> to my event archives"
-msgstr ""
+msgstr "<code>noindex</code> zu meinen Veranstaltungsarchiven hinzufügen"
 
 #: lib/plugins/eab-events-noindex_meta.php:85
 msgid "Add <code>nofollow</code> too."
-msgstr ""
+msgstr "Füge auch <code>nofollow</code> hinzu."
 
 #: lib/plugins/eab-events-pa_events.php:48
 msgid "Public Announcement"
@@ -2839,50 +2962,75 @@ msgstr ""
 msgid "This is a Public Announcement event"
 msgstr ""
 
-#: lib/plugins/eab-events-redirect.php:133
+#: lib/plugins/eab-events-redirect.php:137
 msgid "This is not a valid source ID."
 msgstr ""
 
-#: lib/plugins/eab-events-redirect.php:138
+#: lib/plugins/eab-events-redirect.php:142
 msgid ""
 "Target and source point the same page. This will result in an endless "
 "redirection loop."
 msgstr ""
 
-#: lib/plugins/eab-events-redirect.php:178
+#: lib/plugins/eab-events-redirect.php:182
 msgid "Event Controlled Redirect"
 msgstr ""
 
-#: lib/plugins/eab-events-redirect.php:179
+#: lib/plugins/eab-events-redirect.php:183
 msgid "ID of source page "
 msgstr ""
 
-#: lib/plugins/eab-events-redirect.php:182
+#: lib/plugins/eab-events-redirect.php:186
 msgid "URL of the target "
 msgstr ""
 
-#: lib/plugins/eab-events-redirect.php:214
+#: lib/plugins/eab-events-redirect.php:218
 msgid "Event Controlled Redirect settings"
 msgstr ""
 
-#: lib/plugins/eab-events-redirect.php:217
+#: lib/plugins/eab-events-redirect.php:221
 msgid "Global source page ID"
 msgstr ""
 
-#: lib/plugins/eab-events-redirect.php:219
+#: lib/plugins/eab-events-redirect.php:223
 msgid ""
 "If you enter an ID here all events which do NOT have a source page ID "
 "setting will use this setting."
 msgstr ""
 
-#: lib/plugins/eab-events-redirect.php:223
+#: lib/plugins/eab-events-redirect.php:227
 msgid "Global target url"
 msgstr ""
 
-#: lib/plugins/eab-events-redirect.php:225
+#: lib/plugins/eab-events-redirect.php:229
 msgid ""
 "If you enter an url here all events which do NOT have a target url setting "
 "will use this setting."
+msgstr ""
+
+#: lib/plugins/eab-events-rsvp_close_period.php:59
+msgid "Event RSVP closing period"
+msgstr ""
+
+#: lib/plugins/eab-events-rsvp_close_period.php:62
+msgid "Hours"
+msgstr ""
+
+#: lib/plugins/eab-events-rsvp_close_period.php:64
+#: lib/plugins/eab-events-rsvp_close_period.php:82
+msgid "or check for no closing period"
+msgstr ""
+
+#: lib/plugins/eab-events-rsvp_close_period.php:80
+msgid "Enter the RSVP closing period for this event (in hours)"
+msgstr ""
+
+#: lib/plugins/eab-events-rsvp_close_period.php:121
+msgid "Sorry, RSVP bookings are no longer available for this event."
+msgstr ""
+
+#: lib/plugins/eab-events-rsvp_close_period.php:162
+msgid "Sorry, RSVP bookings are now closed for this event."
 msgstr ""
 
 #: lib/plugins/eab-events-social_rsvp.php:40
@@ -2897,63 +3045,63 @@ msgid ""
 "properly"
 msgstr ""
 
-#: lib/plugins/eab-events_weekly_calendar.php:111
+#: lib/plugins/eab-events_weekly_calendar.php:118
 #, php-format
 msgid "Events from %s to %s"
 msgstr ""
 
-#: lib/plugins/eab-events_weekly_calendar.php:332
+#: lib/plugins/eab-events_weekly_calendar.php:339
 msgid " "
 msgstr ""
 
-#: lib/plugins/eab-events_weekly_calendar.php:416
+#: lib/plugins/eab-events_weekly_calendar.php:423
 msgid "Weekly Event Calendar settings"
 msgstr ""
 
-#: lib/plugins/eab-events_weekly_calendar.php:419
+#: lib/plugins/eab-events_weekly_calendar.php:426
 msgid "Calendar start hour"
 msgstr ""
 
-#: lib/plugins/eab-events_weekly_calendar.php:421
+#: lib/plugins/eab-events_weekly_calendar.php:428
 msgid ""
 "Enter the hour of the day calendar starts in 24 hour format, without am/pm "
 "and minutes, e.g. 13. Default is 10 (10am)."
 msgstr ""
 
-#: lib/plugins/eab-events_weekly_calendar.php:425
+#: lib/plugins/eab-events_weekly_calendar.php:432
 msgid "Calendar end hour"
 msgstr ""
 
-#: lib/plugins/eab-events_weekly_calendar.php:427
+#: lib/plugins/eab-events_weekly_calendar.php:434
 msgid ""
 "Enter the hour of the day calendar ends in 24 hour format, without am/pm and "
 "minutes, e.g. 22. Default is 24 (12pm)."
 msgstr ""
 
-#: lib/plugins/eab-events_weekly_calendar.php:431
+#: lib/plugins/eab-events_weekly_calendar.php:438
 msgid "Calendar step interval (minutes)"
 msgstr ""
 
-#: lib/plugins/eab-events_weekly_calendar.php:433
+#: lib/plugins/eab-events_weekly_calendar.php:440
 msgid ""
 "Enter the number of minutes which will determine how many rows the calendar "
 "table will have. Default is 120 (2 hours). Minimum allowed value is 10. Too "
 "small values may result a long table."
 msgstr ""
 
-#: lib/plugins/eab-events_weekly_calendar.php:437
+#: lib/plugins/eab-events_weekly_calendar.php:444
 msgid "Display in tooltip"
 msgstr ""
 
-#: lib/plugins/eab-events_weekly_calendar.php:439
+#: lib/plugins/eab-events_weekly_calendar.php:446
 msgid "Event venue, thumbnail, starting date and content"
 msgstr ""
 
-#: lib/plugins/eab-events_weekly_calendar.php:440
+#: lib/plugins/eab-events_weekly_calendar.php:447
 msgid "Author name, avatar and bio"
 msgstr ""
 
-#: lib/plugins/eab-events_weekly_calendar.php:443
+#: lib/plugins/eab-events_weekly_calendar.php:450
 msgid ""
 "Select which items should be displayed in the tooltip, i.e. when visitor "
 "places the mouse over the event."
@@ -2999,282 +3147,287 @@ msgstr ""
 msgid "Not supported"
 msgstr ""
 
-#: lib/plugins/eab-guest_list-show_additional_info.php:136
+#: lib/plugins/eab-guest_list-show_additional_info.php:138
 msgid "Guest Lists Options"
 msgstr ""
 
-#: lib/plugins/eab-guest_list-show_additional_info.php:139
+#: lib/plugins/eab-guest_list-show_additional_info.php:141
 msgid "Guest avatars"
 msgstr ""
 
-#: lib/plugins/eab-guest_list-show_additional_info.php:142
+#: lib/plugins/eab-guest_list-show_additional_info.php:144
 msgid "Do not show avatars"
 msgstr ""
 
-#: lib/plugins/eab-guest_list-show_additional_info.php:143
+#: lib/plugins/eab-guest_list-show_additional_info.php:145
 msgid "Hide user avatars in RSVP listings"
 msgstr ""
 
-#: lib/plugins/eab-guest_list-show_additional_info.php:146
+#: lib/plugins/eab-guest_list-show_additional_info.php:148
 msgid "Show small avatars"
 msgstr ""
 
-#: lib/plugins/eab-guest_list-show_additional_info.php:147
+#: lib/plugins/eab-guest_list-show_additional_info.php:149
 msgid "Show small avatars in RSVP listings"
 msgstr ""
 
-#: lib/plugins/eab-guest_list-show_additional_info.php:150
+#: lib/plugins/eab-guest_list-show_additional_info.php:152
 msgid "Show medium avatars"
 msgstr ""
 
-#: lib/plugins/eab-guest_list-show_additional_info.php:151
+#: lib/plugins/eab-guest_list-show_additional_info.php:153
 msgid "Show medium avatars in RSVP listings"
 msgstr ""
 
-#: lib/plugins/eab-guest_list-show_additional_info.php:154
+#: lib/plugins/eab-guest_list-show_additional_info.php:156
 msgid "Show large avatars"
 msgstr ""
 
-#: lib/plugins/eab-guest_list-show_additional_info.php:155
+#: lib/plugins/eab-guest_list-show_additional_info.php:157
 msgid "Show large avatars in RSVP listings"
 msgstr ""
 
-#: lib/plugins/eab-guest_list-show_additional_info.php:159
+#: lib/plugins/eab-guest_list-show_additional_info.php:161
 msgid "Guest names"
 msgstr ""
 
-#: lib/plugins/eab-guest_list-show_additional_info.php:162
+#: lib/plugins/eab-guest_list-show_additional_info.php:164
 msgid "Do not show name"
 msgstr ""
 
-#: lib/plugins/eab-guest_list-show_additional_info.php:163
+#: lib/plugins/eab-guest_list-show_additional_info.php:165
 msgid "Hide names from RSVP lists"
 msgstr ""
 
-#: lib/plugins/eab-guest_list-show_additional_info.php:166
+#: lib/plugins/eab-guest_list-show_additional_info.php:168
 msgid "Show display name"
 msgstr ""
 
-#: lib/plugins/eab-guest_list-show_additional_info.php:167
+#: lib/plugins/eab-guest_list-show_additional_info.php:169
 msgid "Show user display names in RSVP listings"
 msgstr ""
 
-#: lib/plugins/eab-guest_list-show_additional_info.php:170
+#: lib/plugins/eab-guest_list-show_additional_info.php:172
 msgid "Show username"
 msgstr ""
 
-#: lib/plugins/eab-guest_list-show_additional_info.php:171
+#: lib/plugins/eab-guest_list-show_additional_info.php:173
 msgid "Show usernames in RSVP listings"
 msgstr ""
 
-#: lib/plugins/eab-guest_list-show_additional_info.php:174
-#: lib/plugins/eab-guest_list-show_additional_info.php:178
+#: lib/plugins/eab-guest_list-show_additional_info.php:176
+#: lib/plugins/eab-guest_list-show_additional_info.php:180
 msgid "Show first name"
 msgstr ""
 
-#: lib/plugins/eab-guest_list-show_additional_info.php:175
+#: lib/plugins/eab-guest_list-show_additional_info.php:177
 msgid "Show user first names in RSVP listings"
 msgstr ""
 
-#: lib/plugins/eab-guest_list-show_additional_info.php:179
+#: lib/plugins/eab-guest_list-show_additional_info.php:181
 msgid "Show user last names in RSVP listings"
 msgstr ""
 
-#: lib/plugins/eab-guest_list-show_additional_info.php:182
+#: lib/plugins/eab-guest_list-show_additional_info.php:184
 msgid "Show full name, first name first"
 msgstr ""
 
-#: lib/plugins/eab-guest_list-show_additional_info.php:183
+#: lib/plugins/eab-guest_list-show_additional_info.php:185
 msgid "Show user full names in RSVP listings as Firstname Lastname"
 msgstr ""
 
-#: lib/plugins/eab-guest_list-show_additional_info.php:186
+#: lib/plugins/eab-guest_list-show_additional_info.php:188
 msgid "Show full name, last name first"
 msgstr ""
 
-#: lib/plugins/eab-guest_list-show_additional_info.php:187
+#: lib/plugins/eab-guest_list-show_additional_info.php:189
 msgid "Show user full names in RSVP listings as Lastname Firstname"
 msgstr ""
 
-#: lib/plugins/eab-guest_list-show_additional_info.php:191
+#: lib/plugins/eab-guest_list-show_additional_info.php:193
 msgid "Show prettified guest list names in..."
 msgstr ""
 
-#: lib/plugins/eab-guest_list-show_additional_info.php:195
+#: lib/plugins/eab-guest_list-show_additional_info.php:197
 msgid "Events admin area"
 msgstr ""
 
-#: lib/plugins/eab-guest_list-show_additional_info.php:196
-#: lib/plugins/eab-guest_list-show_additional_info.php:201
+#: lib/plugins/eab-guest_list-show_additional_info.php:198
+#: lib/plugins/eab-guest_list-show_additional_info.php:203
 msgid "By default, the user names will be shown here"
 msgstr ""
 
-#: lib/plugins/eab-guest_list-show_additional_info.php:200
+#: lib/plugins/eab-guest_list-show_additional_info.php:202
 msgid "Events export files"
 msgstr ""
 
-#: lib/plugins/eab-import-facebook_events.php:175
-#: lib/plugins/eab-import-google_calendar.php:186
+#: lib/plugins/eab-import-facebook_events-main.php:182
+#: lib/plugins/eab-import-google_calendar.php:189
 #: lib/plugins/eab-rsvps-scheduled_rsvp_reset.php:78
 msgid "Hour"
 msgstr ""
 
-#: lib/plugins/eab-import-facebook_events.php:176
-#: lib/plugins/eab-import-google_calendar.php:187
+#: lib/plugins/eab-import-facebook_events-main.php:183
+#: lib/plugins/eab-import-google_calendar.php:190
 #: lib/plugins/eab-rsvps-scheduled_rsvp_reset.php:79
 msgid "Two hours"
 msgstr ""
 
-#: lib/plugins/eab-import-facebook_events.php:177
-#: lib/plugins/eab-import-google_calendar.php:188
+#: lib/plugins/eab-import-facebook_events-main.php:184
+#: lib/plugins/eab-import-google_calendar.php:191
 #: lib/plugins/eab-rsvps-scheduled_rsvp_reset.php:80
 msgid "Three hours"
 msgstr ""
 
-#: lib/plugins/eab-import-facebook_events.php:178
-#: lib/plugins/eab-import-google_calendar.php:189
+#: lib/plugins/eab-import-facebook_events-main.php:185
+#: lib/plugins/eab-import-google_calendar.php:192
 #: lib/plugins/eab-rsvps-scheduled_rsvp_reset.php:81
 msgid "Six hours"
 msgstr ""
 
-#: lib/plugins/eab-import-facebook_events.php:179
-#: lib/plugins/eab-import-google_calendar.php:190
+#: lib/plugins/eab-import-facebook_events-main.php:186
+#: lib/plugins/eab-import-google_calendar.php:193
 #: lib/plugins/eab-rsvps-scheduled_rsvp_reset.php:82
 msgid "Twelve hours"
 msgstr ""
 
-#: lib/plugins/eab-import-facebook_events.php:194
+#: lib/plugins/eab-import-facebook_events-main.php:201
 msgid "Facebook Events import settings"
 msgstr ""
 
-#: lib/plugins/eab-import-facebook_events.php:197
+#: lib/plugins/eab-import-facebook_events-main.php:207
 msgid "App ID"
 msgstr ""
 
-#: lib/plugins/eab-import-facebook_events.php:199
+#: lib/plugins/eab-import-facebook_events-main.php:207
 msgid "Enter your App ID number here."
 msgstr ""
 
-#: lib/plugins/eab-import-facebook_events.php:201
+#: lib/plugins/eab-import-facebook_events-main.php:215
 msgid "App secret"
 msgstr ""
 
-#: lib/plugins/eab-import-facebook_events.php:203
+#: lib/plugins/eab-import-facebook_events-main.php:215
 msgid "Enter your App secret number here."
 msgstr ""
 
-#: lib/plugins/eab-import-facebook_events.php:206
-#: lib/plugins/eab-import-google_calendar.php:229
+#: lib/plugins/eab-import-facebook_events-main.php:224
+#: lib/plugins/eab-import-google_calendar.php:235
 msgid "Reset"
 msgstr ""
 
-#: lib/plugins/eab-import-facebook_events.php:207
+#: lib/plugins/eab-import-facebook_events-main.php:225
 msgid ""
-"Remember to also revoke the app privileges <a href=\"http://www.facebook.com/"
-"settings?tab=applications\" target=\"_blank\">here</a>."
+"Remember to also revoke the app privileges <a href=\"http://www.facebook."
+"com/settings?tab=applications\" target=\"_blank\">here</a>."
 msgstr ""
 
-#: lib/plugins/eab-import-facebook_events.php:209
-#: lib/plugins/eab-import-google_calendar.php:232
+#: lib/plugins/eab-import-facebook_events-main.php:227
+#: lib/plugins/eab-import-google_calendar.php:238
 msgid "Authenticate"
 msgstr ""
 
-#: lib/plugins/eab-import-facebook_events.php:211
-#: lib/plugins/eab-import-google_calendar.php:234
+#: lib/plugins/eab-import-facebook_events-main.php:229
+#: lib/plugins/eab-import-google_calendar.php:240
 msgid "Enter your API info and save settings first."
 msgstr ""
 
-#: lib/plugins/eab-import-facebook_events.php:217
+#: lib/plugins/eab-import-facebook_events-main.php:235
 msgid "Import events for this Facebook user ID:"
 msgstr ""
 
-#: lib/plugins/eab-import-facebook_events.php:219
+#: lib/plugins/eab-import-facebook_events-main.php:237
 msgid "Don't change this field unless you are sure what you're doing"
 msgstr ""
 
-#: lib/plugins/eab-import-facebook_events.php:222
-#: lib/plugins/eab-import-google_calendar.php:254
+#: lib/plugins/eab-import-facebook_events-main.php:240
+#: lib/plugins/eab-import-google_calendar.php:260
 msgid "Run importer every:"
 msgstr ""
 
-#: lib/plugins/eab-import-facebook_events.php:230
-#: lib/plugins/eab-import-google_calendar.php:262
+#: lib/plugins/eab-import-facebook_events-main.php:248
+#: lib/plugins/eab-import-google_calendar.php:268
 msgid "Assign imported events to this user:"
 msgstr ""
 
-#: lib/plugins/eab-import-facebook_events.php:236
-#: lib/plugins/eab-import-google_calendar.php:268
+#: lib/plugins/eab-import-facebook_events-main.php:254
+#: lib/plugins/eab-import-google_calendar.php:274
 msgid "Select the user you wish to appear as your imported Events host."
 msgstr ""
 
-#: lib/plugins/eab-import-facebook_events.php:240
+#: lib/plugins/eab-import-facebook_events-main.php:258
 msgid "Save settings"
 msgstr ""
 
-#: lib/plugins/eab-import-google_calendar.php:208
+#: lib/plugins/eab-import-facebook_events.php:21
+msgid ""
+"You must need php 5.4 or greater to use <b>Import: Facebook Events</b> addon."
+msgstr ""
+
+#: lib/plugins/eab-import-google_calendar.php:211
 msgid "Google Calendar import settings"
 msgstr ""
 
-#: lib/plugins/eab-import-google_calendar.php:212
+#: lib/plugins/eab-import-google_calendar.php:215
 msgid "Create a project in Google API Console"
 msgstr ""
 
-#: lib/plugins/eab-import-google_calendar.php:213
+#: lib/plugins/eab-import-google_calendar.php:216
 msgid "Under \"Services\" tab, turn \"Calendar API\" to ON"
 msgstr ""
 
-#: lib/plugins/eab-import-google_calendar.php:214
+#: lib/plugins/eab-import-google_calendar.php:217
 #, php-format
 msgid ""
 "Under \"API Access\" click \"Create oAuth Client Access.\" Fill in your "
 "details and use this as your \"Authorized Redirect URIs\": <code>%s</code>"
 msgstr ""
 
-#: lib/plugins/eab-import-google_calendar.php:215
+#: lib/plugins/eab-import-google_calendar.php:218
 msgid ""
 "Copy your Client ID and Client secret values and paste them in the fields "
 "below"
 msgstr ""
 
-#: lib/plugins/eab-import-google_calendar.php:216
+#: lib/plugins/eab-import-google_calendar.php:219
 msgid "Save your plugin settings and click the \"Authenticate\" button"
 msgstr ""
 
-#: lib/plugins/eab-import-google_calendar.php:220
+#: lib/plugins/eab-import-google_calendar.php:224
 msgid "Client ID"
 msgstr ""
 
-#: lib/plugins/eab-import-google_calendar.php:222
+#: lib/plugins/eab-import-google_calendar.php:226
 msgid "Enter your Client ID number here."
 msgstr ""
 
-#: lib/plugins/eab-import-google_calendar.php:224
+#: lib/plugins/eab-import-google_calendar.php:229
 msgid "Client secret"
 msgstr ""
 
-#: lib/plugins/eab-import-google_calendar.php:226
+#: lib/plugins/eab-import-google_calendar.php:231
 msgid "Enter your Client secret number here."
 msgstr ""
 
-#: lib/plugins/eab-import-google_calendar.php:230
+#: lib/plugins/eab-import-google_calendar.php:236
 msgid ""
 "Remember to also revoke the offline access token <a href=\"https://accounts."
 "google.com/IssuedAuthSubTokens\" target=\"_blank\">here</a>."
 msgstr ""
 
-#: lib/plugins/eab-import-google_calendar.php:240
+#: lib/plugins/eab-import-google_calendar.php:246
 msgid "I want to import events from these calendars:"
 msgstr ""
 
-#: lib/plugins/eab-import-google_calendar.php:241
+#: lib/plugins/eab-import-google_calendar.php:247
 msgid "Refresh calendars list"
 msgstr ""
 
-#: lib/plugins/eab-import-google_calendar.php:242
+#: lib/plugins/eab-import-google_calendar.php:248
 msgid "Select calendars you wish to import."
 msgstr ""
 
-#: lib/plugins/eab-import-google_calendar.php:273
+#: lib/plugins/eab-import-google_calendar.php:279
 msgid "Attempt to convert event times to local WordPress time"
 msgstr ""
 
@@ -3289,7 +3442,7 @@ msgstr ""
 #: lib/plugins/eab-import-meetup.php:184
 #, php-format
 msgid "%s topics successfully imported as event categories"
-msgstr ""
+msgstr "%s Themen erfolgreich als Ereigniskategorien importiert"
 
 #: lib/plugins/eab-import-meetup.php:200 lib/plugins/eab-import-meetup.php:235
 msgid "There were no events to import"
@@ -3302,37 +3455,42 @@ msgstr ""
 #: lib/plugins/eab-import-meetup.php:215 lib/plugins/eab-import-meetup.php:250
 #, php-format
 msgid "%s events successfully imported"
-msgstr ""
+msgstr "%s Ereignisse erfolgreich importiert"
 
 #: lib/plugins/eab-import-meetup.php:230
 msgid "Invalid location"
 msgstr ""
 
-#: lib/plugins/eab-import-meetup.php:335
+#: lib/plugins/eab-import-meetup.php:338
 msgid "Meetup.com import settings"
 msgstr ""
 
-#: lib/plugins/eab-import-meetup.php:341
+#: lib/plugins/eab-import-meetup.php:344
 msgid "API key"
 msgstr ""
 
-#: lib/plugins/eab-import-meetup.php:346
+#: lib/plugins/eab-import-meetup.php:349
 msgid "Meetup.com member ID"
 msgstr ""
 
-#: lib/plugins/eab-import-meetup.php:353
+#: lib/plugins/eab-import-meetup.php:356
 msgid "Import my events"
 msgstr ""
 
-#: lib/plugins/eab-import-meetup.php:354
+#: lib/plugins/eab-import-meetup.php:357
 msgid "Import events close to my current location"
 msgstr ""
 
-#: lib/plugins/eab-import-meetup.php:355
+#: lib/plugins/eab-import-meetup.php:358
 msgid "Import my topics as event categories"
 msgstr ""
 
-#: lib/plugins/eab-import-meetup.php:358
+#: lib/plugins/eab-import-meetup.php:361
+msgid ""
+"Important: To import events close to your current location, you must need SSL"
+msgstr ""
+
+#: lib/plugins/eab-import-meetup.php:366
 msgid "To start, fill up the API information above and save your settings"
 msgstr ""
 
@@ -3343,73 +3501,73 @@ msgid ""
 "Events Maps Options add-on to work"
 msgstr ""
 
-#: lib/plugins/eab-maps-event_maps_options.php:54
+#: lib/plugins/eab-maps-event_maps_options.php:56
 msgid "ROADMAP"
 msgstr ""
 
-#: lib/plugins/eab-maps-event_maps_options.php:55
+#: lib/plugins/eab-maps-event_maps_options.php:57
 msgid "SATELLITE"
 msgstr ""
 
-#: lib/plugins/eab-maps-event_maps_options.php:56
+#: lib/plugins/eab-maps-event_maps_options.php:58
 msgid "HYBRID"
 msgstr ""
 
-#: lib/plugins/eab-maps-event_maps_options.php:57
+#: lib/plugins/eab-maps-event_maps_options.php:59
 msgid "TERRAIN"
 msgstr ""
 
-#: lib/plugins/eab-maps-event_maps_options.php:60
+#: lib/plugins/eab-maps-event_maps_options.php:62
 msgid "Metric"
 msgstr ""
 
-#: lib/plugins/eab-maps-event_maps_options.php:61
+#: lib/plugins/eab-maps-event_maps_options.php:63
 msgid "Imperial"
 msgstr ""
 
-#: lib/plugins/eab-maps-event_maps_options.php:66
+#: lib/plugins/eab-maps-event_maps_options.php:68
 msgid "Events Maps Options"
 msgstr ""
 
-#: lib/plugins/eab-maps-event_maps_options.php:68
+#: lib/plugins/eab-maps-event_maps_options.php:70
 msgid ""
 "Any setting you leave empty here will be inherited from the default Google "
 "Maps plugin settings."
 msgstr ""
 
-#: lib/plugins/eab-maps-event_maps_options.php:71
+#: lib/plugins/eab-maps-event_maps_options.php:73
 msgid "Map size"
 msgstr ""
 
-#: lib/plugins/eab-maps-event_maps_options.php:74
+#: lib/plugins/eab-maps-event_maps_options.php:76
 msgid "Width:"
 msgstr ""
 
-#: lib/plugins/eab-maps-event_maps_options.php:79
+#: lib/plugins/eab-maps-event_maps_options.php:81
 msgid "Height:"
 msgstr ""
 
-#: lib/plugins/eab-maps-event_maps_options.php:85
+#: lib/plugins/eab-maps-event_maps_options.php:87
 msgid "Map appearance"
 msgstr ""
 
-#: lib/plugins/eab-maps-event_maps_options.php:88
+#: lib/plugins/eab-maps-event_maps_options.php:96
 msgid "Zoom:"
-msgstr ""
+msgstr "Zoomen:"
 
-#: lib/plugins/eab-maps-event_maps_options.php:90
+#: lib/plugins/eab-maps-event_maps_options.php:101
 msgid "Numeric value"
 msgstr ""
 
-#: lib/plugins/eab-maps-event_maps_options.php:94
+#: lib/plugins/eab-maps-event_maps_options.php:107
 msgid "Type:"
 msgstr ""
 
-#: lib/plugins/eab-maps-event_maps_options.php:106
+#: lib/plugins/eab-maps-event_maps_options.php:122
 msgid "Units:"
 msgstr ""
 
-#: lib/plugins/eab-maps-event_maps_options.php:120
+#: lib/plugins/eab-maps-event_maps_options.php:139
 msgid "Show images"
 msgstr ""
 
@@ -3420,8 +3578,8 @@ msgstr ""
 
 #: lib/plugins/eab-payment-marketpress.php:85
 msgid ""
-"You need to install and activate the <a href=\"http://premium.wpmudev.org/"
-"project/e-commerce\">MarketPress</a> plugin for the &quot;Payments via "
+"You need to install and activate the <a href=\"http://premium.wpmudev."
+"org/project/e-commerce\">MarketPress</a> plugin for the &quot;Payments via "
 "MarketPress Products&quot; to work"
 msgstr ""
 
@@ -3445,53 +3603,58 @@ msgstr ""
 
 #: lib/plugins/eab-payment-multiple_prices.php:101
 msgid "Add pricing tier"
-msgstr ""
+msgstr "Preisstufe hinzufügen"
 
 #: lib/plugins/eab-payment-multiple_prices.php:160
 msgid "Please, select price tier"
 msgstr ""
 
-#: lib/plugins/eab-rsvps-additional_registration_fields.php:87
+#: lib/plugins/eab-rsvps-additional_registration_fields.php:95
+#: lib/plugins/eab-rsvps-rsvp_with_email.php:58
 msgid "A required field is missing."
-msgstr ""
+msgstr "Ein Pflichtfeld fehlt."
 
-#: lib/plugins/eab-rsvps-additional_registration_fields.php:143
+#: lib/plugins/eab-rsvps-additional_registration_fields.php:181
 msgid "Checkbox"
 msgstr ""
 
-#: lib/plugins/eab-rsvps-additional_registration_fields.php:147
+#: lib/plugins/eab-rsvps-additional_registration_fields.php:185
 msgid "Additional Fields"
 msgstr ""
 
-#: lib/plugins/eab-rsvps-additional_registration_fields.php:156
+#: lib/plugins/eab-rsvps-additional_registration_fields.php:198
 msgid "E-mail macro:"
 msgstr ""
 
-#: lib/plugins/eab-rsvps-additional_registration_fields.php:157
+#: lib/plugins/eab-rsvps-additional_registration_fields.php:199
 msgid "This is the placeholder you can use in your emails."
 msgstr ""
 
-#: lib/plugins/eab-rsvps-additional_registration_fields.php:165
+#: lib/plugins/eab-rsvps-additional_registration_fields.php:207
 msgid "Add new field"
-msgstr ""
+msgstr "Neues Feld hinzufügen"
 
-#: lib/plugins/eab-rsvps-additional_registration_fields.php:167
+#: lib/plugins/eab-rsvps-additional_registration_fields.php:209
 msgid "Field label:"
 msgstr ""
 
-#: lib/plugins/eab-rsvps-additional_registration_fields.php:171
+#: lib/plugins/eab-rsvps-additional_registration_fields.php:213
 msgid "Field type:"
 msgstr ""
 
-#: lib/plugins/eab-rsvps-additional_registration_fields.php:180
+#: lib/plugins/eab-rsvps-additional_registration_fields.php:222
 msgid "Required?"
 msgstr ""
 
-#: lib/plugins/eab-rsvps-additional_registration_fields.php:186
+#: lib/plugins/eab-rsvps-additional_registration_fields.php:227
+msgid "Add to RSVP with email?"
+msgstr "Per E-Mail zur RSVP hinzufügen?"
+
+#: lib/plugins/eab-rsvps-additional_registration_fields.php:234
 msgid "Options"
 msgstr ""
 
-#: lib/plugins/eab-rsvps-additional_registration_fields.php:190
+#: lib/plugins/eab-rsvps-additional_registration_fields.php:238
 msgid "Include additional fields in data export"
 msgstr ""
 
@@ -3507,23 +3670,31 @@ msgstr ""
 msgid "Number of messages sent:"
 msgstr ""
 
-#: lib/plugins/eab-rsvps-email-non_paid.php:166
+#: lib/plugins/eab-rsvps-email-non_paid.php:172
 msgid "Reminder Email settings for non paid members"
 msgstr ""
 
-#: lib/plugins/eab-rsvps-email-non_paid.php:169
+#: lib/plugins/eab-rsvps-email-non_paid.php:175
 msgid "Email from:"
 msgstr ""
 
-#: lib/plugins/eab-rsvps-email-non_paid.php:171
+#: lib/plugins/eab-rsvps-email-non_paid.php:177
 msgid "This is the From address for the reminder emails for non paid members"
 msgstr ""
 
-#: lib/plugins/eab-rsvps-rsvp_email.php:108
+#: lib/plugins/eab-rsvps-rsvp_email.php:114
 msgid "RSVP Email settings"
 msgstr ""
 
-#: lib/plugins/eab-rsvps-rsvp_email.php:112
+#: lib/plugins/eab-rsvps-rsvp_email.php:117
+msgid "From email name"
+msgstr ""
+
+#: lib/plugins/eab-rsvps-rsvp_email.php:118
+msgid "This is the name the RSVP email will be sent from"
+msgstr ""
+
+#: lib/plugins/eab-rsvps-rsvp_email.php:123
 msgid "This is the address the RSVP email will be sent from"
 msgstr ""
 
@@ -3535,32 +3706,40 @@ msgstr ""
 msgid "The user did not pay for the event."
 msgstr ""
 
-#: lib/plugins/eab-rsvps-rsvp_email_me.php:162
+#: lib/plugins/eab-rsvps-rsvp_email_me.php:174
 msgid "RSVP Notification Email settings"
 msgstr ""
 
-#: lib/plugins/eab-rsvps-rsvp_email_me.php:165
+#: lib/plugins/eab-rsvps-rsvp_email_me.php:177
 msgid "Send an update"
 msgstr ""
 
-#: lib/plugins/eab-rsvps-rsvp_email_me.php:170
+#: lib/plugins/eab-rsvps-rsvp_email_me.php:182
 msgid "On all positive RSVPs"
 msgstr ""
 
-#: lib/plugins/eab-rsvps-rsvp_email_me.php:175
+#: lib/plugins/eab-rsvps-rsvp_email_me.php:187
 msgid "When user pays for a paid event"
 msgstr ""
 
-#: lib/plugins/eab-rsvps-rsvp_email_me.php:179
+#: lib/plugins/eab-rsvps-rsvp_email_me.php:191
 msgid "Notify"
 msgstr ""
 
-#: lib/plugins/eab-rsvps-rsvp_email_me.php:184
+#: lib/plugins/eab-rsvps-rsvp_email_me.php:196
 msgid "Site administrator"
 msgstr ""
 
-#: lib/plugins/eab-rsvps-rsvp_email_me.php:189
+#: lib/plugins/eab-rsvps-rsvp_email_me.php:201
 msgid "Event author"
+msgstr ""
+
+#: lib/plugins/eab-rsvps-rsvp_email_me.php:205
+msgid "Email from name"
+msgstr ""
+
+#: lib/plugins/eab-rsvps-rsvp_email_me.php:210
+msgid "Email from"
 msgstr ""
 
 #: lib/plugins/eab-rsvps-rsvp_with_email.php:30
@@ -3584,73 +3763,79 @@ msgid ""
 "to the event."
 msgstr ""
 
-#: lib/plugins/eab-rsvps-scheduled_rsvp_reset.php:97
+#: lib/plugins/eab-rsvps-scheduled_rsvp_reset.php:98
 msgid "RSVP status auto-reset settings"
 msgstr ""
 
-#: lib/plugins/eab-rsvps-scheduled_rsvp_reset.php:100
+#: lib/plugins/eab-rsvps-scheduled_rsvp_reset.php:101
 msgid "Schedule checks to run every:"
 msgstr ""
 
-#: lib/plugins/eab-rsvps-scheduled_rsvp_reset.php:106
+#: lib/plugins/eab-rsvps-scheduled_rsvp_reset.php:107
 msgid "Schedule runs to execute this often"
 msgstr ""
 
-#: lib/plugins/eab-rsvps-scheduled_rsvp_reset.php:109
+#: lib/plugins/eab-rsvps-scheduled_rsvp_reset.php:110
 msgid "Auto-reset unpaid RSVPs older then:"
 msgstr ""
 
-#: lib/plugins/eab-rsvps-scheduled_rsvp_reset.php:115
+#: lib/plugins/eab-rsvps-scheduled_rsvp_reset.php:116
 msgid "Unpaid positive RSVPs cutoff time"
 msgstr ""
 
-#: lib/plugins/eab-rsvps-scheduled_rsvp_reset.php:118
+#: lib/plugins/eab-rsvps-scheduled_rsvp_reset.php:119
 msgid "Remove attendance entirely"
 msgstr ""
 
-#: lib/plugins/eab-rsvps-scheduled_rsvp_reset.php:120
+#: lib/plugins/eab-rsvps-scheduled_rsvp_reset.php:121
 msgid ""
 "By default, the plugin will reset the user attendance to \"no\". Select this "
 "option if you wish to remove their attendance records entirely instead."
 msgstr ""
 
-#: lib/plugins/lib/class_eab_mp_bridge.php:197
+#: lib/plugins/lib/class_eab_mp_bridge.php:232
 #: lib/plugins/lib/class_eab_mp_bridge_legacy.php:161
 msgid "... or, please select a Product"
-msgstr ""
+msgstr "... oder wähle bitte ein Produkt aus"
 
-#: lib/plugins/lib/class_eab_mp_bridge.php:199
+#: lib/plugins/lib/class_eab_mp_bridge.php:234
 #: lib/plugins/lib/class_eab_mp_bridge_legacy.php:163
 msgid "Select a pricing Product"
 msgstr ""
 
-#: lib/plugins/lib/class_eab_mp_bridge.php:380
+#: lib/plugins/lib/class_eab_mp_bridge.php:597
 msgid "Click here to purchase your ticket"
 msgstr ""
 
-#: lib/pointers-tutorial/pointer-tutorials.php:417
+#: lib/plugins/lib/class_eab_mp_bridge.php:798
+msgid ""
+"The order status could not be updated due to unexpected error. Please try "
+"again."
+msgstr ""
+
+#: lib/pointers-tutorial/pointer-tutorials.php:420
 msgid "Next &raquo;"
 msgstr ""
 
-#: lib/pointers-tutorial/pointer-tutorials.php:429
-#: lib/pointers-tutorial/pointer-tutorials.php:448
+#: lib/pointers-tutorial/pointer-tutorials.php:432
+#: lib/pointers-tutorial/pointer-tutorials.php:451
 msgid "Dismiss"
 msgstr ""
 
-#: lib/pointers-tutorial/pointer-tutorials.php:430
-#: lib/pointers-tutorial/pointer-tutorials.php:449
+#: lib/pointers-tutorial/pointer-tutorials.php:433
+#: lib/pointers-tutorial/pointer-tutorials.php:452
 #, php-format
 msgid "Dismiss %s"
 msgstr ""
 
-#: lib/pointers-tutorial/pointer-tutorials.php:436
+#: lib/pointers-tutorial/pointer-tutorials.php:439
 msgid "&laquo; Previous"
-msgstr ""
+msgstr "&laquo; Vorherige"
 
-#: lib/pointers-tutorial/pointer-tutorials.php:488
+#: lib/pointers-tutorial/pointer-tutorials.php:491
 #, php-format
 msgid "%s: Step %d of %d"
-msgstr ""
+msgstr "%s: Schritt %d von %d"
 
 #: lib/widgets/Attendees_Widget.class.php:7
 msgid "Display Attendees of an event"
@@ -3667,8 +3852,164 @@ msgstr ""
 msgid "Event Attendees"
 msgstr ""
 
+#: lib/widgets/Daily_Widget.class.php:9 lib/widgets/Daily_Widget.class.php:25
+#: lib/widgets/Daily_Widget.class.php:39
+msgid "Daily Events"
+msgstr ""
+
+#: lib/widgets/Daily_Widget.class.php:20
+msgid "Display List of Daily Events"
+msgstr ""
+
+#: lib/widgets/Daily_Widget.class.php:23
+msgid "Daily"
+msgstr ""
+
+#: lib/widgets/Daily_Widget.class.php:97
+msgid "No events today."
+msgstr ""
+
+#: lib/widgets/Daily_Widget.class.php:140
+msgid "Date (Must be in format yyyy-mm-dd)"
+msgstr ""
+
+#: lib/widgets/Daily_Widget.class.php:153
+msgid ""
+"Date is relative (<a href=\"http://www.php.net/manual/en/datetime.formats."
+"relative.php\">strtotime</a>-compatible string)"
+msgstr ""
+
+#: lib/widgets/Daily_Widget.class.php:161
+#: lib/widgets/Upcoming_Widget.class.php:140
+msgid "Show dates"
+msgstr ""
+
+#: lib/widgets/Daily_Widget.class.php:169
+#: lib/widgets/Popular_Widget.class.php:122
+#: lib/widgets/Upcoming_Widget.class.php:148
+msgid "Show excerpt"
+msgstr ""
+
+#: lib/widgets/Daily_Widget.class.php:172
+#: lib/widgets/Popular_Widget.class.php:125
+#: lib/widgets/Upcoming_Widget.class.php:151
+msgid ""
+"Limit my excerpt to this many words <small>(<code>0</code> for no limit)"
+"</small>:"
+msgstr ""
+
+#: lib/widgets/Daily_Widget.class.php:186
+#: lib/widgets/Popular_Widget.class.php:139
+#: lib/widgets/Upcoming_Widget.class.php:165
+msgid "Show thumbnail"
+msgstr ""
+
+#: lib/widgets/Daily_Widget.class.php:189
+#: lib/widgets/Popular_Widget.class.php:142
+#: lib/widgets/Upcoming_Widget.class.php:168
+msgid "Limit"
+msgstr ""
+
+#: lib/widgets/Daily_Widget.class.php:198
+#: lib/widgets/UpcomingCalendar_Widget.class.php:62
+#: lib/widgets/Upcoming_Widget.class.php:186
+msgid "Only Events from this category"
+msgstr ""
+
+#: lib/widgets/Daily_Widget.class.php:200
+#: lib/widgets/UpcomingCalendar_Widget.class.php:64
+#: lib/widgets/Upcoming_Widget.class.php:188
+msgid "Any"
+msgstr ""
+
+#: lib/widgets/EAB_Month_Navigation.php:7
+msgid "Displays a form to navigation to other month archive."
+msgstr ""
+
+#: lib/widgets/EAB_Month_Navigation.php:10
+msgid "Monthly Event Archive Navigation"
+msgstr ""
+
+#: lib/widgets/EAB_Month_Navigation.php:19
+#: lib/widgets/EAB_Month_Navigation.php:95
+msgid "Browse"
+msgstr ""
+
+#: lib/widgets/EAB_Month_Navigation.php:24
+#: lib/widgets/NetworkUpcoming_Widget.class.php:18
+#: lib/widgets/UpcomingCalendar_Widget.class.php:42
+msgid "Title:"
+msgstr ""
+
+#: lib/widgets/EAB_Month_Navigation.php:28
+msgid "Year From:"
+msgstr ""
+
+#: lib/widgets/EAB_Month_Navigation.php:32
+msgid "Year To:"
+msgstr ""
+
+#: lib/widgets/EAB_Month_Navigation.php:36
+msgid "Browse Button Text:"
+msgstr ""
+
+#: lib/widgets/EAB_Month_Navigation.php:64
+msgid "Select Year"
+msgstr ""
+
+#: lib/widgets/EAB_Month_Navigation.php:72
+msgid "Select Month"
+msgstr ""
+
+#: lib/widgets/EAB_Month_Navigation.php:75
+msgid "January"
+msgstr ""
+
+#: lib/widgets/EAB_Month_Navigation.php:76
+msgid "February"
+msgstr ""
+
+#: lib/widgets/EAB_Month_Navigation.php:77
+msgid "March"
+msgstr ""
+
+#: lib/widgets/EAB_Month_Navigation.php:78
+msgid "April"
+msgstr ""
+
+#: lib/widgets/EAB_Month_Navigation.php:79
+msgid "May"
+msgstr ""
+
+#: lib/widgets/EAB_Month_Navigation.php:80
+msgid "June"
+msgstr ""
+
+#: lib/widgets/EAB_Month_Navigation.php:81
+msgid "July"
+msgstr ""
+
+#: lib/widgets/EAB_Month_Navigation.php:82
+msgid "August"
+msgstr ""
+
+#: lib/widgets/EAB_Month_Navigation.php:83
+msgid "September"
+msgstr ""
+
+#: lib/widgets/EAB_Month_Navigation.php:84
+msgid "October"
+msgstr ""
+
+#: lib/widgets/EAB_Month_Navigation.php:85
+msgid "November"
+msgstr ""
+
+#: lib/widgets/EAB_Month_Navigation.php:86
+msgid "December"
+msgstr ""
+
 #: lib/widgets/NetworkUpcoming_Widget.class.php:8
-#: lib/widgets/UpcomingCalendar_Widget.class.php:8
 msgid "Displays List of Upcoming Events from your entire network"
 msgstr ""
 
@@ -3676,22 +4017,17 @@ msgstr ""
 msgid "Network Upcoming"
 msgstr ""
 
-#: lib/widgets/NetworkUpcoming_Widget.class.php:18
-#: lib/widgets/UpcomingCalendar_Widget.class.php:42
-msgid "Title:"
-msgstr ""
-
 #: lib/widgets/NetworkUpcoming_Widget.class.php:23
 msgid "Display only this many events:"
 msgstr ""
 
-#: lib/widgets/NetworkUpcoming_Widget.class.php:60
+#: lib/widgets/NetworkUpcoming_Widget.class.php:61
 msgid "No upcoming events on network"
 msgstr ""
 
 #: lib/widgets/Popular_Widget.class.php:9
 #: lib/widgets/Popular_Widget.class.php:19
-#: lib/widgets/Popular_Widget.class.php:32
+#: lib/widgets/Popular_Widget.class.php:36
 msgid "Most Popular"
 msgstr ""
 
@@ -3703,30 +4039,12 @@ msgstr ""
 msgid "Most Popular Events"
 msgstr ""
 
-#: lib/widgets/Popular_Widget.class.php:79
+#: lib/widgets/Popular_Widget.class.php:84
 msgid "No popular events."
 msgstr ""
 
-#: lib/widgets/Popular_Widget.class.php:115
-#: lib/widgets/Upcoming_Widget.class.php:139
-msgid "Show excerpt"
-msgstr ""
-
-#: lib/widgets/Popular_Widget.class.php:118
-#: lib/widgets/Upcoming_Widget.class.php:142
-msgid ""
-"Limit my excerpt to this many words <small>(<code>0</code> for no limit)</"
-"small>:"
-msgstr ""
-
-#: lib/widgets/Popular_Widget.class.php:132
-#: lib/widgets/Upcoming_Widget.class.php:156
-msgid "Show thumbnail"
-msgstr ""
-
-#: lib/widgets/Popular_Widget.class.php:135
-#: lib/widgets/Upcoming_Widget.class.php:159
-msgid "Limit"
+#: lib/widgets/UpcomingCalendar_Widget.class.php:8
+msgid "Displays List of Upcoming Events from your site"
 msgstr ""
 
 #: lib/widgets/UpcomingCalendar_Widget.class.php:16
@@ -3737,43 +4055,81 @@ msgstr ""
 msgid "Network-wide?"
 msgstr ""
 
-#: lib/widgets/UpcomingCalendar_Widget.class.php:62
-#: lib/widgets/Upcoming_Widget.class.php:177
-msgid "Only Events from this category"
-msgstr ""
-
-#: lib/widgets/UpcomingCalendar_Widget.class.php:64
-#: lib/widgets/Upcoming_Widget.class.php:179
-msgid "Any"
-msgstr ""
-
 #: lib/widgets/Upcoming_Widget.class.php:9
-#: lib/widgets/Upcoming_Widget.class.php:20
-#: lib/widgets/Upcoming_Widget.class.php:33
+#: lib/widgets/Upcoming_Widget.class.php:22
+#: lib/widgets/Upcoming_Widget.class.php:38
 msgid "Upcoming"
 msgstr ""
 
-#: lib/widgets/Upcoming_Widget.class.php:17
+#: lib/widgets/Upcoming_Widget.class.php:19
 msgid "Display List of Upcoming Events"
 msgstr ""
 
-#: lib/widgets/Upcoming_Widget.class.php:22
+#: lib/widgets/Upcoming_Widget.class.php:24
 msgid "Upcoming Events"
 msgstr ""
 
-#: lib/widgets/Upcoming_Widget.class.php:86
+#: lib/widgets/Upcoming_Widget.class.php:92
 msgid "No upcoming events."
 msgstr ""
 
-#: lib/widgets/Upcoming_Widget.class.php:131
-msgid "Show dates"
-msgstr ""
-
-#: lib/widgets/Upcoming_Widget.class.php:168
+#: lib/widgets/Upcoming_Widget.class.php:177
 msgid "Lookahead"
 msgstr ""
 
-#: lib/widgets/Upcoming_Widget.class.php:172
+#: lib/widgets/Upcoming_Widget.class.php:181
 #, php-format
 msgid "%d weeks"
+msgstr "%d Wochen"
+
+#: psource/psource-plugin-update/Puc/v5p3/Plugin/Ui.php:56
+msgid "View details"
+msgstr ""
+
+#: psource/psource-plugin-update/Puc/v5p3/Plugin/Ui.php:79
+#, php-format
+msgid "More information about %s"
+msgstr ""
+
+#: psource/psource-plugin-update/Puc/v5p3/Plugin/Ui.php:130
+msgid "Check for updates"
+msgstr ""
+
+#: psource/psource-plugin-update/Puc/v5p3/Plugin/Ui.php:217
+#, php-format
+msgctxt "the plugin title"
+msgid "The %s plugin is up to date."
+msgstr ""
+
+#: psource/psource-plugin-update/Puc/v5p3/Plugin/Ui.php:219
+#, php-format
+msgctxt "the plugin title"
+msgid "A new version of the %s plugin is available."
+msgstr "Eine neue Version des %s-Plugins ist verfügbar."
+
+#: psource/psource-plugin-update/Puc/v5p3/Plugin/Ui.php:221
+#, php-format
+msgctxt "the plugin title"
+msgid "Could not determine if updates are available for %s."
+msgstr ""
+
+#: psource/psource-plugin-update/Puc/v5p3/Plugin/Ui.php:227
+#, php-format
+msgid "Unknown update checker status \"%s\""
+msgstr ""
+
+#: psource/psource-plugin-update/Puc/v5p3/Vcs/PluginUpdateChecker.php:113
+msgid "There is no changelog available."
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://cp-psource.github.io/ps-events/"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "PSOURCE"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://github.com/cp-psource"
 msgstr ""
