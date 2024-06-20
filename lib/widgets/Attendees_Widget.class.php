@@ -4,13 +4,13 @@ class Eab_Attendees_Widget extends Eab_Widget {
     
     function __construct () {
 		$widget_ops = array(
-			'description' => __('Teilnehmer einer Veranstaltung anzeigen', $this->translation_domain),
+			'description' => __('Display Attendees of an event', $this->translation_domain),
 		);
         $control_ops = array(
-        	'title' => __('Teilnehmer', $this->translation_domain)
+        	'title' => __('Attendees', $this->translation_domain)
         );
         
-		parent::__construct('psource_event_attendees', __('PSE-Veranstaltungsteilnehmer', $this->translation_domain), $widget_ops, $control_ops);
+		parent::__construct('incsub_event_attendees', __('Event Attendees', $this->translation_domain), $widget_ops, $control_ops);
     }
     
     function widget ($args, $instance) {
@@ -18,14 +18,14 @@ class Eab_Attendees_Widget extends Eab_Widget {
 	
 		extract($args);
 	
-		if ( $post->post_type != 'psource_event') {
+		if ( $post->post_type != 'incsub_event') {
 		    return;
 		}
 	
 		$options = $instance;
 		$event = new Eab_EventModel($post);
 		
-		$title = apply_filters('widget_title', empty($instance['title']) ? __('Teilnehmer', $this->translation_domain) : $instance['title'], $instance, $this->id_base);	
+		$title = apply_filters('widget_title', empty($instance['title']) ? __('Attendees', $this->translation_domain) : $instance['title'], $instance, $this->id_base);	
 ?>
 <?php if (is_single() && $event->has_bookings()) { ?>
 	<?php echo $before_widget; ?>
@@ -50,7 +50,7 @@ class Eab_Attendees_Widget extends Eab_Widget {
         $new_instance = wp_parse_args(
         	(array)$new_instance, 
         	array(
-        		'title' => __('Teilnehmer', $this->translation_domain), 
+        		'title' => __('Attendees', $this->translation_domain), 
         		'hierarchical' => 'yes',
         	) 
         );
@@ -60,13 +60,13 @@ class Eab_Attendees_Widget extends Eab_Widget {
     }
     
     function form ($instance) {
-		$instance = wp_parse_args( (array) $instance, array( 'title' => __('Teilnehmer', $this->translation_domain)));
+		$instance = wp_parse_args( (array) $instance, array( 'title' => __('Attendees', $this->translation_domain)));
         $options = array('title' => strip_tags($instance['title']));
 	
 	?>
 <div style="text-align:left">
     <label for="<?php echo $this->get_field_id('title'); ?>" style="line-height:35px;display:block;">
-    	<?php _e('Titel', $this->translation_domain); ?>:<br />
+    	<?php _e('Title', $this->translation_domain); ?>:<br />
 		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" value="<?php echo $options['title']; ?>" type="text" style="width:95%;" />
     </label>
     <input type="hidden" name="eab-submit" id="eab-submit" value="attendees" />

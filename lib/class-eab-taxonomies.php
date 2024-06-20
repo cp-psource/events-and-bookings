@@ -2,7 +2,7 @@
 
 class Eab_Taxonomies {
 
-	const POST_TYPE = 'psource_event';
+	const POST_TYPE = 'incsub_event';
 
 	public function register() {
 		$this->register_post_type();
@@ -14,17 +14,17 @@ class Eab_Taxonomies {
 		$data = Eab_Options::get_instance();
 
 		$labels = array(
-			'name' => __('Veranstaltungen', eab_domain() ),
-			'singular_name' => __('Veranstaltung', eab_domain() ),
-			'add_new' => __('Ereignis hinzufügen', eab_domain() ),
-			'add_new_item' => __('Neues Ereignis hinzufügen', eab_domain() ),
-			'edit_item' => __('Ereignis bearbeiten', eab_domain() ),
-			'new_item' => __('Neues Ereignis erstellen', eab_domain() ),
-			'view_item' => __('Ereignis anzeigen', eab_domain() ),
-			'search_items' => __('Ereignis suchen', eab_domain() ),
-			'not_found' =>  __('Kein Ereignis gefunden', eab_domain() ),
-			'not_found_in_trash' => __('Kein Ereignis in Papierkorb gefunden', eab_domain() ),
-			'menu_name' => __('Veranstaltungen', eab_domain() )
+			'name' => __('Events', eab_domain() ),
+			'singular_name' => __('Event', eab_domain() ),
+			'add_new' => __('Add Event', eab_domain() ),
+			'add_new_item' => __('Add New Event', eab_domain() ),
+			'edit_item' => __('Edit Event', eab_domain() ),
+			'new_item' => __('New Event', eab_domain() ),
+			'view_item' => __('View Event', eab_domain() ),
+			'search_items' => __('Search Event', eab_domain() ),
+			'not_found' =>  __('No event found', eab_domain() ),
+			'not_found_in_trash' => __('No event found in Trash', eab_domain() ),
+			'menu_name' => __('Events', eab_domain() )
 		);
 
 		$supports = array( 'title', 'editor', 'author', 'venue', 'thumbnail', 'comments');
@@ -59,8 +59,8 @@ class Eab_Taxonomies {
 			Eab_EventModel::POST_TYPE,
 			array(
 				'labels' => array(
-					'name' => __('Ereigniskategorien', eab_domain() ),
-					'singular_name' => __('Ereigniskategorie', eab_domain() ),
+					'name' => __('Event Categories', eab_domain() ),
+					'singular_name' => __('Event Category', eab_domain() ),
 				),
 				'hierarchical' => true,
 				'public' => true,
@@ -81,7 +81,7 @@ class Eab_Taxonomies {
 	public function register_post_status() {
 		$pts_args = array(
 			'show_in_admin_all_list' => false,
-			'label' => __( 'Wiederkehrend', 'eab' )
+			'label' => __( 'Recurrent', 'eab' )
 		);
 
 		$pts_args['label_count'] = _n_noop(

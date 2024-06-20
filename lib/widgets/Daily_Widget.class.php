@@ -6,7 +6,7 @@ class Eab_Daily_Widget extends Eab_Widget {
 
     function __construct() {
 	$this->_defaults = apply_filters( 'eab-widgets-daily-default_fields', array(
-	    'title' => __( 'PSE-Tägliche Veranstaltungen', $this->translation_domain ),
+	    'title' => __( 'Daily Events', $this->translation_domain ),
 	    'excerpt' => false,
 	    'excerpt_words_limit' => false,
 	    'thumbnail' => false,
@@ -17,12 +17,12 @@ class Eab_Daily_Widget extends Eab_Widget {
 	    'relative' => false,
 	) );
 	$widget_ops = array(
-	    'description' => __( 'Liste der täglichen Ereignisse anzeigen', $this->translation_domain ),
+	    'description' => __( 'Display List of Daily Events', $this->translation_domain ),
 	);
 	$control_ops = array(
-	    'title' => __( 'Täglich', $this->translation_domain ),
+	    'title' => __( 'Daily', $this->translation_domain ),
 	);
-	parent::__construct( 'psource_event_daily', __( 'PSE-Tägliche Veranstaltungen', $this->translation_domain ), $widget_ops, $control_ops );
+	parent::__construct( 'incsub_event_daily', __( 'Daily Events', $this->translation_domain ), $widget_ops, $control_ops );
     }
 
     function widget( $args, $instance ) {
@@ -36,7 +36,7 @@ class Eab_Daily_Widget extends Eab_Widget {
 	    $options[ 'title' ] = strip_tags( $instance[ 'title' ] );
 	}
 
-	$title = apply_filters( 'widget_title', ( empty( $options[ 'title' ] ) ) ? __( 'Tägliche Veranstaltungen', $this->translation_domain ) : $options[ 'title' ], $options, $this->id_base );
+	$title = apply_filters( 'widget_title', ( empty( $options[ 'title' ] ) ) ? __( 'Daily Events', $this->translation_domain ) : $options[ 'title' ], $options, $this->id_base );
 	$query_args = array(
 	    'posts_per_page' => $options[ 'limit' ],
 	);
@@ -56,8 +56,7 @@ class Eab_Daily_Widget extends Eab_Widget {
 	    $date = date( 'Y-m-d', eab_current_time() );
 	}
 
-	/*$ddate = create_function( '', 'return "' . $date . '";' );*/
-	$ddate = function($date) {return "' . $date . '";};
+	$ddate = create_function( '', 'return "' . $date . '";' );
 
 	add_filter( 'eab-collection-daily_events_date', $ddate );
 	$_events = Eab_CollectionFactory::get_daily_events( eab_current_time(), $query_args );
@@ -84,7 +83,7 @@ class Eab_Daily_Widget extends Eab_Widget {
 		$_event->get_title() .
 		'</a>';
 		if ( !empty( $options[ 'dates' ] ) )
-		    echo '<div class="psourceevents-date">' . Eab_Template::get_event_dates( $_event ) . '</div>';
+		    echo '<div class="wpmudevevents-date">' . Eab_Template::get_event_dates( $_event ) . '</div>';
 		if ( !empty( $options[ 'excerpt' ] ) && !empty( $excerpt ) )
 		    echo '<p>' . $excerpt . '</p>';
 		do_action( 'eab-widgets-daily-after_event', $options, $_event, $this );
@@ -95,7 +94,7 @@ class Eab_Daily_Widget extends Eab_Widget {
 	} else {
 	    echo $before_widget .
 	    $before_title . $title . $after_title .
-	    '<p class="eab-widget-no_events">' . __( 'Keine Ereignisse heute.', 'eab' ) . '</p>' .
+	    '<p class="eab-widget-no_events">' . __( 'No events today.', Eab_EventsHub::TEXT_DOMAIN ) . '</p>' .
 	    $after_widget;
 	}
     }

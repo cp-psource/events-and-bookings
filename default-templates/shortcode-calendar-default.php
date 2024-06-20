@@ -1,4 +1,4 @@
-<section class="psourceevents-list">
+<section class="wpmudevevents-list">
 <?php
 if (!class_exists('Eab_CalendarTable_EventShortcodeCalendar')) require_once EAB_PLUGIN_DIR . 'lib/class_eab_calendar_helper.php';
 $renderer = new Eab_CalendarTable_EventShortcodeCalendar($events);

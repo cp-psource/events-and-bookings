@@ -54,7 +54,7 @@ class Eab_Network {
 		$pi_published = eab_pi_get_post_date();
 		$pi_blog_id = eab_pi_get_blog_id();
 		$pi_post_id = eab_pi_get_post_id();
-		$raw_network_events = $wpdb->get_results("SELECT * FROM {$wpdb->base_prefix}{$pi_table} WHERE post_type='psource_event' ORDER BY {$pi_published} DESC");
+		$raw_network_events = $wpdb->get_results("SELECT * FROM {$wpdb->base_prefix}{$pi_table} WHERE post_type='incsub_event' ORDER BY {$pi_published} DESC");
 		if (!$raw_network_events) return $result;
 		
 		foreach ($raw_network_events as $event) {
@@ -83,7 +83,7 @@ class Eab_Network {
 		$pi_published = eab_pi_get_post_date();
 		$pi_blog_id = eab_pi_get_blog_id();
 		$pi_post_id = eab_pi_get_post_id();
-		$raw_network_events = $wpdb->get_results("SELECT * FROM {$wpdb->base_prefix}{$pi_table} WHERE post_type='psource_event' ORDER BY {$pi_published} DESC");
+		$raw_network_events = $wpdb->get_results("SELECT * FROM {$wpdb->base_prefix}{$pi_table} WHERE post_type='incsub_event' ORDER BY {$pi_published} DESC");
 		if (!$raw_network_events) return $result;
 		
 		foreach ($raw_network_events as $event) {

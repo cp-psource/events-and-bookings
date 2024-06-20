@@ -1,10 +1,10 @@
 <?php
 /*
-Plugin Name: Benachrichtigung per RSVP senden
-Description: Sende automatisch eine Benachrichtigung an Dich selbst und/oder den Ereignisautor, wenn sich ein Benutzer meldet
-Plugin URI: https://cp-psource.github.io/ps-events/
-Version: 1.1
-Author: DerN3rd
+Plugin Name: Email: send notification on RSVP
+Description: Automatically send a notification to yourself and/or event author when an user RSVPs
+Plugin URI: http://premium.wpmudev.org/project/events-and-booking
+Version: 1.0
+Author: PSOURCE
 AddonType: Email, RSVP
 */
 
@@ -24,8 +24,8 @@ class Eab_Events_RsvpEmailMe_Codec extends Eab_Macro_Codec {
 	public function replace_has_paid () {
 		if (!$this->_event->is_premium()) return '';
 
-		$has_paid = apply_filters('eab-events-rsvp_email_me-codec-message-has_paid', __('Der Benutzer hat für die Veranstaltung bezahlt.', 'eab'));
-		$not_paid = apply_filters('eab-events-rsvp_email_me-codec-message-not_paid', __('Der Benutzer hat die Veranstaltung nicht bezahlt.', 'eab'));
+		$has_paid = apply_filters('eab-events-rsvp_email_me-codec-message-has_paid', __('The user paid for the event.', Eab_EventsHub::TEXT_DOMAIN));
+		$not_paid = apply_filters('eab-events-rsvp_email_me-codec-message-not_paid', __('The user did not pay for the event.', Eab_EventsHub::TEXT_DOMAIN));
 
 		return $this->_event->user_paid($this->_user->ID)
 			? $has_paid
@@ -55,7 +55,7 @@ class Eab_Events_RsvpEmailMe {
 		add_action('wp_ajax_eab_rsvp_email_me-preview_email', array($this, 'ajax_preview_email'));
 
 		if ($this->_data->get_option('eab_rsvps-email_me-positive_rsvp')) {
-			add_action('psource_event_booking_yes', array($this, 'dispatch_positive_rsvp_update'), 10, 2);
+			add_action('incsub_event_booking_yes', array($this, 'dispatch_positive_rsvp_update'), 10, 2);
 		}
 		if ($this->_data->get_option('eab_rsvps-email_me-paid_rsvp')) {
 			add_action('eab-ipn-event_paid', array($this, 'dispatch_paid_rsvp_update'), 10, 3);
@@ -153,7 +153,7 @@ class Eab_Events_RsvpEmailMe {
 	}
 
 	function show_settings () {
-		$tips = new PSource_HelpTooltips();
+		$tips = new WpmuDev_HelpTooltips();
 		$tips->set_icon_url(EAB_PLUGIN_URL . 'img/information.png' );
 		
 		$positive_rsvp = $this->_data->get_option('eab_rsvps-email_me-positive_rsvp') ? 'checked="checked"' : '';
@@ -171,63 +171,63 @@ class Eab_Events_RsvpEmailMe {
 		$events = Eab_CollectionFactory::get_upcoming_events(eab_current_time(), array('posts_per_page' => 10));
 		?>
 <div id="eab-settings-eab_rsvps_me" class="eab-metabox postbox">
-	<h3 class="eab-hndle"><?php _e('Einstellungen für die RSVP-Benachrichtigung per E-Mail', 'eab'); ?></h3>
+	<h3 class="eab-hndle"><?php _e('RSVP Notification Email settings', Eab_EventsHub::TEXT_DOMAIN); ?></h3>
 	<div class="eab-inside">
 		<div class="eab-settings-settings_item">
-	    	<label><?php _e('Sende ein Update', 'eab'); ?></label>
+	    	<label><?php _e('Send an update', Eab_EventsHub::TEXT_DOMAIN); ?></label>
 			<br />
 			<label for="eab_event-eab_rsvps-me-positive_rsvp" style="display:block; line-height:1.8em">
 				<input type="hidden" name="eab_rsvps_me[email-positive_rsvp]" value="" />
 				<input type="checkbox" id="eab_event-eab_rsvps-me-positive_rsvp" name="eab_rsvps_me[email-positive_rsvp]" value="1" <?php echo $positive_rsvp; ?> />
-				<?php _e('Auf alle positiven RSVPs', 'eab'); ?>
+				<?php _e('On all positive RSVPs', Eab_EventsHub::TEXT_DOMAIN); ?>
 			</label>
 			<label for="eab_event-eab_rsvps-me-paid_rsvp" style="display:block; line-height:1.8em">
 				<input type="hidden" name="eab_rsvps_me[email-paid_rsvp]" value="" />
 				<input type="checkbox" id="eab_event-eab_rsvps-me-paid_rsvp" name="eab_rsvps_me[email-paid_rsvp]" value="1" <?php echo $paid_rsvp; ?> />
-				<?php _e('Wenn der Benutzer für eine bezahlte Veranstaltung bezahlt', 'eab'); ?>
+				<?php _e('When user pays for a paid event', Eab_EventsHub::TEXT_DOMAIN); ?>
 			</label>
 	    </div>
 	    <div class="eab-settings-settings_item">
-	    	<label><?php _e('Benachrichtigen', 'eab'); ?></label>
+	    	<label><?php _e('Notify', Eab_EventsHub::TEXT_DOMAIN); ?></label>
 			<br />
 			<label for="eab_event-eab_rsvps-me-notify_admin" style="display:block; line-height:1.8em">
 				<input type="hidden" name="eab_rsvps_me[email-notify_admin]" value="" />
 				<input type="checkbox" id="eab_event-eab_rsvps-me-notify_admin" name="eab_rsvps_me[email-notify_admin]" value="1" <?php echo $notify_admin; ?> />
-				<?php _e('Seitenadministrator', 'eab'); ?>
+				<?php _e('Site administrator', Eab_EventsHub::TEXT_DOMAIN); ?>
 			</label>
 			<label for="eab_event-eab_rsvps-me-notify_author" style="display:block; line-height:1.8em">
 				<input type="hidden" name="eab_rsvps_me[email-notify_author]" value="" />
 				<input type="checkbox" id="eab_event-eab_rsvps-me-notify_author" name="eab_rsvps_me[email-notify_author]" value="1" <?php echo $notify_author; ?> />
-				<?php _e('Eventautor', 'eab'); ?>
+				<?php _e('Event author', Eab_EventsHub::TEXT_DOMAIN); ?>
 			</label>
 	    </div>
         <div class="eab-settings-settings_item">
-	    	<label for="eab_event-eab_rsvps-me-from-name"><?php _e('E-Mail von Namen', 'eab'); ?></label>
-			<span><?php echo $tips->add_tip('Dies ist Dein E-Mail von Name'); ?></span>
+	    	<label for="eab_event-eab_rsvps-me-from-name"><?php _e('Email from name', Eab_EventsHub::TEXT_DOMAIN); ?></label>
+			<span><?php echo $tips->add_tip('This is your email from name'); ?></span>
 			<input type="text" class="widefat" id="eab_event-eab_rsvps-me-from-name" name="eab_rsvps_me[email-from-name]" value="<?php esc_attr_e($from_name); ?>" />
 	    </div>
 		<div class="eab-settings-settings_item">
-	    	<label for="eab_event-eab_rsvps-me-from"><?php _e('Email von', 'eab'); ?></label>
-			<span><?php echo $tips->add_tip('Dies ist Deine E-Mail-Adresse'); ?></span>
+	    	<label for="eab_event-eab_rsvps-me-from"><?php _e('Email from', Eab_EventsHub::TEXT_DOMAIN); ?></label>
+			<span><?php echo $tips->add_tip('This is your email from address'); ?></span>
 			<input type="text" class="widefat" id="eab_event-eab_rsvps-me-from" name="eab_rsvps_me[email-from]" value="<?php esc_attr_e($from); ?>" />
 	    </div>
 	    <div class="eab-settings-settings_item">
-	    	<label for="eab_event-eab_rsvps-me-subject"><?php _e('E-Mail Betreff', 'eab'); ?></label>
-			<span><?php echo $tips->add_tip(sprintf(__('Dies ist der E-Mail-Betreff. Du kannst diese Makros verwenden: <code>%s</code>', 'eab'), $macros)); ?></span>
+	    	<label for="eab_event-eab_rsvps-me-subject"><?php _e('Email subject', Eab_EventsHub::TEXT_DOMAIN); ?></label>
+			<span><?php echo $tips->add_tip(sprintf(__('This is your email subject. You can use these macros: <code>%s</code>', Eab_EventsHub::TEXT_DOMAIN), $macros)); ?></span>
 			<input type="text" class="widefat" id="eab_event-eab_rsvps-me-subject" name="eab_rsvps_me[email-subject]" value="<?php esc_attr_e($subject); ?>" />
 	    </div>
 	    <div class="eab-settings-settings_item">
-	    	<label for="eab_event-eab_rsvps-me-body"><?php _e('Nachrichtentext', 'eab'); ?></label>
-			<span><?php echo $tips->add_tip(sprintf(__('Dies ist der E-Mail-Text. Du kannst diese Makros verwenden: <code>%s</code>', 'eab'), $macros)); ?></span>
+	    	<label for="eab_event-eab_rsvps-me-body"><?php _e('Email body', Eab_EventsHub::TEXT_DOMAIN); ?></label>
+			<span><?php echo $tips->add_tip(sprintf(__('This is your email body. You can use these macros: <code>%s</code>', Eab_EventsHub::TEXT_DOMAIN), $macros)); ?></span>
 			<?php wp_editor($body, 'eab_rsvps-email_me-body', array(
 				'name' => 'eab_rsvps_me-email_me-body',
 			)); ?>
 	    </div>
-	    <div class="eab-settings-settings_item"><small><?php printf(__('Du kannst diese Makros in Betreff und Nachrichtentext verwenden: <code>%s</code>', 'eab'), $macros) ?></small></div>
+	    <div class="eab-settings-settings_item"><small><?php printf(__('You can use these macros in your subject and body: <code>%s</code>', Eab_EventsHub::TEXT_DOMAIN), $macros) ?></small></div>
 	<?php if ($events) { ?>
 	    <div class="eab-settings-settings_item">
-	    	<input type="button" class="button" id="eab_event-eab_rsvps-me-preview" value="<?php esc_attr_e(__('Vorschau', 'eab')); ?>" />
-	    	<?php _e('using this event data:', 'eab'); ?>
+	    	<input type="button" class="button" id="eab_event-eab_rsvps-me-preview" value="<?php esc_attr_e(__('Preview', Eab_EventsHub::TEXT_DOMAIN)); ?>" />
+	    	<?php _e('using this event data:', Eab_EventsHub::TEXT_DOMAIN); ?>
 	    	<select id="eab_event-eab_rsvps-me-events">
 	    	<?php foreach ($events as $event) { ?>
 	    		<option value="<?php esc_attr_e($event->get_id()); ?>"><?php echo $event->get_title(); ?></option>
@@ -250,7 +250,7 @@ $(function () {
 			? tinyMCE.activeEditor.getContent()
 			: $("#eab_rsvps_me-email_me-body").val()
 		);
-		$container.html('<?php echo esc_js(__("Einen Augenblick... ", 'eab')); ?>');
+		$container.html('<?php echo esc_js(__("Please, hold on... ", Eab_EventsHub::TEXT_DOMAIN)); ?>');
 		$.post(ajaxurl, {
 			"action": "eab_rsvp_email_me-preview_email",
 			"subject": $subject.val(),

@@ -59,8 +59,7 @@ class Eab_Shortcodes extends Eab_Codec {
 		$query 							= $this->_to_query_args($args);
 
 		$order_method 					= $args['order']
-					/*('', 'return "' . $args['order'] . '";')*/
-					? function() {return "' . $args[order] . '";}
+					? create_function('', 'return "' . $args['order'] . '";')
 					: false ;
 		if ( $order_method ) {
 			add_filter( 'eab-collection-date_ordering_direction', $order_method );
@@ -71,8 +70,7 @@ class Eab_Shortcodes extends Eab_Codec {
 			// Lookahead - depending on presence, use regular upcoming query, or poll week count
 			if ( $args['lookahead'] ) {
 				$method = $args['weeks']
-					/*? create_function('', 'return ' . $args['weeks'] . ';')*/
-					? function() {return ' . $args[weeks] . ';}
+					? create_function('', 'return ' . $args['weeks'] . ';')
 					: false;
 				;
 				if ( $method ) {
@@ -116,8 +114,7 @@ class Eab_Shortcodes extends Eab_Codec {
 		} else {
 			if ( $args['lookahead'] ) {
 				$method = $args['weeks']
-					/*? create_function('', 'return ' . $args['weeks'] . ';')*/
-					? function() {return ' . $args[weeks] . ';}
+					? create_function('', 'return ' . $args['weeks'] . ';')
 					: false;
 				;
 				if ($method) add_filter('eab-collection-upcoming_weeks-week_number', $method);
@@ -164,25 +161,25 @@ class Eab_Shortcodes extends Eab_Codec {
 
 	function add_events_map_shortcode_help ($help) {
 		$help[] = array(
-			'title' => __('Ereigniskarten-Shortcode', 'eab'),
+			'title' => __('Event map shortcode', Eab_EventsHub::TEXT_DOMAIN),
 			'tag' => 'eab_events_map',
-			'note' => __('Benötigt <a href="https://n3rds.work/piestingtal_source/ps-google-maps-plugin/" target="_blank">PS Google Maps Plugin</a>.', 'eab'),
+			'note' => __('Requires Google Maps plugin.', Eab_EventsHub::TEXT_DOMAIN),
 			'arguments' => array(
-				'date' => array('help' => __('Startdatum - Standard jetzt', 'eab'), 'type' => 'string:date'),
-				'relative_date' => array('help' => __('Ein Datum relativ zum Jetzt oder zum Datum Argument', 'eab'), 'type' => 'string:date_strtotime'),
-				'lookahead' => array('help' => __('Verwende keine monatliche Standardseite - verwende stattdessen die Anzahl der Wochen', 'eab'), 'type' => 'boolean'),
-				'weeks' => array('help' => __('Schaue so viele Wochen nach vorne', 'eab'), 'type' => 'integer'),
-				'category' => array('help' => __('Ereignisse aus dieser Kategorie anzeigen (ID oder Slug)', 'eab'), 'type' => 'string:or_integer'),
-				'categories' => array('help' => __('Ereignisse aus diesen Kategorien anzeigen - Akzeptiert eine durch Kommas getrennte Liste von IDs', 'eab'), 'type' => 'string:id_list'),
-				'limit' => array('help' => __('Zeige höchstens so viele Veranstaltungen', 'eab'), 'type' => 'integer'),
-				'order' => array('help' => __('Sortiere Ereignisse in diese Richtung', 'eab'), 'type' => 'string:sort'),
-				'allow_multiple_markers' => array('help' => __('Anzeigen von Karten mit mehreren Markierungen zulassen - standardmäßig true.', 'eab'), 'type' => 'boolean'),
-				'open_only' => array('help' => __('Nur offene Ereignisse anzeigen - standardmäßig true.', 'eab'), 'type' => 'boolean'),
-				'show_date' => array('help' => __('Ereignisdatum in der Markierung anzeigen - standardmäßig true.', 'eab'), 'type' => 'boolean'),
-				'show_excerpt' => array('help' => __('Ereignis Auszug auf dem Marker  anzeigen.', 'eab'), 'type' => 'boolean'),
-				'featured_image' => array('help' => __('Verwende ein Ereignisbild anstelle von Kartenmarkierungen', 'eab'), 'type' => 'boolean'),
-				'template' => array('help' => __('Subtemplate-Datei oder Vorlagenklassenaufruf', 'eab'), 'type' => 'string'),
-				'...' => array('help' => __('und Google Maps Shortcode-Attribute', 'eab')),
+				'date' => array('help' => __('Starting date - default to now', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'string:date'),
+				'relative_date' => array('help' => __('A date relative to now or to date argument', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'string:date_strtotime'),
+				'lookahead' => array('help' => __('Don\'t use default monthly page - use weeks count instead', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'boolean'),
+				'weeks' => array('help' => __('Look ahead this many weeks', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'integer'),
+				'category' => array('help' => __('Show events from this category (ID or slug)', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'string:or_integer'),
+				'categories' => array('help' => __('Show events from these categories - accepts comma-separated list of IDs', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'string:id_list'),
+				'limit' => array('help' => __('Show at most this many events', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'integer'),
+				'order' => array('help' => __('Sort events in this direction', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'string:sort'),
+				'allow_multiple_markers' => array('help' => __('Allow displaying of maps with multiple markers - defaults to true.', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'boolean'),
+				'open_only' => array('help' => __('Show only open events - defaults to true.', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'boolean'),
+				'show_date' => array('help' => __('Show event date in the marker - defaults to true.', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'boolean'),
+				'show_excerpt' => array('help' => __('Show event excerpt in the marker.', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'boolean'),
+				'featured_image' => array('help' => __('Use event featured image instead of map markers', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'boolean'),
+				'template' => array('help' => __('Subtemplate file, or template class call', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'string'),
+				'...' => array('help' => __('and Google Maps shortcode attributes', Eab_EventsHub::TEXT_DOMAIN)),
 			),
 			'advanced_arguments' => array('template'),
 		);
@@ -242,29 +239,29 @@ class Eab_Shortcodes extends Eab_Codec {
 
 	function add_calendar_shortcode_help ($help) {
 		$help[] = array(
-			'title' 	=> __('Kalender-Shortcode', 'eab'),
+			'title' 	=> __('Calendar shortcode', Eab_EventsHub::TEXT_DOMAIN),
 			'tag' 		=> 'eab_calendar',
 			'arguments' => array(
-				'network' 			=> array('help' => __('Abfragetyp (Erfordert <a href="https://n3rds.work/piestingtal_source/multisite-beitragsindex-plugin/" target="_blank">Multisite Beitragsindex</a> Plugin', 'eab'), 'type' => 'boolean'),
-				'date' 				=> array('help' => __('Startdatum - Standard jetzt', 'eab'), 'type' => 'string:date'),
-				'relative_date' 	=> array('help' => __('Ein Datum relativ zum Jetzt oder zum Datum Argument', 'eab'), 'type' => 'string:date_strtotime'),
-				'category' 			=> array('help' => __('Ereignisse aus dieser Kategorie anzeigen (ID oder Slug)', 'eab'), 'type' => 'string:or_integer'),
-				'categories' 		=> array('help' => __('Ereignisse aus diesen Kategorien anzeigen - Akzeptiert eine durch Kommas getrennte Liste von IDs', 'eab'), 'type' => 'string:id_list'),
-				'navigation' 		=> array('help' => __('Navigation anzeigen', 'eab'), 'type' => 'boolean'),
-				'track' 			=> array('help' => __('Behalte beim Navigieren die Bildlaufposition bei', 'eab'), 'type' => 'boolean'),
-				'title_format' 		=> array('help' => __('Das im Navigationstitel verwendete Datumsformat ist standardmäßig "M Y"', 'eab'), 'type' => 'string:date_format'),
-				'short_title_format'=> array('help' => __('Das Datumsformat für die kürzere Datumsdarstellung im Navigationstitel ist standardmäßig "m-Y"', 'eab'), 'type' => 'string:date_format'),
-				'long_date_format' 	=> array('help' => __('Das Datumsformat für die Anzeige der Darstellung langer Datumsangaben verwendet standardmäßig Deine Datumseinstellungen', 'eab'), 'type' => 'string:date_format'),
-				'footer' 			=> array('help' => __('Kalendertabellenfußzeile anzeigen', 'eab'), 'type' => 'boolean'),
-				'class' 			=> array('help' => __('Wende diese CSS-Klasse an', 'eab'), 'type' => 'string'),
-				'with_thumbnail' 	=> array('help' => __('Miniaturansicht des Ereignisses anzeigen', 'eab'), 'type' => 'boolean'),
-				'default_thumbnail' => array('help' => __('Verwende diese Bild-URL als Miniaturansicht, wenn für das Ereignis kein geeigneter Bildsatz vorhanden ist', 'eab'), 'type' => 'string:url'),
-				'show_excerpt' 		=> array('help' => __('Ereignisauszug in der Schnellübersicht anzeigen.', 'eab'), 'type' => 'boolean'),
-				'excerpt_length' 	=> array('help' => __('Bestimme die Länge des Auszugs (Anzahl der Zeichen), die angezeigt werden sollen.', 'eab'), 'type' => 'integer'),
-				'template' 			=> array('help' => __('Subtemplate-Datei oder Vorlagenklassenaufruf', 'eab'), 'type' => 'string'),
-				'override_styles' 	=> array('help' => __('Schalte die Verwendung der Standardstile um', 'eab'), 'type' => 'boolean'),
-				'override_scripts' 	=> array('help' => __('Schalte die Verwendung von Standardskripten um', 'eab'), 'type' => 'boolean'),
-				'show_old'			=> array('help' => __('Vergangene Ereignisse im Kalender anzeigen', 'eab'), 'type' => 'boolean'),
+				'network' 			=> array('help' => __('Query type (Required <a href="https://premium.wpmudev.org/project/post-indexer/" target="_blank">Post Indexer</a> plugin', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'boolean'),
+				'date' 				=> array('help' => __('Starting date - default to now', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'string:date'),
+				'relative_date' 	=> array('help' => __('A date relative to now or to date argument', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'string:date_strtotime'),
+				'category' 			=> array('help' => __('Show events from this category (ID or slug)', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'string:or_integer'),
+				'categories' 		=> array('help' => __('Show events from these categories - accepts comma-separated list of IDs', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'string:id_list'),
+				'navigation' 		=> array('help' => __('Show navigation', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'boolean'),
+				'track' 			=> array('help' => __('Maintain scroll position when navigating', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'boolean'),
+				'title_format' 		=> array('help' => __('Date format used in the navigation title, defaults to "M Y"', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'string:date_format'),
+				'short_title_format'=> array('help' => __('Date format used for shorter date representation in the navigation title, defaults to "m-Y"', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'string:date_format'),
+				'long_date_format' 	=> array('help' => __('Date format used for displaying long date representation, defaults to your date settings', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'string:date_format'),
+				'footer' 			=> array('help' => __('Show calendar table footer', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'boolean'),
+				'class' 			=> array('help' => __('Apply this CSS class', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'string'),
+				'with_thumbnail' 	=> array('help' => __('Show event thumbnail', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'boolean'),
+				'default_thumbnail' => array('help' => __('Use this image URL as thumnail if event does not have an appropriate featured image set', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'string:url'),
+				'show_excerpt' 		=> array('help' => __('Show event excerpt in the quick overview.', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'boolean'),
+				'excerpt_length' 	=> array('help' => __('Determine the excerpt length (characters count) to be shown.', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'integer'),
+				'template' 			=> array('help' => __('Subtemplate file, or template class call', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'string'),
+				'override_styles' 	=> array('help' => __('Toggle default styles usage', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'boolean'),
+				'override_scripts' 	=> array('help' => __('Toggle default scripts usage', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'boolean'),
+				'show_old'			=> array('help' => __('Show past events on the calendar', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'boolean'),
 			),
 			'advanced_arguments' => array('template', 'override_scripts', 'override_styles', 'default_thumbnail'),
 		);
@@ -308,28 +305,28 @@ class Eab_Shortcodes extends Eab_Codec {
 
 	function add_archive_shortcode_help ($help) {
 		$help[] = array(
-			'title' => __('Archive shortcode', 'eab'),
+			'title' => __('Archive shortcode', Eab_EventsHub::TEXT_DOMAIN),
 			'tag' => 'eab_archive',
 			'arguments' => array(
-				'network' => array('help' => __('Abfragetyp (Erfordert <a href="https://n3rds.work/piestingtal_source/multisite-beitragsindex-plugin/" target="_blank">Multisite Beitragsindex</a> plugin)', 'eab'), 'type' => 'boolean'),
-				'date' => array('help' => __('Startdatum - Standard jetzt', 'eab'), 'type' => 'string:date'),
-				'relative_date' => array('help' => __('Ein Datum relativ zum Jetzt oder zum Datum Argument', 'eab'), 'type' => 'string:date_strtotime'),
-				'lookahead' => array('help' => __('Verwende keine monatliche Standardseite - verwende stattdessen die Anzahl der Wochen', 'eab'), 'type' => 'boolean'),
-				'weeks' => array('help' => __('Schaue so viele Wochen nach vorne', 'eab'), 'type' => 'integer'),
-				'category' => array('help' => __('Ereignisse aus dieser Kategorie anzeigen (ID oder Slug)', 'eab'), 'type' => 'string:or_integer'),
-				'categories' => array('help' => __('Ereignisse aus diesen Kategorien anzeigen - Akzeptiert eine durch Kommas getrennte Liste von IDs', 'eab'), 'type' => 'string:id_list'),
-				'limit' => array('help' => __('Zeige höchstens so viele Veranstaltungen', 'eab'), 'type' => 'integer'),
-				'order' => array('help' => __('Sortiere Ereignisse in diese Richtung', 'eab'), 'type' => 'string:sort'),
-				'paged' => array('help' => __('Paging zulassen - Verwendung mit dem Argument "limit"', 'eab'), 'type' => 'boolean'),
-				'page' => array('help' => __('Beginne auf dieser Seite', 'eab'), 'type' => 'integer'),
-				'class' => array('help' => __('Wende diese CSS-Klasse an', 'eab'), 'type' => 'string'),
-				'template' => array('help' => __('Subtemplate-Datei oder Vorlagenklassenaufruf', 'eab'), 'type' => 'string'),
-				'with_thumbnail' => array('help' => __('Miniaturansicht des Ereignisses anzeigen', 'eab'), 'type' => 'boolean'),
-				'thumbnail_size' => array('help' => __('Stelle die Größe der Miniaturansichten ein (\'thumbnail\', \'large\', \'medium-large\', \'medium\', \'full\' oder \'150,150\'', 'eab'), 'type' => 'string'),
-				'override_styles' => array('help' => __('Schalte die Verwendung der Standardstile um', 'eab'), 'type' => 'boolean'),
-				'override_scripts' => array('help' => __('Schalte die Verwendung von Standardskripten um', 'eab'), 'type' => 'boolean'),
-				'end_date' => array('help' => __('Ende (YYYY-MM-DD)', 'eab'), 'type' => 'string:date'),
-				'day_only' => array('help' => __('Schalte die Anzeige nur der Ereignisse der aktuellen Tage um', 'eab'), 'type' => 'boolean'),
+				'network' => array('help' => __('Query type (Required <a href="https://premium.wpmudev.org/project/post-indexer/" target="_blank">Post Indexer</a> plugin)', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'boolean'),
+				'date' => array('help' => __('Starting date - default to now', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'string:date'),
+				'relative_date' => array('help' => __('A date relative to now or to date argument', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'string:date_strtotime'),
+				'lookahead' => array('help' => __('Don\'t use default monthly page - use weeks count instead', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'boolean'),
+				'weeks' => array('help' => __('Look ahead this many weeks', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'integer'),
+				'category' => array('help' => __('Show events from this category (ID or slug)', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'string:or_integer'),
+				'categories' => array('help' => __('Show events from these categories - accepts comma-separated list of IDs', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'string:id_list'),
+				'limit' => array('help' => __('Show at most this many events', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'integer'),
+				'order' => array('help' => __('Sort events in this direction', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'string:sort'),
+				'paged' => array('help' => __('Allow paging - use with "limit" argument', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'boolean'),
+				'page' => array('help' => __('Start on this page', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'integer'),
+				'class' => array('help' => __('Apply this CSS class', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'string'),
+				'template' => array('help' => __('Subtemplate file, or template class call', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'string'),
+				'with_thumbnail' => array('help' => __('Show event thumbnail', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'boolean'),
+				'thumbnail_size' => array('help' => __('Set thumbnail size (\'thumbnail\', \'large\', \'medium-large\', \'medium\', \'full\' or \'150,150\'', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'string'),
+				'override_styles' => array('help' => __('Toggle default styles usage', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'boolean'),
+				'override_scripts' => array('help' => __('Toggle default scripts usage', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'boolean'),
+				'end_date' => array('help' => __('Ending date (YYYY-MM-DD)', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'string:date'),
+				'day_only' => array('help' => __('Toggle display current days events only', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'boolean'),
 			),
 			'advanced_arguments' => array('template', 'override_scripts', 'override_styles'),
 		);
@@ -357,8 +354,7 @@ class Eab_Shortcodes extends Eab_Codec {
 		$query = $this->_to_query_args($args);
 
 		$order_method = $args['order']
-			/*? create_function('', 'return "' . $args['order'] . '";')*/
-			? function() {return "' . $args[order] . '";}
+			? create_function('', 'return "' . $args['order'] . '";')
 			: false
 		;
 		if ($order_method) add_filter('eab-collection-date_ordering_direction', $order_method);
@@ -375,17 +371,17 @@ class Eab_Shortcodes extends Eab_Codec {
 
 	function add_expired_shortcode_help ($help) {
 		$help[] = array(
-			'title' => __('Shortcode für abgelaufene Ereignisse', 'eab'),
+			'title' => __('Expired events shortcode', Eab_EventsHub::TEXT_DOMAIN),
 			'tag' => 'eab_expired',
 			'arguments' => array(
-				'class' => array('help' => __('Wende diese CSS-Klasse an', 'eab'), 'type' => 'string'),
-				'category' => array('help' => __('Ereignisse aus dieser Kategorie anzeigen (ID oder Slug)', 'eab'), 'type' => 'string:or_integer'),
-				'categories' => array('help' => __('Ereignisse aus diesen Kategorien anzeigen - Akzeptiert eine durch Kommas getrennte Liste von IDs', 'eab'), 'type' => 'string:id_list'),
-				'limit' => array('help' => __('Zeige höchstens so viele Veranstaltungen', 'eab'), 'type' => 'integer'),
-				'order' => array('help' => __('Sortiere Ereignisse in diese Richtung', 'eab'), 'type' => 'string:sort'),
-				'template' => array('help' => __('Subtemplate-Datei oder Vorlagenklassenaufruf', 'eab'), 'type' => 'string'),
-				'override_styles' => array('help' => __('Schalte die Verwendung der Standardstile um', 'eab'), 'type' => 'boolean'),
-				'override_scripts' => array('help' => __('Schalte die Verwendung von Standardskripten um', 'eab'), 'type' => 'boolean'),
+				'class' => array('help' => __('Apply this CSS class', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'string'),
+				'category' => array('help' => __('Show events from this category (ID or slug)', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'string:or_integer'),
+				'categories' => array('help' => __('Show events from these categories - accepts comma-separated list of IDs', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'string:id_list'),
+				'limit' => array('help' => __('Show at most this many events', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'integer'),
+				'order' => array('help' => __('Sort events in this direction', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'string:sort'),
+				'template' => array('help' => __('Subtemplate file, or template class call', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'string'),
+				'override_styles' => array('help' => __('Toggle default styles usage', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'boolean'),
+				'override_scripts' => array('help' => __('Toggle default scripts usage', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'boolean'),
 			),
 			'advanced_arguments' => array('template', 'override_scripts', 'override_styles'),
 		);
@@ -432,15 +428,15 @@ class Eab_Shortcodes extends Eab_Codec {
 
 	function add_single_shortcode_help ($help) {
 		$help[] = array(
-			'title' => __('Einzelereignis-Shortcode', 'eab'),
+			'title' => __('Single event shortcode', Eab_EventsHub::TEXT_DOMAIN),
 			'tag' => 'eab_single',
 			'arguments' => array(
-				'id' => array('help' => __('Ereignis-ID, die angezeigt werden soll', 'eab'), 'type' => 'integer'),
-				'slug' => array('help' => __('Event von diesem Slug anzeigen', 'eab'), 'type' => 'string'),
-				'class' => array('help' => __('Wende diese CSS-Klasse an', 'eab'), 'type' => 'string'),
-				'template' => array('help' => __('Subtemplate-Datei oder Vorlagenklassenaufruf', 'eab'), 'type' => 'string'),
-				'override_styles' => array('help' => __('Schalte die Verwendung der Standardstile um', 'eab'), 'type' => 'boolean'),
-				'override_scripts' => array('help' => __('Schalteie die Verwendung von Standardskripten um', 'eab'), 'type' => 'boolean'),
+				'id' => array('help' => __('Event ID to show', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'integer'),
+				'slug' => array('help' => __('Show event by this slug', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'string'),
+				'class' => array('help' => __('Apply this CSS class', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'string'),
+				'template' => array('help' => __('Subtemplate file, or template class call', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'string'),
+				'override_styles' => array('help' => __('Toggle default styles usage', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'boolean'),
+				'override_scripts' => array('help' => __('Toggle default scripts usage', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'boolean'),
 			),
 			'advanced_arguments' => array('template', 'override_scripts', 'override_styles'),
 		);

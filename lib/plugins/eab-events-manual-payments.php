@@ -1,15 +1,15 @@
 <?php
 /*
-Plugin Name: Manuelle Zahlungen
-Description: Ermöglicht Benutzern das manuelle Bezahlen (Scheck, Überweisung usw.)
-Plugin URI: https://cp-psource.github.io/ps-events/
-Version: 0.3
-Author: DerN3rd
+Plugin Name: Manual Payments
+Description: Allows users to pay manually (check, wire transfer, etc)
+Plugin URI: http://premium.wpmudev.org/project/events-and-booking
+Version: 0.27
+Author: PSOURCE
 AddonType: Events
 */
 
 /*
-Detail: Fügt dem Frontend Codes für die manuellen Zahlungsanweisungen hinzu. Diese Anweisungen werden auf dieser Einstellungsseite unter <b>Manuelle Zahlungseinstellungen</b> eingegeben. Fügt der Ereignisseite außerdem Codes hinzu, sodass Du auswählen kannst, dass ein Mitglied manuell bezahlt hat.
+Detail: Adds codes to the front end for the manual payment instructions. These instructions are entered from this setting page, under <b>Manual Payment settings</b>. Also adds codes to the Event page so that you can select that a member paid manually.
 */
 
 
@@ -81,11 +81,11 @@ class Eab_Events_ManualPayments {
 	 */	
 	function add_select_button( $content, $event_id ) {
 		if ($this->_data->get_option('paypal_email')) $content .= '<br /><br />';
-		$content .= '<a class="psourceevents-yes-submit" style="float:none !important" href="javascript:void(0)" id="manual_payment_select_'.$event_id.'">'. $this->_data->get_option('manual_payment_select') . '</a>';
+		$content .= '<a class="wpmudevevents-yes-submit" style="float:none !important" href="javascript:void(0)" id="manual_payment_select_'.$event_id.'">'. $this->_data->get_option('manual_payment_select') . '</a>';
 		$content .= '<script type="text/javascript">';
 		$content .= 'jQuery(document).ready(function($){
-						$("#manual_payment_select_'.$event_id.'").on("click", function() {
-							$("#manual_payment_instructions_'.$event_id.'").slideToggle("slow");
+						$("#manual_payment_select_'.$event_id.'").click( function() {
+							$("#manual_payment_instructions_'.$event_id.'").toggle("slow");
 						});
 					});';
 		$content .= '</script>';
@@ -99,12 +99,12 @@ class Eab_Events_ManualPayments {
 	function add_instructions( $content, $event_id ) {
 		global $current_user;
 		$content .= '<div class="message" id="manual_payment_instructions_'.$event_id.'" style="display:none">';
-		$button = '<a class="psourceevents-yes-submit" style="float:none !important" href="javascript:void(0)" id="manual_payment_pay_'.$event_id.'">'. $this->_data->get_option('manual_payment_pay') . '</a>';
+		$button = '<a class="wpmudevevents-yes-submit" style="float:none !important" href="javascript:void(0)" id="manual_payment_pay_'.$event_id.'">'. $this->_data->get_option('manual_payment_pay') . '</a>';
 		$content .= wpautop(str_replace("MANUALPAYMENTBUTTON", $button,$this->_data->get_option('manual_payment_instructions')));
 		$content .= '</div>';
 		$content .= '<script type="text/javascript">';
 		$content .= 'jQuery(document).ready(function($){
-						$("#manual_payment_pay_'.$event_id.'").on("click",function() {
+						$("#manual_payment_pay_'.$event_id.'").click( function() {
 							$.post("'.admin_url('admin-ajax.php').'", {
 								"action": "eab_manual_payment",
 								"user_id":'.$current_user->ID.',
@@ -114,7 +114,7 @@ class Eab_Events_ManualPayments {
 								if (data && data.error) {alert(data.error);}
 								else {
 									$("#manual_payment_pay_'.$event_id.'").css("opacity","0.2");
-									alert("'.__('Vielen Dank für die Zahlung!','eab').'");
+									alert("'.__('Thank you for the payment!',Eab_EventsHub::TEXT_DOMAIN).'");
 								}
 							});
 							return false;
@@ -130,7 +130,7 @@ class Eab_Events_ManualPayments {
 	function show_nags() {
 		if ( strpos($this->_data->get_option('manual_payment_instructions'), "MANUALPAYMENTBUTTON") === false) {
 			echo '<div class="error"><p>' .
-				__("Du hast kein Schlüsselwort MANUALPAYMENTBUTTON im Feld Anweisungen. Dies bedeutet, dass es keine Schaltfläche gibt und der Benutzer Dich nicht darüber informieren kann, dass er eine Zahlung geleistet hat, was wiederum bedeutet, dass die manuelle Zahlung praktisch unbrauchbar ist.", 'eab') .
+				__("You do not have MANUALPAYMENTBUTTON keyword in the Instructions field. This means there will be no button and user will not be able to inform you that he/she made a payment, which in turn means that Manual Payment will be practically useless.", Eab_EventsHub::TEXT_DOMAIN) .
 			'</p></div>';
 		}
 	}
@@ -151,29 +151,29 @@ class Eab_Events_ManualPayments {
 	 *
 	 */	
 	function show_settings() {
-		if ( !class_exists( 'PSource_HelpTooltips' ) ) 
+		if ( !class_exists( 'WpmuDev_HelpTooltips' ) ) 
 			require_once dirname(__FILE__) . '/lib/class_wd_help_tooltips.php';
-		$tips = new PSource_HelpTooltips();
+		$tips = new WpmuDev_HelpTooltips();
 		$tips->set_icon_url( EAB_PLUGIN_URL . 'img/information.png' );
 		?>
 		<div id="eab-settings-manual_payments" class="eab-metabox postbox">
-				<h3 class="eab-hndle"><?php _e('Manuelle Zahlungseinstellungen', 'eab'); ?></h3>
+				<h3 class="eab-hndle"><?php _e('Manual Payment settings', Eab_EventsHub::TEXT_DOMAIN); ?></h3>
 				<div class="eab-inside">
 					<div class="eab-settings-settings_item">
-					    <label for="psource_event-manual_payment_select" ><?php _e('Wähle den Schaltflächentext aus', 'eab'); ?></label>
+					    <label for="incsub_event-manual_payment_select" ><?php _e('Select button text', Eab_EventsHub::TEXT_DOMAIN); ?></label>
 						<input type="text" size="40" name="event_default[manual_payment_select]" value="<?php print $this->_data->get_option('manual_payment_select'); ?>" />
-						<span><?php echo $tips->add_tip(__('Dies ist der Text, der auf der Schaltfläche Manuelle Zahlung auswählen angezeigt wird.', 'eab')); ?></span>
+						<span><?php echo $tips->add_tip(__('This is the text that will appear on Select Manual Payment button.', Eab_EventsHub::TEXT_DOMAIN)); ?></span>
 					</div>
 					    
 					<div class="eab-settings-settings_item">
-					    <label for="psource_event-manual_payment_pay" ><?php _e('Bezahlbutton Text', 'eab'); ?></label>
+					    <label for="incsub_event-manual_payment_pay" ><?php _e('Pay button text', Eab_EventsHub::TEXT_DOMAIN); ?></label>
 						<input type="text" size="40" name="event_default[manual_payment_pay]" value="<?php print $this->_data->get_option('manual_payment_pay'); ?>" />
-						<span><?php echo $tips->add_tip( __('Dies ist der Text, der auf der Schaltfläche Bezahlen angezeigt wird. Der Benutzer muss auf diese Schaltfläche klicken, nachdem er die Zahlung getätigt hat.', 'eab')); ?></span>
+						<span><?php echo $tips->add_tip( __('This is the text that will appear on Pay button. User needs to click this button after he made the payment.', Eab_EventsHub::TEXT_DOMAIN)); ?></span>
 					</div>
 					
 					<div class="eab-settings-settings_item">
-					    <label for="psource_event-manual_payment_instructions" ><?php _e('Anleitung', 'eab'); ?>&nbsp;:</label>
-						<span><?php echo $tips->add_tip( __('Schreibe hier das Verfahren, das der Benutzer für eine manuelle Zahlung ausführen muss. Verwende den MANUALPAYMENTBUTTON, um den Pay Button an der gewünschten Stelle einzufügen.', 'eab')); ?></span>
+					    <label for="incsub_event-manual_payment_instructions" ><?php _e('Instructions', Eab_EventsHub::TEXT_DOMAIN); ?>&nbsp;:</label>
+						<span><?php echo $tips->add_tip( __('Write the procedure that the user needs to do for a manual payment here. Use MANUALPAYMENTBUTTON to insert the Pay Button to the desired location.', Eab_EventsHub::TEXT_DOMAIN)); ?></span>
 						<?php wp_editor( $this->_data->get_option('manual_payment_instructions'), 'manualpaymentsinstructions', array('textarea_name'=>'event_default[manual_payment_instructions]', 'textarea_rows' => 5) ); ?>
 					</div>
 					    
@@ -221,7 +221,7 @@ class Eab_Events_ManualPayments {
 		$user_id = $_POST["user_id"];
 		$event_id = $_POST["event_id"];
 		if ( !$user_id OR !$event_id )
-			die( json_encode( array( "error" => __( "Benutzer-ID oder Ereignis-ID fehlt", 'eab' ) ) ) );
+			die( json_encode( array( "error" => __( "User ID or Event ID is missing", Eab_EventsHub::TEXT_DOMAIN ) ) ) );
 		$payments = maybe_unserialize( stripslashes( Eab_EventModel::get_booking_meta( $event_id, "manual_payment" ) ) );
 		if ( is_array( $payments ) ) {
 			$post  		= get_post( $event_id );
@@ -239,7 +239,7 @@ class Eab_Events_ManualPayments {
 				}
 			}
 		}
-		die( json_encode( array( "error" => __( "Datensatz konnte nicht gefunden werden", 'eab' ) ) ) );
+		die( json_encode( array( "error" => __( "Record could not be found", Eab_EventsHub::TEXT_DOMAIN ) ) ) );
 	}
 	
 	/**
@@ -253,12 +253,12 @@ class Eab_Events_ManualPayments {
 				if ( $payment["id"] == $user_id AND $payment["stat"] == 'pending' ) {
 					$content .= '<div class="eab-guest-actions" id="div_approve_payment_'.$user_id.'">
 					<a id="approve_payment_'.$user_id.'" href="javascript:void(0)" class="eab-guest-manual_payment" >' .
-					__('Zahlung genehmigen', 'eab') .
+					__('Approve Payment', Eab_EventsHub::TEXT_DOMAIN) .
 					'</a></div>';
 					$content .= '<script type="text/javascript">';
 					$content .= 'jQuery(document).ready(function($){
-									$("#approve_payment_'.$user_id.'").on("click",function() {
-										if (confirm("'. __( "Bist Du sicher, diese Zahlung zu genehmigen?", 'eab' ) .'")){
+									$("#approve_payment_'.$user_id.'").click( function() {
+										if (confirm("'. __( "Are you sure to approve this payment?", Eab_EventsHub::TEXT_DOMAIN ) .'")){
 											$.post(ajaxurl, {
 												"action": "eab_approve_manual_payment",
 												"user_id":'.$user_id.',
@@ -266,7 +266,7 @@ class Eab_Events_ManualPayments {
 											}, function (data) {
 												if (data && data.error) {alert(data.error);}
 												else {
-													$("#div_approve_payment_'.$user_id.'").parent(".eab-guest").find(".eab-guest-payment_info").html("'.__( 'Bezahlt', 'eab' ).'");
+													$("#div_approve_payment_'.$user_id.'").parent(".eab-guest").find(".eab-guest-payment_info").html("'.__( 'paid', Eab_EventsHub::TEXT_DOMAIN ).'");
 													$("#div_approve_payment_'.$user_id.'").remove();
 												}
 											},

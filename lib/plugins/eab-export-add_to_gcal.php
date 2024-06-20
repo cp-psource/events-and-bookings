@@ -1,10 +1,10 @@
 <?php
 /*
-Plugin Name: Export: Google Kalendar
-Description: Fügt Deinen Besuchern eine praktische Schaltfläche hinzu, mit der sie Ereignisse in ihren Google-Kalendern planen können.
-Plugin URI: https://cp-psource.github.io/ps-events/
-Version: 0.2
-Author: DerN3rd
+Plugin Name: Export: Google Calendar
+Description: Adds a convenience button for your vistors to schedule events in their Google Calendars.
+Plugin URI: http://premium.wpmudev.org/project/events-and-booking
+Version: 0.1
+Author: PSOURCE
 AddonType: Integration
 */
 
@@ -71,7 +71,7 @@ class Eab_Export_GCalButton {
 
 		/*return "{$content} <a class='export_to_gcal' href='" .
 			esc_url('http://www.google.com/calendar/event?' . join('&', $data)) .
-		"'><span class='eab_export' style='display:none'>" . __('Export to GCAL', 'eab') . '</span><img src="//www.google.com/calendar/images/ext/gc_button1.gif" border=0></a>';*/
+		"'><span class='eab_export' style='display:none'>" . __('Export to GCAL', Eab_EventsHub::TEXT_DOMAIN) . '</span><img src="//www.google.com/calendar/images/ext/gc_button1.gif" border=0></a>';*/
                 
                 /**
                  * Added by Ashok
@@ -80,7 +80,7 @@ class Eab_Export_GCalButton {
                  */
                 return "{$content} <a class='export_to_gcal' href='" .
 			esc_url('http://www.google.com/calendar/event?' . join('&', $data)) .
-		"'><span class='eab_export'>" . __('Google Kalender Export', 'eab') . '</span></a>';
+		"'><span class='eab_export'>" . __('Export to GCAL', Eab_EventsHub::TEXT_DOMAIN) . '</span></a>';
 	}
 }
 

@@ -19,8 +19,8 @@ class Eab_Admin {
 		add_action('admin_enqueue_scripts', array($this, 'admin_enqueue_scripts') );
 		add_action('admin_print_styles', array($this, 'admin_print_styles') );
 
-		add_action('manage_psource_event_posts_custom_column', array($this, 'manage_posts_custom_column'));
-		add_filter('manage_psource_event_posts_columns', array($this, 'manage_posts_columns'), 99);
+		add_action('manage_incsub_event_posts_custom_column', array($this, 'manage_posts_custom_column'));
+		add_filter('manage_incsub_event_posts_columns', array($this, 'manage_posts_columns'), 99);
 	}
 
 	private function includes() {
@@ -37,7 +37,7 @@ class Eab_Admin {
 		if (get_option('eab_activation_redirect', false)) {
 			delete_option('eab_activation_redirect');
 			if (!(is_multisite() && is_super_admin()) || !is_network_admin()) {
-				wp_redirect('edit.php?post_type=psource_event&page=eab_welcome');
+				wp_redirect('edit.php?post_type=incsub_event&page=eab_welcome');
 			}
 		}
 
@@ -45,7 +45,7 @@ class Eab_Admin {
 		wp_register_script('eab_jquery_timepicker', EAB_PLUGIN_URL . 'js/jquery.ui.timepicker.js', array('jquery'), Eab_EventsHub::CURRENT_VERSION);
 		wp_register_script('eab_admin_js', EAB_PLUGIN_URL . 'js/eab-admin.js', array('jquery'), Eab_EventsHub::CURRENT_VERSION);
 		wp_register_style('eab_jquery_timepicker', EAB_PLUGIN_URL . 'css/jquery.ui.timepicker.css', null, Eab_EventsHub::CURRENT_VERSION);
-		wp_register_style('eab_admin', EAB_PLUGIN_URL . 'css/admin.min.css', null, Eab_EventsHub::CURRENT_VERSION);
+		wp_register_style('eab_admin', EAB_PLUGIN_URL . 'css/admin.css', null, Eab_EventsHub::CURRENT_VERSION);
 
 		if (defined('AGM_PLUGIN_URL')) {
 			add_action('admin_print_scripts-post.php', array($this, 'js_editor_button'));
@@ -53,8 +53,8 @@ class Eab_Admin {
 		}
 
 		$event_localized = array(
-			'view_all_bookings' 		=> __('Zeige Reaktionen', 'eab'),
-			'back_to_gettting_started' 	=> __('Zurück zur Übersicht', 'eab'),
+			'view_all_bookings' 		=> __('View all RSVPs', Eab_EventsHub::TEXT_DOMAIN),
+			'back_to_gettting_started' 	=> __('Back to getting started', Eab_EventsHub::TEXT_DOMAIN),
 			'start_of_week' 			=> get_option('start_of_week'),
 		);
 
@@ -66,7 +66,7 @@ class Eab_Admin {
 		if (get_option('permalink_structure')) return;
 		echo '<div class="error"><p>' .
 		     sprintf(
-			     __('Du musst Deine Permalink-Struktur auf eine andere als die Standardstruktur aktualisieren, um PS-Events verwenden zu können. <a href="%s">Erledige das gleich hier.</a>', 'eab'),
+			     __('You must must update your permalink structure to something other than default to use Events. <a href="%s">You can do so here.</a>', Eab_EventsHub::TEXT_DOMAIN),
 			     admin_url('options-permalink.php')
 		     ) .
 		     '</p></div>';
@@ -100,31 +100,31 @@ class Eab_Admin {
 		wp_enqueue_script('thickbox');
 		wp_enqueue_script('eab_editor',  EAB_PLUGIN_URL . 'js/editor.js', array('jquery'));
 		wp_localize_script('eab_editor', 'eab_l10nEditor', array(
-			'loading' 						=> __('Lade Karten... einen Augenblick, bitte', 'eab'),
-			'use_this_map' 					=> __('Diese Karte einfügen', 'eab'),
-			'preview_or_edit' 				=> __('Vorschau/Bearbeiten', 'eab'),
-			'delete_map' 					=> __('Löschen', 'eab'),
-			'add_map' 						=> __('Karte hinzufügen', 'eab'),
-			'existing_map' 					=> __('Vorhandene Karten', 'eab'),
-			'no_existing_maps' 				=> __('Keine Karten', 'eab'),
-			'new_map' 						=> __('Neue Karte erstellen', 'eab'),
-			'advanced' 						=> __('Erweiterter Modus', 'eab'),
-			'advanced_mode_activate_help' 	=> __('Aktiviere den erweiterten Modus, um einzelne Karten auszuwählen, die zu einer neuen Karte zusammengeführt werden sollen, oder um Karten im Stapel zu löschen', 'eab'),
-			'advanced_mode_help' 			=> __('Um eine neue Karte aus mehreren Karten zu erstellen, wähle die Karten aus, welche Du verwenden möchtest, und klicke auf Standorte zusammenführen', 'eab'),
-			'advanced_off' 					=> __('Erweiterten Modus verlassen', 'eab'),
-			'merge_locations' 				=> __('Standorte zusammenführen', 'eab'),
-			'batch_delete' 					=> __('Batch löschen', 'eab'),
-			'new_map_intro' 				=> __('Erstelle eine neue Karte, die in diesen Beitrag oder diese Seite eingefügt werden kann. Sobald Du fertig bist, kannst Du alle unten stehenden Karten verwalten', 'eab'),
+			'loading' 						=> __('Loading maps... please wait', Eab_EventsHub::TEXT_DOMAIN),
+			'use_this_map' 					=> __('Insert this map', Eab_EventsHub::TEXT_DOMAIN),
+			'preview_or_edit' 				=> __('Preview/Edit', Eab_EventsHub::TEXT_DOMAIN),
+			'delete_map' 					=> __('Delete', Eab_EventsHub::TEXT_DOMAIN),
+			'add_map' 						=> __('Add Map', Eab_EventsHub::TEXT_DOMAIN),
+			'existing_map' 					=> __('Existing map', Eab_EventsHub::TEXT_DOMAIN),
+			'no_existing_maps' 				=> __('No existing maps', Eab_EventsHub::TEXT_DOMAIN),
+			'new_map' 						=> __('Create new map', Eab_EventsHub::TEXT_DOMAIN),
+			'advanced' 						=> __('Advanced mode', Eab_EventsHub::TEXT_DOMAIN),
+			'advanced_mode_activate_help' 	=> __('Activate Advanced mode to select individual maps to merge into one new map or to batch delete maps', Eab_EventsHub::TEXT_DOMAIN),
+			'advanced_mode_help' 			=> __('To create a new map from several maps select the maps you want to use and click Merge locations', Eab_EventsHub::TEXT_DOMAIN),
+			'advanced_off' 					=> __('Exit advanced mode', Eab_EventsHub::TEXT_DOMAIN),
+			'merge_locations' 				=> __('Merge locations', Eab_EventsHub::TEXT_DOMAIN),
+			'batch_delete' 					=> __('Batch delete', Eab_EventsHub::TEXT_DOMAIN),
+			'new_map_intro' 				=> __('Create a new map which can be inserted into this post or page. Once you are done you can manage all maps below', Eab_EventsHub::TEXT_DOMAIN),
 		));
 	}
 
 	private function _check_admin_page_id () {
 		$_page_ids = array (
-			'psource_event_page_eab_welcome',
-			'edit-psource_event',
-			'psource_event',
-			'psource_event_page_eab_shortcodes',
-			'psource_event_page_eab_settings',
+			'incsub_event_page_eab_welcome',
+			'edit-incsub_event',
+			'incsub_event',
+			'incsub_event_page_eab_shortcodes',
+			'incsub_event_page_eab_settings',
 		);
 		$screen = get_current_screen();
 		if (!in_array($screen->id, $_page_ids)) return false;
@@ -139,7 +139,7 @@ class Eab_Admin {
 	function admin_menus() {
 		global $submenu;
 
-		$root_key = 'edit.php?post_type=psource_event';
+		$root_key = 'edit.php?post_type=incsub_event';
 
 		if (get_option('eab_setup', false) == false) {
 
@@ -171,11 +171,11 @@ class Eab_Admin {
 				$yes = $wpdb->get_var($wpdb->prepare("SELECT COUNT(*) FROM ".Eab_EventsHub::tablename(Eab_EventsHub::BOOKING_TABLE)." WHERE event_id = %d AND status = %s;", $event->get_id(), Eab_EventModel::BOOKING_YES));
 				$no = $wpdb->get_var($wpdb->prepare("SELECT COUNT(*) FROM ".Eab_EventsHub::tablename(Eab_EventsHub::BOOKING_TABLE)." WHERE event_id = %d AND status = %s;", $event->get_id(), Eab_EventModel::BOOKING_NO));
 				$maybe = $wpdb->get_var($wpdb->prepare("SELECT COUNT(*) FROM ".Eab_EventsHub::tablename(Eab_EventsHub::BOOKING_TABLE)." WHERE event_id = %d AND status = %s;", $event->get_id(), Eab_EventModel::BOOKING_MAYBE));
-				printf('<b>' . __('Teilnahme / Unentschlossen', 'eab') . ':</b> %d / %d<br />', $yes, $maybe);
-				printf('<b>' . __('Nicht teilnehmen', 'eab') . ':</b> %d', $no);
+				printf('<b>' . __('Attending / Undecided', Eab_EventsHub::TEXT_DOMAIN) . ':</b> %d / %d<br />', $yes, $maybe);
+				printf('<b>' . __('Not Attending', Eab_EventsHub::TEXT_DOMAIN) . ':</b> %d', $no);
 				echo '&nbsp;';
 				echo '<a class="button" href="' . admin_url('index.php?eab_export=attendees&event_id='. $event->get_id()) . '" class="eab-export_attendees">' .
-				     __('Exportieren', 'eab') .
+				     __('Export', Eab_EventsHub::TEXT_DOMAIN) .
 				     '</a>';
 				break;
 			case "start":
@@ -192,7 +192,7 @@ class Eab_Admin {
 					$title = @$repeats[$event->get_recurrence()];
 					$start = date_i18n($df, $event->get_recurrence_starts());
 					$end = date_i18n($df, $event->get_recurrence_ends());
-					printf(__("Vom %s, wiederholt alle %s bis zum %s", 'eab'), $start, $title, $end);
+					printf(__("From %s, repeats every %s until %s", Eab_EventsHub::TEXT_DOMAIN), $start, $title, $end);
 				}
 				break;
 			case "venue":
@@ -211,13 +211,13 @@ class Eab_Admin {
 				$status = $statuses ? ' - <span class="post-state">' . join(', ', $statuses) . '</span>' : '';
 
 				$title = (current_user_can($post_type_object->cap->edit_post, $event->get_id()) && 'trash' != $post->post_status)
-					? '<strong>' . '<a class="row-title" href="' . $edit_link .'" title="' . esc_attr(sprintf(__('Bearbeite &#8220;%s&#8221;' ), $event->get_title())) . '">' . $event->get_title() . '</a>&nbsp;' . $status . '</strong>'
+					? '<strong>' . '<a class="row-title" href="' . $edit_link .'" title="' . esc_attr(sprintf(__('Edit &#8220;%s&#8221;' ), $event->get_title())) . '">' . $event->get_title() . '</a>&nbsp;' . $status . '</strong>'
 					: '<strong>' . $event->get_title() . '&nbsp;' . $status . '</strong>'
 				;
 
 				if (current_user_can($post_type_object->cap->edit_post, $event->get_id()) && 'trash' != $post->post_status) {
-					$actions['edit'] = '<a title="' . esc_attr(__('Veranstaltung bearbeiten', 'eab')) . '" href="' . $edit_link . '">' . __('Bearbeiten') . '</a>';
-					if (!$event->is_recurring()) $actions['inline hide-if-no-js'] = '<a href="#" class="editinline" title="' . esc_attr(__( 'Bearbeite dieses Ereignis inline', 'eab')) . '">' . __('Schnelles&nbsp;Bearbeiten') . '</a>';
+					$actions['edit'] = '<a title="' . esc_attr(__('Edit Event', Eab_EventsHub::TEXT_DOMAIN)) . '" href="' . $edit_link . '">' . __('Edit') . '</a>';
+					if (!$event->is_recurring()) $actions['inline hide-if-no-js'] = '<a href="#" class="editinline" title="' . esc_attr(__( 'Edit this Event inline', Eab_EventsHub::TEXT_DOMAIN)) . '">' . __('Quick&nbsp;Edit') . '</a>';
 				}
 
 				if (current_user_can($post_type_object->cap->delete_post, $event->get_id())) {
@@ -225,14 +225,14 @@ class Eab_Admin {
 						$actions['untrash'] = sprintf(	'<a href="%s" title="%s" aria-label="%s">%s</a>',
 							wp_nonce_url( admin_url( sprintf( $post_type_object->_edit_link . '&amp;action=untrash', $post->ID ) ), 'untrash-post_' . $post->ID ),
 							'Restore this Event from the Trash',
-							esc_attr( sprintf( __( 'Wiederhergestellt &#8220;%s&#8221; aus dem Papierkorb' ), $title ) ),
-							__( 'Wiederherstellen' )
+							esc_attr( sprintf( __( 'Restore &#8220;%s&#8221; from the Trash' ), $title ) ),
+							__( 'Restore' )
 						);	
 					} else if (EMPTY_TRASH_DAYS) {
-						$actions['trash'] = '<a class="submitdelete" title="' . esc_attr(__('Verschiebe dieses Ereignis in den Papierkorb', 'eab')) . '" href="' . get_delete_post_link($event->get_id()) . '">' . __('Papierkorb') . '</a>';
+						$actions['trash'] = '<a class="submitdelete" title="' . esc_attr(__('Move this Event to the Trash', Eab_EventsHub::TEXT_DOMAIN)) . '" href="' . get_delete_post_link($event->get_id()) . '">' . __('Trash') . '</a>';
 					}
 					if ('trash' == $post->post_status || !EMPTY_TRASH_DAYS) {
-						$actions['delete'] = "<a class='submitdelete' title='" . esc_attr(__('Lösche dieses Ereignis dauerhaft', 'eab')) . "' href='" . get_delete_post_link($event->get_id(), '', true ) . "'>" . __('Dauerhaft löschen') . "</a>";
+						$actions['delete'] = "<a class='submitdelete' title='" . esc_attr(__('Delete this Event permanently', Eab_EventsHub::TEXT_DOMAIN)) . "' href='" . get_delete_post_link($event->get_id(), '', true ) . "'>" . __('Delete Permanently') . "</a>";
 					}
 				}
 
@@ -244,7 +244,7 @@ class Eab_Admin {
 						else $event_id = $children[0]->get_id();
 					}
 					if ($event_id) {
-						$actions['view'] = '<a href="' . get_permalink($event_id) . '" title="' . esc_attr(sprintf(__('Ansehen &#8220;%s&#8221;'), $event->get_title())) . '" rel="permalink">' . __('Ansehen') . '</a>';
+						$actions['view'] = '<a href="' . get_permalink($event_id) . '" title="' . esc_attr(sprintf(__('View &#8220;%s&#8221;'), $event->get_title())) . '" rel="permalink">' . __('View') . '</a>';
 					}
 				}
 
@@ -269,11 +269,11 @@ class Eab_Admin {
 			$columns['icl_translations'] = $old_columns['icl_translations'];
 		}
 
-		$columns['start'] = __('Wann', 'eab');
-		$columns['venue'] = __('Wo', 'eab');
+		$columns['start'] = __('When', Eab_EventsHub::TEXT_DOMAIN);
+		$columns['venue'] = __('Where', Eab_EventsHub::TEXT_DOMAIN);
 		$columns['author'] = $old_columns['author'];
 		$columns['date'] = $old_columns['date'];
-		$columns['attendees'] = __('Reaktionen', 'eab');
+		$columns['attendees'] = __('RSVPs', Eab_EventsHub::TEXT_DOMAIN);
 
 		return $columns;
 	}

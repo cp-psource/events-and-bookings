@@ -1,15 +1,16 @@
 <?php
 /*
-Plugin Name: Export: iCalendar
-Description: Exportiere Ereignisse im iCal-Format.
-Plugin URI: https://cp-psource.github.io/ps-events/
-Version: 0.2
-Author: DerN3rd
+Plugin Name: Export: iCal
+Description: Export your Event(s) in iCal format.
+Plugin URI: http://premium.wpmudev.org/project/events-and-booking
+Version: 0.1
+Author: PSOURCE
 AddonType: Integration
 */
 
 /*
-Detail: Mit dieser Erweiterung kannst Du eines oder mehrere Ihrer Ereignisse im iCal-Format exportieren. <br /> Verwendung: Fügt am Ende der URL des Ereignis- oder Ereignisarchivs einfach <code>?eab_format=ical</code> hinzu.
+Detail: This Addon will allow you to export one or more of your events in iCal format.<br />Usage: just add <code>?eab_format=ical</code> at the end of the Event or Events archive URL.
+
 */
 
 if (!class_exists('Eab_ExporterFactory')) require_once EAB_PLUGIN_DIR . 'lib/class_eab_exporter.php';
@@ -79,33 +80,33 @@ class Eab_Export_iCal {
 		$checked_dload = $this->_data->get_option('eab_export-ical-download_links') ? 'checked="checked"' : '';
 ?>
 <div id="eab-settings-ical_export" class="eab-metabox postbox">
-	<h3 class="eab-hndle"><?php _e('iCal Export Einstellungen', 'eab'); ?></h3>
+	<h3 class="eab-hndle"><?php _e('iCal export settings', Eab_EventsHub::TEXT_DOMAIN); ?></h3>
 	<div class="eab-inside">
 	    <div class="eab-settings-settings_item">
-			<b><?php _e('Exportierte Ereigniszeiten', 'eab'); ?></b>
+			<b><?php _e('Exported event times', Eab_EventsHub::TEXT_DOMAIN); ?></b>
 			<div style="line-height:1.5em; padding-bottom:.5em;">
 				<label for="eab_export-ical-time-gmt">
 					<input type="radio" id="eab_export-ical-time-gmt" name="event_default[eab_export-ical-time]" value="gmt" <?php echo $checked_time_gmt; ?> />
-					<?php _e('Greenwich Mittlere Zeit (GMT)', 'eab'); ?>
+					<?php _e('Greenwich Mean Time (GMT)', Eab_EventsHub::TEXT_DOMAIN); ?>
 				</label>
 				<br />
 				<label for="eab_export-ical-time-entered">
 					<input type="radio" id="eab_export-ical-time-entered" name="event_default[eab_export-ical-time]" value="local" <?php echo $checked_time_entered; ?> />
-					<?php _e('Ortszeit (wie eingegeben)', 'eab'); ?>
+					<?php _e('Local time (as entered)', Eab_EventsHub::TEXT_DOMAIN); ?>
 				</label>
 				<br />
 				<label for="eab_export-ical-time-tz_local">
 					<input type="radio" id="eab_export-ical-time-tz_local" name="event_default[eab_export-ical-time]" value="tz_local" <?php echo $checked_time_tz_local; ?> />
-					<?php _e('Ortszeit (wie eingegeben) mit Zeitzoneninformationen', 'eab'); ?>
+					<?php _e('Local time (as entered) with timezone information', Eab_EventsHub::TEXT_DOMAIN); ?>
 				</label>
 			</div>
 	    </div>
 		<div class="eab-settings-settings_item">
-	    	<label for="eab_export-ical-auto_show_links"><?php _e('Füge automatisch Exportlinks zu Ereignissen und Archiven hinzu', 'eab'); ?>?</label>
+	    	<label for="eab_export-ical-auto_show_links"><?php _e('Automatically add export links to Events and archives', Eab_EventsHub::TEXT_DOMAIN); ?>?</label>
 			<input type="checkbox" id="eab_export-ical-auto_show_links" name="event_default[eab_export-ical-auto_show_links]" value="1" <?php print $checked_auto; ?> />
 		</div>
 		<div class="eab-settings-settings_item">
-			<label for="eab_export-ical-download_links"><?php _e('Automatisch hinzugefügte Links sind Download-Links', 'eab'); ?>?</label>
+			<label for="eab_export-ical-download_links"><?php _e('Auto-added links are download links', Eab_EventsHub::TEXT_DOMAIN); ?>?</label>
 			<input type="checkbox" id="eab_export-ical-download_links" name="event_default[eab_export-ical-download_links]" value="1" <?php print $checked_dload; ?> />
 	    </div>
 	</div>
@@ -122,7 +123,7 @@ class Eab_Export_iCal {
 		return "{$content} <a class='export_to_ical' href='" . 
 			get_permalink($event->get_id()) . 
 			'?eab_format=ical' . $download .
-		"'><span class='eab_export'>" . __('Apple Kalender Export', 'eab') . '</span></a>';
+		"'><span class='eab_export'>" . __('Export to iCal', Eab_EventsHub::TEXT_DOMAIN) . '</span></a>';
 	}
 
 	function intercept_page_load () {
@@ -168,7 +169,7 @@ class Eab_Exporter_Ical extends Eab_Exporter {
 	}
 
 	public function export_event () {
-		if (!$this->_event_id) die(__('Kein Ereignis zum Exportieren', 'eab'));
+		if (!$this->_event_id) die(__('No event to export', Eab_EventsHub::TEXT_DOMAIN));
 		$ret = $this->_get_header();
 		$ret .= $this->_get_event_as_ical(new Eab_EventModel(get_post($this->_event_id)), apply_filters('eab-export-ical-recurring_instances', true));
 		$ret .= "END:VCALENDAR";
@@ -190,7 +191,7 @@ class Eab_Exporter_Ical extends Eab_Exporter {
 	}
 
 	public function export_attendees () {$event = new Eab_EventModel(get_post($this->_event_id));
-		die(__('Not supported', 'eab'));
+		die(__('Not supported', Eab_EventsHub::TEXT_DOMAIN));
 	}
 
 	private function _get_header () {

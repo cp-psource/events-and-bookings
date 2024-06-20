@@ -24,10 +24,10 @@ function reset_roles () {
 // Init
 $(function () {
 
-$("#eab-event-capabilities-switch_hub").on('change', switch_role);
+$("#eab-event-capabilities-switch_hub").change(switch_role);
 switch_role();
 
-$("#eab-event-capabilities-reset").on("click", reset_roles);
+$("#eab-event-capabilities-reset").click(reset_roles);
 
 });
 })(jQuery);

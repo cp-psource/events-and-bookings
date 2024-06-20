@@ -1,15 +1,15 @@
 <?php
 /*
 Plugin Name: Social RSVPs
-Description: Veröffentlicht automatisch RSVP-Statusaktualisierungen für Deine Facebook- und Twitter-Gäste.
-Plugin URI: https://cp-psource.github.io/ps-events/
-Version: 1.1
-Author: DerN3rd
+Description: Automatically posts RSVP status updates for your Facebook and Twitter guests.
+Plugin URI: http://premium.wpmudev.org/project/events-and-booking
+Version: 1.0
+Author: PSOURCE
 AddonType: Integration, RSVP
 */
 
 /*
-Detail: Du musst die Facebook / Twitter-Anmeldung aktivieren und konfigurieren, damit diese Erweiterung funktioniert.
+Detail: You will need to enable and configure Facebook/Twitter login for this add-on to work.
 */
 
 class Eab_Events_SocialRsvps {
@@ -30,17 +30,17 @@ class Eab_Events_SocialRsvps {
 
 		add_action('eab-javascript-public_data', array($this, 'update_oauth_scope'));
 		
-		add_action('psource_event_booking_yes', array($this, 'post_facebook_update'), 10, 2);
-		add_action('psource_event_booking_yes', array($this, 'post_twitter_update'), 10, 2);
+		add_action('incsub_event_booking_yes', array($this, 'post_facebook_update'), 10, 2);
+		add_action('incsub_event_booking_yes', array($this, 'post_twitter_update'), 10, 2);
 	}
 	
 	function show_nags () {
 		$msg = false;
 		if (!$this->_data->get_option('accept_api_logins')) {
-			$msg = __("Du musst Facebook-Anmeldungen aktivieren und konfigurieren, damit die Erweiterung für soziale RSVPs ordnungsgemäß funktioniert", 'eab');
+			$msg = __("You will need to enable and configure Facebook logins for Social RSVPs add-on to work properly", Eab_EventsHub::TEXT_DOMAIN);
 		}
 		if (!$this->_data->get_option('facebook-app_id')) {
-			$msg = __("Du musst Deine Facebook-App so konfigurieren, dass das Add-On für soziale RSVPs ordnungsgemäß funktioniert", 'eab');			
+			$msg = __("You will need to configure your Facebook app for Social RSVPs add-on to work properly", Eab_EventsHub::TEXT_DOMAIN);			
 		}
 		
 		if ($msg) {

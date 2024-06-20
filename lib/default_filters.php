@@ -42,7 +42,7 @@ class Eab_Filter {
 	}
 
 	public static function ordering_by_start_date_posts_where ($q) {
-		return "{$q} AND eab_meta.meta_key='psource_event_start'";
+		return "{$q} AND eab_meta.meta_key='incsub_event_start'";
 	}
 
 }
@@ -70,7 +70,7 @@ if (!(defined('EAB_SKIP_FORCED_META_ID_ORDERING') && EAB_SKIP_FORCED_META_ID_ORD
 	 * Late binding filter for forced query ordering on postmeta requests.
 	 */
 	function _eab_filter_meta_query ($check, $object_id, $meta_key, $single) {
-		if (!preg_match('/psource_event_(.*?)start$/', $meta_key) && !preg_match('/psource_event_(.*)end$/', $meta_key)) return $check;
+		if (!preg_match('/incsub_event_(.*?)start$/', $meta_key) && !preg_match('/incsub_event_(.*)end$/', $meta_key)) return $check;
 
 		if (!(defined('EAB_SKIP_FORCED_META_ID_SORT_OPTIMIZATION') && EAB_SKIP_FORCED_META_ID_SORT_OPTIMIZATION)) {
 			// First, let's see what we have custom-cached
@@ -130,7 +130,7 @@ if (!(defined('EAB_SKIP_FORCED_CATEGORY_ORDERING') && EAB_SKIP_FORCED_CATEGORY_O
 // Archive sorting and pagination in default WP requests
 function _eab_dispatch_event_archives($query) {
 	if ( ! empty( $query->query['_avoid_pgp_action'] ) && 1 == $query->query['_avoid_pgp_action'] ) return;
-    if ( is_admin() || ! is_post_type_archive('psource_event') ) return;
+    if ( is_admin() || ! is_post_type_archive('incsub_event') ) return;
     $data = Eab_Options::get_instance();
     if ( $pagination = $data->get_option('pagination') ) {
         $query->set( 'posts_per_page', $pagination );
@@ -149,7 +149,7 @@ function _eab_hide_past_events_from_archive_pages( $query ) {
 	
 		$meta_query = array(
              array(
-                'key' 		=> 'psource_event_start',
+                'key' 		=> 'incsub_event_start',
                 'value' 	=> gmdate( 'Y-m-d H:i:s' ),
                 'compare' 	=>'>=',
              ),

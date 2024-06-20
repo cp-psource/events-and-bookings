@@ -1,10 +1,10 @@
 <?php
 /*
-Plugin Name: Benachrichtige RSVPs bei Ereignisänderungen
-Description: Sende eine E-Mail an alle RSVPs, wenn ein Ereignis geändert wird
-Plugin URI: https://cp-psource.github.io/ps-events/
-Version: 1.1
-Author: DerN3rd
+Plugin Name: Alert RSVPs on event modification
+Description: Send an email to all RSVPs when an event is modified
+Plugin URI: http://premium.wpmudev.org/project/events-and-booking
+Version: 1.0
+Author: PSOURCE
 AddonType: Events
 */
 
@@ -33,7 +33,7 @@ class Eab_Events_Alert_RSVP_Event_Modify {
 		if (!current_user_can('edit_posts')) return false;
 		if ( wp_is_post_revision( $post_id ) ) return;
 		
-		if( 'psource_event' == get_post_type( $post_id ) ) {
+		if( 'incsub_event' == get_post_type( $post_id ) ) {
 			
 			global $wpdb;
 			
@@ -87,16 +87,16 @@ class Eab_Events_Alert_RSVP_Event_Modify {
 	
 	
 	public function show_settings() {
-		$eab_alert = $this->_data->get_option('eab_alert');
+		$eab_alert = $this->_data->get_option( 'eab_alert' );
 		?>
 		<div id="eab-settings-alert" class="eab-metabox postbox">
-			<h3 class="eab-hndle"><?php _e('Benachrichtige RSVP-Einstellungen', 'eab'); ?></h3>
+			<h3 class="eab-hndle"><?php _e( 'Alert RSVP Settings', Eab_EventsHub::TEXT_DOMAIN ); ?></h3>
 			<div class="eab-inside">
-				<p><?php _e('Betreff', 'eab'); ?></p>
-				<input type="text" name="eab_alert[subject]" style="width: 100%" value="<?php echo isset($eab_alert['subject']) ? esc_attr($eab_alert['subject']) : ''; ?>">
-				<p><?php _e('E-Mail-Inhalt', 'eab'); ?></p>
-				<textarea name="eab_alert[content]" rows="10" style="width: 100%"><?php echo isset($eab_alert['content']) ? esc_textarea($eab_alert['content']) : ''; ?></textarea>
-				<em><?php _e('Du kannst diese Makros verwenden: DISPLAY_NAME, EVENT_NAME, START_DATE, START_TIME, END_DATE, END_TIME', 'eab'); ?></em>
+				<p><?php _e( 'Subject', Eab_EventsHub::TEXT_DOMAIN ) ?></p>
+				<input type="text" name="eab_alert[subject]" style="width: 100%" value="<?php echo $eab_alert['subject'] ?>">
+				<p><?php _e( 'Email Content', Eab_EventsHub::TEXT_DOMAIN ) ?></p>
+				<textarea name="eab_alert[content]" rows="10" style="width: 100%"><?php echo $eab_alert['content'] ?></textarea>
+				<em><?php _e( 'You can use these macros: DISPLAY_NAME, EVENT_NAME, START_DATE, START_TIME, END_DATE, END_TIME', Eab_EventsHub::TEXT_DOMAIN ) ?></em>
 			</div>
 		</div>
 		<?php

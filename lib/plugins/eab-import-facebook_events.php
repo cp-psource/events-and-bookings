@@ -1,10 +1,10 @@
 <?php
 /*
 Plugin Name: Import: Facebook Events
-Description: Synchronisiere lokale und Facebook-Events.
-Plugin URI: https://cp-psource.github.io/ps-events/
-Version: 1.1
-Author: DerN3rd
+Description: Sync your local and Facebook events.
+Plugin URI: http://premium.wpmudev.org/project/events-and-booking
+Version: 1.0
+Author: PSOURCE
 AddonType: Integration
 */
 
@@ -18,7 +18,7 @@ else
         function eab_show_php_notice() {
                 ?>
                 <div class="notice notice-error is-dismissible">
-                        <p><?php _e( 'Du benötigst PHP 5.4 oder höher, um die Erweiterung <b>Import: Facebook Events</b> verwenden zu können.', 'eab' ); ?></p>
+                        <p><?php _e( 'You must need php 5.4 or greater to use <b>Import: Facebook Events</b> addon.', Eab_EventsHub::TEXT_DOMAIN ); ?></p>
                 </div>
                 <?php
         }

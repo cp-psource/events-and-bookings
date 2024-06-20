@@ -1,22 +1,22 @@
 <?php
 /*
-Plugin Name: Nächster Ereignis-Shortcode
-Description: Erzeugt einen formatierbaren Shortcode, der die Zeit des nächsten bevorstehenden Ereignisses anzeigt, das noch nicht gestartet wurde 
-Plugin URI: https://cp-psource.github.io/ps-events/
-Version: 0.3
-Author: DerN3rd
+Plugin Name: Next Event Shortcode
+Description: Generates a formattable shortcode displaying time of the next upcoming event that has not started yet 
+Plugin URI: http://premium.wpmudev.org/project/events-and-booking
+Version: 0.27
+Author: PSOURCE
 AddonType: Events
 */
 
 /*
-Detail: Minimale Nutzung: [next_event] <br />EErweiterte Nutzung: [next_event format="H:i T l" class="next-event-class" add="-120" expired="Too late!"] <br /><b>format</b> ist das Zeitformat. Details siehe <a href="http://php.net/manual/en/function.date.php" target="_blank">PHP Date Function</a>.<br /><b>class</b> ist der Name der CSS-Klasse, die auf den Wrapper angewendet wird.<br /><b>add</b> ist die Anzahl der Minuten, die der Zeit hinzugefügt werden. Es kann negativ sein. Das Hinzufügen hat keinen Einfluss auf die Ablaufzeit der Veranstaltung.<br /><b>expired:</b> Du kannst einen Text eingeben, der angezeigt wird, wenn der Countdown abläuft. Standard ist "Geschlossen".
+Detail: Minimal usage: [next_event] <br />Extended Usage: [next_event format="H:i T l" class="next-event-class" add="-120" expired="Too late!"] <br /><b>format</b> is time format. For details see <a href="http://php.net/manual/en/function.date.php" target="_blank">PHP Date Function</a>.<br /><b>class</b> is the name of the css class that will be applied to the wrapper.<br /><b>add</b> is number of minutes that will be added to the time. It can be negative. Addition does not affect the expiry time of the event.<br /><b>expired:</b> You can enter a text that is displayed when countdown expires. Default is "Closed".
 
 Explanation:
 @format is the time format of the output as defined in http://php.net/manual/en/function.date.php
-e.g. "H:i T l", which is the default, will give something like 16:30 EST Mittwoch
+e.g. "H:i T l", which is the default, will give something like 16:30 EST Wednesday
 Note: You may need to use date_default_timezone_set function if your timezone are not displayed correctly.
 Tip: If you want to make a special format using your own characters, place \\ in front of them.
-For example: "H:i \\B\\l\\a l", will give something like 16:30 Bla Mittwoch
+For example: "H:i \\B\\l\\a l", will give something like 16:30 Bla Wednesday
 
 @class is the name of css class that will be applied to the output. Default is null.
 
@@ -59,7 +59,7 @@ class Eab_Events_NextEventShortcode {
 			'format'=> 'H:i T l',
 			'class'	=> '',
 			'add' => 0,
-			'expired'	=> __('Geschlossen', 'eab'),
+			'expired'	=> __('Closed', Eab_EventsHub::TEXT_DOMAIN),
 			'legacy' => false,
 			'category' => false,
 			'categories' => false,
@@ -112,7 +112,7 @@ class Eab_Events_NextEventShortcode {
 		'format'=> 'H:i T l',
 		'class'	=> '',
 		'add'	=> 0,
-		'expired'	=> __('Geschlossen', 'eab')
+		'expired'	=> __('Closed', Eab_EventsHub::TEXT_DOMAIN)
 		), $atts ) );
 		
 		if ( $class )
@@ -125,10 +125,10 @@ class Eab_Events_NextEventShortcode {
 			FROM $wpdb->posts wposts, $wpdb->postmeta estart, $wpdb->postmeta eend, $wpdb->postmeta estatus
 			WHERE 
 			wposts.ID=estart.post_id AND wposts.ID=eend.post_id AND wposts.ID=estatus.post_id 
-			AND estart.meta_key='psource_event_start' AND estart.meta_value > DATE_ADD(UTC_TIMESTAMP(),INTERVAL ". ( current_time('timestamp') - time() ). " SECOND)
-			AND eend.meta_key='psource_event_end' AND eend.meta_value > estart.meta_value
-			AND estatus.meta_key='psource_event_status' AND estatus.meta_value <> 'closed'
-			AND wposts.post_type='psource_event' AND wposts.post_status='publish'
+			AND estart.meta_key='incsub_event_start' AND estart.meta_value > DATE_ADD(UTC_TIMESTAMP(),INTERVAL ". ( current_time('timestamp') - time() ). " SECOND)
+			AND eend.meta_key='incsub_event_end' AND eend.meta_value > estart.meta_value
+			AND estatus.meta_key='incsub_event_status' AND estatus.meta_value <> 'closed'
+			AND wposts.post_type='incsub_event' AND wposts.post_status='publish'
 			ORDER BY estart.meta_value ASC
 			LIMIT 1
 			");

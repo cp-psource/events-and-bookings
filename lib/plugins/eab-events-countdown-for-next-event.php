@@ -1,26 +1,26 @@
 <?php
 /*
-Plugin Name: Nächstes Ereignis Countdown
-Description: Generiert einen flexiblen Countdown-Shortcode für das nächste bevorstehende Ereignis, das noch nicht gestartet wurde. Besucher, die die Seite anzeigen, können nach Ablauf des Countdowns zu einer beliebigen URL umgeleitet werden. 
-Plugin URI: https://cp-psource.github.io/ps-events/
-Version: 0.3
-Author: DerN3rd
+Plugin Name: Next Event Countdown
+Description: Generates a flexible countdown shortcode for the next upcoming event that has not started yet. Visitor viewing the page can be redirected to any url when countdown expires. 
+Plugin URI: http://premium.wpmudev.org/project/events-and-booking
+Version: 0.27
+Author: PSOURCE
 AddonType: Events
 */
 
 /*
-Detail: Minimale Nutzung: [next_event_countdown]<br/>Erweiterte Nutzung: [next_event_countdown id="1" format="dHMS" goto="http://example.com" class="countdown-class" type="flip" size="70" add="-120" expired="Too late!" title="yes"]<br/>Erläuterungen zu den Parametern findest Du unter Ereignis-Countdown.
+Detail: Minimal usage: [next_event_countdown]<br />Extended Usage: [next_event_countdown id="1" format="dHMS" goto="http://example.com" class="countdown-class" type="flip" size="70" add="-120" expired="Too late!" title="yes"]<br />For explanation of the parameters, please see Event Countdown.
 
 
-Minimale Nutzung:
+Minimal usage:
 [next_event_countdown]
 
-Erweiterte Nutzung:
+Extended Usage:
 [next_event_countdown id="1" format="dHMS" goto="http://example.com" class="countdown-class" type="flip" size="70" add="-120" expired="Expired"]
 Where:
-@id ist eine eindeutige ID. Nur erforderlich und obligatorisch, wenn mehr als eine Instanz auf derselben Seite verwendet wird. Standard ist null.
+@id is a unique id. Only necessary and mandatory if more than one instance will be used on the same page. Default is null.
 
-@format ist das Countdown-Format der Ausgabe wie in http://keith-wood.name/countdown.html definiert 
+@format is the countdown format of the output as defined in http://keith-wood.name/countdown.html
 e.g. "dHMS", which is the default, will countdown using days (unless it is not zero), hours, minutes and seconds. 
 Lowercase means, that time part will be showed if not zero.
 Uppercase means, that time part will always be displayed. 
@@ -164,7 +164,7 @@ class Eab_Events_CountdownforNextEvent {
 			'compact' => false, // Boolean compact flag
 			'title' => false,
 			'footer_script' => false,
-			'expired' => __('Geschlossen', 'eab'),
+			'expired' => __('Closed', Eab_EventsHub::TEXT_DOMAIN),
 			'legacy' => false,
 			'category' => false,
 			'categories' => false,
@@ -208,8 +208,7 @@ class Eab_Events_CountdownforNextEvent {
 		//$events = Eab_CollectionFactory::get_upcoming_events($now, $query);
 
 		$future_peeking_method = false;
-		/*if (!empty($args['weeks']) && is_numeric($args['weeks'])) $future_peeking_method = create_function('', 'return ' . (int)$args['weeks'] . ';');*/
-		if (!empty($args['weeks']) && is_numeric($args['weeks'])) $future_peeking_method = function() {return ' . (int)$args[weeks] . ';};
+		if (!empty($args['weeks']) && is_numeric($args['weeks'])) $future_peeking_method = create_function('', 'return ' . (int)$args['weeks'] . ';');
 
 		if (!empty($future_peeking_method)) add_filter('eab-collection-upcoming_weeks-week_number', $future_peeking_method);
 		$events = Eab_CollectionFactory::get_upcoming_weeks_events($now, $query);
@@ -315,7 +314,7 @@ EOStandardCompactCSS;
 		'compact' => false, // Boolean compact flag
 		'title'		=> false,
 		'footer_script' => false,
-		'expired'	=> __('Geschlossen', 'eab')
+		'expired'	=> __('Closed', Eab_EventsHub::TEXT_DOMAIN)
 		), $atts ) );
 		
 		$id = str_replace( array(" ","'",'"'), "", $id ); // We cannot let spaces and quotes in id
@@ -349,10 +348,10 @@ EOStandardCompactCSS;
 			FROM $wpdb->posts wposts, $wpdb->postmeta estart, $wpdb->postmeta eend, $wpdb->postmeta estatus
 			WHERE 
 			wposts.ID=estart.post_id AND wposts.ID=eend.post_id AND wposts.ID=estatus.post_id 
-			AND estart.meta_key='psource_event_start' AND estart.meta_value > DATE_ADD(UTC_TIMESTAMP(),INTERVAL ". ( current_time('timestamp') - time() - 60 * abs($add) ). " SECOND)
-			AND eend.meta_key='psource_event_end' AND eend.meta_value > estart.meta_value
-			AND estatus.meta_key='psource_event_status' AND estatus.meta_value <> 'closed'
-			AND wposts.post_type='psource_event' AND wposts.post_status='publish'
+			AND estart.meta_key='incsub_event_start' AND estart.meta_value > DATE_ADD(UTC_TIMESTAMP(),INTERVAL ". ( current_time('timestamp') - time() - 60 * abs($add) ). " SECOND)
+			AND eend.meta_key='incsub_event_end' AND eend.meta_value > estart.meta_value
+			AND estatus.meta_key='incsub_event_status' AND estatus.meta_value <> 'closed'
+			AND wposts.post_type='incsub_event' AND wposts.post_status='publish'
 			ORDER BY estart.meta_value ASC
 			LIMIT 1
 			");

@@ -5,7 +5,7 @@ class Eab_CalendarUpcoming_Widget extends Eab_Widget {
 	function __construct () {
 		$widget_ops = array(
 			'classname' => __CLASS__, 
-			'description' => __('Zeigt eine Liste der bevorstehenden Ereignisse auf Deiner Webseite an', $this->translation_domain),
+			'description' => __('Displays List of Upcoming Events from your site', $this->translation_domain),
 		);
 		
 		add_action('wp_enqueue_scripts', array($this, 'css_load_styles'));
@@ -13,7 +13,7 @@ class Eab_CalendarUpcoming_Widget extends Eab_Widget {
 		add_action('wp_ajax_eab_cuw_get_calendar', array($this, 'handle_calendar_request'));
 		add_action('wp_ajax_nopriv_eab_cuw_get_calendar', array($this, 'handle_calendar_request'));
 		
-		parent::__construct(__CLASS__, __('PSE-Kalender bevorstehend', $this->translation_domain), $widget_ops);
+		parent::__construct(__CLASS__, __('Calendar Upcoming', $this->translation_domain), $widget_ops);
 	}
 	
 	function css_load_styles () {
@@ -39,7 +39,7 @@ class Eab_CalendarUpcoming_Widget extends Eab_Widget {
 			: array() ;
 
 		$html .= '<p>';
-		$html .= '<label for="' . $this->get_field_id('title') . '">' . __('Titel:', $this->translation_domain) . '</label>';
+		$html .= '<label for="' . $this->get_field_id('title') . '">' . __('Title:', $this->translation_domain) . '</label>';
 		$html .= '<input type="text" name="' . $this->get_field_name('title') . '" id="' . $this->get_field_id('title') . '" class="widefat" value="' . $title . '"/>';
 		$html .= '</p>';
 
@@ -47,7 +47,7 @@ class Eab_CalendarUpcoming_Widget extends Eab_Widget {
 			$html .= '<p>' .
 				'<label for="' . $this->get_field_id('network') . '">' . 
 				'<input type="checkbox" name="' . $this->get_field_name('network') . '" id="' . $this->get_field_id('network') . '" value="1" ' . $network . ' /> ' .
-				__('Netzwerkweit?', $this->translation_domain) .
+				__('Network-wide?', $this->translation_domain) .
 				'</label> ' .
 			'</p>';
 		} else {
@@ -59,9 +59,9 @@ class Eab_CalendarUpcoming_Widget extends Eab_Widget {
 			if ($options) {
 				$html .= '<p>' .
 					'<label for="' . $this->get_field_id('category') . '">' .
-	            		__('Nur Ereignisse aus dieser Kategorie', $this->translation_domain) .
+	            		__('Only Events from this category', $this->translation_domain) .
 						'<select id="' . $this->get_field_id('category') . '" name="' . $this->get_field_name('category') . '[]" multiple class="widefat">' .
-							'<option ' . (empty($category) ? 'selected="selected"' : '') . ' value="">' . __('Alle', $this->translation_domain) . '</option>' .
+							'<option ' . (empty($category) ? 'selected="selected"' : '') . ' value="">' . __('Any', $this->translation_domain) . '</option>' .
 							$options . 
 						'</select>' .
 	           		'</label>' .

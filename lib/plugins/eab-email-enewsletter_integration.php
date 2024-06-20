@@ -1,11 +1,11 @@
 <?php
 /*
-Plugin Name: Email: PS-eNewsletter Integration
-Description: Ermöglicht das automatische Versenden von Newslettern zu Deinen Veranstaltungen, die mit dem PS-eNewsletter-Plugin erstellt wurden. <br /><b>Benötigt <a href="https://n3rds.work/piestingtal-source-project/ps-enewsletter-plugin/">PS-eNewsletter Plugin</a>.</b>
+Plugin Name: Email: E-Newsletter Integration
+Description: Allows you to automatically send newsletters about your events created with e-Newsletter plugin. <br /><b>Requires <a href="https://cp-psource.github.io/e-newsletter/">e-Newsletter plugin</a>.</b>
 Plugin URI: https://cp-psource.github.io/ps-events/
-Version: 1.2
+Version: 1.1
 AddonType: Integration
-Author: DerN3rd
+Author: PSOURCE
 */
 
 class Eab_Email_eNewsletterIntegration {
@@ -27,9 +27,9 @@ class Eab_Email_eNewsletterIntegration {
 		add_action('eab-event_meta-after_save_meta', array($this, 'save_meta'));
 
 		// Keep RSVP groups up to date
-		add_action('psource_event_booking_yes', array($this, 'process_booking_yes'), 10, 2);
-		add_action('psource_event_booking_maybe', array($this, 'process_booking_maybe'), 10, 2);
-		add_action('psource_event_booking_no', array($this, 'process_booking_no'), 10, 2);
+		add_action('incsub_event_booking_yes', array($this, 'process_booking_yes'), 10, 2);
+		add_action('incsub_event_booking_maybe', array($this, 'process_booking_maybe'), 10, 2);
+		add_action('incsub_event_booking_no', array($this, 'process_booking_no'), 10, 2);
 	}
 
 	function process_booking_yes ($event_id, $user_id) {
@@ -49,14 +49,14 @@ class Eab_Email_eNewsletterIntegration {
 	function show_nags () {
 		if (!$this->_model->has_newsletter()) {
 			echo '<div class="error"><p>' .
-				__("Du musst das<a href='https://cp-psource.github.io/ps-newsletter/'>PSeNewsletter</a> Plugin für die PSeNewsletter Integration in PS Events installiert & aktiviert haben damit die Erweiterung funktioniert", 'eab') .
+				__("You'll need <a href='https://cp-psource.github.io/e-newsletter/'>e-Newsletter</a> plugin installed and activated for E-Newsletter integration add-on to work", Eab_EventsHub::TEXT_DOMAIN) .
 			'</p></div>';
 		}
 	}
 	
 	function add_meta_box () {
 		if (!$this->_model->has_newsletter()) return false;
-		add_meta_box('eab-email-newsletter', __('PS-eNewsletter', 'eab'), array($this, 'create_meta_box'), 'psource_event', 'side', 'low');	
+		add_meta_box('eab-email-newsletter', __('e-Newsletter', Eab_EventsHub::TEXT_DOMAIN), array($this, 'create_meta_box'), 'incsub_event', 'side', 'low');	
 	}
 	
 	function create_meta_box () {
@@ -65,9 +65,9 @@ class Eab_Email_eNewsletterIntegration {
 		if (!is_array($expanded)) $expanded = array();
 		
 		$ret = '';
-		$ret .= __('Wenn ich meine Veranstaltung speichere, sende diesen Newsletter:', 'eab');
+		$ret .= __('When I save my event, send this newsletter:', Eab_EventsHub::TEXT_DOMAIN);
 		$ret .= ' <select name="eab_event-email-enewsletter" id="eab_event-email-enewsletter">';
-		$ret .= '<option value="">' . __('Sende keinen Newsletter', 'eab') . '&nbsp;</option>';
+		$ret .= '<option value="">' . __('Do not send a newsletter', Eab_EventsHub::TEXT_DOMAIN) . '&nbsp;</option>';
 		foreach ($newsletters as $news) {
 			if (in_array($news['newsletter_id'], $expanded)) continue; // Don't use the already expanded newsletters
 			$ret .= "<option value='{$news['newsletter_id']}'>{$news['subject']}</option>";
@@ -77,24 +77,24 @@ class Eab_Email_eNewsletterIntegration {
 		$ret .= '<br />';
 		$ret .= '<label for="eab_event-email-enewsletter-as_template">';
 		$ret .= '	<input type="checkbox" name="eab_event-email-enewsletter-as_template" id="eab_event-email-enewsletter-as_template" value="1" /> ';
-		$ret .= 	__('Verwende diesen Newsletter als Vorlage und erweitere Makros mit den Ereignisdaten', 'eab');
+		$ret .= 	__('Use this newsletter as template and expand macros with the event data', Eab_EventsHub::TEXT_DOMAIN);
 		$ret .= '</label>';
 
-		$ret .= '<h3>' . __('RSVPs zur Newsletter-Gruppe', 'eab') . '</h3>';
-		$ret .= '<p>' . __('Konvertiert die RSVPs in eine neue Newsletter-Mitgliedergruppe oder aktualisiere die vorhandene Ereignisgruppe mit neuen RSVP-Informationen.', 'eab') . '</p>';
+		$ret .= '<h3>' . __('RSVPs to newsletter group', Eab_EventsHub::TEXT_DOMAIN) . '</h3>';
+		$ret .= '<p>' . __('Convert the RSVPs to a new newsletter member group, or update the existing event group with new RSVP info.', Eab_EventsHub::TEXT_DOMAIN) . '</p>';
 		$ret .= '<label for="eab_event-email-enewsletter-use_rsvps-yes">';
 		$ret .= '	<input type="checkbox" name="eab_event-email-enewsletter-use_rsvps[yes]" id="eab_event-email-enewsletter-use_rsvps-yes" value="1" /> ';
-		$ret .= 	__('Teilnahmen (&quot;Yes&quot;)', 'eab');
+		$ret .= 	__('Positive (&quot;Yes&quot;)', Eab_EventsHub::TEXT_DOMAIN);
 		$ret .= '</label>';
 		$ret .= '<br />';
 		$ret .= '<label for="eab_event-email-enewsletter-use_rsvps-maybe">';
 		$ret .= '	<input type="checkbox" name="eab_event-email-enewsletter-use_rsvps[maybe]" id="eab_event-email-enewsletter-use_rsvps-maybe" value="1" /> ';
-		$ret .= 	__('Unentschlossen (&quot;Maybe&quot;)', 'eab');
+		$ret .= 	__('Undecided (&quot;Maybe&quot;)', Eab_EventsHub::TEXT_DOMAIN);
 		$ret .= '</label>';
 		$ret .= '<br />';
 		$ret .= '<label for="eab_event-email-enewsletter-use_rsvps-no">';
 		$ret .= '	<input type="checkbox" name="eab_event-email-enewsletter-use_rsvps[no]" id="eab_event-email-enewsletter-use_rsvps-no" value="1" /> ';
-		$ret .= 	__('Abgelehnt (&quot;No&quot;)', 'eab');
+		$ret .= 	__('Negative (&quot;No&quot;)', Eab_EventsHub::TEXT_DOMAIN);
 		$ret .= '</label>';
 		$ret .= '<br />';
 		
@@ -296,9 +296,9 @@ class Eab_Emi_Model {
 		}
 
 		$group_name_suffix = array();
-		if (in_array(Eab_EventModel::BOOKING_YES, $bookings)) $group_name_suffix[] = __('Ja', 'eab');
-		if (in_array(Eab_EventModel::BOOKING_MAYBE, $bookings)) $group_name_suffix[] = __('Interresiert', 'eab');
-		if (in_array(Eab_EventModel::BOOKING_NO, $bookings)) $group_name_suffix[] = __('Nein', 'eab');
+		if (in_array(Eab_EventModel::BOOKING_YES, $bookings)) $group_name_suffix[] = __('Yes', Eab_EventsHub::TEXT_DOMAIN);
+		if (in_array(Eab_EventModel::BOOKING_MAYBE, $bookings)) $group_name_suffix[] = __('Maybe', Eab_EventsHub::TEXT_DOMAIN);
+		if (in_array(Eab_EventModel::BOOKING_NO, $bookings)) $group_name_suffix[] = __('No', Eab_EventsHub::TEXT_DOMAIN);
 		$group_name = !empty($group_name_suffix)
 			? sprintf("%s (%s)", $event->get_title(), join(', ', $group_name_suffix))
 			: $event->get_title()
@@ -465,7 +465,7 @@ class Eab_Emi_Model {
 	}
 
 	private function _get_default_subject ($event) {
-		$subject = sprintf(__('Neues Ereignis: %s', 'eab'), $event->get_title());
+		$subject = sprintf(__('New event: %s', Eab_EventsHub::TEXT_DOMAIN), $event->get_title());
 		return apply_filters('eab-email-newsletter-default_subject', $subject, $event);
 	}
 }

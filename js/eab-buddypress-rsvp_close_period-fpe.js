@@ -25,7 +25,7 @@ function nolimit_change () {
 	else return $close_period.focus();
 }
 
-$(document).on('eab-events-fpe-close_period_save_request', append_meta_data);
+$(document).bind('eab-events-fpe-close_period_save_request', append_meta_data);
 $(function () {
 	$("#eab_event_close_period").change(close_period_change);
 	$("#eab_event_close_period-nolimit").change(nolimit_change);

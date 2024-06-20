@@ -1,15 +1,15 @@
 <?php
 /*
-Plugin Name: BuddyPress: Gruppenereignisse
-Description: Ermöglicht es PS-Event mit Deinen BuddyPress-Gruppen zu verbinden.
-Plugin URI: https://cp-psource.github.io/ps-events/
-Version: 1.2
+Plugin Name: BuddyPress: Group Events
+Description: Allows you to connect your Events with your BuddyPress groups.
+Plugin URI: http://premium.wpmudev.org/project/events-and-booking
+Version: 1.1
 AddonType: BuddyPress
-Author: DerN3rd
+Author: PSOURCE
 */
 
 /*
-Detail: Ermöglicht eine tiefere Integration Deiner Events in BuddyPress-Gruppen. <br/> <b>Erfordert die BuddyPress Groups-Komponente</b>
+Detail: Allows deeper integration of your Events with BuddyPress groups. <br /> <b>Requires BuddyPress Groups component</b>
 */ 
 
 if( ! defined( 'EAB_SHOW_HIDDEN_GROUP' ) ) define( 'EAB_SHOW_HIDDEN_GROUP', false );
@@ -34,11 +34,11 @@ class Eab_BuddyPress_GroupEvents {
 		add_filter('eab-settings-before_save', array($this, 'save_settings'));
 		
 		if ($this->_data->get_option('bp-group_event-auto_join_groups')) {
-			add_action('psource_event_booking_yes', array($this, 'auto_join_group'), 10, 2);
-			add_action('psource_event_booking_maybe', array($this, 'auto_join_group'), 10, 2);
+			add_action('incsub_event_booking_yes', array($this, 'auto_join_group'), 10, 2);
+			add_action('incsub_event_booking_maybe', array($this, 'auto_join_group'), 10, 2);
 		}
 		if ($this->_data->get_option('bp-group_event-private_events')) {
-			add_filter('psource-query', array($this, 'filter_query'));
+			add_filter('wpmudev-query', array($this, 'filter_query'));
 		}
 
 		add_action('bp_init', array($this, 'add_tab'));
@@ -83,7 +83,7 @@ class Eab_BuddyPress_GroupEvents {
 		name="<?php echo $widget->get_field_name('show_bp_group'); ?>" 
 		value="1" <?php echo ($options['show_bp_group'] ? 'checked="checked"' : ''); ?> 
 	/>
-	<?php _e('BuddyPress-Gruppe anzeigen', 'eab'); ?>
+	<?php _e('Show BuddyPress group', Eab_EventsHub::TEXT_DOMAIN); ?>
 </label>
 		<?php
 	}
@@ -127,18 +127,18 @@ class Eab_BuddyPress_GroupEvents {
 	function show_nags () {
 		if (!defined('BP_VERSION')) {
 			echo '<div class="error"><p>' .
-				__("BuddyPress muss installiert und aktiviert sein, damit die Gruppenereignis-Erweiterung funktioniert", 'eab') .
+				__("You'll need BuddyPress installed and activated for Groups Events add-on to work", Eab_EventsHub::TEXT_DOMAIN) .
 			'</p></div>';
 		}
 		if (!function_exists('groups_get_groups')) {
 			echo '<div class="error"><p>' .
-				__("BuddyPress Groups-Komponente aktivieren, damit die Erweiterung für Gruppenereignisse funktioniert", 'eab') .
+				__("You'll need to enable BuddyPress Groups component for Groups Events add-on to work", Eab_EventsHub::TEXT_DOMAIN) .
 			'</p></div>';
 		}
 	}
 	
 	function show_settings () {
-		$tips = new PSource_HelpTooltips();
+		$tips = new WpmuDev_HelpTooltips();
 		$tips->set_icon_url(EAB_PLUGIN_URL . 'img/information.png');
 		$checked = $this->_data->get_option('bp-group_event-auto_join_groups') ? 'checked="checked"' : '';
 		$private = $this->_data->get_option('bp-group_event-private_events') ? 'checked="checked"' : '';
@@ -147,29 +147,29 @@ class Eab_BuddyPress_GroupEvents {
 		$eab_event_bp_group_event_email_grp_member = $this->_data->get_option('eab_event_bp_group_event_email_grp_member') ? 'checked="checked"' : '';
 ?>
 <div id="eab-settings-group_events" class="eab-metabox postbox">
-	<h3 class="eab-hndle"><?php _e('Einstellungen für Gruppenereignisse', 'eab'); ?></h3>
+	<h3 class="eab-hndle"><?php _e('Group Events settings', Eab_EventsHub::TEXT_DOMAIN); ?></h3>
 	<div class="eab-inside">
 		<div class="eab-settings-settings_item">
-	    	<label for="eab_event-bp-group_event-auto_join_groups"><?php _e('Automatisch der Gruppe beitreten bei Veranstaltungs-Anmeldungen', 'eab'); ?>?</label>
+	    	<label for="eab_event-bp-group_event-auto_join_groups"><?php _e('Automatically join the group by RSVPing to events', Eab_EventsHub::TEXT_DOMAIN); ?>?</label>
 			<input type="checkbox" id="eab_event-bp-group_event-auto_join_groups" name="event_default[bp-group_event-auto_join_groups]" value="1" <?php print $checked; ?> />
-			<span><?php echo $tips->add_tip(__('Wenn sich Deine Benutzer positiv zu Einem Gruppenereignis melden, werden sie auch automatisch der Gruppe beitreten, zu der das Ereignis gehört.', 'eab')); ?></span>
+			<span><?php echo $tips->add_tip(__('When your users RSVP positively to your group event, they will also automatically join the group the event belongs to.', Eab_EventsHub::TEXT_DOMAIN)); ?></span>
 	    </div>
 		<div class="eab-settings-settings_item">
-	    	<label for="eab_event-bp-group_event-private_events"><?php _e('Gruppenveranstaltungen sind für Gruppen privat', 'eab'); ?>?</label>
+	    	<label for="eab_event-bp-group_event-private_events"><?php _e('Group events are private to groups', Eab_EventsHub::TEXT_DOMAIN); ?>?</label>
 			<input type="checkbox" id="eab_event-bp-group_event-private_events" name="event_default[bp-group_event-private_events]" value="1" <?php print $private; ?> />
-			<span><?php echo $tips->add_tip(__('Wenn Du diese Option aktivierst, können Benutzer außerhalb Ihrer Gruppen Gruppenereignisse <b>nicht</b> sehen.', 'eab')); ?></span>
+			<span><?php echo $tips->add_tip(__('If you enable this option, users outside your groups will <b>not</b> be able to see your Group Events.', Eab_EventsHub::TEXT_DOMAIN)); ?></span>
 	    </div>
 	    <div class="eab-settings-settings_item">
-	    	<label for="eab_event-bp-group_event-user_groups_only"><?php _e('Nur Gruppen anzeigen, zu denen der Benutzer gehört', 'eab'); ?>?</label>
+	    	<label for="eab_event-bp-group_event-user_groups_only"><?php _e('Show only groups that user belongs to', Eab_EventsHub::TEXT_DOMAIN); ?>?</label>
 			<input type="checkbox" id="eab_event-bp-group_event-user_groups_only" name="event_default[bp-group_event-user_groups_only]" value="1" <?php print $user_groups_only; ?> />
-			<span><?php echo $tips->add_tip(__('Wenn Du diese Option aktivierst, können Benutzer keine Ereignisse außerhalb der Gruppen zuweisen, zu denen sie bereits gehören.', 'eab')); ?></span>
+			<span><?php echo $tips->add_tip(__('If you enable this option, users will not be able to assign events outside the groups they already belong to.', Eab_EventsHub::TEXT_DOMAIN)); ?></span>
 			<br />
-	    	<label for="eab_event-bp-group_event-user_groups_only-unless_superadmin"><?php _e('... außer für Superadministratoren', 'eab'); ?>?</label>
+	    	<label for="eab_event-bp-group_event-user_groups_only-unless_superadmin"><?php _e('... except for Super-admins', Eab_EventsHub::TEXT_DOMAIN); ?>?</label>
 			<input type="checkbox" id="eab_event-bp-group_event-user_groups_only-unless_superadmin" name="event_default[bp-group_event-user_groups_only-unless_superadmin]" value="1" <?php print $user_groups_only_unless_superadmin; ?> />
-			<span><?php echo $tips->add_tip(__('Wenn Du diese Option aktivierst, können Deine Superadministratoren jeder Gruppe Ereignisse zuweisen.', 'eab')); ?></span>
+			<span><?php echo $tips->add_tip(__('If you enable this option, your super-admins will be able to assign events to any group.', Eab_EventsHub::TEXT_DOMAIN)); ?></span>
 	    </div>
 	    <div class="eab-settings-settings_item">
-	    	<label for="eab_event-bp-group_event-private_events"><?php _e('Sende eine E-Mail an alle Gruppenmitglieder, wenn ein Ereignis erstellt oder bearbeitet wird', 'eab'); ?>?</label>
+	    	<label for="eab_event-bp-group_event-private_events"><?php _e('Send email to all group members when a event is created or edited', Eab_EventsHub::TEXT_DOMAIN); ?>?</label>
 			<input type="checkbox" id="eab_event_bp_group_event_email_grp_member" name="event_default[eab_event_bp_group_event_email_grp_member]" value="1" <?php print $eab_event_bp_group_event_email_grp_member; ?> />
 	    </div>
 	</div>
@@ -197,7 +197,7 @@ class Eab_BuddyPress_GroupEvents {
 		;
 		$group_params = array('per_page' => $group_count , 'type' => 'alphabetical', 'show_hidden' => EAB_SHOW_HIDDEN_GROUP );
 		if ($this->_data->get_option('bp-group_event-user_groups_only')) {
-			if (!(is_super_admin() && $this->_data->get_option('bp-group_event-user_groups_only-unless_superadmin'))) $group_params['user_id'] = $current_user->ID;
+			if (!(is_super_admin() && $this->_data->get_option('bp-group_event-user_groups_only-unless_superadmin'))) $group_params['user_id'] = $current_user->id;
 		}
 		$groups = groups_get_groups($group_params);
 		$groups = @$groups['groups'] ? $groups['groups'] : array();
@@ -206,12 +206,12 @@ class Eab_BuddyPress_GroupEvents {
 		$ret .= '<div class="eab_meta_box">';
 		$ret .= '<div class="misc-eab-section" >';
 		$ret .= '<div class="eab_meta_column_box top"><label for="eab_event-bp-group_event">' .
-			__('Gruppenveranstaltung', 'eab') . 
+			__('Group event', Eab_EventsHub::TEXT_DOMAIN) . 
 		'</label></div>';
 		
-		$ret .= __('<h3>Dies ist eine Gruppenveranstaltung für:</h3>', 'eab');
+		$ret .= __('This is a group event for', Eab_EventsHub::TEXT_DOMAIN);
 		$ret .= ' <select name="eab_event-bp-group_event" id="eab_event-bp-group_event">';
-		$ret .= '<option value="">' . __('Keine Gruppenveranstaltung', 'eab') . '&nbsp;</option>';
+		$ret .= '<option value="">' . __('Not a group event', Eab_EventsHub::TEXT_DOMAIN) . '&nbsp;</option>';
 		foreach ($groups as $group) {
 			$selected = ($group->id == $group_id) ? 'selected="selected"' : '';
 			$ret .= "<option value='{$group->id}' {$selected}>{$group->name}</option>";
@@ -234,15 +234,15 @@ class Eab_BuddyPress_GroupEvents {
 		;
 		$group_params = array('per_page' => $group_count , 'type' => 'alphabetical', 'show_hidden' => EAB_SHOW_HIDDEN_GROUP);
 		if ($this->_data->get_option('bp-group_event-user_groups_only')) {
-			if (!(is_super_admin() && $this->_data->get_option('bp-group_event-user_groups_only-unless_superadmin'))) $group_params['user_id'] = $current_user->ID;
+			if (!(is_super_admin() && $this->_data->get_option('bp-group_event-user_groups_only-unless_superadmin'))) $group_params['user_id'] = $current_user->id;
 		}
 		$groups = groups_get_groups($group_params);
 		$groups = @$groups['groups'] ? $groups['groups'] : array();
 		
 		$ret .= '<div class="eab-events-fpe-meta_box">';
-		$ret .= __('Dies ist eine Gruppenveranstaltung für', 'eab');
+		$ret .= __('This is a group event for', Eab_EventsHub::TEXT_DOMAIN);
 		$ret .= ' <select name="eab_event-bp-group_event" id="eab_event-bp-group_event">';
-		$ret .= '<option value="">' . __('Kein Gruppenereignis', 'eab') . '&nbsp;</option>';
+		$ret .= '<option value="">' . __('Not a group event', Eab_EventsHub::TEXT_DOMAIN) . '&nbsp;</option>';
 		foreach ($groups as $group) {
 			$selected = ($group->id == $group_id) ? 'selected="selected"' : '';
 			$ret .= "<option value='{$group->id}' {$selected}>{$group->name}</option>";
@@ -267,9 +267,9 @@ class Eab_BuddyPress_GroupEvents {
 			$grp_members = groups_get_group_members( array( 'group_id' => $data, 'exclude_admins_mods' => false ) );
 			foreach( $grp_members['members'] as $member ){
 				//echo $member->user_email;
-				$subject = __( 'Informationen zu einem Gruppenereignis', 'eab' );
+				$subject = __( 'Information about a group event', Eab_EventsHub::TEXT_DOMAIN );
 				$subject = apply_filters( 'eab_bp_grp_events_member_mail_subject', $subject, $member, $post_id );
-				$message = __( 'Hallo ' . $member->display_name . ',<br><br>Eine Veranstaltung wurde erstellt. Ich hoffe, Du wirst an dieser Veranstaltung teilnehmen. Details zur Veranstaltung findest Du hier: ' . get_permalink( $post_id ), 'eab' );
+				$message = __( 'Dear ' . $member->display_name . ',<br><br>An event is created/updated. I hope you will join in that event. Check the event here: ' . get_permalink( $post_id ), Eab_EventsHub::TEXT_DOMAIN );
 				$message = apply_filters( 'eab_bp_grp_events_member_mail_message', $message, $member, $post_id );
 				wp_mail( $member->user_email, $subject, $message );
 			}
@@ -292,10 +292,10 @@ class Eab_BuddyPress_GroupEvents {
 
 		// Don't show groups tab for non-members if Events are private to groups
 		if ($this->_data->get_option('bp-group_event-private_events')) {
-			if (!groups_is_user_member($current_user->ID, $bp->groups->current_group->id)) return false; 
+			if (!groups_is_user_member($current_user->id, $bp->groups->current_group->id)) return false; 
 		}
 		
-		$name = __('Gruppenereignisse', 'eab');
+		$name = __('Group Events', Eab_EventsHub::TEXT_DOMAIN);
 		$groups_link = bp_get_group_permalink($bp->groups->current_group);//$bp->root_domain . '/' . $bp->groups->slug . '/' . $bp->groups->current_group->slug . '/';
 		
 		bp_core_new_subnav_item(array(
@@ -315,7 +315,7 @@ class Eab_BuddyPress_GroupEvents {
 	
 	function enqueue_dependencies () {
 		// @TODO: refactor to separate style.
-		wp_enqueue_style('eab-bp-group_events', plugins_url(basename(EAB_PLUGIN_DIR) . "/default-templates/calendar/events.min.css"));
+		wp_enqueue_style('eab-bp-group_events', plugins_url(basename(EAB_PLUGIN_DIR) . "/default-templates/calendar/events.css"));
 	}
 	
 	function enqueue_fpe_dependencies () {
@@ -349,10 +349,10 @@ class Eab_BuddyPress_GroupEvents {
 		
 		return '<div class="eab-bp-group_events-navigation">' .
 			'<div class="eab-bp-group_events-navigation-prev" style="float:left">' .
-				"<a href='{$prev_url}'>" . __('Zurück', 'eab') . '</a>' .
+				"<a href='{$prev_url}'>" . __('Prev', Eab_EventsHub::TEXT_DOMAIN) . '</a>' .
 			'</div>' .
 			'<div class="eab-bp-group_events-navigation-next" style="float:right">' .
-				"<a href='{$next_url}'>" . __('Weiter', 'eab') . '</a>' .
+				"<a href='{$next_url}'>" . __('Next', Eab_EventsHub::TEXT_DOMAIN) . '</a>' .
 			'</div>' .
 		'</div>';
 	}
@@ -517,8 +517,7 @@ class Eab_GroupEvents_Shortcodes extends Eab_Codec {
 		);
 
 		$order_method = $args['order']
-			/*? create_function('', 'return "' . $args['order'] . '";')*/
-			? function() {return "' . $args[order] . '";}
+			? create_function('', 'return "' . $args['order'] . '";')
 			: false
 		;
 		if ($order_method) add_filter('eab-collection-date_ordering_direction', $order_method);
@@ -526,8 +525,7 @@ class Eab_GroupEvents_Shortcodes extends Eab_Codec {
 		// Lookahead - depending on presence, use regular upcoming query, or poll week count
 		if ($args['lookahead']) {
 			$method = $args['weeks']
-				/*? create_function('', 'return ' . $args['weeks'] . ';')*/
-				? function() {return ' . $args[weeks] . ';}
+				? create_function('', 'return ' . $args['weeks'] . ';')
 				: false;
 			;
 			if ($method) add_filter('eab-collection-upcoming_weeks-week_number', $method);
@@ -550,21 +548,21 @@ class Eab_GroupEvents_Shortcodes extends Eab_Codec {
 
 	public function add_group_archives_shortcode_help ($help) {
 		$help[] = array(
-			'title' => __('BuddyPress-Gruppenarchive', 'eab'),
+			'title' => __('BuddyPress group archives', Eab_EventsHub::TEXT_DOMAIN),
 			'tag' => 'eab_group_archives',
 			'arguments' => array(
-				'date' => array('help' => __('Startdatum - Standard <bold>Jetzt</bold>', 'eab'), 'type' => 'string:date'),
-				'lookahead' => array('help' => __('Verwende keine monatliche Standardseite - verwende stattdessen die Anzahl der Wochen', 'eab'), 'type' => 'boolean'),
-				'weeks' => array('help' => __('Schaue so viele Wochen nach vorne', 'eab'), 'type' => 'integer'),
-				'category' => array('help' => __('Zeige Ereignisse aus dieser Kategorie (ID oder Slug)', 'eab'), 'type' => 'string:or_integer'),
-				'limit' => array('help' => __('Zeige höchstens so viele Veranstaltungen', 'eab'), 'type' => 'integer'),
-				'order' => array('help' => __('Sortiere Ereignisse in diese Richtung', 'eab'), 'type' => 'string:sort'),
-				'groups' => array('help' => __('Gruppen-ID, Schlüsselwörter "Meine Gruppen" oder "Alle" oder durch Kommas getrennte Liste von Gruppen-IDs', 'eab'), 'type' => 'string:or_integer'),
-				'user' => array('help' => __('Benutzer-ID oder Schlüsselwort "aktuell" - erforderlich, wenn <code> groups </code> auf "Meine-Gruppen" gesetzt ist', 'eab'), 'type' => 'string:or_integer'),
-				'class' => array('help' => __('Wende diese CSS-Klasse an', 'eab'), 'type' => 'string'),
-    			'template' => array('help' => __('Subtemplate-Datei oder Vorlagenklassenaufruf', 'eab'), 'type' => 'string'),
-    			'override_styles' => array('help' => __('Schalte die Verwendung der Standardstile um', 'eab'), 'type' => 'boolean'),
-    			'override_scripts' => array('help' => __('Schalte die Verwendung von Standardskripten um', 'eab'), 'type' => 'boolean'),
+				'date' => array('help' => __('Starting date - default to now', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'string:date'),
+				'lookahead' => array('help' => __('Don\'t use default monthly page - use weeks count instead', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'boolean'),
+				'weeks' => array('help' => __('Look ahead this many weeks', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'integer'),
+				'category' => array('help' => __('Show events from this category (ID or slug)', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'string:or_integer'),
+				'limit' => array('help' => __('Show at most this many events', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'integer'),
+				'order' => array('help' => __('Sort events in this direction', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'string:sort'),
+				'groups' => array('help' => __('Group ID, keywords "my-groups" or "all", or comma-separated list of group IDs', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'string:or_integer'),
+				'user' => array('help' => __('User ID or keyword "current" - required if <code>groups</code> is set to "my-groups"', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'string:or_integer'),
+				'class' => array('help' => __('Apply this CSS class', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'string'),
+    			'template' => array('help' => __('Subtemplate file, or template class call', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'string'),
+    			'override_styles' => array('help' => __('Toggle default styles usage', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'boolean'),
+    			'override_scripts' => array('help' => __('Toggle default scripts usage', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'boolean'),
 			),
 			'advanced_arguments' => array('template', 'override_scripts', 'override_styles'),
 		);

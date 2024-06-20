@@ -8,7 +8,7 @@ class Eab_ExporterFactory {
 	const DISPOSITION_KEY = 'disposition';
 
 	public static function serve ($args) {
-		if (!$args || !is_array($args)) wp_die(__('Invalid argument format.', 'eab'));
+		if (!$args || !is_array($args)) wp_die(__('Invalid argument format.', Eab_EventsHub::TEXT_DOMAIN));
 		$args = wp_parse_args($args, array(
 			self::EXPORTER_KEY => 'attendees',
 			'format' => 'csv',
@@ -16,7 +16,7 @@ class Eab_ExporterFactory {
 			'disposition' => Eab_Exporter::DISPOSITION_ATTACHMENT,
 		));
 		$class = 'Eab_Exporter_' . ucfirst(strtolower($args['format']));
-		if (!class_exists($class)) wp_die(__('Invalid exporter requested.', 'eab'));
+		if (!class_exists($class)) wp_die(__('Invalid exporter requested.', Eab_EventsHub::TEXT_DOMAIN));
 
 		$me = new $class($args);
 		$me->export();
@@ -63,7 +63,7 @@ abstract class Eab_Exporter {
 				$this->export_attendees();
 				die;
 			default:
-				wp_die(__('Invalid scope', 'eab'));
+				wp_die(__('Invalid scope', Eab_EventsHub::TEXT_DOMAIN));
 		}
 	}
 
@@ -115,9 +115,9 @@ abstract class Eab_Exporter {
 
 	protected function _get_statuses () {
 		return array(
-			Eab_EventModel::BOOKING_YES => __('Attending', 'eab'), 
-			Eab_EventModel::BOOKING_MAYBE => __('Maybe', 'eab'), 
-			Eab_EventModel::BOOKING_NO => __('No', 'eab')
+			Eab_EventModel::BOOKING_YES => __('Attending', Eab_EventsHub::TEXT_DOMAIN), 
+			Eab_EventModel::BOOKING_MAYBE => __('Maybe', Eab_EventsHub::TEXT_DOMAIN), 
+			Eab_EventModel::BOOKING_NO => __('No', Eab_EventsHub::TEXT_DOMAIN)
 		);
 	}
 }
@@ -139,16 +139,16 @@ class Eab_Exporter_Csv extends Eab_Exporter {
 	}
 
 	public function export_event () {
-		if (!$this->_event_id) wp_die(__('No event to export', 'eab'));
+		if (!$this->_event_id) wp_die(__('No event to export', Eab_EventsHub::TEXT_DOMAIN));
 	}
 
 	public function export_events_collection () {
-		if (!$this->_event_id) wp_die(__('No event to export', 'eab'));
+		if (!$this->_event_id) wp_die(__('No event to export', Eab_EventsHub::TEXT_DOMAIN));
 	}
 
 	public function export_attendees () {
 		error_reporting(0);
-		if (!$this->_event_id) wp_die(__('No event to export', 'eab'));
+		if (!$this->_event_id) wp_die(__('No event to export', Eab_EventsHub::TEXT_DOMAIN));
 		$event = new Eab_EventModel(get_post($this->_event_id));
 		$attendees = array();
 
@@ -158,21 +158,21 @@ class Eab_Exporter_Csv extends Eab_Exporter {
 			foreach ($bookings as $booking) {
 				$user_data = get_userdata($booking->user_id);
 				if ($event->get_id() !== $booking->event_id) $event = new Eab_EventModel(get_post($booking->event_id));
-				$payment_status = $ticket_count = __('N/A', 'eab');
+				$payment_status = $ticket_count = __('N/A', Eab_EventsHub::TEXT_DOMAIN);
 				if (Eab_EventModel::BOOKING_NO != $status) {
 					$ticket_count = $event->get_booking_meta($booking->id, 'booking_ticket_count');
 					$ticket_count = $ticket_count ? $ticket_count : 1;
 					if ($event->is_premium()) {
-						$payment_status = $event->user_paid($booking->user_id) ? __('Yes', 'eab') : __('No', 'eab');
+						$payment_status = $event->user_paid($booking->user_id) ? __('Yes', Eab_EventsHub::TEXT_DOMAIN) : __('No', Eab_EventsHub::TEXT_DOMAIN);
 					}
 				}
 				$attendees[] = apply_filters('eab-exporter-csv-row', array(
-					__('User ID', 'eab') => $user_data->id,
-					__('User Name', 'eab') => apply_filters('eab-guest_list-export-guest_name', $user_data->display_name, $booking->user_id, $user_data),
-					__('User Email', 'eab') => $user_data->user_email,
-					__('Attending', 'eab') => $title,
-					__('Ticket Count', 'eab') => $ticket_count,
-					__('Payment Status', 'eab') => $payment_status,
+					__('User ID', Eab_EventsHub::TEXT_DOMAIN) => $user_data->id,
+					__('User Name', Eab_EventsHub::TEXT_DOMAIN) => apply_filters('eab-guest_list-export-guest_name', $user_data->display_name, $booking->user_id, $user_data),
+					__('User Email', Eab_EventsHub::TEXT_DOMAIN) => $user_data->user_email,
+					__('Attending', Eab_EventsHub::TEXT_DOMAIN) => $title,
+					__('Ticket Count', Eab_EventsHub::TEXT_DOMAIN) => $ticket_count,
+					__('Payment Status', Eab_EventsHub::TEXT_DOMAIN) => $payment_status,
 				), $event, $booking, $user_data);
 			}
 		}

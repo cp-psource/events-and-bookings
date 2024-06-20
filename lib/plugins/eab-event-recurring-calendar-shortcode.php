@@ -1,15 +1,15 @@
 <?php
 /*
-Plugin Name: Wiederkehrendes Ereignis im Kalender-Shortcode
-Description: Benutze [eab_calendar_recurring id="xx"] um alle Instanzen eines wiederkehrenden Ereignisses anzuzeigen
-Plugin URI: https://n3rds.work/piestingtal_source/ps-events-eventmanagement-fuer-wordpress/
-Version: 1.1
-Author: DerN3rd
+Plugin Name: Recurring Event in Calendar ShortCode
+Description: Use [eab_calendar_recurring id="xx"] to show all instances of a recurring event
+Plugin URI: http://premium.wpmudev.org/project/events-and-booking
+Version: 1.0
+Author: PSOURCE
 AddonType: Events
 */
 
 /*
-Detail: <b>Hinweis:</b> Dies kann Zeit und Ressourcen in Anspruch nehmen, wenn Du viele Ereignisse hast.
+Detail: <b>Note:</b> this may take time and resources if you have a lot of events.
 */ 
 
 class Eab_Events_Calendar_RecurringShortCode {
@@ -91,7 +91,7 @@ class Eab_Events_Calendar_RecurringShortCode {
 		$renderer->set_thumbnail($args);
 		$renderer->set_excerpt($args);
 
-		return '<section class="psourceevents-list">' . $renderer->get_month_calendar($args['date']) . '</section>';
+		return '<section class="wpmudevevents-list">' . $renderer->get_month_calendar($args['date']) . '</section>';
 	}
 	
 }

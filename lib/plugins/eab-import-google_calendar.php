@@ -1,14 +1,14 @@
 <?php
 /*
 Plugin Name: Import: Google Calendar
-Description: Synchronisiere Ereignisse aus Deinen Google-Kalendern. Derzeit werden nur Deine regulären Ereignisse importiert (keine wiederkehrenden Ereignisse)..
-Plugin URI: https://cp-psource.github.io/ps-events/
-Version: 1.1
-Author: DerN3rd
+Description: Sync events from your Google Calendars. For now, only your regular events will be imported (no recurring events).
+Plugin URI: http://premium.wpmudev.org/project/events-and-booking
+Version: 1.0
+Author: PSOURCE
 AddonType: Integration
 */
 
-if (!class_exists('PSource_Wp_Oauth')) require_once(EAB_PLUGIN_DIR . 'lib/class_wd_wpmu_oauth.php');
+if (!class_exists('WpmuDev_Wp_Oauth')) require_once(EAB_PLUGIN_DIR . 'lib/class_wd_wpmu_oauth.php');
 if (!class_exists('Eab_Importer')) require_once(EAB_PLUGIN_DIR . 'lib/class_eab_importer.php');
 
 
@@ -28,7 +28,7 @@ class Eab_Gcal_Oauth_GoogleImporter extends Eab_Gcal_Plugin_Oauth_RO {
 /**
  * Concrete gCalendar helper implementation.
  */
-class Eab_Gcal_Calendar_GoogleImporter extends PSource_Gcal_Helper {
+class Eab_Gcal_Calendar_GoogleImporter extends WpmuDev_Gcal_Helper {
 
 	public function initialize () {
 		$oauth = new Eab_Gcal_Oauth_GoogleImporter;
@@ -105,7 +105,7 @@ class Eab_Gcal_Importer_GoogleImporter extends Eab_ScheduledImporter {
 		$meta = array();
 
 		$meta['eab_gcal_event'] = $gevent['id'];
-		$meta['psource_event_status'] = Eab_EventModel::STATUS_OPEN; // Open by default
+		$meta['incsub_event_status'] = Eab_EventModel::STATUS_OPEN; // Open by default
 
 		// Metadata - timestamps
                 $startDateTime = isset($gevent['start']['dateTime']) ? $gevent['start']['dateTime'] : $gevent['start']['date'];
@@ -113,12 +113,12 @@ class Eab_Gcal_Importer_GoogleImporter extends Eab_ScheduledImporter {
                 
 		$start = isset($startDateTime) ? $this->_to_local_time($startDateTime) : false;
 		$end = isset($endDateTime) ? $this->_to_local_time($endDateTime) : false;
-		if ($start) $meta['psource_event_start'] = date('Y-m-d H:i:s', $start);
-		if ($end) $meta['psource_event_end'] = date('Y-m-d H:i:s', $end);
+		if ($start) $meta['incsub_event_start'] = date('Y-m-d H:i:s', $start);
+		if ($end) $meta['incsub_event_end'] = date('Y-m-d H:i:s', $end);
 
 		// Metadata - location
 		$venue = isset($gevent['location']) ? $gevent['location'] : false;
-		if ($venue) $meta['psource_event_venue'] = $venue;
+		if ($venue) $meta['incsub_event_venue'] = $venue;
 
 		return $meta;
 	}
@@ -178,7 +178,7 @@ class Eab_Calendars_GoogleImporter {
 	}
 
 	function show_settings () {
-		$tips = new PSource_HelpTooltips();
+		$tips = new WpmuDev_HelpTooltips();
 		$tips->set_icon_url(EAB_PLUGIN_URL . 'img/information.png' );
 
 		$api_key = $this->_data->get_option('gcal_importer-client_id');
@@ -186,12 +186,12 @@ class Eab_Calendars_GoogleImporter {
 		$is_authenticated = $this->_oauth->is_authenticated();
 
 		$runs = array(
-			'3600' => __('Stunde', 'eab'),
-			'7200' => __('Zwei Stunden', 'eab'),
-			'10800' => __('Drei Stunden', 'eab'),
-			'21600' => __('Sechs Stunden', 'eab'),
-			'43200' => __('Zwölf Stunden', 'eab'),
-			'86400' => __('Tag', 'eab'),
+			'3600' => __('Hour', Eab_EventsHub::TEXT_DOMAIN),
+			'7200' => __('Two hours', Eab_EventsHub::TEXT_DOMAIN),
+			'10800' => __('Three hours', Eab_EventsHub::TEXT_DOMAIN),
+			'21600' => __('Six hours', Eab_EventsHub::TEXT_DOMAIN),
+			'43200' => __('Twelve hours', Eab_EventsHub::TEXT_DOMAIN),
+			'86400' => __('Day', Eab_EventsHub::TEXT_DOMAIN),
 		);
 		$run_each = $this->_data->get_option('gcal_importer-run_each');
 		$run_each = $run_each ? $run_each : 3600;
@@ -208,44 +208,44 @@ class Eab_Calendars_GoogleImporter {
 		);
 ?>
 <div id="eab-settings-gcal_importer" class="eab-metabox postbox">
-	<h3 class="eab-hndle"><?php _e('Google Calendar Import Einstellungen', 'eab'); ?></h3>
+	<h3 class="eab-hndle"><?php _e('Google Calendar import settings', Eab_EventsHub::TEXT_DOMAIN); ?></h3>
 	<div class="eab-inside">
 		<p>
 			<ol>
-			    <li><a href="https://code.google.com/apis/console/" target="_blank"><?php _e('Erstelle ein Projekt in der Google API Console', 'eab'); ?></a></li>
-			    <li><?php _e('Aktiviere auf der Registerkarte "Dienste" die Option "Kalender-API"', 'eab'); ?></li>
-			    <li><?php printf(__('Klicke unter "API-Zugriff" auf "oAuth-Clientzugriff erstellen". Gib Deine Daten ein und verwende diese als "Authorized Redirect URIs".: <code>%s</code>', 'eab'), $this->_oauth->get_login_response_endpoint()); ?></li>
-			    <li><?php _e('Kopiere Deine Client-ID und geheime Client-ID und füge sie in die folgenden Felder ein', 'eab'); ?></li>
-			    <li><?php _e('Speichere Deine Plugin-Einstellungen und klicke auf die Schaltfläche "Authentifizieren"', 'eab'); ?></li>
+			    <li><a href="https://code.google.com/apis/console/" target="_blank"><?php _e('Create a project in Google API Console', Eab_EventsHub::TEXT_DOMAIN); ?></a></li>
+			    <li><?php _e('Under "Services" tab, turn "Calendar API" to ON', Eab_EventsHub::TEXT_DOMAIN); ?></li>
+			    <li><?php printf(__('Under "API Access" click "Create oAuth Client Access." Fill in your details and use this as your "Authorized Redirect URIs": <code>%s</code>', Eab_EventsHub::TEXT_DOMAIN), $this->_oauth->get_login_response_endpoint()); ?></li>
+			    <li><?php _e('Copy your Client ID and Client secret values and paste them in the fields below', Eab_EventsHub::TEXT_DOMAIN); ?></li>
+			    <li><?php _e('Save your plugin settings and click the "Authenticate" button', Eab_EventsHub::TEXT_DOMAIN); ?></li>
 			</ol>
 		</p>
 		<div class="eab-settings-settings_item" style="line-height:1.8em">
                         <div>
-			<label for="psource_event-gcal_importer-app_id" id="psource_event_label-gcal_importer-app_id"><?php _e('Client ID', 'eab'); ?></label><br />
-			<input type="text" size="90" id="psource_event-gcal_importer-app_id" name="gcal_importer[client_id]" value="<?php print $api_key; ?>" />
-			<span><?php echo $tips->add_tip(__('Gib hier Deine Client-ID ein.', 'eab')); ?></span>
+			<label for="incsub_event-gcal_importer-app_id" id="incsub_event_label-gcal_importer-app_id"><?php _e('Client ID', Eab_EventsHub::TEXT_DOMAIN); ?></label><br />
+			<input type="text" size="90" id="incsub_event-gcal_importer-app_id" name="gcal_importer[client_id]" value="<?php print $api_key; ?>" />
+			<span><?php echo $tips->add_tip(__('Enter your Client ID number here.', Eab_EventsHub::TEXT_DOMAIN)); ?></span>
                         </div>
                         <div>
-			<label for="psource_event-gcal_importer-app_id" id="psource_event_label-gcal_importer-app_id"><?php _e('Client secret', 'eab'); ?></label><br />
-			<input type="text" size="85" id="psource_event-gcal_importer-app_id" name="gcal_importer[client_secret]" value="<?php print $api_secret; ?>" />
-			<span><?php echo $tips->add_tip(__('Gib hier Deine Client-Geheimnummer ein.', 'eab')); ?></span>
+			<label for="incsub_event-gcal_importer-app_id" id="incsub_event_label-gcal_importer-app_id"><?php _e('Client secret', Eab_EventsHub::TEXT_DOMAIN); ?></label><br />
+			<input type="text" size="85" id="incsub_event-gcal_importer-app_id" name="gcal_importer[client_secret]" value="<?php print $api_secret; ?>" />
+			<span><?php echo $tips->add_tip(__('Enter your Client secret number here.', Eab_EventsHub::TEXT_DOMAIN)); ?></span>
                         </div>
 			<div class="gcal_importer-auth_actions">
 		<?php if ($is_authenticated && $api_key && $api_secret) { ?>
-				<a href="#reset" class="button" id="gcal_import-reset"><?php _e('Reset', 'eab'); ?></a>
-				<span><?php echo $tips->add_tip(__('Denke daran, auch das Offline-Zugriffstoken zu widerrufen <a href="https://accounts.google.com/IssuedAuthSubTokens" target="_blank">hier</a>.', 'eab')); ?></span>
+				<a href="#reset" class="button" id="gcal_import-reset"><?php _e('Reset', Eab_EventsHub::TEXT_DOMAIN); ?></a>
+				<span><?php echo $tips->add_tip(__('Remember to also revoke the offline access token <a href="https://accounts.google.com/IssuedAuthSubTokens" target="_blank">here</a>.', Eab_EventsHub::TEXT_DOMAIN)); ?></span>
 		<?php } else if ($api_key && $api_secret) { ?>
-				<a href="#authenticate" class="button" id="gcal_import-authenticate"><?php _e('Authentifizieren', 'eab'); ?></a>
+				<a href="#authenticate" class="button" id="gcal_import-authenticate"><?php _e('Authenticate', Eab_EventsHub::TEXT_DOMAIN); ?></a>
 		<?php } else { ?>
-				<p><em><?php _e('Gib Deine API-Informationen ein und speichere zuerst die Einstellungen.', 'eab'); ?></em></p>
+				<p><em><?php _e('Enter your API info and save settings first.', Eab_EventsHub::TEXT_DOMAIN); ?></em></p>
 		<?php } ?>
 			</div>
 		</div>
 		<?php if ($is_authenticated) { ?>
 		<div class="eab-settings-settings_item">
-			<label><?php _e('Ich möchte Ereignisse aus diesen Kalendern importieren:', 'eab'); ?></label>
-			<span><a href="#resync" id="gcal_import-resync" class="button"><?php _e('Kalenderliste aktualisieren', 'eab'); ?></a></span>
-			<span><?php echo $tips->add_tip(__('WähleKalender aus, die Du importieren möchtest.', 'eab')); ?></span>
+			<label><?php _e('I want to import events from these calendars:', Eab_EventsHub::TEXT_DOMAIN); ?></label>
+			<span><a href="#resync" id="gcal_import-resync" class="button"><?php _e('Refresh calendars list', Eab_EventsHub::TEXT_DOMAIN); ?></a></span>
+			<span><?php echo $tips->add_tip(__('Select calendars you wish to import.', Eab_EventsHub::TEXT_DOMAIN)); ?></span>
 			<?php if ($calendars_cache) { ?>
 			<br />
 			<select name="gcal_importer[sync_calendars][]" multiple="multiple">
@@ -257,7 +257,7 @@ class Eab_Calendars_GoogleImporter {
 			<?php } // end if cache ?>
 		</div>
 		<div class="eab-settings-settings_item">
-			<label><?php _e('Importer ausführen alle:', 'eab'); ?></label>
+			<label><?php _e('Run importer every:', Eab_EventsHub::TEXT_DOMAIN); ?></label>
 			<select name="gcal_importer[run_each]">
 			<?php foreach ($runs as $interval => $ilabel) { ?>
 				<option value="<?php echo (int)$interval; ?>" <?php echo selected($interval, $run_each); ?>><?php echo $ilabel; ?></option>
@@ -265,18 +265,18 @@ class Eab_Calendars_GoogleImporter {
 			</select>
 		</div>
 		<div class="eab-settings-settings_item">
-			<label><?php _e('Weise diesem Benutzer importierte Ereignisse zu:', 'eab'); ?></label>
+			<label><?php _e('Assign imported events to this user:', Eab_EventsHub::TEXT_DOMAIN); ?></label>
 			<select name="gcal_importer[calendar_author]">
 			<?php foreach ($possible_authors as $aid => $alabel) { ?>
 				<option value="<?php echo $aid; ?>" <?php echo selected($aid, $calendar_author); ?>><?php echo $alabel; ?>&nbsp;</option>
 			<?php } ?>
 			</select>
-			<span><?php echo $tips->add_tip(__('Wähle den Benutzer aus, der als importierter Ereignis-Host angezeigt werden soll.', 'eab')); ?></span>
+			<span><?php echo $tips->add_tip(__('Select the user you wish to appear as your imported Events host.', Eab_EventsHub::TEXT_DOMAIN)); ?></span>
 		</div>
 		<div class="eab-settings-settings_item">
 			<input type="hidden" name="gcal_importer[convert_times]" value="" />
-			<input type="checkbox" id="psource_event-gcal_importer-convert_times" name="gcal_importer[convert_times]" value="1" <?php checked($this->_data->get_option('gcal_importer-convert_times'), 1); ?> />
-			<label for="psource_event-gcal_importer-convert_times"><?php _e('Versuche Ereigniszeiten in lokale WordPress-Zeit umzuwandeln', 'eab'); ?></label>
+			<input type="checkbox" id="incsub_event-gcal_importer-convert_times" name="gcal_importer[convert_times]" value="1" <?php checked($this->_data->get_option('gcal_importer-convert_times'), 1); ?> />
+			<label for="incsub_event-gcal_importer-convert_times"><?php _e('Attempt to convert event times to local WordPress time', Eab_EventsHub::TEXT_DOMAIN); ?></label>
 		</div>
 		<?php } // end if authenticated ?>
 	</div>

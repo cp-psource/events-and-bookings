@@ -1,10 +1,10 @@
 <?php
 /*
-Plugin Name: Noindex-Meta für Ereignisse
-Description: Fügt Deinen wiederkehrenden Ereignisinstanzen und nicht aktuellen Archiven ein Noindex-Metaelement hinzu.
-Plugin URI: https://cp-psource.github.io/ps-events/
-Version: 1.1
-Author: DerN3rd
+Plugin Name: Noindex meta for Events
+Description: Adds noindex meta element to your recurring event instances and non-current archives.
+Plugin URI: http://premium.wpmudev.org/project/events-and-booking
+Version: 1.0
+Author: PSOURCE
 AddonType: Integration
 */
 
@@ -43,23 +43,23 @@ class Eab_Events_Nre {
 
 	function show_settings () {
 		$_temporal = array(
-			self::FUTURE_ONLY => __('Nur Zukunft', 'eab'),
-			self::PAST_ONLY => __('Nur Vergangenheit', 'eab'),
-			self::ALL_INSTANCES => __('Alle wiederkehrenden Instanzen', 'eab'),
+			self::FUTURE_ONLY => __('Future only', Eab_EventsHub::TEXT_DOMAIN),
+			self::PAST_ONLY => __('Past only', Eab_EventsHub::TEXT_DOMAIN),
+			self::ALL_INSTANCES => __('All recurring instances', Eab_EventsHub::TEXT_DOMAIN),
 		);
 		$_temporal_archives = array(
-			self::FUTURE_ONLY => __('Nur Zukunft', 'eab'),
-			self::PAST_ONLY => __('Nur Vergangenheit', 'eab'),
-			self::ALL_INSTANCES => __('Alle Veranstaltungsarchive', 'eab'),
+			self::FUTURE_ONLY => __('Future only', Eab_EventsHub::TEXT_DOMAIN),
+			self::PAST_ONLY => __('Past only', Eab_EventsHub::TEXT_DOMAIN),
+			self::ALL_INSTANCES => __('All event archives', Eab_EventsHub::TEXT_DOMAIN),
 		);
 		$nofollow = (int)$this->_options['nofollow_too'] ? 'checked="checked"' : '';
 		$archives = (int)$this->_options['noindex_archives'] ? 'checked="checked"' : '';
 ?>
 <div id="eab-settings-nre" class="eab-metabox postbox">
-	<h3 class="eab-hndle"><?php _e('Noindex-Meta für Ereignisse', 'eab'); ?></h3>
+	<h3 class="eab-hndle"><?php _e('Noindex meta for Events', Eab_EventsHub::TEXT_DOMAIN); ?></h3>
 	<div class="eab-inside">
 		<div class="eab-settings-settings_item" style="line-height:1.8em">
-			<label for="eab-events-nre-noindex_scope"><?php _e('Fügt wiederkehrenden Ereignisinstanzen <code>noindex</code> hinzu', 'eab'); ?>:</label><br />
+			<label for="eab-events-nre-noindex_scope"><?php _e('Add <code>noindex</code> to my recurring events instances', Eab_EventsHub::TEXT_DOMAIN); ?>:</label><br />
 			<?php 
 			foreach ($_temporal as $key => $label) { 
 				$selected = ($key == $this->_options['noindex_scope']) ? 'checked="checked"' : '';
@@ -69,7 +69,7 @@ class Eab_Events_Nre {
 			?>
 		</div>
 		<div class="eab-settings-settings_item" style="line-height:1.8em">
-			<label for="eab-events-nre-noindex_archives"><?php _e('Fügt <code>noindex</code> zu meinen Ereignisarchiven hinzu', 'eab'); ?>:</label><br />
+			<label for="eab-events-nre-noindex_archives"><?php _e('Add <code>noindex</code> to my event archives', Eab_EventsHub::TEXT_DOMAIN); ?>:</label><br />
 			<?php 
 			foreach ($_temporal_archives as $key => $label) { 
 				$selected = ($key == $this->_options['noindex_archives']) ? 'checked="checked"' : '';
@@ -82,7 +82,7 @@ class Eab_Events_Nre {
 			<label for="eab-events-nre-nofollow_too">
 				<input type="hidden" name="eab-events-nre[nofollow_too]" value="" />
 				<input type="checkbox" id="eab-events-nre-nofollow_too" name="eab-events-nre[nofollow_too]" value="1" <?php echo $nofollow; ?> />
-				<?php _e('Fügt auch <code>nofollow</code> hinzu.', 'eab'); ?>
+				<?php _e('Add <code>nofollow</code> too.', Eab_EventsHub::TEXT_DOMAIN); ?>
 			</label>
 		</div>
 	</div>
@@ -133,8 +133,8 @@ class Eab_Events_Nre {
 			$time = current_time('timestamp');
 			$timestamp_1 = $timestamp_2 = false;
 			foreach ($meta as $item) {
-				if ('psource_event_start' == $item['key']) $timestamp_1 = strtotime($item['value']);
-				if ('psource_event_end' == $item['key']) $timestamp_2 = strtotime($item['value']);
+				if ('incsub_event_start' == $item['key']) $timestamp_1 = strtotime($item['value']);
+				if ('incsub_event_end' == $item['key']) $timestamp_2 = strtotime($item['value']);
 			}
 			$in_past = (bool)($time > max($timestamp_1, $timestamp_2));
 			$in_future = (bool)($time < min($timestamp_1, $timestamp_2));

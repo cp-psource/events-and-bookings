@@ -2,7 +2,7 @@
 
 class Eab_Options {
 	
-	const OPTIONS_KEY = 'psource_event_default';
+	const OPTIONS_KEY = 'incsub_event_default';
 	
 	private static $_instance;
 	private $_data = array();
@@ -26,7 +26,7 @@ class Eab_Options {
 
 	public function get_default_options() {
 		return array(
-			'currency' => 'EUR',
+			'currency' => 'USD',
 			'slug' => 'events',
 			'accept_payments' => 1,
 			'accept_api_logins' => 0,

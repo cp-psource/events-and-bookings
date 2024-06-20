@@ -15,12 +15,12 @@ $events = defined('EAB_CALENDAR_ARCHIVE_TEMPLATE_USE_CUSTOM_QUERY') && EAB_CALEN
 get_header( 'event' );
 ?>
 	<div id="primary">
-        <div id="psourceevents-wrapper">
+        <div id="wpmudevevents-wrapper">
             <h2><?php echo sprintf(
-            	__('Veranstaltungen im %s', 'eab'),
+            	__('Events for %s', Eab_EventsHub::TEXT_DOMAIN),
             	date_i18n("F Y", $time)
 			); ?></h2>
-            <div class="psourceevents-list">
+            <div class="wpmudevevents-list">
             <?php
             	if (!class_exists('Eab_CalendarTable_EventArchiveCalendar')) require_once EAB_PLUGIN_DIR . 'lib/class_eab_calendar_helper.php';
 				$renderer = new Eab_CalendarTable_EventArchiveCalendar($wp_query->posts);
@@ -36,8 +36,8 @@ get_header( 'event' );
 						$prev = $time - (28*86400); 
 						$next = $time + (32*86400);
 					?>
-					<a href="<?php echo Eab_Template::get_archive_url($prev, true); ?>">Vorherige</a>
-					<a href="<?php echo Eab_Template::get_archive_url($next, true); ?>">Nächste</a>
+					<a href="<?php echo Eab_Template::get_archive_url($prev, true); ?>">Prev</a>
+					<a href="<?php echo Eab_Template::get_archive_url($next, true); ?>">Next</a>
 				</div>
 			</div>
 		</div>

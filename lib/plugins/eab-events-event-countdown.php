@@ -1,15 +1,15 @@
 <?php
 /*
-Plugin Name: Ereignis-Countdown
-Description: Generiert einen flexiblen Countdown-Shortcode für das aktuelle oder ausgewählte Ereignis. Besucher, die die Seite anzeigen, können nach Ablauf des Countdowns zu einer beliebigen URL umgeleitet werden. 
-Plugin URI: https://cp-psource.github.io/ps-events/
-Version: 0.3
-Author: DerN3rd
+Plugin Name: Event Countdown
+Description: Generates a flexible countdown shortcode for the current or selected event. Visitor viewing the page can be redirected to any url when countdown expires. 
+Plugin URI: http://premium.wpmudev.org/project/events-and-booking
+Version: 0.27
+Author: PSOURCE
 AddonType: Events
 */
 
 /*
-Detail: Minimale Nutzung: [event_countdown] <br /> Erweiterte Nutzung: [event_countdown id="1" event_id="3" format="dHMS" goto="http://example.com" class="countdown-class" type="flip" size="70" add="-120" expired="Too late!"]<br /><b>id</b> ist eine eindeutige Nummer, die Du angeben solltest, wenn Du mehr als eine Instanz des Shortcodes auf einer einzelnen Seite verwendest.<br /><b>event_id</b> ist die ID des Ereignisses, das angezeigt wird. Wenn nicht angegeben, basiert der Countdown auf dem aktuellen Ereignis, sofern vorhanden.<br /><b>format</b> ist das Countdown-Format der Ausgabe wie in <a href="http://keith-wood.name/countdownRef.html" target="_blank">jQuery Countdown Reference</a> definiert.<br /><b>goto</b> ist die URL, zu der der Besucher, der die Seite <b>anzeigt</b>, nach Ablauf des Countdowns umgeleitet wird.<br /><b>class</b> ist der Name der CSS-Wrapper-Klasse.<br /><b>type:</b> Wenn "flip" eingegeben wird, wird ein Flip-Zähler erstellt, wie in Flughafenterminals.<br /><b>size:</b> Breite einer Ziffer in px nur für Flipzähler. Unterstützte Größen sind 70, 82, 127, 254.<br /><b>add:</b> Wie viele Minuten zum Countdown hinzugefügt werden sollen.<br /><b>expired:</b> Du kannst einen Text eingeben, der angezeigt wird, wenn der Countdown abläuft. Standard ist "Geschlossen".
+Detail: Minimal usage: [event_countdown] <br /> Extended usage: [event_countdown id="1" event_id="3" format="dHMS" goto="http://example.com" class="countdown-class" type="flip" size="70" add="-120" expired="Too late!"]<br /><b>id</b> is a unique number that you should give when you are using more than one instance of the shortcode on a single page.<br /><b>event_id</b> is the ID of the Event that will be displayed. If omitted, countdown will be based on the current event, if it exists.<br /><b>format</b> is the countdown format of the output as defined in <a href="http://keith-wood.name/countdownRef.html" target="_blank">jQuery Countdown Reference</a>.<br /><b>goto</b> is the URL that the visitor <b>viewing</b> the page will be redirected to when countdown expires.<br /><b>class</b> is the name of the css wrapper class.<br /><b>type:</b> if entered "flip", creates a flip counter, like in airport terminals.<br /><b>size:</b> Width of a digit in px only for flip counter. Supported sizes are 70, 82, 127, 254.<br /><b>add:</b> How many minutes to add to the countdown. It can take negative values.<br /><b>expired:</b> You can enter a text that is displayed when countdown expires. Default is "Closed".
 
 Where:
 @id is a unique id. Only necessary and mandatory if more than one instance will be used on the same page. Default is null.
@@ -162,7 +162,7 @@ class Eab_Events_EventCountdown {
 		'size'		=> 70,
 		'add'		=> 0,
 		'footer_script' => false,
-		'expired'	=> __('Geschlossen', 'eab')
+		'expired'	=> __('Closed', Eab_EventsHub::TEXT_DOMAIN)
 		), $atts ) );
 		
 		$this->add_countdown = true;
@@ -204,10 +204,10 @@ class Eab_Events_EventCountdown {
 			FROM $wpdb->posts wposts, $wpdb->postmeta estart, $wpdb->postmeta eend, $wpdb->postmeta estatus
 			WHERE 
 			".$post_id."=wposts.ID AND wposts.ID=estart.post_id AND wposts.ID=eend.post_id AND wposts.ID=estatus.post_id 
-			AND estart.meta_key='psource_event_start' AND estart.meta_value > DATE_ADD(UTC_TIMESTAMP(),INTERVAL ". ( current_time('timestamp') - time() - 60 * abs($add) ). " SECOND)
-			AND eend.meta_key='psource_event_end' AND eend.meta_value > estart.meta_value
-			AND estatus.meta_key='psource_event_status' AND estatus.meta_value <> 'closed'
-			AND wposts.post_type='psource_event' AND wposts.post_status='publish'
+			AND estart.meta_key='incsub_event_start' AND estart.meta_value > DATE_ADD(UTC_TIMESTAMP(),INTERVAL ". ( current_time('timestamp') - time() - 60 * abs($add) ). " SECOND)
+			AND eend.meta_key='incsub_event_end' AND eend.meta_value > estart.meta_value
+			AND estatus.meta_key='incsub_event_status' AND estatus.meta_value <> 'closed'
+			AND wposts.post_type='incsub_event' AND wposts.post_status='publish'
 			ORDER BY estart.meta_value ASC
 			LIMIT 1
 			");

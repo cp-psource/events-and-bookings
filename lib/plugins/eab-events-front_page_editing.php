@@ -1,15 +1,15 @@
 <?php
 /*
-Plugin Name: Frontpage Editor
-Description: Ermöglicht das Einbetten der Bearbeitung von Titelseiten für Ereignisse mithilfe eines Shortcodes in die öffentlichen Seiten Deiner Website.
-Plugin URI: https://cp-psource.github.io/ps-events/
-Version: 1.2
-Author: DerN3rd
+Plugin Name: Front-page editing
+Description: Allows you to embed front-page editing for events into your site public pages, using a shortcode.
+Plugin URI: http://premium.wpmudev.org/project/events-and-booking
+Version: 1.0
+Author: PSOURCE
 AddonType: Integration
 */
 
 /*
-Detail: Standardmäßig arbeitet der Startseiten-Editor mit vorkonfigurierter Stub-URL. Du kannst jedoch Deine eigene Seite erstellen, den Shortcode für die Bearbeitung der Veranstaltungen (<code> [eab_event_editor] </code>) zum Inhalt hinzufügen und Deine Links zum Hinzufügen/Bearbeiten in den Plugin-Einstellungen konfigurieren, um stattdessen diese Seite zu verwenden.
+Detail: By default, Front-page editor will work with preconfigured stub URL. However, you can create your own page, add the Front-page editing shortcode (<code>[eab_event_editor]</code>) to the content and configure your Add/Edit links in plugin settings to use this page instead.
 */
 
 class Eab_Events_FrontPageEditing {
@@ -60,18 +60,18 @@ class Eab_Events_FrontPageEditing {
 	function show_settings () {
 		$pages = get_pages();
 		$integrate_with_my_events = $this->_options['integrate_with_my_events'] ? 'checked="checked"' : '';
-		$tips = new PSource_HelpTooltips();
+		$tips = new WpmuDev_HelpTooltips();
 		$tips->set_icon_url(EAB_PLUGIN_URL . 'img/information.png');
 ?>
 <div id="eab-settings-fpe" class="eab-metabox postbox">
-	<h3 class="eab-hndle"><?php _e('Frontend Editor', 'eab'); ?></h3>
+	<h3 class="eab-hndle"><?php _e('Front-page editing', Eab_EventsHub::TEXT_DOMAIN); ?></h3>
 	<div class="eab-inside">
 		<div class="eab-settings-settings_item">
 			<label for="eab-events-fpe-use_slug">
-				<?php _e('Ich möchte diese Seite als Front-Editor-Seite verwenden', 'eab'); ?>:
+				<?php _e('I want to use this page as my Front Editor page', Eab_EventsHub::TEXT_DOMAIN); ?>:
 			</label>
 			<select id="eab-events-fpe-use_slug" name="eab-events-fpe[id]">
-				<option value=""><?php _e('Standardwert verwenden', 'eab');?>&nbsp;</option>
+				<option value=""><?php _e('Use default value', Eab_EventsHub::TEXT_DOMAIN);?>&nbsp;</option>
 			<?php
 			foreach ($pages as $page) {
 				$selected = ($this->_options['id'] == $page->ID) ? 'selected="selected"' : '';
@@ -79,17 +79,17 @@ class Eab_Events_FrontPageEditing {
 			}
 			?>
 			</select>
-			<?php echo $tips->add_tip(__("Vergiss nicht, diesen Shortcode zu Deiner ausgewählten Seite hinzuzufügen: <code>[eab_event_editor]</code>", 'eab')); ?>
-			<div><?php _e('Standardmäßig arbeitet der Startseiten-Editor mit vorkonfigurierter Stub-URL. Du kannst jedoch eine eigene Seite erstellen, den Shortcode für die Bearbeitung der Startseite (<code> [eab_event_editor] </code>) zum Inhalt hinzufügen und Deine Links zum Hinzufügen/Bearbeiten hier so konfigurieren, dass stattdessen diese Seite verwendet wird.', 'eab');?></div>
+			<?php echo $tips->add_tip(__("Don't forget to add this shortcode to your selected page: <code>[eab_event_editor]</code>", Eab_EventsHub::TEXT_DOMAIN)); ?>
+			<div><?php _e('By default, Front-page editor will work with preconfigured stub URL. However, you can create your own page, add the Front-page editing shortcode (<code>[eab_event_editor]</code>) to the content and configure your Add/Edit links here to use this page instead.', Eab_EventsHub::TEXT_DOMAIN);?></div>
 		</div>
 <?php if (Eab_AddonHandler::is_plugin_active('eab-buddypres-my_events')) { ?>
 		<div class="eab-settings-settings_item">
 			<label for="eab-events-fpe-integrate_with_my_events">
 				<input type="hidden" name="eab-events-fpe[integrate_with_my_events]" value="" />
 				<input type="checkbox" id="eab-events-fpe-integrate_with_my_events" name="eab-events-fpe[integrate_with_my_events]" value="1" <?php echo $integrate_with_my_events; ?> />
-				<?php _e('Integration in die Erweiterung <em> Meine Ereignisse </em>', 'eab'); ?>
+				<?php _e('Integrate with <em>My Events</em> add-on', Eab_EventsHub::TEXT_DOMAIN); ?>
 			</label>
-			<?php echo $tips->add_tip(__("Durch Aktivieren dieser Option wird ein neuer &quot;Neues Ereignis&quot; Tab zu &quot;Meine Veranstaltungen&quot; hinzu gefügt", 'eab')); ?>
+			<?php echo $tips->add_tip(__("Enabling this option will add a new &quot;Add Event&quot; tab to &quot;My Events&quot;", Eab_EventsHub::TEXT_DOMAIN)); ?>
 		</div>
 <?php } ?>
 	</div>
@@ -110,7 +110,7 @@ class Eab_Events_FrontPageEditing {
 	function my_events_add_event () {
 		global $bp;
 		bp_core_new_subnav_item(array(
-			'name' => __('Ereignis erstellen', 'eab'),
+			'name' => __('Add Event', Eab_EventsHub::TEXT_DOMAIN),
 			'slug' => 'edit-event',
 			'parent_url' => trailingslashit(trailingslashit($bp->displayed_user->domain) . 'my-events'),
 			'parent_slug' => 'my-events',
@@ -135,7 +135,7 @@ class Eab_Events_FrontPageEditing {
 			$content .
 			'<p>' .
 				'<a href="' . $this->_get_front_editor_link($event->get_id()) . '">' .
-					__('Diese Veranstaltung bearbeiten', 'eab') .
+					__('Edit event', Eab_EventsHub::TEXT_DOMAIN) .
 				'</a>' .
 			'</p>' .
 		'';
@@ -150,7 +150,7 @@ class Eab_Events_FrontPageEditing {
 		echo '' .
 			'<p>' .
 				'<a href="' . $this->_get_front_editor_link() . '">' .
-					__('Ereignis hinzufügen', 'eab') .
+					__('Add event', Eab_EventsHub::TEXT_DOMAIN) .
 				'</a>' .
 			'</p>' .
 		'';
@@ -167,13 +167,13 @@ class Eab_Events_FrontPageEditing {
 
 		$wp_admin_bar->add_menu(array(
 			'id' => 'eab-events-fpe-admin_bar',
-			'title' => __('Veranstaltungen', 'eab'),
+			'title' => __('Events', Eab_EventsHub::TEXT_DOMAIN),
 			'href' => $this->_get_front_editor_link(),
 		));
 		$wp_admin_bar->add_menu(array(
 			'parent' => 'eab-events-fpe-admin_bar',
 			'id' => 'eab-events-fpe-admin_bar-add_event',
-			'title' => __('Veranstaltung hinzufügen', 'eab'),
+			'title' => __('Add Event', Eab_EventsHub::TEXT_DOMAIN),
 			'href' => $this->_get_front_editor_link(),
 		));
 		if (is_singular() && $post && isset($post->post_type) && $post->post_type == Eab_EventModel::POST_TYPE) {
@@ -181,7 +181,7 @@ class Eab_Events_FrontPageEditing {
 			$wp_admin_bar->add_menu(array(
 				'parent' => 'eab-events-fpe-admin_bar',
 				'id' => 'eab-events-fpe-admin_bar-edit_event',
-				'title' => __('Bearbeite diese Veranstaltung', 'eab'),
+				'title' => __('Edit this Event', Eab_EventsHub::TEXT_DOMAIN),
 				'href' => $this->_get_front_editor_link($post->ID),
 			));
 		}
@@ -226,13 +226,13 @@ class Eab_Events_FrontPageEditing {
 		header('Content-type: application/json');
 		if (!isset($_POST['data'])) die(json_encode(array(
 			'status' => 0,
-			'message' => __('Keine Daten empfangen', 'eab'),
+			'message' => __('No data received', Eab_EventsHub::TEXT_DOMAIN),
 		)));
 
 		$data = $_POST['data'];
 		if (!$this->_check_perms((int)$data['id'])) die(json_encode(array(
 			'status' => 0,
-			'message' => __('Keine ausreichenden Berechtigungen', 'eab'),
+			'message' => __('Insufficient privileges', Eab_EventsHub::TEXT_DOMAIN),
 		)));
 		$post = array();
 
@@ -247,7 +247,7 @@ class Eab_Events_FrontPageEditing {
 		$post['post_content'] = current_user_can('unfiltered_html') ? $data['content'] : wp_filter_post_kses($data['content']);
 		$post['post_status'] = current_user_can($post_type->cap->publish_posts) ? 'publish' : 'pending';
 		$post['post_type'] = Eab_EventModel::POST_TYPE;
-		$post['post_author'] = $current_user->ID;
+		$post['post_author'] = $current_user->id;
 
 		$data['featured'] = !empty($data['featured'])
 			? (is_numeric($data['featured']) ? (int)$data['featured'] : false)
@@ -268,41 +268,41 @@ class Eab_Events_FrontPageEditing {
 		}
 		if (!$post_id) die(json_encode(array(
 			'status' => 0,
-			'message' => __('Beim Speichern dieses Ereignisses ist ein Fehler aufgetreten', 'eab'),
+			'message' => __('There has been an error saving this Event', Eab_EventsHub::TEXT_DOMAIN),
 		)));
 
-		update_post_meta($post_id, 'psource_event_start', $start);
-		update_post_meta( $post_id, 'psource_event_no_start', $has_no_start_time );
-		update_post_meta($post_id, 'psource_event_end', $end);
-		update_post_meta( $post_id, 'psource_event_no_end', $has_no_end_time );
-		update_post_meta($post_id, 'psource_event_status', strip_tags($data['status']));
+		update_post_meta($post_id, 'incsub_event_start', $start);
+		update_post_meta( $post_id, 'incsub_event_no_start', $has_no_start_time );
+		update_post_meta($post_id, 'incsub_event_end', $end);
+		update_post_meta( $post_id, 'incsub_event_no_end', $has_no_end_time );
+		update_post_meta($post_id, 'incsub_event_status', strip_tags($data['status']));
 		
 		//specify if the event has start and end time or not.
-		//if ( $data['has_start'] == 0 ) update_post_meta($post_id, 'psource_event_no_start',1);			
-		//if ( $data['has_end'] == 0 ) update_post_meta($post_id, 'psource_event_no_end',1);
+		//if ( $data['has_start'] == 0 ) update_post_meta($post_id, 'incsub_event_no_start',1);			
+		//if ( $data['has_end'] == 0 ) update_post_meta($post_id, 'incsub_event_no_end',1);
 
 		$venue_map = get_post_meta($post_id, 'agm_map_created', true);
 		if (!$venue_map && $data['venue'] && class_exists('AgmMapModel')) {
 			$model = new AgmMapModel;
 			$model->autocreate_map($post_id, false, false, $data['venue']);
 		}
-		update_post_meta($post_id, 'psource_event_venue', strip_tags($data['venue']));
+		update_post_meta($post_id, 'incsub_event_venue', strip_tags($data['venue']));
 
 
 		$is_paid = (int)$data['is_premium'];
 		$fee = $is_paid ? strip_tags($data['fee']) : '';
-		update_post_meta($post_id, 'psource_event_paid', ($is_paid ? '1' : ''));
-		update_post_meta($post_id, 'psource_event_fee', $fee);
+		update_post_meta($post_id, 'incsub_event_paid', ($is_paid ? '1' : ''));
+		update_post_meta($post_id, 'incsub_event_fee', $fee);
 		do_action('eab-events-fpe-save_meta', $post_id, $data);
     
 		$selected_terms = ( isset( $data['category'] ) && is_array( $data['category'] ) ) ? array_map( 'intval' , $data['category'] ) : array();
 		wp_set_post_terms( $post_id, $selected_terms, 'eab_events_category', false );
 
 		if( current_user_can($post_type->cap->publish_posts) ){
-			$message = __('Ereignis gespeichert und veröffentlicht', 'eab');
+			$message = __('Event saved and published', Eab_EventsHub::TEXT_DOMAIN);
 			do_action( 'eab_bp_event_published', $post_id );
 		}else{
-			$message = __('Ereignis gespeichert und wartet auf Genehmigung', 'eab');
+			$message = __('Event saved and waiting for approval', Eab_EventsHub::TEXT_DOMAIN);
 			do_action( 'eab_bp_event_saved_for_approval', $post_id );
 		}
 		
@@ -342,7 +342,7 @@ class Eab_Events_FrontPageEditing {
 		if (!$this->_check_perms($event_id)) return false;
 		if (defined('EAB_EVENTS_FPE_ALREADY_HERE')) return $content;
 
-		define('EAB_EVENTS_FPE_ALREADY_HERE', true);
+		define('EAB_EVENTS_FPE_ALREADY_HERE', true, true);
 		return $this->_edit_event_form($event_id); // ... and YAY! for not being able to return wp_editor >.<
 	}
 
@@ -354,17 +354,12 @@ class Eab_Events_FrontPageEditing {
 		if (!$this->_check_perms($event_id)) return false;
 		if (defined('EAB_EVENTS_FPE_ALREADY_HERE')) return $content;
 
-		/*$is_excerpt = array_reduce($wp_current_filter, create_function('$ret,$val', 'return $ret ? true : preg_match("/excerpt/", $val);'), false);
+		$is_excerpt = array_reduce($wp_current_filter, create_function('$ret,$val', 'return $ret ? true : preg_match("/excerpt/", $val);'), false);
 		$is_head = array_reduce($wp_current_filter, create_function('$ret,$val', 'return $ret ? true : preg_match("/head/", $val);'), false);
 		$is_title = array_reduce($wp_current_filter, create_function('$ret,$val', 'return $ret ? true : preg_match("/title/", $val);'), false);
-		if ($is_excerpt || $is_head || $is_title) return $content;*/
-
-		$is_excerpt = array_reduce($wp_current_filter, function($ret,$val) {return $ret ? true : preg_match("/excerpt/", $val);}, false);
-		$is_head = array_reduce($wp_current_filter, function($ret,$val) {return $ret ? true : preg_match("/head/", $val);}, false);
-		$is_title = array_reduce($wp_current_filter, function($ret,$val) {return $ret ? true : preg_match("/title/", $val);}, false);
 		if ($is_excerpt || $is_head || $is_title) return $content;
 
-		define('EAB_EVENTS_FPE_ALREADY_HERE', true);
+		define('EAB_EVENTS_FPE_ALREADY_HERE', true, true);
 		return $this->_edit_event_form($event_id); // ... and YAY! for not being able to return wp_editor >.<
 	}
 
@@ -378,10 +373,10 @@ class Eab_Events_FrontPageEditing {
 		$style = $event->get_id() ? '' : 'style="display:none"';
                 $ret = '';
 		$ret .= '<div id="eab-events-fpe">';
-		$ret .= '<a id="eab-events-fpe-back_to_event" href="' . get_permalink($event->get_id()) . '" ' . $style . '>' . __('ZURÜCK ZUR VERANSTALTUNG', 'eab') . '</a>';
+		$ret .= '<a id="eab-events-fpe-back_to_event" href="' . get_permalink($event->get_id()) . '" ' . $style . '>' . __('Back to Event', Eab_EventsHub::TEXT_DOMAIN) . '</a>';
 		$ret .= '<input type="hidden" id="eab-events-fpe-event_id" value="' . (int)$event->get_id() . '" />';
 		$ret .= '<div>';
-		$ret .= '<label>' . __('<h2>Titel der Veranstaltung:</h2>', 'eab') . '</label>';
+		$ret .= '<label>' . __('Title', Eab_EventsHub::TEXT_DOMAIN) . '</label>';
 		$ret .= '<br /><input type="text" name="" id="eab-events-fpe-event_title" value="' . esc_attr($event->get_title()) . '" />';
 		$ret .= '</div>';
 
@@ -415,19 +410,19 @@ class Eab_Events_FrontPageEditing {
 		?>
 		<div class="eab-events-fpe-meta_box_item eab_event_date eab_start_date">
 			<fieldset>
-				<legend><?php _e('<h3>Das Event beginnt:</h3>', 'eab') ?></legend>
+				<legend><?php _e('Starts on', Eab_EventsHub::TEXT_DOMAIN) ?></legend>
 				<div class="eab-events-fpe-meta_box_sub_item">
-					<label class="date-title"><?php _e('Datum:', 'eab'); ?></label>
+					<label class="date-title"><?php _e('Day', Eab_EventsHub::TEXT_DOMAIN); ?></label>
 					<input type="text" name="" id="eab-events-fpe-start_date" value="<?php echo date('Y-m-d', $start); ?>" size="10" />
 				</div>
 				<div class="eab-events-fpe-meta_box_sub_item">
 					<div class="eab-events-fpe_wrap_time_start <?php echo $has_no_start_time ? 'hide_time_option' : '' ?>"  >
-						<label class="date-title"><?php _e('Uhrzeit:', 'eab'); ?></label>					
-						<input type="text" name="" id="eab-events-fpe-start_time" value="<?php echo date('H:i', $start); ?>" size="10" />					
+						<label class="date-title"><?php _e('Time', Eab_EventsHub::TEXT_DOMAIN); ?></label>					
+						<input type="text" name="" id="eab-events-fpe-start_time" value="<?php echo date('H:i', $start); ?>" size="3" />					
 					</div>
 					<div id="eab-events-fpe-time__start">
 						<input type="checkbox" id="eab-events-fpe-toggle_time__start" class="eab_action_cb eab_time_toggle" data-time-affect="start" <?php checked( $has_no_start_time ); ?> /> 
-						<a class="eab_action_button eab_time_toggle" data-time-affect="start"><?php _e('Keine Startzeit', 'eab'); ?></a>
+						<a class="eab_action_button eab_time_toggle" data-time-affect="start"><?php _e('No start time', Eab_EventsHub::TEXT_DOMAIN); ?></a>
 					</div>
 				</div>
 			</fieldset>
@@ -435,19 +430,19 @@ class Eab_Events_FrontPageEditing {
 
 		<div class="eab-events-fpe-meta_box_item eab_event_date eab_end_date">
 			<fieldset>
-				<legend><?php _e('<h3>Das Event endet:</h3>', 'eab') ?></legend>
+				<legend><?php _e('Ends on', Eab_EventsHub::TEXT_DOMAIN) ?></legend>
 				<div class="eab-events-fpe-meta_box_sub_item">
-					<label class="date-title"><?php _e('Datum:', 'eab'); ?></label>
+					<label class="date-title"><?php _e('Day', Eab_EventsHub::TEXT_DOMAIN); ?></label>
 					<input type="text" name="" id="eab-events-fpe-end_date" value="<?php echo date('Y-m-d', $end); ?>" size="10" />
 				</div>
 				<div class="eab-events-fpe-meta_box_sub_item">
 					<div class="eab-events-fpe_wrap_time_end <?php echo $has_no_end_time ? 'hide_time_option' : '' ?>">
-						<label class="date-title"><?php _e('Uhrzeit:', 'eab'); ?></label>					
-						<input type="text" name="" id="eab-events-fpe-end_time" value="<?php echo date('H:i', $end); ?>" size="10" />
+						<label class="date-title"><?php _e('Time', Eab_EventsHub::TEXT_DOMAIN); ?></label>					
+						<input type="text" name="" id="eab-events-fpe-end_time" value="<?php echo date('H:i', $end); ?>" size="3" />
 					</div>
 					<div id="eab-events-fpe-time__end">
 						<input type="checkbox" id="eab-events-fpe-toggle_time__end" class="eab_action_cb eab_time_toggle" data-time-affect="end" <?php checked( $has_no_end_time ); ?> /> 
-						<a class="eab_action_button eab_time_toggle" data-time-affect="end"><?php _e('Keine Endzeit', 'eab'); ?></a></div>
+						<a class="eab_action_button eab_time_toggle" data-time-affect="end"><?php _e('No end time', Eab_EventsHub::TEXT_DOMAIN); ?></a></div>
 				</div>
 			</fieldset>
 		</div>
@@ -462,12 +457,12 @@ class Eab_Events_FrontPageEditing {
 
 		// Status
 		$ret .= '<div>';
-		$ret .= '<label>' . __('<h3>Event-Status:</h3>', 'eab') . '</label>';
+		$ret .= '<label>' . __('Event status', Eab_EventsHub::TEXT_DOMAIN) . '</label>';
 		$ret .= '<select name="" id="eab-events-fpe-status">';
-		$ret .= '	<option value="' . Eab_EventModel::STATUS_OPEN . '" '.(($event->is_open())?'selected="selected"':'').' >'.__('Findet statt', 'eab').'</option>';
-		$ret .= '	<option value="' . Eab_EventModel::STATUS_CLOSED . '" '.(($event->is_closed())?'selected="selected"':'').' >'.__('Abgesagt', 'eab').'</option>';
-		$ret .= '	<option value="' . Eab_EventModel::STATUS_EXPIRED . '" '.(($event->is_expired())?'selected="selected"':'').' >'.__('Abgelaufen', 'eab').'</option>';
-		$ret .= '	<option value="' . Eab_EventModel::STATUS_ARCHIVED . '" '.(($event->is_archived())?'selected="selected"':'').' >'.__('Archiviert', 'eab').'</option>';
+		$ret .= '	<option value="' . Eab_EventModel::STATUS_OPEN . '" '.(($event->is_open())?'selected="selected"':'').' >'.__('Open', Eab_EventsHub::TEXT_DOMAIN).'</option>';
+		$ret .= '	<option value="' . Eab_EventModel::STATUS_CLOSED . '" '.(($event->is_closed())?'selected="selected"':'').' >'.__('Closed', Eab_EventsHub::TEXT_DOMAIN).'</option>';
+		$ret .= '	<option value="' . Eab_EventModel::STATUS_EXPIRED . '" '.(($event->is_expired())?'selected="selected"':'').' >'.__('Expired', Eab_EventsHub::TEXT_DOMAIN).'</option>';
+		$ret .= '	<option value="' . Eab_EventModel::STATUS_ARCHIVED . '" '.(($event->is_archived())?'selected="selected"':'').' >'.__('Archived', Eab_EventsHub::TEXT_DOMAIN).'</option>';
 		$ret .= apply_filters('eab-events-fpe-event_meta-extra_event_status', '', $event);
 		$ret .= '</select>';
 		$ret .= apply_filters('eab-events-fpe-event_meta-after_event_status', '', $event);
@@ -476,13 +471,13 @@ class Eab_Events_FrontPageEditing {
 		// Type
 		if ($this->_data->get_option('accept_payments')) {
 			$ret .= '<div>';
-			$ret .= '<label>' . __('<h3>Ist dies eine kostenpflichtige Veranstaltung?</h3>', 'eab') . '</label>';
+			$ret .= '<label>' . __('Is this a paid event?', Eab_EventsHub::TEXT_DOMAIN) . '</label>';
 			$ret .= '<select name="" id="eab-events-fpe-is_premium">';
-			$ret .= '	<option value="1" ' . ($event->is_premium() ? 'selected="selected"' : '') . '>'.__('Ja', 'eab').'</option>';
-			$ret .= '	<option value="0" ' . ($event->is_premium() ? '' : 'selected="selected"') . '>'.__('Nein', 'eab').'</option>';
+			$ret .= '	<option value="1" ' . ($event->is_premium() ? 'selected="selected"' : '') . '>'.__('Yes', Eab_EventsHub::TEXT_DOMAIN).'</option>';
+			$ret .= '	<option value="0" ' . ($event->is_premium() ? '' : 'selected="selected"') . '>'.__('No', Eab_EventsHub::TEXT_DOMAIN).'</option>';
 			$ret .= '</select>';
 			$ret .= '<div id="eab-events-fpe-event_fee-wrapper">';
-			$ret .= '<label for="eab-events-fpe-event_fee">' . __('Teilnahme-Gebühr:', 'eab') . '</label>';
+			$ret .= '<label for="eab-events-fpe-event_fee">' . __('Fee', Eab_EventsHub::TEXT_DOMAIN) . '</label>';
 			$ret .= ' <input type="text" name="" id="eab-events-fpe-event_fee" size="6" value="' . esc_attr($event->get_price()) . '" />';
 			$ret .= '</div>'; // eab-events-fpe-event_fee-wrapper
 			$ret .= '</div>';
@@ -498,7 +493,7 @@ class Eab_Events_FrontPageEditing {
 		$ret .= '<div class="eab-events-fpe-meta_box" id="eab-events-fpe-meta_box-venue">';
 		// Venue
 		$ret .= '<div>';
-		$ret .= '<label>' . __('<h3>Veranstaltungsort:</h3>', 'eab') . '</label>';
+		$ret .= '<label>' . __('Venue', Eab_EventsHub::TEXT_DOMAIN) . '</label>';
 		$ret .= '<br /><input type="text" name="" id="eab-events-fpe-venue" value="' . esc_attr($event->get_venue_location()) . '" />';
 		$ret .= '</div>';
 		// End venue
@@ -515,7 +510,7 @@ class Eab_Events_FrontPageEditing {
 		$ret .= '<div class="eab-events-fpe-meta_box" id="eab-events-fpe-meta_box-categories">';
 		// Categories
 		$ret .= '<div>';
-		$ret .= '<label>' . __('<h3>Ereigniskategorie:</h3>', 'eab') . '</label>';
+		$ret .= '<label>' . __('Category', Eab_EventsHub::TEXT_DOMAIN) . '</label>';
 		if ( ! empty( $all_cats ) ) {
 			$ret .= '<div>';
 			foreach ( $all_cats as $cat ) {
@@ -543,30 +538,30 @@ class Eab_Events_FrontPageEditing {
 		if (current_user_can('upload_files')) {
 			/* Added by Ashok */
 			$ret .= '<div class="eab-events-fpe-col_wrapper">';
-				$ret .= '<label>' . __('<h3>Veranstaltungsbild</h3>', 'eab') . '</label>' .
+				$ret .= '<label>' . __('Feature Image', Eab_EventsHub::TEXT_DOMAIN) . '</label>' .
 					'<br />' .
 					'<a href="#featured_image" class="eab-fpe-upload">' .
 					'<input type="hidden" id="eab-fpe-attach_id" name="" value="' . $featured_image_id . '" />' .
 					'<input type="hidden" name="featured" value="' . esc_attr($featured_image_id) . '" />' .
 					'<img src="' . esc_url($featured_image) . '" id="eab-fpe-preview-upload" ' . (empty($featured_image) ? 'style="display:none"' : '') . ' />' .
 					'<br />' .
-					'<span class="button">' . __('<b>Veranstaltungsbild hochladen</b>', 'eab') . '</span>' .
+					'<span>' . __('Change the featured image', Eab_EventsHub::TEXT_DOMAIN) . '</span>' .
 				'</a>';
 			$ret .= '</div>';
 			/* End of adding by Ashok */
 		} else if (!empty($featured_image_id) && !empty($featured_image)) {
 			$ret .= '<div class="eab-events-fpe-col_wrapper">';
-			$ret .= '<label>' . __('<h3>Veranstaltungsbild</h3>', 'eab') . '</label>' .
+			$ret .= '<label>' . __('Feature Image', Eab_EventsHub::TEXT_DOMAIN) . '</label>' .
 				'<img src="' . esc_url($featured_image) . '" id="eab-fpe-preview-upload" />' .
 				'<input type="hidden" id="eab-fpe-attach_id" name="featured" value="' . esc_attr($featured_image_id) . '" />' .
 			'</div>';
 		}
 
 		// OK/Cancel
-		$ok_label = $event->get_id() ?  __('EREIGNIS AKTUALISIEREN', 'eab') : __('EREIGNIS VERÖFFENTLICHEN', 'eab');
+		$ok_label = $event->get_id() ?  __('Update', Eab_EventsHub::TEXT_DOMAIN) : __('Publish', Eab_EventsHub::TEXT_DOMAIN);
 		$ret .= '<div id="eab-events-fpe-ok_cancel">';
 		$ret .= '<input type="button" class="button button-primary" id="eab-events-fpe-ok" value="' . esc_attr($ok_label) . '" />';
-		$ret .= '<input type="button" class="button" id="eab-events-fpe-cancel" value="' . esc_attr(__('ABBRECHEN', 'eab')) . '" />';
+		$ret .= '<input type="button" class="button" id="eab-events-fpe-cancel" value="' . esc_attr(__('Cancel', Eab_EventsHub::TEXT_DOMAIN)) . '" />';
 		$ret .= '</div>';
 
 		$ret .= '</div>'; // eab-events-fpe-col_wrapper
@@ -577,7 +572,7 @@ class Eab_Events_FrontPageEditing {
 
 
 		if ($event->has_bookings()) {
-			$ret .= '<a href="#toggle_rsvps" id="eab-events-fpe-toggle_rsvps">' . __('RSVPs umschalten', 'eab') . '</a>';
+			$ret .= '<a href="#toggle_rsvps" id="eab-events-fpe-toggle_rsvps">' . __('Toggle RSVPs', Eab_EventsHub::TEXT_DOMAIN) . '</a>';
 			$ret .= '<div id="eab-events-fpe-rsvps-wrapper" style="display:none">';
 			$ret .= Eab_Template::get_admin_attendance_addition_form($event, Eab_Template::get_rsvp_status_list());
 			$ret .= '<div>';
@@ -626,17 +621,17 @@ class Eab_Events_FrontPageEditing {
 	}
 
 	private function _enqueue_dependencies () {
-		wp_enqueue_style('eab-events-fpe', plugins_url(basename(EAB_PLUGIN_DIR) . "/css/eab-events-fpe.min.css"));
+		wp_enqueue_style('eab-events-fpe', plugins_url(basename(EAB_PLUGIN_DIR) . "/css/eab-events-fpe.css"));
 		wp_enqueue_style('eab_jquery_ui');
 
 		wp_enqueue_script('jquery');
 		wp_enqueue_script('eab-events-fpe', plugins_url(basename(EAB_PLUGIN_DIR) . "/js/eab-events-fpe.js"), array('jquery'));
 		wp_localize_script('eab-events-fpe', 'l10nFpe', array(
-			'mising_time_date' => __('Bitte lege sowohl Start- als auch Enddaten und -zeiten fest', 'eab'),
-			'check_time_date' => __('Bitte überprüfe Deine Zeit- und Datumseinstellungen', 'eab'),
-			'general_error' => __('Fehler', 'eab'),
-			'missing_id' => __('Speichern fehlgeschlagen', 'eab'),
-			'all_good' => __('Alles Super!', 'eab'),
+			'mising_time_date' => __('Please set both start and end dates and times', Eab_EventsHub::TEXT_DOMAIN),
+			'check_time_date' => __('Please check your time and date settings', Eab_EventsHub::TEXT_DOMAIN),
+			'general_error' => __('Error', Eab_EventsHub::TEXT_DOMAIN),
+			'missing_id' => __('Save failed', Eab_EventsHub::TEXT_DOMAIN),
+			'all_good' => __('All good!', Eab_EventsHub::TEXT_DOMAIN),
 			'base_url' => site_url()
 		));
 		wp_enqueue_script('eab_jquery_ui'); // This got deprecated, but let it ride

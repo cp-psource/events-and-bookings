@@ -1,10 +1,10 @@
 <?php
 /*
-Plugin Name: Zahlung per MarketPress Artikel
-Description: Ermöglicht die Integration von PS-Events in die MarketPress Lösung (MarketPressPS)
-Plugin URI: https://n3rds.work/piestingtal_source/marketpress-shopsystem/
-Version: 2.1
-Author: DerN3rd
+Plugin Name: Payments via MarketPress Products
+Description: Allows you to integrate Events+ with MarketPress
+Plugin URI: http://premium.wpmudev.org/project/events-and-booking
+Version: 2.0
+Author: PSOURCE
 AddonType: Integration
 */
 
@@ -41,15 +41,13 @@ class Eab_Payments_PaymentViaProducts {
 	 * and overall event changes
 	 */
 	public function dispatch_ordering_actions () {
-		/*if ($this->_is_old_mp()) {
+		if ($this->_is_old_mp()) {
 			if (!class_exists('Eab_MP_Bridge_Legacy')) require_once( 'lib/class_eab_mp_bridge_legacy.php');
 			Eab_MP_Bridge_Legacy::serve();
 		} else {
 			if (!class_exists('Eab_MP_Bridge')) require_once('lib/class_eab_mp_bridge.php');
 			Eab_MP_Bridge::serve();
-		}*/
-		if (!class_exists('Eab_MP_Bridge')) require_once('lib/class_eab_mp_bridge.php');
-			Eab_MP_Bridge::serve();
+		}
 	}
 
 	/**
@@ -66,25 +64,25 @@ class Eab_Payments_PaymentViaProducts {
 
 		$title = get_the_title($event_id);
 		$link = admin_url("post.php?post={$event_id}&action=edit");
-		echo '<div class="updated"><p>' . sprintf(__('Dieses Produkt wird verwendet als Eintrittszahlung für <a href="%s">%s</a>.'), $link, $title) . '</p></div>';
+		echo '<div class="updated"><p>' . sprintf(__('This Product is used as admittance payment for <a href="%s">%s</a>.'), $link, $title) . '</p></div>';
 	}
 
 	private function _is_mp_present () {
 		return class_exists('MarketPress');
 	}
 
-	/*private function _is_old_mp () {
+	private function _is_old_mp () {
 		if (!$this->_is_mp_present()) return false;
 		if (!defined('MP_VERSION')) return false;
 
-		return version_compare(MP_VERSION, '1.5', '<');
-	}*/
+		return version_compare(MP_VERSION, '3.0', '<');
+	}
 
 	function show_mp_presence_nag () {
 		if ($this->_is_mp_present()) return false;
 		echo '<div class="error">' .
 			'<p>' .
-				__( 'Das <a href="https://n3rds.work/piestingtal_source/marketpress-shopsystem/">MarketPress</a> Plugin muss installiert und aktiviert sein, damit es funktioniert', 'eab' ) .
+				__( 'You need to install and activate the <a href="http://premium.wpmudev.org/project/e-commerce">MarketPress</a> plugin for the &quot;Payments via MarketPress Products&quot; to work', Eab_EventsHub::TEXT_DOMAIN ) .
 			'</p>'.
 		'</div>';
 	}
@@ -98,7 +96,7 @@ class Eab_Payments_PaymentViaProducts {
 
 
 	function show_settings () {
-		$tips = new PSource_HelpTooltips();
+		$tips = new WpmuDev_HelpTooltips();
 		$tips->set_icon_url(EAB_PLUGIN_URL . 'img/information.png' );
 		
 		$category_id = $this->_data->get_option('payment-ppvp-category');
@@ -107,10 +105,10 @@ class Eab_Payments_PaymentViaProducts {
 		));
 ?>
 <div id="eab-settings-mp_payments" class="eab-metabox postbox">
-	<h3 class="eab-hndle"><?php _e('Zahlung mit MarketPress Artikeln', 'eab'); ?></h3>
+	<h3 class="eab-hndle"><?php _e('Payments via MarketPress Products settings', Eab_EventsHub::TEXT_DOMAIN); ?></h3>
 	<div class="eab-inside">
 		<div class="eab-settings-settings_item">
-	    	<label for="eab_event-payment-ppvp-category"><?php _e('Beschränke die Produktauswahl auf diese Shopkategorie', 'eab'); ?>: </label>
+	    	<label for="eab_event-payment-ppvp-category"><?php _e('Limit Products selection to this Product Category', Eab_EventsHub::TEXT_DOMAIN); ?>: </label>
 	    	<?php if (!empty($categories)) { ?>
 	    	<select name="eab_event-payment-ppvp-category" id="eab_event-payment-ppvp-category">
 	    		<option value=""></option>
@@ -119,9 +117,9 @@ class Eab_Payments_PaymentViaProducts {
 	    	<?php } ?>
 	    	</select>
 	    	<?php } else { ?>
-	    		<em><?php _e('Keine Shopkategorien', 'eab'); ?></em>
+	    		<em><?php _e('No Product Categories', Eab_EventsHub::TEXT_DOMAIN); ?></em>
 	    	<?php } ?>
-			<span><?php echo $tips->add_tip(__('Verwende diese Einstellung, um den Umfang Deiner Artikel einzuschränken, die als Ereigniszahlungen verwendet werden können.', 'eab')); ?></span>
+			<span><?php echo $tips->add_tip(__('Use this setting to limit the scope of your Products that can be used as Events payments.', Eab_EventsHub::TEXT_DOMAIN)); ?></span>
 	    </div>
 	</div>
 </div>

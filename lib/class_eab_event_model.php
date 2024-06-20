@@ -1,6 +1,6 @@
 <?php
 
-abstract class PSource_DatedItem {
+abstract class WpmuDev_DatedItem {
 
 	/**
 	 * Packs event start dates as an array of (string)MySQL dates.
@@ -75,7 +75,7 @@ abstract class PSource_DatedItem {
 }
 
 
-abstract class PSource_RecurringDatedItem extends PSource_DatedItem {
+abstract class WpmuDev_RecurringDatedItem extends WpmuDev_DatedItem {
 
 	const RECURRANCE_DAILY = 'daily';
 	const RECURRANCE_WEEKLY = 'weekly';
@@ -118,7 +118,7 @@ abstract class PSource_RecurringDatedItem extends PSource_DatedItem {
 }
 
 
-abstract class PSource_DatedVenueItem extends PSource_RecurringDatedItem {
+abstract class WpmuDev_DatedVenueItem extends WpmuDev_RecurringDatedItem {
 
 	const VENUE_AS_ADDRESS = 'address';
 	const VENUE_AS_MAP = 'map';
@@ -258,7 +258,7 @@ abstract class PSource_DatedVenueItem extends PSource_RecurringDatedItem {
 
 
 
-abstract class PSource_DatedVenuePremiumItem extends PSource_DatedVenueItem {
+abstract class WpmuDev_DatedVenuePremiumItem extends WpmuDev_DatedVenueItem {
 
 	/**
 	 * Does the event require payment?
@@ -278,7 +278,7 @@ abstract class PSource_DatedVenuePremiumItem extends PSource_DatedVenueItem {
 }
 
 
-abstract class PSource_DatedVenuePremiumModel extends PSource_DatedVenuePremiumItem {
+abstract class WpmuDev_DatedVenuePremiumModel extends WpmuDev_DatedVenuePremiumItem {
 
 	const POST_STATUS_TRASH = 'trash';
 
@@ -295,9 +295,9 @@ abstract class PSource_DatedVenuePremiumModel extends PSource_DatedVenuePremiumI
 
 
 
-class Eab_EventModel extends PSource_DatedVenuePremiumModel {
+class Eab_EventModel extends WpmuDev_DatedVenuePremiumModel {
 
-	const POST_TYPE = 'psource_event';
+	const POST_TYPE = 'incsub_event';
 
 	const STATUS_OPEN = 'open';
 	const STATUS_CLOSED = 'closed';
@@ -442,7 +442,7 @@ class Eab_EventModel extends PSource_DatedVenuePremiumModel {
 	}
 
 	public function get_featured_image ($size=false) {
-		$size = $size ? $size : 'medium-large';
+		$size = $size ? $size : 'thumbnail';
 		return get_the_post_thumbnail($this->get_id(), $size);
 	}
 
@@ -459,7 +459,7 @@ class Eab_EventModel extends PSource_DatedVenuePremiumModel {
 
 	public function has_no_start_time ($key=0) {
 		if (empty($this->_no_start_dates) && !is_array($this->_no_start_dates)) {
-			$raw = get_post_meta($this->get_id(), 'psource_event_no_start');
+			$raw = get_post_meta($this->get_id(), 'incsub_event_no_start');
 			$raw = is_array($raw) ? $raw : array();
 			$this->_no_start_dates = $raw;
 		}
@@ -468,7 +468,7 @@ class Eab_EventModel extends PSource_DatedVenuePremiumModel {
 
 	public function has_no_end_time ($key=0) {
 		if (empty($this->_no_end_dates) && !is_array($this->_no_end_dates)) {
-			$raw = get_post_meta($this->get_id(), 'psource_event_no_end');
+			$raw = get_post_meta($this->get_id(), 'incsub_event_no_end');
 			$raw = is_array($raw) ? $raw : array();
 			$this->_no_end_dates = $raw;
 		}
@@ -481,7 +481,7 @@ class Eab_EventModel extends PSource_DatedVenuePremiumModel {
 	 */
 	public function get_start_dates () {
 		if ($this->_start_dates) return $this->_start_dates;
-		$this->_start_dates = get_post_meta($this->get_id(), 'psource_event_start');
+		$this->_start_dates = get_post_meta($this->get_id(), 'incsub_event_start');
 		return $this->_start_dates;
 	}
 
@@ -491,7 +491,7 @@ class Eab_EventModel extends PSource_DatedVenuePremiumModel {
 	 */
 	public function get_end_dates () {
 		if ($this->_end_dates) return $this->_end_dates;
-		$this->_end_dates = get_post_meta($this->get_id(), 'psource_event_end');
+		$this->_end_dates = get_post_meta($this->get_id(), 'incsub_event_end');
 		return $this->_end_dates;
 	}
 
@@ -500,12 +500,12 @@ class Eab_EventModel extends PSource_DatedVenuePremiumModel {
 
 	public function get_supported_recurrence_intervals () {
 		return array (
-			self::RECURRANCE_DAILY => __('Tag', 'eab'),
-			self::RECURRANCE_WEEKLY => __('Woche', 'eab'),
-			self::RECURRANCE_WEEK_COUNT => __('Wochenanzahl', 'eab'),
-			self::RECURRANCE_DOW => __('Wochentag', 'eab'),
-			self::RECURRANCE_MONTHLY => __('Monat', 'eab'),
-			self::RECURRANCE_YEARLY => __('Jahr', 'eab'),
+			self::RECURRANCE_DAILY => __('Day', Eab_EventsHub::TEXT_DOMAIN),
+			self::RECURRANCE_WEEKLY => __('Week', Eab_EventsHub::TEXT_DOMAIN),
+			self::RECURRANCE_WEEK_COUNT => __('Week Count', Eab_EventsHub::TEXT_DOMAIN),
+			self::RECURRANCE_DOW => __('Day of the Week', Eab_EventsHub::TEXT_DOMAIN),
+			self::RECURRANCE_MONTHLY => __('Month', Eab_EventsHub::TEXT_DOMAIN),
+			self::RECURRANCE_YEARLY => __('Year', Eab_EventsHub::TEXT_DOMAIN),
 		);
 	}
 
@@ -574,16 +574,16 @@ class Eab_EventModel extends PSource_DatedVenuePremiumModel {
 
 		$check_start = $start && checkdate((int)date('n', $start), (int)date('j', $start), (int)date('Y', $start));
 		if (!$check_start) do_action('eab-debug-log_error', sprintf(
-			__('Ungültiger Zeitstempel der Intervallstartgrenze: [%s]', 'eab'),
+			__('Invalid interval start boundary timestamp: [%s]', Eab_EventsHub::TEXT_DOMAIN),
 			$check_start
 		));
 		$check_end = $end && checkdate((int)date('n', $end), (int)date('j', $end), (int)date('Y', $end));
 		if (!$check_end) do_action('eab-debug-log_error', sprintf(
-			__('Ungültiger Zeitstempel für die Endgrenze des Intervalls: [%s]', 'eab'),
+			__('Invalid interval end boundary timestamp: [%s]', Eab_EventsHub::TEXT_DOMAIN),
 			$check_end
 		));
 		if ($end < $start) do_action('eab-debug-log_error', sprintf(
-			__('Ungültige Endgrenze nach Start: [%s] - [%s]', 'eab'),
+			__('Invalid end boundary after start: [%s] - [%s]', Eab_EventsHub::TEXT_DOMAIN),
 			$start, $end
 		));
 
@@ -632,13 +632,13 @@ class Eab_EventModel extends PSource_DatedVenuePremiumModel {
 					do_action('eab-events-recurrent_event_child-assigned_taxonomies', $post_id, $event_cats);
 				}
 
-				update_post_meta($post_id, 'psource_event_start', date("Y-m-d H:i:s", $instance));
-				update_post_meta($post_id, 'psource_event_end', date("Y-m-d H:i:s", $instance + $duration ));
-				update_post_meta($post_id, 'psource_event_venue', $venue);
-				update_post_meta($post_id, 'psource_event_status', self::STATUS_OPEN);
+				update_post_meta($post_id, 'incsub_event_start', date("Y-m-d H:i:s", $instance));
+				update_post_meta($post_id, 'incsub_event_end', date("Y-m-d H:i:s", $instance + $duration ));
+				update_post_meta($post_id, 'incsub_event_venue', $venue);
+				update_post_meta($post_id, 'incsub_event_status', self::STATUS_OPEN);
 				if ($this->is_premium()) {
-					update_post_meta($post_id, 'psource_event_paid', 1);
-					update_post_meta($post_id, 'psource_event_fee', $this->get_price());
+					update_post_meta($post_id, 'incsub_event_paid', 1);
+					update_post_meta($post_id, 'incsub_event_fee', $this->get_price());
 				}
 				if (!empty($featured_image_id)) {
 					update_post_meta($post_id, '_thumbnail_id', $featured_image_id);
@@ -688,7 +688,7 @@ class Eab_EventModel extends PSource_DatedVenuePremiumModel {
 				$unix_timestamp = strtotime($timestamp);
 				$check = $unix_timestamp >= $start && checkdate((int)date('n', $unix_timestamp), (int)date('j', $unix_timestamp), (int)date('Y', $unix_timestamp));
 				if (!$unix_timestamp || !$check) do_action('eab-debug-log_error', sprintf(
-					__('Ungültiger %s-Instanzzeitstempel: [%s]', 'eab'),
+					__('Invalid %s instance timestamp: [%s]', Eab_EventsHub::TEXT_DOMAIN),
 					$interval,
 					$timestamp
 				));
@@ -700,9 +700,9 @@ class Eab_EventModel extends PSource_DatedVenuePremiumModel {
 			$time_parts['weekday'] = is_array($time_parts['weekday']) ? $time_parts['weekday'] : array();
 			for ($i = 0; $i<=6; $i++) {
 				if (!in_array($i, $time_parts['weekday'])) continue;
-				$sunday = strtotime("diesen Sonntag", $start) < $start
-					? strtotime("diesen Sonntag", $start)
-					: strtotime("letzten Sonntag", $start)
+				$sunday = strtotime("this Sunday", $start) < $start
+					? strtotime("this Sunday", $start)
+					: strtotime("last Sunday", $start)
 				;
 				$to_day = $i * 86400;
 				$begin = $sunday + $to_day;
@@ -712,7 +712,7 @@ class Eab_EventModel extends PSource_DatedVenuePremiumModel {
 					$unix_timestamp = strtotime($timestamp);
 					$check = $unix_timestamp >= $start && checkdate((int)date('n', $unix_timestamp), (int)date('j', $unix_timestamp), (int)date('Y', $unix_timestamp));
 					if (!$unix_timestamp || !$check) do_action('eab-debug-log_error', sprintf(
-						__('Ungültiger %s-Instanzzeitstempel: [%s]', 'eab'),
+						__('Invalid %s instance timestamp: [%s]', Eab_EventsHub::TEXT_DOMAIN),
 						$interval,
 						$timestamp
 					));
@@ -722,7 +722,7 @@ class Eab_EventModel extends PSource_DatedVenuePremiumModel {
 		}
 		if (self::RECURRANCE_DOW == $interval) {
 			$week_count = !empty($time_parts["week"]) ? $time_parts["week"] : 'first';
-			$weekday = !empty($time_parts["weekday"]) ? $time_parts["weekday"] : 'Montag';
+			$weekday = !empty($time_parts["weekday"]) ? $time_parts["weekday"] : 'Monday';
 
 			$month_days = date('t', $start)*86400;
 
@@ -732,20 +732,20 @@ class Eab_EventModel extends PSource_DatedVenuePremiumModel {
 
 				// PHP 5.3+ - strtotime has "of", we're good.
 				// This is because of https://bugs.php.net/bug.php?id=53778
-				$day = strtotime("{$week_count} {$weekday} dieses Monats {$time_parts['time']}", $first);
+				$day = strtotime("{$week_count} {$weekday} of this month {$time_parts['time']}", $first);
 
 				// "Fifth" test for supporting implementations
 				if ($day && "fifth" === strtolower($week_count)) {
 					// Special case, as not all months have this.
-					$last = strtotime("last {$weekday} dieses Monats {$time_parts['time']}", $first);
-					$fourth = strtotime("fourth {$weekday} dieses Monats {$time_parts['time']}", $first);
+					$last = strtotime("last {$weekday} of this month {$time_parts['time']}", $first);
+					$fourth = strtotime("fourth {$weekday} of this month {$time_parts['time']}", $first);
 					if ($fourth === $last) continue; // This month doesn't have five $weekdays, so keep on going
 					else if ($last > $fourth) $day = $last; // Oooh, but here we have a fifth occurance, go with that
 				}
 
 				if (!$day) {
 					// No "of", meaning we're in pre-PHPv5.3 and the bug kicks in - so, we're left with non-timestamp
-					$day = strtotime("{$week_count} {$weekday} diesen Monat {$time_parts['time']}", $first); // Get a bugged timestamp in pre-PHP5.3 compatible way
+					$day = strtotime("{$week_count} {$weekday} this month {$time_parts['time']}", $first); // Get a bugged timestamp in pre-PHP5.3 compatible way
 					// Now that we have a timestamp possibly affected pre-v5.3 bug, check the other conditions:
 					// (1) are we explicitly told to fix the bug?
 					// (1) is the first day of month actually the day of month we're after, and
@@ -768,7 +768,7 @@ class Eab_EventModel extends PSource_DatedVenuePremiumModel {
 						) {
 							// First up, log this for support purposes
 							do_action('eab-debug-log_error', sprintf(
-								__('Möglicher DOW-Präzisionsfehler erkannt, %s überschreibt mit %s für Ausdruck [%s %s diesen Monat], für %s Pivot', 'eab'),
+								__('Possible DOW precision bug detected, overriding %s with %s for expression [%s %s this month], for %s pivot', Eab_EventsHub::TEXT_DOMAIN),
 								$day, $this_day_week_before, // timestamps
 								$week_count, $weekday, // expression
 								$first // pivot
@@ -779,7 +779,7 @@ class Eab_EventModel extends PSource_DatedVenuePremiumModel {
 				}
 
 				if (!$day) do_action('eab-debug-log_error', sprintf(
-					__('Ungültiger %s-Instanzzeitstempel: [%s %s für %s]', 'eab'),
+					__('Invalid %s instance timestamp: [%s %s for %s]', Eab_EventsHub::TEXT_DOMAIN),
 					$interval,
 					$week_count, $weekday, $first
 				));
@@ -790,7 +790,7 @@ class Eab_EventModel extends PSource_DatedVenuePremiumModel {
 
 		if (self::RECURRANCE_WEEK_COUNT == $interval) {
 			$week_count = !empty($time_parts["week"]) && is_numeric($time_parts["week"]) ? (int)$time_parts["week"] : '1';
-			$weekday = !empty($time_parts["weekday"]) ? $time_parts["weekday"] : 'Montag';
+			$weekday = !empty($time_parts["weekday"]) ? $time_parts["weekday"] : 'Monday';
 
 			$interval_days = $week_count * 7 * 86400;
 
@@ -812,7 +812,7 @@ class Eab_EventModel extends PSource_DatedVenuePremiumModel {
 					continue;
 
 				if (!$unix_timestamp || !$check) do_action('eab-debug-log_error', sprintf(
-					__('Ungültiger %s-Instanzzeitstempel: [%s]', 'eab'),
+					__('Invalid %s instance timestamp: [%s]', Eab_EventsHub::TEXT_DOMAIN),
 					$interval,
 					$timestamp
 				));
@@ -828,7 +828,7 @@ class Eab_EventModel extends PSource_DatedVenuePremiumModel {
 				$unix_timestamp = strtotime($timestamp);
 				$check = $unix_timestamp >= $start && checkdate((int)date('n', $unix_timestamp), (int)date('j', $unix_timestamp), (int)date('Y', $unix_timestamp));
 				if (!$unix_timestamp || !$check) do_action('eab-debug-log_error', sprintf(
-					__('Ungültiger %s-Instanzzeitstempel: [%s]', 'eab'),
+					__('Invalid %s instance timestamp: [%s]', Eab_EventsHub::TEXT_DOMAIN),
 					$interval,
 					$timestamp
 				));
@@ -848,7 +848,7 @@ class Eab_EventModel extends PSource_DatedVenuePremiumModel {
 	 */
 	public function get_venue () {
 		if ($this->_venue) return $this->_venue;
-		$this->_venue = get_post_meta($this->get_id(), 'psource_event_venue', true);
+		$this->_venue = get_post_meta($this->get_id(), 'incsub_event_venue', true);
 		return $this->_venue;
 	}
 
@@ -861,7 +861,7 @@ class Eab_EventModel extends PSource_DatedVenuePremiumModel {
 	 */
 	public function get_price () {
 		if ($this->_price) return apply_filters('eab-payment-event_price', $this->_price, $this->get_id());
-		$this->_price = get_post_meta($this->get_id(), 'psource_event_fee', true);
+		$this->_price = get_post_meta($this->get_id(), 'incsub_event_fee', true);
 		return apply_filters('eab-payment-event_price', $this->_price, $this->get_id());
 	}
 
@@ -911,7 +911,7 @@ class Eab_EventModel extends PSource_DatedVenuePremiumModel {
 	 */
 	public function get_status () {
 		if ($this->_status) return $this->_status;
-		$this->_status = get_post_meta($this->get_id(), 'psource_event_status', true);
+		$this->_status = get_post_meta($this->get_id(), 'incsub_event_status', true);
 		return $this->_status;
 	}
 
@@ -922,7 +922,7 @@ class Eab_EventModel extends PSource_DatedVenuePremiumModel {
 	 */
 	public function set_status ($status) {
 		$this->_status = $status;
-		update_post_meta($this->get_id(), 'psource_event_status', $status);
+		update_post_meta($this->get_id(), 'incsub_event_status', $status);
 		return $this->_status;
 	}
 

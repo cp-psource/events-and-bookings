@@ -43,7 +43,7 @@ class Eab_Ajax {
 		$blog_id = (int)$request['blog_id'];
 
 		if (is_multisite()) switch_to_blog($blog_id);
-		$eab_options = get_option('psource_event_default');
+		$eab_options = get_option('incsub_event_default');
 
 		$header = "";
 		// post back to PayPal system to validate
@@ -88,7 +88,7 @@ class Eab_Ajax {
 			exit(0);
 		}
 
-		if ($amount != $ticket_count * apply_filters('eab-payment-event_price-for_user', get_post_meta($event_id, 'psource_event_fee', true), $event_id, $booking_obj->user_id)) {
+		if ($amount != $ticket_count * apply_filters('eab-payment-event_price-for_user', get_post_meta($event_id, 'incsub_event_fee', true), $event_id, $booking_obj->user_id)) {
 			header('HTTP/1.0 400 Bad Request');
 			header('Content-type: text/plain; charset=UTF-8');
 			print 'We were not expecting you. REF: PP2';

@@ -1,15 +1,15 @@
 <?php
 /*
-Plugin Name: Ereignisse des Vormonats verfallen
-Description: Standardmäßig werden Deine vergangenen Ereignisse archiviert. Wenn Du dieses Add-On aktivierst, laufen Deine monatelangen archivierten Ereignisse sofort ab.
-Plugin URI: https://cp-psource.github.io/ps-events/
-Version: 1.1
-Author: DerN3rd
+Plugin Name: Expire last month events
+Description: By default, your past events will be archived. Activating this add-on will immediately expire your month-old archived events.
+Plugin URI: http://premium.wpmudev.org/project/events-and-booking
+Version: 1.0
+Author: PSOURCE
 AddonType: Events
 */
 
 /*
-Detail: Deine <em>archivierten</em> Ereignisse werden in Archiven angezeigt, Besucher können jedoch nicht antworten. <br /><em>Abgelaufene</em> Ereignisse werden aus Ihren Archiven entfernt.
+Detail: Your <em>archived</em> events will be shown in archives, but visitors won't be able to RSVP. <br /> <em>Expired</em> events are removed from your archives.
 */
 
 class Eab_Events_ExpireMonthOldEvents {
@@ -30,7 +30,7 @@ class Eab_Events_ExpireMonthOldEvents {
 		if (!class_exists('Eab_Events_ExpirePastEvents')) return false;
 		if (defined('EAB_EXPIRY_CLASS_NAG_RENDERED')) return false;
 		echo '<div class="error"><p>' .
-			__("<b>Konfliktwarnung:</b> Du musst eines der Add-Ons für den Ablauf vergangener Ereignisse deaktivieren.", 'eab') .
+			__("<b>Conflict warning:</b> You'll need to turn off one of the past events expiry add-ons.", Eab_EventsHub::TEXT_DOMAIN) .
 		'</p></div>';
 		define('EAB_EXPIRY_CLASS_NAG_RENDERED', true);
 	}
@@ -59,16 +59,16 @@ class Eab_LastMonthArchivedCollection extends Eab_TimedCollection {
 		$args = array_merge(
 			$args,
 			array(
-			 	'post_type' => 'psource_event',
+			 	'post_type' => 'incsub_event',
 				'suppress_filters' => false, 
 				'posts_per_page' => EAB_OLD_EVENTS_EXPIRY_LIMIT,
 				'meta_query' => array(
 					array(
-		    			'key' => 'psource_event_status',
+		    			'key' => 'incsub_event_status',
 		    			'value' => Eab_EventModel::STATUS_ARCHIVED,
 					),
 					array(
-		    			'key' => 'psource_event_end',
+		    			'key' => 'incsub_event_end',
 		    			'value' => date("Y-m-01 00:00:01", $time),
 		    			'compare' => '<',
 		    			'type' => 'DATETIME'

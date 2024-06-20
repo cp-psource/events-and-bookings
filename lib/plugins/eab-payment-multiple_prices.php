@@ -25,7 +25,7 @@ class Eab_Payment_MultiplePrices {
 		
 		add_filter('eab-event_meta-event_price', array($this, 'get_event_price_metabox'), 10, 2); // Event meta
 		add_filter('eab-event_meta-event_meta_box-after', array($this, 'get_event_price_metabox_template'), 10, 2); // Event meta template
-		add_action('psource_event_save_payments_meta', array($this, 'save_event_meta_tiers'));
+		add_action('incsub_event_save_payments_meta', array($this, 'save_event_meta_tiers'));
 	}
 
 // ----- Metabox editing -----
@@ -89,16 +89,16 @@ EOJs;
 		$fee = (float)$fee ? (float)$fee : '';
 		$key = "fee-" . uniqid();
 		return '<div class="eab-payment-multiple_prices-tier">' .
-			'<input type="text" size="8" name="psource_event_price_tier[' . $key . '][label]" value="' . esc_attr($label) . '" placeholder="Tier name" />' .
+			'<input type="text" size="8" name="incsub_event_price_tier[' . $key . '][label]" value="' . esc_attr($label) . '" placeholder="Tier name" />' .
 			'&nbsp;' .
 			$this->_data->get_option("currency") .
-			'<input type="text" size="4" name="psource_event_price_tier[' . $key . '][fee]" value="' . esc_attr($fee) . '" placeholder="0.00" />' .
-			' <a href="#remove-tier" class="eab-payment-multiple_prices-remove_tier">' . __('Entferne', 'eab') . '</a>' .
+			'<input type="text" size="4" name="incsub_event_price_tier[' . $key . '][fee]" value="' . esc_attr($fee) . '" placeholder="0.00" />' .
+			' <a href="#remove-tier" class="eab-payment-multiple_prices-remove_tier">' . __('Remove', Eab_EventsHub::TEXT_DOMAIN) . '</a>' .
 		'</div>';
 	}
 
 	private function _get_blank_tiers_meta_markup ($event) {
-		return '<br /><input type="button" id="eab-payment-multiple_prices-add_tier" value="' . esc_attr(__('Preisstufe hinzufügen', 'eab')) . '" />';
+		return '<br /><input type="button" id="eab-payment-multiple_prices-add_tier" value="' . esc_attr(__('Add pricing tier', Eab_EventsHub::TEXT_DOMAIN)) . '" />';
 	}
 
 	function get_event_price_metabox_template ($markup) {
@@ -111,15 +111,15 @@ EOJs;
 	}
 
 	function save_event_meta_tiers ($post_id) {
-		if (empty($_POST['psource_event_price_tier'])) return false;
+		if (empty($_POST['incsub_event_price_tier'])) return false;
 		$tiers = array();
-		foreach ($_POST['psource_event_price_tier'] as $tier) {
+		foreach ($_POST['incsub_event_price_tier'] as $tier) {
 			$tiers[] = array(
 				'label' => wp_strip_all_tags(stripslashes($tier['label'])),
 				'fee' => (float)$tier['fee'],
 			);
 		}
-		update_post_meta($post_id, 'psource_event_fee', $tiers);
+		update_post_meta($post_id, 'incsub_event_fee', $tiers);
 	}
 
 // ----- Front-end display
@@ -128,8 +128,7 @@ EOJs;
 	function get_event_prices ($price) {
 		if (is_admin()) return $price;
 		return is_array($price)
-			/*? join(', ', array_map(create_function('$arg', 'return $arg["label"] . ": " . $arg["fee"];'), $price))*/
-			? join(', ', array_map(function($arg) {return $arg["label"] . ": " . $arg["fee"];}, $price))
+			? join(', ', array_map(create_function('$arg', 'return $arg["label"] . ": " . $arg["fee"];'), $price))
 			: $price
 		;
 	}
@@ -158,22 +157,22 @@ EOJs;
 		$content .= '<input type="hidden" name="notify_url" value="' . 
 			admin_url('admin-ajax.php?action=eab_paypal_ipn&blog_id=' . $blog_id . '&booking_id=' . $booking_id) .
 		'" />';
-		$content .= '<br />' . __('Bitte wähle die Preisstufe', 'eab') . ' ' . $selection;
+		$content .= '<br />' . __('Please, select price tier', Eab_EventsHub::TEXT_DOMAIN) . ' ' . $selection;
 		$content .= '<input type="hidden" name="return" value="' . get_permalink($event->get_id()) . '" />';
 		$content .= '<input type="hidden" name="currency_code" value="' . $this->_data->get_option('currency') . '">';
 		$content .= '<input type="hidden" name="cmd" value="_xclick" />';
 		
 		// Add multiple tickets
 		$extra_attributes = apply_filters('eab-payment-paypal_tickets-extra_attributes', $extra_attributes, $event->get_id(), $booking_id);
-		$content .= '' .// '<a href="#buy-tickets" class="eab-buy_tickets-trigger" style="display:none">' . __('Buy tickets', 'eab') . '</a>' . 
+		$content .= '' .// '<a href="#buy-tickets" class="eab-buy_tickets-trigger" style="display:none">' . __('Buy tickets', Eab_EventsHub::TEXT_DOMAIN) . '</a>' . 
 			sprintf(
-				//'<p class="eab-buy_tickets-target">' . __('I want to buy %s ticket(s)', 'eab') . '</p>', 
-				'<p>' . __('Ich möchte %s Tickets kaufen.', 'eab') . '</p>', 
+				//'<p class="eab-buy_tickets-target">' . __('I want to buy %s ticket(s)', Eab_EventsHub::TEXT_DOMAIN) . '</p>', 
+				'<p>' . __('I want to buy %s ticket(s)', Eab_EventsHub::TEXT_DOMAIN) . '</p>', 
 				'<input type="number" size="2" name="quantity" value="1" min="1" ' . $extra_attributes . ' />'
 			)
 		;
 		
-		$content .= '<input type="image" name="submit" border="0" src="https://www.paypal.com/en_US/i/btn/btn_paynow_SM.gif" alt="PayPal - Die sicherere und einfachere Möglichkeit, online zu bezahlen" />';
+		$content .= '<input type="image" name="submit" border="0" src="https://www.paypal.com/en_US/i/btn/btn_paynow_SM.gif" alt="PayPal - The safer, easier way to pay online" />';
 		$content .= '<img alt="" border="0" width="1" height="1" src="https://www.paypal.com/en_US/i/scr/pixel.gif" />';
 		$content .= '</form>';
 		return $content;

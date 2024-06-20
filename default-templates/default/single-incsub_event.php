@@ -6,16 +6,16 @@ get_header( );
 ?>
 	<div id="primary">
 		<div id="content" role="main">
-            <div class="event <?php echo Eab_Template::get_status_class($post); ?>" id="psourceevents-wrapper">
-		<div id="psourceents-single">
+            <div class="event <?php echo Eab_Template::get_status_class($post); ?>" id="wpmudevevents-wrapper">
+		<div id="wpmudevents-single">
                 
                     <?php
                     the_post();
                     
-                    $start_day = date_i18n('m', strtotime(get_post_meta($post->ID, 'psource_event_start', true)));
+                    $start_day = date_i18n('m', strtotime(get_post_meta($post->ID, 'incsub_event_start', true)));
                     ?>
                     
-                    <div class="psourceevents-header">
+                    <div class="wpmudevevents-header">
                         <h2><?php echo $event->get_title(); ?></h2>
                         <div class="eab-needtomove"><div id="event-bread-crumbs" ><?php echo Eab_Template::get_breadcrumbs($event); ?></div></div>
                         <?php
@@ -28,33 +28,33 @@ get_header( );
                     <?php
                     
                     if ($event->is_premium() && $event->user_is_coming() && !$event->user_paid()) { ?>
-		    <div id="psourceevents-payment">
-			<?php _e('Du hast für diese Veranstaltung nicht bezahlt', 'eab'); ?>
+		    <div id="wpmudevevents-payment">
+			<?php _e('You haven\'t paid for this event', Eab_EventsHub::TEXT_DOMAIN); ?>
                         <?php echo Eab_Template::get_payment_forms($post); ?>
 		    </div>
                     <?php } ?>
                     
                     <?php echo Eab_Template::get_error_notice(); ?>
                     
-                    <div class="psourceevents-content">
-			<div id="psourceevents-contentheader">
-                            <h3><?php _e('Über diese Veranstaltung:', 'eab'); ?></h3>
+                    <div class="wpmudevevents-content">
+			<div id="wpmudevevents-contentheader">
+                            <h3><?php _e('About this event:', Eab_EventsHub::TEXT_DOMAIN); ?></h3>
                             
-			    <div id="psourceevents-user"><?php _e('Erstellt von ', 'eab'); ?><?php the_author_link();?></div>
+			    <div id="wpmudevevents-user"><?php _e('Created by ', Eab_EventsHub::TEXT_DOMAIN); ?><?php the_author_link();?></div>
 			</div>
                         
                         <hr />
-			<div class="psourceevents-contentmeta">
+			<div class="wpmudevevents-contentmeta">
                             <?php echo Eab_Template::get_event_details($post); //event_details(); ?>
 			</div>
-			<div id="psourceevents-contentbody">
+			<div id="wpmudevevents-contentbody">
 			    <?php 
 			    	add_filter('agm_google_maps-options', 'eab_autoshow_map_off', 99);
 			    	the_content(); 
 					remove_filter('agm_google_maps-options', 'eab_autoshow_map_off');
 			    ?>
 			    <?php if ($event->has_venue_map()) { ?>
-			    	<div class="psourceevents-map"><?php echo $event->get_venue_location(Eab_EventModel::VENUE_AS_MAP); ?></div>
+			    	<div class="wpmudevevents-map"><?php echo $event->get_venue_location(Eab_EventModel::VENUE_AS_MAP); ?></div>
 			    <?php } ?>
                         </div>
                         <?php comments_template( '', true ); ?>
