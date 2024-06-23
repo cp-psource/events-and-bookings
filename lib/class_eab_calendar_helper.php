@@ -484,10 +484,10 @@ class Eab_CalendarTable_EventArchiveCalendar extends Eab_CalendarTable {
 $(function () {
 // Info popups
 $(".wpmudevevents-calendar-event")
-	.mouseenter(function () {
+	.on('mouseenter', function () {
 		$(this).find(".wpmudevevents-calendar-event-info").show();
 	})
-	.mouseleave(function () {
+	.on('mouseleave', function () {
 		$(this).find(".wpmudevevents-calendar-event-info").hide();
 	})
 ;
@@ -527,6 +527,8 @@ EabEctEacJs;
 
 
 class Eab_CalendarTable_EventShortcodeCalendar extends Eab_CalendarTable_EventArchiveCalendar {
+
+	public $start_of_week;
 
 	protected $_class;
 	protected $_use_footer = false;

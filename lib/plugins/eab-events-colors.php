@@ -57,7 +57,7 @@ class Eab_Events_Colors {
                     eab_widget_colors_update($);
                 }
             );
-            jQuery(document).bind('eab-cuw-render_complete', function () {
+            jQuery(document).on('eab-cuw-render_complete', function () {
                     eab_widget_colors_update(jQuery);
                 }
             );

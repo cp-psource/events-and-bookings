@@ -1,7 +1,7 @@
 (function ($) {
 
 $(function () {
-	$(document).bind('eab-cuw-render_complete', function () {
+	$(document).on('eab-cuw-render_complete', function () {
 		$("table.eab-upcoming_calendar_widget").each(function () {
 			var $tbl = $(this);
 			$tbl.find("tbody a:not(.eab-upcoming_calendar_widget-navigation-link)").on('click', function () {
