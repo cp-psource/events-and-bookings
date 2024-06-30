@@ -1,15 +1,16 @@
 <?php
 /*
 Plugin Name: Events +
-Plugin URI: https://cp-psource.github.io/ps-events/
+Plugin URI: https://cp-psource.github.io/events-and-bookings/
 Description: Events gives you a flexible WordPress-based system for organizing parties, dinners, fundraisers - you name it.
 Author: PSOURCE
 Text Domain: eab
 Domain Path: languages
-Version: 1.9.9
+Version: 1.4.3
+Requires at least: 4.6
+Tested up to: 5.7
 Author URI: https://github.com/cp-psource
 */
-
 /**
  * @@@@@@@@@@@@@@@@@ PS UPDATER 1.3 @@@@@@@@@@@
  **/
@@ -23,8 +24,7 @@ $myUpdateChecker = PucFactory::buildUpdateChecker(
 );
  
 //Set the branch that contains the stable release.
-$myUpdateChecker->setBranch('main');
-
+$myUpdateChecker->setBranch('master');
 /**
  * @@@@@@@@@@@@@@@@@ ENDE PS UPDATER 1.3 @@@@@@@@@@@
  **/
@@ -35,6 +35,7 @@ $myUpdateChecker->setBranch('main');
  * Allow your readers to register for events you organize
  *
  * @since 1.0.0
+ * @author DerN3rd 
  */
 class Eab_EventsHub {
 
@@ -43,7 +44,7 @@ class Eab_EventsHub {
 	 * @TODO Update version number for new releases
      * @var	string
      */
-    const CURRENT_VERSION 		= '1.9.9';
+    const CURRENT_VERSION 		= '1.4.3';
 
     /**
      * Translation domain
@@ -113,7 +114,7 @@ class Eab_EventsHub {
 		 */
 		add_filter( 'post_row_actions', array( $this, 'manage_post_actions' ), 10, 2 );
 
-		add_action( 'add_meta_boxes_incsub_event', array ($this, 'meta_boxes' ) );
+		add_action( 'add_meta_boxes_psource_event', array ($this, 'meta_boxes' ) );
 		add_action( 'wp_insert_post', array( $this, 'save_event_meta' ), 10, 2 );
 
 		add_action( 'widgets_init', array( $this, 'widgets_init' ) );
@@ -129,7 +130,7 @@ class Eab_EventsHub {
 		add_filter( 'query_vars', array( $this, 'query_vars' ) );
 		add_filter( 'cron_schedules', array( $this, 'cron_schedules' ) );
 
-		add_filter( 'views_edit-incsub_event', array( $this, 'views_list' ) );
+		add_filter( 'views_edit-psource_event', array( $this, 'views_list' ) );
 		add_filter( 'agm_google_maps-post_meta-address', array( $this, 'agm_google_maps_post_meta_address' ) );
 		add_filter( 'agm_google_maps-options', array( $this, 'agm_google_maps_options' ) );
 
@@ -241,15 +242,15 @@ class Eab_EventsHub {
 	    $taxonomies = new Eab_Taxonomies();
 	    $taxonomies->register();
 
-		$event_structure = '/' . $this->_data->get_option( 'slug' ). '/%event_year%/%event_monthnum%/%incsub_event%';
+		$event_structure = '/' . $this->_data->get_option( 'slug' ). '/%event_year%/%event_monthnum%/%psource_event%';
 
-		$wp_rewrite->add_rewrite_tag( "%incsub_event%", '(.+?)', "incsub_event=" );
+		$wp_rewrite->add_rewrite_tag( "%psource_event%", '(.+?)', "psource_event=" );
 		$wp_rewrite->add_rewrite_tag( "%event_year%", '([0-9]{4})', "event_year=" );
 		$wp_rewrite->add_rewrite_tag( "%event_monthnum%", '([0-9]{2})', "event_monthnum=" );
-	    //add_rewrite_rule( $this->_data->get_option('slug') . '/[0-9]{4}/[0-9]{2}/.+?/comment-page-([0-9]{1,})/?$', 'index.php?post_type=incsub_event&cpage=$matches[1]', 'top' );
-        add_rewrite_rule( $this->_data->get_option('slug') . '/[0-9]{4}/[0-9]{2}/(.+)?/comment-page-([0-9]{1,})/?$', 'index.php?incsub_event=$matches[1]&cpage=$matches[2]', 'top' );
+	    //add_rewrite_rule( $this->_data->get_option('slug') . '/[0-9]{4}/[0-9]{2}/.+?/comment-page-([0-9]{1,})/?$', 'index.php?post_type=psource_event&cpage=$matches[1]', 'top' );
+        add_rewrite_rule( $this->_data->get_option('slug') . '/[0-9]{4}/[0-9]{2}/(.+)?/comment-page-([0-9]{1,})/?$', 'index.php?psource_event=$matches[1]&cpage=$matches[2]', 'top' );
 
-		$wp_rewrite->add_permastruct( 'incsub_event', $event_structure, false );
+		$wp_rewrite->add_permastruct( 'psource_event', $event_structure, false );
 
 		//wp_register_script('eab_jquery_ui', plugins_url('events-and-bookings/js/jquery-ui.custom.min.js'), array('jquery'), self::CURRENT_VERSION);
 
@@ -291,11 +292,11 @@ class Eab_EventsHub {
 
 			$user_id = apply_filters( 'eab-rsvp-user_id', get_current_user_id(), $_POST['user_id'] );
 
-		    do_action( 'incsub_event_booking', $event_id, $user_id, $booking_action );
+		    do_action( 'psource_event_booking', $event_id, $user_id, $booking_action );
 		    if ( isset( $_POST['action_yes'] ) ) {
                 $this->update_rsvp_per_event( $event_id, $user_id, 'yes' );
 				// --todo: Add to BP activity stream
-				do_action( 'incsub_event_booking_yes', $event_id, $user_id );
+				do_action( 'psource_event_booking_yes', $event_id, $user_id );
 				$this->recount_bookings( $event_id );
 				//wp_redirect('?eab_success_msg=' . Eab_Template::get_success_message_code(Eab_EventModel::BOOKING_YES));
 				wp_redirect(
@@ -309,7 +310,7 @@ class Eab_EventsHub {
 		    if ( isset( $_POST['action_maybe'] ) ) {
 				$this->update_rsvp_per_event( $event_id, $user_id, 'maybe' );
 				// --todo: Add to BP activity stream
-				do_action( 'incsub_event_booking_maybe', $event_id, $user_id );
+				do_action( 'psource_event_booking_maybe', $event_id, $user_id );
 				$this->recount_bookings( $event_id );
 				wp_redirect(
 					add_query_arg(
@@ -322,7 +323,7 @@ class Eab_EventsHub {
 		    if ( isset( $_POST['action_no'] ) ) {
 				$this->update_rsvp_per_event( $event_id, $user_id, 'no' );
 				// --todo: Remove from BP activity stream
-				do_action( 'incsub_event_booking_no', $event_id, $user_id );
+				do_action( 'psource_event_booking_no', $event_id, $user_id );
 				$this->recount_bookings( $event_id );
 				wp_redirect(
 					add_query_arg(
@@ -338,15 +339,15 @@ class Eab_EventsHub {
 
     function login_message( $message ) {
 		if ( isset( $_REQUEST['eab'] ) && $_REQUEST['eab'] == 'y' ) {
-		    $message = '<p class="message">' . __( "Excellent, few more steps! We need you to login or register to get you marked as coming!", self::TEXT_DOMAIN ) . '</p>';
+		    $message = '<p class="message">' . __( "Hervorragend, noch ein paar Schritte! Du musst Dich anmelden oder registrieren, damit Du als kommend markiert werden kannst!", self::TEXT_DOMAIN ) . '</p>';
 		}
 
 		if ( isset( $_REQUEST['eab'] ) && $_REQUEST['eab'] == 'm' ) {
-		    $message = '<p class="message">' . __( "Please login or register to help us let you know any changes about the event and record your response!", self::TEXT_DOMAIN ) . '</p>';
+		    $message = '<p class="message">' . __( "Bitte melde Dich an oder registriere Dich, um uns über Änderungen des Ereignisses zu informieren und Deine Antwort aufzuzeichnen!", self::TEXT_DOMAIN ) . '</p>';
 		}
 
 		if ( isset( $_REQUEST['eab'] ) && $_REQUEST['eab'] == 'n' ) {
-		    $message = '<p class="message">' . __( "That's too bad you won't be able to make it, if you login or register we will be able to record your response", self::TEXT_DOMAIN ) . '</p>';
+		    $message = '<p class="message">' . __( "Das ist schade, dass Du es nicht schaffen wirst. Wenn Du Dich anmeldest oder registrierst, können wir Deine Antwort aufzeichnen", self::TEXT_DOMAIN ) . '</p>';
 		}
 
 		return $message;
@@ -419,16 +420,16 @@ class Eab_EventsHub {
 
         // Yes
         $yes_count = $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(id) FROM $table_name WHERE `status` = 'yes' AND event_id = %d", $event_id ) );
-    	update_post_meta( $event_id, 'incsub_event_yes_count', $yes_count );
+    	update_post_meta( $event_id, 'psource_event_yes_count', $yes_count );
 
         // Maybe
         $maybe_count = $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(id) FROM $table_name WHERE `status` = 'maybe' AND event_id = %d", $event_id ) );
-   	 	update_post_meta( $event_id, 'incsub_event_maybe_count', $maybe_count );
-        update_post_meta( $event_id, 'incsub_event_attending_count', $maybe_count + $yes_count );
+   	 	update_post_meta( $event_id, 'psource_event_maybe_count', $maybe_count );
+        update_post_meta( $event_id, 'psource_event_attending_count', $maybe_count + $yes_count );
 
         // No
         $no_count = $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(id) FROM $table_name WHERE `status` = 'no' AND event_id = %d", $event_id ) );
-        update_post_meta( $event_id, 'incsub_event_no_count', $no_count );
+        update_post_meta( $event_id, 'psource_event_no_count', $no_count );
     }
 
 
@@ -436,12 +437,12 @@ class Eab_EventsHub {
     function agm_google_maps_post_meta_address($location) {
 		global $post;
 
-		if ( !$location && $post->post_type == 'incsub_event' ) {
+		if ( !$location && $post->post_type == 'psource_event' ) {
 		    $meta = get_post_custom( $post->ID );
 
 		    $venue = '';
-		    if ( isset( $meta["incsub_event_venue"] ) && isset( $meta["incsub_event_venue"][0] ) ) {
-				$venue = stripslashes( $meta["incsub_event_venue"][0] );
+		    if ( isset( $meta["psource_event_venue"] ) && isset( $meta["psource_event_venue"][0] ) ) {
+				$venue = stripslashes( $meta["psource_event_venue"][0] );
 				if ( preg_match_all( '/map id="([0-9]+)"/', $venue, $matches ) > 0 ) {
 				    if ( isset( $matches[1] ) && isset( $matches[1][0] ) ) {
 						$model 	= new AgmMapModel();
@@ -471,7 +472,7 @@ class Eab_EventsHub {
     function handle_archive_template( $path ) {
 		global $wp_query, $post;
 
-		if ( ! is_post_type_archive ( 'incsub_event' ) ) {
+		if ( ! is_post_type_archive ( 'psource_event' ) ) {
 			return $path;
 		}
 		    
@@ -499,12 +500,13 @@ class Eab_EventsHub {
 			$style 		= $style_path ? EAB_PLUGIN_URL . "default-templates/{$eab_type}/events.css" : $style;
 		}
 		if ( $style ) { 
-			add_action( 'wp_head', create_function('', "wp_enqueue_style('eab-events', '$style');" ) );
+			/*add_action( 'wp_head', create_function('', "wp_enqueue_style('eab-events', '$style');" ) );*/
+			add_action( 'wp_head', function($style) {wp_enqueue_style('eab-events', '$style');} );
 		}
 
 		if ( empty( $path ) || "$type.php" == $file ) {
 			if ( $eab_type && !$is_theme_tpl ) {
-				$path = EAB_PLUGIN_DIR . "default-templates/{$eab_type}/{$type}-incsub_event.php";
+				$path = EAB_PLUGIN_DIR . "default-templates/{$eab_type}/{$type}-psource_event.php";
 				if ( file_exists( $path ) ) { 
 					return $path; 
 				}
@@ -542,7 +544,7 @@ class Eab_EventsHub {
 
     function archive_content( $content ) {
 		global $post;
-		if ( 'incsub_event' != $post->post_type ) { 
+		if ( 'psource_event' != $post->post_type ) { 
 			return $content;
 		}
 		return Eab_Template::get_archive_content( $post );
@@ -555,7 +557,7 @@ class Eab_EventsHub {
 		    return $path;
 	    }
 
-		if ( 'incsub_event' != $post->post_type )
+		if ( 'psource_event' != $post->post_type )
 		    return $path;
 
 	    $type = explode( '_', current_filter() );
@@ -582,12 +584,13 @@ class Eab_EventsHub {
 			$style 		= $style_path ? EAB_PLUGIN_URL . "default-templates/{$eab_type}/events.css" : $style;
 		}
 		if ( $style ) { 
-			add_action( 'wp_head', create_function('', "wp_enqueue_style('eab-events', '$style');" ) );
+			/*add_action( 'wp_head', create_function('', "wp_enqueue_style('eab-events', '$style');" ) );*/
+			add_action( 'wp_head', function() {wp_enqueue_style('eab-events', '$style');} );
 		}
 
 		if ( empty( $path ) || "$type.php" == $file ) {
 			if ($eab_type && !$is_theme_tpl) {
-				$path = EAB_PLUGIN_DIR . "default-templates/{$eab_type}/{$type}-incsub_event.php";
+				$path = EAB_PLUGIN_DIR . "default-templates/{$eab_type}/{$type}-psource_event.php";
 				if ( file_exists( $path ) ) { 
 					return $path;
 				} else {
@@ -626,7 +629,7 @@ class Eab_EventsHub {
 
     function single_content( $content ) {
 		global $post;
-		if ('incsub_event' != $post->post_type) {
+		if ('psource_event' != $post->post_type) {
 			return $content;
 		}
 		return Eab_Template::get_single_content( $post, $content );
@@ -637,10 +640,10 @@ class Eab_EventsHub {
     function meta_boxes() {
 		global $post, $current_user;
 
-		add_meta_box( 'incsub-event', __( 'Event Details', self::TEXT_DOMAIN ), array( $this, 'event_meta_box' ), 'incsub_event', 'side', 'high' );
-		add_meta_box( 'incsub-event-bookings', __( "Event RSVPs", self::TEXT_DOMAIN ), array( $this, 'bookings_meta_box' ), 'incsub_event', 'normal', 'high' );
+		add_meta_box( 'psource-event', __( 'Veranstaltungsdetails', self::TEXT_DOMAIN ), array( $this, 'event_meta_box' ), 'psource_event', 'side', 'high' );
+		add_meta_box( 'psource-event-bookings', __( "Ereignis RSVPs", self::TEXT_DOMAIN ), array( $this, 'bookings_meta_box' ), 'psource_event', 'normal', 'high' );
 		if ( isset( $_REQUEST['eab_step'] ) ) {
-		    add_meta_box( 'incsub-event-wizard', __( 'Are you following the step by step guide?', self::TEXT_DOMAIN ), array( $this, 'wizard_meta_box' ), 'incsub_event', 'normal', 'low' );
+		    add_meta_box( 'psource-event-wizard', __( 'Folgen der Schritt-für-Schritt-Anleitung?', self::TEXT_DOMAIN ), array( $this, 'wizard_meta_box' ), 'psource_event', 'normal', 'low' );
 		}
 		do_action( 'eab-event_meta-meta_box_registration' );
     }
@@ -654,7 +657,7 @@ class Eab_EventsHub {
     function wp_print_styles() {
 		global $wp_query;
 
-		if ( ( isset( $wp_query->query_vars['post_type'] ) && $wp_query->query_vars['post_type'] == 'incsub_event' ) || is_tax( 'eab_events_category' ) ) {
+		if ( ( isset( $wp_query->query_vars['post_type'] ) && $wp_query->query_vars['post_type'] == 'psource_event' ) || is_tax( 'eab_events_category' ) ) {
 		    wp_enqueue_style( 'eab_front' );
 		}
     }
@@ -675,7 +678,7 @@ class Eab_EventsHub {
 		}
 		wp_add_inline_script( 'jquery-migrate', $script );
 
-		if ( isset( $wp_query->query_vars['post_type'] ) && $wp_query->query_vars['post_type'] == 'incsub_event' ) {
+		if ( isset( $wp_query->query_vars['post_type'] ) && $wp_query->query_vars['post_type'] == 'psource_event' ) {
 		    wp_enqueue_script( 'eab_event_js' );
 		    $this->_api->enqueue_api_scripts();
 			do_action( 'eab-javascript-enqueue_scripts' );
@@ -714,10 +717,10 @@ class Eab_EventsHub {
 
 		$content  = '';
 		$content .= '<div class="eab_meta_box">';
-		$content .= '<input type="hidden" name="incsub_event_where_meta" value="1" />';
+		$content .= '<input type="hidden" name="psource_event_where_meta" value="1" />';
 		$content .= '<div class="misc-eab-section" >';
-		$content .= '<div class="eab_meta_column_box top"><label for="incsub_event_venue" id="incsub_event_venue_label">'.__('Event location', self::TEXT_DOMAIN).'</label> <span id="eab_insert_map"></span></div>';
-		$content .= '<textarea class="widefat" type="text" name="incsub_event_venue" id="incsub_event_venue" size="20" >' . $event->get_venue() . '</textarea>';
+		$content .= '<div class="eab_meta_column_box top"><label for="psource_event_venue" id="psource_event_venue_label">'.__('Veranstaltungsort', self::TEXT_DOMAIN).'</label> <span id="eab_insert_map"></span></div>';
+		$content .= '<textarea class="widefat" type="text" name="psource_event_venue" id="psource_event_venue" size="20" >' . $event->get_venue() . '</textarea>';
 		$content .= '</div>';
 		$content .= '</div>';
 
@@ -730,9 +733,9 @@ class Eab_EventsHub {
 
 		$content = '';
 		$content .= '<div class="eab_meta_box">';
-		$content .= '<div class="eab_meta_column_box" id="incsub_event_times_label">'.__('Event times and dates', self::TEXT_DOMAIN).'</div>';
+		$content .= '<div class="eab_meta_column_box" id="psource_event_times_label">'.__('Veranstaltung Zeit und Datum', self::TEXT_DOMAIN).'</div>';
 
-		$content .= '<input type="hidden" name="incsub_event_when_meta" value="1" />';
+		$content .= '<input type="hidden" name="psource_event_when_meta" value="1" />';
 
 		$start_dates = $event->get_start_dates();
 
@@ -747,67 +750,67 @@ class Eab_EventsHub {
 					$no_end 	= $event->has_no_end_time( $key ) ? 'checked="checked"' : '';
 
 					$content .= '<div class="eab-section-block">';
-					$content .= '<div class="eab-section-heading">' . sprintf( __( 'Part %d', self::TEXT_DOMAIN ), $key+1 ) . '&nbsp' . '<a href="#remove" class="eab-event-remove_time">' . __('Remove', self::TEXT_DOMAIN) . '</a></div>';
-					$content .= '<div class="misc-eab-section eab-start-section"><label for="incsub_event_start_'.$key.'">';
-					$content .= sprintf( __('%sStart%s', self::TEXT_DOMAIN ), '<span>', '</span>' ).'</label>';
-					$content .= '<input type="text" name="incsub_event_start['.$key.']" id="incsub_event_start_'.$key.'" class="incsub_event_picker incsub_event incsub_event_date incsub_event_start" value="'.date('Y-m-d', $start).'" size="10" readonly/> ';
-					$content .= '<input type="text" name="incsub_event_start_time['.$key.']" id="incsub_event_start_time_'.$key.'" class="incsub_event incsub_event_time incsub_event_time_picker incsub_event_start_time" value="'.date('H:i', $start).'" size="3" style="position: relative; z-index:999;" readonly/>';
-					$content .= ' <input type="checkbox" name="incsub_event_no_start_time['.$key.']" id="incsub_event_no_start_time_'.$key.'" class="incsub_event incsub_event_time incsub_event_no_start_time" value="1" ' . $no_start . ' />';
-					$content .= ' <label for="incsub_event_no_start_time_'.$key.'">' . __( 'No start time', self::TEXT_DOMAIN ) . '</label>';
+					$content .= '<div class="eab-section-heading">' . sprintf( __( 'Teil %d', self::TEXT_DOMAIN ), $key+1 ) . '&nbsp' . '<a href="#remove" class="eab-event-remove_time">' . __('Entferne', self::TEXT_DOMAIN) . '</a></div>';
+					$content .= '<div class="misc-eab-section eab-start-section"><label for="psource_event_start_'.$key.'">';
+					$content .= sprintf( __('%sEvent beginnt%s', self::TEXT_DOMAIN ), '<span>', '</span>' ).'</label>';
+					$content .= '<input type="text" name="psource_event_start['.$key.']" id="psource_event_start_'.$key.'" class="psource_event_picker psource_event psource_event_date psource_event_start" value="'.date('Y-m-d', $start).'" size="10" readonly/> ';
+					$content .= '<input type="text" name="psource_event_start_time['.$key.']" id="psource_event_start_time_'.$key.'" class="psource_event psource_event_time psource_event_time_picker psource_event_start_time" value="'.date('H:i', $start).'" size="3" style="position: relative; z-index:999;" readonly/>';
+					$content .= ' <input type="checkbox" name="psource_event_no_start_time['.$key.']" id="psource_event_no_start_time_'.$key.'" class="psource_event psource_event_time psource_event_no_start_time" value="1" ' . $no_start . ' />';
+					$content .= ' <label for="psource_event_no_start_time_'.$key.'">' . __( 'Keine Startzeit', self::TEXT_DOMAIN ) . '</label>';
 					$content .= '</div>';
 
-					$content .= '<div class="misc-eab-section"><label for="incsub_event_end_'.$key.'">';
-					$content .= sprintf( __('%sEnd%s', self::TEXT_DOMAIN ), '<span>', '</span>' ).'</label>';
-					$content .= '<input type="text" name="incsub_event_end['.$key.']" id="incsub_event_end_'.$key.'" class="incsub_event_picker incsub_event incsub_event_date incsub_event_end" value="'.date('Y-m-d', $end).'" size="10" readonly/> ';
-					$content .= '<input type="text" name="incsub_event_end_time['.$key.']" id="incsub_event_end_time_'.$key.'" class="incsub_event incsub_event_time incsub_event_time_picker incsub_event_end_time" value="'.date('H:i', $end).'" size="3" style="position: relative; z-index:999;" readonly/>';
-					$content .= ' <input type="checkbox" name="incsub_event_no_end_time['.$key.']" id="incsub_event_no_end_time_'.$key.'" class="incsub_event incsub_event_time incsub_event_no_end_time" value="1" ' . $no_end . ' />';
-					$content .= ' <label for="incsub_event_no_end_time_'.$key.'">' . __( 'No end time', self::TEXT_DOMAIN ) . '</label>';
+					$content .= '<div class="misc-eab-section"><label for="psource_event_end_'.$key.'">';
+					$content .= sprintf( __('%sEvent endet%s', self::TEXT_DOMAIN ), '<span>', '</span>' ).'</label>';
+					$content .= '<input type="text" name="psource_event_end['.$key.']" id="psource_event_end_'.$key.'" class="psource_event_picker psource_event psource_event_date psource_event_end" value="'.date('Y-m-d', $end).'" size="10" readonly/> ';
+					$content .= '<input type="text" name="psource_event_end_time['.$key.']" id="psource_event_end_time_'.$key.'" class="psource_event psource_event_time psource_event_time_picker psource_event_end_time" value="'.date('H:i', $end).'" size="3" style="position: relative; z-index:999;" readonly/>';
+					$content .= ' <input type="checkbox" name="psource_event_no_end_time['.$key.']" id="psource_event_no_end_time_'.$key.'" class="psource_event psource_event_time psource_event_no_end_time" value="1" ' . $no_end . ' />';
+					$content .= ' <label for="psource_event_no_end_time_'.$key.'">' . __( 'Keine Endzeit', self::TEXT_DOMAIN ) . '</label>';
 					$content .= '</div>';
 					$content .= '</div>';
 			    }
 			} else {
 			    $i=0;
 			    $content .= '<div class="eab-section-block">';
-			    $content .= '<div class="eab-section-heading">' . sprintf(__( 'Part %d', self::TEXT_DOMAIN ), $i+1) . '&nbsp' . '<a href="#remove" class="eab-event-remove_time">' . __('Remove', self::TEXT_DOMAIN) . '</a></div>';
-			    $content .= '<div class="misc-eab-section eab-start-section"><label class="eab-inline-label" for="incsub_event_start_'.$i.'">';
-			    $content .= sprintf( __( '%sStart%s', self::TEXT_DOMAIN ), '<span>', '</span>' ).'</label>';
-			    $content .= '<input type="text" name="incsub_event_start['.$i.']" id="incsub_event_start_'.$i.'" class="incsub_event_picker incsub_event incsub_event_date incsub_event_start" value="" size="10" readonly/> ';
-			    $content .= '<input type="text" name="incsub_event_start_time['.$i.']" id="incsub_event_start_time_'.$i.'" class="incsub_event incsub_event_time incsub_event_time_picker incsub_event_start_time" value="" size="3" style="position: relative; z-index:999;" readonly/>';
-				$content .= ' <input type="checkbox" name="incsub_event_no_start_time['.$i.']" id="incsub_event_no_start_time_'.$i.'" class="incsub_event incsub_event_time incsub_event_no_start_time" value="1" />';
-				$content .= ' <label for="incsub_event_no_start_time_'.$i.'">' . __( 'No start time', self::TEXT_DOMAIN ) . '</label>';
+			    $content .= '<div class="eab-section-heading">' . sprintf(__( 'Teil %d', self::TEXT_DOMAIN ), $i+1) . '&nbsp' . '<a href="#remove" class="eab-event-remove_time">' . __('Entfernen', self::TEXT_DOMAIN) . '</a></div>';
+			    $content .= '<div class="misc-eab-section eab-start-section"><label class="eab-inline-label" for="psource_event_start_'.$i.'">';
+			    $content .= sprintf( __( '%sEvent beginnt%s', self::TEXT_DOMAIN ), '<span>', '</span>' ).'</label>';
+			    $content .= '<input type="text" name="psource_event_start['.$i.']" id="psource_event_start_'.$i.'" class="psource_event_picker psource_event psource_event_date psource_event_start" value="" size="10" readonly/> ';
+			    $content .= '<input type="text" name="psource_event_start_time['.$i.']" id="psource_event_start_time_'.$i.'" class="psource_event psource_event_time psource_event_time_picker psource_event_start_time" value="" size="3" style="position: relative; z-index:999;" readonly/>';
+				$content .= ' <input type="checkbox" name="psource_event_no_start_time['.$i.']" id="psource_event_no_start_time_'.$i.'" class="psource_event psource_event_time psource_event_no_start_time" value="1" />';
+				$content .= ' <label for="psource_event_no_start_time_'.$i.'">' . __( 'Keine Startzeit', self::TEXT_DOMAIN ) . '</label>';
 			    $content .= '</div>';
 
-			    $content .= '<div class="misc-eab-section"><label class="eab-inline-label" for="incsub_event_end_'.$i.'">';
-			    $content .= sprintf( __('%sEnd%s', self::TEXT_DOMAIN ), '<span>', '</span>' ).'</label>';
-			    $content .= '<input type="text" name="incsub_event_end['.$i.']" id="incsub_event_end_'.$i.'" class="incsub_event_picker incsub_event incsub_event_date incsub_event_end" value="" size="10" readonly/> ';
-			    $content .= '<input type="text" name="incsub_event_end_time['.$i.']" id="incsub_event_end_time_'.$i.'" class="incsub_event incsub_event_time incsub_event_time_picker incsub_event_end_time" value="" size="3" style="position: relative; z-index:999;" readonly/>';
-				$content .= ' <input type="checkbox" name="incsub_event_no_end_time['.$i.']" id="incsub_event_no_end_time_'.$i.'" class="incsub_event incsub_event_time incsub_event_no_end_time" value="1" />';
-				$content .= ' <label for="incsub_event_no_end_time_'.$i.'">' . __( 'No end time', self::TEXT_DOMAIN ) . '</label>';
+			    $content .= '<div class="misc-eab-section"><label class="eab-inline-label" for="psource_event_end_'.$i.'">';
+			    $content .= sprintf( __('%sEvent endet%s', self::TEXT_DOMAIN ), '<span>', '</span>' ).'</label>';
+			    $content .= '<input type="text" name="psource_event_end['.$i.']" id="psource_event_end_'.$i.'" class="psource_event_picker psource_event psource_event_date psource_event_end" value="" size="10" readonly/> ';
+			    $content .= '<input type="text" name="psource_event_end_time['.$i.']" id="psource_event_end_time_'.$i.'" class="psource_event psource_event_time psource_event_time_picker psource_event_end_time" value="" size="3" style="position: relative; z-index:999;" readonly/>';
+				$content .= ' <input type="checkbox" name="psource_event_no_end_time['.$i.']" id="psource_event_no_end_time_'.$i.'" class="psource_event psource_event_time psource_event_no_end_time" value="1" />';
+				$content .= ' <label for="psource_event_no_end_time_'.$i.'">' . __( 'Keine Endzeit', self::TEXT_DOMAIN ) . '</label>';
 			    $content .= '</div>';
 			    $content .= '</div>';
 			}
 			$content .= '</div>';
 
-			$content .= '<div id="eab-add-more"><input type="button" name="eab-add-more-button" id="eab-add-more-button" class="eab_add_more" value="'.__('Click here to add another date to event', self::TEXT_DOMAIN).'"/></div>';
+			$content .= '<div id="eab-add-more"><input type="button" name="eab-add-more-button" id="eab-add-more-button" class="eab_add_more" value="'.__('Klicken um weiteres Datum hinzuzufügen', self::TEXT_DOMAIN).'"/></div>';
 			$i = !empty( $i ) ? $i : 0;
 
 			$content .= '<div id="eab-add-more-bank">';
 			$content .= '<div class="eab-section-block">';
-			$content .= '<div class="eab-section-heading">' . sprintf(__('Part bank', self::TEXT_DOMAIN), $i+1) . '&nbsp' . '<a href="#remove" class="eab-event-remove_time">' . __('Remove', self::TEXT_DOMAIN) . '</a></div>';
-			$content .= '<div class="misc-eab-section eab-start-section"><label for="incsub_event_start_bank" >';
-			$content .= sprintf( __('%sStart%s', self::TEXT_DOMAIN ), '<span>', '</span>' ).'</label>';
-			$content .= '<input type="text" name="incsub_event_start_b[bank]" id="incsub_event_start_bank" class="incsub_event_picker_b incsub_event incsub_event_date incsub_event_start_b" value="" size="10" readonly/> ';
-			$content .= '<input type="text" name="incsub_event_start_time_b[bank]" id="incsub_event_start_time_bank" class="incsub_event incsub_event_time incsub_event_time_picker incsub_event_start_time_b" value="" size="3" readonly/>';
-			$content .= ' <input type="checkbox" name="incsub_event_no_start_time[bank]" id="incsub_event_no_start_time_bank" class="incsub_event incsub_event_time incsub_event_no_start_time" value="1" />';
-			$content .= ' <label for="incsub_event_no_start_time_bank">' . __('No start time', self::TEXT_DOMAIN) . '</label>';
+			$content .= '<div class="eab-section-heading">' . sprintf(__('Teilbank', self::TEXT_DOMAIN), $i+1) . '&nbsp' . '<a href="#remove" class="eab-event-remove_time">' . __('Entfernen', self::TEXT_DOMAIN) . '</a></div>';
+			$content .= '<div class="misc-eab-section eab-start-section"><label for="psource_event_start_bank" >';
+			$content .= sprintf( __('%sEvent beginnt%s', self::TEXT_DOMAIN ), '<span>', '</span>' ).'</label>';
+			$content .= '<input type="text" name="psource_event_start_b[bank]" id="psource_event_start_bank" class="psource_event_picker_b psource_event psource_event_date psource_event_start_b" value="" size="10" readonly/> ';
+			$content .= '<input type="text" name="psource_event_start_time_b[bank]" id="psource_event_start_time_bank" class="psource_event psource_event_time psource_event_time_picker psource_event_start_time_b" value="" size="3" readonly/>';
+			$content .= ' <input type="checkbox" name="psource_event_no_start_time[bank]" id="psource_event_no_start_time_bank" class="psource_event psource_event_time psource_event_no_start_time" value="1" />';
+			$content .= ' <label for="psource_event_no_start_time_bank">' . __('Keine Startzeit', self::TEXT_DOMAIN) . '</label>';
 			$content .= '</div>';
 
-			$content .= '<div class="misc-eab-section eab-end-section"><label for="incsub_event_end_bank">';
-			$content .= sprintf( __('%sEnd%s', self::TEXT_DOMAIN ), '<span>', '</span>' ).'</label>';
-			$content .= '<input type="text" name="incsub_event_end_b[bank]" id="incsub_event_end_bank" class="incsub_event_picker_b incsub_event incsub_event_date incsub_event_end_b" value="" size="10" readonly/> ';
-			$content .= '<input type="text" name="incsub_event_end_time_b[bank]" id="incsub_event_end_time_bank" class="incsub_event incsub_event_time incsub_event_time_picker incsub_event_end_time_b" value="" size="3" readonly/>';
-			$content .= ' <input type="checkbox" name="incsub_event_no_end_time[bank]" id="incsub_event_no_end_time_bank" class="incsub_event incsub_event_time incsub_event_no_end_time" value="1" />';
-			$content .= ' <label for="incsub_event_no_end_time_bank">' . __('No end time', self::TEXT_DOMAIN) . '</label>';
+			$content .= '<div class="misc-eab-section eab-end-section"><label for="psource_event_end_bank">';
+			$content .= sprintf( __('%sEvent endet%s', self::TEXT_DOMAIN ), '<span>', '</span>' ).'</label>';
+			$content .= '<input type="text" name="psource_event_end_b[bank]" id="psource_event_end_bank" class="psource_event_picker_b psource_event psource_event_date psource_event_end_b" value="" size="10" readonly/> ';
+			$content .= '<input type="text" name="psource_event_end_time_b[bank]" id="psource_event_end_time_bank" class="psource_event psource_event_time psource_event_time_picker psource_event_end_time_b" value="" size="3" readonly/>';
+			$content .= ' <input type="checkbox" name="psource_event_no_end_time[bank]" id="psource_event_no_end_time_bank" class="psource_event psource_event_time psource_event_no_end_time" value="1" />';
+			$content .= ' <label for="psource_event_no_end_time_bank">' . __('Keine Endzeit', self::TEXT_DOMAIN) . '</label>';
 			$content .= '</div></div>';
 			$content .= '</div>';
 		} else {
@@ -823,7 +826,7 @@ class Eab_EventsHub {
 		$events 	= Eab_CollectionFactory::get_all_recurring_children_events( $event );
 		$dt_format 	= get_option( 'date_format' ) . ' ' . get_option( 'time_format' );
 
-		$selection 	= '<h4><a href="#edit-instances" id="eab_event-edit_recurring_instances">' . __( 'Edit instances', self::TEXT_DOMAIN ) . '</a></h4>';
+		$selection 	= '<h4><a href="#edit-instances" id="eab_event-edit_recurring_instances">' . __( 'Instanzen bearbeiten', self::TEXT_DOMAIN ) . '</a></h4>';
 		$selection .= "<ul id='eab_event-recurring_instances' style='display:none'>";
 		foreach ( $events as $instance ) {
 			$url = admin_url( 'post.php?post=' . $instance->get_id() . '&action=edit' );
@@ -846,8 +849,8 @@ class Eab_EventsHub {
 		if ( !$event->is_recurring() ) {
 			$content = '<div id="eab-start_recurrence">' .
 				'<input type="button" id="eab-eab-start_recurrence-button" class="button" value="' .
-					__( 'This is a recurring event', self::TEXT_DOMAIN ) .
-					'" data-eab-alter_label="' . __( 'This is a regular event', self::TEXT_DOMAIN ) . '" ' .
+					__( 'Dies ist ein wiederkehrendes Ereignis', self::TEXT_DOMAIN ) .
+					'" data-eab-alter_label="' . __( 'Dies ist eine einmalige Veranstaltung', self::TEXT_DOMAIN ) . '" ' .
 				' />' .
 			'</div>';
 		}
@@ -871,15 +874,15 @@ class Eab_EventsHub {
 		$ends 		= date( 'Y-m-d', $ends_ts );
 
 		// Start on...
-		$content 	.= '<label for="eab_event-repeat_start">' . __( 'Start on', self::TEXT_DOMAIN );
+		$content 	.= '<label for="eab_event-repeat_start">' . __( 'Beginnt am', self::TEXT_DOMAIN );
 		$content 	.= ' <input type="text" name="eab_repeat[repeat_start]" id="eab_event-repeat_start" value="' . $starts . '" readonly/>';
 		$content 	.= '</label>';
 
 		// Repeat every...
 		$content 	.= '<br />';
-		$content 	.= '<label for="eab_event-repeat_every">' . __( 'Repeat every', self::TEXT_DOMAIN );
+		$content 	.= '<label for="eab_event-repeat_every">' . __( 'Wiederhole alle', self::TEXT_DOMAIN );
 		$content 	.= ' <select name="eab_repeat[repeat_every]" id="eab_event-repeat_every">';
-		$content 	.= '<option value="">' . __( 'Select one', self::TEXT_DOMAIN ) . '</option>';
+		$content 	.= '<option value="">' . __( 'Wähle eins', self::TEXT_DOMAIN ) . '</option>';
 		foreach ( $supported_intervals as $key => $label ) {
 			$selected = $event->is_recurring( $key ) ? 'selected="selected"' : '';
 			$content .= "<option value='{$key}' {$selected}>{$label}</option>";
@@ -898,8 +901,8 @@ class Eab_EventsHub {
 				$content 	.= "<option value='{$i}' {$selected}>{$month}</option>";
 			}
 			$content .= '</select> ';
-			$content .= __( 'On', self::TEXT_DOMAIN ) . ' <input type="text" size="2" class="incsub_event_picker" name="eab_repeat[day]" id="" value="' . $parts["day"] . '" readonly /> '; // Date
-			$content .= __( 'At', self::TEXT_DOMAIN ) . ' <input type="text" size="5" class="incsub_event_time_picker" name="eab_repeat[time]" id="" value="' . $parts["time"] . '" readonly /> <small>HH:mm</small>'; // Time
+			$content .= __( 'Am', self::TEXT_DOMAIN ) . ' <input type="text" size="2" class="psource_event_picker" name="eab_repeat[day]" id="" value="' . $parts["day"] . '" readonly /> '; // Date
+			$content .= __( 'Um', self::TEXT_DOMAIN ) . ' <input type="text" size="5" class="psource_event_time_picker" name="eab_repeat[time]" id="" value="' . $parts["time"] . '" readonly /> <small>HH:mm</small>'; // Time
 			$content .= '</div>';
 		}
 
@@ -907,8 +910,8 @@ class Eab_EventsHub {
 		if ( in_array( Eab_EventModel::RECURRANCE_MONTHLY, array_keys( $supported_intervals ) ) ) {
 			$style 		= $event->is_recurring( Eab_EventModel::RECURRANCE_MONTHLY ) ? '' : 'style="display:none"';
 			$content 	.= '<div class="eab_event_recurrence_mode" id="eab_event-repeat_interval-' . Eab_EventModel::RECURRANCE_MONTHLY . '" ' . $style . '>';
-			$content 	.= __( 'On', self::TEXT_DOMAIN ) . ' <input type="text" size="2" class="incsub_event_picker" name="eab_repeat[day]" id="" value="' . $parts["day"] . '" readonly /> '; // Date
-			$content 	.= __( 'At', self::TEXT_DOMAIN ) . ' <input type="text" size="5" class="incsub_event_time_picker" name="eab_repeat[time]" id="" value="' . $parts["time"] . '" readonly /> <small>HH:mm</small>'; // Time
+			$content 	.= __( 'Am', self::TEXT_DOMAIN ) . ' <input type="text" size="2" class="psource_event_picker" name="eab_repeat[day]" id="" value="' . $parts["day"] . '" readonly /> '; // Date
+			$content 	.= __( 'Um', self::TEXT_DOMAIN ) . ' <input type="text" size="5" class="psource_event_time_picker" name="eab_repeat[time]" id="" value="' . $parts["time"] . '" readonly /> <small>HH:mm</small>'; // Time
 			$content 	.= '</div>';
 		}
 
@@ -923,14 +926,14 @@ class Eab_EventsHub {
 					array_push( $all_weekdays, array_shift( $all_weekdays ) );
 				}
 			}
-			$tmp = strtotime( "this Sunday" ) + ( $start_of_week * 86400 );
+			$tmp = strtotime( "this Sonntag" ) + ( $start_of_week * 86400 );
 			foreach ( $all_weekdays as $i ) {
 				$checked 	= ( is_array( $parts['weekday'] ) && in_array( $i, $parts['weekday'] ) ) ? 'checked="checked"' : '';
 				$content 	.= "<input type='checkbox' name='eab_repeat[weekday][]' id='' value='{$i}' {$checked} /> ";
 				$content 	.= "<label for=''>" . date( "D", $tmp ) . '</label><br />';
 				$tmp 		+= 86400;
 			}
-			$content .= __( 'At', self::TEXT_DOMAIN ) . ' <input type="text" size="5" name="eab_repeat[time]" class="incsub_event_time_picker" id="" value="' . $parts["time"] . '" readonly /> <small>HH:mm</small>'; // Time
+			$content .= __( 'Um', self::TEXT_DOMAIN ) . ' <input type="text" size="5" name="eab_repeat[time]" class="psource_event_time_picker" id="" value="' . $parts["time"] . '" readonly /> <small>HH:mm</small>'; // Time
 			$content .= '</div>';
 		}
 
@@ -940,12 +943,12 @@ class Eab_EventsHub {
 			$content 	.= '<div class="eab_event_recurrence_mode" id="eab_event-repeat_interval-' . Eab_EventModel::RECURRANCE_DOW . '" ' . $style . '>';
 
 			$week_counts = array(
-				'first' 	=> __( 'First', self::TEXT_DOMAIN ),
-				'second' 	=> __( 'Second', self::TEXT_DOMAIN ),
-				'third' 	=> __( 'Third', self::TEXT_DOMAIN ),
-				'fourth' 	=> __( 'Fourth', self::TEXT_DOMAIN ),
-				'fifth' 	=> __( 'Fifth', self::TEXT_DOMAIN ),
-				'last' 		=> __( 'Last', self::TEXT_DOMAIN ),
+				'first' 	=> __( 'Ersten', self::TEXT_DOMAIN ),
+				'second' 	=> __( 'Zweite', self::TEXT_DOMAIN ),
+				'third' 	=> __( 'Dritte', self::TEXT_DOMAIN ),
+				'fourth' 	=> __( 'Vierte', self::TEXT_DOMAIN ),
+				'fifth' 	=> __( 'Fünfte', self::TEXT_DOMAIN ),
+				'last' 		=> __( 'Letzte', self::TEXT_DOMAIN ),
 			);
 			$week 	= '<select name="eab_repeat[week]">';
 			foreach ( $week_counts as $count => $label ) {
@@ -961,7 +964,7 @@ class Eab_EventsHub {
 					array_push( $all_weekdays, array_shift( $all_weekdays ) );
 				}
 			}
-			$tmp 		= strtotime( "this Sunday" ) + ( $start_of_week * 86400 );
+			$tmp 		= strtotime( "this Sonntag" ) + ( $start_of_week * 86400 );
 			$weekday 	= '<select name="eab_repeat[weekday]">';
 			foreach ( $all_weekdays as $i ) {
 				$day 		= date( 'l', $tmp );
@@ -971,8 +974,8 @@ class Eab_EventsHub {
 			}
 			$weekday .= '</select>';
 
-			$content .= sprintf( __( 'Every %s %s', self::TEXT_DOMAIN ), $week, $weekday ) . '<br />';
-			$content .= __( 'At', self::TEXT_DOMAIN ) . ' <input type="text" size="5" name="eab_repeat[time]" class="incsub_event_time_picker" id="" value="' . $parts["time"] . '" readonly/> <small>HH:mm</small>'; // Time
+			$content .= sprintf( __( 'Jeden %s %s', self::TEXT_DOMAIN ), $week, $weekday ) . '<br />';
+			$content .= __( 'Um', self::TEXT_DOMAIN ) . ' <input type="text" size="5" name="eab_repeat[time]" class="psource_event_time_picker" id="" value="' . $parts["time"] . '" readonly/> <small>HH:mm</small>'; // Time
 			$content .= '</div>';
 		}
 
@@ -995,7 +998,7 @@ class Eab_EventsHub {
 					array_push( $all_weekdays, array_shift( $all_weekdays ) );
 				}
 			}
-			$tmp 		= strtotime("this Sunday") + ($start_of_week * 86400);
+			$tmp 		= strtotime("this Sonntag") + ($start_of_week * 86400);
 			$weekday 	= '<select name="eab_repeat[weekday]">';
 			foreach ( $all_weekdays as $i ) {
 				$day = date( 'l', $tmp );
@@ -1005,8 +1008,8 @@ class Eab_EventsHub {
 			}
 			$weekday .= '</select>';
 
-			$content .= sprintf( __( 'Every %s weeks, on %s', self::TEXT_DOMAIN ), $week, $weekday ) . '<br />';
-			$content .= __( 'At', self::TEXT_DOMAIN ) . ' <input type="text" size="5" name="eab_repeat[time]" class="incsub_event_time_picker" id="" value="' . $parts["time"] . '" readonly/> <small>HH:mm</small>'; // Time
+			$content .= sprintf( __( 'Jede %s Woche, am %s', self::TEXT_DOMAIN ), $week, $weekday ) . '<br />';
+			$content .= __( 'Um', self::TEXT_DOMAIN ) . ' <input type="text" size="5" name="eab_repeat[time]" class="psource_event_time_picker" id="" value="' . $parts["time"] . '" readonly/> <small>HH:mm</small>'; // Time
 			$content .= '</div>';
 		}
 
@@ -1014,20 +1017,20 @@ class Eab_EventsHub {
 		if ( in_array( Eab_EventModel::RECURRANCE_DAILY, array_keys( $supported_intervals ) ) ) {
 			$style = $event->is_recurring( Eab_EventModel::RECURRANCE_DAILY ) ? '' : 'style="display:none"';
 			$content .= '<div class="eab_event_recurrence_mode" id="eab_event-repeat_interval-' . Eab_EventModel::RECURRANCE_DAILY . '" ' . $style . '>';
-			$content .= __( 'At', self::TEXT_DOMAIN ) . ' <input type="text" size="5" name="eab_repeat[time]" class="incsub_event_time_picker" id="" value="' . $parts["time"] . '" readonly/> <small>HH:mm</small>'; // Time
+			$content .= __( 'Um', self::TEXT_DOMAIN ) . ' <input type="text" size="5" name="eab_repeat[time]" class="psource_event_time_picker" id="" value="' . $parts["time"] . '" readonly/> <small>HH:mm</small>'; // Time
 			$content .= '</div>';
 		}
 
 		// ... Until
 		$content .= '<br />';
-		$content .= '<label for="eab_event-repeat_end">' . __( 'Until', self::TEXT_DOMAIN );
-		$content .= ' <input type="text" name="eab_repeat[repeat_end]" class="incsub_event_picker" id="eab_event-repeat_end" value="' . $ends . '" readonly />';
+		$content .= '<label for="eab_event-repeat_end">' . __( 'Bis zum', self::TEXT_DOMAIN );
+		$content .= ' <input type="text" name="eab_repeat[repeat_end]" class="psource_event_picker" id="eab_event-repeat_end" value="' . $ends . '" readonly />';
 		$content .= '</label>';
 
 		// ... Duration
 		$content .= '<br />';
-		$content .= '<label for="eab_event-repeat_event_duration">' . __( 'Event duration', self::TEXT_DOMAIN );
-		$content .= ' <input type="text" name="eab_repeat[duration]" class="incsub_event_time_picker" size="2" id="eab_event-repeat_event_duration" value="' . $parts["duration"] . '" readonly/> ' . __( 'hours', self::TEXT_DOMAIN );
+		$content .= '<label for="eab_event-repeat_event_duration">' . __( 'Ereignisdauer', self::TEXT_DOMAIN );
+		$content .= ' <input type="text" name="eab_repeat[duration]" class="psource_event_time_picker" size="2" id="eab_event-repeat_event_duration" value="' . $parts["duration"] . '" readonly/> ' . __( 'Stunden', self::TEXT_DOMAIN );
 		$content .= '</label>';
 
 		$content .= '</div>';
@@ -1044,15 +1047,15 @@ class Eab_EventsHub {
 
 		$content  = '';
 		$content .= '<div class="eab_meta_box">';
-		$content .= '<div class="eab_meta_column_box">'.__( 'Event status', self::TEXT_DOMAIN ).'</div>';
-		$content .= '<input type="hidden" name="incsub_event_status_meta" value="1" />';
-		$content .= '<div class="misc-eab-section"><label for="incsub_event_status" id="incsub_event_status_label">';
-		$content .= __( 'What is the event status? ', self::TEXT_DOMAIN ).':</label>&nbsp;';
-		$content .= '<select name="incsub_event_status" id="incsub_event_status">';
-		$content .= '	<option value="open" '.( ( $event->is_open() ) ? 'selected="selected"' : '' ).' >' . __( 'Open', self::TEXT_DOMAIN ) . '</option>';
-		$content .= '	<option value="closed" '.( ( $event->is_closed() ) ? 'selected="selected"' : '' ).' >' . __( 'Closed', self::TEXT_DOMAIN ) . '</option>';
-		$content .= '	<option value="expired" '.( ( $event->is_expired() ) ? 'selected="selected"' : '' ).' >' . __( 'Expired', self::TEXT_DOMAIN ) . '</option>';
-		$content .= '	<option value="archived" '.( ( $event->is_archived() ) ? 'selected="selected"' : '' ).' >' . __( 'Archived', self::TEXT_DOMAIN ) . '</option>';
+		$content .= '<div class="eab_meta_column_box">'.__( 'Ereignisstatus', self::TEXT_DOMAIN ).'</div>';
+		$content .= '<input type="hidden" name="psource_event_status_meta" value="1" />';
+		$content .= '<div class="misc-eab-section"><label for="psource_event_status" id="psource_event_status_label">';
+		$content .= __( 'Wie ist der Ereignisstatus? ', self::TEXT_DOMAIN ).':</label>&nbsp;';
+		$content .= '<select name="psource_event_status" id="psource_event_status">';
+		$content .= '	<option value="open" '.( ( $event->is_open() ) ? 'selected="selected"' : '' ).' >' . __( 'Offen', self::TEXT_DOMAIN ) . '</option>';
+		$content .= '	<option value="closed" '.( ( $event->is_closed() ) ? 'selected="selected"' : '' ).' >' . __( 'Geschlossen', self::TEXT_DOMAIN ) . '</option>';
+		$content .= '	<option value="expired" '.( ( $event->is_expired() ) ? 'selected="selected"' : '' ).' >' . __( 'Abgelaufen', self::TEXT_DOMAIN ) . '</option>';
+		$content .= '	<option value="archived" '.( ( $event->is_archived() ) ? 'selected="selected"' : '' ).' >' . __( 'Archiviert', self::TEXT_DOMAIN ) . '</option>';
 		$content .= apply_filters( 'eab-event_meta-extra_event_status', '', $event );
 		$content .= '</select>';
 		$content .= apply_filters( 'eab-event_meta-after_event_status', '', $event );
@@ -1069,19 +1072,19 @@ class Eab_EventsHub {
 
 		$content  = '';
 		$content .= '<div class="eab_meta_box">';
-		$content .= '<input type="hidden" name="incsub_event_payments_meta" value="1" />';
+		$content .= '<input type="hidden" name="psource_event_payments_meta" value="1" />';
 		$content .= '<div class="misc-eab-section">';
-		$content .= '<div class="eab_meta_column_box">' . __( 'Event type', self::TEXT_DOMAIN ) . '</div>';
-		$content .= '<label for="incsub_event_paid" id="incsub_event_paid_label">'.__( 'Is this a paid event? ', self::TEXT_DOMAIN ) . ':</label>&nbsp;';
-		$content .= '<select name="incsub_event_paid" id="incsub_event_paid" class="incsub_event_paid" >';
-		$content .= '<option value="1" ' . ( $event->is_premium() ? 'selected="selected"' : '' ) . '>' . __( 'Yes', self::TEXT_DOMAIN ) . '</option>';
-		$content .= '<option value="0" ' . ( $event->is_premium() ? '' : 'selected="selected"' ) . '>' . __( 'No', self::TEXT_DOMAIN ) . '</option>';
+		$content .= '<div class="eab_meta_column_box">' . __( 'Ereignistyp', self::TEXT_DOMAIN ) . '</div>';
+		$content .= '<label for="psource_event_paid" id="psource_event_paid_label">'.__( 'Ist das eine bezahlte Veranstaltung? ', self::TEXT_DOMAIN ) . ':</label>&nbsp;';
+		$content .= '<select name="psource_event_paid" id="psource_event_paid" class="psource_event_paid" >';
+		$content .= '<option value="1" ' . ( $event->is_premium() ? 'selected="selected"' : '' ) . '>' . __( 'Ja', self::TEXT_DOMAIN ) . '</option>';
+		$content .= '<option value="0" ' . ( $event->is_premium() ? '' : 'selected="selected"' ) . '>' . __( 'Nein', self::TEXT_DOMAIN ) . '</option>';
 		$content .= '</select>';
 		$content .= '<div class="clear"></div>';
-		$content .= '<div class="incsub_event-fee_row" id="incsub_event-fee_row_label">';
+		$content .= '<div class="psource_event-fee_row" id="psource_event-fee_row_label">';
 
-		$fee = __( 'Fee', self::TEXT_DOMAIN) . ':&nbsp;' . $this->_data->get_option( 'currency' ) .
-			'&nbsp;<input type="text" name="incsub_event_fee" id="incsub_event_fee" class="incsub_event_fee" value="' .
+		$fee = __( 'Gebühr', self::TEXT_DOMAIN) . ':&nbsp;' . $this->_data->get_option( 'currency' ) .
+			'&nbsp;<input type="text" name="psource_event_fee" id="psource_event_fee" class="psource_event_fee" value="' .
 			$event->get_price() . '" size="6" /> ';
 		$content .= apply_filters( 'eab-event_meta-event_price', $fee, $event->get_id() ) . '</div>';
 
@@ -1094,7 +1097,7 @@ class Eab_EventsHub {
     function bookings_meta_box () {
 		global $post;
 		echo '<a class="button" href="' . admin_url( 'index.php?eab_export=attendees&event_id='. $post->ID ) . '" class="eab-export_attendees">' .
-			__( 'Export', self::TEXT_DOMAIN ) . '</a>';
+			__( 'Exportieren', self::TEXT_DOMAIN ) . '</a>';
 		echo $this->meta_box_part_bookings( $post );
 	}
 
@@ -1103,7 +1106,7 @@ class Eab_EventsHub {
 
 		$content  = '';
 		$content .= '<div id="eab-bookings-response">';
-		$content .= '<input type="hidden" name="incsub_event_bookings_meta" value="1" />';
+		$content .= '<input type="hidden" name="psource_event_bookings_meta" value="1" />';
 		$content .= '<div class="bookings-list-left">';
 
 		$content .= Eab_Template::get_admin_attendance_addition_form($event, Eab_Template::get_rsvp_status_list());
@@ -1127,7 +1130,7 @@ class Eab_EventsHub {
 
             $content .= apply_filters( 'eab-metabox-bookings-has_bookings', '', $event );
         }  else {
-            $content .= __( 'No bookings', self::TEXT_DOMAIN );
+            $content .= __( 'Keine Buchungen', self::TEXT_DOMAIN );
         }
 		$content .= '</div>';
 		$content .= '<div class="clear"></div>';
@@ -1151,37 +1154,37 @@ class Eab_EventsHub {
 		}
 
 	    // Setting up event venue
-		if ( $is_valid_post_type && isset( $_POST['incsub_event_where_meta'] ) ) {
+		if ( $is_valid_post_type && isset( $_POST['psource_event_where_meta'] ) ) {
 		    $meta = get_post_custom( $post_id );
 
-		    update_post_meta( $post_id, 'incsub_event_venue', strip_tags( $_POST['incsub_event_venue'] ) );
+		    update_post_meta( $post_id, 'psource_event_venue', strip_tags( $_POST['psource_event_venue'] ) );
 
 		    //for any other plugin to hook into
-		    do_action( 'incsub_event_save_where_meta', $post_id, $meta );
+		    do_action( 'psource_event_save_where_meta', $post_id, $meta );
 		}
 
 		// Setting up event status
-		if ( $is_valid_post_type && isset( $_POST['incsub_event_status_meta'] ) ) {
+		if ( $is_valid_post_type && isset( $_POST['psource_event_status_meta'] ) ) {
 		    $meta = get_post_custom( $post_id );
 
-		    update_post_meta( $post_id, 'incsub_event_status', strip_tags( $_POST['incsub_event_status'] ) );
+		    update_post_meta( $post_id, 'psource_event_status', strip_tags( $_POST['psource_event_status'] ) );
 
 		    //for any other plugin to hook into
-		    do_action( 'incsub_event_save_status_meta', $post_id, $meta );
+		    do_action( 'psource_event_save_status_meta', $post_id, $meta );
 		}
 
 		// Setting up event payments
-		if ( $is_valid_post_type && isset( $_POST['incsub_event_payments_meta'] ) ) {
+		if ( $is_valid_post_type && isset( $_POST['psource_event_payments_meta'] ) ) {
 		    $meta 		= get_post_custom( $post_id );
 
-			$is_paid 	= (int)$_POST['incsub_event_paid'];
-			$fee 		= $is_paid ? strip_tags( $_POST['incsub_event_fee'] ) : '';
+			$is_paid 	= (int)$_POST['psource_event_paid'];
+			$fee 		= $is_paid ? strip_tags( $_POST['psource_event_fee'] ) : '';
 
-		    update_post_meta( $post_id, 'incsub_event_paid', ( $is_paid ? '1' : '' ) );
-		    update_post_meta( $post_id, 'incsub_event_fee', $fee );
+		    update_post_meta( $post_id, 'psource_event_paid', ( $is_paid ? '1' : '' ) );
+		    update_post_meta( $post_id, 'psource_event_fee', $fee );
 
 		    //for any other plugin to hook into
-		    do_action( 'incsub_event_save_payments_meta', $post_id, $meta );
+		    do_action( 'psource_event_save_payments_meta', $post_id, $meta );
 		}
 
 		// Setting up recurring event
@@ -1205,44 +1208,44 @@ class Eab_EventsHub {
 			$event->spawn_recurring_instances( $start, $end, $interval, $time_parts ); //@TODO: Improve
 		}
 
-		if ( $is_valid_post_type && isset( $_POST['incsub_event_when_meta'] ) ) {
+		if ( $is_valid_post_type && isset( $_POST['psource_event_when_meta'] ) ) {
 		    $meta = get_post_custom( $post_id );
 
-			delete_post_meta( $post_id, 'incsub_event_start' );
-			delete_post_meta( $post_id, 'incsub_event_no_start' );
-			delete_post_meta( $post_id, 'incsub_event_end' );
-			delete_post_meta( $post_id, 'incsub_event_no_end' );
-		   	if ( isset( $_POST['incsub_event_start'] ) && count( $_POST['incsub_event_start'] ) > 0 ) {
-				foreach ( $_POST['incsub_event_start'] as $i => $event_start ) {
-					if ( empty( $_POST['incsub_event_start'][$i] ) || empty( $_POST['incsub_event_end'][$i] ) ) {
+			delete_post_meta( $post_id, 'psource_event_start' );
+			delete_post_meta( $post_id, 'psource_event_no_start' );
+			delete_post_meta( $post_id, 'psource_event_end' );
+			delete_post_meta( $post_id, 'psource_event_no_end' );
+		   	if ( isset( $_POST['psource_event_start'] ) && count( $_POST['psource_event_start'] ) > 0 ) {
+				foreach ( $_POST['psource_event_start'] as $i => $event_start ) {
+					if ( empty( $_POST['psource_event_start'][$i] ) || empty( $_POST['psource_event_end'][$i] ) ) {
 						continue;
 					}
-					if ( !empty ( $_POST['incsub_event_start'][$i] ) ) {
+					if ( !empty ( $_POST['psource_event_start'][$i] ) ) {
 
-						if ( $_POST['incsub_event_start_time'][$i] != '' && strpos( ':', $_POST['incsub_event_start_time'][$i] ) === false ){
-							$_POST['incsub_event_start_time'][$i] = $_POST['incsub_event_start_time'][$i] . ':00';
+						if ( $_POST['psource_event_start_time'][$i] != '' && strpos( ':', $_POST['psource_event_start_time'][$i] ) === false ){
+							$_POST['psource_event_start_time'][$i] = $_POST['psource_event_start_time'][$i] . ':00';
 						}
 
-						$start_time = @$_POST['incsub_event_no_start_time'][$i] ? '00:01' : @$_POST['incsub_event_start_time'][$i];
-						add_post_meta( $post_id, 'incsub_event_start', date('Y-m-d H:i:s', strtotime( "{$_POST['incsub_event_start'][$i]} {$start_time}" ) ) );
-						if ( @$_POST['incsub_event_no_start_time'][$i] ) {
-							add_post_meta($post_id, 'incsub_event_no_start', 1 );
+						$start_time = @$_POST['psource_event_no_start_time'][$i] ? '00:01' : @$_POST['psource_event_start_time'][$i];
+						add_post_meta( $post_id, 'psource_event_start', date('Y-m-d H:i:s', strtotime( "{$_POST['psource_event_start'][$i]} {$start_time}" ) ) );
+						if ( @$_POST['psource_event_no_start_time'][$i] ) {
+							add_post_meta($post_id, 'psource_event_no_start', 1 );
 						} else {
-							add_post_meta($post_id, 'incsub_event_no_start', 0 );
+							add_post_meta($post_id, 'psource_event_no_start', 0 );
 						}
 					}
-					if ( !empty($_POST['incsub_event_end'][$i] ) ) {
+					if ( !empty($_POST['psource_event_end'][$i] ) ) {
 
-						if( $_POST['incsub_event_end_time'][$i] != '' && strpos( ':', $_POST['incsub_event_end_time'][$i] ) === false ){
-							$_POST['incsub_event_end_time'][$i] = $_POST['incsub_event_end_time'][$i] . ':00';
+						if( $_POST['psource_event_end_time'][$i] != '' && strpos( ':', $_POST['psource_event_end_time'][$i] ) === false ){
+							$_POST['psource_event_end_time'][$i] = $_POST['psource_event_end_time'][$i] . ':00';
 						}
 
-						$end_time = @$_POST['incsub_event_no_end_time'][$i] ? '23:59' : @$_POST['incsub_event_end_time'][$i];
-						add_post_meta( $post_id, 'incsub_event_end', date( 'Y-m-d H:i:s', strtotime( "{$_POST['incsub_event_end'][$i]} {$end_time}" ) ) );
-						if ( @$_POST['incsub_event_no_end_time'][$i] ) {
-							add_post_meta( $post_id, 'incsub_event_no_end', 1 );
+						$end_time = @$_POST['psource_event_no_end_time'][$i] ? '23:59' : @$_POST['psource_event_end_time'][$i];
+						add_post_meta( $post_id, 'psource_event_end', date( 'Y-m-d H:i:s', strtotime( "{$_POST['psource_event_end'][$i]} {$end_time}" ) ) );
+						if ( @$_POST['psource_event_no_end_time'][$i] ) {
+							add_post_meta( $post_id, 'psource_event_no_end', 1 );
 						} else {
-							add_post_meta( $post_id, 'incsub_event_no_end', 0 );
+							add_post_meta( $post_id, 'psource_event_no_end', 0 );
 						}
 					}
 
@@ -1250,7 +1253,7 @@ class Eab_EventsHub {
 			}
 
 		    //for any other plugin to hook into
-		    do_action( 'incsub_event_save_when_meta', $post_id, $meta );
+		    do_action( 'psource_event_save_when_meta', $post_id, $meta );
 		}
 
 		
@@ -1310,13 +1313,13 @@ class Eab_EventsHub {
 		}
 
 		$rewritecode = array(
-		    '%incsub_event%',
+		    '%psource_event%',
 		    '%event_year%',
 		    '%event_monthnum%'
 		);
 
-		if ( $post && $post->post_type == 'incsub_event' && '' != $permalink ) {
-		    $starts = get_post_meta( $post_id, 'incsub_event_start' );
+		if ( $post && $post->post_type == 'psource_event' && '' != $permalink ) {
+		    $starts = get_post_meta( $post_id, 'psource_event_start' );
 		    $start 	= isset( $starts[0] )
 		    	? strtotime( $starts[0] )
 		    	: eab_current_time()
@@ -1343,10 +1346,10 @@ class Eab_EventsHub {
 
     public static function get_rewrite_rules ( $slug ) {
     	return array(
-			"{$slug}/([0-9]{4})/?$" 							=> 'index.php?event_year=$matches[1]&post_type=incsub_event',
-			"{$slug}/([0-9]{4})/([0-9]{1,2})/?$" 				=> 'index.php?event_year=$matches[1]&event_monthnum=$matches[2]&post_type=incsub_event',
-			"{$slug}/([0-9]{4})/([0-9]{1,2})/(.+?)/(^feed)/?$" 	=> 'index.php?event_year=$matches[1]&event_monthnum=$matches[2]&incsub_event=$matches[3]',
-			"{$slug}/([0-9]{4})/([0-9]{1,2})/(.+?)/feed/?$" 	=> 'index.php?event_year=$matches[1]&event_monthnum=$matches[2]&incsub_event=$matches[3]&feed=rss2&post_type=incsub_event'
+			"{$slug}/([0-9]{4})/?$" 							=> 'index.php?event_year=$matches[1]&post_type=psource_event',
+			"{$slug}/([0-9]{4})/([0-9]{1,2})/?$" 				=> 'index.php?event_year=$matches[1]&event_monthnum=$matches[2]&post_type=psource_event',
+			"{$slug}/([0-9]{4})/([0-9]{1,2})/(.+?)/(^feed)/?$" 	=> 'index.php?event_year=$matches[1]&event_monthnum=$matches[2]&psource_event=$matches[3]',
+			"{$slug}/([0-9]{4})/([0-9]{1,2})/(.+?)/feed/?$" 	=> 'index.php?event_year=$matches[1]&event_monthnum=$matches[2]&psource_event=$matches[3]&feed=rss2&post_type=psource_event'
     	);
     }
 
@@ -1409,54 +1412,55 @@ class Eab_EventsHub {
     	;
     }
 
-	function user_has_cap( $allcaps, $caps = null, $args = null ) {
+    function user_has_cap( $allcaps, $caps = null, $args = null ) {
 		global $current_user, $blog_id, $post;
-	
+
 		$capable = false;
-	
-		// Ensure $caps is an array before attempting to join
-		if ( is_array( $caps ) && preg_match( '/(_event|_events)/i', implode( ',', $caps ) ) > 0 ) {
-			if ( in_array( 'administrator', $current_user->roles ) ) {
+
+		if ( preg_match( '/(_event|_events)/i', join( ',', $caps ) ) > 0 ) {
+		    if ( in_array( 'administrator', $current_user->roles ) ) {
 				foreach ( $caps as $cap ) {
-					$allcaps[$cap] = 1;
+				    $allcaps[$cap] = 1;
 				}
 				return $allcaps;
-			}
-			foreach ( $caps as $cap ) {
+		    }
+		    foreach ( $caps as $cap ) {
 				$capable = false;
 				switch ( $cap ) {
-					case 'read_events':
+				    case 'read_events':
 						$capable = true;
 						break;
-					default:
+				    default:
 						if ( isset( $args[1] ) && isset( $args[2] ) ) {
-							if ( current_user_can( preg_replace( '/_event/i', '_post', $cap ), $args[1], $args[2] ) ) {
+						    if ( current_user_can( preg_replace( '/_event/i', '_post', $cap ), $args[1], $args[2] ) ) {
 								$capable = true;
-							}
+						    }
 						} else if ( isset( $args[1] ) ) {
-							if ( current_user_can( preg_replace( '/_event/i', '_post', $cap ), $args[1] ) ) {
+						    if ( current_user_can( preg_replace( '/_event/i', '_post', $cap ), $args[1] ) ) {
 								$capable = true;
-							}
+						    }
 						} else if ( current_user_can( preg_replace( '/_event/i', '_post', $cap ) ) ) {
-							$capable = true;
+						    $capable = true;
 						}
 						break;
 				}
 				$capable = apply_filters( 'eab-capabilities-user_can', $capable, $cap, $current_user, $args );
-	
+
 				if ( $capable ) {
-					$allcaps[$cap] = 1;
+				    $allcaps[$cap] = 1;
 				}
-			}
+		    }
 		}
 		return $allcaps;
-	}
+    }
+
+
 
 
     function cron_schedules( $schedules ) {
 		$schedules['thirtyminutes'] = array( 
 			'interval' 	=> 1800, 
-			'display' 	=> __( 'Once every half an hour', self::TEXT_DOMAIN ) 
+			'display' 	=> __( 'Einmal alle halbe Stunde', self::TEXT_DOMAIN ) 
 		);
 
 		return $schedules;
@@ -1486,7 +1490,7 @@ class Eab_EventsHub {
 		        $class = ' class="current"';
 		    }
 
-		    $views[$status_name] = "<li><a href='edit.php?post_type=incsub_event&amp;post_status=$status_name'$class>" . sprintf( _n( $status->label_count[0], $status->label_count[1], $num_posts->$status_name ), number_format_i18n( $num_posts->$status_name ) ) . '</a>';
+		    $views[$status_name] = "<li><a href='edit.php?post_type=psource_event&amp;post_status=$status_name'$class>" . sprintf( _n( $status->label_count[0], $status->label_count[1], $num_posts->$status_name ), number_format_i18n( $num_posts->$status_name ) ) . '</a>';
 		}
 
 		return $views;
@@ -1624,6 +1628,7 @@ if ( is_admin() ) {
 
 	require_once EAB_PLUGIN_DIR . 'lib/contextual_help/class_eab_admin_help.php';
 	Eab_AdminHelp::serve();
+
 }
 
 
@@ -1637,7 +1642,7 @@ register_activation_hook( __FILE__, 'eab_activate' );
  * Plugin text domain
  */
 function eab_domain() {
-	return Eab_EventsHub::TEXT_DOMAIN;
+	return 'eab';
 }
 
 /**
@@ -1660,3 +1665,5 @@ function eab_plugin_dir() {
 function eab_plugin_url() {
 	return EAB_PLUGIN_URL;
 }
+
+

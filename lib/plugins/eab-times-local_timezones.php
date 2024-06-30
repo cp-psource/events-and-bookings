@@ -1,10 +1,10 @@
 <?php
 /*
-Plugin Name: Local Timezones
-Description: Auto-converts your event dates and times for your visitors
-Plugin URI: http://premium.wpmudev.org/project/events-and-booking
-Version: 1.0
-Author: PSOURCE
+Plugin Name: Lokale Zeitzonen
+Description: Konvertiert Veranstaltungstermine und -zeiten automatisch für Ihre Besucher
+Plugin URI: https://n3rds.work/piestingtal-source-project/eventsps-das-eventmanagment-fuer-wordpress/
+Version: 1.1
+Author: DerN3rd
 AddonType: Events
 */
 

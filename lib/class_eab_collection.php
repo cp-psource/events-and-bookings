@@ -3,7 +3,7 @@
 /**
  * Abstract collection root class.
  */
-abstract class WpmuDev_Collection {
+abstract class PSource_Collection {
 
 	/**
 	 * Holds a WP_Query instance.
@@ -24,7 +24,7 @@ abstract class WpmuDev_Collection {
 	 * Returns a WP_Query instance.
 	 */
 	public function to_query () {
-		return apply_filters('wpmudev-query', $this->_query);
+		return apply_filters('psource-query', $this->_query);
 	}
 
 	abstract public function build_query_args ($args);
@@ -34,7 +34,7 @@ abstract class WpmuDev_Collection {
 /**
  * Abstract Event collection root class.
  */
-abstract class Eab_Collection extends WpmuDev_Collection {
+abstract class Eab_Collection extends PSource_Collection {
 
 	/**
 	 * Converts WP_Query result set into an array of Eab_EventModel objects.
@@ -115,7 +115,7 @@ class Eab_UpcomingCollection extends Eab_TimedCollection {
 		$time = strtotime("{$year}-{$month}-{$day}");
 
 		$forbidden_statuses = array(Eab_EventModel::STATUS_CLOSED);
-		if (!isset($args['incsub_event'])) { // If not single
+		if (!isset($args['psource_event'])) { // If not single
 			$forbidden_statuses[] = Eab_EventModel::STATUS_EXPIRED;
 		}
 		$forbidden_statuses = apply_filters('eab-collection-forbidden_statuses', $forbidden_statuses);
@@ -135,24 +135,24 @@ class Eab_UpcomingCollection extends Eab_TimedCollection {
 		$args = array_merge(
 			$args,
 			array(
-			 	'post_type' => 'incsub_event',
+			 	'post_type' => 'psource_event',
 			 	'post_status' => array('publish', Eab_EventModel::RECURRENCE_STATUS),
 				'suppress_filters' => false,
 				'meta_query' => array(
 					array(
-		    			'key' => 'incsub_event_start',
+		    			'key' => 'psource_event_start',
 		    			'value' => apply_filters('eab-collection-upcoming-end_timestamp', "{$end_year}-{$end_month}-01 00:00"),
 		    			'compare' => '<',
 		    			'type' => 'DATETIME'
 					),
 					array(
-		    			'key' => 'incsub_event_end',
+		    			'key' => 'psource_event_end',
 		    			'value' => apply_filters('eab-collection-upcoming-start_timestamp', "{$year}-{$start_month}-{$start_day} 00:00"),
 		    			'compare' => '>=',
 		    			'type' => 'DATETIME'
 					),
 					array(
-						'key' => 'incsub_event_status',
+						'key' => 'psource_event_status',
 						'value' => $forbidden_statuses,
 						'compare' => 'NOT IN',
 					),
@@ -183,7 +183,7 @@ class Eab_DateRangeCollection extends Eab_TimedCollection {
 
 	public function build_query_args ($args) {
 		$forbidden_statuses = array(Eab_EventModel::STATUS_CLOSED);
-		if (!isset($args['incsub_event'])) { // If not single
+		if (!isset($args['psource_event'])) { // If not single
 			$forbidden_statuses[] = Eab_EventModel::STATUS_EXPIRED;
 		}
 		$forbidden_statuses = apply_filters('eab-collection-forbidden_statuses', $forbidden_statuses);
@@ -193,24 +193,24 @@ class Eab_DateRangeCollection extends Eab_TimedCollection {
 		$args = array_merge(
 			$args,
 			array(
-			 	'post_type' => 'incsub_event',
+			 	'post_type' => 'psource_event',
 			 	'post_status' => array('publish', Eab_EventModel::RECURRENCE_STATUS),
 				'suppress_filters' => false,
 				'meta_query' => array(
 					array(
-		    			'key' => 'incsub_event_start',
+		    			'key' => 'psource_event_start',
 					'value' => apply_filters('eab-collection-date_range_end', date('Y-m', eab_current_time()) . '-01 23:59'),
 		    			'compare' => '<',
 		    			'type' => 'DATETIME'
 					),
 					array(
-		    			'key' => 'incsub_event_end',
+		    			'key' => 'psource_event_end',
 					'value' => apply_filters('eab-collection-date_range_start', date('Y-m-d', eab_current_time()) . ' 00:00'),
 		    			'compare' => '>=',
 		    			'type' => 'DATETIME'
 					),
 					array(
-						'key' => 'incsub_event_status',
+						'key' => 'psource_event_status',
 						'value' => $forbidden_statuses,
 						'compare' => 'NOT IN',
 					),
@@ -236,7 +236,7 @@ class Eab_DateRangeArchiveCollection extends Eab_TimedCollection {
 	
 		public function build_query_args ($args) {
 		    $forbidden_statuses = array(Eab_EventModel::STATUS_CLOSED);
-		    if (!isset($args['incsub_event'])) { // If not single
+		    if (!isset($args['psource_event'])) { // If not single
 			    $forbidden_statuses[] = Eab_EventModel::STATUS_EXPIRED;
 		    }
 		    $forbidden_statuses = apply_filters('eab-collection-forbidden_statuses', $forbidden_statuses);
@@ -246,24 +246,24 @@ class Eab_DateRangeArchiveCollection extends Eab_TimedCollection {
 			$args = array_merge(
 				$args,
 				array(
-					 'post_type' 		=> 'incsub_event',
+					 'post_type' 		=> 'psource_event',
 					 'post_status' 		=> array('publish', Eab_EventModel::RECURRENCE_STATUS),
 					'suppress_filters' 	=> false,
 					'meta_query' 		=> array(
 						array(
-							'key' 		=> 'incsub_event_start',
+							'key' 		=> 'psource_event_start',
 							'value' 	=> apply_filters('eab-collection-date_range_end', date('Y-m', eab_current_time()) . '-01 23:59'),
 							'compare' 	=> '<',
 							'type' 		=> 'DATETIME'
 						),
 						array(
-							'key' 		=> 'incsub_event_end',
+							'key' 		=> 'psource_event_end',
 							'value' 	=> apply_filters('eab-collection-date_range_start', date('Y-m-d', eab_current_time()) . ' 00:00'),
 							'compare' 	=> '>=',
 							'type' 		=> 'DATETIME'
 						),
 						array(
-							'key' 	=> 'incsub_event_status',
+							'key' 	=> 'psource_event_status',
 							'value' => Eab_EventModel::STATUS_ARCHIVED,
 						),
 					)
@@ -282,7 +282,7 @@ class Eab_UpcomingWeeksCollection extends Eab_TimedCollection {
 	const WEEK_COUNT = 5;
 
 	public function __construct ($timestamp=false, $args=array()) {
-		if (!defined('EAB_COLLECTION_UPCOMING_WEEKS_COUNT')) define('EAB_COLLECTION_UPCOMING_WEEKS_COUNT', self::WEEK_COUNT, true);
+		if (!defined('EAB_COLLECTION_UPCOMING_WEEKS_COUNT')) define('EAB_COLLECTION_UPCOMING_WEEKS_COUNT', self::WEEK_COUNT);
 
 		Eab_Filter::start_date_ordering_set_up();
 		add_filter('eab-ordering-date_ordering_direction', array($this, 'propagate_direction_filter'));
@@ -300,7 +300,7 @@ class Eab_UpcomingWeeksCollection extends Eab_TimedCollection {
 		$time = $this->get_timestamp();
 
 		$forbidden_statuses = array(Eab_EventModel::STATUS_CLOSED);
-		if (!isset($args['incsub_event'])) { // If not single
+		if (!isset($args['psource_event'])) { // If not single
 			$forbidden_statuses[] = Eab_EventModel::STATUS_EXPIRED;
 		}
 		$forbidden_statuses = apply_filters('eab-collection-forbidden_statuses', $forbidden_statuses);
@@ -313,24 +313,24 @@ class Eab_UpcomingWeeksCollection extends Eab_TimedCollection {
 		$args = array_merge(
 			$args,
 			array(
-			 	'post_type' => 'incsub_event',
+			 	'post_type' => 'psource_event',
 			 	'post_status' => array('publish', Eab_EventModel::RECURRENCE_STATUS),
 				'suppress_filters' => false,
 				'meta_query' => array(
 					array(
-		    			'key' => 'incsub_event_start',
+		    			'key' => 'psource_event_start',
 						'value' => date( "Y-m-d H:i", $time + $weeks * 7 * 86400 ), // Events whose starting dates are $weeks weeks from now
 		    			'compare' => '<',
 		    			'type' => 'DATETIME'
 					),
 					array(
-		    			'key' => 'incsub_event_end',
+		    			'key' => 'psource_event_end',
 						'value' => date( "Y-m-d H:i", $time ), // Events those already started now
 		    			'compare' => '>=',
 		    			'type' => 'DATETIME'
 					),
 					array(
-						'key' => 'incsub_event_status',
+						'key' => 'psource_event_status',
 						'value' => $forbidden_statuses,
 						'compare' => 'NOT IN',
 					),
@@ -346,7 +346,7 @@ class Eab_UpcomingWeeksArchiveCollection extends Eab_TimedCollection {
 		const WEEK_COUNT = 5;
 	
 		public function __construct ($timestamp=false, $args=array()) {
-			if (!defined('EAB_COLLECTION_UPCOMING_WEEKS_COUNT')) define('EAB_COLLECTION_UPCOMING_WEEKS_COUNT', self::WEEK_COUNT, true);
+			if (!defined('EAB_COLLECTION_UPCOMING_WEEKS_COUNT')) define('EAB_COLLECTION_UPCOMING_WEEKS_COUNT', self::WEEK_COUNT);
 	
 			Eab_Filter::start_date_ordering_set_up();
 			add_filter('eab-ordering-date_ordering_direction', array($this, 'propagate_direction_filter'));
@@ -371,24 +371,24 @@ class Eab_UpcomingWeeksArchiveCollection extends Eab_TimedCollection {
 			$args = array_merge(
 				$args,
 				array(
-					 'post_type' 		=> 'incsub_event',
+					 'post_type' 		=> 'psource_event',
 					 'post_status' 		=> array('publish', Eab_EventModel::RECURRENCE_STATUS),
 					'suppress_filters' 	=> false,
 					'meta_query' 		=> array(
 						array(
-							'key' 		=> 'incsub_event_start',
+							'key' 		=> 'psource_event_start',
 							'value' 	=> date( "Y-m-d H:i", $time + $weeks * 7 * 86400 ), // Events whose starting dates are $weeks weeks from now
 							'compare' 	=> '<',
 							'type' 		=> 'DATETIME'
 						),
 						array(
-							'key' 		=> 'incsub_event_end',
+							'key' 		=> 'psource_event_end',
 							'value' 	=> date( "Y-m-d H:i", $time ), // Events those already started now
 							'compare' 	=> '>=',
 							'type' 		=> 'DATETIME'
 						),
 						array(
-							'key' 	=> 'incsub_event_status',
+							'key' 	=> 'psource_event_status',
 							'value' => Eab_EventModel::STATUS_ARCHIVED,
 						),
 					)
@@ -411,7 +411,7 @@ class Eab_PopularCollection extends Eab_Collection {
 			$args,
 			array(
 				'post__in' => array_values($result),
-				'post_type' => 'incsub_event',
+				'post_type' => 'psource_event',
 				'post_status' => array('publish', Eab_EventModel::RECURRENCE_STATUS),
 				'posts_per_page' => -1,
 			)
@@ -430,7 +430,7 @@ class Eab_OrganizerCollection extends Eab_Collection {
 		$arg = (int)$arg;
 		$args = array(
 			'author' => $arg,
-			'post_type' => 'incsub_event',
+			'post_type' => 'psource_event',
 			'post_status' => array('publish', Eab_EventModel::RECURRENCE_STATUS),
 			'posts_per_page' => EAB_OLD_EVENTS_EXPIRY_LIMIT,
 		);
@@ -450,17 +450,17 @@ class Eab_OldCollection extends Eab_TimedCollection {
 		$args = array_merge(
 			$args,
 			array(
-			 	'post_type' => 'incsub_event',
+			 	'post_type' => 'psource_event',
 				'post_status' => 'any',
 				'suppress_filters' => false,
 				'posts_per_page' => EAB_OLD_EVENTS_EXPIRY_LIMIT,
 				'meta_query' => array(
 					array(
-		    			'key' => 'incsub_event_status',
+		    			'key' => 'psource_event_status',
 		    			'value' => Eab_EventModel::STATUS_OPEN,
 					),
 					array(
-		    			'key' => 'incsub_event_end',
+		    			'key' => 'psource_event_end',
 		    			'value' => date("Y-m-d H:i:s", $this->get_timestamp()),
 		    			'compare' => '<',
 		    			'type' => 'DATETIME'
@@ -484,11 +484,11 @@ class Eab_ArchivedCollection extends Eab_Collection {
 		$args = array_merge(
 			$args,
 			array(
-			 	'post_type' 		=> 'incsub_event',
+			 	'post_type' 		=> 'psource_event',
 				'post_status' 		=> 'any',
 				'meta_query' 		=> array(
 					array(
-		    			'key' 	=> 'incsub_event_status',
+		    			'key' 	=> 'psource_event_status',
 		    			'value' => Eab_EventModel::STATUS_ARCHIVED,
 					),
 				),
@@ -496,7 +496,7 @@ class Eab_ArchivedCollection extends Eab_Collection {
 		);
 		if ( $timestamp ) {
 			$args['meta_query'][0] = array(
-				'key' 		=> 'incsub_event_start',
+				'key' 		=> 'psource_event_start',
 				'value' 	=> date( "Y-m-d H:i", $timestamp ),
 				'compare' 	=> '>=',
 				'type' 		=> 'DATETIME'
@@ -526,11 +526,11 @@ class Eab_ExpiredCollection extends Eab_Collection {
 		$args = array_merge(
 			$original,
 			array(
-			 	'post_type' => 'incsub_event',
+			 	'post_type' => 'psource_event',
 				'posts_per_page' => -1,
 				'meta_query' => array(
 					array(
-		    			'key' => 'incsub_event_status',
+		    			'key' => 'psource_event_status',
 		    			'value' => Eab_EventModel::STATUS_EXPIRED,
 					),
 				)
@@ -544,13 +544,13 @@ class Eab_ExpiredCollection extends Eab_Collection {
 class Eab_AllRecurringChildrenCollection extends Eab_Collection {
 
 	public function build_query_args ($arg) {
-		if (!$arg instanceof WpmuDev_DatedVenuePremiumModel) return $arg;
+		if (!$arg instanceof PSource_DatedVenuePremiumModel) return $arg;
 		$status = $arg->is_trashed()
-			? WpmuDev_RecurringDatedItem::RECURRENCE_TRASH_STATUS
-			: WpmuDev_RecurringDatedItem::RECURRENCE_STATUS
+			? PSource_RecurringDatedItem::RECURRENCE_TRASH_STATUS
+			: PSource_RecurringDatedItem::RECURRENCE_STATUS
 		;
 		$args = array (
-			'post_type' => 'incsub_event',
+			'post_type' => 'psource_event',
 			'post_status' => $status,
 			'post_parent' => $arg->get_id(),
 			'posts_per_page' => -1,
@@ -565,7 +565,7 @@ class Eab_ArchivedRecurringChildrenCollection extends Eab_AllRecurringChildrenCo
 		$args = parent::build_query_args($arg);
 		$args['meta_query'] = array(
 			array(
-				'key' => 'incsub_event_status',
+				'key' => 'psource_event_status',
 				'value' => Eab_EventModel::STATUS_ARCHIVED,
 			),
 		);
@@ -593,7 +593,7 @@ class Eab_DailyCollection extends Eab_TimedCollection {
 
 	public function build_query_args ($args) {
 		    $forbidden_statuses = array(Eab_EventModel::STATUS_CLOSED);
-		    if (!isset($args['incsub_event'])) { // If not single
+		    if (!isset($args['psource_event'])) { // If not single
 			    $forbidden_statuses[] = Eab_EventModel::STATUS_EXPIRED;
 		    }
 		    $forbidden_statuses = apply_filters('eab-collection-forbidden_statuses', $forbidden_statuses);
@@ -605,24 +605,24 @@ class Eab_DailyCollection extends Eab_TimedCollection {
 		$args = array_merge(
 			$args,
 			array(
-			 	'post_type' => 'incsub_event',
+			 	'post_type' => 'psource_event',
 			 	'post_status' => array('publish', Eab_EventModel::RECURRENCE_STATUS),
 				'suppress_filters' => false,
 				'meta_query' => array(
 					array(
-		    			'key' => 'incsub_event_start',
+		    			'key' => 'psource_event_start',
 						'value' => $date . ' 23:59', // Event for start day
 		    			'compare' => '<',
 		    			'type' => 'DATETIME'
 					),
 					array(
-		    			'key' => 'incsub_event_end',
+		    			'key' => 'psource_event_end',
 						'value' => $date . ' 00:00', // Events those already started now
 		    			'compare' => '>=',
 		    			'type' => 'DATETIME'
 					),
 					array(
-						'key' => 'incsub_event_status',
+						'key' => 'psource_event_status',
 						'value' => $forbidden_statuses,
 						'compare' => 'NOT IN',
 					),
@@ -648,7 +648,7 @@ class Eab_DailyArchiveCollection extends Eab_TimedCollection {
 	
 		public function build_query_args ($args) {
 		    $forbidden_statuses = array(Eab_EventModel::STATUS_CLOSED);
-		    if (!isset($args['incsub_event'])) { // If not single
+		    if (!isset($args['psource_event'])) { // If not single
 			    $forbidden_statuses[] = Eab_EventModel::STATUS_EXPIRED;
 		    }
 		    $forbidden_statuses = apply_filters('eab-collection-forbidden_statuses', $forbidden_statuses);
@@ -660,24 +660,24 @@ class Eab_DailyArchiveCollection extends Eab_TimedCollection {
 			$args = array_merge(
 				$args,
 				array(
-					 'post_type' 		=> 'incsub_event',
+					 'post_type' 		=> 'psource_event',
 					 'post_status' 		=> array('publish', Eab_EventModel::RECURRENCE_STATUS),
 					'suppress_filters' 	=> false,
 					'meta_query' 		=> array(
 						array(
-							'key' 		=> 'incsub_event_start',
+							'key' 		=> 'psource_event_start',
 							'value' 	=> $date . ' 23:59', // Event for start day, // Events whose starting dates are $weeks weeks from now
 							'compare' 	=> '<',
 							'type' 		=> 'DATETIME'
 						),
 						array(
-							'key' 		=> 'incsub_event_end',
+							'key' 		=> 'psource_event_end',
 							'value' 	=> $date . ' 00:00', // Event for start day, // Events those already started now
 							'compare' 	=> '>=',
 							'type' 		=> 'DATETIME'
 						),
 						array(
-							'key' 	=> 'incsub_event_status',
+							'key' 	=> 'psource_event_status',
 							'value' => Eab_EventModel::STATUS_ARCHIVED,
 						),
 					)

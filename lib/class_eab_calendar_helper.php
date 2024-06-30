@@ -8,7 +8,7 @@
 /**
  * Calendar table hub class.
  */
-abstract class WpmuDev_CalendarTable {
+abstract class PSource_CalendarTable {
 	
 	protected $_events = array();
 	protected $_current_timestamp;
@@ -20,7 +20,7 @@ abstract class WpmuDev_CalendarTable {
 			$this->start_of_week = 0;
 	}
 	/**
-	 * Arranges days array acc. to start of week, e.g 1234560 (Week starting with Monday)
+	 * Arranges days array acc. to start of week, e.g 1234560 (Week starting with Montag)
 	 * @ days: input array
 	 */	
 	public function arrange( $days ) {
@@ -154,13 +154,13 @@ abstract class WpmuDev_CalendarTable {
 	
 	public function get_day_names () {
 		return array(
-			__('Sunday', $this->_get_text_domain()),
-			__('Monday', $this->_get_text_domain()),
-			__('Tuesday', $this->_get_text_domain()),
-			__('Wednesday', $this->_get_text_domain()),
-			__('Thursday', $this->_get_text_domain()),
-			__('Friday', $this->_get_text_domain()),
-			__('Saturday', $this->_get_text_domain()),
+			__('Sonntag', $this->_get_text_domain()),
+			__('Montag', $this->_get_text_domain()),
+			__('Dienstag', $this->_get_text_domain()),
+			__('Mittwoch', $this->_get_text_domain()),
+			__('Donnerstag', $this->_get_text_domain()),
+			__('Freitag', $this->_get_text_domain()),
+			__('Samstag', $this->_get_text_domain()),
 		);
 	}
 	
@@ -188,7 +188,7 @@ abstract class WpmuDev_CalendarTable {
 /**
  * Abstract event hub class.
  */
-abstract class Eab_CalendarTable extends WpmuDev_CalendarTable {
+abstract class Eab_CalendarTable extends PSource_CalendarTable {
 	
 	protected function _get_item_data ($post) {
 		if (isset($post->blog_id)) { // Originates from network
@@ -216,7 +216,7 @@ abstract class Eab_CalendarTable extends WpmuDev_CalendarTable {
 	}
 	
 	protected function _get_text_domain () {
-		return Eab_EventsHub::TEXT_DOMAIN;
+		return 'eab';
 	}
 }
 
@@ -256,13 +256,13 @@ class Eab_CalendarTable_UpcomingCalendarWidget extends Eab_CalendarTable {
 	
 	public function get_day_names () {
 		return array(
-			__('Su', Eab_EventsHub::TEXT_DOMAIN),
-			__('Mo', Eab_EventsHub::TEXT_DOMAIN),
-			__('Tu', Eab_EventsHub::TEXT_DOMAIN),
-			__('We', Eab_EventsHub::TEXT_DOMAIN),
-			__('Th', Eab_EventsHub::TEXT_DOMAIN),
-			__('Fr', Eab_EventsHub::TEXT_DOMAIN),
-			__('Sa', Eab_EventsHub::TEXT_DOMAIN),
+			__('So', 'eab'),
+			__('Mo', 'eab'),
+			__('Di', 'eab'),
+			__('Mi', 'eab'),
+			__('Do', 'eab'),
+			__('Fr', 'eab'),
+			__('Sa', 'eab'),
 		);
 	}
 	
@@ -281,9 +281,9 @@ class Eab_CalendarTable_UpcomingCalendarWidget extends Eab_CalendarTable {
 		$css_classes = $event_info['status_class'];
 		$permalink = isset($event_info['blog_id']) ? get_blog_permalink($event_info['blog_id'], $event_info['id']) : get_permalink($event_info['id']);
 		$tstamp = esc_attr(date_i18n("Y-m-d\TH:i:sO", $event_tstamps['start']));
-		$this->_data[] = '<a class="wpmudevevents-upcoming_calendar_widget-event ' . $css_classes . '" href="' . $permalink . '">' . 
+		$this->_data[] = '<a class="psourceevents-upcoming_calendar_widget-event ' . $css_classes . '" href="' . $permalink . '">' . 
 			$event_info['title'] .
-			'<span class="wpmudevevents-upcoming_calendar_widget-event-info"><time datetime="' . $tstamp . '">' . 
+			'<span class="psourceevents-upcoming_calendar_widget-event-info"><time datetime="' . $tstamp . '">' . 
 				'<var class="eab-date_format-date">' . apply_filters('eab-calendar-upcoming_calendar_widget-start_time', date_i18n(get_option('date_format'), $event_tstamps['start']), $event_tstamps['start'], $event_info['id']) . '</var>' .
 				'</time> ' . $event_info['event_venue'] .
 			'</span>' .
@@ -419,9 +419,9 @@ class Eab_CalendarTable_EventArchiveCalendar extends Eab_CalendarTable {
 
 		}
 
-		$this->_data[$daytime][] = '<a class="wpmudevevents-calendar-event ' . $css_classes . '" href="' . $event_permalink . '">' . 
+		$this->_data[$daytime][] = '<a class="psourceevents-calendar-event ' . $css_classes . '" href="' . $event_permalink . '">' . 
 			$event_info['title'] .
-			'<span class="wpmudevevents-calendar-event-info">' .
+			'<span class="psourceevents-calendar-event-info">' .
 				(
 					!empty($this->_thumbnail['with_thumbnail']) && !empty($event_info['thumbnail'])
 						? $event_info['thumbnail']
@@ -483,12 +483,12 @@ class Eab_CalendarTable_EventArchiveCalendar extends Eab_CalendarTable {
 (function ($) {
 $(function () {
 // Info popups
-$(".wpmudevevents-calendar-event")
-	.on('mouseenter', function () {
-		$(this).find(".wpmudevevents-calendar-event-info").show();
+$(".psourceevents-calendar-event")
+	.on("mouseenter", function () {
+		$(this).find(".psourceevents-calendar-event-info").show();
 	})
-	.on('mouseleave', function () {
-		$(this).find(".wpmudevevents-calendar-event-info").hide();
+	.on("mouseleave", function () {
+		$(this).find(".psourceevents-calendar-event-info").hide();
 	})
 ;
 });
@@ -504,7 +504,7 @@ EabEctEacJs;
 		$event = ($post instanceof Eab_EventModel) ? $post : new Eab_EventModel($post);
 		
 		if (!empty($this->_thumbnail['with_thumbnail'])) {
-			$thumbnail = $event->get_featured_image();
+			$thumbnail = $event->get_featured_image('medium_large');
 			if (empty($thumbnail) && !empty($this->_thumbnail['default_thumbnail'])) {
 				$thumbnail = '<img src="' . esc_url($this->_thumbnail['default_thumbnail']) . '" />';
 			}
@@ -527,8 +527,6 @@ EabEctEacJs;
 
 
 class Eab_CalendarTable_EventShortcodeCalendar extends Eab_CalendarTable_EventArchiveCalendar {
-
-	public $start_of_week;
 
 	protected $_class;
 	protected $_use_footer = false;

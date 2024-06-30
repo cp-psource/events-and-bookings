@@ -1,10 +1,10 @@
 <?php
 /*
-Plugin Name: Public Announcement Events
-Description: Allows you to create Public Announcement events, which will have no RSVP capabilities.
-Plugin URI: http://premium.wpmudev.org/project/events-and-booking
-Version: 1.1
-Author: PSOURCE
+Plugin Name: Öffentliche Ankündigungsveranstaltungen
+Description: Ermöglicht das Erstellen von öffentlichen Ankündigungsereignissen, für die keine RSVP-Funktionen verfügbar sind.
+Plugin URI: https://n3rds.work/piestingtal-source-project/eventsps-das-eventmanagment-fuer-wordpress/
+Version: 1.2
+Author: DerN3rd
 AddonType: Events
 */
 
@@ -45,12 +45,12 @@ class Eab_Events_Pae {
 		$ret .= '<div class="eab_meta_box">';
 		$ret .= '<div class="misc-eab-section" >';
 		$ret .= '<div class="eab_meta_column_box top"><label for="eab_event_pae">' .
-			__('Public Announcement', Eab_EventsHub::TEXT_DOMAIN) . 
+			__('Öffentliche Ankündigung', 'eab') . 
 		'</label></div>';
 		
 		$ret .= '<input type="hidden" name="eab-is_pae" value="0" /> ';
 		$ret .= '<input type="checkbox" name="eab-is_pae" id="eab_event_is_pae" value="1" ' . $checked . '" /> ';
-		$ret .= ' <label for="eab_event_is_pae">' . __('This is a Public Announcement event', Eab_EventsHub::TEXT_DOMAIN) . '</label>';
+		$ret .= ' <label for="eab_event_is_pae">' . __('Dies ist eine öffentliche Ankündigung', 'eab') . '</label>';
 		
 		$ret .= '</div>';
 		$ret .= '</div>';
@@ -62,17 +62,16 @@ class Eab_Events_Pae {
 		$is_pae = (int)get_post_meta($event->get_id(), 'eab_public_announcement', true);
 		$checked = $is_pae ? 'checked="checked"' : '';
 		
-		$ret .= '<div class="eab-events-pae-meta_box">';
-				
+		$ret = ''; // Define $ret variable.
+		$ret .= '<div class="eab-events-pae-meta_box">';		
 		$ret .= '<input type="hidden" name="eab-is_pae" value="0" /> ';
 		$ret .= '<input type="checkbox" name="eab-is_pae" id="eab_event_is_pae" value="1" ' . $checked . '" /> ';
-		$ret .= ' <label for="eab_event_is_pae">' . __('This is a Public Announcement event', Eab_EventsHub::TEXT_DOMAIN) . '</label>';
-		
+		$ret .= ' <label for="eab_event_is_pae">' . __('Dies ist eine öffentliche Ankündigung', 'eab') . '</label>';
 		$ret .= '</div>';
 		$ret .=<<<EOPaeFpeJs
 <script type="text/javascript">
 (function ($) {
-$(document).bind('eab-events-fpe-save_request', function (e, request) {
+$(document).on('eab-events-fpe-save_request', function (e, request) {
 	request['eab-is_pae'] = $("#eab_event_is_pae").is(":checked") ? 1 : 0;
 });
 })(jQuery);

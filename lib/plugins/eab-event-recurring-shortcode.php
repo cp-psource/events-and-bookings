@@ -1,15 +1,15 @@
 <?php
 /*
-Plugin Name: Recurring Event ShortCode
-Description: Use [eab_recurring id="xx"] to show all instances of a recurring event
-Plugin URI: http://premium.wpmudev.org/project/events-and-booking
-Version: 1.0
-Author: PSOURCE
+Plugin Name: Shortcode für wiederkehrende Ereignisse
+Description: Benutze [eab_recurring id="xx"] um alle Instanzen eines wiederkehrenden Ereignisses anzuzeigen
+Plugin URI: https://n3rds.work/piestingtal-source-project/eventsps-das-eventmanagment-fuer-wordpress/
+Version: 1.1
+Author: DerN3rd
 AddonType: Events
 */
 
 /*
-Detail: <b>Note:</b> this may take time and resources if you have a lot of events.
+Detail: <b>Hinweis:</b> Dies kann Zeit und Ressourcen in Anspruch nehmen, wenn Du viele Ereignisse hast.
 */ 
 
 class Eab_Events_RecurringShortCode {
@@ -77,7 +77,7 @@ class Eab_Events_RecurringShortCode {
 	
 	function get_recurring_content($post, $content=false) {
 		$event = ($post instanceof Eab_EventModel) ? $post : new Eab_EventModel($post);
-		if ('incsub_event' != $event->get_type()) return $content;
+		if ('psource_event' != $event->get_type()) return $content;
 		
 		$start_day = date_i18n('m', $event->get_start_timestamp());
 	
@@ -91,13 +91,13 @@ class Eab_Events_RecurringShortCode {
 		
 		$new_content .= '<div class="event ' . Eab_Template::get_status_class($event) . '" itemscope itemtype="http://schema.org/Event">';
 		$new_content .= '<meta itemprop="name" content="' . esc_attr($event->get_title()) . '" />';
-		$new_content .= '<a href="' . $link . '" class="wpmudevevents-viewevent">' .
-			__('View event', Eab_EventsHub::TEXT_DOMAIN) . 
+		$new_content .= '<a href="' . $link . '" class="psourceevents-viewevent">' .
+			__('Ereignis anzeigen', 'eab') . 
 		'</a>';
 		$new_content .= apply_filters('eab-template-archive_after_view_link', '', $event);
 		$new_content .= '<div style="clear: both;"></div>';
 		$new_content .= '<hr />';
-		$new_content .= '<div id="wpmudevevents-contentbody" itemprop="description">' . ($content ? $content : $event->get_content()) . '</div>';
+		$new_content .= '<div id="psourceevents-contentbody" itemprop="description">' . ($content ? $content : $event->get_content()) . '</div>';
 		$new_content .= '<hr />';
 		$new_content .= Eab_Template::get_event_details($event);
 		$new_content .= Eab_Template::get_rsvp_form($event);

@@ -25,10 +25,10 @@ function unlimited_change () {
 	else return $capacity.focus();
 }
 
-$(document).bind('eab-events-fpe-save_request', append_meta_data);
+$(document).on('eab-events-fpe-save_request', append_meta_data);
 $(function () {
-	$("#eab_event_capacity").on('change', capacity_change);
-	$("#eab_event_capacity-unlimited").on('change', unlimited_change);
+	$("#eab_event_capacity").change(capacity_change);
+	$("#eab_event_capacity-unlimited").change(unlimited_change);
 });
 	
 })(jQuery);

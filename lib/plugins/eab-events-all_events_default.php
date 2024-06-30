@@ -1,15 +1,15 @@
 <?php
 /*
-Plugin Name: Default to all Events
-Description: If no year or month arguments are passed to your archive page requests, this simple add-on will show all applicable Events instead of truncating them to montly archives. 
-Plugin URI: http://premium.wpmudev.org/project/events-and-booking
-Version: 1.0
-Author: PSOURCE
+Plugin Name: Standard für alle Ereignisse
+Description: Wenn keine Jahr- oder Monatsargumente an Deine Archivseitenanforderungen übergeben werden, zeigt diese einfache Erweiterung alle zutreffenden Ereignisse an, anstatt sie in monatlichen Archiven abzuschneiden. 
+Plugin URI: https://n3rds.work/piestingtal-source-project/eventsps-das-eventmanagment-fuer-wordpress/
+Version: 1.1
+Author: DerN3rd
 AddonType: Events
 */
 
 /*
-Detail: <b>Note:</b> this may take time and resources if you have a lot of events.
+Detail: <b>Hinweis:</b> Dies kann Zeit und Ressourcen in Anspruch nehmen, wenn Du viele Ereignisse hast.
 */ 
 
 class Eab_Events_AllEventsDefault {

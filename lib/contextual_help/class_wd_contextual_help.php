@@ -4,7 +4,7 @@
  * 
  * Example usage:
  * <code>
- * $help = new WpmuDev_ContextualHelper();
+ * $help = new PSource_ContextualHelper();
  * $help->add_page(
  *		'dashboard',
  *		array(
@@ -21,7 +21,7 @@
  * </code>
  */
 
-class WpmuDev_ContextualHelp {
+class PSource_ContextualHelp {
 	
 	private $_pages = array();
 	

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * New MP (3.0+) implementation
+ * New MP (1.5+) implementation
  */
 class Eab_MP_Bridge {
 
@@ -26,15 +26,15 @@ class Eab_MP_Bridge {
 
 		// Display
 		add_filter('eab-event-payment_forms', array($this, 'process_event_payment_forms'), 10, 2);
-        add_action('incsub_event_booking_yes', array($this, 'add_event_product_to_cart'), 10, 2);
-        add_action('incsub_event_booking_maybe', array($this, 'add_event_product_to_cart'), 10, 2);
+        add_action('psource_event_booking_yes', array($this, 'add_event_product_to_cart'), 10, 2);
+        add_action('psource_event_booking_maybe', array($this, 'add_event_product_to_cart'), 10, 2);
 		add_filter('eab-events-event_details-price', array($this, 'show_product_price'), 10, 2);
 
 		// Regular Events+ product selection
 		add_filter('eab-event_meta-event_price', array($this, 'show_event_product_selection'), 10, 2);
-		add_action('incsub_event_save_payments_meta', array($this, 'save_event_product_selection'));
+		add_action('psource_event_save_payments_meta', array($this, 'save_event_product_selection'));
 		// Resync top-level/singular price on related Product update
-		add_action('wp_insert_post', array($this, 'resync_marketpress_product_price'), 10, 2);
+		add_action('wp_insert_post', array($this, 'resync_psecommerce_product_price'), 10, 2);
 
 		// Recurring events
 		add_action('eab-events-recurring_instances-deleted', array($this, 'thrash_old_product_variations')); // Thrash old variations
@@ -117,15 +117,15 @@ class Eab_MP_Bridge {
 	}
 
 	private function _is_mp_present () {
-		return class_exists('MarketPress');
+		return class_exists('PSeCommerce');
 	}
 
-	private function _is_old_mp () {
+	/*private function _is_old_mp () {
 		if (!$this->_is_mp_present()) return false;
 		if (!defined('MP_VERSION')) return false;
 
-		return version_compare(MP_VERSION, '3.0', '>=');
-	}
+		return version_compare(MP_VERSION, '1.5', '>=');
+	}*/
 
 	/**
 	 * Returns properly formatted product price for Event on the front end.
@@ -229,9 +229,9 @@ class Eab_MP_Bridge {
 		else if (empty($query->posts)) $query->posts = array(get_post($linked_product_id));
 
 		if (!$linked_product_id) {
-			$out = $fee . '<br />' . __('... or, please select a Product', Eab_EventsHub::TEXT_DOMAIN);
+			$out = $fee . '<br />' . __('... oder wählen bitte einen Artikel aus', 'eab');
 		} else {
-			$out = __('Select a pricing Product', Eab_EventsHub::TEXT_DOMAIN);
+			$out = __('Wähle einen Preisartikel', 'eab');
 		}
 
 		$out .= ':<br /><select name="eab_e2mp_product_id"><option value=""></option>';
@@ -504,7 +504,7 @@ class Eab_MP_Bridge {
 	/**
 	 * Resyncs singular/top-level event price on linked Product update.
 	 */
-	function resync_marketpress_product_price ($post_id, $post=null) {
+	function resync_psecommerce_product_price ($post_id, $post=null) {
 		if (defined('DOING_AJAX')) return false;
 		if (!$post || empty($post->post_type)) return false;
 		if ('product' != $post->post_type) return false;
@@ -513,7 +513,7 @@ class Eab_MP_Bridge {
 		if (!$event_id) return false;
 
 		$price = $this->_get_quick_product_price($product_id);
-		update_post_meta($event_id, 'incsub_event_fee', $price);
+		update_post_meta($event_id, 'psource_event_fee', $price);
 	}
 
 	/**
@@ -523,7 +523,7 @@ class Eab_MP_Bridge {
 
 		if ( 
 			! $this->_is_mp_present() || 
-			! apply_filters( 'incsub_event_add_event_product_to_cart', true, $event_id, $user_id ) )
+			! apply_filters( 'psource_event_add_event_product_to_cart', true, $event_id, $user_id ) )
 		{
 			return;
 		}
@@ -594,7 +594,7 @@ class Eab_MP_Bridge {
 		$product_id = get_post_meta($event_id, 'eab_product_id', true);
 		if( !isset( $product_id ) || empty( $product_id ) ) return $form;
 		if (!$this->_is_mp_present()) return $form;
-		return '<p><a href="' . esc_url(mp_cart_link(false, true)) . '">' . __('Click here to purchase your ticket', Eab_EventsHub::TEXT_DOMAIN) . '</a></p>';
+		return '<p><a href="' . esc_url(mp_cart_link(false, true)) . '">' . __('Klicke hier, um Dein Ticket zu erwerben', 'eab') . '</a></p>';
 	}
 
 	function dispatch_mp_product_if_order_paid ($order) {
@@ -657,7 +657,7 @@ class Eab_MP_Bridge {
 				);
 				$user_bookings[$event_id] = $wpdb->insert_id;
 				// --todo: Add to BP activity stream
-				do_action( 'incsub_event_booking_yes', $event_id, $user_id );
+				do_action( 'psource_event_booking_yes', $event_id, $user_id );
 				// End booking extras
 			}
 			$booking_id = $user_bookings[$event_id];
@@ -749,7 +749,7 @@ class Eab_MP_Bridge {
 			// Set up cross-linking
 			update_post_meta($event_id, 'eab_product_id', $product_id);
 			update_post_meta($product_id, 'eab_event_id', $event_id);
-			update_post_meta($event_id, 'incsub_event_fee', $price);
+			update_post_meta($event_id, 'psource_event_fee', $price);
 		} else if ($old_product_id) {
 			// Break cross-linking
 			update_post_meta($event_id, 'eab_product_id', $product_id);
@@ -782,7 +782,7 @@ class Eab_MP_Bridge {
 			$event_id = $this->order_to_event_id( $item_id );
 			$eab = events_and_bookings();
 			$eab->update_rsvp_per_event( $event_id, get_current_user_id(), 'no' );
-			do_action( 'incsub_event_booking_no', $event_id, get_current_user_id() );
+			do_action( 'psource_event_booking_no', $event_id, get_current_user_id() );
 			$eab->recount_bookings( $event_id );
 		}
 		
@@ -795,7 +795,7 @@ class Eab_MP_Bridge {
 
 		$booking_id 		= $event->get_user_booking_id( $user_id );
 		$booking_meta 		= unserialize( $event->get_booking_paid( $booking_id ) );
-		$error_msg          = __( 'The order status could not be updated due to unexpected error. Please try again.', Eab_EventsHub::TEXT_DOMAIN );
+		$error_msg          = __( 'Der Bestellstatus konnte aufgrund eines unerwarteten Fehlers nicht aktualisiert werden. Bitte versuche es erneut.', 'eab' );
 
 		// If no order id set, then no need to do anything here
 		if ( ! isset( $booking_meta['order_id'] ) ) {

@@ -1,9 +1,9 @@
-=== Events + ===
-Contributors: DerN3rd (WMS N@W)
+=== PS Events ===
+Contributors: DerN3rd (PSOURCE)
 Tags: multisite, events, kalender, buddypress
 Requires at least: 4.9
 Tested up to: 6.5.4
-Stable tag: 1.9.9
+Stable tag: 1.4.3
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -33,7 +33,7 @@ PS Events enthält Shortcodes, Add-Ons und Widgets für mehr Kontrolle über Lay
 
 =  Ticketverkauf =
 
-Verwende PayPal direkt nach dem Auschecken oder zusammen mit MarketPress, um zusätzliche Zahlungsgateways zu aktivieren.
+Verwende PayPal direkt nach dem Auschecken oder zusammen mit PSeCommerce, um zusätzliche Zahlungsgateways zu aktivieren.
 
 
 =  Ereignis-Countdown =
@@ -80,10 +80,6 @@ Begeistere die Teilnehmer für Deine Veranstaltung. Verbreite das Wort mit autom
 [POWERED BY PSOURCE](https://github.com/cp-psource)
 
 == ChangeLog ==
-
-= 1.4.4 =
-
-* Datepicker CSS Optimiert
 
 = 1.4.3 =
 
@@ -144,7 +140,7 @@ Begeistere die Teilnehmer für Deine Veranstaltung. Verbreite das Wort mit autom
 = 1.3.7 =
 
 * PSource Updater v1.1 integriert
-* MarketPress Links korrigiert
+* PSeCommerce Links korrigiert
 
 = 1.3.6 =
 

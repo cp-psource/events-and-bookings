@@ -1,10 +1,10 @@
 <?php
 /*
-Plugin Name: Event cancellation
-Description: Allows you to quickly cancel your events and send a notification email to your attendees.
-Plugin URI: http://premium.wpmudev.org/project/events-and-booking
-Version: 1.0
-Author: PSOURCE
+Plugin Name: Absage der Veranstaltung
+Description: Ermöglicht es Dir, Deine Veranstaltungen schnell abzubrechen und eine Benachrichtigungs-E-Mail an Deine Teilnehmer zu senden.
+Plugin URI: https://n3rds.work/piestingtal-source-project/eventsps-das-eventmanagment-fuer-wordpress/
+Version: 1.1
+Author: DerN3rd
 AddonType: Events
 */
 
@@ -21,8 +21,8 @@ class Eab_Events_EventCancel {
 	function __construct () {
 		$this->_data = Eab_Options::get_instance();
 
-		$this->_default_subject = __('Bad news! EVENT_NAME has been cancelled', Eab_EventsHub::TEXT_DOMAIN);
-		$this->_default_message = __("Hello, USER_NAME\n\nUnfortunately, our EVENT_LINK event has been cancelled.", Eab_EventsHub::TEXT_DOMAIN);
+		$this->_default_subject = __('Schlechte Nachrichten! EVENT_NAME wurde abgebrochen', 'eab');
+		$this->_default_message = __("Hallo, USER_NAME\n\nUnfortunately, Leider wurde unser EVENT_LINK-Event abgesagt.", 'eab');
 	}
 
 	public static function serve () {
@@ -71,7 +71,7 @@ EOPublicCancellationCss;
 	function inject_cancelled_status ($options, $event) {
 		if (!$this->is_cancelled($event)) return $options;
 		$value = esc_attr(self::STATUS_CANCEL);
-		$title = __('Cancelled', Eab_EventsHub::TEXT_DOMAIN);
+		$title = __('Abgebrochen', 'eab');
 		return "{$options}<option value='{$value}' selected='selected'>{$title}</option>";
 	}
 
@@ -80,7 +80,7 @@ EOPublicCancellationCss;
 		if (!$event->get_status()) return $after;
 		$button = '' .
 			'<div class="misc-eab-section">' .
-				'<input type="button" class="button" id="eab-event-cancel_event" value="' . esc_attr(__('Cancel event', Eab_EventsHub::TEXT_DOMAIN)) . '" />' .
+				'<input type="button" class="button" id="eab-event-cancel_event" value="' . esc_attr(__('Ereignis abbrechen', 'eab')) . '" />' .
 			'</div>' .
 		'';
 		$js = '<script type="text/javascript">(function ($) { $(function() {' .
@@ -110,8 +110,8 @@ EOPublicCancellationCss;
 	}
 
 	function _get_cancelled_notice ($event) {
-		return '<div class="wpmudevevents-buttons eab-event_cancelled">' .
-			'<p>' . __('Event has been cancelled', Eab_EventsHub::TEXT_DOMAIN) . '</p>' .
+		return '<div class="psourceevents-buttons eab-event_cancelled">' .
+			'<p>' . __('Veranstaltung wurde abgesagt', 'eab') . '</p>' .
 		'</div>';
 	}
 
@@ -137,14 +137,14 @@ EOPublicCancellationCss;
 		$event = new Eab_EventModel(get_post($event_id));
 		if ($event->is_recurring() && !$event->is_recurring_child()) {
 			// Recurring root - cancel children too
-			update_post_meta($event_id, 'incsub_event_status', self::STATUS_CANCEL);
+			update_post_meta($event_id, 'psource_event_status', self::STATUS_CANCEL);
 			$events = Eab_CollectionFactory::get_all_recurring_children_events($event);
 			foreach ($events as $event) {
 				$this->_cancel_event($event->get_id());
 			}
 		} else {
 			// Regular event or single instance. All good
-			update_post_meta($event_id, 'incsub_event_status', self::STATUS_CANCEL);
+			update_post_meta($event_id, 'psource_event_status', self::STATUS_CANCEL);
 			$this->_add_event_to_schedule_queue($event_id);
 		}
 	}
@@ -257,7 +257,7 @@ EOPublicCancellationCss;
 	}
 
 	function show_settings () {
-		$tips = new WpmuDev_HelpTooltips();
+		$tips = new PSource_HelpTooltips();
 		$tips->set_icon_url(EAB_PLUGIN_URL . 'img/information.png');
 		
 		$from = $this->_data->get_option('eab_cancelations-email-from');
@@ -275,43 +275,43 @@ EOPublicCancellationCss;
 		$events = Eab_CollectionFactory::get_upcoming_events(eab_current_time(), array('posts_per_page' => 10));
 		?>
 <div id="eab-settings-eab_cancelations" class="eab-metabox postbox">
-	<h3 class="eab-hndle"><?php _e('Event cancellation settings', Eab_EventsHub::TEXT_DOMAIN); ?></h3>
+	<h3 class="eab-hndle"><?php _e('Einstellungen Ereignisstornierung', 'eab'); ?></h3>
 	<div class="eab-inside">
 		<div class="eab-settings-settings_item">
-			<label for="eab_cancellations-hide_events"><?php _e('Hide cancelled events', Eab_EventsHub::TEXT_DOMAIN); ?></label>
+			<label for="eab_cancellations-hide_events"><?php _e('Abgebrochene Ereignisse ausblenden', 'eab'); ?></label>
 			<input type="hidden" name="eab_cancelations[hide_events]" value="" />
 			<input type="checkbox" name="eab_cancelations[hide_events]" id="eab_cancellations-hide_events" value="1" <?php checked(true, $this->_data->get_option('eab_cancelations-hide_events')); ?> />
 		</div>
 		<div class="eab-settings-settings_item">
-			<label for="eab_cancellations-email_batch_limit"><?php _e('Email batch limit', Eab_EventsHub::TEXT_DOMAIN); ?>:</label>
-			<span><?php echo $tips->add_tip(__('This is the maximum number of emails that will be sent in one go. The rest will be scheduled for sending.', Eab_EventsHub::TEXT_DOMAIN)); ?></span>
+			<label for="eab_cancellations-email_batch_limit"><?php _e('E-Mail-Batch-Limit', 'eab'); ?>:</label>
+			<span><?php echo $tips->add_tip(__('Dies ist die maximale Anzahl von E-Mails, die auf einmal gesendet werden. Der Rest wird für den Versand geplant.', 'eab')); ?></span>
 			<input type="text" name="eab_cancelations[email_batch_limit]" id="eab_cancellations-email_batch_limit" value="<?php echo (int)$this->_get_email_batch_limit(); ?>" />
 		</div>
 		<div class="eab-note">
-			<?php _e('This is the email that will be sent to your attendees on event cancellation.', Eab_EventsHub::TEXT_DOMAIN); ?>
+			<?php _e('Dies ist die E-Mail, die bei Absage der Veranstaltung an Ihre Teilnehmer gesendet wird.', 'eab'); ?>
 		</div>
 		<div class="eab-settings-settings_item">
-	    	<label for="eab_event-eab_cancelations-from"><?php _e('From email address', Eab_EventsHub::TEXT_DOMAIN); ?></label>
-			<span><?php echo $tips->add_tip(__('This is the address the cancellation email will be sent from', Eab_EventsHub::TEXT_DOMAIN)); ?></span>
+	    	<label for="eab_event-eab_cancelations-from"><?php _e('Von der Email Adresse', 'eab'); ?></label>
+			<span><?php echo $tips->add_tip(__('Dies ist die Adresse, von der aus die Stornierungs-E-Mail gesendet wird', 'eab')); ?></span>
 			<input type="text" id="eab_event-eab_cancelations-from" name="eab_cancelations[email-from]" value="<?php esc_attr_e($from); ?>" />
 	    </div>
 	    <div class="eab-settings-settings_item">
-	    	<label for="eab_event-eab_cancelations-subject"><?php _e('Email subject', Eab_EventsHub::TEXT_DOMAIN); ?></label>
-			<span><?php echo $tips->add_tip(sprintf(__('This is your email subject. You can use these macros: <code>%s</code>', Eab_EventsHub::TEXT_DOMAIN), $macros)); ?></span>
+	    	<label for="eab_event-eab_cancelations-subject"><?php _e('Email Betreff', 'eab'); ?></label>
+			<span><?php echo $tips->add_tip(sprintf(__('Dies ist der E-Mail-Betreff. Du kannst diese Makros verwenden: <code>%s</code>', 'eab'), $macros)); ?></span>
 			<input type="text" class="widefat" id="eab_event-eab_cancelations-subject" name="eab_cancelations[email-subject]" value="<?php esc_attr_e($subject); ?>" />
 	    </div>
 	    <div class="eab-settings-settings_item">
-	    	<label for="eab_event-eab_cancelations-body"><?php _e('Email body', Eab_EventsHub::TEXT_DOMAIN); ?></label>
-			<span><?php echo $tips->add_tip(sprintf(__('This is your email body. You can use these macros: <code>%s</code>', Eab_EventsHub::TEXT_DOMAIN), $macros)); ?></span>
+	    	<label for="eab_event-eab_cancelations-body"><?php _e('Nachrichtentext', 'eab'); ?></label>
+			<span><?php echo $tips->add_tip(sprintf(__('Dies ist der E-Mail-Text. Du kannst diese Makros verwenden: <code>%s</code>', 'eab'), $macros)); ?></span>
 			<?php wp_editor($body, 'eab_cancelations-email-body', array(
 				'name' => 'eab_cancelations-email-body',
 			)); ?>
 	    </div>
-	    <div class="eab-settings-settings_item"><small><?php printf(__('You can use these macros in your subject and body: <code>%s</code>', Eab_EventsHub::TEXT_DOMAIN), $macros) ?></small></div>
+	    <div class="eab-settings-settings_item"><small><?php printf(__('Du kannst diese Makros in Deinem Betreff und Nachrichtentext verwenden: <code>%s</code>', 'eab'), $macros) ?></small></div>
 	<?php if ($events) { ?>
 	    <div class="eab-settings-settings_item">
-	    	<input type="button" class="button" id="eab_event-eab_cancelations-preview" value="<?php esc_attr_e(__('Preview', Eab_EventsHub::TEXT_DOMAIN)); ?>" />
-	    	<?php _e('using this event data:', Eab_EventsHub::TEXT_DOMAIN); ?>
+	    	<input type="button" class="button" id="eab_event-eab_cancelations-preview" value="<?php esc_attr_e(__('VORSCHAU', 'eab')); ?>" />
+	    	<?php _e('Verwende diese Ereignisdaten:', 'eab'); ?>
 	    	<select id="eab_event-eab_cancelations-events">
 	    	<?php foreach ($events as $event) { ?>
 	    		<option value="<?php esc_attr_e($event->get_id()); ?>"><?php echo $event->get_title(); ?></option>
@@ -335,7 +335,7 @@ $(function () {
 			? tinyMCE.activeEditor.getContent()
 			: $("#eab_cancelations-email-body").val()
 		);
-		$container.html('<?php echo esc_js(__("Please, hold on... ", Eab_EventsHub::TEXT_DOMAIN)); ?>');
+		$container.html('<?php echo esc_js(__("Bitte hör auf... ", 'eab')); ?>');
 		$.post(ajaxurl, {
 			"action": "eab_cancellation_email-preview_email",
 			"subject": $subject.val(),

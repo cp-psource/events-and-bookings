@@ -1,15 +1,15 @@
 <?php
 /*
-Plugin Name: BuddyPress: My Events
-Description: Adds an Events tab to your user profiles.
-Plugin URI: http://premium.wpmudev.org/project/events-and-booking
-Version: 1.0
+Plugin Name: BuddyPress: Meine Veranstaltungen
+Description: Fügt Deinen Benutzerprofilen eine Registerkarte "Ereignisse" hinzu.
+Plugin URI: https://n3rds.work/piestingtal-source-project/eventsps-das-eventmanagment-fuer-wordpress/
+Version: 1.1
 AddonType: BuddyPress
-Author: PSOURCE
+Author: DerN3rd
 */
 
 /*
-Detail: Displays lists of user RSVPs on your users member pages.
+Detail: Zeigt Listen der Benutzer-RSVPs auf den Mitgliederseiten Ihrer Benutzer an. Integriert Statusmeldungen für die BuddyPress Activity
 */ 
 
 class Eab_BuddyPress_MyEvents {
@@ -36,7 +36,7 @@ class Eab_BuddyPress_MyEvents {
 	function show_nags () {
 		if (!defined('BP_VERSION')) {
 			echo '<div class="error"><p>' .
-				__("You'll need BuddyPress installed and activated for My Events add-on to work", Eab_EventsHub::TEXT_DOMAIN) .
+				__("Du musst BuddyPress installiert und aktiviert haben, damit die Erweiterung <strong>Meine Ereignisse</strong> funktioniert", 'eab') .
 			'</p></div>';
 		}
 	}
@@ -49,7 +49,7 @@ class Eab_BuddyPress_MyEvents {
 	function add_bp_profile_entry () {
 		global $bp;
 		bp_core_new_nav_item(array(
-			'name' => __('Events', Eab_EventsHub::TEXT_DOMAIN),
+			'name' => __('Veranstaltungen', 'eab'),
 			'slug' => 'my-events',
 			'show_for_displayed_user' => true,
 			'default_subnav_slug' => ($this->_check_permissions() ? 'organized' : 'attending'),
@@ -57,7 +57,7 @@ class Eab_BuddyPress_MyEvents {
 		));
 		if ($this->_check_permissions()) {
 			bp_core_new_subnav_item(array(
-				'name' => __('Organized', Eab_EventsHub::TEXT_DOMAIN),
+				'name' => __('Organisiert', 'eab'),
 				'slug' => 'organized',
 				'parent_url' => $bp->displayed_user->domain . 'my-events' . '/',
 				'parent_slug' => 'my-events',
@@ -65,21 +65,21 @@ class Eab_BuddyPress_MyEvents {
 			));
 		}
 		bp_core_new_subnav_item(array(
-			'name' => __('Attending', Eab_EventsHub::TEXT_DOMAIN),
+			'name' => __('Teilnahme', 'eab'),
 			'slug' => 'attending',
 			'parent_url' => $bp->displayed_user->domain . 'my-events' . '/',
 			'parent_slug' => 'my-events',
 			'screen_function' => array($this, 'bind_bp_attending_page'),
 		));
 		bp_core_new_subnav_item(array(
-			'name' => __('Maybe', Eab_EventsHub::TEXT_DOMAIN),
+			'name' => __('Interresiert', 'eab'),
 			'slug' => 'mabe',
 			'parent_url' => $bp->displayed_user->domain . 'my-events' . '/',
 			'parent_slug' => 'my-events',
 			'screen_function' => array($this, 'bind_bp_maybe_page'),
 		));
 		bp_core_new_subnav_item(array(
-			'name' => __('Not Attending', Eab_EventsHub::TEXT_DOMAIN),
+			'name' => __('Abgesagt', 'eab'),
 			'slug' => 'not-attending',
 			'parent_url' => $bp->displayed_user->domain . 'my-events' . '/',
 			'parent_slug' => 'my-events',
@@ -120,16 +120,16 @@ class Eab_BuddyPress_MyEvents {
 	}
 	
 	function show_organized_title () {
-		echo __('Organized Events', Eab_EventsHub::TEXT_DOMAIN);
+		echo __('Organisierte Ereignisse', 'eab');
 	}
 	function show_attending_title () {
-		echo __('Attending Events', Eab_EventsHub::TEXT_DOMAIN);
+		echo __('Teilnahme', 'eab');
 	}
 	function show_maybe_title () {
-		echo __('Maybe attending Events', Eab_EventsHub::TEXT_DOMAIN);
+		echo __('Mögliche Teilnahme', 'eab');
 	}
 	function show_not_attending_title () {
-		echo __('Not attending Events', Eab_EventsHub::TEXT_DOMAIN);
+		echo __('Abgesagte Teilnahme', 'eab');
 	}
 
 	function show_organized_body () {
@@ -178,7 +178,7 @@ class Eab_BuddyPress_MyEvents {
 		if (Eab_EventModel::BOOKING_YES != $status) return $content;
 		if ($event->user_paid($user_id)) return $content;
 		
-		$content .= '<div class="eab-premium_event-unpaid_notice"><b>' . __('Event not paid', Eab_EventsHub::TEXT_DOMAIN) . '</b></div>';
+		$content .= '<div class="eab-premium_event-unpaid_notice"><b>' . __('Veranstaltung nicht bezahlt', 'eab') . '</b></div>';
 
 		return $content;
 	}
@@ -194,26 +194,26 @@ class Eab_BuddyPress_MyEvents {
 	}
 
 	function show_settings () {
-		$tips = new WpmuDev_HelpTooltips();
+		$tips = new PSource_HelpTooltips();
 		$tips->set_icon_url( EAB_PLUGIN_URL . 'img/information.png' );
 		$premium = $this->_data->get_option('bp-my_events-premium_events');
 		$options = array(
-			'' => __('Do nothing special', Eab_EventsHub::TEXT_DOMAIN),
-			'hide' => __('Hide', Eab_EventsHub::TEXT_DOMAIN),
-			'nag' => __('Show nag notice', Eab_EventsHub::TEXT_DOMAIN),
+			'' => __('Mach nichts Besonderes', 'eab'),
+			'hide' => __('Verberge', 'eab'),
+			'nag' => __('Nörgelhinweis anzeigen', 'eab'),
 		);
 ?>
 <div id="eab-settings-my_events" class="eab-metabox postbox">
-	<h3 class="eab-hndle"><?php _e('My Events settings', Eab_EventsHub::TEXT_DOMAIN); ?></h3>
+	<h3 class="eab-hndle"><?php _e('Meine Ereignisse Einstellungen', 'eab'); ?></h3>
 	<div class="eab-inside">
 		<div class="eab-settings-settings_item" style="line-height:1.8em">
-	    	<label for="eab_event-bp-my_events-premium_events"><?php _e('Non-paid premium events with positive RSPVs', Eab_EventsHub::TEXT_DOMAIN); ?>:</label>
+	    	<label for="eab_event-bp-my_events-premium_events"><?php _e('Nicht bezahlte Premium-Events mit positiven RSPVs', 'eab'); ?>:</label>
 	    	<?php foreach ($options as $value => $label) { ?>
 	    		<br />
 				<input type="radio" id="eab_event-bp-my_events-premium_events-<?php echo esc_attr($value); ?>" name="event_default[bp-my_events-premium_events]" value="<?php echo esc_attr($value); ?>" <?php checked($value, $premium); ?> />
 	    		<label for="eab_event-bp-my_events-premium_events-<?php echo esc_attr($value); ?>"><?php echo esc_html($label) ?></label>
 	    	<?php } ?>
-			<span><?php echo $tips->add_tip(__('How to deal with non-paid premium events on user events list display.', Eab_EventsHub::TEXT_DOMAIN)); ?></span>
+			<span><?php echo $tips->add_tip(__('Umgang mit nicht bezahlten Premium-Ereignissen in der Anzeige der Benutzerereignisliste.', 'eab')); ?></span>
 	    </div>
 	</div>
 </div>
@@ -271,28 +271,28 @@ class Eab_MyEvents_Shortcodes extends Eab_Codec {
 		$post_type = get_post_type_object(Eab_EventModel::POST_TYPE);
 		if (in_array('organized', $args['sections']) && user_can($args['user'], $post_type->cap->edit_posts)) {
 			$output .= '<div class="' . $args['class'] . ' eab-bp-organized">' . 
-				($args['show_titles'] ? '<h4>' . __('Organized Events', Eab_EventsHub::TEXT_DOMAIN) . '</h4>' : '') .
+				($args['show_titles'] ? '<h4>' . __('Organisierte Veranstaltungen', 'eab') . '</h4>' : '') .
 				Eab_Template::get_user_organized_events($args['user']) .
 			'</div>';
 		}
 
 		if (in_array('yes', $args['sections'])) {
 			$output .= '<div class="' . $args['class'] . ' eab-bp-rsvp_yes">' . 
-				($args['show_titles'] ? '<h4>' . __('Attending Events', Eab_EventsHub::TEXT_DOMAIN) . '</h4>' : '') .
+				($args['show_titles'] ? '<h4>' . __('Teilnahme', 'eab') . '</h4>' : '') .
 				Eab_Template::get_user_events(Eab_EventModel::BOOKING_YES, $args['user']) .
 			'</div>';
 		}
 	
 		if (in_array('maybe', $args['sections'])) {
 			$output .= '<div class="' . $args['class'] . ' eab-bp-rsvp_maybe">' . 
-				($args['show_titles'] ? '<h4>' . __('Maybe attending Events', Eab_EventsHub::TEXT_DOMAIN) . '</h4>' : '') .
+				($args['show_titles'] ? '<h4>' . __('Mögliche Teilnahme', 'eab') . '</h4>' : '') .
 				Eab_Template::get_user_events(Eab_EventModel::BOOKING_MAYBE, $args['user']) .
 			'</div>';
 		}
 		
 		if (in_array('no', $args['sections'])) {
 			$output .= '<div class="' . $args['class'] . ' eab-bp-rsvp_no">' . 
-				($args['show_titles'] ? '<h4>' . __('Not attending Events', Eab_EventsHub::TEXT_DOMAIN) . '</h4>' : '') .
+				($args['show_titles'] ? '<h4>' . __('Abgesagte Teilnahme', 'eab') . '</h4>' : '') .
 				Eab_Template::get_user_events(Eab_EventModel::BOOKING_NO, $args['user']) .
 			'</div>';
 		}
@@ -304,13 +304,13 @@ class Eab_MyEvents_Shortcodes extends Eab_Codec {
 
 	public function add_my_events_shortcode_help ($help) {
 		$help[] = array(
-			'title' => __('My Events archives', Eab_EventsHub::TEXT_DOMAIN),
+			'title' => __('Mein Veranstaltungsarchiv', 'eab'),
 			'tag' => 'eab_my_events',
 			'arguments' => array(
-				'user' => array('help' => __('User ID or keyword "current".', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'string:or_integer'),
-				'class' => array('help' => __('Apply this CSS class', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'string'),
-				'show_titles' => array('help' => __('Show section titles', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'boolean'),
-				'sections' => array('help' => __('Show these sections. Possible values: "organized", "yes", "maybe", "no".', Eab_EventsHub::TEXT_DOMAIN), 'type' => 'string:list'),
+				'user' => array('help' => __('Benutzer-ID oder Schlüsselwort "aktuell".', 'eab'), 'type' => 'string:or_integer'),
+				'class' => array('help' => __('Wende diese CSS-Klasse an', 'eab'), 'type' => 'string'),
+				'show_titles' => array('help' => __('Abschnittstitel anzeigen', 'eab'), 'type' => 'boolean'),
+				'sections' => array('help' => __('Zeigen Sie diese Abschnitte. Mögliche Werte: "Organisiert", "Ja", "Möglich", "Nein".', 'eab'), 'type' => 'string:list'),
 			),
 		);
 		return $help;

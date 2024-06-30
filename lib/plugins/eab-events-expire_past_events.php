@@ -1,15 +1,15 @@
 <?php
 /*
-Plugin Name: Immediately expire past events
-Description: By default, your past events will be archived. Activating this add-on will expire all your archived events. This action depends on cron job, so you need to wait till next cron-job run. Cron job will be run by your system automatically in certain interval. For now, this addon will run hourly.
-Plugin URI: http://premium.wpmudev.org/project/events-and-booking
-Version: 1.0
-Author: PSOURCE
+Plugin Name: Vergangene Ereignisse sofort ablaufen lassen
+Description: Standardmäßig werden Deine vergangenen Ereignisse archiviert. Wenn Du dieses Add-On aktivierst, laufen alle Deine archivierten Ereignisse ab. Diese Aktion hängt vom Cron-Job ab. Du musst also bis zum nächsten Cron-Job-Lauf warten. Der Cron-Job wird von Deinem System in bestimmten Intervallen automatisch ausgeführt. Diese Erweiterung wird vorerst stündlich ausgeführt.
+Plugin URI: https://n3rds.work/piestingtal-source-project/eventsps-das-eventmanagment-fuer-wordpress/
+Version: 1.1
+Author: DerN3rd
 AddonType: Events
 */
 
 /*
-Detail: Your <em>archived</em> events will be shown in archives, but visitors won't be able to RSVP. <br /> <em>Expired</em> events are removed from your archives.
+Detail: Deine <em>archivierten</em> Ereignisse werden in Archiven angezeigt, Besucher können jedoch nicht antworten. <br /> <em>Abgelaufene</em> Ereignisse werden aus Deinen Archiven entfernt.
 */
 
 class Eab_Events_ExpirePastEvents {
@@ -30,7 +30,7 @@ class Eab_Events_ExpirePastEvents {
 		if (!class_exists('Eab_Events_ExpireMonthOldEvents')) return false;
 		if (defined('EAB_EXPIRY_CLASS_NAG_RENDERED')) return false;
 		echo '<div class="error"><p>' .
-			__("<b>Conflict warning:</b> You'll need to turn off one of the past events expiry add-ons.", Eab_EventsHub::TEXT_DOMAIN) .
+			__("<b>Konfliktwarnung:</b> Du musst eines der Add-Ons für den Ablauf vergangener Ereignisse deaktivieren.", 'eab') .
 		'</p></div>';
 		define('EAB_EXPIRY_CLASS_NAG_RENDERED', true);
 	}

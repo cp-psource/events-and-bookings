@@ -1,16 +1,15 @@
 <?php
 /*
-Plugin Name: Membership 2 Integration
-Description: Allows Events+ to Integrate with our Membership 2 plugin, so that members can receive a alternative fee for paid events. <br /><b>Requires <a href="http://premium.wpmudev.org/project/membership">Membership 2 plugin</a>.</b>
-Plugin URI: http://premium.wpmudev.org/project/events-and-booking
-Version: 1.0.1
-Author: PSOURCE
+Plugin Name: PS-Mitglieder+ Integration
+Description: Ermöglicht PS-Events die Integration in unser PS-Mitglieder Plugin, sodass Mitglieder eine alternative Gebühr für bezahlte Events erhalten können. <br /><b>Benötigt <a href="https://n3rds.work/piestingtal-source-project/ps-mitglieder-plugin/">PS-Mitglieder+ Plugin</a>.</b>
+Plugin URI: https://n3rds.work/piestingtal-source-project/eventsps-das-eventmanagment-fuer-wordpress/
+Author: DerN3rd
 Developer: Philipp Stracker
 AddonType: Integration
 */
 
 /*
-Detail: Adds a field to the Event page so that you can select which membership(s) will be exempt from payments for a selected paid event.
+Detail: Fügt der Ereignisseite ein Feld hinzu, damit Du auswählen kannst, welche Mitglieder von den Zahlungen für ein ausgewähltes bezahltes Ereignis befreit sind.
 */
 
 class Eab_Events_Membership2_Integration {
@@ -113,9 +112,9 @@ class Eab_Events_Membership2_Integration {
 	public function show_nag() {
 		printf(
 			'<div class="error"><p>' .
-			__( 'You need to install and activate the %sMembership 2%s plugin for the Membership 2 Integration to work', Eab_EventsHub::TEXT_DOMAIN ) .
+			__( 'Das %sPS-Mitgliedschaften%s Plugin installieren und aktivieren, damit die PS-Mitgliedschaften Integration funktioniert', 'eab' ) .
 			'</p></div>',
-			'<a href="http://premium.wpmudev.org/project/membership">',
+			'<a href="https://n3rds.work/piestingtal-source-project/ps-mitglieder-plugin/">',
 			'</a>'
 		);
 	}
@@ -187,7 +186,7 @@ class Eab_Events_Membership2_Integration {
 		<div class="eab_meta_box eab-membership2-box <?php echo esc_attr( $close_class ); ?>">
 			<input type="hidden" name="event_membership2_meta" value="1" />
 			<div class="eab_meta_column_box">
-				<?php _e( 'Membership 2 Prices', Eab_EventsHub::TEXT_DOMAIN ); ?>
+				<?php _e( 'Mitgliedschaften Preise', 'eab' ); ?>
 				<div class="handlediv eab-membership2-toggle"></div>
 			</div>
 			<div class="misc-eab-section">
@@ -212,7 +211,7 @@ class Eab_Events_Membership2_Integration {
 							name="eab_membership2[<?php echo $membership->id; ?>][price]"
 							min="0"
 							step="any"
-							placeholder="<?php _e( 'Default Price', Eab_EventsHub::TEXT_DOMAIN ); ?>"
+							placeholder="<?php _e( 'Standardpreis', 'eab' ); ?>"
 							value="<?php echo esc_attr( $the_price ); ?>"
 							/>
 					</div>
@@ -224,7 +223,7 @@ class Eab_Events_Membership2_Integration {
 			var box = jQuery( '.eab-membership2-box' ),
 				inside = box.find( '.misc-eab-section' ),
 				toggle = box.find( '.eab_meta_column_box' ),
-				has_price = jQuery( '#incsub_event_paid' );
+				has_price = jQuery( '#psource_event_paid' );
 
 			function show_price_details() {
 				if ( '1' === has_price.val() ) {
@@ -239,7 +238,7 @@ class Eab_Events_Membership2_Integration {
 			}
 
 			has_price.change( show_price_details );
-			toggle.click( toggle_membership_prices );
+			toggle.on("click",  toggle_membership_prices );
 			show_price_details();
 		});
 		</script>
@@ -365,7 +364,7 @@ class Eab_Events_Membership2_Integration {
 			if ( ! isset( $screen->base ) ) { $screen->base = ''; }
 			if ( ! isset( $screen->post_type ) ) { $screen->post_type = ''; }
 
-			if ( 'post' == $screen->base && 'incsub_event' == $screen->post_type ) {
+			if ( 'post' == $screen->base && 'psource_event' == $screen->post_type ) {
 				// An admin is currently editing the event:
 				// Don't modify the price here!
 				return $new_price;

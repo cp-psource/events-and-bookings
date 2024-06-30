@@ -110,7 +110,8 @@ abstract class Eab_Codec {
 		if (isset($raw['with_thumbnail'])) $args['with_thumbnail'] = $this->_arg_to_bool($args['with_thumbnail']);
 
 		$args['thumbnail_size'] = 'post-thumbnail';
-		if ($args['with_thumbnail'] && isset($raw['thumbnail_size'])) {
+		/*if ($args['with_thumbnail'] && isset($raw['thumbnail_size'])) {*/
+			if (isset($args['with_thumbnail']) && isset($raw['thumbnail_size'])) {
 		    if(in_array($raw['thumbnail_size'], $this->_thumbnail_sizes)) {
 				$args['thumbnail_size'] = $raw['thumbnail_size'];
 		    } else {

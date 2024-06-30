@@ -2,15 +2,13 @@
 
 
 class Eab_Admin_Get_Started_Menu {
-
-	private $_api;
-	private $_data;
-	
+	private $_data; // Deklaration der Eigenschaften
+    private $_api;
 	public function __construct( $parent ) {
 		$id = add_submenu_page(
 			$parent,
-			__("Get Started", eab_domain()),
-			__("Get started", eab_domain()),
+			__("Eventboard", eab_domain()),
+			__("Eventboard", eab_domain()),
 			'manage_options',
 			'eab_welcome',
 			array($this,'render')
@@ -24,53 +22,53 @@ class Eab_Admin_Get_Started_Menu {
 	function render() {
 		?>
 		<div class="wrap">
-			<h1><?php _e('Getting started', eab_domain() ); ?></h1>
+			<h1><?php _e('PS-Events Dashboard', eab_domain() ); ?></h1>
 
 			<p>
-				<?php _e('Events gives you a flexible WordPress-based system for organizing parties, dinners, fundraisers - you name it.', eab_domain() ) ?>
+				<?php _e('PS-Events fügt Deiner Webseite oder Deiner Multisite ein mächtiges Events & Bookings System hinzu.', eab_domain() ) ?>
 			</p>
 
 			<div class="eab-metaboxcol metabox-holder eab-metaboxcol-one eab-metaboxcol-center">
 				<div id="eab-actionlist" class="eab-metabox postbox">
-					<h3 class="eab-hndle"><?php _e('Getting Started', eab_domain() ); ?></h3>
+					<h3 class="eab-hndle"><?php _e('Loslegen', eab_domain() ); ?></h3>
 					<div class="eab-inside">
-						<div class="eab-note"><?php _e('You\'re almost ready! Follow these steps and start creating events on your WordPress site.', eab_domain() ); ?></div>
+						<div class="eab-note"><?php _e('Du bist fast bereit! Befolge diese Schritte und erstelle Ereignisse auf Deiner WordPress-Seite.', eab_domain() ); ?></div>
 						<ol>
 							<li>
-								<?php _e('Before creating an event, you\'ll need to configure some basic settings, like your root slug and payment options.', eab_domain() ); ?>
-								<a href="<?php echo esc_url('edit.php?post_type=incsub_event&page=eab_settings&eab_step=1'); ?>" class="eab-goto-step button" id="eab-goto-step-0" ><?php _e('Configure Your Settings', eab_domain() ); ?></a>
+								<?php _e('Bevor Du ein Ereignis erstellst, musst Du einige Grundeinstellungen konfigurieren, z. B. Deinen Root-Slug und die Zahlungsoptionen.', eab_domain() ); ?>
+								<a href="<?php echo esc_url('edit.php?post_type=psource_event&page=eab_settings&eab_step=1'); ?>" class="eab-goto-step button" id="eab-goto-step-0" ><?php _e('Konfiguriere Deine Einstellungen', eab_domain() ); ?></a>
 							</li>
 							<li>
-								<?php _e('Now you can create your first event.', eab_domain() ); ?>
-								<a href="<?php echo esc_url('post-new.php?post_type=incsub_event&eab_step=2'); ?>" class="eab-goto-step button"><?php _e('Add an Event', eab_domain() ); ?></a>
+								<?php _e('Jetzt kannst Du Dein erstes Ereignis erstellen.', eab_domain() ); ?>
+								<a href="<?php echo esc_url('post-new.php?post_type=psource_event&eab_step=2'); ?>" class="eab-goto-step button"><?php _e('Ereignis hinzufügen', eab_domain() ); ?></a>
 							</li>
 							<li>
-								<?php _e('You can view and edit your existing events whenever you like.', eab_domain() ); ?>
-								<a href="<?php echo esc_url('edit.php?post_type=incsub_event&eab_step=3'); ?>" class="eab-goto-step button"><?php _e('Edit Events', eab_domain() ); ?></a>
+								<?php _e('Du kannst vorhandenen Ereignisse jederzeit anzeigen und bearbeiten.', eab_domain() ); ?>
+								<a href="<?php echo esc_url('edit.php?post_type=psource_event&eab_step=3'); ?>" class="eab-goto-step button"><?php _e('Ereignisse bearbeiten', eab_domain() ); ?></a>
 							</li>
 							<li>
-								<?php _e('The archive displays a list of upcoming events on your site.', eab_domain() ); ?>
-								<a href="<?php echo home_url($this->_data->get_option('slug')) . '/'; ?>" class="eab-goto-step button"><?php _e('Events Archive', eab_domain() ); ?></a>
+								<?php _e('Das Archiv zeigt eine Liste der bevorstehenden Ereignisse auf Deiner Seite an.', eab_domain() ); ?>
+								<a href="<?php echo home_url($this->_data->get_option('slug')) . '/'; ?>" class="eab-goto-step button"><?php _e('Veranstaltungsarchiv', eab_domain() ); ?></a>
 							</li>
 						</ol>
 					</div>
 				</div>
 			</div>
 
-			
-			<div class="eab-metaboxcol metabox-holder eab-metaboxcol-one eab-metaboxcol-center">
-				<div id="eab-helpbox" class="eab-metabox postbox">
-					<h3 class="eab-hndle"><?php _e('Need help?', eab_domain() ); ?></h3>
-					<div class="eab-inside">
-						<ol>
-							<li><a href="https://cp-psource.github.io/events-and-bookings/"><?php _e('Check out the Events plugin page on PSOURCE', eab_domain() ); ?></a></li>
-							<li><a href="https://github.com/cp-psource/events-and-bookings/discussions"><?php _e('Post a question about this plugin on our support forums', eab_domain() ); ?></a></li>
-							<li><a href="https://github.com/cp-psource/events-and-bookings/issues"><?php _e('Bug Report', eab_domain() ); ?></a></li>
-						</ol>
+			<?php if (!defined('PSOURCE_REMOVE_BRANDING') || !constant('PSOURCE_REMOVE_BRANDING')) { ?>
+				<div class="eab-metaboxcol metabox-holder eab-metaboxcol-one eab-metaboxcol-center">
+					<div id="eab-helpbox" class="eab-metabox postbox">
+						<h3 class="eab-hndle"><?php _e('Brauchst Du Hilfe?', eab_domain() ); ?></h3>
+						<div class="eab-inside">
+							<ol>
+								<li><a href="https://n3rds.work/piestingtal_source/ps-events-eventmanagement-fuer-wordpress/"><?php _e('Projektseite auf Webmasterservice N3rds@Work', eab_domain() ); ?></a></li>
+								<li><a href="https://n3rds.work/forums/forum/psource-support-foren/ps-forum-supportforum/"><?php _e('Stelle eine Frage zu diesem Plugin in unseren Support-Foren', eab_domain() ); ?></a></li>
+								<li><a href="https://github.com/piestingtal-source/ps-events"><?php _e('GitHub Repo', eab_domain() ); ?></a></li>
+							</ol>
+						</div>
 					</div>
 				</div>
-			</div>
-			
+			<?php } ?>
 
 			<div class="clear"></div>
 

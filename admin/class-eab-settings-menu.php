@@ -1,15 +1,14 @@
 <?php
 
 class Eab_Admin_Settings_Menu {
-
-	private $_data;
-	private $_api;
+	private $_data; // Deklaration der Eigenschaften
+    private $_api;
 
 	public function __construct( $parent ) {
 		$id = add_submenu_page(
 			$parent,
-			__( "Event Settings", eab_domain() ),
-			__( "Settings", eab_domain() ),
+			__( "PS-Event Einstellungen", eab_domain() ),
+			__( "Einstellungen", eab_domain() ),
 			'manage_options',
 			'eab_settings',
 			array( $this, 'render' )
@@ -17,13 +16,13 @@ class Eab_Admin_Settings_Menu {
 
 		add_action( 'load-' . $id, array( $this, 'load' ) );
 
-		$eab 			= events_and_bookings();
-		$this->_data 	= $eab->_data;
-		$this->_api 	= $eab->_api;
+		$eab 		 = events_and_bookings();
+		$this->_data = $eab->_data;
+		$this->_api  = $eab->_api;
 	}
 
 	public function load() {
-		if (isset($_POST['_wpnonce']) && wp_verify_nonce($_POST['_wpnonce'], 'incsub_event-update-options')) {
+		if (isset($_POST['_wpnonce']) && wp_verify_nonce($_POST['_wpnonce'], 'psource_event-update-options')) {
 			$this->save_options();
 		}
 
@@ -31,13 +30,13 @@ class Eab_Admin_Settings_Menu {
 
 	function render() {
 
-		$updated = isset($_GET['incsub_event_settings_saved']) && $_GET['incsub_event_settings_saved'] == 1;
+		$updated = isset($_GET['psource_event_settings_saved']) && $_GET['psource_event_settings_saved'] == 1;
 
 
-		if ( ! class_exists( 'WpmuDev_HelpTooltips' ) )
+		if ( ! class_exists( 'PSource_HelpTooltips' ) )
 			require_once eab_plugin_dir() . 'lib/class_wd_help_tooltips.php';
 
-		$tips = new WpmuDev_HelpTooltips();
+		$tips = new PSource_HelpTooltips();
 		$tips->set_icon_url( eab_plugin_url() . 'img/information.png' );
 
 		if ( ! ( defined('EAB_PREVENT_SETTINGS_SECTIONS') && EAB_PREVENT_SETTINGS_SECTIONS ) )
@@ -47,9 +46,9 @@ class Eab_Admin_Settings_Menu {
 
 		$hide = ! empty( $tabbable ) ? 'hide' : '';
 
-		$archive_tpl = file_exists(get_stylesheet_directory().'/archive-incsub_event.php')
-			? get_stylesheet_directory() . '/archive-incsub_event.php'
-			: get_template_directory() . '/archive-incsub_event.php'
+		$archive_tpl = file_exists(get_stylesheet_directory().'/archive-psource_event.php')
+			? get_stylesheet_directory() . '/archive-psource_event.php'
+			: get_template_directory() . '/archive-psource_event.php'
 		;
 
 		$archive_tpl_present = apply_filters(
@@ -57,9 +56,9 @@ class Eab_Admin_Settings_Menu {
 			file_exists($archive_tpl)
 		);
 
-		$single_tpl = file_exists(get_stylesheet_directory().'/single-incsub_event.php')
-			? get_stylesheet_directory() . '/single-incsub_event.php'
-			: get_template_directory() . '/single-incsub_event.php'
+		$single_tpl = file_exists(get_stylesheet_directory().'/single-psource_event.php')
+			? get_stylesheet_directory() . '/single-psource_event.php'
+			: get_template_directory() . '/single-psource_event.php'
 		;
 
 		$single_tpl_present = apply_filters(
@@ -115,7 +114,7 @@ class Eab_Admin_Settings_Menu {
 		// Added by Ashok
 		// Removed old redirect
 		// Added new redirect, based on selected tab in Events Settings
-		wp_redirect( add_query_arg( 'incsub_event_settings_saved', 1, $event_default['event_settings_url'] ) );
+		wp_redirect( add_query_arg( 'psource_event_settings_saved', 1, $event_default['event_settings_url'] ) );
 		exit();
 	}
 }

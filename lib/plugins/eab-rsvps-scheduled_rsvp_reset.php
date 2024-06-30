@@ -1,10 +1,10 @@
 <?php
 /*
-Plugin Name: RSVP status auto-reset
-Description: Automatically resets RSVP status on your paid events after a preconfigured time if the user hasn't paid yet.
-Plugin URI: http://premium.wpmudev.org/project/events-and-booking
-Version: 1.0
-Author: PSOURCE
+Plugin Name: RSVP-Status automatisch zurückgesetzen
+Description: Setzt den RSVP-Status Ihrer bezahlten Ereignisse nach einer vorkonfigurierten Zeit automatisch zurück, wenn der Benutzer noch nicht bezahlt hat.
+Plugin URI: https://n3rds.work/piestingtal-source-project/eventsps-das-eventmanagment-fuer-wordpress/
+Version: 1.1
+Author: DerN3rd
 AddonType: Events, RSVP
 */
 
@@ -72,15 +72,15 @@ class Eab_Rsvps_RsvpAutoReset {
 	}
 
 	function show_settings () {
-		$tips = new WpmuDev_HelpTooltips();
+		$tips = new PSource_HelpTooltips();
 		$tips->set_icon_url(EAB_PLUGIN_URL . 'img/information.png' );
 		$runs = array(
-			'3600' => __('Hour', Eab_EventsHub::TEXT_DOMAIN),
-			'7200' => __('Two hours', Eab_EventsHub::TEXT_DOMAIN),
-			'10800' => __('Three hours', Eab_EventsHub::TEXT_DOMAIN),
-			'21600' => __('Six hours', Eab_EventsHub::TEXT_DOMAIN),
-			'43200' => __('Twelve hours', Eab_EventsHub::TEXT_DOMAIN),
-			'86400' => __('Day', Eab_EventsHub::TEXT_DOMAIN),
+			'3600' => __('Stunde', 'eab'),
+			'7200' => __('Zwei Stunden', 'eab'),
+			'10800' => __('Drei Stunden', 'eab'),
+			'21600' => __('Sechs Stunden', 'eab'),
+			'43200' => __('Zwölf Stunden', 'eab'),
+			'86400' => __('Tag', 'eab'),
 		);
 		$runs = apply_filters( 'eab_rsvp_scheduled_rsvp_reset_cron_times', $runs );
 		$run_each = $this->_data->get_option('rsvp_auto_reset-run_each');
@@ -95,30 +95,30 @@ class Eab_Rsvps_RsvpAutoReset {
 		;
 ?>
 <div id="eab-settings-rsvp_status_auto_reset" class="eab-metabox postbox">
-	<h3 class="eab-hndle"><?php _e('RSVP status auto-reset settings', Eab_EventsHub::TEXT_DOMAIN); ?></h3>
+	<h3 class="eab-hndle"><?php _e('Einstellungen für das automatische Zurücksetzen des RSVP-Status', 'eab'); ?></h3>
 	<div class="eab-inside">
 		<div class="eab-settings-settings_item">
-	    	<label><?php _e('Schedule checks to run every:', Eab_EventsHub::TEXT_DOMAIN); ?></label>
+	    	<label><?php _e('Plane Überprüfungen alle:', 'eab'); ?></label>
 			<select name="eab_rsvps[rsvp_auto_reset-run_each]">
 			<?php foreach ($runs as $sinterval => $slabel) { ?>
 				<option value="<?php echo (int)$sinterval; ?>" <?php echo selected($sinterval, $run_each); ?>><?php echo $slabel; ?></option>
 			<?php } ?>
 			</select>
-			<span><?php echo $tips->add_tip(__('Schedule runs to execute this often', Eab_EventsHub::TEXT_DOMAIN)); ?></span>
+			<span><?php echo $tips->add_tip(__('Plane Überprüfungen alle', 'eab')); ?></span>
 	    </div>
 	    <div class="eab-settings-settings_item">
-	    	<label><?php _e('Auto-reset unpaid RSVPs older then:', Eab_EventsHub::TEXT_DOMAIN); ?></label>
+	    	<label><?php _e('Unbezahlte RSVPs, die älter als diese Zeit sind, automatisch zurücksetzen:', 'eab'); ?></label>
 			<select name="eab_rsvps[rsvp_auto_reset-cutoff]">
 			<?php foreach ($runs as $cinterval => $clabel) { ?>
 				<option value="<?php echo (int)$cinterval; ?>" <?php echo selected($cinterval, $cutoff); ?>><?php echo $clabel; ?></option>
 			<?php } ?>
 			</select>
-			<span><?php echo $tips->add_tip(__('Unpaid positive RSVPs cutoff time', Eab_EventsHub::TEXT_DOMAIN)); ?></span>
+			<span><?php echo $tips->add_tip(__('Unbezahlte positive RSVP-Sperrzeit', 'eab')); ?></span>
 	    </div>
 		<div class="eab-settings-settings_item">
-	    	<label for="eab_event-eab_rsvps-rsvp_auto_reset-remove_attendance"><?php _e('Remove attendance entirely', Eab_EventsHub::TEXT_DOMAIN); ?>?</label>
+	    	<label for="eab_event-eab_rsvps-rsvp_auto_reset-remove_attendance"><?php _e('Anwesenheit vollständig entfernen', 'eab'); ?>?</label>
 			<input type="checkbox" id="eab_event-eab_rsvps-rsvp_auto_reset-remove_attendance" name="eab_rsvps[rsvp_auto_reset-remove_attendance]" value="1" <?php print $remove_attendance; ?> />
-			<span><?php echo $tips->add_tip(__('By default, the plugin will reset the user attendance to "no". Select this option if you wish to remove their attendance records entirely instead.', Eab_EventsHub::TEXT_DOMAIN)); ?></span>
+			<span><?php echo $tips->add_tip(__('Standardmäßig setzt das Plugin die Benutzeranwesenheit auf "Nein" zurück. Wähle diese Option, wenn Du stattdessen die Anwesenheitslisten vollständig entfernen möchtest.', 'eab')); ?></span>
 	    </div>
 	</div>
 </div>

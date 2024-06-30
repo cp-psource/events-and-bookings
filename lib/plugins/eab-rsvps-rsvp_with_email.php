@@ -1,10 +1,10 @@
 <?php
 /*
-Plugin Name: RSVP with email address
-Description: Allows your users to RSVP to events just with their e-mail address
-Plugin URI: http://premium.wpmudev.org/project/events-and-booking
-Version: 1.0
-Author: PSOURCE
+Plugin Name: RSVP mit E-Mail-Adresse
+Description: Ermöglicht Benutzern das RSVP für Ereignisse nur mit ihrer E-Mail-Adresse
+Plugin URI: https://n3rds.work/piestingtal-source-project/eventsps-das-eventmanagment-fuer-wordpress/
+Version: 1.1
+Author: DerN3rd
 AddonType: Email, RSVP
 */
 
@@ -27,17 +27,17 @@ class Eab_Events_RsvpWithEmail {
 	public function json_create_user () {
 		$error = array(
 			"status" => 0,
-			"msg" => __('There has been an error processing your request. Please, reload the page and try again.', Eab_EventsHub::TEXT_DOMAIN)
+			"msg" => __('Bei der Verarbeitung Deiner Anfrage ist ein Fehler aufgetreten. Bitte lade die Seite neu und versuche es erneut.', 'eab')
 		);
 		$data = stripslashes_deep($_POST);
 		$email = $data['email'];
 
 		if (empty($email)) {
-			$error['msg'] = __('Please, submit an email.', Eab_EventsHub::TEXT_DOMAIN);
+			$error['msg'] = __('Bitte eine E-Mailadresse angeben.', 'eab');
 			die(json_encode($error));
 		}
 		if (!is_email($email)) {
-			$error['msg'] = __('Please, submit a valid email.', Eab_EventsHub::TEXT_DOMAIN);
+			$error['msg'] = __('Keine gültige Emailadresse.', 'eab');
 			die(json_encode($error));
 		}
         if (email_exists($email)){
@@ -48,14 +48,14 @@ class Eab_Events_RsvpWithEmail {
         		if (!empty($loc)) $current_location = $loc;
         	}
             $login_link = wp_login_url( $current_location );
-            $login_message = sprintf( __( 'The email address already exists. Please <a href="%s">Login</a> and RSVP to the event.', Eab_EventsHub::TEXT_DOMAIN ), $login_link );
+            $login_message = sprintf( __( 'Die E-Mail-Adresse ist bereits vorhanden. Bitte <a href="%s">anmelden</a> und RSVP zu diesem Ereignis.', 'eab' ), $login_link );
             $error['msg'] = $login_message;
             die(json_encode($error));
         }
 
 		$status = apply_filters( 'eab-user_registration-wordpress-field_validation', true, $data, true );
 		if ( !$status ) {
-		   $error['msg'] =  __('A required field is missing.', Eab_EventsHub::TEXT_DOMAIN);
+		   $error['msg'] =  __('Ein Pflichtfeld fehlt.', 'eab');
 		   die(json_encode($error));
 		}
 
@@ -101,7 +101,7 @@ class Eab_Events_RsvpWithEmail {
 		if (is_user_logged_in()) return false;
 		wp_enqueue_script('eab-rsvp_with_email', EAB_PLUGIN_URL . "js/eab-rsvp_with_email.js", array('jquery'), Eab_EventsHub::CURRENT_VERSION);
 		wp_localize_script('eab-rsvp_with_email', 'l10nRsvpWithEmail', array(
-			'email' => __('Email', Eab_EventsHub::TEXT_DOMAIN),
+			'email' => __('Email', 'eab'),
 		));
 	}
 }

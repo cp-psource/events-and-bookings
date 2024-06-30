@@ -1,10 +1,10 @@
 <?php
 /*
-Plugin Name: Events Maps Options
-Description: Maps will, by default, use the global settings for Google Maps plugin. Use this add-on to apply Events-specific settings.
-Plugin URI: http://premium.wpmudev.org/project/events-and-booking
-Version: 1.0
-Author: PSOURCE
+Plugin Name: Optionen für Ereignismaps
+Description: Maps verwendet standardmäßig die globalen Einstellungen für das PS-Gmaps-Plugin. Verwende diese Erweiterung, um ereignisspezifische Einstellungen anzuwenden.
+Plugin URI: https://n3rds.work/piestingtal-source-project/eventsps-das-eventmanagment-fuer-wordpress/
+Version: 1.1
+Author: DerN3rd
 AddonType: Integration
 */
 
@@ -36,7 +36,7 @@ class Eab_Maps_EventMapsOptions {
 	function show_nags () {
 		if (!class_exists('AgmMapModel')) {
 			echo '<div class="error"><p>' .
-				sprintf(__("You'll need <a href='%s'>Google Maps</a> plugin installed and activated for Events Maps Options add-on to work", Eab_EventsHub::TEXT_DOMAIN), 'http://premium.wpmudev.org/project/wordpress-google-maps-plugin') .
+				sprintf(__("Du benötigst das <a href='%s'>PS-Gmaps</a> Plugin installiert and aktiviert um diese Erweiterung aktivieren zu können", 'eab'), 'https://n3rds.work/piestingtal-source-project/ps-gmaps/') .
 			'</p></div>';
 		}
 	}
@@ -59,32 +59,32 @@ class Eab_Maps_EventMapsOptions {
 			'TERRAIN' 	=> __('TERRAIN', 'agm_google_maps'),
 		);
 		$map_units = array(
-			'METRIC' 	=> __('Metric', 'agm_google_maps'),
+			'METRIC' 	=> __('Metrisch', 'agm_google_maps'),
 			'IMPERIAL' 	=> __('Imperial', 'agm_google_maps'),
 		);
 		$options = $this->_data->get_option('google_maps-overrides');
 ?>
 <div id="eab-settings-event_maps_options" class="eab-metabox postbox">
-	<h3 class="eab-hndle"><?php _e('Events Maps Options', Eab_EventsHub::TEXT_DOMAIN); ?></h3>
+	<h3 class="eab-hndle"><?php _e('Optionen für Ereigniskarten', 'eab'); ?></h3>
 	<div class="eab-inside">
-		<p><em><?php _e('Any setting you leave empty here will be inherited from the default Google Maps plugin settings.', Eab_EventsHub::TEXT_DOMAIN); ?></em></p>
+		<p><em><?php _e('Alle Einstellungen, die Du hier leer lässt, werden von den Standardeinstellungen des Google Maps-Plugins übernommen.', 'eab'); ?></em></p>
 		<table class="form-table">
 			<tr valign="top">
-				<th scope="row"><?php _e('Map size', Eab_EventsHub::TEXT_DOMAIN)?></th>
+				<th scope="row"><?php _e('Map Größe', 'eab')?></th>
 				<td>
 					<label for="eab-google_maps-width">
-						<?php _e('Width:', Eab_EventsHub::TEXT_DOMAIN); ?>
+						<?php _e('Breite:', 'eab'); ?>
 						<input type="text" size="4" id="eab-google_maps-width" name="google_maps[overrides][width]" value="<?php esc_attr_e(@$options['width']); ?>" /><em class="eab-inline_help">px</em>
 					</label>
 					<span class="eab-hspacer">&times;</span>
 					<label for="eab-google_maps-height">
-						<?php _e('Height:', Eab_EventsHub::TEXT_DOMAIN); ?>
+						<?php _e('Höhe:', 'eab'); ?>
 						<input type="text" size="4" id="eab-google_maps-height" name="google_maps[overrides][height]" value="<?php esc_attr_e(@$options['height']); ?>" /><em class="eab-inline_help">px</em>
 					</label>
 				</td>
 			</tr>
 			<tr valign="top">
-				<th scope="row"><?php _e('Map appearance', Eab_EventsHub::TEXT_DOMAIN)?></th>
+				<th scope="row"><?php _e('Kartenaussehen', 'eab')?></th>
 				<td>
 					<style>
 						.eab_inner_table td{padding: 0 !important}
@@ -93,18 +93,18 @@ class Eab_Maps_EventMapsOptions {
 						<tr>
 							<td valign="top">
 								<label for="eab-google_maps-zoom">
-									<?php _e('Zoom:', Eab_EventsHub::TEXT_DOMAIN); ?>
+									<?php _e('Zoom:', 'eab'); ?>
 								</label>
 							</td>
 							<td valign="top">
 								<input type="text" size="4" id="eab-google_maps-zoom" name="google_maps[overrides][zoom]" value="<?php esc_attr_e(@$options['zoom']); ?>" />
-								<em class="eab-inline_help"><?php _e('Numeric value', Eab_EventsHub::TEXT_DOMAIN); ?></em>
+								<em class="eab-inline_help"><?php _e('Zahlenwert', 'eab'); ?></em>
 							</td>
 						</tr>
 						<tr>
 							<td valign="top">
 								<label for="eab-google_maps-type">
-									<?php _e('Type:', Eab_EventsHub::TEXT_DOMAIN); ?>
+									<?php _e('Typ:', 'eab'); ?>
 								</label>
 							</td>
 							<td valign="top">
@@ -119,7 +119,7 @@ class Eab_Maps_EventMapsOptions {
 							</td>
 						</tr>
 						<tr>
-							<td valign="top"><label for="eab-google_maps-units"><?php _e('Units:', Eab_EventsHub::TEXT_DOMAIN); ?></label></td>
+							<td valign="top"><label for="eab-google_maps-units"><?php _e('Einheiten:', 'eab'); ?></label></td>
 							<td valign="top">
 								<select name="google_maps[overrides][units]">
 									<option value=""></option>
@@ -136,7 +136,7 @@ class Eab_Maps_EventMapsOptions {
 								<input type="hidden" name="google_maps[overrides][show_images]" value="" />
 						<input type="checkbox" id="eab-google_maps-show_images" name="google_maps[overrides][show_images]" value="1" <?php checked(1, @$options['show_images']); ?> />
 							</td>
-							<td valign="top"><label for="eab-google_maps-show_images"><?php _e('Show images', Eab_EventsHub::TEXT_DOMAIN); ?></label></td>
+							<td valign="top"><label for="eab-google_maps-show_images"><?php _e('Bilder anzeigen', 'eab'); ?></label></td>
 						</tr>
 					</table>
 				</td>

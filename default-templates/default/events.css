@@ -1,11 +1,11 @@
 .eab-needtomove {
-	clear: both;
+    clear: both;
 }
 
-#wpmudevevents-wrapper {
-	padding: 19px;	
+#psourceevents-wrapper {
+    padding: 19px;
 }
 
-#bp-default.archive #wpmudevevents-wrapper {
-	margin-right: 225px;
+#bp-default.archive #psourceevents-wrapper {
+    margin-right: 225px;
 }

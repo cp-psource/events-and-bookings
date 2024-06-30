@@ -23,8 +23,8 @@ function unlimited_change () {
 }
 
 $(function () {
-	$("#eab_event_capacity").on('change', capacity_change);
-	$("#eab_event_capacity-unlimited").on('change', unlimited_change);
+	$("#eab_event_capacity").change(capacity_change);
+	$("#eab_event_capacity-unlimited").change(unlimited_change);
 });
 
 })(jQuery);

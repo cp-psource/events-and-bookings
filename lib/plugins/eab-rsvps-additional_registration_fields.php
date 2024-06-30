@@ -1,10 +1,10 @@
 <?php
 /*
-Plugin Name: Additional registration fields
-Description: Allows you to add additional registration fields.
-Plugin URI: http://premium.wpmudev.org/project/events-and-booking
-Version: 1.0
-Author: PSOURCE
+Plugin Name: Zusätzliche Registrierungsfelder
+Description: Ermöglicht das Hinzufügen zusätzlicher Registrierungsfelder.
+Plugin URI: https://n3rds.work/piestingtal-source-project/eventsps-das-eventmanagment-fuer-wordpress/
+Version: 1.1
+Author: DerN3rd
 AddonType: Events, RSVP
 */
 
@@ -46,7 +46,7 @@ class Eab_Rsvps_AdditionalRegistrationFields {
 		foreach ($fields as $key => $value) {
 			if (empty($value) && !$has_empty) continue;
 			$row[$key] = '' === $value
-				? __('N/A', Eab_EventsHub::TEXT_DOMAIN)
+				? __('N/A', 'eab')
 				: $value
 			;
 		}
@@ -92,7 +92,7 @@ class Eab_Rsvps_AdditionalRegistrationFields {
 
 	function update_api_messages ($api) {
 		if (!empty($api['required_field_missing'])) return $api;
-		$api['required_field_missing'] = __('A required field is missing.', Eab_EventsHub::TEXT_DOMAIN);
+		$api['required_field_missing'] = __('Ein Pflichtfeld fehlt.', 'eab');
 		return $api;
 	}
 
@@ -154,7 +154,7 @@ $(document).on("eab-api-email_rsvp-form_rendered", function() {
 $(document).on("eab-api-registration-data", function (e, data, deferred) {
 	$.each(eab_rarf_fields, function (idx, field) {
 		var $field = $("#eab-rarf-" + field.id),
-			value = $field.is(":checkbox") ? $field.is(":checked") : $.trim($field.val())
+			value = $field.is(":checkbox") ? $field.is(":checked") : $field.val().trim())
 		;
 		if (!value && field.required) {
 			$('#eab-wordpress-signup-status').text(l10nEabApi.required_field_missing);
@@ -177,40 +177,40 @@ $(document).on("eab-api-registration-data", function (e, data, deferred) {
 		$fields = Eab_Rsvps_Arf_Model::get_all();
 		$fields = is_array($fields) ? $fields : array();
 		$_types = array(
-			'text' => __('Text', Eab_EventsHub::TEXT_DOMAIN),
-			'checkbox' => __('Checkbox', Eab_EventsHub::TEXT_DOMAIN),
+			'text' => __('Text', 'eab'),
+			'checkbox' => __('Checkbox', 'eab'),
 		);
 		?>
 <div id="eab-settings-eab_arf" class="eab-metabox postbox">
-	<h3 class="eab-hndle"><?php _e('Additional Fields', Eab_EventsHub::TEXT_DOMAIN); ?></h3>
+	<h3 class="eab-hndle"><?php _e('Zusätzliche Felder', 'eab'); ?></h3>
 	<div class="eab-inside">
 		<div id="eab-arf-additional_fields">
 		<?php foreach ($fields as $field) { ?>
 			<div class="eab-arf-field" style="line-height:1.8em">
 				<b><?php echo esc_html($field['label']); ?></b> <em><small>(<?php echo esc_html($field['type']); ?>)</small></em>
 				<br />
-				<?php echo esc_html('Required', Eab_EventsHub::TEXT_DOMAIN); ?>: <b><?php echo esc_html(($field['required'] ? __('Yes', Eab_EventsHub::TEXT_DOMAIN) : __('No', Eab_EventsHub::TEXT_DOMAIN))); ?></b>
+				<?php echo esc_html('Benötigt', 'eab'); ?>: <b><?php echo esc_html(($field['required'] ? __('Ja', 'eab') : __('Nein', 'eab'))); ?></b>
 				<?php if ( $rsvp_with_email ) { ?>
 					<br />
-					<?php echo esc_html('Add to RSVP with email', Eab_EventsHub::TEXT_DOMAIN); ?>: <b><?php echo esc_html(($field['email_rsvp'] ? __('Yes', Eab_EventsHub::TEXT_DOMAIN) : __('No', Eab_EventsHub::TEXT_DOMAIN))); ?></b>
+					<?php echo esc_html('Zum RSVP per E-Mail hinzufügen', 'eab'); ?>: <b><?php echo esc_html(($field['email_rsvp'] ? __('Ja', 'eab') : __('Nein', 'eab'))); ?></b>
 				<?php } ?>
 				<br />
-				<!--<?php _e('E-mail macro:', Eab_EventsHub::TEXT_DOMAIN); ?> <code><?php echo esc_html(Eab_Rsvps_Arf_Model::get_macro($field['label'])); ?></code>
-				<span class="description"><?php _e('This is the placeholder you can use in your emails.', Eab_EventsHub::TEXT_DOMAIN); ?></span> -->
+				<!--<?php _e('E-mail Macro:', 'eab'); ?> <code><?php echo esc_html(Eab_Rsvps_Arf_Model::get_macro($field['label'])); ?></code>
+				<span class="description"><?php _e('Dies ist der Platzhalter, den Du in Deinen E-Mails verwenden kannst.', 'eab'); ?></span> -->
 				<input type="hidden" name="eab-arf-additional_fields[]" value="<?php echo rawurlencode(json_encode($field)); ?>" />
-				<a href="#remove" class="eab-arf-additional_fields-remove"><?php echo esc_html('Remove', Eab_EventsHub::TEXT_DOMAIN); ?></a>
+				<a href="#remove" class="eab-arf-additional_fields-remove"><?php echo esc_html('Entferne', 'eab'); ?></a>
 				<br />
 			</div>
 		<?php } ?>
 		</div>
 		<div id="eab-arf-new_additional_field">
-			<h4><?php _e('Add new field', Eab_EventsHub::TEXT_DOMAIN); ?></h4>
+			<h4><?php _e('Neues Feld hinzufügen', 'eab'); ?></h4>
 			<label for="eab-arf-new_additional_field-label">
-				<?php _e('Field label:', Eab_EventsHub::TEXT_DOMAIN); ?>
+				<?php _e('Feldbezeichnung:', 'eab'); ?>
 				<input type="text" value="" id="eab-arf-new_additional_field-label" />
 			</label>
 			<label for="eab-arf-new_additional_field-type">
-				<?php _e('Field type:', Eab_EventsHub::TEXT_DOMAIN); ?>
+				<?php _e('Feldtyp:', 'eab'); ?>
 				<select id="eab-arf-new_additional_field-type">
 				<?php foreach ($_types as $type => $label) { ?>
 					<option value="<?php esc_attr_e($type); ?>"><?php echo esc_html($label); ?></option>
@@ -219,23 +219,23 @@ $(document).on("eab-api-registration-data", function (e, data, deferred) {
 			</label>
 			<label for="eab-arf-new_additional_field-required">
 				<input type="checkbox" value="" id="eab-arf-new_additional_field-required" />
-				<?php _e('Required?', Eab_EventsHub::TEXT_DOMAIN); ?>
+				<?php _e('Benötigt?', 'eab'); ?>
 			</label>
 			<?php if ( $rsvp_with_email ) { ?>
 				<label for="eab-arf-new_additional_field-email_rsvp">
 					<input type="checkbox" value="" id="eab-arf-new_additional_field-email_rsvp" />
-					<?php _e('Add to RSVP with email?', Eab_EventsHub::TEXT_DOMAIN); ?>
+					<?php _e('Zum RSVP per E-Mail hinzufügen?', 'eab'); ?>
 				</label>
 			<?php } ?>
-			<button type="button" class="button-secondary" id="eab-arf-new_additional_field-add"><?php _e('Add', Eab_EventsHub::TEXT_DOMAIN); ?></button>
+			<button type="button" class="button-secondary" id="eab-arf-new_additional_field-add"><?php _e('Hinzufügen', 'eab'); ?></button>
 		</div>
 	</div>
 	<div class="eab-inside">
-		<h4><?php _e('Options', Eab_EventsHub::TEXT_DOMAIN); ?></h4>
+		<h4><?php _e('Optionen', 'eab'); ?></h4>
 		<label for="eab-arf-additional_fields-options-export">
 			<input type="hidden" name="eab-arf-additional_fields-options-export" value="" />
 			<input type="checkbox" id="eab-arf-additional_fields-options-export" name="eab-arf-additional_fields-options-export" value="1" <?php checked(true, $this->_data->get_option('additional_fields-export')); ?> />
-			<?php _e('Include additional fields in data export', Eab_EventsHub::TEXT_DOMAIN); ?>
+			<?php _e('Füge zusätzliche Felder in den Datenexport ein', 'eab'); ?>
 		</label>
 	</div>
 </div>
@@ -243,12 +243,12 @@ $(document).on("eab-api-registration-data", function (e, data, deferred) {
 	<div class="eab-arf-field">
 		<b>{{= label }}</b> <em><small>({{= type }})</small></em>
 		<br />
-		<?php echo esc_html('Required', Eab_EventsHub::TEXT_DOMAIN); ?>: <b>{{= required ? '<?php echo esc_js(__("Yes", Eab_EventsHub::TEXT_DOMAIN)); ?>' : '<?php echo esc_js(__("No", Eab_EventsHub::TEXT_DOMAIN)); ?>' }}</b>
+		<?php echo esc_html('Benötigt', 'eab'); ?>: <b>{{= required ? '<?php echo esc_js(__("Ja", 'eab')); ?>' : '<?php echo esc_js(__("Nein", 'eab')); ?>' }}</b>
 		<?php if ( $rsvp_with_email ) { ?>
-			<?php echo esc_html('Add to RSVP with email', Eab_EventsHub::TEXT_DOMAIN); ?>: <b>{{= email_rsvp ? '<?php echo esc_js(__("Yes", Eab_EventsHub::TEXT_DOMAIN)); ?>' : '<?php echo esc_js(__("No", Eab_EventsHub::TEXT_DOMAIN)); ?>' }}</b>
+			<?php echo esc_html('Zum RSVP per E-Mail hinzufügen', 'eab'); ?>: <b>{{= email_rsvp ? '<?php echo esc_js(__("Ja", 'eab')); ?>' : '<?php echo esc_js(__("Nein", 'eab')); ?>' }}</b>
 		<?php } ?>
 		<input type="hidden" name="eab-arf-additional_fields[]" value="{{= escape(_value) }}" />
-		<a href="#remove" class="eab-arf-additional_fields-remove"><?php echo esc_html('Remove', Eab_EventsHub::TEXT_DOMAIN); ?></a>
+		<a href="#remove" class="eab-arf-additional_fields-remove"><?php echo esc_html('Entferne', 'eab'); ?></a>
 	</div>
 </script>
 <script>

@@ -1,10 +1,10 @@
 <?php
 /*
-Plugin Name: Recurrent Events Redirect
-Description: Redirects from root instance to currently closest to active instance.
-Plugin URI: http://premium.wpmudev.org/project/events-and-booking
-Version: 0.3
-Author: PSOURCE
+Plugin Name: Umleitung wiederkehrender Ereignisse
+Description: Leitet von der Stamminstanz zur aktuell aktiven Instanz um.
+Plugin URI: https://n3rds.work/piestingtal-source-project/eventsps-das-eventmanagment-fuer-wordpress/
+Version: 0.4
+Author: DerN3rd
 AddonType: Events
 */
 
@@ -39,7 +39,7 @@ class Eab_Events_RecurrentRootRedirect {
 	function redirect() {
 		global $post;
 		if (!is_singular()) return false;
-		if (!$post || !is_object($post) || !isset($post->post_type) || 'incsub_event' != $post->post_type) return false;
+		if (!$post || !is_object($post) || !isset($post->post_type) || 'psource_event' != $post->post_type) return false;
 		
 		$event = ($post instanceof Eab_EventModel) ? $post : new Eab_EventModel($post);
 		if (!$event->is_recurring()) return false;
@@ -88,17 +88,17 @@ class Eab_AllUpcomingRecurringChildrenCollection extends Eab_UpcomingCollection 
 	
 	public function build_query_args ($args) {
 		$status = $this->_event->is_trashed() 
-			? WpmuDev_RecurringDatedItem::RECURRENCE_TRASH_STATUS
-			: WpmuDev_RecurringDatedItem::RECURRENCE_STATUS
+			? PSource_RecurringDatedItem::RECURRENCE_TRASH_STATUS
+			: PSource_RecurringDatedItem::RECURRENCE_STATUS
 		;
 		$args = array (
-			'post_type' => 'incsub_event',
+			'post_type' => 'psource_event',
 			'post_status' => $status,
 			'post_parent' => $this->_event->get_id(),
 			'posts_per_page' => -1,
 			'meta_query' => array(
 				array(
-	    			'key' => 'incsub_event_end',
+	    			'key' => 'psource_event_end',
 	    			'value' => date("Y-m-d H:i:s", $this->get_timestamp()),
 	    			'compare' => '>=',
 	    			'type' => 'DATETIME'

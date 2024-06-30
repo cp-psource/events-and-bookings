@@ -4,8 +4,8 @@
  * 
  * Example usage:
  * <code>
- * if (!class_exists('WpmuDev_HelpTooltips')) require_once YOUR_PLUGIN_BASE_DIR . '/lib/external/class_wd_help_tooltips.php';
- * $tips = new WpmuDev_HelpTooltips();
+ * if (!class_exists('PSource_HelpTooltips')) require_once YOUR_PLUGIN_BASE_DIR . '/lib/external/class_wd_help_tooltips.php';
+ * $tips = new PSource_HelpTooltips();
  * $tips->set_icon_url("URL_TO_YOUR_ICON");
  * echo $tips->add_tip("Tip 1 text here");
  * // ...
@@ -15,8 +15,8 @@
  * 
  * Alternative usage example:
  * <code>
- * if (!class_exists('WpmuDev_HelpTooltips')) require_once YOUR_PLUGIN_BASE_DIR . '/lib/external/class_wd_help_tooltips.php';
- * $tips = new WpmuDev_HelpTooltips();
+ * if (!class_exists('PSource_HelpTooltips')) require_once YOUR_PLUGIN_BASE_DIR . '/lib/external/class_wd_help_tooltips.php';
+ * $tips = new PSource_HelpTooltips();
  * $tips->set_icon_url("URL_TO_YOUR_ICON");
  * $tips->bind_tip('My tip text here', '.icon32:first ~h2');
  * // Note that you don't echo anything in this usage example - the tip will be
@@ -28,15 +28,15 @@
  *  
  * Another alternative usage example, setting tips for multiple pages in one place:
  * <code>
- * if (!class_exists('WpmuDev_HelpTooltips')) require_once YOUR_PLUGIN_BASE_DIR . '/lib/external/class_wd_help_tooltips.php';
+ * if (!class_exists('PSource_HelpTooltips')) require_once YOUR_PLUGIN_BASE_DIR . '/lib/external/class_wd_help_tooltips.php';
  * // Tips added to $tips1 object will only show on Social Marketing add/edit advert page
- * $tips1 = new WpmuDev_HelpTooltips();
+ * $tips1 = new PSource_HelpTooltips();
  * $tips1->set_icon_url("URL_TO_YOUR_ICON");
  * $tips1->set_screen_id("social_marketing_ad");
  * $tips1->bind_tip('My tip 1 text here', '.icon32:first ~h2');
  * // ...
  * // Tips added to $tips2 object will only show on Social Marketing getting started page
- * $tips2 = new WpmuDev_HelpTooltips();
+ * $tips2 = new PSource_HelpTooltips();
  * $tips2->set_icon_url("URL_TO_YOUR_ICON");
  * $tips2->set_screen_id("social_marketing_ad_page_wdsm-get_started");
  * $tips2->bind_tip('My tip 2 text here', '.icon32:first ~h2');
@@ -46,7 +46,7 @@
  * E.g. for adding tooltips in a plugin add-on.
  */
 
-class WpmuDev_HelpTooltips {
+class PSource_HelpTooltips {
 	
 	/**
 	 * Holds an array of inline tips: used as dependency inclusion switch.
@@ -148,7 +148,7 @@ class WpmuDev_HelpTooltips {
 	 * @param string $selector jQuery selector of the element that tip is related to.
 	 */
 	public function bind_tip  ($tip, $bind_to_selector) {
-		$tip_id = 'wpmudev-help-tip-for-' . md5($bind_to_selector);
+		$tip_id = 'psource-help-tip-for-' . md5($bind_to_selector);
 		$this->_bound_tips[$tip_id] = $tip;
 		$this->_bound_selectors[$tip_id] = $bind_to_selector;
 	}
@@ -193,7 +193,7 @@ class WpmuDev_HelpTooltips {
 	}
 	
 	private function _get_tip_markup ($tip, $arg='') {
-		return "<span class='wpmudev-help' {$arg}>{$tip}</span>";
+		return "<span class='psource-help' {$arg}>{$tip}</span>";
 	}
 	
 	/**
@@ -201,7 +201,7 @@ class WpmuDev_HelpTooltips {
 	 */
 	private function _print_styles () {
 		// Have we already done this?
-		if (!defined('WPMUDEV_TOOLTIPS_CSS_ADDED')) define('WPMUDEV_TOOLTIPS_CSS_ADDED', true);
+		if (!defined('PSOURCE_TOOLTIPS_CSS_ADDED')) define('PSOURCE_TOOLTIPS_CSS_ADDED', true);
 		else return false;
 		
 		?>
@@ -209,21 +209,21 @@ class WpmuDev_HelpTooltips {
 <?php 	
 		if ($this->_icon_url) { 
 ?>
-.wpmudev-help {
+.psource-help {
 	padding-left: 40px;
 }
-.wpmudev-help-trigger span {
+.psource-help-trigger span {
 	display: block;
 	position: absolute;
 	left: -12000000px;
 }
 
-.wpmudev-help-trigger:focus{
+.psource-help-trigger:focus{
         box-shadow: none;
 }
 
-.wpmudev-help,
-.wpmudev-help-trigger {
+.psource-help,
+.psource-help-trigger {
 	display: inline-block;
         outline: none;
 	width: 18px;
@@ -244,7 +244,7 @@ class WpmuDev_HelpTooltips {
 	vertical-align: middle;
 }
 
-.wpmudev-help {
+.psource-help {
 	width: 200px;
         font-size: 13px;
         padding: 10px;
@@ -260,7 +260,7 @@ class WpmuDev_HelpTooltips {
 	border-radius:3px;
 }
 
-.wpmudev-help-trigger:before {
+.psource-help-trigger:before {
 	content: "\f348";
 }
 
@@ -268,7 +268,7 @@ class WpmuDev_HelpTooltips {
 <?php 
 		} 
 ?>
-#wpmudev-tooltip-source {
+#psource-tooltip-source {
 	margin: 0 13px;
 	padding: 8px;
 
@@ -286,14 +286,14 @@ class WpmuDev_HelpTooltips {
 	-moz-box-shadow: 0 2px 4px rgba(0,0,0,.19);
 	box-shadow: 0 2px 4px rgba(0,0,0,.19);
 }
-.wpmudev-left_pointer {
+.psource-left_pointer {
 	float: left;
 	width: 14px;
 	height: 30px;
 	margin-top: 8px;
 	background: url(<?php echo home_url("/wp-includes/images/arrow-pointer-blue.png");?>) 0 -15px no-repeat;
 }
-.wpmudev-right_pointer {
+.psource-right_pointer {
 	float: right;
 	width: 14px;
 	height: 30px;
@@ -309,7 +309,7 @@ class WpmuDev_HelpTooltips {
 	 */
 	private function _print_scripts () {
 		// Have we already done this?
-		if (!defined('WPMUDEV_TOOLTIPS_JS_ADDED')) define('WPMUDEV_TOOLTIPS_JS_ADDED', true);
+		if (!defined('PSOURCE_TOOLTIPS_JS_ADDED')) define('PSOURCE_TOOLTIPS_JS_ADDED', true);
 		else return false;
 		
 		// Initialize bound selectors
@@ -324,7 +324,7 @@ class WpmuDev_HelpTooltips {
  */
 function initialize_help_item ($me) {
 	var $prev = $me.prev();
-	var help = '&nbsp;<a class="wpmudev-help-trigger" href="#help"><span><?php _e('Help');?></span></a>';
+	var help = '&nbsp;<a class="psource-help-trigger" href="#help"><span><?php _e('Help');?></span></a>';
 	$prev = $prev.length ? 
 		$prev.after(help)
 		: 
@@ -338,7 +338,7 @@ function initialize_help_item ($me) {
  */
 function get_help_block ($me) {
 	var $parent = $me.parent();
-	return $parent.find('.wpmudev-help');
+	return $parent.find('.psource-help');
 }
 
 /**
@@ -348,7 +348,7 @@ function show_help_block ($me) {
 	var $help = get_help_block($me);
 	if (!$help.length) return false;
 	
-	if ($("#wpmudev-tooltip").length) $("#wpmudev-tooltip").remove();
+	if ($("#psource-tooltip").length) $("#psource-tooltip").remove();
 	if ($help.is(":visible")) $help.hide('fast');
 	else $help.show('fast');
 }
@@ -360,9 +360,9 @@ function open_tooltip ($me) {
 	var $help = get_help_block($me); 
 	if ($help.is(":visible")) return false;
 	
-	if ($("#wpmudev-tooltip").length) $("#wpmudev-tooltip").remove();
-	if (!$("#wpmudev-tooltip").length) $("body").append('<div id="wpmudev-tooltip"><div class="wpmudev-pointer wpmudev-left_pointer"></div><div id="wpmudev-tooltip-source"></div></div>');
-	var $tip = $("#wpmudev-tooltip");
+	if ($("#psource-tooltip").length) $("#psource-tooltip").remove();
+	if (!$("#psource-tooltip").length) $("body").append('<div id="psource-tooltip"><div class="psource-pointer psource-left_pointer"></div><div id="psource-tooltip-source"></div></div>');
+	var $tip = $("#psource-tooltip");
 	if (!$tip.length) return false;
 	
 	var width = 200;
@@ -371,15 +371,15 @@ function open_tooltip ($me) {
 	
 	var top_pos = src_pos.top + ($me.height() / 2);
 	var left_pos = src_pos.left + margin;	
-	var $pointer = $tip.find(".wpmudev-pointer");
+	var $pointer = $tip.find(".psource-pointer");
 	
 	// Setup left/right orientation
 <?php if (!is_rtl()) { ?>
 	if ((left_pos+width+60) >= $(window).width()) {
 		left_pos = src_pos.left - ($me.outerWidth()+width+margin);
 		$pointer
-			.removeClass("wpmudev-left_pointer")
-			.addClass("wpmudev-right_pointer")
+			.removeClass("psource-left_pointer")
+			.addClass("psource-right_pointer")
 		;
 	}
 <?php } else { ?>
@@ -387,16 +387,21 @@ function open_tooltip ($me) {
 	if (min_left > 0) {
 		left_pos = min_left;
 		$pointer
-			.removeClass("wpmudev-left_pointer")
-			.addClass("wpmudev-right_pointer")
+			.removeClass("psource-left_pointer")
+			.addClass("psource-right_pointer")
 		;
 	}
 <?php } ?>
 	
+	// IE safeguard
+	if ($.browser.msie) {
+		var $pointer_left = $tip.find(".psource-left_pointer");
+		if ($pointer_left.length) $pointer_left.css("position", "absolute");
+	}
 	
 	$tip
 		// Populate tip text
-		.find("#wpmudev-tooltip-source")
+		.find("#psource-tooltip-source")
 			.width(width)
 			.html($help.html())
 		.end()
@@ -409,7 +414,7 @@ function open_tooltip ($me) {
 			"left": left_pos
 		})
 		// Vertically align pointer
-		.find(".wpmudev-pointer")
+		.find(".psource-pointer")
 			.css({
 				"margin-top": ($tip.height() - 32) / 2
 			})
@@ -423,17 +428,23 @@ function open_tooltip ($me) {
  * Closes tooltip.
  */
 function close_tooltip () {
-	if (!$("#wpmudev-tooltip").length) return false;
+	if (!$("#psource-tooltip").length) return false;
 	
-	$("#wpmudev-tooltip")
-		.animate({
-			"opacity": 0
-		},
-		'fast',
-		function () {
-			$(this).remove();
-		}
-	);
+	// IE conditional alternate removal
+	if ($.browser.msie) {
+		$("#psource-tooltip").hide('fast');
+	} else {
+		// Not IE, do regular transparency animation
+		$("#psource-tooltip")
+			.animate({
+				"opacity": 0
+			},
+			'fast',
+			function () {
+				$(this).remove();
+			}
+		);
+	}
 }
 
 
@@ -452,22 +463,25 @@ $.each(JSON.parse('<?php echo $selectors; ?>'), function (tip_id, selector) {
 });
 
 // Initialize help and add handles	
-$(".wpmudev-help").each(function () {
+$(".psource-help").each(function () {
 	initialize_help_item($(this));
 	
 });
 
 // Handle help requests
-$(".wpmudev-help-trigger").on('click', function (e) {
-    if ('<?php echo $this->_use_notice; ?>' === '1') {
-        show_help_block($(this));
-    }
-    return false;
-}).on('mouseover', function (e) {
-    open_tooltip($(this));
-}).on('mouseout', function (e) {
-    close_tooltip();
-});
+$(".psource-help-trigger")
+	.on("click",function (e) {
+<?php if ($this->_use_notice) { ?>
+		show_help_block($(this));
+<?php } ?>
+		return false;
+	})
+	.on("mouseover", function (e) {
+		open_tooltip($(this));
+		
+	})
+	.on("mouseout", close_tooltip)
+;
 	
 	
 });

@@ -1,37 +1,64 @@
 #ui-datepicker-div {
 	display: none;
+	z-index: 999 !important;
+	left: 25px !important;
 }
 
 /* ----- Meta boxes setup ----- */
+
+div#eab-events-fpe-meta_info {
+    display: flex;
+	flex-direction: column;
+}
+div#eab-events-fpe-meta_info{
+	@media (max-width: 800px) {
+	 	 flex: 100%;
+	}
+}
+
 .eab-events-fpe-col_wrapper {
 	overflow: hidden;
 	margin: .4% 0;
+	flex: 50%;
 }
+
 .eab-events-fpe-meta_box {
-	width: 47%;
+	display: flex;
+	flex-direction: row;
+	flex-wrap:wrap;
+	align-items: center;
+	gap: 15px;
 	padding: .4%;
-	/*border: 1px solid #ddd;*/
-	float: left;
+	border: 1px solid #ddd;
+	
 }
+
+div#eab-events-fpe-meta_box-categories {
+    display: flex;
+}
+
 #eab-events-fpe-status_type {
-	float: right;
+	/*float: right;*/
 }
+
 #eab-events-fpe-rsvps, #eab-events-fpe-meta_box-venue {
 	float: none;
 	width: auto;
 }
+
 #eab-events-fpe-rsvps {
 	border: none;
 }
 
 /* ----- General meta box elements ----- */
 .eab-events-fpe-meta_box label {
-	display: inline-block;
-	width: 10em;
+	width: 100%;
 }
+
 #eab-events-fpe-date_time label {
 	width: 6em;
 }
+
 #eab-events-fpe-waiting_indicator {
 	margin-left: 1em;
 	margin-right: 1.5em;
@@ -48,12 +75,12 @@
 /* ----- Form elements setup ----- */
 #eab-events-fpe-event_title {
 	width: 99%;
-	font-size: 2em;
+	font-size: 1.2em;
 }
 
 /* ----- Date/time metabox ----- */
 #eab-events-fpe-venue {
-	width: 99%;
+	min-width: 330px;
 }
 
 /* ----- Messages ----- */
@@ -65,5 +92,5 @@
 }
 
 .eab-events-pae-meta_box {
-	width: 47%;
+	/*width: 47%;*/
 }
