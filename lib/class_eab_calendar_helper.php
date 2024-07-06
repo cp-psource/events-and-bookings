@@ -528,6 +528,8 @@ EabEctEacJs;
 
 class Eab_CalendarTable_EventShortcodeCalendar extends Eab_CalendarTable_EventArchiveCalendar {
 
+	public $start_of_week;
+
 	protected $_class;
 	protected $_use_footer = false;
 	protected $_use_scripts = true;
