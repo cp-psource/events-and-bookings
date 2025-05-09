@@ -33,20 +33,21 @@ class Eab_AdminHelp {
 		$this->_help->initialize();
 	}
 	
-	private function _set_up_sidebar () {
-		$this->_sidebar = '<h4>' . __('PS-Events', 'eab') . '</h4>';
-		if (defined('PSOURCE_REMOVE_BRANDING') && constant('PSOURCE_REMOVE_BRANDING')) {
-			$this->_sidebar .= '<p>' . __('PS-Events fügt Deiner Webseite oder Deiner Multisite ein mächtiges Events & Bookings System hinzu..', 'eab') . '</p>';
-		} else {
+	private function _set_up_sidebar() {
+		add_action('init', function() {
+			$this->_sidebar = '<h4>' . __('PS-Events', 'eab') . '</h4>';
+			if (defined('PSOURCE_REMOVE_BRANDING') && constant('PSOURCE_REMOVE_BRANDING')) {
+				$this->_sidebar .= '<p>' . __('PS-Events fügt Deiner Webseite oder Deiner Multisite ein mächtiges Events & Bookings System hinzu.', 'eab') . '</p>';
+			} else {
 				$this->_sidebar .= '<ul>' .
-					'<li><a href="https://n3rds.work/piestingtal_source/ps-events-eventmanagement-fuer-wordpress/ target="_blank">' . __('Projektseite', 'eab') . '</a></li>' .
+					'<li><a href="https://n3rds.work/piestingtal_source/ps-events-eventmanagement-fuer-wordpress/" target="_blank">' . __('Projektseite', 'eab') . '</a></li>' .
 					'<li><a href="https://n3rds.work/docs/ps-events-plugin-handbuch/" target="_blank">' . __('Installations- und Anleitungsseite', 'eab') . '</a></li>' .
 					'<li><a href="https://n3rds.work/forums/forum/psource-support-foren/ps-forum-supportforum/https://n3rds.work/piestingtal-source-project/eventsps-das-eventmanagment-fuer-wordpress/" target="_blank">' . __('Hilfeforum', 'eab') . '</a></li>' .
-				'</ul>' . 
-			'';
-		}
+				'</ul>';
+			}
+		});
 	}
-
+	
 	private function _add_shortcodes_contextual_help ($screen_id) {
 		$help = apply_filters('eab-shortcodes-shortcode_help', array());
 		$out = '';

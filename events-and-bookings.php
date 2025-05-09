@@ -229,53 +229,46 @@ class Eab_EventsHub {
      * @see		http://codex.wordpress.org/Plugin_API/Action_Reference
      * @see		http://adambrown.info/p/wp_hooks/hook/init
      */
-    function init() {
+	function init() {
 		global $wpdb, $wp_rewrite, $current_user, $blog_id, $wp_version;
 		$version = preg_replace( '/-.*$/', '', $wp_version );
-
+	
+		// Lade die Textdomain direkt im init-Hook
 		if ( preg_match( '/mu\-plugin/', PLUGINDIR ) > 0 ) {
-		    load_muplugin_textdomain( self::TEXT_DOMAIN, dirname( plugin_basename( __FILE__) ).'/languages' );
+			load_muplugin_textdomain( self::TEXT_DOMAIN, dirname( plugin_basename( __FILE__) ) . '/languages' );
 		} else {
-		    load_plugin_textdomain( self::TEXT_DOMAIN, false, dirname( plugin_basename( __FILE__) ).'/languages' );
+			load_plugin_textdomain( self::TEXT_DOMAIN, false, dirname( plugin_basename( __FILE__) ) . '/languages' );
 		}
-
-	    $taxonomies = new Eab_Taxonomies();
-	    $taxonomies->register();
-
-		$event_structure = '/' . $this->_data->get_option( 'slug' ). '/%event_year%/%event_monthnum%/%psource_event%';
-
+	
+		$taxonomies = new Eab_Taxonomies();
+		$taxonomies->register();
+	
+		$event_structure = '/' . $this->_data->get_option( 'slug' ) . '/%event_year%/%event_monthnum%/%psource_event%';
+	
 		$wp_rewrite->add_rewrite_tag( "%psource_event%", '(.+?)', "psource_event=" );
 		$wp_rewrite->add_rewrite_tag( "%event_year%", '([0-9]{4})', "event_year=" );
 		$wp_rewrite->add_rewrite_tag( "%event_monthnum%", '([0-9]{2})', "event_monthnum=" );
-	    //add_rewrite_rule( $this->_data->get_option('slug') . '/[0-9]{4}/[0-9]{2}/.+?/comment-page-([0-9]{1,})/?$', 'index.php?post_type=psource_event&cpage=$matches[1]', 'top' );
-        add_rewrite_rule( $this->_data->get_option('slug') . '/[0-9]{4}/[0-9]{2}/(.+)?/comment-page-([0-9]{1,})/?$', 'index.php?psource_event=$matches[1]&cpage=$matches[2]', 'top' );
-
+		add_rewrite_rule( $this->_data->get_option('slug') . '/[0-9]{4}/[0-9]{2}/(.+)?/comment-page-([0-9]{1,})/?$', 'index.php?psource_event=$matches[1]&cpage=$matches[2]', 'top' );
+	
 		$wp_rewrite->add_permastruct( 'psource_event', $event_structure, false );
-
-		//wp_register_script('eab_jquery_ui', plugins_url('events-and-bookings/js/jquery-ui.custom.min.js'), array('jquery'), self::CURRENT_VERSION);
-
+	
 		wp_register_script( 'eab_event_js', EAB_PLUGIN_URL . 'js/eab-event.js', array('jquery'), self::CURRENT_VERSION );
-		
 		wp_register_style( 'eab_jquery_ui', EAB_PLUGIN_URL . 'css/smoothness/jquery-ui-1.8.16.custom.css', null, '1.8.16' );
-		
-
-		wp_register_style( 'eab_front', EAB_PLUGIN_URL .'css/front.css' , null, self::CURRENT_VERSION );
-
-
-
+		wp_register_style( 'eab_front', EAB_PLUGIN_URL . 'css/front.css', null, self::CURRENT_VERSION );
+	
 		if ( isset( $_REQUEST['eab_step'] ) ) {
-		    setcookie( 'eab_step', $_REQUEST['eab_step'], eab_current_time() + ( 3600*24 ) );
+			setcookie( 'eab_step', $_REQUEST['eab_step'], eab_current_time() + ( 3600 * 24 ) );
 		} else if ( isset( $_COOKIE['eab_step'] ) ) {
-		    $_REQUEST['eab_step'] = $_COOKIE['eab_step'];
+			$_REQUEST['eab_step'] = $_COOKIE['eab_step'];
 		}
-
+	
 		if ( isset( $_REQUEST['eab_export'] ) ) {
-			if ( !class_exists( 'Eab_ExporterFactory' ) )  { 
+			if ( !class_exists( 'Eab_ExporterFactory' ) ) {
 				require_once EAB_PLUGIN_DIR . 'lib/class_eab_exporter.php';
 			}
 			Eab_ExporterFactory::serve( $_REQUEST );
 		}
-    }
+	}
 
 	function process_rsvps () {
 		global $wpdb;
@@ -1623,12 +1616,13 @@ Eab_AddonHandler::serve();
 require_once EAB_PLUGIN_DIR . 'lib/default_filters.php';
 
 if ( is_admin() ) {
-	require_once EAB_PLUGIN_DIR . 'lib/class_eab_admin_tutorial.php';
-	Eab_AdminTutorial::serve();
+    require_once EAB_PLUGIN_DIR . 'lib/class_eab_admin_tutorial.php';
+    Eab_AdminTutorial::serve();
 
-	require_once EAB_PLUGIN_DIR . 'lib/contextual_help/class_eab_admin_help.php';
-	Eab_AdminHelp::serve();
-
+    require_once EAB_PLUGIN_DIR . 'lib/contextual_help/class_eab_admin_help.php';
+    add_action('init', function() {
+        Eab_AdminHelp::serve();
+    });
 }
 
 
