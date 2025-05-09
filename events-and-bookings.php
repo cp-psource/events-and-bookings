@@ -6,7 +6,7 @@ Description: Events gives you a flexible WordPress-based system for organizing p
 Author: PSOURCE
 Text Domain: eab
 Domain Path: languages
-Version: 1.4.3
+Version: 1.4.4
 Requires at least: 4.6
 Tested up to: 5.7
 Author URI: https://github.com/cp-psource
@@ -44,7 +44,7 @@ class Eab_EventsHub {
 	 * @TODO Update version number for new releases
      * @var	string
      */
-    const CURRENT_VERSION 		= '1.4.3';
+    const CURRENT_VERSION 		= '1.4.4';
 
     /**
      * Translation domain

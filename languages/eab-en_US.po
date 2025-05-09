@@ -983,7 +983,7 @@ msgstr "Activate"
 #: lib/class_eab_addon_handler.php:219
 #, php-format
 msgid "Version %s"
-msgstr "版本 %s"
+msgstr "Version %s"
 
 #: lib/class_eab_addon_handler.php:221
 #, fuzzy, php-format

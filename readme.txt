@@ -2,8 +2,8 @@
 Contributors: DerN3rd (PSOURCE)
 Tags: multisite, events, kalender, buddypress
 Requires at least: 4.9
-Tested up to: 6.5.4
-Stable tag: 1.4.3
+Tested up to: 6.8.1
+Stable tag: 1.4.4
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -80,6 +80,11 @@ Begeistere die Teilnehmer für Deine Veranstaltung. Verbreite das Wort mit autom
 [POWERED BY PSOURCE](https://github.com/cp-psource)
 
 == ChangeLog ==
+
+= 1.4.4 =
+
+* Fix load_plugin_textdomain
+* Fix some deprecated PhP
 
 = 1.4.3 =
 
