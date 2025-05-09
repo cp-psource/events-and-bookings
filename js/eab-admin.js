@@ -58,7 +58,7 @@ jQuery(function($) {
         jQuery("#eab-settings-paypal").hide();
     }
 
-    jQuery("#psource_event-accept_payments").change(function() {
+    jQuery("#psource_event-accept_payments").on("change", function() {
         if (!jQuery("#psource_event-accept_payments").is(":checked")) {
             jQuery("#eab-settings-paypal").hide();
         } else {
@@ -69,7 +69,7 @@ jQuery(function($) {
     if (jQuery("#psource_event_paid").val() == 0) {
         jQuery(".psource_event-fee_row").hide();
     }
-    jQuery("#psource_event_paid").change(function() {
+    jQuery("#psource-event").on("change", "#psource_event_paid", function() {
         if (jQuery("#psource_event_paid").val() == 0) {
             jQuery(".psource_event-fee_row").hide();
         } else {
@@ -299,11 +299,11 @@ jQuery(function($) {
 
         $(function() {
             // Init API toggle
-            $("#psource_event-accept_api_logins").change(toggle_api_settings);
+            $("#psource_event-accept_api_logins").on("change", toggle_api_settings);
             toggle_api_settings();
 
             // Init Appearance toggle
-            $("#psource_event-override_appearance_defaults").change(toggle_appearance_settings);
+            $("#psource_event-override_appearance_defaults").on("change", toggle_appearance_settings);
             toggle_appearance_settings();
 
             // Tutorial restart
@@ -321,7 +321,7 @@ jQuery(function($) {
             // Init recurrence toggle
             $("#eab-eab-start_recurrence-button").on("click", toggle_recurrence_settings);
             // Init recurrence mode toggle
-            $("#eab_event-repeat_every").change(toggle_recurrence_mode);
+            $("#eab_event-repeat_every").on("change", toggle_recurrence_mode);
             toggle_recurrence_mode();
             // Init recurrence instances toggle
             $("#eab_event-edit_recurring_instances").on("click", toggle_recurrence_instances);
