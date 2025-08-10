@@ -1,5 +1,8 @@
 (function($) {
 
+    // Global variable to store media frame
+    var eab_media_frame;
+
     /**
      * Shows/hides attendance information.
      */
@@ -319,21 +322,120 @@
                 window.location = link;
             }).show();
         } else $("#eab-events-fpe-cancel").hide();
-        /* Added by Ashok */
-        $('.eab-fpe-upload').on("click",function() {
-            var _old_send = window.send_to_editor;
-            tb_show('&nbsp;', l10nFpe.base_url + '/wp-admin/media-upload.php?type=image&TB_iframe=true&post_id=0', false);
-            window.send_to_editor = function(html) {
-                var id = html.split('wp-image-')[1].split('"')[0];
-                $('#eab-fpe-attach_id').val(id);
-                var src = $('img', html).attr('src');
-                $('#eab-fpe-preview-upload')
-                    .attr('src', src)
-                    .show();
-                tb_remove();
-                window.send_to_editor = _old_send;
+        /* Added by Ashok - Updated to use WordPress Media Library */
+        function initMediaUploader() {
+            console.log('Initializing media uploader...');
+            
+            // Remove any existing event handlers first
+            $('.eab-fpe-upload').off('click.media-uploader');
+            
+            $('.eab-fpe-upload').on("click.media-uploader", function(e) {
+                console.log('Media upload button clicked!');
+                e.preventDefault();
+                e.stopPropagation();
+                
+                // Check if wp.media is available
+                if (typeof wp === 'undefined' || typeof wp.media === 'undefined') {
+                    console.error('WordPress Media Library nicht verfügbar');
+                    alert('Media Library nicht verfügbar. Bitte laden Sie die Seite neu.');
+                    return false;
+                }
+                
+                console.log('wp.media is available, creating media frame...');
+                
+                // If the media frame already exists, reopen it.
+                if (eab_media_frame) {
+                    console.log('Reopening existing media frame');
+                    eab_media_frame.open();
+                    return false;
+                }
+                
+                // Create the media frame.
+                eab_media_frame = wp.media({
+                    title: l10nFpe.media_title || 'Veranstaltungsbild auswählen',
+                    button: {
+                        text: l10nFpe.media_button || 'Bild verwenden',
+                    },
+                    multiple: false,
+                    library: {
+                        type: 'image'
+                    }
+                });
+                
+                console.log('Media frame created, setting up select handler...');
+                
+                // When an image is selected, run a callback.
+                eab_media_frame.on('select', function() {
+                    console.log('Image selected in media frame');
+                    var attachment = eab_media_frame.state().get('selection').first().toJSON();
+                    console.log('Selected attachment:', attachment);
+                    $('#eab-fpe-attach_id').val(attachment.id);
+                    $('#eab-fpe-preview-upload')
+                        .attr('src', attachment.url)
+                        .show();
+                });
+                
+                console.log('Opening media frame...');
+                // Finally, open the modal
+                eab_media_frame.open();
+                
+                return false;
+            });
+            
+            // Also add a delegated event handler as backup
+            $(document).off('click.media-uploader-delegate', '.eab-fpe-upload').on('click.media-uploader-delegate', '.eab-fpe-upload', function(e) {
+                console.log('Delegated media upload button clicked!');
+                e.preventDefault();
+                e.stopPropagation();
+                
+                if (typeof wp !== 'undefined' && typeof wp.media !== 'undefined') {
+                    $('.eab-fpe-upload').first().trigger('click.media-uploader');
+                } else {
+                    alert('Media Library ist noch nicht bereit. Bitte versuchen Sie es erneut.');
+                }
+            });
+            
+            console.log('Media uploader initialized. Found ' + $('.eab-fpe-upload').length + ' upload buttons.');
+        }
+
+        // Initialize media uploader when document is ready
+        $(document).ready(function() {
+            console.log('Document ready, checking for wp.media...');
+            console.log('jQuery version:', $.fn.jquery);
+            console.log('Found upload buttons:', $('.eab-fpe-upload').length);
+            
+            // Add a simple test click handler first
+            $('.eab-fpe-upload').on('click.test', function() {
+                console.log('TEST: Button clicked, jQuery is working!');
+            });
+            
+            if (typeof wp !== 'undefined' && typeof wp.media !== 'undefined') {
+                console.log('wp.media available immediately, initializing...');
+                initMediaUploader();
+            } else {
+                console.log('wp.media not available yet, waiting...');
+                // Wait for wp.media to be available
+                var checkMedia = setInterval(function() {
+                    if (typeof wp !== 'undefined' && typeof wp.media !== 'undefined') {
+                        console.log('wp.media now available, initializing...');
+                        initMediaUploader();
+                        clearInterval(checkMedia);
+                    } else {
+                        console.log('Still waiting for wp.media...');
+                    }
+                }, 100);
+                
+                // Timeout after 10 seconds
+                setTimeout(function() {
+                    clearInterval(checkMedia);
+                    console.error('WordPress Media Library konnte nicht geladen werden');
+                    // Fallback: Try to initialize anyway in case it loads later
+                    $(document).on('click', '.eab-fpe-upload', function(e) {
+                        e.preventDefault();
+                        alert('Media Library ist noch nicht bereit. Bitte versuchen Sie es in einem Moment erneut.');
+                    });
+                }, 10000);
             }
-            return false;
         });
         /* End of adding by Ashok */
 

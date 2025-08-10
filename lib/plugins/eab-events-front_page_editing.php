@@ -53,6 +53,10 @@ class Eab_Events_FrontPageEditing {
 		add_shortcode('eab_event_editor', array($this, 'handle_editor_shortcode'));
 
 		add_action('wp_ajax_eab_events_fpe-save_event', array($this, 'json_save_event'));
+		
+		// Add AJAX handlers for upload functionality - register globally
+		add_action('wp_ajax_eab_fpe_upload', array($this, 'handle_ajax_upload'));
+		add_action('wp_ajax_nopriv_eab_fpe_upload', array($this, 'handle_ajax_upload'));
 	}
 
 /* ----- Settings ----- */
@@ -210,6 +214,9 @@ class Eab_Events_FrontPageEditing {
 			(!$this->_options['id'] && self::SLUG != $wp_query->query_vars['name'])
 		) return false;
 		if (is_archive()) return false; // Do not hijack archive pages.
+
+		// Enqueue scripts early when we know we're on the editor page
+		add_action('wp_enqueue_scripts', array($this, '_enqueue_dependencies'));
 
 		add_filter('the_content', array($this, 'the_editor_content'), 99);
 		status_header( 200 );
@@ -369,11 +376,11 @@ class Eab_Events_FrontPageEditing {
 	}
 
 	private function _edit_event_form ($event_id) {
-		add_action('get_footer', array($this, 'enqueue_dependency_data'));
 		$post = $event_id ? get_post($event_id) : false;
 		$event = new Eab_EventModel($post);
 
-		$this->_enqueue_dependencies();
+		// Add footer data
+		add_action('wp_footer', array($this, 'enqueue_dependency_data'));
 
 		$style = $event->get_id() ? '' : 'style="display:none"';
                 $ret = '';
@@ -541,17 +548,15 @@ class Eab_Events_FrontPageEditing {
 		$featured_image = $event->get_featured_image_url();
 		$featured_image_id = (int)$event->get_featured_image_id();
 		if (current_user_can('upload_files')) {
-			/* Added by Ashok */
+			/* Added by Ashok - Updated to use WordPress Media Library */
 			$ret .= '<div class="eab-events-fpe-col_wrapper">';
 				$ret .= '<label>' . __('<h3>Veranstaltungsbild</h3>', 'eab') . '</label>' .
 					'<br />' .
-					'<a href="#featured_image" class="eab-fpe-upload">' .
+					'<button type="button" class="eab-fpe-upload button">' . __('<b>Veranstaltungsbild hochladen</b>', 'eab') . '</button>' .
 					'<input type="hidden" id="eab-fpe-attach_id" name="" value="' . $featured_image_id . '" />' .
 					'<input type="hidden" name="featured" value="' . esc_attr($featured_image_id) . '" />' .
-					'<img src="' . esc_url($featured_image) . '" id="eab-fpe-preview-upload" ' . (empty($featured_image) ? 'style="display:none"' : '') . ' />' .
 					'<br />' .
-					'<span class="button">' . __('<b>Veranstaltungsbild hochladen</b>', 'eab') . '</span>' .
-				'</a>';
+					'<img src="' . esc_url($featured_image) . '" id="eab-fpe-preview-upload" ' . (empty($featured_image) ? 'style="display:none"' : '') . ' />';
 			$ret .= '</div>';
 			/* End of adding by Ashok */
 		} else if (!empty($featured_image_id) && !empty($featured_image)) {
@@ -611,6 +616,134 @@ class Eab_Events_FrontPageEditing {
 			admin_url('admin-ajax.php'), EAB_PLUGIN_URL . 'img/'
 		);
 
+		// Add l10n data for our inline script
+		printf(
+			'<script type="text/javascript">var l10nFpe=%s;</script>',
+			json_encode(array(
+				'mising_time_date' => __('Bitte lege sowohl Start- als auch Enddaten und -zeiten fest', 'eab'),
+				'check_time_date' => __('Bitte überprüfe Deine Zeit- und Datumseinstellungen', 'eab'),
+				'general_error' => __('Fehler', 'eab'),
+				'missing_id' => __('Speichern fehlgeschlagen', 'eab'),
+				'all_good' => __('Alles Super!', 'eab'),
+				'base_url' => site_url(),
+				'media_title' => __('Veranstaltungsbild auswählen', 'eab'),
+				'media_button' => __('Bild verwenden', 'eab'),
+				'ajax_url' => admin_url('admin-ajax.php'),
+				'nonce' => wp_create_nonce('eab_fpe_upload_nonce')
+			))
+		);
+
+		// Initialize upload functionality
+		echo '<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				// Initialize datepicker
+				$("#eab-events-fpe-start_date, #eab-events-fpe-end_date").datepicker({
+					dateFormat: "yy-mm-dd",
+					changeMonth: true,
+					changeYear: true
+				});
+				
+				// Wait for wp.media to load
+				setTimeout(function() {
+					initMediaUploader();
+				}, 1000);
+				
+				function initMediaUploader() {
+					$(".eab-fpe-upload").off("click").on("click", function(e) {
+						e.preventDefault();
+						
+						var mediaSuccess = false;
+						
+						if (typeof wp !== "undefined" && typeof wp.media !== "undefined") {
+							try {
+								// Method 1: Standard wp.media approach
+								var mediaFrame = wp.media({
+									title: l10nFpe.media_title,
+									button: {
+										text: l10nFpe.media_button,
+									},
+									multiple: false,
+									library: {
+										type: "image"
+									}
+								});
+								
+								if (mediaFrame) {
+									mediaFrame.on("select", function() {
+										var attachment = mediaFrame.state().get("selection").first().toJSON();
+										$("#eab-fpe-attach_id").val(attachment.id);
+										$("#eab-fpe-preview-upload")
+											.attr("src", attachment.url)
+											.show();
+									});
+									
+									mediaFrame.open();
+									mediaSuccess = true;
+								} else {
+									throw new Error("mediaFrame creation failed");
+								}
+							} catch(err) {
+								try {
+									// Method 2: Use wp.media.editor as fallback
+									wp.media.editor.send.attachment = function(props, attachment) {
+										$("#eab-fpe-attach_id").val(attachment.id);
+										$("#eab-fpe-preview-upload")
+											.attr("src", attachment.url)
+											.show();
+									};
+									
+									wp.media.editor.open("eab-fpe-upload");
+									mediaSuccess = true;
+								} catch(editorErr) {
+									// Fall through to direct file input
+								}
+							}
+						}
+						
+						// Fallback method - direct file input
+						if (!mediaSuccess) {
+							var fileInput = $("<input type=\"file\" accept=\"image/*\" style=\"display:none;\">");
+							$("body").append(fileInput);
+							
+							fileInput.on("change", function() {
+								var file = this.files[0];
+								if (file) {
+									var formData = new FormData();
+									formData.append("action", "eab_fpe_upload");
+									formData.append("file", file);
+									formData.append("nonce", l10nFpe.nonce);
+									
+									$.ajax({
+										url: l10nFpe.ajax_url,
+										type: "POST",
+										data: formData,
+										processData: false,
+										contentType: false,
+										success: function(response) {
+											if (response.success) {
+												$("#eab-fpe-attach_id").val(response.data.id);
+												$("#eab-fpe-preview-upload")
+													.attr("src", response.data.url)
+													.show();
+											} else {
+												alert("Upload fehlgeschlagen: " + response.data);
+											}
+										},
+										error: function() {
+											alert("Upload-Fehler aufgetreten");
+										}
+									});
+								}
+								$(this).remove();
+							});
+							
+							fileInput.click();
+						}
+					});
+				}
+			});
+		</script>';
+
 		$event_id = (int)@$_GET['event_id'];
 		$post = $event_id ? get_post($event_id) : false;
 		$event = new Eab_EventModel($post);
@@ -625,24 +758,105 @@ class Eab_Events_FrontPageEditing {
 		echo '</div>';
 	}
 
-	private function _enqueue_dependencies () {
+	public function _enqueue_dependencies () {
 		wp_enqueue_style('eab-events-fpe', plugins_url(basename(EAB_PLUGIN_DIR) . "/css/eab-events-fpe.min.css"));
 		wp_enqueue_style('eab_jquery_ui');
 
 		wp_enqueue_script('jquery');
-		wp_enqueue_script('eab-events-fpe', plugins_url(basename(EAB_PLUGIN_DIR) . "/js/eab-events-fpe.js"), array('jquery'));
+		wp_enqueue_script('jquery-ui-datepicker');
+		
+		// Enqueue media scripts for the modern Media Library
+		if (current_user_can('upload_files')) {
+			wp_enqueue_media();
+			wp_enqueue_script('media-upload');
+			wp_enqueue_script('media-models');
+			wp_enqueue_script('media-views');
+			wp_enqueue_script('media-editor');
+			
+			wp_enqueue_script('eab-events-fpe', plugins_url(basename(EAB_PLUGIN_DIR) . "/js/eab-events-fpe.js"), 
+				array('jquery', 'jquery-ui-datepicker', 'media-upload', 'media-models', 'media-views', 'media-editor'), 
+				'1.0', true);
+		} else {
+			wp_enqueue_script('eab-events-fpe', plugins_url(basename(EAB_PLUGIN_DIR) . "/js/eab-events-fpe.js"), 
+				array('jquery', 'jquery-ui-datepicker'), '1.0', true);
+		}
+		
 		wp_localize_script('eab-events-fpe', 'l10nFpe', array(
 			'mising_time_date' => __('Bitte lege sowohl Start- als auch Enddaten und -zeiten fest', 'eab'),
 			'check_time_date' => __('Bitte überprüfe Deine Zeit- und Datumseinstellungen', 'eab'),
 			'general_error' => __('Fehler', 'eab'),
 			'missing_id' => __('Speichern fehlgeschlagen', 'eab'),
 			'all_good' => __('Alles Super!', 'eab'),
-			'base_url' => site_url()
+			'base_url' => site_url(),
+			'media_title' => __('Veranstaltungsbild auswählen', 'eab'),
+			'media_button' => __('Bild verwenden', 'eab'),
+			'ajax_url' => admin_url('admin-ajax.php'),
+			'nonce' => wp_create_nonce('eab_fpe_upload_nonce')
 		));
-		wp_enqueue_script('eab_jquery_ui'); // This got deprecated, but let it ride
-		wp_enqueue_script('jquery-ui-datepicker');
+		
+		wp_enqueue_script('eab_jquery_ui');
 
 		do_action('eab-events-fpe-enqueue_dependencies');
+	}
+
+	/**
+	 * Handle AJAX upload as fallback if wp.media is not available
+	 */
+	public function handle_ajax_upload() {
+		// Verify nonce
+		if (!isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'eab_fpe_upload_nonce')) {
+			wp_send_json_error('Security check failed');
+			return;
+		}
+		
+		// Check capabilities
+		if (!current_user_can('upload_files')) {
+			wp_send_json_error('You do not have permission to upload files');
+			return;
+		}
+		
+		// Check if file was uploaded
+		if (!isset($_FILES['file']) || $_FILES['file']['error'] !== UPLOAD_ERR_OK) {
+			wp_send_json_error('File upload failed');
+			return;
+		}
+		
+		if (!function_exists('wp_handle_upload')) {
+			require_once(ABSPATH . 'wp-admin/includes/file.php');
+		}
+		
+		$uploadedfile = $_FILES['file'];
+		$upload_overrides = array('test_form' => false);
+		$movefile = wp_handle_upload($uploadedfile, $upload_overrides);
+		
+		if ($movefile && !isset($movefile['error'])) {
+			// File uploaded successfully, create attachment
+			$attachment = array(
+				'post_mime_type' => $movefile['type'],
+				'post_title' => preg_replace('/\.[^.]+$/', '', basename($movefile['file'])),
+				'post_content' => '',
+				'post_status' => 'inherit'
+			);
+			
+			$attach_id = wp_insert_attachment($attachment, $movefile['file']);
+			
+			if (!is_wp_error($attach_id)) {
+				require_once(ABSPATH . 'wp-admin/includes/image.php');
+				$attach_data = wp_generate_attachment_metadata($attach_id, $movefile['file']);
+				wp_update_attachment_metadata($attach_id, $attach_data);
+				
+				wp_send_json_success(array(
+					'id' => $attach_id,
+					'url' => wp_get_attachment_url($attach_id),
+					'title' => get_the_title($attach_id)
+				));
+			} else {
+				wp_send_json_error('Failed to create attachment: ' . $attach_id->get_error_message());
+			}
+		} else {
+			$error_msg = isset($movefile['error']) ? $movefile['error'] : 'Unknown upload error';
+			wp_send_json_error('Upload failed: ' . $error_msg);
+		}
 	}
 
 }
